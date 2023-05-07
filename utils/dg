@@ -47,8 +47,8 @@ else
             /bin/bash $directory/scripts/docker.sh push
             break
             ;;
-        run)
-            printf "\nRunning Docker image...\n"
+        r | run)
+            printf "\nRunning local Docker image...\n"
             /bin/bash $directory/scripts/docker.sh run
             break
             ;;
