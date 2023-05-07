@@ -3,13 +3,23 @@ directory=$(dirname $(realpath /usr/local/bin/dg))
 source $directory/scripts/functions.sh
 
 showHelp() {
-    printf "${NC}$(basename "$0") [-h] [-s n] -- program to manage cms.dgrebb.com\n
+    printf "${NC}$(basename "$0") [-h] [ d db dbl drb drbl r cms tf] -- program to manage cms.dgrebb.com\n
     -h                      show this help text
     d | dev                 run strapi in development mode outside of docker
     db | dbuild             build docker images for aws
     dbl | dbuildlocal       build docker images to run locally
     drb | drebuild          rebuild docker images for aws
-    db | drbl               rebuild docker images to run locally\n\n"
+    drbl                    rebuild docker images to run locally
+    dp                      push docker image
+    r | run                 run local docker image
+    cms                     interact with strapi sans docker
+        dev                 run strapi in development mode
+    tf                      run terraform commands
+        i | init            initialize terraform
+        iu | init-upgrade   upgrade terraform
+        p | plan            plan terraform
+        a | apply           apply terraform
+    \n\n"
 }
 
 if [ $# -eq 0 ]; then
