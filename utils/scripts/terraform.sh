@@ -20,6 +20,13 @@ else
                 terraform init
             break 2
             ;;
+        iu | init-upgrade)
+            setTfEnv
+            printf "\nInitializing Terraform...\n"
+            cd $directory/../tf &&
+                terraform init -upgrade
+            break 2
+            ;;
         p | plan)
             setTfEnv
             printf "\nSetting Terraform plan...\n"
