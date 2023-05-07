@@ -7,7 +7,6 @@ image_name=cms.dgrebb.com
 
 source $directory/scripts/functions.sh
 
-hello
 if [ $# -eq 0 ]; then
     printf "Missing args"
 else
