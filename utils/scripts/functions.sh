@@ -20,3 +20,8 @@ shredEnv() {
     printf "\nShredding .env...\n"
     gshred $directory/../strapi/.env && rm $directory/../strapi/.env
 }
+
+setTfEnv() {
+    printf "\nSetting terraform vars...\n"
+    source $directory/../tf/scripts/set-tf-vars.sh
+}

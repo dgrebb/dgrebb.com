@@ -1,0 +1,5 @@
+export TF_VAR_AWS_ACCESS_KEY=$(pass dg/aws/id)
+export TF_VAR_AWS_SECRET_KEY=$(pass dg/aws/secret)
+export TF_VAR_REGION=$(pass dg/aws/region)
+export TF_VAR_DOMAIN=$(pass dg/cms/domain)
+export TF_VAR_DASHED_DOMAIN=$(pass dg/cms/dashed-domain)

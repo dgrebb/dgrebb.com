@@ -56,6 +56,10 @@ else
             /bin/bash $directory/scripts/cms.sh $2
             break
             ;;
+        tf)
+            /bin/bash $directory/scripts/terraform.sh $2
+            break
+            ;;
         -h | --help)
             showHelp
             break
