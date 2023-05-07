@@ -1,43 +1,36 @@
 #!/bin/bash
 directory=$(dirname $(realpath /usr/local/bin/dg))
 
-acr_uri=$(pass aws/acr-uri)
-region=$(pass aws/region)
-image_name=cms.dgrebb.com
-
 source $directory/scripts/functions.sh
 
 if [ $# -eq 0 ]; then
     printf "Missing args"
 else
     while test "$1" != --; do
+        hello
         cd $directory/../tf
         case $1 in
         i | init)
             setTfEnv
-            printf "\nInitializing Terraform...\n"
-            cd $directory/../tf &&
+            printf "${BOLDYELLOW}Initializing...${NC} \n"
                 terraform init
             break 2
             ;;
         iu | init-upgrade)
             setTfEnv
-            printf "\nInitializing Terraform...\n"
-            cd $directory/../tf &&
+            printf "${BOLDYELLOW}Upgrading Terraform...${NC} \n"
                 terraform init -upgrade
             break 2
             ;;
         p | plan)
             setTfEnv
-            printf "\nSetting Terraform plan...\n"
-            cd $directory/../tf &&
+            printf "${BOLDYELLOW}Setting Terraform plan...${NC} \n"
                 terraform plan
             break 2
             ;;
         a | apply)
             setTfEnv
-            printf "\nApplying Terraform plan...\n"
-            cd $directory/../tf &&
+            printf "${BOLDYELLOW}Applying Terraform plan...${NC}    \n"
                 terraform apply
             break 2
             ;;
