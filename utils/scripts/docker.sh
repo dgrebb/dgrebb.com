@@ -48,7 +48,7 @@ else
             ;;
         run)
             printf "Running local Docker image"
-            docker run -it ${image_name}
+            docker run -p 1337:1337 -it local.${image_name}
             break 2
             ;;
         push)
