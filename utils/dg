@@ -1,0 +1,71 @@
+#!/bin/bash
+directory=$(dirname $(realpath /usr/local/bin/dg))
+source $directory/scripts/functions.sh
+
+showHelp() {
+    printf "${NC}$(basename "$0") [-h] [-s n] -- program to manage dgrebb.com\n
+    -h                      show this help text
+    db | dbuild             build docker images for aws
+    dbl | dbuildlocal       build docker images to run locally
+    drb | drebuild          rebuild docker images for aws
+    db | drbl               rebuild docker images to run locally\n\n"
+}
+
+if [ $# -eq 0 ]; then
+    hello
+else
+    while test "$1" != --; do
+        case $1 in
+        db)
+            /bin/bash $directory/scripts/docker.sh build
+            break
+            ;;
+        dbl)
+            printf "\nBuilding local Docker image...\n"
+            /bin/bash $directory/scripts/docker.sh buildlocal &&
+                dg run
+            break
+            ;;
+        drb)
+            printf "\nRebuilding Docker image...\n"
+            /bin/bash $directory/scripts/docker.sh rebuild
+            break
+            ;;
+        drbl)
+            printf "\nRebuilding local Docker image...\n"
+            /bin/bash $directory/scripts/docker.sh rebuildlocal &&
+                dg run
+            break
+            ;;
+        dp)
+            printf "\nPushing Docker image...\n"
+            /bin/bash $directory/scripts/docker.sh push
+            break
+            ;;
+        run)
+            printf "\nRunning Docker image...\n"
+            /bin/bash $directory/scripts/docker.sh run
+            break
+            ;;
+        cms)
+            /bin/bash $directory/scripts/cms.sh $2
+            break
+            ;;
+        -h | --help)
+            showHelp
+            break
+            ;;
+        --)
+            showHelp
+            break
+            ;;
+        *)
+            printf "${red}██████████ Unexpected args — you done goofed! ██████████${NC}\n\n"
+            showHelp
+            break
+            ;;
+        esac
+    done
+    err=$?
+    [[ $err != 0 ]] && exit $err
+fi
