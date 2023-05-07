@@ -16,6 +16,10 @@ if [ $# -eq 0 ]; then
 else
     while test "$1" != --; do
         case $1 in
+        d | dev)
+            cd $directory/../strapi && npm run develop
+            break
+            ;;
         db)
             /bin/bash $directory/scripts/docker.sh build
             break
