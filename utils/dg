@@ -3,8 +3,9 @@ directory=$(dirname $(realpath /usr/local/bin/dg))
 source $directory/scripts/functions.sh
 
 showHelp() {
-    printf "${NC}$(basename "$0") [-h] [-s n] -- program to manage dgrebb.com\n
+    printf "${NC}$(basename "$0") [-h] [-s n] -- program to manage cms.dgrebb.com\n
     -h                      show this help text
+    d | dev                 run strapi in development mode outside of docker
     db | dbuild             build docker images for aws
     dbl | dbuildlocal       build docker images to run locally
     drb | drebuild          rebuild docker images for aws
