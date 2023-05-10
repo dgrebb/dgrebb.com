@@ -1,20 +1,20 @@
-variable "AWS_ACCESS_KEY" {
+variable "aws_access_key" {
   type      = string
   sensitive = true
 }
-variable "AWS_SECRET_KEY" {
+variable "aws_secret_key" {
   type      = string
   sensitive = true
 }
-variable "REGION" {
+variable "region" {
   type      = string
   sensitive = true
 }
-variable "DOMAIN" {
+variable "domain" {
   type      = string
   sensitive = true
 }
-variable "DASHED_DOMAIN" {
+variable "dashed_domain" {
   type      = string
   sensitive = true
 }
@@ -26,5 +26,6 @@ variable "subnets" {
   ]
 }
 variable "terraform_state_bucket" {
+  type = string
   default = "cms-dgrebb-com-state"
 }
