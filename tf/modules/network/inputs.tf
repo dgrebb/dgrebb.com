@@ -1,0 +1,11 @@
+variable "aws_access_key" {}
+variable "aws_secret_key" {}
+variable "region" {}
+variable "domain" {}
+variable "subnets" {}
+variable "cmsdomain" {}
+variable "cdndomain" {}
+variable "dashed_cmsdomain" {}
+variable "dashed_cdndomain" {}
+variable "cf_distribution" {}
+variable "alb" {}

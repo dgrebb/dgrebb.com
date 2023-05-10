@@ -1,0 +1,1 @@
+variable "dashed_cmsdomain" {}

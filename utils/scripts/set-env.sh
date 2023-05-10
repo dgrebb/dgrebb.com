@@ -35,6 +35,12 @@ while test "$1" != --; do
         echo "NODE_ENV=development" >>$directory/../strapi/.env
         break
         ;;
+    s)
+        echo "HOST=0.0.0.0" >>$directory/../strapi/.env
+        echo "DATABASE_HOST=$(pass dg/cms/db/stg-host)" >>$directory/../strapi/.env
+        echo "NODE_ENV=production" >>$directory/../strapi/.env
+        break
+        ;;
     p)
         echo "HOST=0.0.0.0" >>$directory/../strapi/.env
         echo "DATABASE_HOST=$(pass dg/cms/db/host)" >>$directory/../strapi/.env

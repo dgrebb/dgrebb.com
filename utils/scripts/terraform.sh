@@ -3,35 +3,43 @@ directory=$(dirname $(realpath /usr/local/bin/dg))
 
 source $directory/scripts/functions.sh
 
+environment=$1
+
 if [ $# -eq 0 ]; then
     printf "Missing args"
 else
-    while test "$1" != --; do
+    while test "$2" != --; do
         hello
-        cd $directory/../tf
-        case $1 in
+        cd $directory/../tf/$environment
+        case $2 in
         i | init)
             setTfEnv
-            printf "${BOLDYELLOW}Initializing...${NC} \n"
+            printf "${BOLDYELLOW}Initializing...${NC}\n"
                 terraform init
             break 2
             ;;
         iu | init-upgrade)
             setTfEnv
-            printf "${BOLDYELLOW}Upgrading Terraform...${NC} \n"
+            printf "${BOLDYELLOW}Upgrading Terraform...${NC}\n"
                 terraform init -upgrade
             break 2
             ;;
         p | plan)
             setTfEnv
-            printf "${BOLDYELLOW}Setting Terraform plan...${NC} \n"
+            printf "${BOLDYELLOW}Setting Terraform plan...${NC}\n"
                 terraform plan
             break 2
             ;;
         a | apply)
             setTfEnv
-            printf "${BOLDYELLOW}Applying Terraform plan...${NC}    \n"
+            printf "${BOLDYELLOW}Applying Terraform plan...${NC}\n"
                 terraform apply
+            break 2
+            ;;
+        re | refresh)
+            setTfEnv
+            printf "${BOLDYELLOW}Refreshing Terraform state...${NC}\n"
+                terraform refresh
             break 2
             ;;
         *)

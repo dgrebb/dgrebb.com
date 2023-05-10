@@ -1,7 +1,8 @@
 #!/bin/bash
 directory=$(dirname $(realpath /usr/local/bin/dg))
 
-acr_uri=$(pass aws/acr-uri)
+acr_uri=$(pass dg/cms/acr-uri)
+stg_acr_uri=$(pass dg/cms/stg-acr-uri)
 region=$(pass aws/region)
 image_name=cms.dgrebb.com
 
@@ -15,6 +16,14 @@ else
         case $1 in
         build)
             setEnv
+            printf "\nBuilding Docker image...\n"
+            docker buildx build --platform linux/amd64 \
+                -t ${image_name} ../strapi/. &&
+                shredEnv
+            break 2
+            ;;
+        build-stg)
+            setStgEnv
             printf "\nBuilding Docker image...\n"
             docker buildx build --platform linux/amd64 \
                 -t ${image_name} ../strapi/. &&
@@ -58,6 +67,14 @@ else
             docker push ${acr_uri}
             break 2
             ;;
+        push-stg)
+            aws ecr get-login-password --region ${region} |
+                docker login --username AWS --password-stdin ${stg_acr_uri}
+            stgArchive
+            stgTag
+            docker push ${stg_acr_uri}
+            break 2
+            ;;
         *)
             printf "${red}██████████ Unexpected options for docker: wrong docker args. ██████████\n\n"
             break 2
@@ -65,20 +82,3 @@ else
         esac
     done
 fi
-
-retag() {
-    docker tag ${acr_uri}:latest ${acr_uri}:last
-}
-
-archive() {
-    retag
-    docker rmi ${acr_uri}:latest
-}
-
-tag() {
-    docker tag ${image_name}:latest ${acr_uri}:latest
-}
-
-run() {
-    docker run -p 1337:1337 -it ${image_name}
-}
