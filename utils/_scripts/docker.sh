@@ -6,7 +6,7 @@ stg_acr_uri=$(pass dg/cms/stg-acr-uri)
 region=$(pass aws/region)
 image_name=cms.dgrebb.com
 
-source $directory/scripts/functions.sh
+source $directory/_scripts/functions.sh
 
 if [ $# -eq 0 ]; then
     printf "Missing args"

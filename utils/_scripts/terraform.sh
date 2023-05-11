@@ -1,7 +1,7 @@
 #!/bin/bash
 directory=$(dirname $(realpath /usr/local/bin/dg))
 
-source $directory/scripts/functions.sh
+source $directory/_scripts/functions.sh
 
 environment=$1
 
