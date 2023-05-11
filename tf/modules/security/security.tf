@@ -1,9 +1,8 @@
 resource "aws_security_group" "service_sg" {
   ingress {
-    from_port = 0
-    to_port   = 0
-    protocol  = "-1"
-    # Only allow traffic from the load balancer security group
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
     security_groups = ["${aws_security_group.lb_sg.id}"]
   }
 
@@ -22,20 +21,19 @@ resource "aws_security_group" "service_sg" {
   }
 }
 
-# Create a security group for the load balancer:
 resource "aws_security_group" "lb_sg" {
   ingress {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] # Allow traffic in from all sources
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] # Allow traffic in from all sources
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {

@@ -4,8 +4,8 @@ provider "aws" {
   secret_key = var.aws_secret_key
   default_tags {
     tags = {
-      Owner = "cms@dgrebb.com"
-      Property = "stg-${var.dashed_cmsdomain}"
+      Owner       = "cms@dgrebb.com"
+      Property    = "stg-${var.dashed_cmsdomain}"
       Environment = "staging"
       Cost_Center = "self"
     }

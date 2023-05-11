@@ -42,10 +42,10 @@ variable "subnets" {
   ]
 }
 variable "terraform_state_bucket" {
-  type = string
+  type    = string
   default = "stg-cms-dgrebb-com-state"
 }
 variable "db_password" {
-  type = string
+  type      = string
   sensitive = true
 }

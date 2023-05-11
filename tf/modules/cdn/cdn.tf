@@ -1,7 +1,3 @@
-# -----------------------------------------
-# CloudFront for S3 Assets
-#------------------------------------------
-
 locals {
   s3origin = "${var.dashed_cmsdomain}s3origin"
 }
