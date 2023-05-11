@@ -1,7 +1,3 @@
-# ------------------------------------------------------------------------------
-# CMS Database
-# ------------------------------------------------------------------------------
-
 resource "aws_db_instance" "db" {
   depends_on             = [var.service_sg]
   identifier             = var.dashed_cmsdomain

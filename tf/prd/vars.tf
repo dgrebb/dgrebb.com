@@ -26,6 +26,6 @@ variable "subnets" {
   ]
 }
 variable "terraform_state_bucket" {
-  type = string
+  type    = string
   default = "cms-dgrebb-com-state"
 }

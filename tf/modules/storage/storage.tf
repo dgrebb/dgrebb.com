@@ -1,7 +1,3 @@
-# ----------------------------------------------------------
-# ------ S3
-# ----------------------------------------------------------
-
 resource "aws_s3_bucket" "cms" {
   bucket = var.dashed_cmsdomain
 }
@@ -134,6 +130,7 @@ resource "aws_s3_bucket_cors_configuration" "cms_s3_cors_config" {
   }
 }
 
+# TODO: Refactor as a looped map
 resource "aws_s3_object" "index_html" {
   bucket       = aws_s3_bucket.cms.id
   key          = "index.html"

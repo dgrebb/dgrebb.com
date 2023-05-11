@@ -80,7 +80,7 @@ resource "aws_route53_record" "cms_validation_record" {
 
 resource "aws_route53_record" "cdn_record" {
   allow_overwrite = true
-  name            = "${var.cdndomain}"
+  name            = var.cdndomain
   type            = "A"
   zone_id         = data.aws_route53_zone.main.zone_id
   alias {
