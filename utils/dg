@@ -1,6 +1,6 @@
 #!/bin/bash
 directory=$(dirname $(realpath /usr/local/bin/dg))
-source $directory/scripts/functions.sh
+source $directory/_scripts/functions.sh
 
 showHelp() {
     printf "${NC}$(basename "$0") [-h] [ d db dbl drb drbl r cms tf] -- program to manage cms.dgrebb.com\n
@@ -32,51 +32,51 @@ else
             break
             ;;
         db)
-            /bin/bash $directory/scripts/docker.sh build
+            /bin/bash $directory/_scripts/docker.sh build
             break
             ;;
         dbs)
-            /bin/bash $directory/scripts/docker.sh build-stg
+            /bin/bash $directory/_scripts/docker.sh build-stg
             break
             ;;
         dbl)
             printf "\nBuilding local Docker image...\n"
-            /bin/bash $directory/scripts/docker.sh buildlocal &&
+            /bin/bash $directory/_scripts/docker.sh buildlocal &&
                 dg run
             break
             ;;
         drb)
             printf "\nRebuilding Docker image...\n"
-            /bin/bash $directory/scripts/docker.sh rebuild
+            /bin/bash $directory/_scripts/docker.sh rebuild
             break
             ;;
         drbl)
             printf "\nRebuilding local Docker image...\n"
-            /bin/bash $directory/scripts/docker.sh rebuildlocal &&
+            /bin/bash $directory/_scripts/docker.sh rebuildlocal &&
                 dg run
             break
             ;;
         dp)
             printf "\nPushing Docker image...\n"
-            /bin/bash $directory/scripts/docker.sh push
+            /bin/bash $directory/_scripts/docker.sh push
             break
             ;;
         dps)
             printf "\nPushing Docker image...\n"
-            /bin/bash $directory/scripts/docker.sh push-stg
+            /bin/bash $directory/_scripts/docker.sh push-stg
             break
             ;;
         r | run)
             printf "\nRunning local Docker image...\n"
-            /bin/bash $directory/scripts/docker.sh run
+            /bin/bash $directory/_scripts/docker.sh run
             break
             ;;
         cms)
-            /bin/bash $directory/scripts/cms.sh $2
+            /bin/bash $directory/_scripts/cms.sh $2
             break
             ;;
         tf)
-            /bin/bash $directory/scripts/terraform.sh $2 $3
+            /bin/bash $directory/_scripts/terraform.sh $2 $3
             break
             ;;
         -h | --help)

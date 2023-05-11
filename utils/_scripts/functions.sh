@@ -5,22 +5,22 @@ BOLDYELLOW="\e[1;${yellow}m"
 NC='\033[0m' # No Color
 
 hello() {
-    $directory/scripts/hello.sh
+    $directory/_scripts/hello.sh
 }
 
 setEnv() {
     printf "\n${BOLDYELLOW}Setting .env...${NC}\n"
-    /bin/bash $directory/scripts/set-env.sh p
+    /bin/bash $directory/_scripts/set-env.sh p
 }
 
 setStgEnv() {
     printf "\n${BOLDYELLOW}Setting local .env...${NC}\n"
-    /bin/bash $directory/scripts/set-env.sh s
+    /bin/bash $directory/_scripts/set-env.sh s
 }
 
 setLocalEnv() {
     printf "\n${BOLDYELLOW}Setting local .env...${NC}\n"
-    /bin/bash $directory/scripts/set-env.sh l
+    /bin/bash $directory/_scripts/set-env.sh l
 }
 
 shredEnv() {
@@ -30,7 +30,7 @@ shredEnv() {
 
 setTfEnv() {
     printf "\n${BOLDYELLOW}Setting Terraform vars...${NC}\n"
-    source $directory/../tf/scripts/set-tf-vars.sh
+    source $directory/../tf/_scripts/set-tf-vars.sh
 }
 
 retag() {
