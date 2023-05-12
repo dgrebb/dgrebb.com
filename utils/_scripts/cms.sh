@@ -13,6 +13,16 @@ while test "$1" != --; do
         cd $directory/../strapi && npm run develop
         break
         ;;
+    i | install)
+        setEnv l
+        cd $directory/../strapi && npm i
+        break
+        ;;
+    b | build)
+        setEnv l
+        cd $directory/../strapi && npm run build
+        break
+        ;;
     ?)
         echo "script usage: $(basename \$0) [dev]" >&2
         break
