@@ -52,6 +52,3 @@ while test "$1" != --; do
         ;;
     esac
 done
-
-echo "Environment set."
-exit
