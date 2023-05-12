@@ -4,44 +4,43 @@ source $directory/_scripts/functions.sh
 environment=$1
 
 if [ $# -eq 0 ]; then
-    printf "Missing args"
+    printDgErr "Missing args for Terraform commands!"
 else
     while test "$2" != --; do
-        hello
         cd $directory/../tf/$environment
         case $2 in
         i | init)
             setTfEnv
-            printf "${BOLDYELLOW}Initializing...${NC}\n"
+            printDgMsg "Initializing..."
                 terraform init
             break 2
             ;;
         iu | init-upgrade)
             setTfEnv
-            printf "${BOLDYELLOW}Upgrading Terraform...${NC}\n"
+            printDgMsg "Upgrading Terraform..."
                 terraform init -upgrade
             break 2
             ;;
         p | plan)
             setTfEnv
-            printf "${BOLDYELLOW}Setting Terraform plan...${NC}\n"
+            printDgMsg "Setting Terraform plan..."
                 terraform plan
             break 2
             ;;
         a | apply)
             setTfEnv
-            printf "${BOLDYELLOW}Applying Terraform plan...${NC}\n"
+            printDgMsg "Applying Terraform plan..."
                 terraform apply
             break 2
             ;;
         re | refresh)
             setTfEnv
-            printf "${BOLDYELLOW}Refreshing Terraform state...${NC}\n"
+            printDgMsg "Refreshing Terraform state..."
                 terraform refresh
             break 2
             ;;
         *)
-            printf "${red}██████████ Unexpected options for terraform: wrong terraform args. ██████████\n\n"
+            printDgErr "Unexpected options for terraform: wrong terraform args."
             break 2
             ;;
         esac

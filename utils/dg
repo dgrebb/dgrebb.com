@@ -22,78 +22,36 @@ showHelp() {
     \n\n"
 }
 
-if [ $# -eq 0 ]; then
-    hello
-else
-    while test "$1" != --; do
-        case $1 in
-        d | dev)
-            cd $directory/../strapi && npm run develop
-            break
-            ;;
-        db)
-            /bin/bash $directory/_scripts/docker.sh build
-            break
-            ;;
-        dbs)
-            /bin/bash $directory/_scripts/docker.sh build-stg
-            break
-            ;;
-        dbl)
-            printf "\nBuilding local Docker image...\n"
-            /bin/bash $directory/_scripts/docker.sh buildlocal &&
-                dg run
-            break
-            ;;
-        drb)
-            printf "\nRebuilding Docker image...\n"
-            /bin/bash $directory/_scripts/docker.sh rebuild
-            break
-            ;;
-        drbl)
-            printf "\nRebuilding local Docker image...\n"
-            /bin/bash $directory/_scripts/docker.sh rebuildlocal &&
-                dg run
-            break
-            ;;
-        dp)
-            printf "\nPushing Docker image...\n"
-            /bin/bash $directory/_scripts/docker.sh push
-            break
-            ;;
-        dps)
-            printf "\nPushing Docker image...\n"
-            /bin/bash $directory/_scripts/docker.sh push-stg
-            break
-            ;;
-        r | run)
-            printf "\nRunning local Docker image...\n"
-            /bin/bash $directory/_scripts/docker.sh run
-            break
-            ;;
-        cms)
-            /bin/bash $directory/_scripts/cms.sh $2
-            break
-            ;;
-        tf)
-            /bin/bash $directory/_scripts/terraform.sh $2 $3
-            break
-            ;;
-        -h | --help)
-            showHelp
-            break
-            ;;
-        --)
-            showHelp
-            break
-            ;;
-        *)
-            printf "${red}██████████ Unexpected args — you done goofed! ██████████${NC}\n\n"
-            showHelp
-            break
-            ;;
-        esac
-    done
-    err=$?
-    [[ $err != 0 ]] && exit $err
-fi
+hello
+
+while test "$1" != --; do
+    case $1 in
+    c | cms)
+        /bin/bash $directory/_scripts/cms.sh $2
+        break
+        ;;
+    d | docker)
+        /bin/bash $directory/_scripts/docker.sh $2 $3
+        break
+        ;;
+    tf | terraform)
+        /bin/bash $directory/_scripts/terraform.sh $2 $3
+        break
+        ;;
+    -h | --help)
+        showHelp
+        break
+        ;;
+    --)
+        showHelp
+        break
+        ;;
+    *)
+        printDgErr "Unexpected args — you done goofed!"
+        showHelp
+        break
+        ;;
+    esac
+done
+err=$?
+[[ $err != 0 ]] && exit $err
