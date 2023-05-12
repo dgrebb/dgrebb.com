@@ -1,5 +1,5 @@
 #!/bin/bash
-directory=$(dirname $(realpath /usr/local/bin/dg))
+source $directory/_scripts/functions.sh
 
 acr_uri=$(pass dg/cms/acr-uri)
 stg_acr_uri=$(pass dg/cms/stg-acr-uri)
