@@ -9,8 +9,9 @@ if [ $# -eq 0 ]; then
 fi
 while test "$1" != --; do
     case $1 in
-    dev)
-        cd strapi && npm run develop
+    d | dev)
+        setEnv l
+        cd $directory/../strapi && npm run develop
         break
         ;;
     ?)

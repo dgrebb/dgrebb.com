@@ -4,7 +4,7 @@ source $directory/_scripts/functions.sh
 
 # exec 3>&1 &>/dev/null
 if [ $# -eq 0 ]; then
-    printf "\n${red}Argument for local (-l) or production (-p) is required.\n"
+    printf "\n${red}Argument for local (l) or production (p) is required.\n"
     exit 1
 fi
 >$directory/../strapi/.env
@@ -23,25 +23,25 @@ echo "DATABASE_PASSWORD=$(pass dg/cms/db/password)" >>$directory/../strapi/.env
 
 while test "$1" != --; do
     case $1 in
-    l)
-        echo "HOST=0.0.0.0" >>$directory/../strapi/.env
-        echo "DATABASE_HOST=host.docker.internal" >>$directory/../strapi/.env
-        echo "NODE_ENV=development" >>$directory/../strapi/.env
-        break
-        ;;
-    ld)
+    l | local-dev)
         echo "HOST=local.cms.dgrebb.com" >>$directory/../strapi/.env
         echo "DATABASE_HOST=localhost" >>$directory/../strapi/.env
         echo "NODE_ENV=development" >>$directory/../strapi/.env
         break
         ;;
-    s)
+    ld | local-docker)
+        echo "HOST=0.0.0.0" >>$directory/../strapi/.env
+        echo "DATABASE_HOST=host.docker.internal" >>$directory/../strapi/.env
+        echo "NODE_ENV=development" >>$directory/../strapi/.env
+        break
+        ;;
+    s | stg)
         echo "HOST=0.0.0.0" >>$directory/../strapi/.env
         echo "DATABASE_HOST=$(pass dg/cms/db/stg-host)" >>$directory/../strapi/.env
         echo "NODE_ENV=production" >>$directory/../strapi/.env
         break
         ;;
-    p)
+    p | prd | prod)
         echo "HOST=0.0.0.0" >>$directory/../strapi/.env
         echo "DATABASE_HOST=$(pass dg/cms/db/host)" >>$directory/../strapi/.env
         echo "NODE_ENV=production" >>$directory/../strapi/.env

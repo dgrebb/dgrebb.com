@@ -10,17 +10,7 @@ hello() {
 
 setEnv() {
     printf "\n${BOLDYELLOW}Setting .env...${NC}\n"
-    /bin/bash $directory/_scripts/set-env.sh p
-}
-
-setStgEnv() {
-    printf "\n${BOLDYELLOW}Setting local .env...${NC}\n"
-    /bin/bash $directory/_scripts/set-env.sh s
-}
-
-setLocalEnv() {
-    printf "\n${BOLDYELLOW}Setting local .env...${NC}\n"
-    /bin/bash $directory/_scripts/set-env.sh l
+    /bin/bash $directory/_scripts/set-env.sh $1
 }
 
 shredEnv() {
