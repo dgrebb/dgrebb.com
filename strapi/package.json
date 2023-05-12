@@ -4,8 +4,7 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "set": "../utils/_scripts/set-env.sh ld",
-    "develop": "trap 'gshred .env ; rm .env ; echo ; echo Removed .env ; exit 0' SIGINT; npm run set && npm run strapi develop",
+    "develop": "trap 'gshred .env ; rm .env ; echo ; echo Removed .env ; exit 0' SIGINT; npm run strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi"
