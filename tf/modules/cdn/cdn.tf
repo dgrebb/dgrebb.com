@@ -2,12 +2,12 @@ locals {
   s3origin = "${var.dashed_cmsdomain}s3origin"
 }
 
-resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
+resource "aws_cloudfront_origin_access_identity" "this" {
   comment = "Terraform CloudFront recreation workaround"
   # https://github.com/hashicorp/terraform/issues/7930#issuecomment-530903082
 }
 
-resource "aws_cloudfront_function" "subdir_index" {
+resource "aws_cloudfront_function" "subdir" {
   name    = "subdir-index"
   runtime = "cloudfront-js-1.0"
   comment = "Redirect subdirectory root to index.html"
@@ -15,7 +15,7 @@ resource "aws_cloudfront_function" "subdir_index" {
   code    = file("${path.module}/ref/subdir-index.js")
 }
 
-resource "aws_cloudfront_distribution" "static" {
+resource "aws_cloudfront_distribution" "this" {
   comment             = var.cdndomain
   price_class         = "PriceClass_100"
   aliases             = [var.cdndomain]
@@ -34,7 +34,7 @@ resource "aws_cloudfront_distribution" "static" {
     origin_id   = local.s3origin
 
     s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path
+      origin_access_identity = aws_cloudfront_origin_access_identity.this.cloudfront_access_identity_path
     }
   }
 
@@ -59,11 +59,11 @@ resource "aws_cloudfront_distribution" "static" {
 
     function_association {
       event_type   = "viewer-request"
-      function_arn = aws_cloudfront_function.subdir_index.arn
+      function_arn = aws_cloudfront_function.subdir.arn
     }
 
     compress               = true
-    viewer_protocol_policy = "allow-all"
+    viewer_protocol_policy = "redirect-to-https"
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400

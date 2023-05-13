@@ -1,9 +1,11 @@
 resource "aws_s3_bucket" "cms" {
   bucket = var.dashed_cmsdomain
+  force_destroy = var.force_destroy
 }
 
 resource "aws_s3_bucket" "cdn_logs" {
   bucket = "logs-${var.dashed_cdndomain}"
+  force_destroy = var.force_destroy
 }
 
 resource "aws_s3_bucket_ownership_controls" "cms" {
@@ -32,10 +34,10 @@ resource "aws_s3_bucket_public_access_block" "cms" {
 resource "aws_s3_bucket_public_access_block" "cdn_logs" {
   bucket = aws_s3_bucket.cdn_logs.id
 
-  block_public_acls       = false
-  ignore_public_acls      = false
-  block_public_policy     = false
-  restrict_public_buckets = false
+  block_public_acls       = true
+  ignore_public_acls      = true
+  block_public_policy     = true
+  restrict_public_buckets = true
 }
 
 resource "aws_s3_bucket_acl" "cms" {
@@ -48,7 +50,7 @@ resource "aws_s3_bucket_acl" "cms" {
   acl    = "public-read"
 }
 
-resource "aws_s3_bucket_acl" "logs_s_dgrebb_com" {
+resource "aws_s3_bucket_acl" "cdn_logs" {
   bucket = aws_s3_bucket.cdn_logs.id
   acl    = "private"
 }
@@ -104,12 +106,12 @@ data "aws_iam_policy_document" "cms" {
   }
 }
 
-resource "aws_s3_bucket_policy" "cms_policy" {
+resource "aws_s3_bucket_policy" "cms" {
   bucket = aws_s3_bucket.cms.id
   policy = data.aws_iam_policy_document.cms.json
 }
 
-resource "aws_s3_bucket_cors_configuration" "cms_s3_cors_config" {
+resource "aws_s3_bucket_cors_configuration" "cms" {
   bucket = aws_s3_bucket.cms.id
 
   cors_rule {
@@ -117,8 +119,7 @@ resource "aws_s3_bucket_cors_configuration" "cms_s3_cors_config" {
     allowed_methods = ["PUT", "POST", "GET"]
     allowed_origins = [
       "http://local.${var.cmsdomain}",
-      "https://${var.cmsdomain}",
-      "https://${var.cdndomain}"
+      "https://${var.cmsdomain}"
     ]
     expose_headers  = []
     max_age_seconds = 3000
@@ -147,7 +148,7 @@ resource "aws_s3_object" "img_index_html" {
   etag         = filemd5("${path.module}/defaults/index.html")
 }
 
-resource "aws_s3_object" "wonka_img" {
+resource "aws_s3_object" "wonka" {
   bucket       = aws_s3_bucket.cms.id
   key          = "tip.png"
   source       = "${path.module}/defaults/tip.png"

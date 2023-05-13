@@ -9,24 +9,24 @@ resource "aws_default_vpc" "default" {
 }
 
 # Default subnets
-resource "aws_default_subnet" "default" {
+resource "aws_default_subnet" "this" {
   # loop through subnets defined in vars.tf
   for_each          = var.subnets
   availability_zone = "${var.region}${each.value}"
 }
 
 # Database subnets
-resource "aws_db_subnet_group" "db" {
+resource "aws_db_subnet_group" "this" {
   name        = var.dashed_cmsdomain
   description = "${var.cmsdomain} subnets"
-  subnet_ids  = [for subnet in aws_default_subnet.default : subnet.id]
+  subnet_ids  = [for subnet in aws_default_subnet.this : subnet.id]
 }
 
 # ------------------------------------------------------------------------------
 # CMS Record and Certificate
 # ------------------------------------------------------------------------------
 
-resource "aws_route53_record" "cms_record" {
+resource "aws_route53_record" "cms" {
   allow_overwrite = true
   name            = var.cmsdomain
   type            = "A"
@@ -38,7 +38,7 @@ resource "aws_route53_record" "cms_record" {
   }
 }
 
-resource "aws_acm_certificate" "cms_cert" {
+resource "aws_acm_certificate" "cms" {
   domain_name       = var.cmsdomain
   validation_method = "DNS"
 
@@ -51,15 +51,9 @@ resource "aws_acm_certificate" "cms_cert" {
   }
 }
 
-resource "aws_acm_certificate_validation" "cms_cert_validation" {
-  certificate_arn = aws_acm_certificate.cms_cert.arn
-
-  validation_record_fqdns = [for record in aws_route53_record.cms_validation_record : record.fqdn]
-}
-
-resource "aws_route53_record" "cms_validation_record" {
+resource "aws_route53_record" "cms_validation" {
   for_each = {
-    for dvo in aws_acm_certificate.cms_cert.domain_validation_options : dvo.domain_name => {
+    for dvo in aws_acm_certificate.cms.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
       record = dvo.resource_record_value
       type   = dvo.resource_record_type
@@ -74,11 +68,17 @@ resource "aws_route53_record" "cms_validation_record" {
   zone_id         = data.aws_route53_zone.main.zone_id
 }
 
+resource "aws_acm_certificate_validation" "cms" {
+  certificate_arn = aws_acm_certificate.cms.arn
+
+  validation_record_fqdns = [for record in aws_route53_record.cms_validation : record.fqdn]
+}
+
 # ------------------------------------------------------------------------------
 # CDN Record and Certificate
 # ------------------------------------------------------------------------------
 
-resource "aws_route53_record" "cdn_record" {
+resource "aws_route53_record" "cdn" {
   allow_overwrite = true
   name            = var.cdndomain
   type            = "A"
@@ -90,7 +90,7 @@ resource "aws_route53_record" "cdn_record" {
   }
 }
 
-resource "aws_acm_certificate" "cdn_cert" {
+resource "aws_acm_certificate" "cdn" {
   provider          = aws.acm_provider
   domain_name       = var.cdndomain
   validation_method = "DNS"
@@ -104,16 +104,9 @@ resource "aws_acm_certificate" "cdn_cert" {
   }
 }
 
-resource "aws_acm_certificate_validation" "cdn_cert_validation" {
-  provider        = aws.acm_provider
-  certificate_arn = aws_acm_certificate.cdn_cert.arn
-
-  validation_record_fqdns = [for record in aws_route53_record.cdn_validation_record : record.fqdn]
-}
-
-resource "aws_route53_record" "cdn_validation_record" {
+resource "aws_route53_record" "cdn_validation" {
   for_each = {
-    for dvo in aws_acm_certificate.cdn_cert.domain_validation_options : dvo.domain_name => {
+    for dvo in aws_acm_certificate.cdn.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
       record = dvo.resource_record_value
       type   = dvo.resource_record_type
@@ -126,4 +119,11 @@ resource "aws_route53_record" "cdn_validation_record" {
   ttl             = 60
   type            = each.value.type
   zone_id         = data.aws_route53_zone.main.zone_id
+}
+
+resource "aws_acm_certificate_validation" "cdn" {
+  provider        = aws.acm_provider
+  certificate_arn = aws_acm_certificate.cdn.arn
+
+  validation_record_fqdns = [for record in aws_route53_record.cdn_validation : record.fqdn]
 }

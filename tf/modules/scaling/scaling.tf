@@ -1,4 +1,4 @@
-resource "aws_alb" "cms" {
+resource "aws_alb" "this" {
   name               = var.dashed_cmsdomain
   load_balancer_type = "application"
   subnets            = [for subnet in var.subnets : subnet.id]
@@ -6,7 +6,7 @@ resource "aws_alb" "cms" {
   security_groups = [var.lb_sg.id]
 }
 
-resource "aws_lb_target_group" "cms" {
+resource "aws_lb_target_group" "this" {
   name        = var.dashed_cmsdomain
   port        = 80
   protocol    = "HTTP"
@@ -18,8 +18,8 @@ resource "aws_lb_target_group" "cms" {
   }
 }
 
-resource "aws_lb_listener" "https_listener" {
-  load_balancer_arn = aws_alb.cms.arn
+resource "aws_lb_listener" "this" {
+  load_balancer_arn = aws_alb.this.arn
   port              = 443
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-2016-08"
@@ -27,14 +27,14 @@ resource "aws_lb_listener" "https_listener" {
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.cms.arn
+    target_group_arn = aws_lb_target_group.this.arn
   }
 
   depends_on = [var.cms_cert, var.cms_cert_validation]
 }
 
-resource "aws_lb_listener" "http_listener" {
-  load_balancer_arn = aws_alb.cms.arn
+resource "aws_lb_listener" "force_ssl" {
+  load_balancer_arn = aws_alb.this.arn
   port              = 80
   protocol          = "HTTP"
 

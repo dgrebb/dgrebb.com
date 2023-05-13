@@ -1,9 +1,9 @@
-resource "aws_security_group" "service_sg" {
+resource "aws_security_group" "svc" {
   ingress {
     from_port       = 0
     to_port         = 0
     protocol        = "-1"
-    security_groups = ["${aws_security_group.lb_sg.id}"]
+    security_groups = ["${aws_security_group.lb.id}"]
   }
 
   ingress {
@@ -21,7 +21,7 @@ resource "aws_security_group" "service_sg" {
   }
 }
 
-resource "aws_security_group" "lb_sg" {
+resource "aws_security_group" "lb" {
   ingress {
     from_port   = 80
     to_port     = 80

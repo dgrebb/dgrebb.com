@@ -1,4 +1,4 @@
-resource "aws_cloudwatch_log_group" "log_group" {
+resource "aws_cloudwatch_log_group" "this" {
   name              = var.dashed_cmsdomain
   retention_in_days = 1
   lifecycle {
@@ -6,7 +6,7 @@ resource "aws_cloudwatch_log_group" "log_group" {
   }
 }
 
-resource "aws_cloudwatch_event_rule" "container_stopped_rule" {
+resource "aws_cloudwatch_event_rule" "this" {
   name        = "container-stopped"
   description = "Notification for containers with exit code of 1 (error)."
 
@@ -35,8 +35,8 @@ resource "aws_cloudwatch_event_rule" "container_stopped_rule" {
   PATTERN
 }
 
-resource "aws_cloudwatch_event_target" "container-stopped-rule-result" {
-  rule      = aws_cloudwatch_event_rule.container_stopped_rule.name
+resource "aws_cloudwatch_event_target" "this" {
+  rule      = aws_cloudwatch_event_rule.this.name
   target_id = "ContainerStopped"
-  arn       = aws_cloudwatch_log_group.log_group.arn
+  arn       = aws_cloudwatch_log_group.this.arn
 }

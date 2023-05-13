@@ -1,21 +1,27 @@
-resource "aws_ecr_repository" "cms" {
+resource "aws_ecr_repository" "this" {
   name = var.cmsdomain
+  force_delete = false
 }
 
-resource "aws_ecs_cluster" "cms" {
+resource "aws_ecs_cluster" "this" {
   name = var.dashed_cmsdomain
+
+  setting {
+    name  = "containerInsights"
+    value = "enabled"
+  }
 }
 
-resource "aws_ecs_service" "strapi_service" {
-  name            = "strapi-service"
-  cluster         = aws_ecs_cluster.cms.id
-  task_definition = aws_ecs_task_definition.strapi.arn
+resource "aws_ecs_service" "this" {
+  name            = "strapi"
+  cluster         = aws_ecs_cluster.this.id
+  task_definition = aws_ecs_task_definition.this.arn
   launch_type     = "FARGATE"
   desired_count   = var.instance_count
 
   load_balancer {
     target_group_arn = var.alb_target_group.arn
-    container_name   = aws_ecs_task_definition.strapi.family
+    container_name   = aws_ecs_task_definition.this.family
     container_port   = 1337
   }
 
@@ -28,16 +34,16 @@ resource "aws_ecs_service" "strapi_service" {
   depends_on = [var.alb_target_group]
 }
 
-data "aws_ecr_image" "webdav_image" {
+data "aws_ecr_image" "this" {
   repository_name = var.cmsdomain
   image_tag       = "latest"
 }
 
-resource "aws_ecs_task_definition" "strapi" {
+resource "aws_ecs_task_definition" "this" {
   family = "strapi"
   container_definitions = jsonencode([{
     name         = "strapi",
-    image        = "${aws_ecr_repository.cms.repository_url}@${data.aws_ecr_image.webdav_image.image_digest}",
+    image        = "${aws_ecr_repository.this.repository_url}@${data.aws_ecr_image.this.image_digest}",
     essential    = true,
     network_mode = "awsvpc",
     memory       = 1024,
@@ -71,15 +77,15 @@ resource "aws_ecs_task_definition" "strapi" {
   network_mode             = "awsvpc"
   memory                   = 2048
   cpu                      = 1024
-  execution_role_arn       = aws_iam_role.ecsTaskExecutionRole.arn
+  execution_role_arn       = aws_iam_role.this.arn
 }
 
-resource "aws_iam_role" "ecsTaskExecutionRole" {
-  name               = "ecsTaskExecutionRole"
-  assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json
+resource "aws_iam_role" "this" {
+  name               = "strapiTaskExecutionRole"
+  assume_role_policy = data.aws_iam_policy_document.this.json
 }
 
-data "aws_iam_policy_document" "assume_role_policy" {
+data "aws_iam_policy_document" "this" {
   statement {
     actions = ["sts:AssumeRole"]
 
@@ -90,7 +96,7 @@ data "aws_iam_policy_document" "assume_role_policy" {
   }
 }
 
-resource "aws_iam_role_policy_attachment" "ecsTaskExecutionRole_policy" {
-  role       = aws_iam_role.ecsTaskExecutionRole.name
+resource "aws_iam_role_policy_attachment" "this" {
+  role       = aws_iam_role.this.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
