@@ -43,7 +43,7 @@ while test "$1" != --; do
     p | prd | prod)
         echo "HOST=0.0.0.0" >>$directory/../strapi/.env
         echo "AWS_S3_BUCKET=$(pass dg/cms/bucket)" >>$directory/../strapi/.env
-        echo "CDN_BASE_URL=$(pass dg/cms/stg-cdnbaseurl)" >>$directory/../strapi/.env
+        echo "CDN_BASE_URL=$(pass dg/cms/cdnbaseurl)" >>$directory/../strapi/.env
         echo "DATABASE_HOST=$(pass dg/cms/db/host)" >>$directory/../strapi/.env
         echo "NODE_ENV=production" >>$directory/../strapi/.env
         break
