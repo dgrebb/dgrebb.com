@@ -14,7 +14,23 @@ variable "domain" {
   type      = string
   sensitive = true
 }
+variable "cmsdomain" {
+  type      = string
+  sensitive = true
+}
+variable "cdndomain" {
+  type      = string
+  sensitive = true
+}
 variable "dashed_domain" {
+  type      = string
+  sensitive = true
+}
+variable "dashed_cmsdomain" {
+  type      = string
+  sensitive = true
+}
+variable "dashed_cdndomain" {
   type      = string
   sensitive = true
 }
@@ -28,4 +44,8 @@ variable "subnets" {
 variable "terraform_state_bucket" {
   type    = string
   default = "cms-dgrebb-com-state"
+}
+variable "db_password" {
+  type      = string
+  sensitive = true
 }
