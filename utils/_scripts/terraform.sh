@@ -9,6 +9,18 @@ else
     while test "$2" != --; do
         cd $directory/../tf/$environment
         case $2 in
+        f | fmt | format)
+            setTfEnv
+            printDgMsg "Formatting..."
+                terraform fmt -recursive
+            break 2
+            ;;
+        v | val | validate)
+            setTfEnv
+            printDgMsg "Validating..."
+                terraform validate
+            break 2
+            ;;
         i | init)
             setTfEnv
             printDgMsg "Initializing..."
@@ -37,6 +49,12 @@ else
             setTfEnv
             printDgMsg "Refreshing Terraform state..."
                 terraform refresh
+            break 2
+            ;;
+        d | destroy)
+            setTfEnv
+            printDgMsg "Destroying Terraform infrastructure..."
+                terraform destroy
             break 2
             ;;
         *)

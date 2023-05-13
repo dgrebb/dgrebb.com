@@ -1,6 +1,6 @@
 locals {
-  cmsdomain = "stg.${var.cmsdomain}"
-  cdndomain = "stg.${var.cdndomain}"
+  cmsdomain        = "stg.${var.cmsdomain}"
+  cdndomain        = "stg.${var.cdndomain}"
   dashed_cmsdomain = "stg-${var.dashed_cmsdomain}"
   dashed_cdndomain = "stg-${var.dashed_cdndomain}"
 }
@@ -78,5 +78,6 @@ module "storage" {
   cdndomain          = local.cdndomain
   dashed_cmsdomain   = local.dashed_cmsdomain
   dashed_cdndomain   = local.dashed_cdndomain
+  force_destroy      = true
   cf_access_identity = module.cdn.cf_access_identity
 }

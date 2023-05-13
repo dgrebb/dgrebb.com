@@ -1,4 +1,4 @@
-resource "aws_db_instance" "db" {
+resource "aws_db_instance" "this" {
   depends_on             = [var.service_sg]
   identifier             = var.dashed_cmsdomain
   allocated_storage      = 10
@@ -12,6 +12,6 @@ resource "aws_db_instance" "db" {
   db_subnet_group_name   = var.db_subnet_group.id
   skip_final_snapshot    = "true"
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
