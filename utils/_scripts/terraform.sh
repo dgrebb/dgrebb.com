@@ -39,6 +39,12 @@ else
                 terraform refresh
             break 2
             ;;
+        d | destroy)
+            setTfEnv
+            printDgMsg "Destroying Terraform infrastructure..."
+                terraform destroy
+            break 2
+            ;;
         *)
             printDgErr "Unexpected options for terraform: wrong terraform args."
             break 2
