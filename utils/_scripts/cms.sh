@@ -29,6 +29,4 @@ while test "$1" != --; do
         ;;
     esac
 done
-
-echo "Running local Strapi development server."
-exit
+shredEnv

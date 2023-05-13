@@ -14,8 +14,10 @@ setEnv() {
 }
 
 shredEnv() {
-    printDgMsg "Shredding .env..."
-    gshred $directory/../strapi/.env && rm $directory/../strapi/.env
+    if [ -f $directory/../strapi/.env ]; then
+        printDgMsg "Shredding .env..."
+        gshred $directory/../strapi/.env && rm $directory/../strapi/.env
+    fi
 }
 
 setTfEnv() {
