@@ -8,6 +8,32 @@ hello() {
     $directory/_scripts/hello.sh
 }
 
+env() {
+    if [ $# -eq 0 ] || [ $1 = p ]; then
+        setEnv p
+        img p
+    elif [ $1 = s ]; then
+        setEnv s
+        echo "wtf"
+        img s
+    else
+        setEnv $1
+        img
+    fi
+}
+
+img() {
+    if [ $# -eq 0 ] || [ $1 = p ]; then
+        image_name=$(pass dg/cms/domain)
+        acr_uri=$(pass dg/cms/acr-uri)
+    elif [ $1 = s ]; then
+        image_name=$(pass dg/cms/stg-domain)
+        acr_uri=$(pass dg/cms/stg-acr-uri)
+    else
+        image_name=$(pass dg/cms/local-domain)
+    fi
+}
+
 setEnv() {
     printDgMsg "Setting .env..."
     /bin/bash $directory/_scripts/set-env.sh $1
