@@ -47,8 +47,15 @@ while test "$1" != --; do
         break
         ;;
     *)
-        printDgErr "Unexpected args — you done goofed!"
-        showHelp
+        projectPath=$(realpath ${directory}/..)
+        if [ $(pwd) = ${projectPath} ]; then 
+            printDgErr "Unexpected args — you done goofed!" ]
+            showHelp
+        else
+            printDgMsg "Moving to project directory"
+            cd ${directory}/../
+            $SHELL
+        fi
         break
         ;;
     esac
