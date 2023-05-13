@@ -3,31 +3,6 @@ source $directory/_scripts/functions.sh
 
 region=$(pass aws/region)
 
-env() {
-    if [ $# -eq 0 ] || [ $1 = p ]; then
-        setEnv p
-        img
-    elif [ $1 = s ]; then
-        setEnv s
-        img
-    else
-        setEnv $1
-        img
-    fi
-}
-
-img() {
-    if [ $# -eq 0 ] || [ $1 = p ]; then
-        image_name=$(pass dg/cms/domain)
-        acr_uri=$(pass dg/cms/acr-uri)
-    elif [ $1 = s ]; then
-        image_name=$(pass dg/cms/stg-domain)
-        acr_uri=$(pass dg/cms/stg-acr-uri)
-    else
-        image_name=$(pass dg/cms/local-domain)
-    fi
-}
-
 if [ $# -eq 0 ]; then
     printDgErr "Missing args!"
 else
@@ -57,7 +32,7 @@ else
             ;;
         p | push)
             printDgMsg "Pushing Docker image..."
-            env $2
+            img $2
             aws ecr get-login-password --region ${region} |
                 docker login --username AWS --password-stdin ${acr_uri}
             archive
