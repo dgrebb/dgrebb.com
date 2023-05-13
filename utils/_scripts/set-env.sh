@@ -16,8 +16,8 @@ echo "TRANSFER_TOKEN_SALT=$(pass dg/cms/transfertokensalt)" >>$directory/../stra
 echo "AWS_ACCESS_KEY_ID=$(pass dg/aws/id)" >>$directory/../strapi/.env
 echo "AWS_ACCESS_SECRET=$(pass dg/aws/secret)" >>$directory/../strapi/.env
 echo "AWS_REGION=$(pass dg/aws/region)" >>$directory/../strapi/.env
-echo "AWS_S3_BUCKET=$(pass dg/cms/bucket)" >>$directory/../strapi/.env
-echo "CDN_BASE_URL=$(pass dg/cms/cdnbaseurl)" >>$directory/../strapi/.env
+echo "AWS_S3_BUCKET=$(pass dg/cms/stg-bucket)" >>$directory/../strapi/.env
+echo "CDN_BASE_URL=$(pass dg/cms/stg-cdnbaseurl)" >>$directory/../strapi/.env
 echo "DATABASE_PASSWORD=$(pass dg/cms/db/password)" >>$directory/../strapi/.env
 
 while test "$1" != --; do
@@ -42,6 +42,8 @@ while test "$1" != --; do
         ;;
     p | prd | prod)
         echo "HOST=0.0.0.0" >>$directory/../strapi/.env
+        echo "AWS_S3_BUCKET=$(pass dg/cms/bucket)" >>$directory/../strapi/.env
+        echo "CDN_BASE_URL=$(pass dg/cms/stg-cdnbaseurl)" >>$directory/../strapi/.env
         echo "DATABASE_HOST=$(pass dg/cms/db/host)" >>$directory/../strapi/.env
         echo "NODE_ENV=production" >>$directory/../strapi/.env
         break
