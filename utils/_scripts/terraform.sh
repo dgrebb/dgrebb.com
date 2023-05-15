@@ -33,6 +33,12 @@ else
                 terraform init -upgrade
             break 2
             ;;
+        im | import)
+            setTfEnv
+            printDgMsg "Initializing..."
+                terraform import $3 $4
+            break 2
+            ;;
         p | plan)
             setTfEnv
             printDgMsg "Setting Terraform plan..."
@@ -54,7 +60,11 @@ else
         d | destroy)
             setTfEnv
             printDgMsg "Destroying Terraform infrastructure..."
-                terraform destroy
+                if [ -z $3 ]; then 
+                    terraform destroy 
+                else
+                    terraform destroy -target=$3
+                fi
             break 2
             ;;
         *)
