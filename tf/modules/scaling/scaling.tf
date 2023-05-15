@@ -30,7 +30,7 @@ resource "aws_lb_listener" "this" {
     target_group_arn = aws_lb_target_group.this.arn
   }
 
-  depends_on = [var.cms_cert, var.cms_cert_validation]
+  depends_on = [var.cms_cert, var.cms_validation]
 }
 
 resource "aws_lb_listener" "force_ssl" {
