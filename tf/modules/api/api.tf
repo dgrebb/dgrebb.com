@@ -36,8 +36,8 @@ resource "aws_api_gateway_method_settings" "general_settings" {
     logging_level      = "INFO"
 
     # Limit the rate of calls to prevent abuse and unwanted charges
-    throttling_rate_limit  = 100
-    throttling_burst_limit = 50
+    throttling_rate_limit  = 1
+    throttling_burst_limit = 5
   }
 }
 
@@ -128,8 +128,8 @@ resource "aws_cloudwatch_log_group" "this" {
 }
 
 resource "aws_api_gateway_usage_plan" "this" {
-  name         = "my-usage-plan"
-  description  = "my description"
+  name         = "Strapi Gateway"
+  description  = "Usage Plan for Front to call Strapi."
   product_code = "CMSAPI"
 
   api_stages {
@@ -138,14 +138,14 @@ resource "aws_api_gateway_usage_plan" "this" {
   }
 
   quota_settings {
-    limit  = 20
+    limit  = 200
     offset = 2
     period = "WEEK"
   }
 
   throttle_settings {
     burst_limit = 5
-    rate_limit  = 10
+    rate_limit  = 1
   }
 }
 
