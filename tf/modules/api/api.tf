@@ -48,7 +48,7 @@ resource "aws_api_gateway_integration" "this" {
   http_method             = aws_api_gateway_method.this.http_method
   integration_http_method = "GET"
   type                    = "HTTP_PROXY"
-  uri                     = "https://stg.cms.dgrebb.com/api/{proxy}"
+  uri                     = "https://${var.cmsdomain}/api/{proxy}"
   request_parameters = {
     "integration.request.path.proxy" = "method.request.path.proxy"
   }
