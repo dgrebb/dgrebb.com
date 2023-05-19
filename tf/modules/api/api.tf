@@ -1,17 +1,14 @@
-# Create API Gateway
 resource "aws_api_gateway_rest_api" "this" {
   name        = var.apidomain
   description = "${var.cmsdomain} API Gateway"
 }
 
-# Create resource
 resource "aws_api_gateway_resource" "this" {
   rest_api_id = aws_api_gateway_rest_api.this.id
   parent_id   = aws_api_gateway_rest_api.this.root_resource_id
   path_part   = "{proxy+}"
 }
 
-# Create method
 resource "aws_api_gateway_method" "this" {
   rest_api_id   = aws_api_gateway_rest_api.this.id
   resource_id   = aws_api_gateway_resource.this.id
@@ -30,18 +27,15 @@ resource "aws_api_gateway_method_settings" "general_settings" {
   depends_on = [aws_api_gateway_account.this]
 
   settings {
-    # Enable CloudWatch logging and metrics
     metrics_enabled    = true
     data_trace_enabled = true
     logging_level      = "INFO"
 
-    # Limit the rate of calls to prevent abuse and unwanted charges
     throttling_rate_limit  = 1
     throttling_burst_limit = 5
   }
 }
 
-# Create integration
 resource "aws_api_gateway_integration" "this" {
   rest_api_id             = aws_api_gateway_rest_api.this.id
   resource_id             = aws_api_gateway_resource.this.id
@@ -54,7 +48,6 @@ resource "aws_api_gateway_integration" "this" {
   }
 }
 
-# Create method response
 resource "aws_api_gateway_method_response" "this" {
   rest_api_id = aws_api_gateway_rest_api.this.id
   resource_id = aws_api_gateway_resource.this.id
@@ -65,7 +58,6 @@ resource "aws_api_gateway_method_response" "this" {
   }
 }
 
-# Create integration response
 resource "aws_api_gateway_integration_response" "this" {
   rest_api_id = aws_api_gateway_rest_api.this.id
   resource_id = aws_api_gateway_resource.this.id
@@ -76,7 +68,6 @@ resource "aws_api_gateway_integration_response" "this" {
   }
 }
 
-# Deploy API Gateway
 resource "aws_api_gateway_deployment" "this" {
   rest_api_id = aws_api_gateway_rest_api.this.id
   depends_on  = [aws_api_gateway_integration.this]
@@ -96,7 +87,7 @@ resource "aws_api_gateway_stage" "this" {
   stage_name    = var.stage_name
 
   access_log_settings {
-    destination_arn = aws_cloudwatch_log_group.this.arn
+    destination_arn = var.api_log_group.arn
     format = jsonencode(
       {
         httpMethod     = "$context.httpMethod"
@@ -113,18 +104,13 @@ resource "aws_api_gateway_stage" "this" {
     )
   }
 
-  depends_on = [aws_api_gateway_account.this, aws_cloudwatch_log_group.this]
+  depends_on = [aws_api_gateway_account.this, var.api_log_group]
 }
 
 resource "aws_api_gateway_base_path_mapping" "this" {
   api_id      = aws_api_gateway_rest_api.this.id
   stage_name  = aws_api_gateway_stage.this.stage_name
   domain_name = aws_api_gateway_domain_name.this.domain_name
-}
-
-resource "aws_cloudwatch_log_group" "this" {
-  name              = "API-Gateway-Execution-Logs_${aws_api_gateway_rest_api.this.id}/${var.stage_name}"
-  retention_in_days = 1
 }
 
 resource "aws_api_gateway_usage_plan" "this" {
@@ -155,51 +141,5 @@ resource "aws_api_gateway_domain_name" "this" {
 }
 
 resource "aws_api_gateway_account" "this" {
-  cloudwatch_role_arn = aws_iam_role.cloudwatch.arn
-}
-
-resource "aws_iam_role" "cloudwatch" {
-  name = "api_gateway_cloudwatch_global"
-
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "",
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "apigateway.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-EOF
-}
-
-resource "aws_iam_role_policy" "cloudwatch" {
-  name = "default"
-  role = aws_iam_role.cloudwatch.id
-
-  policy = <<EOF
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "logs:CreateLogGroup",
-                "logs:CreateLogStream",
-                "logs:DescribeLogGroups",
-                "logs:DescribeLogStreams",
-                "logs:PutLogEvents",
-                "logs:GetLogEvents",
-                "logs:FilterLogEvents"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-EOF
+  cloudwatch_role_arn = var.cw_role.arn
 }

@@ -6,3 +6,6 @@ variable "dashed_apidomain" {}
 variable "api_cert" {}
 variable "api_validation" {}
 variable "deployed_at" {}
+variable "cw_role" {}
+variable "cw_policy" {}
+variable "api_log_group" {}
