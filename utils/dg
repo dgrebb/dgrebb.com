@@ -30,6 +30,10 @@ while test "$1" != --; do
         /bin/bash $directory/_scripts/cms.sh $2
         break
         ;;
+    f | front)
+        /bin/bash $directory/_scripts/front.sh $2
+        break
+        ;;
     d | docker)
         /bin/bash $directory/_scripts/docker.sh $2 $3
         break

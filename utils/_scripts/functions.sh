@@ -68,6 +68,10 @@ run() {
     docker run -p 1337:1337 -it ${image_name}
 }
 
+cdfront() {
+    cd ${directory}/../front
+}
+
 printDg() {
     printf "\n${1}\n\n"
 }
