@@ -5,7 +5,8 @@ variable "domain" {}
 variable "subnets" {}
 variable "cmsdomain" {}
 variable "cdndomain" {}
+variable "apidomain" {}
 variable "dashed_cmsdomain" {}
-variable "dashed_cdndomain" {}
 variable "cf_distribution" {}
 variable "alb" {}
+variable "api_gw_domain" {}

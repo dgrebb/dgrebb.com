@@ -1,8 +1,25 @@
 locals {
   cmsdomain        = "stg.${var.cmsdomain}"
   cdndomain        = "stg.${var.cdndomain}"
+  apidomain        = "stg.${var.apidomain}"
   dashed_cmsdomain = "stg-${var.dashed_cmsdomain}"
   dashed_cdndomain = "stg-${var.dashed_cdndomain}"
+  dashed_apidomain = "stg-${var.dashed_apidomain}"
+}
+
+module "api" {
+  source           = "../modules/api"
+  stage_name       = "stage"
+  environment      = "staging"
+  cmsdomain        = local.cmsdomain
+  apidomain        = local.apidomain
+  dashed_apidomain = local.dashed_apidomain
+  api_cert         = module.network.api_cert
+  api_validation   = module.network.api_validation
+  deployed_at      = var.deployed_at
+  cw_role          = module.management.cw_role
+  cw_policy        = module.management.cw_policy
+  api_log_group    = module.management.api_log_group
 }
 
 module "state" {
@@ -19,10 +36,11 @@ module "network" {
   domain           = var.domain
   cmsdomain        = local.cmsdomain
   cdndomain        = local.cdndomain
+  apidomain        = local.apidomain
   dashed_cmsdomain = local.dashed_cmsdomain
-  dashed_cdndomain = local.dashed_cdndomain
   alb              = module.scaling.alb
   cf_distribution  = module.cdn.cf_distribution
+  api_gw_domain    = module.api.api_gw_domain
 }
 
 module "cdn" {
@@ -59,13 +77,13 @@ module "management" {
 }
 
 module "scaling" {
-  source              = "../modules/scaling"
-  dashed_cmsdomain    = local.dashed_cmsdomain
-  vpc                 = module.network.vpc
-  subnets             = module.network.subnets
-  cms_cert            = module.network.cms_cert
-  cms_cert_validation = module.network.cms_cert_validation
-  lb_sg               = module.security.lb_sg
+  source           = "../modules/scaling"
+  dashed_cmsdomain = local.dashed_cmsdomain
+  vpc              = module.network.vpc
+  subnets          = module.network.subnets
+  cms_cert         = module.network.cms_cert
+  cms_validation   = module.network.cms_validation
+  lb_sg            = module.security.lb_sg
 }
 
 module "security" {
