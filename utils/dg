@@ -3,7 +3,7 @@ export directory=$(dirname $(realpath /usr/local/bin/dg))
 source $directory/_scripts/functions.sh
 
 showHelp() {
-    printf "${NC}$(basename "$0") [-h] [ d db dbl drb drbl r cms tf] -- program to manage cms.dgrebb.com\n
+    printf "${NC}$(basename "$0") [-h] [ d db dbl drb drbl r cms tf] -- program to manage dgrebb.com\n
     -h                      show this help text
     d | dev                 run strapi in development mode outside of docker
     db | dbuild             build docker images for aws
