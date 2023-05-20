@@ -68,6 +68,10 @@ run() {
     docker run -p 1337:1337 -it ${image_name}
 }
 
+cdcms() {
+    cd ${directory}/../strapi
+}
+
 cdfront() {
     cd ${directory}/../front
 }

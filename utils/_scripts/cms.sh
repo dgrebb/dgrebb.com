@@ -10,19 +10,19 @@ while test "$1" != --; do
     case $1 in
     d | dev)
         setEnv l
-        cd $directory/../strapi && \
+        cdcms && \
         trap 'printf "\n"; shredEnv ; printDgMsg "Done!" ; exit 0' SIGINT; \
         npm run strapi develop
         break
         ;;
     i | install)
         setEnv l
-        cd $directory/../strapi && npm i
+        cdcms && npm i
         break
         ;;
     b | build)
         setEnv l
-        cd $directory/../strapi && npm run build
+        cdcms && npm run build
         break
         ;;
     ?)
