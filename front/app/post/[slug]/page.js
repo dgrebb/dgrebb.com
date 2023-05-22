@@ -4,8 +4,8 @@ export const metadata = {
 
 export default function PostPage() {
   return (
-    <div>
+    <section className="post">
       <h1>Post</h1>
-    </div>
+    </section>
   );
 }

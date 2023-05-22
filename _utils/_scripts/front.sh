@@ -25,6 +25,10 @@ while test "$1" != --; do
         cdfront && npm run start
         break
         ;;
+    ls | lstart)
+        cdfront && npm run start -H local.dgrebb.com
+        break
+        ;;
     ?)
         echo "script usage: $(basename \$0) [dev]" >&2
         break

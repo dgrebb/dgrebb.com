@@ -1,19 +1,21 @@
 import Link from "next/link";
 
-export default function NavBar() {
+export default async function NavBar({ navItems }) {
   return (
-    <nav className="flex items-center m-auto w-2/3">
-      <h1 className="flex-grow w-full">
-        <Link href="/">
-          Dan Grebb
-        </Link>
-      </h1>
-      <ul>
-        <li>
-          <Link href="/posts">
-            Posts
-          </Link>
-        </li>
+    <nav className="nav-bar flex-shrink">
+      <ul className="justify-end">
+        {navItems.map((navItem, id) => {
+          return (
+            <li key={id} className="inline mx-3 last:mr-0">
+              <Link
+                className="btn font-semibold py-2 px-4 rounded shadow align-text-bottom"
+                href={navItem.href}
+              >
+                {navItem.title}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

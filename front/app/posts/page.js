@@ -6,9 +6,9 @@ export const metadata = {
 
 export default function PostsPage() {
   return (
-    <div>
+    <section className="posts">
       <h1>Posts</h1>
       <Link href="/post/slug">Post</Link>
-    </div>
+    </section>
   );
 }
