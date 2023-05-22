@@ -7,7 +7,7 @@ if [ $# -eq 0 ]; then
     printDgErr "Missing args for Terraform commands!"
 else
     while test "$2" != --; do
-        cd $directory/../tf/$environment
+        cd $directory/../_tf/$environment
         case $2 in
         f | fmt | format)
             setTfEnv
