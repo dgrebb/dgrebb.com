@@ -14,7 +14,6 @@ env() {
         img p
     elif [ $1 = s ]; then
         setEnv s
-        echo "wtf"
         img s
     else
         setEnv $1
@@ -48,7 +47,7 @@ shredEnv() {
 
 setTfEnv() {
     printDgMsg "Setting Terraform vars..."
-    source $directory/../tf/_scripts/set-tf-vars.sh
+    source $directory/../_tf/_scripts/set-tf-vars.sh
 }
 
 retag() {
