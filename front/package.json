@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -H local.dgrebb.com",
     "build": "next build",
+    "lstart": "next start-H local.dgrebb.com",
     "start": "next start",
+    "serve": "npx serve@latest out",
     "lint": "next lint"
   },
   "dependencies": {
@@ -16,6 +18,8 @@
     "postcss": "8.4.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.8.0",
+    "react-markdown": "^8.0.7",
     "tailwindcss": "3.3.2"
   }
 }
