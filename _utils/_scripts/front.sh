@@ -15,12 +15,15 @@ while test "$1" != --; do
         ;;
     i | install)
         cdfront && npm i
+        break
         ;;
     b | build)
         cdfront && npm run build
+        break
         ;;
     s | start)
         cdfront && npm run start
+        break
         ;;
     ?)
         echo "script usage: $(basename \$0) [dev]" >&2
