@@ -2,11 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+
+Directory-specific changes can be found for each of [_tf](_tf/CHANGELOG.md), _utils, front, and strapi, as well.
 ## [unreleased]
 
 ### ⛰️  Features
 
 - *(docker)* Adds strapi dockerfile
+- *(front)* Adds a majority of nextjs frontend
+- *(front)* Changes to npm scripts and dependencies
+- *(front)* Adds domains for images config
+- *(front)* Adds css nesting support
+- *(front)* Adds posts and post pages
+- *(front)* Cleans up layout and adds navbar component
+- *(front)* Adds initial nextjs app
 - *(project)* Adds terraform command helpers
 - *(project)* Initial commit
 - *(strapi)* Installs and configures strapi s3 provider
@@ -19,6 +28,7 @@ All notable changes to this project will be documented in this file.
 - *(terraform)* Adds and updates scripts and modules for terraform infrastructure
 - *(terraform)* Adds environments to infrastructure plan
 - *(terraform)* Adds terraform s3 state management backend
+- *(utils)* Adds changelog, utils, and comments for setup
 - *(utils)* Adds front utils
 - *(utils)* Adds tf commands for import and destroy with target flag
 - *(utils)* Adds tf vars for api gateway
@@ -59,6 +69,10 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks
 
+- *(front)* Ignores *.env* files
+- *(front)* Removes .babelrc
+- *(front)* Cleans up nextjs base install and adds dgrebb favicon/images
+- *(front)* Adds babel and .babelrc to fix vscode errors
 - *(project)* Renames utils and terraform directories with underscore
 - *(project)* Renames cms.dgrebb.com -> dgrebb.com where needed
 - *(project)* Renames directories
