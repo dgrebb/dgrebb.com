@@ -42,6 +42,10 @@ while test "$1" != --; do
         /bin/bash $directory/_scripts/terraform.sh $2 $3
         break
         ;;
+    ch | changelog)
+        git cliff -o CHANGELOG.md
+        break
+        ;;
     -h | --help)
         showHelp
         break
