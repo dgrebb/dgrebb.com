@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+
+require('dotenv').config({ path: `./.env.${process.env.ENVIRONMENT}` });
+
 const nextConfig = {
   images: {
     domains: [
