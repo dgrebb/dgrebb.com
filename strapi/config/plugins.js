@@ -3,7 +3,7 @@ module.exports = ({ env }) => ({
     config: {
       provider: "aws-s3",
       providerOptions: {
-        baseUrl: `//${env("CDN_BASE_URL")}`,
+        baseUrl: `https://${env("CDN_BASE_URL")}`,
         rootPath: "img",
         s3Options: {
           accessKeyId: env("AWS_ACCESS_KEY_ID"),
