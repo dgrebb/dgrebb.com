@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_general_navigations",
+  "info": {
+    "displayName": "Nav Item",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    }
+  }
+}
