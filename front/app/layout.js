@@ -2,6 +2,7 @@ import { Public_Sans } from "next/font/google";
 import "./globals.css";
 
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export const publicSans = Public_Sans({
   subsets: ["latin"],
@@ -21,9 +22,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${dark ? "dark-theme" : "light-theme"} ${publicSans.className} text-lg`}>
         <Header />
-        <main className="flex min-h-screen flex-col items-center p-24">
+        <main className="flex flex-col items-center p-24">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );
