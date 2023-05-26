@@ -6,7 +6,6 @@ const navAPI = process.env.API_NAVIGATION;
 
 export default async function Header() {
   const navContent = await fetchContent(`${navAPI}?populate=*`);
-  console.log(navContent);
   const { navHeading, navItems } = navContent.attributes;
 
   return (
