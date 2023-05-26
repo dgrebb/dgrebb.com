@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev -H local.dgrebb.com",
     "build": "next build",
-    "lstart": "next start-H local.dgrebb.com",
+    "lstart": "next start -H local.dgrebb.com",
     "start": "next start",
     "serve": "npx serve@latest out",
     "lint": "next lint"

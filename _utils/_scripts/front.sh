@@ -26,7 +26,7 @@ while test "$1" != --; do
         break
         ;;
     ls | lstart)
-        cdfront && npm run start -H local.dgrebb.com
+        cdfront && npm run lstart
         break
         ;;
     ?)
