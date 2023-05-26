@@ -17,6 +17,16 @@ else
             done; echo $out;out="") .
             break 2
             ;;
+        rbf | rebuild-front)
+            fimg $2
+            printDgMsg "Building ${image_name}..."
+            docker buildx build --platform linux/amd64 -t ${image_name} \
+            --no-cache \
+            $(for i in `cat ${directory}/../front/.env.stg.local`; \
+            do out+="--build-arg $i " ; \
+            done; echo $out;out="") .
+            break 2
+            ;;
         b | build)
             env $2
             printDgMsg "Building ${image_name}..."
