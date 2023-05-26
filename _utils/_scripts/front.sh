@@ -9,8 +9,8 @@ fi
 while test "$1" != --; do
     case $1 in
     d | dev)
-        cdfront && \
-        npm run dev
+        cdfront &&
+            npm run dev
         break
         ;;
     i | install)
@@ -23,6 +23,10 @@ while test "$1" != --; do
         ;;
     s | start)
         cdfront && npm run start
+        break
+        ;;
+    ls | lstart)
+        cdfront && npm run lstart
         break
         ;;
     ?)

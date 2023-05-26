@@ -31,13 +31,14 @@ import React from "react";
 export default function Links({ links }) {
   return (
     <div className="flex-row h-8">
-      {links.map((link) => {
+      {links.map((link, k) => {
         return (
           <a
             href={link.url}
             title={link.title}
             target="_blank"
             className="links inline-block h-full p-1"
+            key={k}
           >
             {React.createElement(Icons[link.icon], { size: "100%" })}
           </a>

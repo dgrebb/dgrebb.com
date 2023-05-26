@@ -77,11 +77,13 @@ body {
 
 .nav-home {
   @apply tracking-tight;
+  @apply dg--link-hover;
 }
 
-.nav-home,
 .theme-toggle {
   @apply dg--link-hover;
+  @apply transition;
+  @apply dg--transition-effect;
 }
 
 .nav-bar {
@@ -106,6 +108,9 @@ body {
 .post,
 .posts {
   line-height: 1.6;
+  h1 {
+    @apply tracking-tight;
+  }
   a {
     @apply pb-0.5;
     color: rgb(var(--foreground-rgb));

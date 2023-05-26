@@ -32,7 +32,7 @@ export default function NavHome({ navHeading }) {
         <h1>{navHeading}</h1>
       </Link>
       <button
-        className={`theme-toggle ml-2 transition ${
+        className={`theme-toggle ml-2 ${
           visible ? "opacity-100" : "opacity-0"
         }`}
         onClick={toggleTheme}

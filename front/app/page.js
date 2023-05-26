@@ -1,13 +1,13 @@
-import React from "react";
+import fetchContent from "./_utils/fetch-content";
+import "./sty.css";
 import Image from "next/image";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import "./sty.css";
-
 import Links from "./components/Links";
-import fetchContent from "./_utils/fetch-content";
+
+const homeAPI = process.env.API_HOME;
 
 export default async function Home() {
-  const content = await fetchContent(`${process.env.API_HOME}?populate=*`);
+  const content = await fetchContent(`${homeAPI}?populate=*`);
   const { headshot, headline, intro, links } = content.attributes;
   const image = headshot?.data?.attributes || false;
 
