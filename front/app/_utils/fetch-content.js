@@ -2,7 +2,7 @@ export default async function fetchContent(endpoint) {
   const cache = process.env.NODE_ENV === "production" ? "force-cache" : "no-store"
   const apiKey = process.env.API_KEY || false;
   var headers = new Headers();
-  if (apiKey) headers.append("Authorization", `Bearer ${process.env.API_KEY}`);
+  if (apiKey) headers.append("Authorization", `Bearer ${apiKey}`);
   headers.append("Content-Type", "application/json");
 
   var requestOptions = {
