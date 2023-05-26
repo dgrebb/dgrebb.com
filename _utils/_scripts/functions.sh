@@ -9,6 +9,7 @@ hello() {
 }
 
 env() {
+    cd $directory/../strapi
     if [ $# -eq 0 ] || [ $1 = p ]; then
         setEnv p
         img p
@@ -30,6 +31,19 @@ img() {
         acr_uri=$(pass dg/cms/stg-acr-uri)
     else
         image_name=$(pass dg/cms/local-domain)
+    fi
+}
+
+fimg() {
+    cd $directory/../front
+    if [ $# -eq 0 ] || [ $1 = p ]; then
+        image_name=$(pass dg/www/domain)
+        acr_uri=$(pass dg/www/acr-uri)
+    elif [ $1 = s ]; then
+        image_name=$(pass dg/www/stg/domain)
+        acr_uri=$(pass dg/www/stg/acr-uri)
+    else
+        image_name=$(pass dg/www/local/domain)
     fi
 }
 

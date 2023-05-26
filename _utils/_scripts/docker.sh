@@ -7,8 +7,16 @@ if [ $# -eq 0 ]; then
     printDgErr "Missing args!"
 else
     while test "$1" != --; do
-        cd $directory/../strapi
         case $1 in
+        bf | build-front)
+            fimg $2
+            printDgMsg "Building ${image_name}..."
+            docker buildx build --platform linux/amd64 -t ${image_name} \
+            $(for i in `cat ${directory}/../front/.env.stg.local`; \
+            do out+="--build-arg $i " ; \
+            done; echo $out;out="") .
+            break 2
+            ;;
         b | build)
             env $2
             printDgMsg "Building ${image_name}..."
@@ -28,6 +36,12 @@ else
             img
             printDgMsg "Running local ${image_name}..."
             docker run -p 1337:1337 -it ${image_name}
+            break 2
+            ;;
+        rf | run-front)
+            fimg $2
+            printDgMsg "Running local ${image_name}..."
+            docker run -p 80:3000 -it ${image_name}
             break 2
             ;;
         p | push)
