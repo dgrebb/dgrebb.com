@@ -108,6 +108,9 @@ body {
 .post,
 .posts {
   line-height: 1.6;
+  h1 {
+    @apply tracking-tight;
+  }
   a {
     @apply pb-0.5;
     color: rgb(var(--foreground-rgb));
