@@ -1,8 +1,9 @@
-red='31'
+red="31"
+yellow="33"
+bluebg="\e[44m"
 BOLDRED="\e[1;${red}m"
-yellow='33'
 BOLDYELLOW="\e[1;${yellow}m"
-NC='\033[0m' # No Color
+NC="\033[0m" # No Color
 
 hello() {
     $directory/_scripts/hello.sh
@@ -48,20 +49,32 @@ fimg() {
 }
 
 setEnv() {
-    printDgMsg "Setting .env..."
+    printDgMsg "Setting Strapi .env..."
     /bin/bash $directory/_scripts/set-env.sh $1
 }
 
 shredEnv() {
     if [ -f $directory/../strapi/.env ]; then
-        printDgMsg "Shredding .env..."
+        printDgMsg "Shredding Strapi .env..."
         gshred $directory/../strapi/.env && rm $directory/../strapi/.env
+    fi
+    if [ -f $directory/../front/.env ]; then
+        printDgMsg "Shredding Next .env..."
+        gshred $directory/../front/.env && rm $directory/../front/.env
+    fi
+    if [ -f $directory/../_docker/.env ]; then
+        printDgMsg "Shredding Docker .env..."
+        gshred $directory/../_docker/.env && rm $directory/../_docker/.env
     fi
 }
 
 setTfEnv() {
     printDgMsg "Setting Terraform vars..."
     source $directory/../_tf/_scripts/set-tf-vars.sh
+}
+
+prepBuild() {
+    /bin/bash $directory/_scripts/prep-build.sh $1
 }
 
 retag() {
@@ -99,4 +112,8 @@ printDgErr() {
 
 printDgMsg() {
     printDg "${BOLDYELLOW}${1}${NC}"
+}
+
+printDgBnr() {
+    printDg "${bluebg}${BOLDYELLOW}${1}${NC}"
 }

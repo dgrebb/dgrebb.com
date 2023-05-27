@@ -22,13 +22,13 @@ echo "DATABASE_PASSWORD=$(pass dg/cms/db/password)" >>$directory/../strapi/.env
 
 while test "$1" != --; do
     case $1 in
-    l | local-dev)
+    ld | local-dev)
         echo "HOST=local.cms.dgrebb.com" >>$directory/../strapi/.env
         echo "DATABASE_HOST=localhost" >>$directory/../strapi/.env
         echo "NODE_ENV=development" >>$directory/../strapi/.env
         break
         ;;
-    ld | local-docker)
+    l | local-docker)
         echo "HOST=0.0.0.0" >>$directory/../strapi/.env
         echo "DATABASE_HOST=host.docker.internal" >>$directory/../strapi/.env
         echo "NODE_ENV=development" >>$directory/../strapi/.env
