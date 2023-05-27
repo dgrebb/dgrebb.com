@@ -2,10 +2,10 @@ import fetchContent from "../_utils/fetch-content";
 import NavBar from "./NavBar";
 import NavHome from "./NavHome";
 
-const navAPI = process.env.API_NAVIGATION;
+const navigationAPI = `${process.env.API_URL}/navigation`;
 
 export default async function Header() {
-  const navContent = await fetchContent(`${navAPI}?populate=*`);
+  const navContent = await fetchContent(`${navigationAPI}?populate=*`);
   const { navHeading, navItems } = navContent.attributes;
 
   return (
