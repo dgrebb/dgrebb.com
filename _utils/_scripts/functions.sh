@@ -25,26 +25,26 @@ env() {
 
 img() {
     if [ $# -eq 0 ] || [ $1 = p ]; then
-        image_name=$(pass dg/cms/domain)
-        acr_uri=$(pass dg/cms/acr-uri)
+        strapi_img=$(pass dg/cms/domain)
+        strapi_ecr_uri=$(pass dg/cms/ecr-uri)
     elif [ $1 = s ]; then
-        image_name=$(pass dg/cms/stg-domain)
-        acr_uri=$(pass dg/cms/stg-acr-uri)
+        strapi_img=$(pass dg/cms/s/domain)
+        strapi_ecr_uri=$(pass dg/cms/s/ecr-uri)
     else
-        image_name=$(pass dg/cms/local-domain)
+        strapi_img=$(pass dg/cms/local-domain)
     fi
 }
 
 fimg() {
     cd $directory/../front
     if [ $# -eq 0 ] || [ $1 = p ]; then
-        image_name=$(pass dg/www/domain)
-        acr_uri=$(pass dg/www/acr-uri)
+        front_img=$(pass dg/www/domain)
+        front_ecr_uri=$(pass dg/www/ecr-uri)
     elif [ $1 = s ]; then
-        image_name=$(pass dg/www/stg/domain)
-        acr_uri=$(pass dg/www/stg/acr-uri)
+        front_img=$(pass dg/www/s/domain)
+        front_ecr_uri=$(pass dg/www/s/ecr-uri)
     else
-        image_name=$(pass dg/www/local/domain)
+        front_img=$(pass dg/www/l/domain)
     fi
 }
 
@@ -78,16 +78,21 @@ prepBuild() {
 }
 
 retag() {
-    docker tag ${acr_uri}:latest ${acr_uri}:last
+    MANIFEST=$(aws ecr batch-get-image --region $(pass dg/aws/region) --repository-name ${1} --image-ids imageTag=latest --output json | jq --raw-output --join-output '.images[0].imageManifest')
+    aws ecr put-image --region $(pass dg/aws/region) --repository-name $1 --image-tag last --image-manifest "${MANIFEST}" > /dev/null
+    aws ecr batch-delete-image --region $(pass dg/aws/region) --repository-name $1 --image-ids --image-tag latest > /dev/null
 }
 
 archive() {
-    retag
-    docker rmi ${acr_uri}:latest
+    retag $1
+    docker rmi --force $1
 }
 
 tag() {
-    docker tag ${image_name}:latest ${acr_uri}:latest
+    date=$(date +%y.%m.%d-%H.%M.%S)
+    docker tag $1:latest $2:latest
+    docker tag $1:latest $1:$date 
+    docker tag $2:latest $1:$date
 }
 
 run() {
@@ -103,7 +108,7 @@ cdfront() {
 }
 
 printDg() {
-    printf "\n${1}\n\n"
+    printf "\n${1}\n"
 }
 
 printDgErr() {

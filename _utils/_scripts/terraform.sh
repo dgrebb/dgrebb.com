@@ -10,61 +10,66 @@ else
         cd $directory/../_tf/$environment
         case $2 in
         f | fmt | format)
-            setTfEnv
             printDgMsg "Formatting..."
-                terraform fmt -recursive
+            terraform fmt -recursive
             break 2
             ;;
         v | val | validate)
             setTfEnv
             printDgMsg "Validating..."
-                terraform validate
+            terraform validate
             break 2
             ;;
         i | init)
             setTfEnv
             printDgMsg "Initializing..."
-                terraform init
+            terraform init
             break 2
             ;;
         iu | init-upgrade)
             setTfEnv
             printDgMsg "Upgrading Terraform..."
-                terraform init -upgrade
+            terraform init -upgrade
             break 2
             ;;
         im | import)
             setTfEnv
             printDgMsg "Initializing..."
-                terraform import $3 $4
+            terraform import $3 $4
             break 2
             ;;
         p | plan)
             setTfEnv
             printDgMsg "Setting Terraform plan..."
-                terraform plan
+            terraform plan
             break 2
             ;;
         a | apply)
             setTfEnv
             printDgMsg "Applying Terraform plan..."
-                terraform apply
+            terraform apply
+            break 2
+            ;;
+        at | apply-target)
+            setTfEnv
+            printDgMsg "Applying Terraform plan..."
+            terraform apply -target=$3
             break 2
             ;;
         re | refresh)
             setTfEnv
             printDgMsg "Refreshing Terraform state..."
-                terraform refresh
+            terraform refresh
             break 2
             ;;
         d | destroy)
             setTfEnv
             printDgMsg "Destroying Terraform infrastructure..."
-                if [ -z $3 ]; then 
-                    terraform destroy 
-                else
-                    terraform destroy -target=$3
-                fi
+            if [ -z $3 ]; then
+                terraform destroy
+            else
+                terraform destroy -target=$3
+            fi
             break 2
             ;;
         *)
