@@ -39,7 +39,7 @@ while test "$1" != --; do
         break
         ;;
     tf | terraform)
-        /bin/bash $directory/_scripts/terraform.sh $2 $3
+        /bin/bash $directory/_scripts/terraform.sh $2 $3 $4 $5 $6
         break
         ;;
     ch | changelog)
