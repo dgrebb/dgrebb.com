@@ -1,7 +1,11 @@
 variable "region" {}
+variable "domain" {}
+variable "dashed_domain" {}
 variable "cmsdomain" {}
 variable "dashed_cmsdomain" {}
-variable "instance_count" {}
+variable "front_instance_count" {}
+variable "strapi_instance_count" {}
 variable "subnets" {}
-variable "alb_target_group" {}
+variable "strapi_alb_tg" {}
+variable "front_alb_tg" {}
 variable "service_sg" {}

@@ -9,6 +9,7 @@ fi
 while test "$1" != --; do
     case $1 in
     d | dev)
+        setEnv ld
         cdfront &&
             npm run dev
         break

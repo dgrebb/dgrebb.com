@@ -6,46 +6,51 @@ if [ $# -eq 0 ]; then
     printf "\n${red}Argument for local (l) or production (p) is required.\n"
     exit 1
 fi
->$directory/../strapi/.env
-echo "PORT=1337" >>$directory/../strapi/.env
-echo "APP_KEYS=$(pass dg/cms/appkeys)" >>$directory/../strapi/.env
-echo "API_TOKEN_SALT=$(pass dg/cms/apitokensalt)" >>$directory/../strapi/.env
-echo "ADMIN_JWT_SECRET=$(pass dg/cms/adminjwtsecret)" >>$directory/../strapi/.env
-echo "JWT_SECRET=$(pass dg/cms/jwtsecret)" >>$directory/../strapi/.env
-echo "TRANSFER_TOKEN_SALT=$(pass dg/cms/transfertokensalt)" >>$directory/../strapi/.env
-echo "AWS_ACCESS_KEY_ID=$(pass dg/aws/id)" >>$directory/../strapi/.env
-echo "AWS_ACCESS_SECRET=$(pass dg/aws/secret)" >>$directory/../strapi/.env
-echo "AWS_REGION=$(pass dg/aws/region)" >>$directory/../strapi/.env
-echo "AWS_S3_BUCKET=$(pass dg/cms/stg-bucket)" >>$directory/../strapi/.env
-echo "CDN_BASE_URL=$(pass dg/cms/stg-cdnbaseurl)" >>$directory/../strapi/.env
-echo "DATABASE_PASSWORD=$(pass dg/cms/db/password)" >>$directory/../strapi/.env
+strapiEnv=$directory/../strapi/.env
+frontEnv=$directory/../front/.env
+>$strapiEnv
+>$frontEnv
+echo "PORT=1337" >>$strapiEnv
+echo "APP_KEYS=$(pass dg/cms/appkeys)" >>$strapiEnv
+echo "API_TOKEN_SALT=$(pass dg/cms/apitokensalt)" >>$strapiEnv
+echo "ADMIN_JWT_SECRET=$(pass dg/cms/adminjwtsecret)" >>$strapiEnv
+echo "JWT_SECRET=$(pass dg/cms/jwtsecret)" >>$strapiEnv
+echo "TRANSFER_TOKEN_SALT=$(pass dg/cms/transfertokensalt)" >>$strapiEnv
+echo "AWS_ACCESS_KEY_ID=$(pass dg/aws/id)" >>$strapiEnv
+echo "AWS_ACCESS_SECRET=$(pass dg/aws/secret)" >>$strapiEnv
+echo "AWS_REGION=$(pass dg/aws/region)" >>$strapiEnv
+echo "AWS_S3_BUCKET=$(pass dg/cms/stg-bucket)" >>$strapiEnv
+echo "CDN_BASE_URL=$(pass dg/cms/stg-cdnbaseurl)" >>$strapiEnv
+echo "DATABASE_PASSWORD=$(pass dg/cms/db/password)" >>$strapiEnv
 
 while test "$1" != --; do
     case $1 in
     ld | local-dev)
-        echo "HOST=local.cms.dgrebb.com" >>$directory/../strapi/.env
-        echo "DATABASE_HOST=localhost" >>$directory/../strapi/.env
-        echo "NODE_ENV=development" >>$directory/../strapi/.env
+        echo "HOST=local.cms.dgrebb.com" >>$strapiEnv
+        echo "DATABASE_HOST=localhost" >>$strapiEnv
+        echo "NODE_ENV=development" >>$strapiEnv
+        echo "API_URL=$(pass dg/api/l/url)" >>$frontEnv
+        echo "API_KEY=$(pass dg/api/l/apikey)" >>$frontEnv
         break
         ;;
     l | local-docker)
-        echo "HOST=0.0.0.0" >>$directory/../strapi/.env
-        echo "DATABASE_HOST=host.docker.internal" >>$directory/../strapi/.env
-        echo "NODE_ENV=development" >>$directory/../strapi/.env
+        echo "HOST=0.0.0.0" >>$strapiEnv
+        echo "DATABASE_HOST=host.docker.internal" >>$strapiEnv
+        echo "NODE_ENV=development" >>$strapiEnv
         break
         ;;
     s | stg)
-        echo "HOST=0.0.0.0" >>$directory/../strapi/.env
-        echo "DATABASE_HOST=$(pass dg/cms/db/stg-host)" >>$directory/../strapi/.env
-        echo "NODE_ENV=production" >>$directory/../strapi/.env
+        echo "HOST=0.0.0.0" >>$strapiEnv
+        echo "DATABASE_HOST=$(pass dg/cms/db/stg-host)" >>$strapiEnv
+        echo "NODE_ENV=production" >>$strapiEnv
         break
         ;;
     p | prd | prod)
-        echo "HOST=0.0.0.0" >>$directory/../strapi/.env
-        echo "AWS_S3_BUCKET=$(pass dg/cms/bucket)" >>$directory/../strapi/.env
-        echo "CDN_BASE_URL=$(pass dg/cms/cdnbaseurl)" >>$directory/../strapi/.env
-        echo "DATABASE_HOST=$(pass dg/cms/db/host)" >>$directory/../strapi/.env
-        echo "NODE_ENV=production" >>$directory/../strapi/.env
+        echo "HOST=0.0.0.0" >>$strapiEnv
+        echo "AWS_S3_BUCKET=$(pass dg/cms/bucket)" >>$strapiEnv
+        echo "CDN_BASE_URL=$(pass dg/cms/cdnbaseurl)" >>$strapiEnv
+        echo "DATABASE_HOST=$(pass dg/cms/db/host)" >>$strapiEnv
+        echo "NODE_ENV=production" >>$strapiEnv
         break
         ;;
     ?)

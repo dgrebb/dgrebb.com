@@ -9,7 +9,7 @@ fi
 while test "$1" != --; do
     case $1 in
     d | dev)
-        setEnv l
+        setEnv ld
         cdcms && \
         trap 'printf "\n"; shredEnv ; printDgMsg "Done!" ; exit 0' SIGINT; \
         npm run strapi develop

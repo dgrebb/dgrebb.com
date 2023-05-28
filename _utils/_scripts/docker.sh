@@ -23,24 +23,17 @@ else
             break 2
             ;;
         bf | build-front)
-            printDgMsg "Building ${image_name}..."
             prepBuild $2
             fimg $2
-            docker buildx build --platform linux/amd64 -t ${image_name} \
-            $(for i in `cat ${directory}/../front/.env`; \
-            do out+="--build-arg $i " ; \
-            done; echo $out;out="") .
+            printDgMsg "Building ${front_img}..."
+            docker buildx build --platform linux/amd64 -t ${front_img} \
             break 2
             ;;
         rbf | rebuild-front)
-            printDgMsg "Building ${image_name}..."
             prepBuild $2
-            fimg $2
-            docker buildx build --platform linux/amd64 -t ${image_name} \
-            --no-cache \
-            $(for i in `cat ${directory}/../front/.env.stg.local`; \
-            do out+="--build-arg $i " ; \
-            done; echo $out;out="") .
+            cd $directory/../_docker
+            printDgMsg "Rebuilding ${2}..."
+            docker-compose build front --no-cache
             break 2
             ;;
         bs | build-strapi)
@@ -59,18 +52,26 @@ else
             ;;
         rf | run-front)
             fimg $2
-            printDgMsg "Running local ${image_name}..."
-            docker run -p 80:3000 -it ${image_name}
+            printDgMsg "Running local ${front_img}..."
+            docker run -p 80:3000 -it ${front_img}
             break 2
             ;;
         p | push)
             img $2
-            printDgMsg "Pushing ${image_name}..."
+            fimg $2
+            printDgMsg "Pushing ${front_img}..."
             aws ecr get-login-password --region ${region} |
-                docker login --username AWS --password-stdin ${acr_uri}
-            archive
-            tag
-            docker push ${acr_uri}
+                docker login --username AWS --password-stdin ${front_ecr_uri}
+            tag ${front_img} ${front_ecr_uri}
+            archive ${front_img}
+            docker push ${front_ecr_uri}:latest -a
+            # -----------------
+            printDgMsg "Pushing ${strapi_img}..."
+            aws ecr get-login-password --region ${region} |
+                docker login --username AWS --password-stdin ${strapi_ecr_uri}
+            tag ${strapi_img} ${strapi_ecr_uri}
+            archive ${strapi_img}
+            docker push ${strapi_ecr_uri}:latest -a
             break 2
             ;;
         *)

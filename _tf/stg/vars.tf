@@ -10,6 +10,10 @@ variable "region" {
   type      = string
   sensitive = true
 }
+variable "basedomain" {
+  type      = string
+  sensitive = true
+}
 variable "domain" {
   type      = string
   sensitive = true
@@ -51,7 +55,7 @@ variable "subnets" {
 }
 variable "terraform_state_bucket" {
   type    = string
-  default = "stg-cms-dgrebb-com-state"
+  default = "state-stg.dgrebb.com"
 }
 variable "db_password" {
   type      = string
