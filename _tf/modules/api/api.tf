@@ -136,7 +136,7 @@ resource "aws_api_gateway_usage_plan" "this" {
 }
 
 resource "aws_api_gateway_domain_name" "this" {
-  certificate_arn = var.api_cert.arn
+  certificate_arn = var.wildcard_cert.arn
   domain_name     = var.apidomain
 }
 

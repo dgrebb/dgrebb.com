@@ -1,46 +1,10 @@
 locals {
+  domain           = "stg.${var.domain}"
   cmsdomain        = "stg.${var.cmsdomain}"
   cdndomain        = "stg.${var.cdndomain}"
-  apidomain        = "stg.${var.apidomain}"
+  dashed_domain    = "stg-${var.dashed_domain}"
   dashed_cmsdomain = "stg-${var.dashed_cmsdomain}"
   dashed_cdndomain = "stg-${var.dashed_cdndomain}"
-  dashed_apidomain = "stg-${var.dashed_apidomain}"
-}
-
-module "api" {
-  source           = "../modules/api"
-  stage_name       = "stage"
-  environment      = "staging"
-  cmsdomain        = local.cmsdomain
-  apidomain        = local.apidomain
-  dashed_apidomain = local.dashed_apidomain
-  api_cert         = module.network.api_cert
-  api_validation   = module.network.api_validation
-  deployed_at      = var.deployed_at
-  cw_role          = module.management.cw_role
-  cw_policy        = module.management.cw_policy
-  api_log_group    = module.management.api_log_group
-}
-
-module "state" {
-  source                 = "../modules/state"
-  terraform_state_bucket = var.terraform_state_bucket
-}
-
-module "network" {
-  source           = "../modules/network"
-  aws_access_key   = var.aws_access_key
-  aws_secret_key   = var.aws_secret_key
-  region           = var.region
-  subnets          = var.subnets
-  domain           = var.domain
-  cmsdomain        = local.cmsdomain
-  cdndomain        = local.cdndomain
-  apidomain        = local.apidomain
-  dashed_cmsdomain = local.dashed_cmsdomain
-  alb              = module.scaling.alb
-  cf_distribution  = module.cdn.cf_distribution
-  api_gw_domain    = module.api.api_gw_domain
 }
 
 module "cdn" {
@@ -53,14 +17,18 @@ module "cdn" {
 }
 
 module "containers" {
-  source           = "../modules/containers"
-  region           = var.region
-  cmsdomain        = local.cmsdomain
-  dashed_cmsdomain = local.dashed_cmsdomain
-  instance_count   = 1
-  subnets          = module.network.subnets
-  alb_target_group = module.scaling.alb_target_group
-  service_sg       = module.security.service_sg
+  source                = "../modules/containers"
+  region                = var.region
+  domain                = local.domain
+  dashed_domain         = local.dashed_domain
+  cmsdomain             = local.cmsdomain
+  dashed_cmsdomain      = local.dashed_cmsdomain
+  strapi_instance_count = 1
+  front_instance_count  = 2
+  subnets               = module.network.subnets
+  strapi_alb_tg         = module.scaling.strapi_alb_tg
+  front_alb_tg          = module.scaling.front_alb_tg
+  service_sg            = module.security.service_sg
 }
 
 module "database" {
@@ -72,22 +40,46 @@ module "database" {
 }
 
 module "management" {
-  source           = "../modules/management"
+  source        = "../modules/management"
+  dashed_domain = local.dashed_domain
+}
+
+module "network" {
+  source           = "../modules/network"
+  aws_access_key   = var.aws_access_key
+  aws_secret_key   = var.aws_secret_key
+  region           = var.region
+  subnets          = var.subnets
+  basedomain       = var.basedomain
+  domain           = local.domain
+  cmsdomain        = local.cmsdomain
+  cdndomain        = local.cdndomain
+  dashed_domain    = local.dashed_domain
   dashed_cmsdomain = local.dashed_cmsdomain
+  alb              = module.scaling.alb
+  cf_distribution  = module.cdn.cf_distribution
 }
 
 module "scaling" {
-  source           = "../modules/scaling"
-  dashed_cmsdomain = local.dashed_cmsdomain
-  vpc              = module.network.vpc
-  subnets          = module.network.subnets
-  cms_cert         = module.network.cms_cert
-  cms_validation   = module.network.cms_validation
-  lb_sg            = module.security.lb_sg
+  source              = "../modules/scaling"
+  domain              = local.domain
+  dashed_domain       = local.dashed_domain
+  cmsdomain           = local.cmsdomain
+  dashed_cmsdomain    = local.dashed_cmsdomain
+  vpc                 = module.network.vpc
+  subnets             = module.network.subnets
+  wildcard_cert       = module.network.wildcard_cert
+  wildcard_validation = module.network.wildcard_validation
+  lb_sg               = module.security.lb_sg
 }
 
 module "security" {
   source = "../modules/security"
+}
+
+module "state" {
+  source                 = "../modules/state"
+  terraform_state_bucket = var.terraform_state_bucket
 }
 
 module "storage" {

@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_log_group" "this" {
-  name              = var.dashed_cmsdomain
+  name              = var.dashed_domain
   retention_in_days = 1
   lifecycle {
     prevent_destroy = false
@@ -39,11 +39,6 @@ resource "aws_cloudwatch_event_target" "this" {
   rule      = aws_cloudwatch_event_rule.this.name
   target_id = "ContainerStopped"
   arn       = aws_cloudwatch_log_group.this.arn
-}
-
-resource "aws_cloudwatch_log_group" "api" {
-  name              = "${var.dashed_cmsdomain}_API-GW"
-  retention_in_days = 1
 }
 
 resource "aws_iam_role" "cloudwatch" {

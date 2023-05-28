@@ -1,6 +1,6 @@
 # Main hosted zone
 data "aws_route53_zone" "main" {
-  name         = "${var.domain}."
+  name         = "${var.basedomain}."
   private_zone = false
 }
 
@@ -17,13 +17,29 @@ resource "aws_default_subnet" "this" {
 
 # Database subnets
 resource "aws_db_subnet_group" "this" {
-  name        = var.dashed_cmsdomain
-  description = "${var.cmsdomain} subnets"
+  name        = var.dashed_domain
+  description = "${var.domain} subnets"
   subnet_ids  = [for subnet in aws_default_subnet.this : subnet.id]
 }
 
 # ------------------------------------------------------------------------------
-# CMS Record and Certificate
+# WWW Record
+# ------------------------------------------------------------------------------
+
+resource "aws_route53_record" "www" {
+  allow_overwrite = true
+  name            = var.domain
+  type            = "A"
+  zone_id         = data.aws_route53_zone.main.zone_id
+  alias {
+    name                   = var.alb.dns_name
+    zone_id                = var.alb.zone_id
+    evaluate_target_health = false
+  }
+}
+
+# ------------------------------------------------------------------------------
+# CMS Record
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "cms" {
@@ -38,26 +54,37 @@ resource "aws_route53_record" "cms" {
   }
 }
 
-resource "aws_acm_certificate" "cms" {
-  domain_name       = var.cmsdomain
+# ------------------------------------------------------------------------------
+# Wildcard Certificate and Validation
+# ------------------------------------------------------------------------------
+resource "aws_acm_certificate" "wildcard" {
+  domain_name       = var.basedomain
   validation_method = "DNS"
+
+  subject_alternative_names = [
+    "*.dgrebb.com",
+    "*.cms.dgrebb.com"
+  ]
 
   lifecycle {
     create_before_destroy = true
   }
 
   tags = {
-    Name = var.cmsdomain
+    Name = var.basedomain
   }
 }
 
-resource "aws_route53_record" "cms_validation" {
+resource "aws_route53_record" "wildcard_validation" {
+
   for_each = {
-    for dvo in aws_acm_certificate.cms.domain_validation_options : dvo.domain_name => {
+    for dvo in aws_acm_certificate.wildcard.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
       record = dvo.resource_record_value
       type   = dvo.resource_record_type
     }
+    # Skips the domain if it doesn't contain a wildcard
+    if length(regexall("\\*\\..+", dvo.domain_name)) > 0
   }
 
   allow_overwrite = true
@@ -68,10 +95,10 @@ resource "aws_route53_record" "cms_validation" {
   zone_id         = data.aws_route53_zone.main.zone_id
 }
 
-resource "aws_acm_certificate_validation" "cms" {
-  certificate_arn = aws_acm_certificate.cms.arn
+resource "aws_acm_certificate_validation" "wildcard" {
+  certificate_arn = aws_acm_certificate.wildcard.arn
 
-  validation_record_fqdns = [for record in aws_route53_record.cms_validation : record.fqdn]
+  validation_record_fqdns = [for record in aws_route53_record.wildcard_validation : record.fqdn]
 }
 
 # ------------------------------------------------------------------------------
@@ -132,52 +159,52 @@ resource "aws_acm_certificate_validation" "cdn" {
 # API Gateway Record and Certificate
 # ------------------------------------------------------------------------------
 
-resource "aws_route53_record" "api" {
-  name    = var.api_gw_domain.domain_name
-  type    = "A"
-  zone_id = data.aws_route53_zone.main.zone_id
+# resource "aws_route53_record" "api" {
+#   name    = var.api_gw_domain.domain_name
+#   type    = "A"
+#   zone_id = data.aws_route53_zone.main.zone_id
 
-  alias {
-    evaluate_target_health = true
-    name                   = var.api_gw_domain.cloudfront_domain_name
-    zone_id                = var.api_gw_domain.cloudfront_zone_id
-  }
-}
+#   alias {
+#     evaluate_target_health = true
+#     name                   = var.api_gw_domain.cloudfront_domain_name
+#     zone_id                = var.api_gw_domain.cloudfront_zone_id
+#   }
+# }
 
-resource "aws_acm_certificate" "api" {
-  provider          = aws.acm_provider
-  domain_name       = var.apidomain
-  validation_method = "DNS"
+# resource "aws_acm_certificate" "api" {
+#   provider          = aws.acm_provider
+#   domain_name       = var.apidomain
+#   validation_method = "DNS"
 
-  lifecycle {
-    create_before_destroy = true
-  }
+#   lifecycle {
+#     create_before_destroy = true
+#   }
 
-  tags = {
-    Name = var.apidomain
-  }
-}
+#   tags = {
+#     Name = var.apidomain
+#   }
+# }
 
-resource "aws_route53_record" "api_validation" {
-  for_each = {
-    for dvo in aws_acm_certificate.api.domain_validation_options : dvo.domain_name => {
-      name   = dvo.resource_record_name
-      record = dvo.resource_record_value
-      type   = dvo.resource_record_type
-    }
-  }
+# resource "aws_route53_record" "api_validation" {
+#   for_each = {
+#     for dvo in aws_acm_certificate.api.domain_validation_options : dvo.domain_name => {
+#       name   = dvo.resource_record_name
+#       record = dvo.resource_record_value
+#       type   = dvo.resource_record_type
+#     }
+#   }
 
-  allow_overwrite = true
-  name            = each.value.name
-  records         = [each.value.record]
-  ttl             = 60
-  type            = each.value.type
-  zone_id         = data.aws_route53_zone.main.zone_id
-}
+#   allow_overwrite = true
+#   name            = each.value.name
+#   records         = [each.value.record]
+#   ttl             = 60
+#   type            = each.value.type
+#   zone_id         = data.aws_route53_zone.main.zone_id
+# }
 
-resource "aws_acm_certificate_validation" "api" {
-  provider        = aws.acm_provider
-  certificate_arn = aws_acm_certificate.api.arn
+# resource "aws_acm_certificate_validation" "api" {
+#   provider        = aws.acm_provider
+#   certificate_arn = aws_acm_certificate.api.arn
 
-  validation_record_fqdns = [for record in aws_route53_record.api_validation : record.fqdn]
-}
+#   validation_record_fqdns = [for record in aws_route53_record.api_validation : record.fqdn]
+# }

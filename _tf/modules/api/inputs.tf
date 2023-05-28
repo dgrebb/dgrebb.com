@@ -4,7 +4,7 @@ variable "cmsdomain" {}
 variable "apidomain" {}
 variable "dashed_apidomain" {}
 variable "api_cert" {}
-variable "api_validation" {}
+variable "wildcard_validation" {}
 variable "deployed_at" {}
 variable "cw_role" {}
 variable "cw_policy" {}

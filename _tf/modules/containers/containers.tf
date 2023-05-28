@@ -1,10 +1,25 @@
-resource "aws_ecr_repository" "this" {
+resource "aws_ecr_repository" "front" {
+  name = var.domain
+  force_delete = false
+}
+
+resource "aws_ecr_repository" "strapi" {
   name = var.cmsdomain
   force_delete = false
 }
 
+data "aws_ecr_image" "front" {
+  repository_name = var.domain
+  image_tag       = "latest"
+}
+
+data "aws_ecr_image" "strapi" {
+  repository_name = var.cmsdomain
+  image_tag       = "latest"
+}
+
 resource "aws_ecs_cluster" "this" {
-  name = var.dashed_cmsdomain
+  name = var.dashed_domain
 
   setting {
     name  = "containerInsights"
@@ -12,16 +27,79 @@ resource "aws_ecs_cluster" "this" {
   }
 }
 
-resource "aws_ecs_service" "this" {
-  name            = "strapi"
+resource "aws_ecs_service" "front" {
+  name            = "front"
   cluster         = aws_ecs_cluster.this.id
-  task_definition = aws_ecs_task_definition.this.arn
+  task_definition = aws_ecs_task_definition.front.arn
   launch_type     = "FARGATE"
-  desired_count   = var.instance_count
+  desired_count   = var.front_instance_count
 
   load_balancer {
-    target_group_arn = var.alb_target_group.arn
-    container_name   = aws_ecs_task_definition.this.family
+    target_group_arn = var.front_alb_tg.arn
+    container_name   = aws_ecs_task_definition.front.family
+    container_port   = 3000
+  }
+
+  network_configuration {
+    subnets          = [for subnet in var.subnets : subnet.id]
+    assign_public_ip = true
+    security_groups  = [var.service_sg.id]
+  }
+
+  depends_on = [var.front_alb_tg]
+}
+
+resource "aws_ecs_task_definition" "front" {
+  family = "front"
+  container_definitions = jsonencode([{
+    name         = "front",
+    image        = "${aws_ecr_repository.front.repository_url}@${data.aws_ecr_image.front.image_digest}",
+    essential    = true,
+    network_mode = "awsvpc",
+    memory       = 1024,
+    cpu          = 512,
+    portMappings = [
+      {
+        containerPort = 3000,
+        hostPort      = 3000
+      }
+    ],
+    # healthCheck = {
+    #   command = [
+    #     "CMD-SHELL",
+    #     "wget --no-verbose --tries=1 --spider http://localhost:1337/_health || exit 1"
+    #   ]
+    #   interval    = 30
+    #   timeout     = 5
+    #   retries     = 3
+    #   startPeriod = 30
+    # },
+    logConfiguration = {
+      logDriver = "awslogs",
+      options = {
+        awslogs-group         = var.dashed_domain,
+        awslogs-region        = var.region,
+        awslogs-stream-prefix = "ecs"
+      }
+    }
+  }])
+  requires_compatibilities = ["FARGATE"]
+  network_mode             = "awsvpc"
+  memory                   = 2048
+  cpu                      = 1024
+  execution_role_arn       = aws_iam_role.this.arn
+}
+
+resource "aws_ecs_service" "strapi" {
+  name            = "strapi"
+  cluster         = aws_ecs_cluster.this.id
+  task_definition = aws_ecs_task_definition.strapi.arn
+  launch_type     = "FARGATE"
+  desired_count   = var.strapi_instance_count
+
+  load_balancer {
+    target_group_arn = var.strapi_alb_tg.arn
+    container_name   = aws_ecs_task_definition.strapi.family
     container_port   = 1337
   }
 
@@ -31,19 +109,14 @@ resource "aws_ecs_service" "this" {
     security_groups  = [var.service_sg.id]
   }
 
-  depends_on = [var.alb_target_group]
+  depends_on = [var.strapi_alb_tg]
 }
 
-data "aws_ecr_image" "this" {
-  repository_name = var.cmsdomain
-  image_tag       = "latest"
-}
-
-resource "aws_ecs_task_definition" "this" {
+resource "aws_ecs_task_definition" "strapi" {
   family = "strapi"
   container_definitions = jsonencode([{
     name         = "strapi",
-    image        = "${aws_ecr_repository.this.repository_url}@${data.aws_ecr_image.this.image_digest}",
+    image        = "${aws_ecr_repository.strapi.repository_url}@${data.aws_ecr_image.strapi.image_digest}",
     essential    = true,
     network_mode = "awsvpc",
     memory       = 1024,
@@ -67,9 +140,9 @@ resource "aws_ecs_task_definition" "this" {
     logConfiguration = {
       logDriver = "awslogs",
       options = {
-        awslogs-group         = var.dashed_cmsdomain,
+        awslogs-group         = var.dashed_domain,
         awslogs-region        = var.region,
-        awslogs-stream-prefix = "streaming"
+        awslogs-stream-prefix = "ecs"
       }
     }
   }])
@@ -81,7 +154,7 @@ resource "aws_ecs_task_definition" "this" {
 }
 
 resource "aws_iam_role" "this" {
-  name               = "strapiTaskExecutionRole"
+  name               = "dgrebbTaskExecutionRole"
   assume_role_policy = data.aws_iam_policy_document.this.json
 }
 
