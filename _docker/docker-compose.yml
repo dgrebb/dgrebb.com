@@ -4,7 +4,7 @@ services:
 
   strapi:
     platform: linux/amd64
-    container_name: dgrebb-strapi
+    image: ${CMS_DOMAIN}
     build:
       context: ../strapi
       dockerfile: ../_docker/strapi.Dockerfile
@@ -14,7 +14,7 @@ services:
 
   front:
     platform: linux/amd64
-    container_name: dgrebb-front
+    image: ${WWW_DOMAIN}
     environment:
       - API_URL=${API_URL}
       - API_KEY=${API_KEY}
