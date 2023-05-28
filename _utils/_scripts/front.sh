@@ -10,6 +10,7 @@ while test "$1" != --; do
     case $1 in
     d | dev)
         setEnv ld
+        prepBuild l
         cdfront &&
             npm run dev
         break
