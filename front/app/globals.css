@@ -44,6 +44,7 @@ body.light-theme {
   --foreground-rgb: 33, 33, 33;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --f04-bg-hex: #191b1b;
   --highlight-rgb: 175, 83, 7;
   --transform-duration: 500ms;
   --transform-timing-function: ease-in-out;
@@ -183,4 +184,8 @@ body {
   a {
     @apply pb-0.5;
   }
+}
+
+.f04 {
+  background-color: var(--f04-bg-hex);
 }

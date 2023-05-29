@@ -1,8 +1,8 @@
 import fetchContent from "./_utils/fetch-content";
-import "./sty.css";
 import Image from "next/image";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import Links from "./components/Links";
+import Loading from "./loading";
 
 const homeAPI = `${process.env.API_URL}/home`;
 
