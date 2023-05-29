@@ -6,7 +6,11 @@ All notable changes to this directory will be documented in this file.
 
 ### ⛰️  Features
 
+- *(project)* Adds changelog commands, configs, and changelogs
 - *(project)* Adds terraform command helpers
+- *(terraform)* Adds apex route53 record
+- *(terraform)* Initializes production state
+- *(terraform)* Adds healthcheck to front service
 - *(terraform)* Adds api gateway module, domain,logging, vars, inputs, and outputs
 - *(terraform)* Adds final production terraform
 - *(terraform)* Renames resources with best practices
@@ -17,9 +21,14 @@ All notable changes to this directory will be documented in this file.
 
 ### 🚜 Refactor
 
+- *(terraform)* Refactors infra for front service
 - *(terraform)* Organizes api gateway resources and externals
 - *(terraform)* Adjusts usage plan name/desc and quota/throttling
 - *(terraform)* Refactors stg environment inputs to be more DRY
+
+### 📚 Documentation
+
+- *(terraform)* Removes bad comments
 
 ### 🎨 Styling
 
@@ -29,6 +38,8 @@ All notable changes to this directory will be documented in this file.
 
 - *(project)* Renames utils and terraform directories with underscore
 - *(project)* Renames directories
+- *(terraform)* Removes unnecessary cloudwatch policy and role
+- *(terraform)* Cleans up and adds comments
 - *(terraform)* Replaces hardcoded domain with variable
 - *(terraform)* Adds lockfile for terraform stg
 - *(terraform)* Removes base lockfile in favor of environment directories
