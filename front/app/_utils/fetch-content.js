@@ -1,5 +1,10 @@
 export default async function fetchContent(endpoint) {
-  const cache = "no-store"; //process.env.NODE_ENV === "production" ? "force-cache" : "no-store"
+  const cache = {
+    next:
+      process.env.NODE_ENV === "production"
+        ? { revalidate: 10 }
+        : { revalidate: 0 },
+  };
   const apiKey = process.env.API_KEY || false;
   var headers = new Headers();
   if (apiKey) headers.append("Authorization", `Bearer ${apiKey}`);
@@ -8,7 +13,7 @@ export default async function fetchContent(endpoint) {
   var requestOptions = {
     method: "GET",
     headers,
-    cache,
+    ...cache,
     redirect: "follow",
   };
 
