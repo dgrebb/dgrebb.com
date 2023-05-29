@@ -89,10 +89,7 @@ archive() {
 }
 
 tag() {
-    date=$(date +%y.%m.%d-%H.%M.%S)
     docker tag $1:latest $2:latest
-    docker tag $1:latest $1:$date 
-    docker tag $2:latest $1:$date
 }
 
 run() {

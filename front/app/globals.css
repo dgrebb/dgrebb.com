@@ -63,33 +63,68 @@ body.light-theme {
   }
 }
 
+html { overflow-y: scroll; }
+
 body {
   @apply transition-colors;
   @apply dg--transition-effect;
-  color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  border-top: 7px solid rgb(var(--foreground-rgb));
+  color: rgb(var(--foreground-rgb));
+  min-height: 100vh;
+}
+
+.header {
+  @apply p-6;
+  @apply sm:p-8;
+  @apply lg:p-14;
+  @apply pb-0;
+}
+
+.main {
+  @apply p-8;
+  @apply md:p-11;
+  @apply lg:p-16;
+  @apply pb-16;
+  @apply flex-grow;
+  @apply justify-center;
+}
+
+.footer {
+  @apply pb-3;
+  @apply flex-col;
+  @apply text-center;
+  @apply opacity-20;
+  @apply mt-auto;
+  @apply text-sm;
 }
 
 .nav-home {
   @apply tracking-tight;
   @apply dg--link-hover;
+  @apply ml-[2px];
 }
 
 .theme-toggle {
   @apply dg--link-hover;
   @apply transition;
   @apply dg--transition-effect;
+  @apply mt-0.5 ml-3;
 }
 
 .nav-bar {
   .btn {
     @apply dg--btn-secondary;
   }
+}
+
+.bio {
+  max-width: 565px;
 }
 
 .bio,

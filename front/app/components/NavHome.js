@@ -28,7 +28,7 @@ export default function NavHome({ navHeading }) {
 
   return (
     <>
-      <Link className="nav-home font-black text-2xl" href="/">
+      <Link className="nav-home font-black text-2xl leading-none" href="/">
         <h1>{navHeading}</h1>
       </Link>
       <button

@@ -20,7 +20,3 @@ echo "WWW_DOMAIN=$(pass dg/www/${1}/domain)" | tee -a $envFile $nextEnvFile >/de
 echo "CMS_DOMAIN=$(pass dg/cms/${1}/domain)" | tee -a $envFile $nextEnvFile >/dev/null
 echo "API_URL=$(pass dg/api/${1}/url)" | tee -a $envFile $nextEnvFile >/dev/null
 echo "API_KEY=$(pass dg/api/${1}/apikey)" | tee -a $envFile $nextEnvFile >/dev/null
-
-export WWW_DOMAIN=$(pass dg/www/${1}/domain)
-export CMS_DOMAIN=$(pass dg/cms/${1}/domain)
-echo $API_URL

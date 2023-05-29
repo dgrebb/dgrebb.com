@@ -14,7 +14,7 @@ export default async function Home() {
 
   return (
     <>
-      <section className="bio text-center max-w-[533px]">
+      <section className="bio text-center">
         {image ? (
           <Image
             src={image.url}

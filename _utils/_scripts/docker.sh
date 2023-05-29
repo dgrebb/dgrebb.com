@@ -64,14 +64,14 @@ else
                 docker login --username AWS --password-stdin ${front_ecr_uri}
             tag ${front_img} ${front_ecr_uri}
             archive ${front_img}
-            docker push ${front_ecr_uri}:latest -a
+            docker push ${front_ecr_uri}:latest
             # -----------------
             printDgMsg "Pushing ${strapi_img}..."
             aws ecr get-login-password --region ${region} |
                 docker login --username AWS --password-stdin ${strapi_ecr_uri}
             tag ${strapi_img} ${strapi_ecr_uri}
             archive ${strapi_img}
-            docker push ${strapi_ecr_uri}:latest -a
+            docker push ${strapi_ecr_uri}:latest
             break 2
             ;;
         *)

@@ -7,8 +7,8 @@ export default async function Footer() {
   const { copyright } = content.attributes;
   const year = new Date().getFullYear();
   return (
-    <footer className="flex-col text-center mx-24 my-11 opacity-20">
-      {copyright ? ( `${copyright} ${year}` ) : null}
+    <footer className="footer">
+      {copyright ? ( `Copyright © ${year} ${copyright}` ) : null}
     </footer>
   );
 }
