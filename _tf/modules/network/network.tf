@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------
 # Network and Subnets
-# ------------------------------------------------------------------------------resource "aws_ecr_repository" "front" {
+# ------------------------------------------------------------------------------
 
 # Main hosted zone
 data "aws_route53_zone" "main" {
@@ -30,9 +30,21 @@ resource "aws_db_subnet_group" "this" {
 # Frontend Record
 # ------------------------------------------------------------------------------
 
-resource "aws_route53_record" "www" {
+resource "aws_route53_record" "apex" {
   allow_overwrite = true
   name            = var.domain
+  type            = "A"
+  zone_id         = data.aws_route53_zone.main.zone_id
+  alias {
+    name                   = var.alb.dns_name
+    zone_id                = var.alb.zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "www" {
+  allow_overwrite = true
+  name            = "www.${var.domain}"
   type            = "A"
   zone_id         = data.aws_route53_zone.main.zone_id
   alias {
