@@ -1,12 +1,20 @@
+# ------------------------------------------------------------------------------
+# Elastic Container Registry Repos
+# ------------------------------------------------------------------------------resource "aws_ecr_repository" "front" {
+
 resource "aws_ecr_repository" "front" {
   name = var.domain
-  force_delete = false
+  force_delete = var.force_delete
 }
 
 resource "aws_ecr_repository" "strapi" {
   name = var.cmsdomain
-  force_delete = false
+  force_delete = var.force_delete
 }
+
+# ------------------------------------------------------------------------------
+# ECR Image References
+# ------------------------------------------------------------------------------resource "aws_ecr_repository" "front" {
 
 data "aws_ecr_image" "front" {
   repository_name = var.domain
@@ -26,6 +34,10 @@ resource "aws_ecs_cluster" "this" {
     value = "enabled"
   }
 }
+
+# ------------------------------------------------------------------------------
+# Frontend Service and Definition
+# ------------------------------------------------------------------------------resource "aws_ecr_repository" "front" {
 
 resource "aws_ecs_service" "front" {
   name            = "front"
@@ -89,6 +101,10 @@ resource "aws_ecs_task_definition" "front" {
   cpu                      = 1024
   execution_role_arn       = aws_iam_role.this.arn
 }
+
+# ------------------------------------------------------------------------------
+# CMS Service and Definition
+# ------------------------------------------------------------------------------resource "aws_ecr_repository" "front" {
 
 resource "aws_ecs_service" "strapi" {
   name            = "strapi"
@@ -168,6 +184,10 @@ data "aws_iam_policy_document" "this" {
     }
   }
 }
+
+# ------------------------------------------------------------------------------
+# IAM Roles and Policies
+# ------------------------------------------------------------------------------resource "aws_ecr_repository" "front" {
 
 resource "aws_iam_role_policy_attachment" "this" {
   role       = aws_iam_role.this.name

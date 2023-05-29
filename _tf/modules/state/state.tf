@@ -1,6 +1,10 @@
+# ------------------------------------------------------------------------------
+# Terraform State Management
+# ------------------------------------------------------------------------------resource "aws_ecr_repository" "front" {
+
 resource "aws_s3_bucket" "this" {
   bucket = var.terraform_state_bucket
-  force_destroy = true
+  force_destroy = false
 }
 
 resource "aws_s3_bucket_acl" "this" {

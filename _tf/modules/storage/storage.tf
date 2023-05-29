@@ -1,3 +1,7 @@
+# ------------------------------------------------------------------------------
+# Buckets and Access
+# ------------------------------------------------------------------------------resource "aws_ecr_repository" "front" {
+
 resource "aws_s3_bucket" "cms" {
   bucket = var.dashed_cmsdomain
   force_destroy = var.force_destroy
@@ -55,6 +59,10 @@ resource "aws_s3_bucket_acl" "cdn_logs" {
   acl    = "private"
 }
 
+# ------------------------------------------------------------------------------
+# IAM Roles and Policies
+# ------------------------------------------------------------------------------resource "aws_ecr_repository" "front" {
+
 data "aws_iam_policy_document" "cms" {
   statement {
     actions = [
@@ -106,6 +114,10 @@ data "aws_iam_policy_document" "cms" {
   }
 }
 
+# ------------------------------------------------------------------------------
+# Bucket Policies and CORS Config
+# ------------------------------------------------------------------------------resource "aws_ecr_repository" "front" {
+
 resource "aws_s3_bucket_policy" "cms" {
   bucket = aws_s3_bucket.cms.id
   policy = data.aws_iam_policy_document.cms.json
@@ -130,6 +142,10 @@ resource "aws_s3_bucket_cors_configuration" "cms" {
     allowed_origins = ["*"]
   }
 }
+
+# ------------------------------------------------------------------------------
+# Defaults for Snoopers
+# ------------------------------------------------------------------------------resource "aws_ecr_repository" "front" {
 
 # TODO: Refactor as a looped map
 resource "aws_s3_object" "index_html" {
