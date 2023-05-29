@@ -10,6 +10,10 @@ variable "region" {
   type      = string
   sensitive = true
 }
+variable "basedomain" {
+  type      = string
+  sensitive = true
+}
 variable "domain" {
   type      = string
   sensitive = true
@@ -19,6 +23,10 @@ variable "cmsdomain" {
   sensitive = true
 }
 variable "cdndomain" {
+  type      = string
+  sensitive = true
+}
+variable "apidomain" {
   type      = string
   sensitive = true
 }
@@ -34,6 +42,10 @@ variable "dashed_cdndomain" {
   type      = string
   sensitive = true
 }
+variable "dashed_apidomain" {
+  type      = string
+  sensitive = true
+}
 variable "subnets" {
   type = set(string)
   default = [
@@ -43,9 +55,10 @@ variable "subnets" {
 }
 variable "terraform_state_bucket" {
   type    = string
-  default = "cms-dgrebb-com-state"
+  default = "state-www.dgrebb.com"
 }
 variable "db_password" {
   type      = string
   sensitive = true
 }
+variable "deployed_at" {}

@@ -29,7 +29,7 @@ module "containers" {
   cmsdomain             = local.cmsdomain
   dashed_cmsdomain      = local.dashed_cmsdomain
   strapi_instance_count = 1
-  front_instance_count  = 2
+  front_instance_count  = 1
   subnets               = module.network.subnets
   strapi_alb_tg         = module.scaling.strapi_alb_tg
   front_alb_tg          = module.scaling.front_alb_tg
