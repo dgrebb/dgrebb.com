@@ -76,16 +76,16 @@ resource "aws_ecs_task_definition" "front" {
         hostPort      = 3000
       }
     ],
-    # healthCheck = {
-    #   command = [
-    #     "CMD-SHELL",
-    #     "wget --no-verbose --tries=1 --spider http://localhost:1337/_health || exit 1"
-    #   ]
-    #   interval    = 30
-    #   timeout     = 5
-    #   retries     = 3
-    #   startPeriod = 30
-    # },
+    healthCheck = {
+      command = [
+        "CMD-SHELL",
+        "wget --no-verbose --tries=1 --spider http://localhost:3000 || exit 1"
+      ]
+      interval    = 30
+      timeout     = 5
+      retries     = 3
+      startPeriod = 30
+    },
     logConfiguration = {
       logDriver = "awslogs",
       options = {
