@@ -4,7 +4,6 @@ import Image from "next/image";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import Links from "./components/Links";
 
-export const dynamic = "force-dynamic";
 const homeAPI = `${process.env.API_URL}/home`;
 
 export default async function Home() {
