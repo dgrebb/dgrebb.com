@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
         } text-lg flex flex-col`}
       >
         <Header />
-        <main className="main flex flex-col items-center">{children}</main>
+        <main id="main" role="main" className="main flex flex-col items-center">{children}</main>
         <PlausibleProvider
           domain="dgrebb.com"
           trackOutboundLinks={true}

@@ -9,7 +9,7 @@ export default async function Header() {
   const { navHeading, navItems } = navContent.attributes;
 
   return (
-    <header className="header flex items-center">
+    <header role="navigation" className="header flex items-center">
       <div className="title flex flex-grow">
         <NavHome navHeading={navHeading} />
       </div>

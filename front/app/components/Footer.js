@@ -7,7 +7,7 @@ export default async function Footer() {
   const { copyright } = content.attributes;
   const year = new Date().getFullYear();
   return (
-    <footer className="footer">
+    <footer role="contentinfo" className="footer">
       {copyright ? ( `Copyright © ${year} ${copyright}` ) : null}
     </footer>
   );

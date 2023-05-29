@@ -30,7 +30,7 @@ import React from "react";
 
 export default function Links({ links }) {
   return (
-    <div className="flex-row h-8">
+    <div role="complementary" className="flex-row h-8">
       {links.map((link, k) => {
         return (
           <a
