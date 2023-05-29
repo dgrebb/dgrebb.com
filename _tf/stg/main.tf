@@ -1,3 +1,7 @@
+# ------------------------------------------------------------------------------
+# Staging Infrastructure
+# ------------------------------------------------------------------------------resource "aws_ecr_repository" "front" {
+
 locals {
   domain           = "stg.${var.domain}"
   cmsdomain        = "stg.${var.cmsdomain}"
@@ -18,6 +22,7 @@ module "cdn" {
 
 module "containers" {
   source                = "../modules/containers"
+  force_delete          = true
   region                = var.region
   domain                = local.domain
   dashed_domain         = local.dashed_domain

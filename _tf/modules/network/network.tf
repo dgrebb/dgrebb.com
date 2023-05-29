@@ -1,3 +1,7 @@
+# ------------------------------------------------------------------------------
+# Network and Subnets
+# ------------------------------------------------------------------------------resource "aws_ecr_repository" "front" {
+
 # Main hosted zone
 data "aws_route53_zone" "main" {
   name         = "${var.basedomain}."
@@ -23,7 +27,7 @@ resource "aws_db_subnet_group" "this" {
 }
 
 # ------------------------------------------------------------------------------
-# WWW Record
+# Frontend Record
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "www" {
@@ -102,7 +106,7 @@ resource "aws_acm_certificate_validation" "wildcard" {
 }
 
 # ------------------------------------------------------------------------------
-# CDN Record and Certificate
+# CDN Record, Certificate, and Validation
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "cdn" {
@@ -118,6 +122,7 @@ resource "aws_route53_record" "cdn" {
 }
 
 resource "aws_acm_certificate" "cdn" {
+  # CloudFront Certs MUST be in us-east-1
   provider          = aws.acm_provider
   domain_name       = var.cdndomain
   validation_method = "DNS"
@@ -154,57 +159,3 @@ resource "aws_acm_certificate_validation" "cdn" {
 
   validation_record_fqdns = [for record in aws_route53_record.cdn_validation : record.fqdn]
 }
-
-# ------------------------------------------------------------------------------
-# API Gateway Record and Certificate
-# ------------------------------------------------------------------------------
-
-# resource "aws_route53_record" "api" {
-#   name    = var.api_gw_domain.domain_name
-#   type    = "A"
-#   zone_id = data.aws_route53_zone.main.zone_id
-
-#   alias {
-#     evaluate_target_health = true
-#     name                   = var.api_gw_domain.cloudfront_domain_name
-#     zone_id                = var.api_gw_domain.cloudfront_zone_id
-#   }
-# }
-
-# resource "aws_acm_certificate" "api" {
-#   provider          = aws.acm_provider
-#   domain_name       = var.apidomain
-#   validation_method = "DNS"
-
-#   lifecycle {
-#     create_before_destroy = true
-#   }
-
-#   tags = {
-#     Name = var.apidomain
-#   }
-# }
-
-# resource "aws_route53_record" "api_validation" {
-#   for_each = {
-#     for dvo in aws_acm_certificate.api.domain_validation_options : dvo.domain_name => {
-#       name   = dvo.resource_record_name
-#       record = dvo.resource_record_value
-#       type   = dvo.resource_record_type
-#     }
-#   }
-
-#   allow_overwrite = true
-#   name            = each.value.name
-#   records         = [each.value.record]
-#   ttl             = 60
-#   type            = each.value.type
-#   zone_id         = data.aws_route53_zone.main.zone_id
-# }
-
-# resource "aws_acm_certificate_validation" "api" {
-#   provider        = aws.acm_provider
-#   certificate_arn = aws_acm_certificate.api.arn
-
-#   validation_record_fqdns = [for record in aws_route53_record.api_validation : record.fqdn]
-# }

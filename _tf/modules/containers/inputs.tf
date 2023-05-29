@@ -9,3 +9,4 @@ variable "subnets" {}
 variable "strapi_alb_tg" {}
 variable "front_alb_tg" {}
 variable "service_sg" {}
+variable "force_delete" {}

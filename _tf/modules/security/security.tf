@@ -1,3 +1,7 @@
+# ------------------------------------------------------------------------------
+# Security Groups
+# ------------------------------------------------------------------------------resource "aws_ecr_repository" "front" {
+
 resource "aws_security_group" "svc" {
   ingress {
     from_port       = 0

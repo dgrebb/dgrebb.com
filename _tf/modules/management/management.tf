@@ -1,3 +1,7 @@
+# ------------------------------------------------------------------------------
+# CloudWatch Log Group and Events
+# ------------------------------------------------------------------------------resource "aws_ecr_repository" "front" {
+
 resource "aws_cloudwatch_log_group" "this" {
   name              = var.dashed_domain
   retention_in_days = 1
@@ -40,6 +44,10 @@ resource "aws_cloudwatch_event_target" "this" {
   target_id = "ContainerStopped"
   arn       = aws_cloudwatch_log_group.this.arn
 }
+
+# ------------------------------------------------------------------------------
+# IAM Roles and Policies
+# ------------------------------------------------------------------------------resource "aws_ecr_repository" "front" {
 
 resource "aws_iam_role" "cloudwatch" {
   name = "api_gateway_cloudwatch_global"

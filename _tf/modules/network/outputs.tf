@@ -16,9 +16,3 @@ output "wildcard_validation" {
 output "cdn_cert" {
   value = aws_acm_certificate.cdn
 }
-# output "api_cert" {
-#   value = aws_acm_certificate.api
-# }
-# output "api_validation" {
-#   value = aws_acm_certificate_validation.api
-# }

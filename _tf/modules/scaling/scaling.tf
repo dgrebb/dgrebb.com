@@ -1,8 +1,11 @@
+# ------------------------------------------------------------------------------
+# Application Load Balancer, Target Groups, Listeners, and Rules
+# ------------------------------------------------------------------------------resource "aws_ecr_repository" "front" {
+
 resource "aws_alb" "this" {
   name               = var.dashed_domain
   load_balancer_type = "application"
   subnets            = [for subnet in var.subnets : subnet.id]
-  # security group
   security_groups = [var.lb_sg.id]
 }
 
