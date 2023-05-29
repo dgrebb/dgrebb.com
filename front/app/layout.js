@@ -3,6 +3,7 @@ import { Public_Sans } from "next/font/google";
 import "./globals.css";
 
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export const publicSans = Public_Sans({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
       >
         <Header />
         <main id="main" role="main" className="main flex flex-col items-center">{children}</main>
+        <Footer />
         <PlausibleProvider
           domain="dgrebb.com"
           trackOutboundLinks={true}

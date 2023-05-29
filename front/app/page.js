@@ -19,13 +19,13 @@ export default async function Home() {
             src={image.url}
             alt={image.alternativeText}
             title="Hi!"
-            width={150}
-            height={150}
+            width={120}
+            height={120}
             className="m-auto rounded-full"
             aria-hidden="true"
           />
         ) : null}
-        <h1 className="text-4xl font-bold brightness-125 py-3">{headline}</h1>
+        <h1 className="headline">{headline}</h1>
         <ReactMarkdown>{intro}</ReactMarkdown>
       </section>
       {links.length ? (

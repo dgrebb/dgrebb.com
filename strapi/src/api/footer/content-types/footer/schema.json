@@ -4,15 +4,19 @@
   "info": {
     "singularName": "footer",
     "pluralName": "footers",
-    "displayName": "Footer"
+    "displayName": "Footer",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
+    "copyleft": {
+      "type": "richtext"
+    },
     "copyright": {
-      "type": "string"
+      "type": "richtext"
     }
   }
 }
