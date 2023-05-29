@@ -2,12 +2,18 @@
 
 All notable changes to this directory will be documented in this file.
 
-## [unreleased]
+## [1.0.0] - 2023-05-29
 
 ### ⛰️  Features
 
+- *(front)* Adds docker commands
+- *(project)* Adds changelog commands, configs, and changelogs
 - *(project)* Adds terraform command helpers
 - *(terraform)* Adds and updates scripts and modules for terraform infrastructure
+- *(utils)* Adds docker push commands for front and cms separately
+- *(utils)* Updates utils for front and docker
+- *(utils)* Refactors utils for docker-compose
+- *(utils)* Adds front local start command
 - *(utils)* Adds changelog, utils, and comments for setup
 - *(utils)* Adds front utils
 - *(utils)* Adds tf commands for import and destroy with target flag
@@ -22,7 +28,11 @@ All notable changes to this directory will be documented in this file.
 ### 🐛 Bug Fixes
 
 - *(docker)* Adds port mapping for local docker run
+- *(front)* Fixes local start
 - *(project)* Removes hello world comment from docker scripts
+- *(utils)* Adjustments for docker push scripts
+- *(utils)* Adjusts front script for local dev
+- *(utils)* Passes additional args through to terraform script
 - *(utils)* Add break statement to front scripts
 - *(utils)* Fixes cdn domain for prod and adjusts docker command messages
 - *(utils)* Moves env and img functions and fixes s arg for img func
@@ -36,10 +46,12 @@ All notable changes to this directory will be documented in this file.
 
 ### 📚 Documentation
 
+- *(project)* Adds v1.0.0 changelog
 - *(utils)* Adds docs about dg commands
 
 ### ⚙️ Miscellaneous Tasks
 
+- *(front)* Adds rebuild command for frontend
 - *(project)* Renames utils and terraform directories with underscore
 - *(project)* Renames cms.dgrebb.com -> dgrebb.com where needed
 - *(project)* Renames directories
