@@ -10,7 +10,7 @@ export default async function Header() {
 
   return (
     <header role="navigation" className="header flex items-center">
-      <a href="#main" class="btn skip-to-content">Skip to Main Content</a>
+      <a href="#main" className="btn skip-to-content">Skip to Main Content</a>
       <div className="title flex flex-grow">
         <NavHome navHeading={navHeading} />
       </div>
