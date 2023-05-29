@@ -25,9 +25,12 @@ export default function RootLayout({ children }) {
           publicSans.className
         } text-lg flex flex-col`}
       >
-        <PlausibleProvider domain="dgrebb.com" trackOutboundLinks={true} enabled={true} trackLocalhost={true} />
         <Header />
         <main className="main flex flex-col items-center">{children}</main>
+        <PlausibleProvider
+          domain="dgrebb.com"
+          trackOutboundLinks={true}
+        />
       </body>
     </html>
   );
