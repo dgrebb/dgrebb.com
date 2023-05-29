@@ -63,15 +63,35 @@ else
             aws ecr get-login-password --region ${region} |
                 docker login --username AWS --password-stdin ${front_ecr_uri}
             tag ${front_img} ${front_ecr_uri}
-            archive ${front_img}
+            # archive ${front_ecr_uri}
             docker push ${front_ecr_uri}:latest
             # -----------------
             printDgMsg "Pushing ${strapi_img}..."
             aws ecr get-login-password --region ${region} |
                 docker login --username AWS --password-stdin ${strapi_ecr_uri}
             tag ${strapi_img} ${strapi_ecr_uri}
-            archive ${strapi_img}
+            # archive ${strapi_ecr_uri}
             docker push ${strapi_ecr_uri}:latest
+            break 2
+            ;;
+        pc | push-cms)
+            img $2
+            printDgMsg "Pushing ${strapi_img}..."
+            aws ecr get-login-password --region ${region} |
+                docker login --username AWS --password-stdin ${strapi_ecr_uri}
+            tag ${strapi_img} ${strapi_ecr_uri}
+            # archive ${strapi_ecr_uri}:latest
+            docker push ${strapi_ecr_uri}:latest
+            break 2
+            ;;
+        pf | push-front)
+            fimg $2
+            printDgMsg "Pushing ${front_img}..."
+            aws ecr get-login-password --region ${region} |
+                docker login --username AWS --password-stdin ${front_ecr_uri}
+            tag ${front_img} ${front_ecr_uri}
+            # archive ${front_ecr_uri}:latest
+            docker push ${front_ecr_uri}:latest
             break 2
             ;;
         *)
