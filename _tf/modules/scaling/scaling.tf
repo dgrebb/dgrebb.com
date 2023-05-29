@@ -1,12 +1,12 @@
 # ------------------------------------------------------------------------------
 # Application Load Balancer, Target Groups, Listeners, and Rules
-# ------------------------------------------------------------------------------resource "aws_ecr_repository" "front" {
+# ------------------------------------------------------------------------------
 
 resource "aws_alb" "this" {
   name               = var.dashed_domain
   load_balancer_type = "application"
   subnets            = [for subnet in var.subnets : subnet.id]
-  security_groups = [var.lb_sg.id]
+  security_groups    = [var.lb_sg.id]
 }
 
 resource "aws_lb_target_group" "front" {
@@ -88,7 +88,10 @@ resource "aws_lb_listener_rule" "front" {
 
   condition {
     host_header {
-      values = [var.domain]
+      values = [
+        "www.${var.domain}",
+        var.domain
+      ]
     }
   }
 }
