@@ -23,6 +23,7 @@ export default async function Home() {
             width={150}
             height={150}
             className="m-auto rounded-full"
+            aria-hidden="true"
           />
         ) : null}
         <h1 className="text-4xl font-bold brightness-125 py-3">{headline}</h1>

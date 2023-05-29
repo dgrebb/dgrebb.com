@@ -9,7 +9,8 @@ export default async function Header() {
   const { navHeading, navItems } = navContent.attributes;
 
   return (
-    <header className="header flex items-center">
+    <header role="navigation" className="header flex items-center">
+      <a href="#main" class="btn skip-to-content">Skip to Main Content</a>
       <div className="title flex flex-grow">
         <NavHome navHeading={navHeading} />
       </div>

@@ -63,7 +63,9 @@ body.light-theme {
   }
 }
 
-html { overflow-y: scroll; }
+html {
+  overflow-y: scroll;
+}
 
 body {
   @apply transition-colors;
@@ -84,6 +86,23 @@ body {
   @apply sm:p-8;
   @apply lg:p-14;
   @apply pb-0;
+  position: relative;
+}
+
+.skip-to-content {
+  background: rgb(var(--btn--secondary-rgb));
+  position: absolute;
+  transform: translateY(-100%);
+  opacity: 0%;
+  @apply px-5;
+  @apply py-3;
+  @apply transition-all;
+  @apply dg--transition-effect;
+
+  &:focus {
+    transform: translateY(0%);
+    opacity: 100%;
+  }
 }
 
 .main {
