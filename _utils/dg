@@ -65,6 +65,30 @@ while test "$1" != --; do
         done
         break
         ;;
+    chl | changelog)
+        config="_utils/_cliff/all.toml"
+        file="CHANGELOG.md"
+        cd ${directory}/../ && git cliff -c $config -o ${file}
+        echo "Project Changelog Written to ${file}"
+        for D in *; do
+            if [ -d "${D}" ]; then
+                config="_utils/_cliff/dir.toml"
+                if [[ "$D" == *"tf"* || "$D" == *"utils"* ]]; then
+                    cd ${directory}/../ &&
+                        git cliff -c $config \
+                            --latest \
+                            --include-path "${D}/*" \
+                            --include-path "${D:1}/*" \
+                            -o ./${D}/${file}
+                    echo "Changelog for ${D} written to ${D}/${file}"
+                else
+                    cd ${directory}/../ && git cliff -c $config --include-path "${D}/*" -o ./${D}/${file}
+                    echo "Changelog for ${D} written to ${D}/${file}"
+                fi
+            fi
+        done
+        break
+        ;;
     -h | --help)
         showHelp
         break
