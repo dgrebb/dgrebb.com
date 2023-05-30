@@ -65,7 +65,8 @@ body.light-theme {
 }
 
 html {
-  overflow-y: scroll;
+  border-top: 8px solid rgb(var(--foreground-rgb));
+  overflow: hidden;
 }
 
 body {
@@ -77,9 +78,10 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-  border-top: 7px solid rgb(var(--foreground-rgb));
+  height: 100vh;
   color: rgb(var(--foreground-rgb));
   min-height: 100vh;
+  overflow: overlay;
 }
 
 .header {
