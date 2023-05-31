@@ -129,3 +129,9 @@ build
 # Crash log files
 crash.log
 crash.*.log
+
+############################
+# Commitizen
+############################
+
+.cz.toml
