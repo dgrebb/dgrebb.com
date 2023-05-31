@@ -73,6 +73,7 @@ while test "$1" != --; do
             exit 1
         fi
         git add .
+        git status
         read -p $'\e[31mDouble check the staged files. Do you want to commit these changes?\e[0m: ' -n 1 -r
         echo # newline
         git status
@@ -81,13 +82,12 @@ while test "$1" != --; do
             exit 1
         fi
         git commit -m "docs(project): updates changelog for ${ver}"
-        read -p $'\e[31mDo you want to tag this commit with ${ver}?\e[0m: ' -n 1 -r
+        read -p $'\e[31mDo you want to bump the version now?\e[0m: ' -n 1 -r
         echo # newline
         if [[ ! $REPLY =~ ^[Yy]$ ]]; then
             exit 1
         fi
-        #TODO: use cz instead of git tag?
-        git tag -a $ver -m "behold! version ${ver}"
+        cz bump
         break 2
         ;;
     -h | --help)
