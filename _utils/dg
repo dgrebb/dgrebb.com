@@ -42,52 +42,53 @@ while test "$1" != --; do
         /bin/bash $directory/_scripts/terraform.sh $2 $3 $4 $5 $6
         break
         ;;
-    ch | changelog)
+    b | bump)
+        cd $directory/../
         config="_utils/_cliff/all.toml"
         file="CHANGELOG.md"
-        cd ${directory}/../ && git cliff -c $config -o ${file}
+        str=$(cz bump --dry-run | awk '/tag to create: /')
+        ver=${str//tag to create: /}
+        git cliff -c $config --unreleased --tag $ver --prepend ${file}
         echo "Project Changelog Written to ${file}"
         for D in *; do
             if [ -d "${D}" ]; then
                 config="_utils/_cliff/dir.toml"
-                if [[ "$D" == *"tf"* || "$D" == *"utils"* ]]; then
-                    cd ${directory}/../ &&
-                        git cliff -c $config \
-                            --include-path "${D}/*" \
-                            --include-path "${D:1}/*" \
-                            -o ./${D}/${file}
-                    echo "Changelog for ${D} written to ${D}/${file}"
-                else
-                    cd ${directory}/../ && git cliff -c $config --include-path "${D}/*" -o ./${D}/${file}
-                    echo "Changelog for ${D} written to ${D}/${file}"
-                fi
+                git cliff -c $config \
+                    --include-path "${D}/*" \
+                    --unreleased --tag $ver \
+                    --prepend ./${D}/${file} 
+                echo "Changelog for ${D} written to ${D}/${file}"
             fi
         done
-        break
-        ;;
-    chl | changelog)
-        config="_utils/_cliff/all.toml"
-        file="CHANGELOG.md"
-        cd ${directory}/../ && git cliff -c $config -o ${file}
-        echo "Project Changelog Written to ${file}"
-        for D in *; do
-            if [ -d "${D}" ]; then
-                config="_utils/_cliff/dir.toml"
-                if [[ "$D" == *"tf"* || "$D" == *"utils"* ]]; then
-                    cd ${directory}/../ &&
-                        git cliff -c $config \
-                            --latest \
-                            --include-path "${D}/*" \
-                            --include-path "${D:1}/*" \
-                            -o ./${D}/${file}
-                    echo "Changelog for ${D} written to ${D}/${file}"
-                else
-                    cd ${directory}/../ && git cliff -c $config --include-path "${D}/*" -o ./${D}/${file}
-                    echo "Changelog for ${D} written to ${D}/${file}"
-                fi
+        git ls-files --modified
+        read -p $'\e[31mDo you want to stage the changelog updates for commit?\e[0m: ' -n 1 -r
+        echo # newline
+        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+            read -p $'\e[31mDo you want to undo the changelog updates?\e[0m: '
+            echo # newline
+            if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+                exit 1
             fi
-        done
-        break
+            git restore CHANGELOG.md */CHANGELOG.md
+            exit 1
+        fi
+        git add .
+        read -p $'\e[31mDouble check the staged files. Do you want to commit these changes?\e[0m: ' -n 1 -r
+        echo # newline
+        git status
+        echo # newline
+        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+            exit 1
+        fi
+        git commit -m "docs(project): updates changelog for ${ver}"
+        read -p $'\e[31mDo you want to tag this commit with ${ver}?\e[0m: ' -n 1 -r
+        echo # newline
+        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+            exit 1
+        fi
+        #TODO: use cz instead of git tag?
+        git tag -a $ver -m "behold! version ${ver}"
+        break 2
         ;;
     -h | --help)
         showHelp
