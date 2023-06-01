@@ -21,7 +21,7 @@
   .dg--btn-secondary {
     @apply transition;
     @apply dg--transition-effect;
-    background-top-color: rgb(var(--btn--secondary-rgb));
+    background: rgb(var(--btn--secondary-rgb));
     border: 2px solid rgb(var(--btn--secondary-rgb));
     border-top-width: 1px;
     border-top-color: rgb(var(--btn--secondary-highlight-rgb));
@@ -44,6 +44,8 @@ body.light-theme {
   --foreground-rgb: 33, 33, 33;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --btn--secondary-rgb: 190, 193, 194;
+  --btn-secondary-highlight-rgb: 92, 92, 92;
   --f04-bg-hex: #191b1b;
   --highlight-rgb: 175, 83, 7;
   --transform-duration: 500ms;
@@ -78,8 +80,8 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-  height: 100vh;
   color: rgb(var(--foreground-rgb));
+  height: 100vh;
   min-height: 100vh;
   overflow: overlay;
 }
@@ -107,14 +109,14 @@ body {
 }
 
 .skip-to-content {
-  background: rgb(var(--btn--secondary-rgb));
-  position: absolute;
-  transform: translateY(-100%);
-  opacity: 0%;
+  @apply dg--btn-secondary;
   @apply px-5;
   @apply py-3;
   @apply transition-all;
   @apply dg--transition-effect;
+  position: absolute;
+  transform: translateY(-100%);
+  opacity: 0%;
 
   &:focus {
     transform: translateY(0%);

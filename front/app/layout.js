@@ -25,6 +25,7 @@ export default function RootLayout({ children }) {
         className={`${dark ? "dark-theme" : "light-theme"} ${
           publicSans.className
         } text-lg flex flex-col`}
+        tabIndex={-1}
       >
         <Header />
         <main id="main" role="main" className="main flex flex-col items-center">{children}</main>
