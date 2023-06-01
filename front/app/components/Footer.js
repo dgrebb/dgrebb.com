@@ -8,7 +8,7 @@ export default async function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer role="contentinfo" className="footer">
-      {copyleft ? ( `${copyleft} ${year} A.D. ${copyright}` ) : null}
+      <small>{copyleft ? ( `${copyleft} ${year} A.D. ${copyright}` ) : null}</small>
     </footer>
   );
 }
