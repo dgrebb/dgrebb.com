@@ -84,12 +84,26 @@ body {
   overflow: overlay;
 }
 
-.header {
+.header,
+.footer {
   @apply p-6;
   @apply sm:p-8;
   @apply lg:p-14;
   @apply pb-0;
   position: relative;
+}
+
+.header {
+  position: relative;
+}
+
+.footer {
+  @apply pb-9;
+  @apply flex-col;
+  @apply text-center;
+  @apply opacity-20;
+  @apply mt-auto;
+  @apply text-sm;
 }
 
 .skip-to-content {
