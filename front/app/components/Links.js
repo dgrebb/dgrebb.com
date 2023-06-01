@@ -1,49 +1,58 @@
+import { BsLink } from "react-icons/bs";
 import {
-  FaFacebook,
-  FaFlickr,
+  FaFacebookSquare,
   FaGithub,
-  FaGoodreads,
+  FaGoodreadsG,
   FaInstagram,
-  FaLink,
-  FaLinkedin,
+  FaLinkedinIn,
   FaMastodon,
   FaSoundcloud,
   FaStackOverflow,
   FaTwitter,
 } from "react-icons/fa";
+import { TfiFlickr } from "react-icons/tfi";
 
 const Icons = {
   GitHub: FaGithub,
-  Facebook: FaFacebook,
+  Facebook: FaFacebookSquare,
   Instagram: FaInstagram,
   SoundCloud: FaSoundcloud,
   StackOverflow: FaStackOverflow,
-  LinkedIn: FaLinkedin,
+  LinkedIn: FaLinkedinIn,
   Twitter: FaTwitter,
   Mastodon: FaMastodon,
-  Flickr: FaFlickr,
-  Goodreads: FaGoodreads,
-  Link: FaLink,
+  Flickr: TfiFlickr,
+  Goodreads: FaGoodreadsG,
+  Link: BsLink,
 };
 
 import React from "react";
 
 export default function Links({ links }) {
   return (
-    <div role="complementary" className="flex-row h-8">
+    <ul
+      role="complementary"
+      aria-label="Links to Dan Grebb on The Internet"
+      className="link-list"
+    >
       {links.map((link, k) => {
+        const { url, title, icon } = link;
+        const linkClass = icon?.toLowerCase() || "";
         return (
-          <a
-            href={link.url}
-            title={link.title}
-            target="_blank"
-            className="links inline-block h-full p-1"
-            key={k}
-          >
-            {React.createElement(Icons[link.icon], { size: "100%" })}
-          </a>
+          <li className="link" key={k}>
+            <a
+              href={url}
+              title={title}
+              target="_blank"
+              className={`${linkClass}-icon inline-block h-full p-1`}
+            >
+              {React.createElement(Icons[icon ? icon : "Link"], {
+                size: "100%",
+              })}
+            </a>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 }
