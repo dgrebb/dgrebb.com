@@ -92,10 +92,6 @@ while test "$1" != --; do
         cz bump
         break
         ;;
-    v | version)
-        hello $(cz version -p)
-        break
-        ;;
     -h | --help)
         showHelp
         break

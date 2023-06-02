@@ -6,7 +6,7 @@ BOLDYELLOW="\e[1;${yellow}m"
 NC="\033[0m" # No Color
 
 hello() {
-    $directory/_scripts/hello.sh $1
+    $directory/_scripts/hello.sh
 }
 
 env() {
