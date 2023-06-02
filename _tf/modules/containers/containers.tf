@@ -68,8 +68,8 @@ resource "aws_ecs_task_definition" "front" {
     image        = "${aws_ecr_repository.front.repository_url}@${data.aws_ecr_image.front.image_digest}",
     essential    = true,
     network_mode = "awsvpc",
-    memory       = 1024,
-    cpu          = 512,
+    memory       = 512,
+    cpu          = 256,
     portMappings = [
       {
         containerPort = 3000,
@@ -97,8 +97,8 @@ resource "aws_ecs_task_definition" "front" {
   }])
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
-  memory                   = 2048
-  cpu                      = 1024
+  memory                   = 512
+  cpu                      = 256
   execution_role_arn       = aws_iam_role.this.arn
 }
 
@@ -135,8 +135,8 @@ resource "aws_ecs_task_definition" "strapi" {
     image        = "${aws_ecr_repository.strapi.repository_url}@${data.aws_ecr_image.strapi.image_digest}",
     essential    = true,
     network_mode = "awsvpc",
-    memory       = 1024,
-    cpu          = 512,
+    memory       = 512,
+    cpu          = 256,
     portMappings = [
       {
         containerPort = 1337,
@@ -164,8 +164,8 @@ resource "aws_ecs_task_definition" "strapi" {
   }])
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
-  memory                   = 2048
-  cpu                      = 1024
+  memory                   = 512
+  cpu                      = 256
   execution_role_arn       = aws_iam_role.this.arn
 }
 

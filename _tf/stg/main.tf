@@ -37,11 +37,13 @@ module "containers" {
 }
 
 module "database" {
-  source           = "../modules/database"
-  service_sg       = module.security.service_sg
-  db_subnet_group  = module.network.db_subnet_group
-  dashed_cmsdomain = local.dashed_cmsdomain
-  db_password      = var.db_password
+  source              = "../modules/database"
+  service_sg          = module.security.service_sg
+  db_subnet_group     = module.network.db_subnet_group
+  dashed_cmsdomain    = local.dashed_cmsdomain
+  db_password         = var.db_password
+  instance_class      = "db.t2.micro"
+  skip_final_snapshot = true
 }
 
 module "management" {
