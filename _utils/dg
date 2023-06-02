@@ -22,7 +22,9 @@ showHelp() {
     \n\n"
 }
 
-hello
+if [[ $1 != "v" ]]; then
+    hello
+fi
 
 while test "$1" != --; do
     case $1 in
@@ -88,7 +90,11 @@ while test "$1" != --; do
             exit 1
         fi
         cz bump
-        break 2
+        break
+        ;;
+    v | version)
+        hello $(cz version -p)
+        break
         ;;
     -h | --help)
         showHelp
