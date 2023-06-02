@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import Links from "./components/Links";
 import Loading from "./loading";
+import { Suspense } from "react";
 
 const homeAPI = `${process.env.API_URL}/home`;
 
@@ -15,15 +16,17 @@ export default async function Home() {
     <>
       <section className="bio text-center">
         {image ? (
-          <Image
-            src={image.url}
-            alt={image.alternativeText}
-            title="Hi!"
-            width={120}
-            height={120}
-            className="m-auto rounded-full"
-            aria-hidden="true"
-          />
+          <Suspense fallback={<Loading />}>
+            <Image
+              src={image.url}
+              alt={image.alternativeText}
+              title="Hi!"
+              width={120}
+              height={120}
+              className="m-auto rounded-full"
+              aria-hidden="true"
+            />
+          </Suspense>
         ) : null}
         <h1 className="headline">{headline}</h1>
         <ReactMarkdown>{intro}</ReactMarkdown>

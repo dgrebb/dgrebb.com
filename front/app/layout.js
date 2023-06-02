@@ -4,6 +4,8 @@ import "./globals.css";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export const publicSans = Public_Sans({
   subsets: ["latin"],
@@ -28,12 +30,17 @@ export default function RootLayout({ children }) {
         tabIndex={-1}
       >
         <Header />
-        <main id="main" role="main" className="main flex flex-col items-center">{children}</main>
+        <Suspense fallback={<Loading />}>
+          <main
+            id="main"
+            role="main"
+            className="main flex flex-col items-center"
+          >
+            {children}
+          </main>
+        </Suspense>
         <Footer />
-        <PlausibleProvider
-          domain="dgrebb.com"
-          trackOutboundLinks={true}
-        />
+        <PlausibleProvider domain="dgrebb.com" trackOutboundLinks={true} />
       </body>
     </html>
   );
