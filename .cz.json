@@ -3,6 +3,7 @@
     "name": "cz_conventional_commits",
     "version": "1.0.0",
     "tag_format": "$major.$minor.$patch$prerelease",
-    "version_type": "semver"
+    "version_type": "semver",
+    "bump_message": "release $current_version → $new_version [skip-ci]"
   }
 }
