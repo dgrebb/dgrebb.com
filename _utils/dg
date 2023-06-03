@@ -60,7 +60,7 @@ while test "$1" != --; do
             if [[ ! $REPLY =~ ^[Yy]$ ]]; then
                 exit 1
             fi
-            git restore CHANGELOG.md */CHANGELOG.md
+            git restore CHANGELOG.md
             exit 1
         fi
         git add .
