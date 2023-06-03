@@ -46,27 +46,16 @@ while test "$1" != --; do
         ;;
     b | bump)
         cd $directory/../
-        config="_utils/_cliff/all.toml"
+        config="_utils/_cliff/config.toml"
         file="CHANGELOG.md"
         str=$(cz bump --dry-run | awk '/tag to create: /')
         ver=${str//tag to create: /}
         git cliff -c $config --unreleased --tag $ver --prepend ${file}
-        echo "Project Changelog Written to ${file}"
-        for D in *; do
-            if [ -d "${D}" ]; then
-                config="_utils/_cliff/dir.toml"
-                git cliff -c $config \
-                    --include-path "${D}/*" \
-                    --unreleased --tag $ver \
-                    --prepend ./${D}/${file} 
-                echo "Changelog for ${D} written to ${D}/${file}"
-            fi
-        done
         git ls-files --modified
         read -p $'\e[31mDo you want to stage the changelog updates for commit?\e[0m: ' -n 1 -r
         echo # newline
         if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-            read -p $'\e[31mDo you want to undo the changelog updates?\e[0m: '
+            read -p $'\e[31mDo you want to undo the changelog updates?\e[0m: ' -n 1 -r
             echo # newline
             if [[ ! $REPLY =~ ^[Yy]$ ]]; then
                 exit 1

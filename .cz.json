@@ -1,9 +1,8 @@
 {
   "commitizen": {
     "name": "cz_conventional_commits",
-    "tag_format": "$version",
-    "version_type": "semver",
     "version": "1.0.0",
-    "major_version_zero": true
+    "tag_format": "$major.$minor.$patch$prerelease",
+    "version_type": "semver"
   }
 }
