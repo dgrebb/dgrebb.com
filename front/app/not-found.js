@@ -1,4 +1,4 @@
-import "./sty/not-found.css";
+import "./c/not-found.css";
 
 export const metadata = {
   title: "404. Oh noes!",

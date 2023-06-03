@@ -1,6 +1,6 @@
 import PlausibleProvider from "next-plausible";
 import { Public_Sans } from "next/font/google";
-import "./globals.css";
+import "./c/globals.css";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
