@@ -16,11 +16,11 @@ export default function NavHome({ navHeading }) {
       ? setDarkTheme(true)
       : setDarkTheme(false);
     setVisible(true);
+    document.body.classList.add('ready');
   }, []);
 
   function toggleTheme(e) {
-    const bodyClasses = document.body.classList;
-    e.currentTarget.blur();
+    var bodyClasses = document.body.classList;
     setDarkTheme((curr) => !curr);
     bodyClasses.toggle(dark);
     bodyClasses.toggle(light);
