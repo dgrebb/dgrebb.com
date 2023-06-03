@@ -20,11 +20,16 @@ while test "$1" != --; do
         break
         ;;
     b | build)
+        prepBuild l
         cdfront && npm run build
         break
         ;;
     s | start)
-        cdfront && npm run start
+        cdfront && \
+        mkdir -p .next/standalone/.next
+        cp -r .next/static .next/standalone/.next
+        __NEXT_PRIVATE_PREBUNDLED_REACT=next \
+        node .next/standalone/server.js
         break
         ;;
     ls | lstart)
