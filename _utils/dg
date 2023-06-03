@@ -72,7 +72,7 @@ while test "$1" != --; do
         if [[ ! $REPLY =~ ^[Yy]$ ]]; then
             exit 1
         fi
-        git commit -m "docs(project): updates changelog for ${ver}"
+        git commit -m "chore(release): prepare for ${ver}"
         read -p $'\e[31mDo you want to bump the version now?\e[0m: ' -n 1 -r
         echo # newline
         if [[ ! $REPLY =~ ^[Yy]$ ]]; then
