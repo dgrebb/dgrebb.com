@@ -42,6 +42,7 @@
 :root,
 body.light-theme {
   --foreground-rgb: 33, 33, 33;
+  --foreground-rgb-faded: 179, 181, 181;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --btn--secondary-rgb: 190, 193, 194;
@@ -55,6 +56,7 @@ body.light-theme {
   :root,
   body.dark-theme {
     --foreground-rgb: 223, 224, 224;
+    --foreground-rgb-faded: 89,	90, 91;
     --background-start-rgb: 35, 36, 38;
     --background-end-rgb: 29, 30, 32;
     --highlight-rgb: 255, 255, 21;
@@ -71,8 +73,7 @@ html {
 }
 
 body {
-  @apply transition-colors;
-  @apply dg--transition-effect;
+  /* @apply transition-colors; */
   background: linear-gradient(
       to bottom,
       transparent,
@@ -83,6 +84,20 @@ body {
   height: 100vh;
   min-height: 100vh;
   overflow: overlay;
+  .header,
+  .main,
+  .footer {
+    @apply transition-all;
+    @apply dg--transition-effect;
+    @apply opacity-0;
+  }
+  &.ready {
+    .header,
+    .main,
+    .footer {
+      @apply opacity-100;
+    }
+  }
 }
 
 .header,
@@ -97,15 +112,6 @@ body {
   position: relative;
 }
 
-.footer {
-  @apply pb-9;
-  @apply flex-col;
-  @apply text-center;
-  @apply opacity-20;
-  @apply mt-auto;
-  @apply text-sm;
-}
-
 .skip-to-content {
   @apply dg--btn-secondary;
   @apply px-5;
@@ -114,11 +120,11 @@ body {
   @apply dg--transition-effect;
   position: absolute;
   transform: translateY(-100%);
-  opacity: 0%;
+  @apply opacity-0;
 
   &:focus {
     transform: translateY(0%);
-    opacity: 100%;
+    @apply opacity-100;
   }
 }
 
@@ -178,7 +184,6 @@ body {
 .bio,
 .post,
 .posts,
-.links,
 .footer {
   a {
     @apply dg--link-hover;
@@ -188,7 +193,8 @@ body {
 .bio,
 .post,
 .posts,
-.footer {
+.footer,
+.not-found {
   a {
     @apply pb-0.5;
     color: rgb(var(--foreground-rgb));
@@ -230,13 +236,13 @@ body {
     @apply m-2;
     @apply w-8;
     a {
-      @apply opacity-30;
       @apply self-center;
-      @apply transition-opacity;
+      color: rgb(var(--foreground-rgb-faded));
+      @apply transition-colors;
       @apply dg--transition-effect;
       &:hover,
       &:focus {
-        @apply opacity-100;
+        color: rgb(var(--highlight-rgb));
       }
     }
     .goodreads-icon,
@@ -249,6 +255,13 @@ body {
   }
 }
 
-.f04 {
-  background-color: var(--f04-bg-hex);
+.footer {
+  @apply pb-9;
+  @apply flex-col;
+  @apply text-center;
+  @apply mt-auto;
+  @apply text-sm;
+  small {
+    @apply opacity-20;
+  }
 }
