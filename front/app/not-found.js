@@ -1,4 +1,4 @@
-import Link from "next/link";
+import "./sty/not-found.css";
 
 export const metadata = {
   title: "404. Oh noes!",
@@ -7,14 +7,10 @@ export const metadata = {
 
 export default function NotFound() {
   return (
-    <>
-      <img
-        src="https://s.dgrebb.com/404.gif"
-        alt="404 animation"
-        aria-hidden="true"
-      />
-      <p>404! Nothing to be found here.</p>
-      <Link href="/">Go Home</Link>
-    </>
+    <section className="not-found">
+      <h1>404</h1>
+      <p>Nothing found here.</p>
+      <a href="/">Go Home</a>
+    </section>
   );
 }
