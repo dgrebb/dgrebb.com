@@ -33,6 +33,8 @@ module "database" {
   db_subnet_group  = module.network.db_subnet_group
   dashed_cmsdomain = var.dashed_cmsdomain
   db_password      = var.db_password
+  instance_class      = "db.t2.micro"
+  skip_final_snapshot = true
 }
 
 module "management" {
