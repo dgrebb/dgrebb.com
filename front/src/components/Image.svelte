@@ -43,6 +43,5 @@
 {:else if failed}
   <p>That image wasn't found.</p>
 {:else if loading}
-  <!-- TODO: implement blurhash here -->
   <Loading />
 {/if}
