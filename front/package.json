@@ -1,27 +1,25 @@
 {
-  "name": "dgrebb.com",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev -H local.dgrebb.com",
-    "build": "next build",
-    "lstart": "next start -H local.dgrebb.com",
-    "start": "next start",
-    "serve": "npx serve@latest out",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "autoprefixer": "10.4.14",
-    "eslint": "8.41.0",
-    "eslint-config-next": "13.4.1",
-    "next": "13.4.1",
-    "next-plausible": "^3.7.2",
-    "postcss": "8.4.23",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-icons": "^4.8.0",
-    "react-markdown": "^8.0.7",
-    "sharp": "^0.32.1",
-    "tailwindcss": "3.3.2"
-  }
+	"name": "svelte",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"devDependencies": {
+		"@iconify/svelte": "^3.1.4",
+		"@sveltejs/adapter-auto": "^2.0.0",
+		"@sveltejs/kit": "^1.5.0",
+		"autoprefixer": "^10.4.14",
+		"postcss": "^8.4.24",
+		"postcss-nesting": "^11.2.2",
+		"svelte": "^3.54.0",
+		"tailwindcss": "^3.3.2",
+		"vite": "^4.3.0"
+	},
+	"type": "module",
+	"dependencies": {
+		"svelte-markdown": "^0.2.3"
+	}
 }

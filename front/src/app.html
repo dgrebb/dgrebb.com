@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%sveltekit.assets%/favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+    %sveltekit.head%
+  </head>
+  <body data-sveltekit-preload-data="hover" class="text-lg flex flex-col">
+    <noscript>
+      <style>
+		/* TODO: apply styles for JS-disabled viewers */
+        body {
+          opacity: 1;
+        }
+        body header,
+        body main,
+        body footer {
+          opacity: 1 !important;
+        }
+      </style>
+    </noscript>
+    <div style="display: contents">%sveltekit.body%</div>
+  </body>
+</html>
