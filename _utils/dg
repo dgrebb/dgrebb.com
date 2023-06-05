@@ -81,6 +81,14 @@ while test "$1" != --; do
         cz bump
         break
         ;;
+    g | github )
+        open https://github.com/dgrebb/dgrebb.com
+        break
+        ;;
+    gp | github-project )
+        open https://github.com/users/dgrebb/projects/12
+        break
+        ;;
     -h | --help)
         showHelp
         break
