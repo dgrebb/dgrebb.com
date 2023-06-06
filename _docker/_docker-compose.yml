@@ -2,12 +2,12 @@ version: '3'
 name: dgrebb-com
 services:
 
-  strapi:
+  back:
     platform: linux/amd64
     image: ${CMS_DOMAIN}
     build:
-      context: ../strapi
-      dockerfile: ../_docker/strapi.Dockerfile
+      context: ../back
+      dockerfile: ../_docker/back.Dockerfile
     restart: unless-stopped
     ports:
       - 1337:1337
@@ -28,6 +28,6 @@ services:
     ports:
       - 3000:3000
     links:
-      - "strapi:strapi"
+      - "back:back"
     depends_on:
-      - strapi
+      - back

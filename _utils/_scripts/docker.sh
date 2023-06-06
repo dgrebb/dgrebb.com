@@ -7,58 +7,57 @@ if [ $# -eq 0 ]; then
     printDgErr "Missing args!"
 else
     while test "$1" != --; do
+        setEnv $2
+        prepBuild $2
+        img $2
+        fimg $2
         case $1 in
         b | build)
-            printDgMsg "Building ${2}..."
-            prepBuild $2
             cd $directory/../_docker
-            docker-compose build
+            printDgMsg "Building ${2}..."
+            docker-compose -f _docker-compose.yml build
             break 2
             ;;
         rb | rebuild)
-            printDgMsg "Rebuilding ${2}..."
-            prepBuild $2
             cd $directory/../_docker
-            docker-compose build --no-cache
+            printDgMsg "Rebuilding ${2}..."
+            docker-compose -f _docker-compose.yml build --no-cache
             break 2
             ;;
         bf | build-front)
-            prepBuild $2
-            fimg $2
             printDgMsg "Building ${front_img}..."
-            docker buildx build --platform linux/amd64 -t ${front_img} \
+            docker-compose -f _docker-compose.yml build front
             break 2
             ;;
         rbf | rebuild-front)
-            prepBuild $2
             cd $directory/../_docker
             printDgMsg "Rebuilding ${2}..."
-            docker-compose build front --no-cache
+            docker-compose -f _docker-compose.yml build front --no-cache
             break 2
             ;;
-        bs | build-strapi)
-            printDgMsg "Building ${image_name}..."
-            env $2
-            docker buildx build --platform linux/amd64 \
-                -t ${image_name} ../strapi/.
+        bb | build-back)
+            cd $directory/../_docker
+            printDgMsg "Building ${back_img}..."
+            docker-compose -f _docker-compose.yml build back
             break 2
             ;;
         r | run)
-            printDgMsg "Running local container..."
-            prepBuild $2
             cd $directory/../_docker
-            docker-compose up
+            printDgMsg "Running local container..."
+            docker-compose -f _docker-compose.yml up
+            break 2
+            ;;
+        rba | run-back)
+            printDgMsg "Running local ${back_img}..."
+            docker run -p 1337:1337 -it ${back_img}
             break 2
             ;;
         rf | run-front)
-            fimg $2
             printDgMsg "Running local ${front_img}..."
             docker run -p 80:3000 -it ${front_img}
             break 2
             ;;
         p | push)
-            img $2
-            fimg $2
             printDgMsg "Pushing ${front_img}..."
             aws ecr get-login-password --region ${region} |
                 docker login --username AWS --password-stdin ${front_ecr_uri}
@@ -66,26 +65,24 @@ else
             # archive ${front_ecr_uri}
             docker push ${front_ecr_uri}:latest
             # -----------------
-            printDgMsg "Pushing ${strapi_img}..."
+            printDgMsg "Pushing ${back_img}..."
             aws ecr get-login-password --region ${region} |
-                docker login --username AWS --password-stdin ${strapi_ecr_uri}
-            tag ${strapi_img} ${strapi_ecr_uri}
-            # archive ${strapi_ecr_uri}
-            docker push ${strapi_ecr_uri}:latest
+                docker login --username AWS --password-stdin ${back_ecr_uri}
+            tag ${back_img} ${back_ecr_uri}
+            # archive ${back_ecr_uri}
+            docker push ${back_ecr_uri}:latest
             break 2
             ;;
-        pc | push-cms)
-            img $2
-            printDgMsg "Pushing ${strapi_img}..."
+        pb | push-back)
+            printDgMsg "Pushing ${back_img}..."
             aws ecr get-login-password --region ${region} |
-                docker login --username AWS --password-stdin ${strapi_ecr_uri}
-            tag ${strapi_img} ${strapi_ecr_uri}
-            # archive ${strapi_ecr_uri}:latest
-            docker push ${strapi_ecr_uri}:latest
+                docker login --username AWS --password-stdin ${back_ecr_uri}
+            tag ${back_img} ${back_ecr_uri}
+            # archive ${back_ecr_uri}:latest
+            docker push ${back_ecr_uri}:latest
             break 2
             ;;
         pf | push-front)
-            fimg $2
             printDgMsg "Pushing ${front_img}..."
             aws ecr get-login-password --region ${region} |
                 docker login --username AWS --password-stdin ${front_ecr_uri}

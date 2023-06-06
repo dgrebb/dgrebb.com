@@ -25,11 +25,7 @@ while test "$1" != --; do
         break
         ;;
     s | start)
-        cdfront && \
-        mkdir -p .next/standalone/.next
-        cp -r .next/static .next/standalone/.next
-        __NEXT_PRIVATE_PREBUNDLED_REACT=next \
-        node .next/standalone/server.js
+        # TODO: refactor for Svelte
         break
         ;;
     ls | lstart)

@@ -18,7 +18,7 @@
     "strapi-blurhash": "^1.1.1"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "dgrebb"
   },
   "strapi": {
     "uuid": "a88d5600-baef-47fb-8bf4-ff51888cc148"
