@@ -6,7 +6,7 @@ if [ $# -eq 0 ]; then
     printf "\n${red}Argument for local (l) or production (p) is required.\n"
     exit 1
 fi
-strapiEnv=$directory/../strapi/.env
+strapiEnv=$directory/../back/.env
 frontEnv=$directory/../front/.env
 >$strapiEnv
 >$frontEnv

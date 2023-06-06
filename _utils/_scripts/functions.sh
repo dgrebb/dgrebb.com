@@ -10,7 +10,7 @@ hello() {
 }
 
 env() {
-    cd $directory/../strapi
+    cd $directory/../back
     if [ $# -eq 0 ] || [ $1 = p ]; then
         setEnv p
         img p
@@ -25,13 +25,13 @@ env() {
 
 img() {
     if [ $# -eq 0 ] || [ $1 = p ]; then
-        strapi_img=$(pass dg/cms/domain)
-        strapi_ecr_uri=$(pass dg/cms/ecr-uri)
+        back_img=$(pass dg/cms/domain)
+        back_ecr_uri=$(pass dg/cms/ecr-uri)
     elif [ $1 = s ]; then
-        strapi_img=$(pass dg/cms/s/domain)
-        strapi_ecr_uri=$(pass dg/cms/s/ecr-uri)
+        back_img=$(pass dg/cms/s/domain)
+        back_ecr_uri=$(pass dg/cms/s/ecr-uri)
     else
-        strapi_img=$(pass dg/cms/local-domain)
+        back_img=$(pass dg/cms/local-domain)
     fi
 }
 
@@ -54,12 +54,12 @@ setEnv() {
 }
 
 shredEnv() {
-    if [ -f $directory/../strapi/.env ]; then
+    if [ -f $directory/../back/.env ]; then
         printDgMsg "Shredding Strapi .env..."
-        gshred $directory/../strapi/.env && rm $directory/../strapi/.env
+        gshred $directory/../back/.env && rm $directory/../back/.env
     fi
     if [ -f $directory/../front/.env ]; then
-        printDgMsg "Shredding Next .env..."
+        printDgMsg "Shredding Svelte .env..."
         gshred $directory/../front/.env && rm $directory/../front/.env
     fi
     if [ -f $directory/../_docker/.env ]; then
@@ -93,11 +93,11 @@ tag() {
 }
 
 run() {
-    docker run -p 1337:1337 -it ${image_name}
+    docker run -p 1337:1337 -it ${back_img}
 }
 
 cdcms() {
-    cd ${directory}/../strapi
+    cd ${directory}/../back
 }
 
 cdfront() {
