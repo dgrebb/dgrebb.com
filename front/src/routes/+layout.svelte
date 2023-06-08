@@ -1,3 +1,7 @@
+<script context="module">
+  export const prerender = true;
+</script>
+
 <script>
     import "../styles/global.css";
     import Footer from "../components/Footer.svelte";

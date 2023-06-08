@@ -25,11 +25,11 @@ while test "$1" != --; do
         break
         ;;
     s | start)
-        # TODO: refactor for Svelte
+        cdfront && serve ./build
         break
         ;;
-    ls | lstart)
-        cdfront && npm run lstart
+    p | preview)
+        cdfront && npm run preview
         break
         ;;
     ?)
