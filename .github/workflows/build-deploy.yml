@@ -1,0 +1,45 @@
+name: Build & Deploy
+
+on:
+  workflow_dispatch:
+
+  repository_dispatch:
+    types:
+      - strapi
+
+jobs:
+  build:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Add Masks
+        run: |
+          echo "::add-mask::${{ github.token }}"
+          echo "::add-mask::${{ secrets.PUBLIC_API_URL }}"
+          echo "::add-mask::${{ secrets.API_KEY }}"
+          echo "::add-mask::${{ secrets.PUBLIC_SENTRY_DSN }}"
+          echo "::add-mask::${{ secrets.PUBLIC_ENV }}"
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: dgrebb/dgrebb.com
+          ref: develop
+          token: ${{ github.token }}
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        env:
+          PUBLIC_API_URL: ${{ secrets.PUBLIC_API_URL }}
+          API_KEY: ${{ secrets.API_KEY }}
+          PUBLIC_SENTRY_DSN: ${{ secrets.PUBLIC_SENTRY_DSN }}
+          PUBLIC_ENV: ${{ secrets.PUBLIC_ENV }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: "18.x"
+
+      - run: |
+          echo "Building..."
+          cd front
+          npm ci
+          npm run build
