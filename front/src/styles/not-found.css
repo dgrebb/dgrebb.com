@@ -1,3 +1,8 @@
+@import "./components.css";
+@import "./utilities.css";
+@tailwind components;
+@tailwind utilities;
+
 .not-found {
   @apply flex;
   @apply flex-col;

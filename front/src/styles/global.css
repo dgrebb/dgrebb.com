@@ -1,75 +1,9 @@
 @import "./fonts.css";
+@import "./components.css";
+@import "./utilities.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer components {
-  .dg--link-hover {
-    @apply transition-colors;
-    @apply dg--transition-effect;
-    color: rgb(var(--foreground-rgb));
-    &:hover,
-    &:focus {
-      color: rgb(var(--highlight-rgb));
-    }
-  }
-  .dg--btn-primary {
-    @apply transition-colors;
-    &:hover,
-    &:focus {
-    }
-  }
-  .dg--btn-secondary {
-    @apply transition;
-    @apply dg--transition-effect;
-    background: rgb(var(--btn--secondary-rgb));
-    border: 2px solid rgb(var(--btn--secondary-rgb));
-    border-top-width: 1px;
-    border-top-color: rgb(var(--btn--secondary-highlight-rgb));
-    &:hover,
-    &:focus {
-      @apply brightness-125;
-    }
-  }
-}
-
-@layer utilities {
-  .dg--font-ps {
-    font-family: "Public Sans", sans-serif;
-  }
-  .dg--font-psb {
-    font-family: "Public Sans Bold", sans-serif;
-  }
-  .dg--font-psbl {
-    font-family: "Public Sans Black", sans-serif;
-  }
-  .dg--transition-effect {
-    transition-duration: var(--transform-duration);
-    transition-timing-function: var(--transform-timing-function);
-  }
-  .dg--light-theme {
-    --foreground-rgb: 33, 33, 33;
-    --foreground-rgb-faded: 179, 181, 181;
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255;
-    --btn--secondary-rgb: 190, 193, 194;
-    --btn-secondary-highlight-rgb: 92, 92, 92;
-    --highlight-rgb: 175, 83, 7;
-    --transform-duration: 500ms;
-    --transform-timing-function: ease-in-out;
-  }
-  .dg--dark-theme {
-    --foreground-rgb: 223, 224, 224;
-    --foreground-rgb-faded: 89, 90, 91;
-    --background-start-rgb: 35, 36, 38;
-    --background-end-rgb: 29, 30, 32;
-    --highlight-rgb: 255, 255, 21;
-    --btn--secondary-rgb: 54, 54, 56;
-    --btn-secondary-highlight-rgb: 92, 92, 92;
-    --transform-duration: 500ms;
-    --transform-timing-function: ease-in-out;
-  }
-}
 
 @media (prefers-color-scheme: light) {
   :root {
