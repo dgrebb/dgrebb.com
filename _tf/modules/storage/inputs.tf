@@ -1,6 +1,4 @@
-variable "cmsdomain" {}
-variable "cdndomain" {}
-variable "dashed_cmsdomain" {}
-variable "dashed_cdndomain" {}
+variable "domain" {}
+variable "dashed_domain" {}
 variable "force_destroy" {}
 variable "cf_access_identity" {}

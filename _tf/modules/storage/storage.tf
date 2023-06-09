@@ -2,32 +2,32 @@
 # Buckets and Access
 # ------------------------------------------------------------------------------
 
-resource "aws_s3_bucket" "cms" {
-  bucket = var.dashed_cmsdomain
+resource "aws_s3_bucket" "assets" {
+  bucket = var.dashed_domain
   force_destroy = var.force_destroy
 }
 
-resource "aws_s3_bucket" "cdn_logs" {
-  bucket = "logs-${var.dashed_cdndomain}"
+resource "aws_s3_bucket" "logs" {
+  bucket = "${var.dashed_domain}-cdn-logs"
   force_destroy = var.force_destroy
 }
 
-resource "aws_s3_bucket_ownership_controls" "cms" {
-  bucket = aws_s3_bucket.cms.id
+resource "aws_s3_bucket_ownership_controls" "assets" {
+  bucket = aws_s3_bucket.assets.id
   rule {
     object_ownership = "BucketOwnerPreferred"
   }
 }
 
-resource "aws_s3_bucket_ownership_controls" "cdn_logs" {
-  bucket = aws_s3_bucket.cdn_logs.id
+resource "aws_s3_bucket_ownership_controls" "logs" {
+  bucket = aws_s3_bucket.logs.id
   rule {
     object_ownership = "BucketOwnerPreferred"
   }
 }
 
-resource "aws_s3_bucket_public_access_block" "cms" {
-  bucket = aws_s3_bucket.cms.id
+resource "aws_s3_bucket_public_access_block" "assets" {
+  bucket = aws_s3_bucket.assets.id
 
   block_public_acls       = false
   ignore_public_acls      = false
@@ -35,8 +35,8 @@ resource "aws_s3_bucket_public_access_block" "cms" {
   restrict_public_buckets = false
 }
 
-resource "aws_s3_bucket_public_access_block" "cdn_logs" {
-  bucket = aws_s3_bucket.cdn_logs.id
+resource "aws_s3_bucket_public_access_block" "logs" {
+  bucket = aws_s3_bucket.logs.id
 
   block_public_acls       = true
   ignore_public_acls      = true
@@ -44,18 +44,18 @@ resource "aws_s3_bucket_public_access_block" "cdn_logs" {
   restrict_public_buckets = true
 }
 
-resource "aws_s3_bucket_acl" "cms" {
+resource "aws_s3_bucket_acl" "assets" {
   depends_on = [
-    aws_s3_bucket_ownership_controls.cms,
-    aws_s3_bucket_public_access_block.cms,
+    aws_s3_bucket_ownership_controls.assets,
+    aws_s3_bucket_public_access_block.assets,
   ]
 
-  bucket = aws_s3_bucket.cms.id
+  bucket = aws_s3_bucket.assets.id
   acl    = "public-read"
 }
 
-resource "aws_s3_bucket_acl" "cdn_logs" {
-  bucket = aws_s3_bucket.cdn_logs.id
+resource "aws_s3_bucket_acl" "logs" {
+  bucket = aws_s3_bucket.logs.id
   acl    = "private"
 }
 
@@ -63,7 +63,7 @@ resource "aws_s3_bucket_acl" "cdn_logs" {
 # IAM Roles and Policies
 # ------------------------------------------------------------------------------
 
-data "aws_iam_policy_document" "cms" {
+data "aws_iam_policy_document" "assets" {
   statement {
     actions = [
       "s3:PutObject",
@@ -72,7 +72,7 @@ data "aws_iam_policy_document" "cms" {
       "s3:PutObjectAcl",
     ]
     resources = [
-      "${aws_s3_bucket.cms.arn}/*"
+      "${aws_s3_bucket.assets.arn}/*"
     ]
     principals {
       type        = "*"
@@ -85,7 +85,7 @@ data "aws_iam_policy_document" "cms" {
       "s3:ListBucket"
     ]
     resources = [
-      aws_s3_bucket.cms.arn
+      aws_s3_bucket.assets.arn
     ]
     principals {
       type        = "*"
@@ -95,7 +95,7 @@ data "aws_iam_policy_document" "cms" {
 
   statement {
     actions   = ["s3:GetObject"]
-    resources = ["${aws_s3_bucket.cms.arn}/*"]
+    resources = ["${aws_s3_bucket.assets.arn}/*"]
 
     principals {
       type        = "AWS"
@@ -105,7 +105,7 @@ data "aws_iam_policy_document" "cms" {
 
   statement {
     actions   = ["s3:ListBucket"]
-    resources = ["${aws_s3_bucket.cms.arn}"]
+    resources = ["${aws_s3_bucket.assets.arn}"]
 
     principals {
       type        = "AWS"
@@ -118,20 +118,20 @@ data "aws_iam_policy_document" "cms" {
 # Bucket Policies and CORS Config
 # ------------------------------------------------------------------------------
 
-resource "aws_s3_bucket_policy" "cms" {
-  bucket = aws_s3_bucket.cms.id
-  policy = data.aws_iam_policy_document.cms.json
+resource "aws_s3_bucket_policy" "assets" {
+  bucket = aws_s3_bucket.assets.id
+  policy = data.aws_iam_policy_document.assets.json
 }
 
-resource "aws_s3_bucket_cors_configuration" "cms" {
-  bucket = aws_s3_bucket.cms.id
+resource "aws_s3_bucket_cors_configuration" "assets" {
+  bucket = aws_s3_bucket.assets.id
 
   cors_rule {
     allowed_headers = ["*"]
     allowed_methods = ["PUT", "POST", "GET"]
     allowed_origins = [
-      "http://local.${var.cmsdomain}",
-      "https://${var.cmsdomain}"
+      "http://local.${var.domain}",
+      "https://${var.domain}"
     ]
     expose_headers  = []
     max_age_seconds = 3000
@@ -149,7 +149,7 @@ resource "aws_s3_bucket_cors_configuration" "cms" {
 
 # TODO: Refactor as a looped map
 resource "aws_s3_object" "index_html" {
-  bucket       = aws_s3_bucket.cms.id
+  bucket       = aws_s3_bucket.assets.id
   key          = "index.html"
   source       = "${path.module}/defaults/index.html"
   content_type = "text/html"
@@ -157,7 +157,7 @@ resource "aws_s3_object" "index_html" {
 }
 
 resource "aws_s3_object" "img_index_html" {
-  bucket       = aws_s3_bucket.cms.id
+  bucket       = aws_s3_bucket.assets.id
   key          = "img/index.html"
   source       = "${path.module}/defaults/index.html"
   content_type = "text/html"
@@ -165,7 +165,7 @@ resource "aws_s3_object" "img_index_html" {
 }
 
 resource "aws_s3_object" "wonka" {
-  bucket       = aws_s3_bucket.cms.id
+  bucket       = aws_s3_bucket.assets.id
   key          = "tip.png"
   source       = "${path.module}/defaults/tip.png"
   content_type = "image/png"
@@ -173,7 +173,7 @@ resource "aws_s3_object" "wonka" {
 }
 
 resource "aws_s3_object" "notfound_html" {
-  bucket       = aws_s3_bucket.cms.id
+  bucket       = aws_s3_bucket.assets.id
   key          = "404.html"
   source       = "${path.module}/defaults/404.html"
   content_type = "text/html"
@@ -181,7 +181,7 @@ resource "aws_s3_object" "notfound_html" {
 }
 
 resource "aws_s3_object" "notfound_img" {
-  bucket       = aws_s3_bucket.cms.id
+  bucket       = aws_s3_bucket.assets.id
   key          = "404.gif"
   source       = "${path.module}/defaults/404.gif"
   content_type = "image/gif"
