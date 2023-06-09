@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install wget
+      - name: (Optional) Local Docker Package Install
         if: ${{ env.ACT }}
         run: |
           apt-get update
@@ -54,7 +54,9 @@ jobs:
           echo PUBLIC_ENV=${{ secrets.PUBLIC_ENV }} >> front/.env
           cat front/.env
 
-      - name: Build
+      - name: Build  
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: bash _ci/build.sh
 
       - name: Deploy
