@@ -9,7 +9,6 @@ on:
 
 jobs:
   build:
-    name: Build & Deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -20,6 +19,10 @@ jobs:
           echo "::add-mask::${{ secrets.API_KEY }}"
           echo "::add-mask::${{ secrets.PUBLIC_SENTRY_DSN }}"
           echo "::add-mask::${{ secrets.PUBLIC_ENV }}"
+          echo "::add-mask::${{ secrets.AWS_SECRET_ACCESS_KEY_ID }}"
+          echo "::add-mask::${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+          echo "::add-mask::${{ secrets.AWS_REGION }}"
+          echo "::add-mask::${{ secrets.AWS_S3_BUCKET }}"
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -29,21 +32,23 @@ jobs:
           token: ${{ github.token }}
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
       - name: Set .env
         run: |
+          ls -la
           touch front/.env
-          # echo PUBLIC_API_URL=${{ secrets.PUBLIC_API_URL }} >> front/.env
-          echo PUBLIC_API_URL=http://host.docker.internal:1337/api >> front/.env
+          echo PUBLIC_API_URL=${{ secrets.PUBLIC_API_URL }} >> front/.env
           echo API_KEY=${{ secrets.API_KEY }} >> front/.env
           echo PUBLIC_SENTRY_DSN=${{ secrets.PUBLIC_SENTRY_DSN }} >> front/.env
           echo PUBLIC_ENV=${{ secrets.PUBLIC_ENV }} >> front/.env
           cat front/.env
 
       - name: Build
+        timeout-minutes: 2
+        continue-on-error: true
         run: |
           echo "Building..."
           cd front
@@ -51,14 +56,28 @@ jobs:
           npm run build
 
       - name: Deploy
-        run: |
-          echo "Deployiing..."
-        # uses: jakejarvis/s3-sync-action@master
-        # with:
-        #   args: --acl public-read --follow-symlinks --delete
-          # env:
-          #   AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          #   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          #   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          #   AWS_REGION: 'us-west-1'   # optional: defaults to us-east-1
-          #   SOURCE_DIR: 'public'      # optional: defaults to entire repository
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          SOURCE_DIR: 'front/build'
+
+  # deploy:
+  #   name: Deploy
+  #   runs-on: ubuntu-latest
+  #   if: success() || failure()
+
+  #   steps:
+  #     - uses: jakejarvis/s3-sync-action@master
+  #       with:
+  #         args: --acl public-read --follow-symlinks --delete
+  #       env:
+  #         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+  #         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #         AWS_REGION: ${{ secrets.AWS_REGION }}
+  #         SOURCE_DIR: 'build'
