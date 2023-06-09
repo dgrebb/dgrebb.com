@@ -4,4 +4,4 @@ echo "Building..."
 cd front
 npm ci
 npm run build
-exit 0
+gh run cancel

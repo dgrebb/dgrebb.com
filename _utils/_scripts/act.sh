@@ -11,5 +11,6 @@ act \
 -s AWS_SECRET_ACCESS_KEY=$(pass dg/aws/secret) \
 -s AWS_REGION=$(pass dg/aws/region) \
 -s AWS_S3_BUCKET=$(pass dg/www/${1}/bucket) \
+-s DISTRIBUTION=$(pass dg/aws/${1}/distribution) \
 --container-architecture linux/amd64 \
 repository_dispatch

@@ -12,6 +12,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install wget
+        if: ${{ env.ACT }}
+        run: |
+          apt-get update
+          apt-get install -y wget curl unzip
+          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+          unzip awscliv2.zip
+          ./aws/install
+
       - name: Add Masks
         run: |
           echo "::add-mask::${{ github.token }}"
@@ -38,7 +47,6 @@ jobs:
 
       - name: Set .env
         run: |
-          ls -la
           touch front/.env
           echo PUBLIC_API_URL=${{ secrets.PUBLIC_API_URL }} >> front/.env
           echo API_KEY=${{ secrets.API_KEY }} >> front/.env
@@ -47,13 +55,7 @@ jobs:
           cat front/.env
 
       - name: Build
-        timeout-minutes: 2
-        continue-on-error: true
-        run: |
-          echo "Building..."
-          cd front
-          npm ci
-          npm run build
+        run: bash _ci/build.sh
 
       - name: Deploy
         uses: jakejarvis/s3-sync-action@master
@@ -65,19 +67,12 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
           SOURCE_DIR: 'front/build'
-
-  # deploy:
-  #   name: Deploy
-  #   runs-on: ubuntu-latest
-  #   if: success() || failure()
-
-  #   steps:
-  #     - uses: jakejarvis/s3-sync-action@master
-  #       with:
-  #         args: --acl public-read --follow-symlinks --delete
-  #       env:
-  #         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-  #         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  #         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  #         AWS_REGION: ${{ secrets.AWS_REGION }}
-  #         SOURCE_DIR: 'build'
+          
+      - name: Invalidate CloudFront
+        uses: chetan/invalidate-cloudfront-action@v2
+        env:
+          DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
+          PATHS: "/*"
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
