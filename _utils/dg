@@ -56,6 +56,10 @@ while test "$1" != --; do
         open https://github.com/users/dgrebb/projects/12
         break
         ;;
+    a | act )
+        /bin/bash $directory/_scripts/act.sh s
+        break
+        ;;
     -h | --help)
         showHelp
         break
