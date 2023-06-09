@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Build and Deploy
+    name: Build & Deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -29,16 +29,22 @@ jobs:
           token: ${{ github.token }}
 
       - name: Use Node.js ${{ matrix.node-version }}
-        env:
-          PUBLIC_API_URL: ${{ secrets.PUBLIC_API_URL }}
-          API_KEY: ${{ secrets.API_KEY }}
-          PUBLIC_SENTRY_DSN: ${{ secrets.PUBLIC_SENTRY_DSN }}
-          PUBLIC_ENV: ${{ secrets.PUBLIC_ENV }}
         uses: actions/setup-node@v1
         with:
           node-version: "18.x"
 
-      - run: |
+      - name: Set .env
+        run: |
+          touch front/.env
+          # echo PUBLIC_API_URL=${{ secrets.PUBLIC_API_URL }} >> front/.env
+          echo PUBLIC_API_URL=http://host.docker.internal:1337/api >> front/.env
+          echo API_KEY=${{ secrets.API_KEY }} >> front/.env
+          echo PUBLIC_SENTRY_DSN=${{ secrets.PUBLIC_SENTRY_DSN }} >> front/.env
+          echo PUBLIC_ENV=${{ secrets.PUBLIC_ENV }} >> front/.env
+          cat front/.env
+
+      - name: Build
+        run: |
           echo "Building..."
           cd front
           npm ci
