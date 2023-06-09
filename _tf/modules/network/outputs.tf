@@ -13,6 +13,9 @@ output "wildcard_cert" {
 output "wildcard_validation" {
   value = aws_acm_certificate_validation.wildcard
 }
-output "cdn_cert" {
-  value = aws_acm_certificate.cdn
+output "www_cert" {
+  value = module.www_dns.cert
+}
+output "uploads_cert" {
+  value = module.uploads_dns.cert
 }

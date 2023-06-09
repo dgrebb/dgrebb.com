@@ -1,6 +1,6 @@
-output "cms_bucket" {
-  value = aws_s3_bucket.cms
+output "bucket" {
+  value = aws_s3_bucket.assets
 }
-output "cdn_log_bucket" {
-  value = aws_s3_bucket.cdn_logs
+output "log_bucket" {
+  value = aws_s3_bucket.logs
 }

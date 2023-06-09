@@ -11,13 +11,22 @@ locals {
   dashed_cdndomain = "stg-${var.dashed_cdndomain}"
 }
 
-module "cdn" {
-  source           = "../modules/cdn"
-  cdndomain        = local.cdndomain
-  dashed_cmsdomain = local.dashed_cmsdomain
-  cms_bucket       = module.storage.cms_bucket
-  cdn_log_bucket   = module.storage.cdn_log_bucket
-  cdn_cert         = module.network.cdn_cert
+module "www_cdn" {
+  source        = "../modules/cdn"
+  domain        = local.domain
+  dashed_domain = local.dashed_domain
+  bucket        = module.www_cdn_bucket.bucket
+  log_bucket    = module.www_cdn_bucket.log_bucket
+  cert          = module.network.www_cert
+}
+
+module "uploads_cdn" {
+  source        = "../modules/cdn"
+  domain        = local.cdndomain
+  dashed_domain = local.dashed_cdndomain
+  bucket        = module.uploads_cdn_bucket.bucket
+  log_bucket    = module.uploads_cdn_bucket.log_bucket
+  cert          = module.network.uploads_cert
 }
 
 module "containers" {
@@ -53,8 +62,8 @@ module "management" {
 
 module "network" {
   source           = "../modules/network"
-  aws_access_key   = var.aws_access_key
   aws_secret_key   = var.aws_secret_key
+  aws_access_key   = var.aws_access_key
   region           = var.region
   subnets          = var.subnets
   basedomain       = var.basedomain
@@ -64,7 +73,8 @@ module "network" {
   dashed_domain    = local.dashed_domain
   dashed_cmsdomain = local.dashed_cmsdomain
   alb              = module.scaling.alb
-  cf_distribution  = module.cdn.cf_distribution
+  www_cdn          = module.www_cdn.cf_distribution
+  uploads_cdn      = module.uploads_cdn.cf_distribution
 }
 
 module "scaling" {
@@ -89,12 +99,18 @@ module "state" {
   terraform_state_bucket = var.terraform_state_bucket
 }
 
-module "storage" {
+module "www_cdn_bucket" {
   source             = "../modules/storage"
-  cmsdomain          = local.cmsdomain
-  cdndomain          = local.cdndomain
-  dashed_cmsdomain   = local.dashed_cmsdomain
-  dashed_cdndomain   = local.dashed_cdndomain
+  domain             = local.domain
+  dashed_domain      = local.dashed_domain
   force_destroy      = true
-  cf_access_identity = module.cdn.cf_access_identity
+  cf_access_identity = module.www_cdn.cf_access_identity
+}
+
+module "uploads_cdn_bucket" {
+  source             = "../modules/storage"
+  domain             = local.cdndomain
+  dashed_domain      = local.dashed_cdndomain
+  force_destroy      = true
+  cf_access_identity = module.uploads_cdn.cf_access_identity
 }
