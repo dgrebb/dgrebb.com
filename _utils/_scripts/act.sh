@@ -3,6 +3,7 @@ source $directory/_scripts/functions.sh
 
 act \
 -s GITHUB_TOKEN=$(pass dg/github/pat) \
+-s DEPLOYMENT_BRANCH=develop \
 -s PUBLIC_ENV=staging \
 -s PUBLIC_API_URL=$(pass dg/api/${1}/url) \
 -s API_KEY=$(pass dg/api/${1}/apikey) \
