@@ -41,7 +41,14 @@
     aria-hidden={ariaHidden}
   />
 {:else if failed}
-  <p>That image wasn't found.</p>
+  <p>That image was lost. Poor thing.</p>
+  <script>
+    Sentry.captureMessage("Image Not Found", {
+      image: src,
+      page: document.location.pathname,
+      { hostname }: document.location,
+    });
+  </script>
 {:else if loading}
   <Loading />
 {/if}
