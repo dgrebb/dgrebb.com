@@ -5,7 +5,7 @@ on:
 
   repository_dispatch:
     types:
-      - strapi
+      - Strapi
 
 jobs:
   build:
