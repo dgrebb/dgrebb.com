@@ -12,7 +12,7 @@ while test "$1" != --; do
         setEnv ld
         prepBuild l
         cdfront &&
-            npm run dev
+            npm run dev -- --host
         break
         ;;
     i | install)
