@@ -1,14 +1,19 @@
 name: Build & Deploy
 
 on:
-  workflow_dispatch:
+  
+  push:
+    branches:
+      - develop
+    paths:
+      - front
 
   repository_dispatch:
     types:
       - Strapi
 
 jobs:
-  build:
+  dance:
     runs-on: ubuntu-latest
 
     environment:
