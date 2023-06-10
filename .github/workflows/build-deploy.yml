@@ -23,12 +23,13 @@ jobs:
 
       - name: Add Masks
         run: |
+          echo ${{ secrets.some_silly_secret }}
           echo "::add-mask::${{ github.token }}"
           echo "::add-mask::${{ secrets.PUBLIC_API_URL }}"
           echo "::add-mask::${{ secrets.API_KEY }}"
           echo "::add-mask::${{ secrets.PUBLIC_SENTRY_DSN }}"
           echo "::add-mask::${{ secrets.PUBLIC_ENV }}"
-          echo "::add-mask::${{ secrets.AWS_SECRET_ACCESS_KEY_ID }}"
+          echo "::add-mask::${{ secrets.AWS_ACCESS_KEY_ID }}"
           echo "::add-mask::${{ secrets.AWS_SECRET_ACCESS_KEY }}"
           echo "::add-mask::${{ secrets.AWS_REGION }}"
           echo "::add-mask::${{ secrets.AWS_S3_BUCKET }}"
