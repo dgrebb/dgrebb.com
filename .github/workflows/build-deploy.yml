@@ -26,9 +26,6 @@ jobs:
 
       - name: Add Masks
         run: |
-          echo "$GITHUB_CONTEXT"
-          echo "$JOB_CONTEXT"
-          echo ${{ secrets.some_silly_secret }}
           echo "::add-mask::${{ github.token }}"
           echo "::add-mask::${{ secrets.PUBLIC_API_URL }}"
           echo "::add-mask::${{ secrets.API_KEY }}"
