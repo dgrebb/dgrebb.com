@@ -11,6 +11,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    environment:
+      name: ${{ github.ref == 'refs/heads/main' && 'prd' || 'stg' }}
+
     steps:
       - name: (Optional) Local Docker Package Install
         if: ${{ env.ACT }}
@@ -23,6 +26,8 @@ jobs:
 
       - name: Add Masks
         run: |
+          echo "$GITHUB_CONTEXT"
+          echo "$JOB_CONTEXT"
           echo ${{ secrets.some_silly_secret }}
           echo "::add-mask::${{ github.token }}"
           echo "::add-mask::${{ secrets.PUBLIC_API_URL }}"
