@@ -11,6 +11,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    environment:
+      name: ${{ github.ref == 'refs/heads/main' && 'prd' || 'stg' }}
+
     steps:
       - name: (Optional) Local Docker Package Install
         if: ${{ env.ACT }}
@@ -28,7 +31,7 @@ jobs:
           echo "::add-mask::${{ secrets.API_KEY }}"
           echo "::add-mask::${{ secrets.PUBLIC_SENTRY_DSN }}"
           echo "::add-mask::${{ secrets.PUBLIC_ENV }}"
-          echo "::add-mask::${{ secrets.AWS_SECRET_ACCESS_KEY_ID }}"
+          echo "::add-mask::${{ secrets.AWS_ACCESS_KEY_ID }}"
           echo "::add-mask::${{ secrets.AWS_SECRET_ACCESS_KEY }}"
           echo "::add-mask::${{ secrets.AWS_REGION }}"
           echo "::add-mask::${{ secrets.AWS_S3_BUCKET }}"
