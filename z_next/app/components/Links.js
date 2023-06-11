@@ -44,6 +44,7 @@ export default function Links({ links }) {
               href={url}
               title={title}
               target="_blank"
+              rel="noopener noreferrer"
               className={`${linkClass}-icon inline-block h-full p-1`}
             >
               {React.createElement(Icons[icon ? icon : "Link"], {

@@ -43,6 +43,7 @@
         href={link.url}
         title={link.title}
         target="_blank"
+        rel="noopener noreferrer"
         class={`${link.linkClass}-icon inline-block h-full p-1`}
       >
         <Icon icon={Icons[link.icon ? link.icon : "Link"]} />
