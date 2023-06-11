@@ -1,1 +1,1 @@
-variable "dashed_domain" {}
+variable "dashed_cmsdomain" {}

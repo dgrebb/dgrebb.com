@@ -22,7 +22,7 @@ resource "aws_cloudfront_function" "subdir" {
 resource "aws_cloudfront_distribution" "this" {
   comment             = var.domain
   price_class         = "PriceClass_100"
-  aliases             = [var.domain]
+  aliases             = [var.domain, "www.${var.domain}"]
   enabled             = true
   is_ipv6_enabled     = true
   default_root_object = "index.html"

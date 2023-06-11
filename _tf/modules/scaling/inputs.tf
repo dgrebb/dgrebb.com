@@ -4,6 +4,6 @@ variable "dashed_domain" {}
 variable "dashed_cmsdomain" {}
 variable "vpc" {}
 variable "subnets" {}
-variable "wildcard_cert" {}
-variable "wildcard_validation" {}
+variable "cms_cert" {}
+variable "cms_validation" {}
 variable "lb_sg" {}

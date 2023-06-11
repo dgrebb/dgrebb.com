@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 
 resource "aws_cloudwatch_log_group" "this" {
-  name              = var.dashed_domain
+  name              = var.dashed_cmsdomain
   retention_in_days = 1
   lifecycle {
     prevent_destroy = false

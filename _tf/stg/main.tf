@@ -1,4 +1,3 @@
-# ------------------------------------------------------------------------------
 # Staging Infrastructure
 # ------------------------------------------------------------------------------
 
@@ -17,7 +16,7 @@ module "www_cdn" {
   dashed_domain = local.dashed_domain
   bucket        = module.www_cdn_bucket.bucket
   log_bucket    = module.www_cdn_bucket.log_bucket
-  cert          = module.network.www_cert
+  cert          = module.network.wildcard_cert
 }
 
 module "uploads_cdn" {
@@ -33,15 +32,11 @@ module "containers" {
   source                = "../modules/containers"
   force_delete          = true
   region                = var.region
-  domain                = local.domain
-  dashed_domain         = local.dashed_domain
   cmsdomain             = local.cmsdomain
   dashed_cmsdomain      = local.dashed_cmsdomain
   strapi_instance_count = 1
-  front_instance_count  = 1
   subnets               = module.network.subnets
   strapi_alb_tg         = module.scaling.strapi_alb_tg
-  front_alb_tg          = module.scaling.front_alb_tg
   service_sg            = module.security.service_sg
 }
 
@@ -51,13 +46,13 @@ module "database" {
   db_subnet_group     = module.network.db_subnet_group
   dashed_cmsdomain    = local.dashed_cmsdomain
   db_password         = var.db_password
-  instance_class      = "db.t2.micro"
+  instance_class      = "db.t3.micro"
   skip_final_snapshot = true
 }
 
 module "management" {
   source        = "../modules/management"
-  dashed_domain = local.dashed_domain
+  dashed_cmsdomain = local.dashed_cmsdomain
 }
 
 module "network" {
@@ -78,16 +73,16 @@ module "network" {
 }
 
 module "scaling" {
-  source              = "../modules/scaling"
-  domain              = local.domain
-  dashed_domain       = local.dashed_domain
-  cmsdomain           = local.cmsdomain
-  dashed_cmsdomain    = local.dashed_cmsdomain
-  vpc                 = module.network.vpc
-  subnets             = module.network.subnets
-  wildcard_cert       = module.network.wildcard_cert
-  wildcard_validation = module.network.wildcard_validation
-  lb_sg               = module.security.lb_sg
+  source           = "../modules/scaling"
+  domain           = local.domain
+  dashed_domain    = local.dashed_domain
+  cmsdomain        = local.cmsdomain
+  dashed_cmsdomain = local.dashed_cmsdomain
+  vpc              = module.network.vpc
+  subnets          = module.network.subnets
+  cms_cert         = module.network.cms_cert
+  cms_validation   = module.network.cms_validation
+  lb_sg            = module.security.lb_sg
 }
 
 module "security" {

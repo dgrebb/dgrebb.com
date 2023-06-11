@@ -2,11 +2,6 @@
 # Elastic Container Registry Repos
 # ------------------------------------------------------------------------------
 
-resource "aws_ecr_repository" "front" {
-  name = var.domain
-  force_delete = var.force_delete
-}
-
 resource "aws_ecr_repository" "strapi" {
   name = var.cmsdomain
   force_delete = var.force_delete
@@ -16,90 +11,18 @@ resource "aws_ecr_repository" "strapi" {
 # ECR Image References
 # ------------------------------------------------------------------------------
 
-data "aws_ecr_image" "front" {
-  repository_name = var.domain
-  image_tag       = "latest"
-}
-
 data "aws_ecr_image" "strapi" {
   repository_name = var.cmsdomain
   image_tag       = "latest"
 }
 
 resource "aws_ecs_cluster" "this" {
-  name = var.dashed_domain
+  name = var.dashed_cmsdomain
 
   setting {
     name  = "containerInsights"
     value = "enabled"
   }
-}
-
-# ------------------------------------------------------------------------------
-# Frontend Service and Definition
-# ------------------------------------------------------------------------------
-
-resource "aws_ecs_service" "front" {
-  name            = "front"
-  cluster         = aws_ecs_cluster.this.id
-  task_definition = aws_ecs_task_definition.front.arn
-  launch_type     = "FARGATE"
-  desired_count   = var.front_instance_count
-
-  load_balancer {
-    target_group_arn = var.front_alb_tg.arn
-    container_name   = aws_ecs_task_definition.front.family
-    container_port   = 3000
-  }
-
-  network_configuration {
-    subnets          = [for subnet in var.subnets : subnet.id]
-    assign_public_ip = true
-    security_groups  = [var.service_sg.id]
-  }
-
-  depends_on = [var.front_alb_tg]
-}
-
-resource "aws_ecs_task_definition" "front" {
-  family = "front"
-  container_definitions = jsonencode([{
-    name         = "front",
-    image        = "${aws_ecr_repository.front.repository_url}@${data.aws_ecr_image.front.image_digest}",
-    essential    = true,
-    network_mode = "awsvpc",
-    memory       = 512,
-    cpu          = 256,
-    portMappings = [
-      {
-        containerPort = 3000,
-        hostPort      = 3000
-      }
-    ],
-    healthCheck = {
-      command = [
-        "CMD-SHELL",
-        "wget --no-verbose --tries=1 --spider http://localhost:3000 || exit 1"
-      ]
-      interval    = 30
-      timeout     = 5
-      retries     = 3
-      startPeriod = 30
-    },
-    logConfiguration = {
-      logDriver = "awslogs",
-      options = {
-        awslogs-group         = var.dashed_domain,
-        awslogs-region        = var.region,
-        awslogs-stream-prefix = "ecs"
-      }
-    }
-  }])
-  requires_compatibilities = ["FARGATE"]
-  network_mode             = "awsvpc"
-  memory                   = 512
-  cpu                      = 256
-  execution_role_arn       = aws_iam_role.this.arn
 }
 
 # ------------------------------------------------------------------------------
@@ -156,7 +79,7 @@ resource "aws_ecs_task_definition" "strapi" {
     logConfiguration = {
       logDriver = "awslogs",
       options = {
-        awslogs-group         = var.dashed_domain,
+        awslogs-group         = var.dashed_cmsdomain,
         awslogs-region        = var.region,
         awslogs-stream-prefix = "ecs"
       }
