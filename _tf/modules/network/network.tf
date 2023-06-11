@@ -43,7 +43,7 @@ resource "aws_route53_record" "www" {
 }
 
 # ------------------------------------------------------------------------------
-# CMS Record
+# CMS Record, Cert, and Validation
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "cms" {
@@ -58,37 +58,26 @@ resource "aws_route53_record" "cms" {
   }
 }
 
-# ------------------------------------------------------------------------------
-# Wildcard Certificate and Validation
-# ------------------------------------------------------------------------------
-resource "aws_acm_certificate" "wildcard" {
-  domain_name       = var.basedomain
+resource "aws_acm_certificate" "cms" {
+  domain_name       = var.cmsdomain
   validation_method = "DNS"
-
-  subject_alternative_names = [
-    "*.dgrebb.com",
-    "*.cms.dgrebb.com"
-  ]
 
   lifecycle {
     create_before_destroy = true
   }
 
   tags = {
-    Name = var.basedomain
+    Name = var.cmsdomain
   }
 }
 
-resource "aws_route53_record" "wildcard_validation" {
-
+resource "aws_route53_record" "validation" {
   for_each = {
-    for dvo in aws_acm_certificate.wildcard.domain_validation_options : dvo.domain_name => {
+    for dvo in aws_acm_certificate.cms.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
       record = dvo.resource_record_value
       type   = dvo.resource_record_type
     }
-    # Skips the domain if it doesn't contain a wildcard
-    if length(regexall("\\*\\..+", dvo.domain_name)) > 0
   }
 
   allow_overwrite = true
@@ -99,14 +88,15 @@ resource "aws_route53_record" "wildcard_validation" {
   zone_id         = data.aws_route53_zone.main.zone_id
 }
 
-resource "aws_acm_certificate_validation" "wildcard" {
-  certificate_arn = aws_acm_certificate.wildcard.arn
+resource "aws_acm_certificate_validation" "cms" {
+  certificate_arn = aws_acm_certificate.cms.arn
 
-  validation_record_fqdns = [for record in aws_route53_record.wildcard_validation : record.fqdn]
+  validation_record_fqdns = [for record in aws_route53_record.validation : record.fqdn]
 }
 
+
 # ------------------------------------------------------------------------------
-# CDN Distributions
+# CDN Records, Certs, and Validations
 # ------------------------------------------------------------------------------
 
 module "www_dns" {
