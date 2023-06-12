@@ -109,3 +109,8 @@ module "uploads_cdn_bucket" {
   force_destroy      = true
   cf_access_identity = module.uploads_cdn.cf_access_identity
 }
+
+module "uploads_bucket_defaults" {
+  source = "../modules/storage/defaults"
+  bucket = module.uploads_cdn_bucket.bucket
+}

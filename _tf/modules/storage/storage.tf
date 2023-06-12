@@ -3,12 +3,12 @@
 # ------------------------------------------------------------------------------
 
 resource "aws_s3_bucket" "assets" {
-  bucket = var.dashed_domain
+  bucket        = var.dashed_domain
   force_destroy = var.force_destroy
 }
 
 resource "aws_s3_bucket" "logs" {
-  bucket = "${var.dashed_domain}-cdn-logs"
+  bucket        = "${var.dashed_domain}-cdn-logs"
   force_destroy = var.force_destroy
 }
 
@@ -142,49 +142,3 @@ resource "aws_s3_bucket_cors_configuration" "assets" {
     allowed_origins = ["*"]
   }
 }
-
-# ------------------------------------------------------------------------------
-# Defaults for Snoopers
-# ------------------------------------------------------------------------------
-
-# TODO: Refactor as a looped map
-resource "aws_s3_object" "index_html" {
-  bucket       = aws_s3_bucket.assets.id
-  key          = "index.html"
-  source       = "${path.module}/defaults/index.html"
-  content_type = "text/html"
-  etag         = filemd5("${path.module}/defaults/index.html")
-}
-
-resource "aws_s3_object" "img_index_html" {
-  bucket       = aws_s3_bucket.assets.id
-  key          = "img/index.html"
-  source       = "${path.module}/defaults/index.html"
-  content_type = "text/html"
-  etag         = filemd5("${path.module}/defaults/index.html")
-}
-
-resource "aws_s3_object" "wonka" {
-  bucket       = aws_s3_bucket.assets.id
-  key          = "tip.png"
-  source       = "${path.module}/defaults/tip.png"
-  content_type = "image/png"
-  etag         = filemd5("${path.module}/defaults/tip.png")
-}
-
-resource "aws_s3_object" "notfound_html" {
-  bucket       = aws_s3_bucket.assets.id
-  key          = "404.html"
-  source       = "${path.module}/defaults/404.html"
-  content_type = "text/html"
-  etag         = filemd5("${path.module}/defaults/404.html")
-}
-
-resource "aws_s3_object" "notfound_img" {
-  bucket       = aws_s3_bucket.assets.id
-  key          = "404.gif"
-  source       = "${path.module}/defaults/404.gif"
-  content_type = "image/gif"
-  etag         = filemd5("${path.module}/defaults/404.gif")
-}
-
