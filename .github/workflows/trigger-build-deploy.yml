@@ -11,6 +11,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Add Masks
+        run: |
+          echo "::add-mask::${{ github.token }}"
+          echo "::add-mask::${{ secrets.DISPATCH_TOKEN }}"
+          echo "::add-mask::${{ secrets.DEPLOYMENT_BRANCH }}"
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: dgrebb/dgrebb.com
+          ref: ${{ secrets.DEPLOYMENT_BRANCH }}
+          token: ${{ github.token }}
+
       - uses: dorny/paths-filter@v2
         id: changes
         with:
@@ -19,10 +32,6 @@ jobs:
               - 'front/**'
             front:
               - 'back/**'
-
-      - name: Add Masks
-        run: |
-          echo "::add-mask::${{ secrets.DISPATCH_TOKEN }}"
 
       - name: Dispatch Backend
         if: ${{ steps.changes.outputs.back }} == 'true'
