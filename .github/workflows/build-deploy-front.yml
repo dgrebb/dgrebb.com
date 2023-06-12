@@ -1,19 +1,14 @@
 name: Build & Deploy Frontend
 
 on:
-  
-  push:
-    branches:
-      - develop
-    paths:
-      - "front"
-
   repository_dispatch:
     types:
+      - Frontend
       - Strapi
 
 jobs:
-  dance:
+  front:
+    name: Front
     runs-on: ubuntu-latest
 
     environment:
