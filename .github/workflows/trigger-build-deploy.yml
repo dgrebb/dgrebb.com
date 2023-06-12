@@ -25,7 +25,7 @@ jobs:
           echo "::add-mask::${{ secrets.DISPATCH_TOKEN }}"
 
       - name: Dispatch Backend
-        if: steps.changes.outputs.back == 'true'
+        if: ${{ steps.changes.outputs.back }} == 'true'
         run: |
           curl -X POST https://api.github.com/repos/dgrebb/dgrebb.com/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
@@ -33,7 +33,7 @@ jobs:
           --data '{"event_type": "Backend"}'
 
       - name: Dispatch Frontend
-        if: steps.changes.outputs.front == 'true'
+        if: ${{ steps.changes.outputs.front }} == 'true'
         run: |
           curl -X POST https://api.github.com/repos/dgrebb/dgrebb.com/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
