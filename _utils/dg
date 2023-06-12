@@ -57,7 +57,7 @@ while test "$1" != --; do
         break
         ;;
     a | act )
-        /bin/bash $directory/_scripts/act.sh s
+        /bin/bash $directory/_scripts/act.sh $2 $3
         break
         ;;
     -h | --help)
