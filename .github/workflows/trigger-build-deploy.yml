@@ -6,43 +6,53 @@ on:
       - develop
 
 jobs:
-  dispatch:
-    name: Dispatch
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      backend: ${{ steps.filter.outputs.backend }}
+      frontend: ${{ steps.filter.outputs.frontend }}
+    steps:
+    - uses: actions/checkout@v3
+    - uses: dorny/paths-filter@v2
+      id: changes
+      with:
+        base: ${{ secrets.DEPLOYMENT_BRANCH }}
+        filters: |
+          backend:
+            - 'back/**'
+          frontend:
+            - 'front/**'
+
+  backend:
+    needs: changes
+    if: ${{ needs.changes.outputs.backend == 'true' }}
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Add Masks
         run: |
-          echo "::add-mask::${{ github.token }}"
           echo "::add-mask::${{ secrets.DISPATCH_TOKEN }}"
-          echo "::add-mask::${{ secrets.DEPLOYMENT_BRANCH }}"
-
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          repository: dgrebb/dgrebb.com
-          ref: ${{ secrets.DEPLOYMENT_BRANCH }}
-          token: ${{ github.token }}
-
-      - uses: dorny/paths-filter@v2
-        id: changes
-        with:
-          filters: |
-            back:
-              - 'front/**'
-            front:
-              - 'back/**'
 
       - name: Dispatch Backend
-        if: ${{ steps.changes.outputs.back }} == 'true'
         run: |
           curl -X POST https://api.github.com/repos/dgrebb/dgrebb.com/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -H 'Authorization: Bearer ${{ secrets.DISPATCH_TOKEN }}' \
           --data '{"event_type": "Backend"}'
 
+  frontend:
+    needs: changes
+    if: ${{ needs.changes.outputs.frontend == 'true' }}
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Add Masks
+        run: |
+          echo "::add-mask::${{ secrets.DISPATCH_TOKEN }}"
+
       - name: Dispatch Frontend
-        if: ${{ steps.changes.outputs.front }} == 'true'
         run: |
           curl -X POST https://api.github.com/repos/dgrebb/dgrebb.com/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
