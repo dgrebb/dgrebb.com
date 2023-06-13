@@ -27,6 +27,12 @@ const config = {
     // 'zh-Hans',
     // 'zh',
   ],
+  translations: {
+    en: {
+      'app.components.LeftMenu.navbrand.title': 'dgrebb.com',
+      'app.components.LeftMenu.navbrand.workplace': 'Content Management'
+    }
+  }
 };
 
 export default {
