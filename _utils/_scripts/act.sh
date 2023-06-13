@@ -2,16 +2,18 @@
 source $directory/_scripts/functions.sh
 
 if [ $2 == "f" ]; then
-    action="front"
+    action="-j front"
 elif [ $2 == "b" ]; then
-    action="back"
+    action="-j back"
+elif [ $2 == "p" ]; then
+    action="push"
 elif [ $2 == "d" ]; then
-    action="dispatch"
+    action="-j dispatch"
 else
     printDgErr "Argument needed to specify job."
 fi
 
-act \
+act -P ubuntu-latest=catthehacker/ubuntu:act-latest \
     -s GITHUB_TOKEN=$(pass dg/github/pat) \
     -s DEPLOYMENT_BRANCH=develop \
     -s PUBLIC_ENV=staging \
@@ -24,4 +26,4 @@ act \
     -s AWS_S3_BUCKET=$(pass dg/www/${1}/bucket) \
     -s DISTRIBUTION=$(pass dg/aws/${1}/distribution) \
     --container-architecture linux/amd64 \
-    -j $action
+    $action
