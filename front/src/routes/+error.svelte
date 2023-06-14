@@ -1,5 +1,5 @@
 <script>
-  import * as Sentry from "@sentry/svelte";
+  import * as Sentry from "@sentry/sveltekit";
   import "../styles/not-found.css";
   import { page } from "$app/stores";
 
