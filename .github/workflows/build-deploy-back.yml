@@ -7,7 +7,7 @@ on:
 
 jobs:
   back:
-    name: Back
+    name: Backend
     runs-on: ubuntu-latest
 
     environment:
