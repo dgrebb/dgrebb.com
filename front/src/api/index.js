@@ -1,12 +1,6 @@
 import { API_KEY } from "$env/static/private";
 
 export default async function content(endpoint) {
-  // const cache = {
-  //   next:
-  //     process.env.NODE_ENV === "production"
-  //       ? { revalidate: 10 }
-  //       : { revalidate: 0 },
-  // };
   var headers = new Headers();
   headers.append("Authorization", `Bearer ${API_KEY}`);
   headers.append("Content-Type", "application/json");
