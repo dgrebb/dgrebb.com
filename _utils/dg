@@ -33,7 +33,7 @@ while test "$1" != --; do
         break
         ;;
     f | front)
-        /bin/bash $directory/_scripts/front.sh $2
+        /bin/bash $directory/_scripts/front.sh $2 $3
         break
         ;;
     d | docker)
