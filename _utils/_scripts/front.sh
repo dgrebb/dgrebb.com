@@ -6,11 +6,18 @@ if [ $# -eq 0 ]; then
     printf "\n${red}Argument for front command [dev] is required.\n"
     exit 1
 fi
+
+if [ -z "$2" ]; then
+    env=l
+else
+    env=$2
+fi
+
 while test "$1" != --; do
     case $1 in
     d | dev)
         setEnv ld
-        prepBuild ${2} || l
+        prepBuild ${env}
         cdfront &&
             npm run dev -- --host
         break
