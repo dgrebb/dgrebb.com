@@ -122,7 +122,7 @@ body {
   @apply dg--transition-effect;
   @apply mt-0.5 ml-3;
   #moon {
-    padding-bottom: 2px;
+    padding-bottom: 1px;
   }
 }
 
