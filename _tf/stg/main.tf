@@ -51,25 +51,26 @@ module "database" {
 }
 
 module "management" {
-  source        = "../modules/management"
+  source           = "../modules/management"
   dashed_cmsdomain = local.dashed_cmsdomain
 }
 
 module "network" {
-  source           = "../modules/network"
-  aws_secret_key   = var.aws_secret_key
-  aws_access_key   = var.aws_access_key
-  region           = var.region
-  subnets          = var.subnets
-  basedomain       = var.basedomain
-  domain           = local.domain
-  cmsdomain        = local.cmsdomain
-  cdndomain        = local.cdndomain
-  dashed_domain    = local.dashed_domain
-  dashed_cmsdomain = local.dashed_cmsdomain
-  alb              = module.scaling.alb
-  www_cdn          = module.www_cdn.cf_distribution
-  uploads_cdn      = module.uploads_cdn.cf_distribution
+  source               = "../modules/network"
+  aws_secret_key       = var.aws_secret_key
+  aws_access_key       = var.aws_access_key
+  region               = var.region
+  subnets              = var.subnets
+  basedomain           = var.basedomain
+  domain               = local.domain
+  cmsdomain            = local.cmsdomain
+  cdndomain            = local.cdndomain
+  dashed_domain        = local.dashed_domain
+  dashed_cmsdomain     = local.dashed_cmsdomain
+  alb                  = module.scaling.alb
+  www_cdn              = module.www_cdn.cf_distribution
+  uploads_cdn          = module.uploads_cdn.cf_distribution
+  www_record_overwrite = true
 }
 
 module "scaling" {
