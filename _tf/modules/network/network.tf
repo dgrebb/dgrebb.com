@@ -34,7 +34,7 @@ resource "aws_route53_record" "www" {
   zone_id         = data.aws_route53_zone.main.zone_id
   name            = "www.${var.domain}"
   type            = "A"
-  allow_overwrite = true
+  allow_overwrite = var.www_record_overwrite
   alias {
     name                   = var.www_cdn.domain_name
     zone_id                = var.www_cdn.hosted_zone_id
@@ -100,19 +100,19 @@ resource "aws_acm_certificate_validation" "cms" {
 # ------------------------------------------------------------------------------
 
 module "www_dns" {
-  source = "./cdn-dns"
+  source         = "./cdn-dns"
   aws_access_key = var.aws_access_key
   aws_secret_key = var.aws_secret_key
-  domain = var.domain
-  zone = data.aws_route53_zone.main
-  distribution = var.www_cdn
+  domain         = var.domain
+  zone           = data.aws_route53_zone.main
+  distribution   = var.www_cdn
 }
 
 module "uploads_dns" {
-  source = "./cdn-dns"
+  source         = "./cdn-dns"
   aws_access_key = var.aws_access_key
   aws_secret_key = var.aws_secret_key
-  domain = var.cdndomain
-  zone = data.aws_route53_zone.main
-  distribution = var.uploads_cdn
+  domain         = var.cdndomain
+  zone           = data.aws_route53_zone.main
+  distribution   = var.uploads_cdn
 }
