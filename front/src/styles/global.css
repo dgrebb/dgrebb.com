@@ -28,24 +28,26 @@ html.dark-theme {
 html {
   @apply transition-colors;
   @apply dg--transition-effect;
-  border-top: 8px solid rgb(var(--foreground-rgb));
-  overflow: hidden;
-}
-
-body {
-  @apply dg--font-ps;
-  @apply transition-colors;
-  @apply dg--transition-effect;
+  @apply box-border;
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  height: fit-content;
+  overflow: clip
+}
+
+body {
+  @apply dg--font-ps;
+  @apply transition-colors;
+  @apply dg--transition-effect;
   color: rgb(var(--foreground-rgb));
   height: 100vh;
   min-height: 100vh;
   overflow: overlay;
+  scrollbar-gutter: stable both-edges;
   .header,
   .main,
   .footer {
@@ -60,6 +62,14 @@ body {
       @apply opacity-100;
     }
   }
+}
+
+.flourish {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-top: 8px solid rgb(var(--foreground-rgb));
 }
 
 .header,
