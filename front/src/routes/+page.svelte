@@ -6,7 +6,7 @@
   import Head from "../components/Head.svelte";
   export let data;
   const { headshot, headline, intro, links } = data;
-  const image = headshot?.data?.attributes.formats.thumbnail || false;
+  const image = headshot?.data?.attributes.formats.thumbnail || { url: "/bio.png", alt: "A picture of Dan" };
   const alt = headshot?.data?.attributes.alternativeText;
 </script>
 
