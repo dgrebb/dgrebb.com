@@ -50,7 +50,7 @@ while test "$1" != --; do
     s | stg)
         echo "HOST=0.0.0.0" >>$strapiEnv
         echo "DATABASE_HOST=$(pass dg/cms/db/s/host)" >>$strapiEnv
-        echo "NODE_ENV=production" >>$strapiEnv
+        echo "NODE_ENV=development" >>$strapiEnv
         break
         ;;
     p | prd | prod)

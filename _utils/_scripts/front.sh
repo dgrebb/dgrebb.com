@@ -27,7 +27,7 @@ while test "$1" != --; do
         break
         ;;
     b | build)
-        prepBuild l
+        prepBuild ${env}
         cdfront && npm run build
         break
         ;;
