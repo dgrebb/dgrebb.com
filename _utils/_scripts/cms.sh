@@ -12,7 +12,14 @@ while test "$1" != --; do
         setEnv ld
         cdcms && \
         trap 'printf "\n"; shredEnv ; printDgMsg "Done!" ; exit 0' SIGINT; \
-        npm run strapi develop
+        npm run strapi develop --watch-admin
+        break
+        ;;
+    ds | dev-stage)
+        setEnv ls
+        cdcms && \
+        trap 'printf "\n"; shredEnv ; printDgMsg "Done!" ; exit 0' SIGINT; \
+        npm run strapi develop --watch-admin
         break
         ;;
     i | install)

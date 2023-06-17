@@ -39,6 +39,7 @@ module "database" {
   db_password         = var.db_password
   instance_class      = "db.t3.micro"
   skip_final_snapshot = true
+  public_access       = false
 }
 
 module "management" {

@@ -33,6 +33,14 @@ while test "$1" != --; do
         echo "API_KEY=$(pass dg/api/l/apikey)" >>$frontEnv
         break
         ;;
+    ls | local-dev-stage)
+        echo "HOST=local.cms.dgrebb.com" >>$strapiEnv
+        echo "DATABASE_HOST=$(pass dg/cms/db/s/host)" >>$strapiEnv
+        echo "NODE_ENV=development" >>$strapiEnv
+        echo "API_URL=$(pass dg/api/l/url)" >>$frontEnv
+        echo "API_KEY=$(pass dg/api/l/apikey)" >>$frontEnv
+        break
+        ;;
     l | local-docker)
         echo "HOST=0.0.0.0" >>$strapiEnv
         echo "DATABASE_HOST=host.docker.internal" >>$strapiEnv

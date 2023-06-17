@@ -12,6 +12,7 @@ resource "aws_db_instance" "this" {
   db_name                   = "strapi"
   username                  = "strapi"
   password                  = var.db_password
+  publicly_accessible       = var.public_access
   storage_encrypted         = false
   vpc_security_group_ids    = ["${var.service_sg.id}"]
   db_subnet_group_name      = var.db_subnet_group.id

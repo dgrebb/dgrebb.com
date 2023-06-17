@@ -6,3 +6,4 @@ variable "skip_final_snapshot" {}
 variable "db_password" {
   sensitive = true
 }
+variable "public_access" {}
