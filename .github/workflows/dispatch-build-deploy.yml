@@ -23,23 +23,23 @@ jobs:
           frontend:
             - 'front/**'
 
-  backend:
-    needs: changes
-    if: ${{ needs.changes.outputs.backend == 'true' }}
-    runs-on: ubuntu-latest
+  # backend:
+  #   needs: changes
+  #   if: ${{ needs.changes.outputs.backend == 'true' }}
+  #   runs-on: ubuntu-latest
 
-    steps:
+  #   steps:
 
-      - name: Add Masks
-        run: |
-          echo "::add-mask::${{ secrets.DISPATCH_TOKEN }}"
+  #     - name: Add Masks
+  #       run: |
+  #         echo "::add-mask::${{ secrets.DISPATCH_TOKEN }}"
 
-      - name: Dispatch Backend
-        run: |
-          curl -X POST https://api.github.com/repos/dgrebb/dgrebb.com/dispatches \
-          -H 'Accept: application/vnd.github.everest-preview+json' \
-          -H 'Authorization: Bearer ${{ secrets.DISPATCH_TOKEN }}' \
-          --data '{"event_type": "Backend"}'
+  #     - name: Dispatch Backend
+  #       run: |
+  #         curl -X POST https://api.github.com/repos/dgrebb/dgrebb.com/dispatches \
+  #         -H 'Accept: application/vnd.github.everest-preview+json' \
+  #         -H 'Authorization: Bearer ${{ secrets.DISPATCH_TOKEN }}' \
+  #         --data '{"event_type": "Backend"}'
 
   frontend:
     needs: changes
