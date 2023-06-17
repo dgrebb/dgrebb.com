@@ -10,8 +10,9 @@
     LinkedIn: "line-md:linkedin",
     Twitter: "line-md:twitter",
     Mastodon: "line-md:mastodon",
-    Flickr: "carbon:logo-flickr",
+    Flickr: "icomoon-free:flickr2",
     Goodreads: "ph:goodreads-logo-bold",
+    Pinboard: "typcn:pin-outline",
     Link: "line-md:external-link",
   };
 
