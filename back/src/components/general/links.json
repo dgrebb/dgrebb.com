@@ -27,6 +27,7 @@
         "Twitter",
         "Mastodon",
         "Flickr",
+        "Pinboard",
         "Link"
       ],
       "default": "Link"
