@@ -100,15 +100,6 @@ body {
   }
 }
 
-.main {
-  @apply p-8;
-  @apply md:p-11;
-  @apply lg:p-16;
-  @apply pb-16;
-  @apply flex-grow;
-  @apply justify-center;
-}
-
 .nav-home {
   @apply dg--font-psbl;
   @apply tracking-tight;
