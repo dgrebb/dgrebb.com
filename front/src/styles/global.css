@@ -28,7 +28,6 @@ html.dark-theme {
 html {
   @apply transition-colors;
   @apply dg--transition-effect;
-  @apply box-border;
   background: linear-gradient(
       to bottom,
       transparent,
@@ -36,7 +35,7 @@ html {
     )
     rgb(var(--background-start-rgb));
   height: fit-content;
-  overflow: clip
+  overflow: clip;
 }
 
 body {
@@ -48,6 +47,7 @@ body {
   min-height: 100vh;
   overflow: overlay;
   scrollbar-gutter: stable both-edges;
+  .flourish,
   .header,
   .main,
   .footer {
@@ -56,6 +56,7 @@ body {
     @apply opacity-0;
   }
   &.ready {
+    .flourish,
     .header,
     .main,
     .footer {
@@ -127,7 +128,7 @@ body {
   @apply p-8;
   @apply md:p-11;
   @apply lg:p-16;
-  @apply pb-16;
+  @apply pb-3;
   @apply flex-grow;
   @apply justify-center;
 }
