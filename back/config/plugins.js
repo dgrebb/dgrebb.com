@@ -23,6 +23,9 @@ module.exports = ({ env }) => ({
       },
     },
   },
+  seo: {
+    enabled: true,
+  },
   "strapi-blurhash": {
     enabled: true,
     config: {
