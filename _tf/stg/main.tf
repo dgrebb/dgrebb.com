@@ -89,6 +89,7 @@ module "scaling" {
 
 module "security" {
   source = "../modules/security"
+  pub    = true
 }
 
 module "state" {
