@@ -15,13 +15,13 @@ hello() {
 env() {
     cd $directory/../back
     if [ $# -eq 0 ] || [ $1 = p ]; then
-        setEnv p
+        setBackEnv p
         img p
     elif [ $1 = s ]; then
-        setEnv s
+        setBackEnv s
         img s
     else
-        setEnv $1
+        setBackEnv $1
         img
     fi
 }
@@ -51,19 +51,19 @@ fimg() {
     fi
 }
 
-setEnv() {
+setBackEnv() {
     printDgMsg "Setting Strapi .env..."
-    /bin/bash $directory/_scripts/set-env.sh $1
+    /bin/bash $directory/_scripts/setBackEnv.sh $1
 }
 
-shredEnv() {
+setFrontEnv() {
+    /bin/bash $directory/_scripts/setFrontEnv.sh $1
+}
+
+shredBackEnv() {
     if [ -f $directory/../back/.env ]; then
         printDgMsg "Shredding Strapi .env..."
         gshred $directory/../back/.env && rm $directory/../back/.env
-    fi
-    if [ -f $directory/../front/.env ]; then
-        printDgMsg "Shredding Svelte .env..."
-        gshred $directory/../front/.env && rm $directory/../front/.env
     fi
     if [ -f $directory/../_docker/.env ]; then
         printDgMsg "Shredding Docker .env..."
@@ -71,13 +71,16 @@ shredEnv() {
     fi
 }
 
+shredFrontEnv() {
+    if [ -f $directory/../front/.env ]; then
+        printDgMsg "Shredding Svelte .env..."
+        gshred $directory/../front/.env && rm $directory/../front/.env
+    fi
+}
+
 setTfEnv() {
     printDgMsg "Setting Terraform vars..."
     source $directory/../_tf/_scripts/set-tf-vars.sh
-}
-
-prepBuild() {
-    /bin/bash $directory/_scripts/prep-build.sh $1
 }
 
 retag() {
