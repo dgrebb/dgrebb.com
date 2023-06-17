@@ -80,6 +80,7 @@ module "scaling" {
 
 module "security" {
   source = "../modules/security"
+  pub    = false
 }
 
 module "state" {
