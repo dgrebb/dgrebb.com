@@ -12,6 +12,13 @@ while test "$1" != --; do
         setBackEnv ld
         cdcms && \
         trap 'printf "\n"; shredBackEnv ; printDgMsg "Done!" ; exit 0' SIGINT; \
+        npm run develop
+        break
+        ;;
+    ad | admin-dev)
+        setBackEnv ld
+        cdcms && \
+        trap 'printf "\n"; shredBackEnv ; printDgMsg "Done!" ; exit 0' SIGINT; \
         npm run develop -- --watch-admin
         break
         ;;
