@@ -24,17 +24,6 @@
       "repeatable": true,
       "component": "general.links"
     },
-    "headshot": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "seo": {
       "type": "component",
       "repeatable": false,
