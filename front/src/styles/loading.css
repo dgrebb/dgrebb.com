@@ -1,8 +1,10 @@
 .dg-ripple {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 73px;
+  height: 73px;
 }
 .dg-ripple div {
   position: absolute;

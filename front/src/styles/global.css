@@ -233,6 +233,13 @@ body {
   }
 }
 
+.image-loader {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
 .footer {
   @apply pb-9;
   @apply flex-col;
