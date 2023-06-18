@@ -12,7 +12,7 @@
 
   let loaded = false;
   let failed = false;
-  let loading = false;
+  let loading = true;
 
   onMount(() => {
     const img = new Image();
@@ -50,5 +50,7 @@
     });
   </script>
 {:else if loading}
-  <Loading />
+  <div class="image-loader" style={`height: ${height}px; width: ${width}px`}>
+    <Loading />
+  </div>
 {/if}
