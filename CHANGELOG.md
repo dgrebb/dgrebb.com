@@ -2,6 +2,152 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0] - 2023-06-18
+
+### 💡 Features
+
+- ***(back/front)*** Adds catchafire icon; adjusts links section styles
+- ***(back/front)*** Adds pinboard to cms and frontend
+- ***(back/front)*** Adds pinboard to cms and frontend
+- ***(front)*** Adds fixed height/width to prevent image loader from causing CLS
+- ***(front)*** Adds shingle for maintenance mode
+- ***(front)*** Uses seo data from cms; adds media url for dev env
+- ***(front)*** Adds strapi seo plugin and components
+- ***(front)*** Adds robots.txt
+- ***(front)*** Adds sentry logging for broken images
+- ***(front)*** Adds MetaTags and Head component defaults
+- ***(front)*** Adds svelte-meta-tags
+- ***(front)*** Adds custom static 404 page
+- ***(front)*** Adds and configures plausible analytics
+- ***(front)*** Adds compression and error page for ssg cloudfront fallback
+- ***(front)*** Adds svelte ssg adapter and configuration
+- ***(front)*** Adds and updates favicon
+- ***(front)*** Adds sentry to 404 page
+- ***(front)*** Adds server/client hooks for sentry
+- ***(front)*** Adds sentry packages and updates env vars
+- ***(front)*** Adds svelte-blurhash component
+- ***(front)*** Adds base svelte install
+- ***(front)*** Adds error, global-error, adjusts not-found, and adds styles
+- ***(strapi)*** Updates strapi to v4.11.0
+- ***(strapi)*** Adds blurhash plugin to strapi
+- ***(terraform)*** Adds www_record overwrite var and sets up prod main.tf
+- ***(utils)*** Adjusts local frontend dev utils to pass environment as an argument
+- ***(utils)*** Adds preview and start commands
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Adjusts sentry logging and sets environment for client
+- ***(front)*** Cleans up css and adds flourish to load effect
+- ***(front)*** Removes duplicate css rule
+- ***(front)*** Removes temporary margin adjustment
+- ***(front)*** Refactors border flourish to prevent skip-to-content layout shift
+- ***(front)*** Fixes sentry configuration for svelte
+- ***(front)*** Updates packages to complete initial security fix from dependabot
+- ***(front)*** Add rel="noopener noreferrer" to external links
+- ***(front)*** Add rel="noopener noreferrer" to external links
+- ***(front)*** Fixes environment declaration in sentry initialization
+- ***(front)*** Removes svelte fallback 404 config
+- ***(front)*** Adds styles and ready class with useEffect
+- ***(project)*** Uses empty string for media url
+- ***(project)*** Adds quotes around api path vars
+- ***(project)*** Writes media url to env file
+- ***(project)*** Adds media url env var to gh workflow
+- ***(project)*** Adds missing vars for gh workflow
+- ***(project)*** Uses checkout in dispatch workflow
+- ***(project)*** Update format of interpreted outputs
+- ***(project)*** Updates act utils with options for job selection
+- ***(strapi)*** Uses dgrebb/strapi-plugin-seo while PR in review
+- ***(strapi)*** Removes airtable and replaces with new strapi market assets
+- ***(strapi)*** Fixes database configuration and adjusts s3 bucket setting
+- ***(utils)*** Fixes incorrectly set env and puts stg in development mode
+
+### ♻️  Refactor
+
+- ***(front)*** Removes nextjs project and reference to next
+- ***(front)*** Refactors custom tailwind classes and imports
+- ***(front)*** [**breaking**] Refactors project with Svelte
+- ***(front)*** Moves globals, renames styles directory, and adjusts imports
+- ***(strapi)*** [**breaking**] Renames strapi project directory
+- ***(terraform)*** Adds configuration for publicly accessing rds instance from one ip address
+- ***(terraform)*** Adds configuration for publicly accessing rds instance from one ip address
+- ***(terraform)*** Adds configuration for public access to rds
+- ***(terraform)*** Adds configuration for public access to rds
+- ***(terraform)*** Refactors storage defaults to only run for uploads bucket
+- ***(terraform)*** Modularizes storage/cdn/network for svelte static cdn
+- ***(utils)*** Adds args for local development pointing to stg database
+- ***(utils)*** Adds args for local development pointing to stg database
+- ***(utils)*** Refactors prep-build script for Svelte
+
+### 👷 Build
+
+- ***(back)*** Uses local uploads directory when in dev mode
+- ***(back)*** Adds .dockerignore to backend directory
+- ***(deps-dev)*** Bump @sveltejs/kit from 1.12.0 to 1.15.2 in /front
+- ***(front)*** Throws error if nav or footer apis fail
+- ***(front)*** Adds logging to server console
+- ***(front)*** Adds local backup image
+- ***(front)*** Moves static 404 page
+- ***(front)*** Removes prerender from client layout
+- ***(project)*** Removes skip-ci from cz bump message
+- ***(strapi)*** Updates strapi to v4.11.1
+- ***(terraform)*** Adds final prd terraform config
+- ***(terraform)*** Removes api module and references
+- ***(utils)*** Adds separate admin dev command
+- ***(utils)*** Adds --watch-admin flag for local development
+- ***(utils)*** Adjusts environment scripts with more back/front specificity
+- ***(utils)*** Modifies frontend dev args for local setup
+- ***(utils)*** Adds -- --host option to expose for local hosts domain
+- ***(utils)*** Moves bump command into a script
+- ***(utils)*** Adds commands to open github repo and project in browser
+- ***(utils)*** Adjusts front start command to copy standalone files for server
+- ***(utils/front)*** Moves api paths into env vars
+
+### 💚 Continuous Integration
+
+- ***(ci)*** Refactors workflow names and adds colors
+- ***(front)*** Uncomments build script
+- ***(front)*** Updates build script and cleans up Node packages
+- ***(front)*** Adds robots.txt replacement and renames frontend workflow
+- ***(front)*** Adjusts path for push trigger
+- ***(front)*** Adds push trigger for front directory
+- ***(front)*** Capitalizes github dispatch type
+- ***(front)*** Removes trial and error echo statements
+- ***(front)*** Adds dynamic vars and echoes context
+- ***(front)*** Fixes name of secret
+- ***(front)*** Removes gh run cancel
+- ***(front)*** Adds id to build step
+- ***(front)*** Adds github token and renames local install step
+- ***(front)*** Adds deployment branch as variable
+- ***(front)*** Polishes off github actions, including local act conditional setup
+- ***(front)*** Adds build script for github action
+- ***(project)*** Adds main branch to ci workflow
+- ***(project)*** Sets up testing for gh workflow var issues
+- ***(project)*** Adds workflow_dispatch to frontend workflow
+- ***(project)*** Changes names of build workflows
+- ***(project)*** Adjusts outputs to match changes step id
+- ***(project)*** Moves jobs and runs on condition of changes in front or backend
+- ***(project)*** Adjust github actions utils for local dispatch testing
+- ***(project)*** Adds workflow for backend and push dispatch
+- ***(project)*** Updates utils and github build and deploy action
+- ***(project)*** Adds s3 action to github workflow
+- ***(project)*** Switches github workflow to static .env variables
+- ***(project)*** Adds github dispatch proxy server
+- ***(project)*** Adds build and deploy github workflow
+- ***(terraform)*** Updates infrastructure for svelte configuration
+- ***(utils)*** Adds act command and script
+
+### 🪮  Styling
+
+- ***(front)*** Adjusts padding for moon icon
+- ***(front)*** Adds a little padding to the moon icon
+- ***(front)*** Adjusts meta description text
+- ***(strapi)*** Adds some welcome page customization
+- ***(strapi)*** Customizes dashboard
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(project)*** Removes readmes
+
 ## [1.1.1] - 2023-06-03
 
 ### ♻️  Refactor
