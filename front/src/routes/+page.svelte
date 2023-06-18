@@ -7,7 +7,7 @@
   import Head from "../components/Head.svelte";
   export let data;
   const { seo, headline, intro, links } = data;
-  const image = seo?.metaImage?.data?.attributes.formats.small || { url: "/bio.png", alt: "A picture of Dan smiling" };
+  const image = seo?.metaImage?.data?.attributes.formats.small || { url: "/bio.jpg", alt: "A picture of Dan smiling" };
   const metaSocialOG = seo?.metaSocial.find((obj) => obj.socialNetwork === "Facebook");
 </script>
 
