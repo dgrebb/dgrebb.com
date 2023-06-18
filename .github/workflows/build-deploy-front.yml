@@ -55,11 +55,11 @@ jobs:
       - name: Set .env
         run: |
           touch front/.env
-          echo PUBLIC_MEDIA_URL=${{ secrets.PUBLIC_MEDIA_URL }} >> front/.env
-          echo PUBLIC_API_URL=${{ secrets.PUBLIC_API_URL }} >> front/.env
-          echo PUBLIC_API_PATH_NAVIGATION=${{ secrets.PUBLIC_API_PATH_NAVIGATION }} >> front/.env
-          echo PUBLIC_API_PATH_HOME=${{ secrets.PUBLIC_API_PATH_HOME }} >> front/.env
-          echo PUBLIC_API_PATH_FOOTER=${{ secrets.PUBLIC_API_PATH_FOOTER }} >> front/.env
+          echo PUBLIC_MEDIA_URL='${{ secrets.PUBLIC_MEDIA_URL }}' >> front/.env
+          echo PUBLIC_API_URL='${{ secrets.PUBLIC_API_URL }}' >> front/.env
+          echo PUBLIC_API_PATH_NAVIGATION='${{ secrets.PUBLIC_API_PATH_NAVIGATION }}' >> front/.env
+          echo PUBLIC_API_PATH_HOME='${{ secrets.PUBLIC_API_PATH_HOME }}' >> front/.env
+          echo PUBLIC_API_PATH_FOOTER='${{ secrets.PUBLIC_API_PATH_FOOTER }}' >> front/.env
           echo API_KEY=${{ secrets.API_KEY }} >> front/.env
           echo PUBLIC_SENTRY_DSN=${{ secrets.PUBLIC_SENTRY_DSN }} >> front/.env
           echo PUBLIC_ENV=${{ secrets.PUBLIC_ENV }} >> front/.env

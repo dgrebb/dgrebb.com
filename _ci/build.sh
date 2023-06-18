@@ -2,7 +2,6 @@
 
 printf "\033[0;33mInstalling Node packages...\033[0m\n"
 cd front
-cat .env
-# npm ci
+npm ci
 printf "\033[0;32mBuilding...\033[0m\n"
-# npm run build
+npm run build
