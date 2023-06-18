@@ -1,5 +1,6 @@
 <script>
   import Icon from '@iconify/svelte';
+  import Catchafire from './icons/Catchafire.svelte';
 
   const Icons = {
     GitHub: "line-md:github-loop",
@@ -47,7 +48,11 @@
         rel="noopener noreferrer"
         class={`${link.linkClass}-icon inline-block h-full p-1`}
       >
-        <Icon icon={Icons[link.icon ? link.icon : "Link"]} />
+        {#if link.icon === "Catchafire"}
+          <Catchafire />
+        {:else}
+          <Icon icon={Icons[link.icon ? link.icon : "Link"]} />
+        {/if}
       </a>
     </li>
   {/each}
