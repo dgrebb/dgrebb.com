@@ -7,9 +7,7 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 strapiEnv=$directory/../back/.env
-frontEnv=$directory/../front/.env
 >$strapiEnv
->$frontEnv
 echo "PORT=1337" >>$strapiEnv
 echo "APP_KEYS=$(pass dg/cms/appkeys)" >>$strapiEnv
 echo "API_TOKEN_SALT=$(pass dg/cms/apitokensalt)" >>$strapiEnv
@@ -29,16 +27,12 @@ while test "$1" != --; do
         echo "HOST=local.cms.dgrebb.com" >>$strapiEnv
         echo "DATABASE_HOST=localhost" >>$strapiEnv
         echo "NODE_ENV=development" >>$strapiEnv
-        echo "API_URL=$(pass dg/api/l/url)" >>$frontEnv
-        echo "API_KEY=$(pass dg/api/l/apikey)" >>$frontEnv
         break
         ;;
     ls | local-dev-stage)
         echo "HOST=local.cms.dgrebb.com" >>$strapiEnv
         echo "DATABASE_HOST=$(pass dg/cms/db/s/host)" >>$strapiEnv
         echo "NODE_ENV=development" >>$strapiEnv
-        echo "API_URL=$(pass dg/api/l/url)" >>$frontEnv
-        echo "API_KEY=$(pass dg/api/l/apikey)" >>$frontEnv
         break
         ;;
     l | local-docker)
@@ -50,7 +44,7 @@ while test "$1" != --; do
     s | stg)
         echo "HOST=0.0.0.0" >>$strapiEnv
         echo "DATABASE_HOST=$(pass dg/cms/db/s/host)" >>$strapiEnv
-        echo "NODE_ENV=development" >>$strapiEnv
+        echo "NODE_ENV=production" >>$strapiEnv
         break
         ;;
     p | prd | prod)

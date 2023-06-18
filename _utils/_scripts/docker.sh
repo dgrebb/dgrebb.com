@@ -7,8 +7,8 @@ if [ $# -eq 0 ]; then
     printDgErr "Missing args!"
 else
     while test "$1" != --; do
-        setEnv $2
-        prepBuild $2
+        setBackEnv $2
+        setFrontEnv $2
         img $2
         fimg $2
         case $1 in
@@ -97,5 +97,5 @@ else
             ;;
         esac
     done
-    shredEnv
+    shredBackEnv
 fi

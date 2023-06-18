@@ -29,10 +29,17 @@ const config = {
   ],
   translations: {
     en: {
-      'app.components.LeftMenu.navbrand.title': 'dgrebb.com',
-      'app.components.LeftMenu.navbrand.workplace': 'Content Management'
-    }
-  }
+      "Auth.form.welcome.title": "Get to it!",
+      "Auth.form.welcome.subtitle": "Make something.",
+      "HomePage.helmet.title": "dgrebb.com",
+      "app.components.LeftMenu.navbrand.title": "dgrebb.com",
+      "app.components.LeftMenu.navbrand.workplace": "Content Management",
+      "app.components.HomePage.welcome.again": "Write Something!",
+      "app.components.HomePage.welcomeBlock.content.again":
+        "Inspire the world with your delightful thoughts and stupendous content!",
+      "app.components.HomePage.button.blog": " ",
+    },
+  },
 };
 
 export default {

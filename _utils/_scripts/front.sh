@@ -16,8 +16,7 @@ fi
 while test "$1" != --; do
     case $1 in
     d | dev)
-        setEnv ld
-        prepBuild ${env}
+        setFrontEnv ${env}
         cdfront &&
             npm run dev -- --host
         break
@@ -27,7 +26,7 @@ while test "$1" != --; do
         break
         ;;
     b | build)
-        prepBuild ${env}
+        setFrontEnv ${env}
         cdfront && npm run build
         break
         ;;
@@ -45,4 +44,4 @@ while test "$1" != --; do
         ;;
     esac
 done
-shredEnv
+shredFrontEnv
