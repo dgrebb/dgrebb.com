@@ -62,7 +62,7 @@ module "network" {
   alb                  = module.scaling.alb
   www_cdn              = module.www_cdn.cf_distribution
   uploads_cdn          = module.uploads_cdn.cf_distribution
-  www_record_overwrite = false
+  www_record_overwrite = true
 }
 
 module "scaling" {
@@ -92,15 +92,15 @@ module "www_cdn_bucket" {
   source             = "../modules/storage"
   domain             = var.domain
   dashed_domain      = var.dashed_domain
-  force_destroy      = true
+  force_destroy      = false
   cf_access_identity = module.www_cdn.cf_access_identity
 }
 
 module "uploads_cdn_bucket" {
   source             = "../modules/storage"
   domain             = var.cdndomain
-  dashed_domain      = local.dashed_cdndomain
-  force_destroy      = true
+  dashed_domain      = var.dashed_cdndomain
+  force_destroy      = false
   cf_access_identity = module.uploads_cdn.cf_access_identity
 }
 
