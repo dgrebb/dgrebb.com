@@ -199,6 +199,7 @@ body {
     @apply flex;
     @apply flex-wrap;
     @apply justify-center;
+    @apply items-center;
   }
   .link {
     @apply flex;
@@ -219,16 +220,20 @@ body {
       @apply h-7;
     }
     .twitter-icon {
+      @apply pt-[5px];
       svg {
         @apply h-8;
         @apply w-8;
       }
     }
+    .instagram-icon {
+      @apply pt-[6px];
+    }
     .link-icon {
       @apply pt-[7px];
     }
-    .mastodon-icon {
-      @apply pt-[6px];
+    .pinboard-icon {
+      @apply pl-[3px];
     }
   }
 }

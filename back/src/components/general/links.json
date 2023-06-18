@@ -28,7 +28,8 @@
         "Mastodon",
         "Flickr",
         "Pinboard",
-        "Link"
+        "Link",
+        "Catchafire"
       ],
       "default": "Link"
     }
