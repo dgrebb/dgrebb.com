@@ -26,7 +26,9 @@ echo "WWW_DOMAIN=\"$(pass dg/www/${1}/domain)\"" | tee -a $dockerEnvFile >/dev/n
 echo "CMS_DOMAIN=\"$(pass dg/cms/${1}/domain)\"" | tee -a $dockerEnvFile >/dev/null
 
 echo "PUBLIC_ENV=${ENV}" | tee -a $dockerEnvFile $frontEnvFile >/dev/null
-echo "API_URL=\"$(pass dg/api/${1}/url)\"" | tee -a $dockerEnvFile $frontEnvFile >/dev/null
-echo "PUBLIC_API_URL=\"$(pass dg/api/${1}/url)\"" | tee -a $dockerEnvFile $frontEnvFile >/dev/null
 echo "API_KEY=\"$(pass dg/api/${1}/apikey)\"" | tee -a $dockerEnvFile $frontEnvFile >/dev/null
+echo "PUBLIC_API_PATH_NAVIGATION=$(pass dg/cms/api/paths/navigation)" >>$frontEnvFile
+echo "PUBLIC_API_PATH_HOME=$(pass dg/cms/api/paths/home)" >>$frontEnvFile
+echo "PUBLIC_API_PATH_FOOTER=$(pass dg/cms/api/paths/footer)" >>$frontEnvFile
+echo "PUBLIC_API_URL=\"$(pass dg/api/${1}/url)\"" | tee -a $dockerEnvFile $frontEnvFile >/dev/null
 echo "PUBLIC_SENTRY_DSN=\"$(pass dg/www/logs/sentrydsn)\"" | tee -a $dockerEnvFile $frontEnvFile >/dev/null
