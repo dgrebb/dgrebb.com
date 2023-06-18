@@ -2,7 +2,7 @@
 name: Feature
 about: New Features
 title: "[FEAT] - "
-labels: enhancement
+labels: feature, enhancement
 assignees: dgrebb
 
 ---
@@ -13,7 +13,7 @@ assignees: dgrebb
 
 # Implementation
 
-1. 
+- [ ]
 
 # Testing
 
@@ -24,3 +24,5 @@ assignees: dgrebb
 
 
 # Supplementary
+
+-
