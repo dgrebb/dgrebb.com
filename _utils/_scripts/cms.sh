@@ -9,19 +9,33 @@ fi
 while test "$1" != --; do
     case $1 in
     d | dev)
-        setEnv ld
+        setBackEnv ld
         cdcms && \
-        trap 'printf "\n"; shredEnv ; printDgMsg "Done!" ; exit 0' SIGINT; \
-        npm run strapi develop
+        trap 'printf "\n"; shredBackEnv ; printDgMsg "Done!" ; exit 0' SIGINT; \
+        npm run develop
+        break
+        ;;
+    ad | admin-dev)
+        setBackEnv ld
+        cdcms && \
+        trap 'printf "\n"; shredBackEnv ; printDgMsg "Done!" ; exit 0' SIGINT; \
+        npm run develop -- --watch-admin
+        break
+        ;;
+    ds | dev-stage)
+        setBackEnv ls
+        cdcms && \
+        trap 'printf "\n"; shredBackEnv ; printDgMsg "Done!" ; exit 0' SIGINT; \
+        npm run develop -- --watch-admin
         break
         ;;
     i | install)
-        setEnv l
+        setBackEnv l
         cdcms && npm i
         break
         ;;
     b | build)
-        setEnv l
+        setBackEnv l
         cdcms && npm run build
         break
         ;;
@@ -31,4 +45,4 @@ while test "$1" != --; do
         ;;
     esac
 done
-shredEnv
+shredBackEnv

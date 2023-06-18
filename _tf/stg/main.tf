@@ -1,4 +1,3 @@
-# ------------------------------------------------------------------------------
 # Staging Infrastructure
 # ------------------------------------------------------------------------------
 
@@ -11,75 +10,86 @@ locals {
   dashed_cdndomain = "stg-${var.dashed_cdndomain}"
 }
 
-module "cdn" {
-  source           = "../modules/cdn"
-  cdndomain        = local.cdndomain
-  dashed_cmsdomain = local.dashed_cmsdomain
-  cms_bucket       = module.storage.cms_bucket
-  cdn_log_bucket   = module.storage.cdn_log_bucket
-  cdn_cert         = module.network.cdn_cert
+module "www_cdn" {
+  source        = "../modules/cdn"
+  domain        = local.domain
+  dashed_domain = local.dashed_domain
+  bucket        = module.www_cdn_bucket.bucket
+  log_bucket    = module.www_cdn_bucket.log_bucket
+  cert          = module.network.wildcard_cert
+}
+
+module "uploads_cdn" {
+  source        = "../modules/cdn"
+  domain        = local.cdndomain
+  dashed_domain = local.dashed_cdndomain
+  bucket        = module.uploads_cdn_bucket.bucket
+  log_bucket    = module.uploads_cdn_bucket.log_bucket
+  cert          = module.network.uploads_cert
 }
 
 module "containers" {
   source                = "../modules/containers"
   force_delete          = true
   region                = var.region
-  domain                = local.domain
-  dashed_domain         = local.dashed_domain
   cmsdomain             = local.cmsdomain
   dashed_cmsdomain      = local.dashed_cmsdomain
   strapi_instance_count = 1
-  front_instance_count  = 1
   subnets               = module.network.subnets
   strapi_alb_tg         = module.scaling.strapi_alb_tg
-  front_alb_tg          = module.scaling.front_alb_tg
   service_sg            = module.security.service_sg
 }
 
 module "database" {
-  source           = "../modules/database"
-  service_sg       = module.security.service_sg
-  db_subnet_group  = module.network.db_subnet_group
-  dashed_cmsdomain = local.dashed_cmsdomain
-  db_password      = var.db_password
+  source              = "../modules/database"
+  service_sg          = module.security.service_sg
+  db_subnet_group     = module.network.db_subnet_group
+  dashed_cmsdomain    = local.dashed_cmsdomain
+  db_password         = var.db_password
+  instance_class      = "db.t3.micro"
+  skip_final_snapshot = true
+  public_access       = true
 }
 
 module "management" {
-  source        = "../modules/management"
-  dashed_domain = local.dashed_domain
+  source           = "../modules/management"
+  dashed_cmsdomain = local.dashed_cmsdomain
 }
 
 module "network" {
-  source           = "../modules/network"
-  aws_access_key   = var.aws_access_key
-  aws_secret_key   = var.aws_secret_key
-  region           = var.region
-  subnets          = var.subnets
-  basedomain       = var.basedomain
-  domain           = local.domain
-  cmsdomain        = local.cmsdomain
-  cdndomain        = local.cdndomain
-  dashed_domain    = local.dashed_domain
-  dashed_cmsdomain = local.dashed_cmsdomain
-  alb              = module.scaling.alb
-  cf_distribution  = module.cdn.cf_distribution
+  source               = "../modules/network"
+  aws_secret_key       = var.aws_secret_key
+  aws_access_key       = var.aws_access_key
+  region               = var.region
+  subnets              = var.subnets
+  basedomain           = var.basedomain
+  domain               = local.domain
+  cmsdomain            = local.cmsdomain
+  cdndomain            = local.cdndomain
+  dashed_domain        = local.dashed_domain
+  dashed_cmsdomain     = local.dashed_cmsdomain
+  alb                  = module.scaling.alb
+  www_cdn              = module.www_cdn.cf_distribution
+  uploads_cdn          = module.uploads_cdn.cf_distribution
+  www_record_overwrite = true
 }
 
 module "scaling" {
-  source              = "../modules/scaling"
-  domain              = local.domain
-  dashed_domain       = local.dashed_domain
-  cmsdomain           = local.cmsdomain
-  dashed_cmsdomain    = local.dashed_cmsdomain
-  vpc                 = module.network.vpc
-  subnets             = module.network.subnets
-  wildcard_cert       = module.network.wildcard_cert
-  wildcard_validation = module.network.wildcard_validation
-  lb_sg               = module.security.lb_sg
+  source           = "../modules/scaling"
+  domain           = local.domain
+  dashed_domain    = local.dashed_domain
+  cmsdomain        = local.cmsdomain
+  dashed_cmsdomain = local.dashed_cmsdomain
+  vpc              = module.network.vpc
+  subnets          = module.network.subnets
+  cms_cert         = module.network.cms_cert
+  cms_validation   = module.network.cms_validation
+  lb_sg            = module.security.lb_sg
 }
 
 module "security" {
   source = "../modules/security"
+  pub    = true
 }
 
 module "state" {
@@ -87,12 +97,23 @@ module "state" {
   terraform_state_bucket = var.terraform_state_bucket
 }
 
-module "storage" {
+module "www_cdn_bucket" {
   source             = "../modules/storage"
-  cmsdomain          = local.cmsdomain
-  cdndomain          = local.cdndomain
-  dashed_cmsdomain   = local.dashed_cmsdomain
-  dashed_cdndomain   = local.dashed_cdndomain
+  domain             = local.domain
+  dashed_domain      = local.dashed_domain
   force_destroy      = true
-  cf_access_identity = module.cdn.cf_access_identity
+  cf_access_identity = module.www_cdn.cf_access_identity
+}
+
+module "uploads_cdn_bucket" {
+  source             = "../modules/storage"
+  domain             = local.cdndomain
+  dashed_domain      = local.dashed_cdndomain
+  force_destroy      = true
+  cf_access_identity = module.uploads_cdn.cf_access_identity
+}
+
+module "uploads_bucket_defaults" {
+  source = "../modules/storage/defaults"
+  bucket = module.uploads_cdn_bucket.bucket
 }

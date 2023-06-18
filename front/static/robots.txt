@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /*.json$
+Disallow: /*.js$
+Disallow: /*.gz$
+Disallow: /*.br$
+Disallow: /fonts
+Disallow: /s
+Disallow: /

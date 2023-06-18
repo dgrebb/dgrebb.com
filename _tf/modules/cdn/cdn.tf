@@ -1,9 +1,9 @@
 # ------------------------------------------------------------------------------
-# CDN For Static Assets
+# CDNs
 # ------------------------------------------------------------------------------
 
 locals {
-  s3origin = "${var.dashed_cmsdomain}s3origin"
+  s3origin = "${var.domain}s3origin"
 }
 
 resource "aws_cloudfront_origin_access_identity" "this" {
@@ -12,7 +12,7 @@ resource "aws_cloudfront_origin_access_identity" "this" {
 }
 
 resource "aws_cloudfront_function" "subdir" {
-  name    = "subdir-index"
+  name    = "subdir-index-${var.dashed_domain}"
   runtime = "cloudfront-js-1.0"
   comment = "Redirect subdirectory root to index.html"
   publish = true
@@ -20,9 +20,9 @@ resource "aws_cloudfront_function" "subdir" {
 }
 
 resource "aws_cloudfront_distribution" "this" {
-  comment             = var.cdndomain
+  comment             = var.domain
   price_class         = "PriceClass_100"
-  aliases             = [var.cdndomain]
+  aliases             = [var.domain, "www.${var.domain}"]
   enabled             = true
   is_ipv6_enabled     = true
   default_root_object = "index.html"
@@ -34,7 +34,7 @@ resource "aws_cloudfront_distribution" "this" {
   }
 
   origin {
-    domain_name = var.cms_bucket.bucket_regional_domain_name
+    domain_name = var.bucket.bucket_regional_domain_name
     origin_id   = local.s3origin
 
     s3_origin_config {
@@ -44,7 +44,7 @@ resource "aws_cloudfront_distribution" "this" {
 
   logging_config {
     include_cookies = false
-    bucket          = var.cdn_log_bucket.bucket_domain_name
+    bucket          = var.log_bucket.bucket_domain_name
     prefix          = ""
   }
 
@@ -80,7 +80,7 @@ resource "aws_cloudfront_distribution" "this" {
   }
 
   viewer_certificate {
-    acm_certificate_arn      = var.cdn_cert.arn
+    acm_certificate_arn      = var.cert.arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1"
   }

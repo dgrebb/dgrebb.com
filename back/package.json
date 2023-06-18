@@ -1,0 +1,32 @@
+{
+  "name": "cms.dgrebb.com",
+  "private": true,
+  "version": "1.0.0",
+  "description": "dgrebb.com CMS",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "dependencies": {
+    "@strapi/plugin-i18n": "4.11.1",
+    "@strapi/plugin-seo": "github:dgrebb/strapi-plugin-seo#develop",
+    "@strapi/plugin-users-permissions": "4.11.1",
+    "@strapi/provider-upload-aws-s3": "4.11.1",
+    "@strapi/strapi": "4.11.1",
+    "pg": "^8.10.0",
+    "strapi-blurhash": "^1.1.1"
+  },
+  "author": {
+    "name": "dgrebb"
+  },
+  "strapi": {
+    "uuid": "a88d5600-baef-47fb-8bf4-ff51888cc148"
+  },
+  "engines": {
+    "node": ">=14.19.1 <=18.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

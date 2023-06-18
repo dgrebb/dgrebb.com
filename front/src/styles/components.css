@@ -1,0 +1,29 @@
+@layer components {
+  .dg--link-hover {
+    @apply transition-colors;
+    @apply dg--transition-effect;
+    color: rgb(var(--foreground-rgb));
+    &:hover,
+    &:focus {
+      color: rgb(var(--highlight-rgb));
+    }
+  }
+  .dg--btn-primary {
+    @apply transition-colors;
+    &:hover,
+    &:focus {
+    }
+  }
+  .dg--btn-secondary {
+    @apply transition;
+    @apply dg--transition-effect;
+    background: rgb(var(--btn--secondary-rgb));
+    border: 2px solid rgb(var(--btn--secondary-rgb));
+    border-top-width: 1px;
+    border-top-color: rgb(var(--btn--secondary-highlight-rgb));
+    &:hover,
+    &:focus {
+      @apply brightness-125;
+    }
+  }
+}

@@ -26,10 +26,6 @@ variable "cdndomain" {
   type      = string
   sensitive = true
 }
-variable "apidomain" {
-  type      = string
-  sensitive = true
-}
 variable "dashed_domain" {
   type      = string
   sensitive = true
@@ -39,10 +35,6 @@ variable "dashed_cmsdomain" {
   sensitive = true
 }
 variable "dashed_cdndomain" {
-  type      = string
-  sensitive = true
-}
-variable "dashed_apidomain" {
   type      = string
   sensitive = true
 }

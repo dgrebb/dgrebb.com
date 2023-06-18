@@ -1,8 +1,11 @@
+bluebg="\e[44m"
+green="32"
 red="31"
 yellow="33"
-bluebg="\e[44m"
 BOLDRED="\e[1;${red}m"
+BOLDGREEN="\e[1;${green}m"
 BOLDYELLOW="\e[1;${yellow}m"
+
 NC="\033[0m" # No Color
 
 hello() {
@@ -10,28 +13,28 @@ hello() {
 }
 
 env() {
-    cd $directory/../strapi
+    cd $directory/../back
     if [ $# -eq 0 ] || [ $1 = p ]; then
-        setEnv p
+        setBackEnv p
         img p
     elif [ $1 = s ]; then
-        setEnv s
+        setBackEnv s
         img s
     else
-        setEnv $1
+        setBackEnv $1
         img
     fi
 }
 
 img() {
     if [ $# -eq 0 ] || [ $1 = p ]; then
-        strapi_img=$(pass dg/cms/domain)
-        strapi_ecr_uri=$(pass dg/cms/ecr-uri)
+        back_img=$(pass dg/cms/domain)
+        back_ecr_uri=$(pass dg/cms/ecr-uri)
     elif [ $1 = s ]; then
-        strapi_img=$(pass dg/cms/s/domain)
-        strapi_ecr_uri=$(pass dg/cms/s/ecr-uri)
+        back_img=$(pass dg/cms/s/domain)
+        back_ecr_uri=$(pass dg/cms/s/ecr-uri)
     else
-        strapi_img=$(pass dg/cms/local-domain)
+        back_img=$(pass dg/cms/local-domain)
     fi
 }
 
@@ -48,19 +51,19 @@ fimg() {
     fi
 }
 
-setEnv() {
+setBackEnv() {
     printDgMsg "Setting Strapi .env..."
-    /bin/bash $directory/_scripts/set-env.sh $1
+    /bin/bash $directory/_scripts/setBackEnv.sh $1
 }
 
-shredEnv() {
-    if [ -f $directory/../strapi/.env ]; then
+setFrontEnv() {
+    /bin/bash $directory/_scripts/setFrontEnv.sh $1
+}
+
+shredBackEnv() {
+    if [ -f $directory/../back/.env ]; then
         printDgMsg "Shredding Strapi .env..."
-        gshred $directory/../strapi/.env && rm $directory/../strapi/.env
-    fi
-    if [ -f $directory/../front/.env ]; then
-        printDgMsg "Shredding Next .env..."
-        gshred $directory/../front/.env && rm $directory/../front/.env
+        gshred $directory/../back/.env && rm $directory/../back/.env
     fi
     if [ -f $directory/../_docker/.env ]; then
         printDgMsg "Shredding Docker .env..."
@@ -68,13 +71,16 @@ shredEnv() {
     fi
 }
 
+shredFrontEnv() {
+    if [ -f $directory/../front/.env ]; then
+        printDgMsg "Shredding Svelte .env..."
+        gshred $directory/../front/.env && rm $directory/../front/.env
+    fi
+}
+
 setTfEnv() {
     printDgMsg "Setting Terraform vars..."
     source $directory/../_tf/_scripts/set-tf-vars.sh
-}
-
-prepBuild() {
-    /bin/bash $directory/_scripts/prep-build.sh $1
 }
 
 retag() {
@@ -93,11 +99,11 @@ tag() {
 }
 
 run() {
-    docker run -p 1337:1337 -it ${image_name}
+    docker run -p 1337:1337 -it ${back_img}
 }
 
 cdcms() {
-    cd ${directory}/../strapi
+    cd ${directory}/../back
 }
 
 cdfront() {

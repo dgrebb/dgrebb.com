@@ -2,6 +2,10 @@
 # Security Groups
 # ------------------------------------------------------------------------------
 
+data "external" "ip" {
+  program = ["/bin/bash" , "${path.module}/../../_scripts/ip.sh"]
+}
+
 resource "aws_security_group" "svc" {
   ingress {
     from_port       = 0
@@ -15,6 +19,17 @@ resource "aws_security_group" "svc" {
     from_port = 5432
     to_port   = 5432
     protocol  = "tcp"
+  }
+
+
+  dynamic "ingress" {
+    for_each = var.pub == true ? [1] : []
+    content {
+      from_port   = 5432
+      to_port     = 5432
+      protocol    = "tcp"
+      cidr_blocks = [format("%s/%s", data.external.ip.result["internet_ip"], 32)]
+    }
   }
 
   egress {

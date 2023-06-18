@@ -8,5 +8,7 @@ variable "cmsdomain" {}
 variable "cdndomain" {}
 variable "dashed_domain" {}
 variable "dashed_cmsdomain" {}
-variable "cf_distribution" {}
+variable "www_cdn" {}
+variable "uploads_cdn" {}
 variable "alb" {}
+variable "www_record_overwrite" {}

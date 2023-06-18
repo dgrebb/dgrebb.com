@@ -1,0 +1,257 @@
+@import "./fonts.css";
+@import "./components.css";
+@import "./utilities.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (prefers-color-scheme: light) {
+  :root {
+    @apply dg--light-theme;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @apply dg--dark-theme;
+  }
+}
+
+html.light-theme {
+  @apply dg--light-theme;
+}
+
+html.dark-theme {
+  @apply dg--dark-theme;
+}
+
+html {
+  @apply transition-colors;
+  @apply dg--transition-effect;
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  height: fit-content;
+  overflow: clip;
+}
+
+body {
+  @apply dg--font-ps;
+  @apply transition-colors;
+  @apply dg--transition-effect;
+  color: rgb(var(--foreground-rgb));
+  height: 100vh;
+  min-height: 100vh;
+  overflow: overlay;
+  scrollbar-gutter: stable both-edges;
+  .flourish,
+  .header,
+  .main,
+  .footer {
+    @apply transition-all;
+    @apply dg--transition-effect;
+    @apply opacity-0;
+  }
+  &.ready {
+    .flourish,
+    .header,
+    .main,
+    .footer {
+      @apply opacity-100;
+    }
+  }
+}
+
+.flourish {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-top: 8px solid rgb(var(--foreground-rgb));
+}
+
+.header,
+.footer {
+  @apply p-6;
+  @apply sm:p-8;
+  @apply lg:p-14;
+}
+
+.header {
+  @apply pb-0;
+  position: relative;
+}
+
+.skip-to-content {
+  @apply dg--btn-secondary;
+  @apply px-5;
+  @apply py-3;
+  @apply transition-all;
+  @apply dg--transition-effect;
+  position: absolute;
+  transform: translateY(-100%);
+  @apply opacity-0;
+
+  &:focus {
+    transform: translateY(0%);
+    @apply opacity-100;
+  }
+}
+
+.nav-home {
+  @apply dg--font-psbl;
+  @apply tracking-tight;
+  @apply dg--link-hover;
+  @apply ml-[2px];
+}
+
+.theme-toggle {
+  @apply dg--link-hover;
+  @apply transition;
+  @apply dg--transition-effect;
+  @apply mt-0.5 ml-3;
+  #moon {
+    padding-bottom: 1px;
+  }
+}
+
+.nav-bar {
+  .btn {
+    @apply dg--btn-secondary;
+  }
+}
+
+.main {
+  @apply p-8;
+  @apply md:p-11;
+  @apply lg:p-16;
+  @apply pb-3;
+  @apply flex-grow;
+  @apply justify-center;
+}
+
+.bio,
+.links {
+  max-width: 565px;
+}
+
+.bio {
+  img {
+    border: 1px solid rgba(var(--foreground-rgb), 0.5);
+  }
+  h1.headline {
+    @apply dg--font-psb;
+    @apply font-bold;
+    @apply text-4xl;
+    @apply brightness-125;
+    @apply py-5;
+  }
+}
+
+.bio,
+.post,
+.posts,
+.footer {
+  a {
+    @apply dg--link-hover;
+  }
+}
+
+.bio,
+.post,
+.posts,
+.footer,
+.not-found {
+  a {
+    @apply pb-0.5;
+    color: rgb(var(--foreground-rgb));
+    border-bottom: 1px solid rgb(var(--foreground-rgb));
+    &:hover,
+    &:focus {
+      border-color: rgb(var(--highlight-rgb));
+    }
+  }
+}
+
+.bio,
+.post,
+.posts {
+  line-height: 1.6;
+  @apply antialiased;
+  @apply opacity-95;
+  h1 {
+    @apply tracking-tight;
+    @apply dg--font-psb;
+  }
+  p {
+    @apply pb-7;
+  }
+}
+
+.links {
+  @apply flex;
+  @apply items-stretch;
+  @apply px-8;
+  .link-list {
+    @apply flex;
+    @apply flex-wrap;
+    @apply justify-center;
+    @apply items-center;
+  }
+  .link {
+    @apply flex;
+    @apply leading-none;
+    @apply m-2;
+    a {
+      @apply self-center;
+      color: rgb(var(--foreground-rgb-faded));
+      @apply transition-colors;
+      @apply dg--transition-effect;
+      &:hover,
+      &:focus {
+        color: rgb(var(--highlight-rgb));
+      }
+    }
+    svg {
+      @apply w-7;
+      @apply h-7;
+    }
+    .twitter-icon {
+      @apply pt-[5px];
+      svg {
+        @apply h-8;
+        @apply w-8;
+      }
+    }
+    .instagram-icon {
+      @apply pt-[6px];
+    }
+    .link-icon {
+      @apply pt-[7px];
+    }
+    .pinboard-icon {
+      @apply pl-[3px];
+    }
+  }
+}
+
+.image-loader {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.footer {
+  @apply pb-9;
+  @apply flex-col;
+  @apply text-center;
+  @apply mt-auto;
+  @apply text-sm;
+  small {
+    @apply opacity-20;
+  }
+}

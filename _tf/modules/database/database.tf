@@ -2,19 +2,38 @@
 # CMS Database
 # ------------------------------------------------------------------------------
 resource "aws_db_instance" "this" {
-  depends_on             = [var.service_sg]
-  identifier             = var.dashed_cmsdomain
-  allocated_storage      = 10
-  engine                 = "postgres"
-  engine_version         = "10.23"
-  instance_class         = "db.t2.small"
-  db_name                = "strapi"
-  username               = "strapi"
-  password               = var.db_password
-  vpc_security_group_ids = ["${var.service_sg.id}"]
-  db_subnet_group_name   = var.db_subnet_group.id
-  skip_final_snapshot    = "true"
+  depends_on                = [var.service_sg]
+  identifier                = var.dashed_cmsdomain
+  allocated_storage         = 5
+  engine                    = "postgres"
+  engine_version            = "15.3"
+  instance_class            = var.instance_class
+  multi_az                  = false
+  db_name                   = "strapi"
+  username                  = "strapi"
+  password                  = var.db_password
+  publicly_accessible       = var.public_access
+  storage_encrypted         = false
+  vpc_security_group_ids    = ["${var.service_sg.id}"]
+  db_subnet_group_name      = var.db_subnet_group.id
+  skip_final_snapshot       = var.skip_final_snapshot
+  final_snapshot_identifier = var.dashed_cmsdomain
+  apply_immediately         = true
+  backup_retention_period   = 3
+  backup_window             = "06:00-07:00"
+
+  parameter_group_name = aws_db_parameter_group.this.name
   lifecycle {
     prevent_destroy = false
+  }
+}
+
+resource "aws_db_parameter_group" "this" {
+  name   = "strapi-db-parameter-group"
+  family = "postgres15"
+
+  parameter {
+    name  = "rds.force_ssl"
+    value = "0"
   }
 }

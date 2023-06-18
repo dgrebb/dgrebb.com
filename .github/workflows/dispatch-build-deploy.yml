@@ -1,0 +1,61 @@
+name: Dispatch Build & Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      backend: ${{ steps.changes.outputs.backend }}
+      frontend: ${{ steps.changes.outputs.frontend }}
+    steps:
+    - uses: actions/checkout@v3
+    - uses: dorny/paths-filter@v2
+      id: changes
+      with:
+        base: ${{ secrets.DEPLOYMENT_BRANCH }}
+        filters: |
+          backend:
+            - 'back/**'
+          frontend:
+            - 'front/**'
+
+  # backend:
+  #   needs: changes
+  #   if: ${{ needs.changes.outputs.backend == 'true' }}
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+
+  #     - name: Add Masks
+  #       run: |
+  #         echo "::add-mask::${{ secrets.DISPATCH_TOKEN }}"
+
+  #     - name: Dispatch Backend
+  #       run: |
+  #         curl -X POST https://api.github.com/repos/dgrebb/dgrebb.com/dispatches \
+  #         -H 'Accept: application/vnd.github.everest-preview+json' \
+  #         -H 'Authorization: Bearer ${{ secrets.DISPATCH_TOKEN }}' \
+  #         --data '{"event_type": "Backend"}'
+
+  frontend:
+    needs: changes
+    if: ${{ needs.changes.outputs.frontend == 'true' }}
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Add Masks
+        run: |
+          echo "::add-mask::${{ secrets.DISPATCH_TOKEN }}"
+
+      - name: Dispatch Frontend
+        run: |
+          curl -X POST https://api.github.com/repos/dgrebb/dgrebb.com/dispatches \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -H 'Authorization: Bearer ${{ secrets.DISPATCH_TOKEN }}' \
+          --data '{"event_type": "Frontend"}'

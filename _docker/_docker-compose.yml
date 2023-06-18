@@ -1,0 +1,33 @@
+version: '3'
+name: dgrebb-com
+services:
+
+  back:
+    platform: linux/amd64
+    image: ${CMS_DOMAIN}
+    build:
+      context: ../back
+      dockerfile: ../_docker/back.Dockerfile
+    restart: unless-stopped
+    ports:
+      - 1337:1337
+
+  front:
+    platform: linux/amd64
+    image: ${WWW_DOMAIN}
+    environment:
+      - API_URL=${API_URL}
+      - API_KEY=${API_KEY}
+    build:
+      context: ../front
+      dockerfile: ../_docker/front.Dockerfile
+      args:
+        - API_URL=${API_URL}
+        - API_KEY=${API_KEY}
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    links:
+      - "back:back"
+    depends_on:
+      - back

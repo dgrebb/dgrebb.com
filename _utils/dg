@@ -22,7 +22,9 @@ showHelp() {
     \n\n"
 }
 
-hello
+if [[ $1 != "v" ]]; then
+    hello
+fi
 
 while test "$1" != --; do
     case $1 in
@@ -31,7 +33,7 @@ while test "$1" != --; do
         break
         ;;
     f | front)
-        /bin/bash $directory/_scripts/front.sh $2
+        /bin/bash $directory/_scripts/front.sh $2 $3
         break
         ;;
     d | docker)
@@ -42,27 +44,20 @@ while test "$1" != --; do
         /bin/bash $directory/_scripts/terraform.sh $2 $3 $4 $5 $6
         break
         ;;
-    ch | changelog)
-        config="_utils/_cliff/all.toml"
-        file="CHANGELOG.md"
-        cd ${directory}/../ && git cliff -c $config -o ${file}
-        echo "Project Changelog Written to ${file}"
-        for D in *; do
-            if [ -d "${D}" ]; then
-                config="_utils/_cliff/dir.toml"
-                if [[ "$D" == *"tf"* || "$D" == *"utils"* ]]; then
-                    cd ${directory}/../ &&
-                        git cliff -c $config \
-                            --include-path "${D}/*" \
-                            --include-path "${D:1}/*" \
-                            -o ./${D}/${file}
-                    echo "Changelog for ${D} written to ${D}/${file}"
-                else
-                    cd ${directory}/../ && git cliff -c $config --include-path "${D}/*" -o ./${D}/${file}
-                    echo "Changelog for ${D} written to ${D}/${file}"
-                fi
-            fi
-        done
+    b | bump)
+        /bin/bash $directory/_scripts/bump.sh
+        break
+        ;;
+    g | github )
+        open https://github.com/dgrebb/dgrebb.com
+        break
+        ;;
+    gp | github-project )
+        open https://github.com/users/dgrebb/projects/12
+        break
+        ;;
+    a | act )
+        /bin/bash $directory/_scripts/act.sh $2 $3
         break
         ;;
     -h | --help)
