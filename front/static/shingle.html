@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any" />
+    <title>dgrebb.com</title>
+    <style>
+      html,
+      body {
+        font-family: "Helvetica", sans-serif;
+        height: 100%;
+      }
+      body {
+        align-items: center;
+        background-color: rgb(127, 127, 127);
+        color: rgb(223, 224, 224);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5), 0 0 1em rgba(0, 0, 0, 0.5),
+          0 0 0.2em rgba(0, 0, 0, 0.5);
+      }
+      .shingle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1 {
+        align-self: center;
+        font-size: 11rem;
+        justify-content: center;
+        margin: 0;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5), 0 0 1em rgba(0, 0, 0, 0.5),
+          0 0 0.2em rgba(0, 0, 0, 0.5);
+      }
+      a {
+        border-bottom: 1px solid rgba(223, 224, 224, 0.84);
+        color: rgba(223, 224, 224, 0.84);
+        padding-bottom: 2px;
+        text-decoration: none;
+        transition: color 0.5s ease-in-out, border-color 0.5s ease-in-out;
+      }
+      a:hover {
+        border-color: yellow;
+        color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="shingle">
+      <h1>brb</h1>
+      <p>Robots doing maintenance. Be back soon!</p>
+    </section>
+  </body>
+  <script
+    src="https://browser.sentry-cdn.com/7.54.0/bundle.tracing.min.js"
+    integrity="sha384-+h0OKHbAGUGuqyOQt8GPxoAlivqJAJnscoCE5ftl2SV77nWLjqoXvT4p6QLPjEh1"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    const { hostname: e } = document.location;
+    let environment;
+    (environment = e.includes("local")
+      ? "development"
+      : e.includes("stg")
+      ? "staging"
+      : "production"),
+      Sentry.init({
+        dsn:
+          "https://02b9c4dc55d14cf5bbdd30b7e592eb9a@o4505287560462336.ingest.sentry.io/4505312527187968",
+        tracesSampleRate: 1,
+        environment,
+      }),
+      Sentry.captureMessage("Page Not Found", {
+        page: document.location.pathname,
+      });
+  </script>
+</html>
