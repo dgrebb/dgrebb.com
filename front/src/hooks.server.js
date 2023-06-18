@@ -14,6 +14,8 @@ export async function handleError({ error, event }) {
   Sentry.setTag("environment", PUBLIC_ENV);
   Sentry.captureException(error, { extra: { event, errorId } });
 
+  console.log(`\x1b[33mError: ${error}`);
+
   return {
     message: "Server error!",
     errorId,
