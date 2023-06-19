@@ -6,53 +6,55 @@ if [ $# -eq 0 ]; then
     printf "\n${red}Argument for local (l) or production (p) is required.\n"
     exit 1
 fi
-strapiEnv=$directory/../back/.env
->$strapiEnv
-echo "PORT=1337" >>$strapiEnv
-echo "APP_KEYS=$(pass dg/cms/appkeys)" >>$strapiEnv
-echo "API_TOKEN_SALT=$(pass dg/cms/apitokensalt)" >>$strapiEnv
-echo "ADMIN_JWT_SECRET=$(pass dg/cms/adminjwtsecret)" >>$strapiEnv
-echo "JWT_SECRET=$(pass dg/cms/jwtsecret)" >>$strapiEnv
-echo "TRANSFER_TOKEN_SALT=$(pass dg/cms/transfertokensalt)" >>$strapiEnv
-echo "AWS_ACCESS_KEY_ID=$(pass dg/aws/id)" >>$strapiEnv
-echo "AWS_ACCESS_SECRET=$(pass dg/aws/secret)" >>$strapiEnv
-echo "AWS_REGION=$(pass dg/aws/region)" >>$strapiEnv
-echo "AWS_S3_BUCKET=$(pass dg/cms/s/bucket)" >>$strapiEnv
-echo "CDN_BASE_URL=$(pass dg/cms/stg-cdnbaseurl)" >>$strapiEnv
-echo "DATABASE_PASSWORD=$(pass dg/cms/db/password)" >>$strapiEnv
+backEnv=$directory/../back/.env
+
+>$backEnv
+
+echo "PORT=1337" >>$backEnv
+echo "APP_KEYS=$(pass dg/cms/appkeys)" >>$backEnv
+echo "API_TOKEN_SALT=$(pass dg/cms/apitokensalt)" >>$backEnv
+echo "ADMIN_JWT_SECRET=$(pass dg/cms/adminjwtsecret)" >>$backEnv
+echo "JWT_SECRET=$(pass dg/cms/jwtsecret)" >>$backEnv
+echo "TRANSFER_TOKEN_SALT=$(pass dg/cms/transfertokensalt)" >>$backEnv
+echo "AWS_ACCESS_KEY_ID=$(pass dg/aws/id)" >>$backEnv
+echo "AWS_ACCESS_SECRET=$(pass dg/aws/secret)" >>$backEnv
+echo "AWS_REGION=$(pass dg/aws/region)" >>$backEnv
+echo "AWS_S3_BUCKET=$(pass dg/cms/s/bucket)" >>$backEnv
+echo "CDN_BASE_URL=$(pass dg/cms/stg-cdnbaseurl)" >>$backEnv
+echo "DATABASE_PASSWORD=$(pass dg/cms/db/password)" >>$backEnv
 
 while test "$1" != --; do
     case $1 in
     ld | local-dev)
-        echo "HOST=local.cms.dgrebb.com" >>$strapiEnv
-        echo "DATABASE_HOST=localhost" >>$strapiEnv
-        echo "NODE_ENV=development" >>$strapiEnv
+        echo "HOST=local.cms.dgrebb.com" >>$backEnv
+        echo "DATABASE_HOST=localhost" >>$backEnv
+        echo "NODE_ENV=development" >>$backEnv
         break
         ;;
     ls | local-dev-stage)
-        echo "HOST=local.cms.dgrebb.com" >>$strapiEnv
-        echo "DATABASE_HOST=$(pass dg/cms/db/s/host)" >>$strapiEnv
-        echo "NODE_ENV=development" >>$strapiEnv
+        echo "HOST=local.cms.dgrebb.com" >>$backEnv
+        echo "DATABASE_HOST=$(pass dg/cms/db/s/host)" >>$backEnv
+        echo "NODE_ENV=development" >>$backEnv
         break
         ;;
     l | local-docker)
-        echo "HOST=0.0.0.0" >>$strapiEnv
-        echo "DATABASE_HOST=host.docker.internal" >>$strapiEnv
-        echo "NODE_ENV=development" >>$strapiEnv
+        echo "HOST=0.0.0.0" >>$backEnv
+        echo "DATABASE_HOST=host.docker.internal" >>$backEnv
+        echo "NODE_ENV=development" >>$backEnv
         break
         ;;
     s | stg)
-        echo "HOST=0.0.0.0" >>$strapiEnv
-        echo "DATABASE_HOST=$(pass dg/cms/db/s/host)" >>$strapiEnv
-        echo "NODE_ENV=production" >>$strapiEnv
+        echo "HOST=0.0.0.0" >>$backEnv
+        echo "DATABASE_HOST=$(pass dg/cms/db/s/host)" >>$backEnv
+        echo "NODE_ENV=production" >>$backEnv
         break
         ;;
     p | prd | prod)
-        echo "HOST=0.0.0.0" >>$strapiEnv
-        echo "AWS_S3_BUCKET=$(pass dg/cms/p/bucket)" >>$strapiEnv
-        echo "CDN_BASE_URL=$(pass dg/cms/cdnbaseurl)" >>$strapiEnv
-        echo "DATABASE_HOST=$(pass dg/cms/db/host)" >>$strapiEnv
-        echo "NODE_ENV=production" >>$strapiEnv
+        echo "HOST=0.0.0.0" >>$backEnv
+        echo "AWS_S3_BUCKET=$(pass dg/cms/p/bucket)" >>$backEnv
+        echo "CDN_BASE_URL=$(pass dg/cms/cdnbaseurl)" >>$backEnv
+        echo "DATABASE_HOST=$(pass dg/cms/db/host)" >>$backEnv
+        echo "NODE_ENV=production" >>$backEnv
         break
         ;;
     ?)

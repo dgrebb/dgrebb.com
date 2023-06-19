@@ -1,13 +1,15 @@
 <script>
   import { PUBLIC_MEDIA_URL } from "$env/static/public";
+  import SvelteMarkdown from 'svelte-markdown';
   import { MetaTags } from "svelte-meta-tags";
+  import Head from "../components/Head.svelte";
   import Image from "../components/Image.svelte";
   import Links from "../components/Links.svelte";
-  import SvelteMarkdown from 'svelte-markdown'
-  import Head from "../components/Head.svelte";
+  import Link from "../components/markdown/Link.svelte";
+
   export let data;
   const { seo, headline, intro, links } = data;
-  const image = seo?.metaImage?.data?.attributes.formats.small || { url: "/bio.png", alt: "A picture of Dan smiling" };
+  const image = seo?.metaImage?.data?.attributes.formats.small || { url: "/bio.jpg", alt: "A picture of Dan smiling" };
   const metaSocialOG = seo?.metaSocial.find((obj) => obj.socialNetwork === "Facebook");
 </script>
 
@@ -23,7 +25,10 @@
     />
   {/if}
   <h1 class="headline">{headline}</h1>
-  <SvelteMarkdown source={intro} />
+  <SvelteMarkdown 
+    renderers={{ link: Link }}
+    source={intro} 
+  />
 </section>
 {#if links.length}
   <section class="links">

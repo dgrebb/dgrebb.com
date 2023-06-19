@@ -44,4 +44,4 @@ while test "$1" != --; do
         ;;
     esac
 done
-shredFrontEnv
+shred
