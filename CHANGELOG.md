@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.1] - 2023-06-19
+
+### 🐛 Bug Fixes
+
+- ***(ci)*** Updates gh workflow with working branch conditional
+
 ## [2.1.0] - 2023-06-19
 
 ### 💡 Features
