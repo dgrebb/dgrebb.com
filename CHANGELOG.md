@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.0] - 2023-06-19
+
+### 💡 Features
+
+- ***(front)*** Adds Link renderer to include target/rel attrs for external links
+
+### ♻️  Refactor
+
+- ***(docker)*** Refactors dockerfile for better caching
+- ***(terraform)*** Removes global tags to prevent environment resource conflicts
+
+### 👷 Build
+
+- ***(front)*** Comments frontend service out
+- ***(front/back)*** Runs compression on and adds optimized images
+- ***(project)*** Updates feature template
+- ***(strapi)*** Removes example webpack config
+- ***(utils)*** Updates utils for docker changes
+
+### 💚 Continuous Integration
+
+- ***(project)*** Removes local package install step, replaced by custom act image
+- ***(project)*** Adds custom `act` image for local testing
+
 ## [2.0.0] - 2023-06-18
 
 ### 💡 Features
