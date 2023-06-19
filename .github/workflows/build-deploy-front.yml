@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     environment:
-      name: ${{ github.ref == 'refs/heads/main' && 'prd' || 'stg' }}
+      name: ${{ secrets.DEPLOYMENT_BRANCH == 'main' && 'prd' || 'stg' }}
 
     steps:
 
@@ -70,7 +70,7 @@ jobs:
         run: bash _ci/build.sh
 
       - name: Robots
-        if: ${{ steps.extract_branch.outputs.branch }} == 'main'
+        if: ${{ secrets.DEPLOYMENT_BRANCH }} == 'main'
         run: |
           sed -i 's/^Disallow\: \/$/Allow\: \//' front/build/robots.txt
 
