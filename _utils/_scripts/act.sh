@@ -8,12 +8,13 @@ elif [ $2 == "b" ]; then
 elif [ $2 == "p" ]; then
     action="push"
 elif [ $2 == "d" ]; then
-    action="-j dispatch"
+    action="workflow_dispatch"
 else
     printDgErr "Argument needed to specify job."
 fi
 
-act --pull=false -P ubuntu-latest=github-actions-test:latest \
+act --pull=false \
+    -P ubuntu-latest=github-actions-test:latest \
     -s GITHUB_TOKEN=$(pass dg/github/pat) \
     -s DEPLOYMENT_BRANCH=develop \
     -s PUBLIC_ENV=staging \
