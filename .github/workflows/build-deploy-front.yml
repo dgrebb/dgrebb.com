@@ -2,7 +2,6 @@ name: Build & Deploy Frontend
 
 on:
   workflow_dispatch:
-  repository_dispatch:
     types:
       - Frontend
       - Strapi
