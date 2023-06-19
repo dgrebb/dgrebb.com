@@ -7,14 +7,22 @@ if [ $# -eq 0 ]; then
     printDgErr "Missing args!"
 else
     while test "$1" != --; do
-        setBackEnv $2
-        setDockerEnv $2
-        img $2
+        if [ "$1" != "ba" ]; then
+            setBackEnv $2
+            setDockerEnv $2
+            img $2
+        fi
         case $1 in
         b | build | bb | build-back)
             cd $directory/../_docker
             printDgMsg "Building ${2}..."
             docker-compose -f _docker-compose.yml build
+            break 2
+            ;;
+        ba | build-act)
+            cd $directory/../_docker
+            printDgMsg "Building act testing image..."
+            docker buildx build . -t github-actions-test  -f act.Dockerfile --platform linux/amd64
             break 2
             ;;
         rb | rebuild)

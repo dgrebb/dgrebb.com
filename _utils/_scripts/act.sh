@@ -13,7 +13,7 @@ else
     printDgErr "Argument needed to specify job."
 fi
 
-act -P ubuntu-latest=catthehacker/ubuntu:act-latest \
+act --pull=false -P ubuntu-latest=github-actions-test:latest \
     -s GITHUB_TOKEN=$(pass dg/github/pat) \
     -s DEPLOYMENT_BRANCH=develop \
     -s PUBLIC_ENV=staging \
@@ -29,5 +29,7 @@ act -P ubuntu-latest=catthehacker/ubuntu:act-latest \
     -s AWS_REGION=$(pass dg/aws/region) \
     -s AWS_S3_BUCKET=$(pass dg/www/${1}/bucket) \
     -s DISTRIBUTION=$(pass dg/aws/${1}/distribution) \
+    -s AWS_ECR_ROLE=$(pass dg/aws/ecr_role) \
+    -s AWS_ECR_REPOSITORY=$(pass dg/cms/${1}/domain) \
     --container-architecture linux/amd64 \
     $action
