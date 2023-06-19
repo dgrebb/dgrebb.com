@@ -12,22 +12,22 @@ services:
     ports:
       - 1337:1337
 
-  front:
-    platform: linux/amd64
-    image: ${WWW_DOMAIN}
-    environment:
-      - API_URL=${API_URL}
-      - API_KEY=${API_KEY}
-    build:
-      context: ../front
-      dockerfile: ../_docker/front.Dockerfile
-      args:
-        - API_URL=${API_URL}
-        - API_KEY=${API_KEY}
-    restart: unless-stopped
-    ports:
-      - 3000:3000
-    links:
-      - "back:back"
-    depends_on:
-      - back
+  # front:
+  #   platform: linux/amd64
+  #   image: ${WWW_DOMAIN}
+  #   environment:
+  #     - API_URL=${API_URL}
+  #     - API_KEY=${API_KEY}
+  #   build:
+  #     context: ../front
+  #     dockerfile: ../_docker/front.Dockerfile
+  #     args:
+  #       - API_URL=${API_URL}
+  #       - API_KEY=${API_KEY}
+  #   restart: unless-stopped
+  #   ports:
+  #     - 3000:3000
+  #   links:
+  #     - "back:back"
+  #   depends_on:
+  #     - back
