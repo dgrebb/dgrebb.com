@@ -11,21 +11,21 @@ while test "$1" != --; do
     d | dev)
         setBackEnv ld
         cdcms && \
-        trap 'printf "\n"; shredBackEnv ; printDgMsg "Done!" ; exit 0' SIGINT; \
+        trap 'printf "\n"; shred ; printDgMsg "Done!" ; exit 0' SIGINT; \
         npm run develop
         break
         ;;
     ad | admin-dev)
         setBackEnv ld
         cdcms && \
-        trap 'printf "\n"; shredBackEnv ; printDgMsg "Done!" ; exit 0' SIGINT; \
+        trap 'printf "\n"; shred ; printDgMsg "Done!" ; exit 0' SIGINT; \
         npm run develop -- --watch-admin
         break
         ;;
     ds | dev-stage)
         setBackEnv ls
         cdcms && \
-        trap 'printf "\n"; shredBackEnv ; printDgMsg "Done!" ; exit 0' SIGINT; \
+        trap 'printf "\n"; shred ; printDgMsg "Done!" ; exit 0' SIGINT; \
         npm run develop -- --watch-admin
         break
         ;;
@@ -45,4 +45,4 @@ while test "$1" != --; do
         ;;
     esac
 done
-shredBackEnv
+shred

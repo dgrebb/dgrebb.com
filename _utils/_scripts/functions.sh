@@ -60,21 +60,22 @@ setFrontEnv() {
     /bin/bash $directory/_scripts/setFrontEnv.sh $1
 }
 
-shredBackEnv() {
+setDockerEnv() {
+    /bin/bash $directory/_scripts/setDockerEnv.sh $1
+}
+
+shred() {
     if [ -f $directory/../back/.env ]; then
         printDgMsg "Shredding Strapi .env..."
         gshred $directory/../back/.env && rm $directory/../back/.env
     fi
-    if [ -f $directory/../_docker/.env ]; then
-        printDgMsg "Shredding Docker .env..."
-        gshred $directory/../_docker/.env && rm $directory/../_docker/.env
-    fi
-}
-
-shredFrontEnv() {
     if [ -f $directory/../front/.env ]; then
         printDgMsg "Shredding Svelte .env..."
         gshred $directory/../front/.env && rm $directory/../front/.env
+    fi
+    if [ -f $directory/../_docker/.env ]; then
+        printDgMsg "Shredding Docker .env..."
+        gshred $directory/../_docker/.env && rm $directory/../_docker/.env
     fi
 }
 
