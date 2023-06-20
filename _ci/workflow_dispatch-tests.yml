@@ -15,9 +15,13 @@ jobs:
 
       - name: Branch Information
         run: |
-          printf "\033[0;34mRef:\033[0m ${{ github.ref }}\n"
-          printf "\033[0;34mRef Name:\033[0m ${{ github.ref_name }}\n"
-          printf "\033[0;34mSHA:\033[0m ${{ github.sha }}\n"
+          printf "\033[0;34mgithub.ref:\033[0m ${{ github.ref }}\n"
+          printf "\033[0;34mgithub.base_ref:\033[0m ${{ github.base_ref }}\n"
+          printf "\033[0;34mgithub.ref_name:\033[0m ${{ github.ref_name }}\n"
+          printf "\033[0;34mgithub.sha:\033[0m ${{ github.sha }}\n"
+          printf "\033[0;34mGITHUB_REF:\033[0m $GITHUB_REF\n"
+          printf "\033[0;34mGITHUB_REF_NAME:\033[0m $GITHUB_REF_NAME\n"
+          printf "\033[0;34mGITHUB_SHA:\033[0m $GITHUB_SHA\n"
 
       - name: Checkout
         uses: actions/checkout@v3
