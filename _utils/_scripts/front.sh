@@ -35,7 +35,7 @@ while test "$1" != --; do
         break
         ;;
     p | preview)
-        cdfront && npm run preview
+        cdfront && npm run preview -- --host
         break
         ;;
     ?)
