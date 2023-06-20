@@ -32,6 +32,16 @@ module.exports = ({ env }) => {
 
   return {
     upload,
+    "sentry": {
+      enabled: true,
+      config: {
+        dsn: env("PUBLIC_SENTRY_DSN"),
+        sendMetadata: true,
+        init: {
+          environment: env("PUBLIC_ENV"),
+        }
+      }
+    },
     "strapi-blurhash": {
       enabled: true,
       config: {
