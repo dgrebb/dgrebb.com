@@ -1,0 +1,74 @@
+@import "./components.css";
+@import "./utilities.css";
+
+.posts,
+.post,
+.privacy {
+  @apply max-w-3xl;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply mt-7;
+    &:first-child {
+      @apply mt-0;
+    }
+    span.highlight {
+      @apply text-blue-600 dark:text-blue-500;
+    }
+  }
+  h1 {
+    @apply mb-5 text-5xl dg--font-psbl dark:text-white;
+  }
+  h2 {
+    @apply mb-4 text-4xl dg--font-psbl dark:text-white;
+  }
+  h3 {
+    @apply mb-4 text-3xl font-bold dark:text-white;
+  }
+  h4 {
+    @apply mb-4 text-2xl font-bold dark:text-white;
+  }
+  h5 {
+    @apply mb-4 text-xl font-bold dark:text-white;
+  }
+  h6 {
+    @apply mb-4 text-lg font-bold dark:text-white;
+  }
+  p {
+    @apply mb-4;
+  }
+  ol,
+  ul {
+    @apply list-decimal;
+    li {
+      @apply mb-3;
+      pre {
+        @apply my-3;
+      }
+    }
+    ol,
+    ul {
+      @apply mt-3 ml-3;
+    }
+  }
+  pre {
+    @apply brightness-50 p-3 rounded-md;
+    background-color: rgb(var(--background-end-rgb));
+  }
+}
+
+.privacy {
+  ol {
+    counter-reset: item;
+    list-style-type: none;
+  }
+  ol > li {
+    counter-increment: item;
+  }
+  ol > li::before {
+    content: counters(item, ".") " - ";
+  }
+}

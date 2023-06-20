@@ -9,5 +9,6 @@
     {#if copyleft}{copyleft}{/if}
     {year}
     {#if copyright}{copyright}{/if}
+    | <a href="/privacy">Privacy Policy</a>
   </small>
 </footer>
