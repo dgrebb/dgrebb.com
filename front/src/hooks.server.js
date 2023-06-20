@@ -8,11 +8,15 @@ Sentry.init({
   tracesSampleRate: PUBLIC_ENV === "production" ? 0.1 : 1.0,
   profilesSampleRate: PUBLIC_ENV === "production" ? 0.1 : 1.0,
   integrations: [],
+  beforeSend(event) {
+    if (event.user) {
+      delete event.user.ip
+    }
+  }
 });
 
 export async function handleError({ error, event }) {
   const errorId = crypto.randomUUID();
-  Sentry.setTag("environment", PUBLIC_ENV);
   Sentry.captureException(error, { extra: { event, errorId } });
 
   console.log(`\x1b[33mError: ${error}`);

@@ -14,6 +14,11 @@ Sentry.init({
   tracesSampleRate: ( PUBLIC_ENV === "production" ? 0.1 : 1.0 ),
   replaysSessionSampleRate: ( PUBLIC_ENV === "production" ? 0.1 : 1.0 ),
   replaysOnErrorSampleRate: ( PUBLIC_ENV === "production" ? 0.1 : 1.0 ),
+  beforeSend(event) {
+    if (event.user) {
+      delete event.user.ip
+    }
+  }
 });
 
 export async function handleError({ error, event }) {
