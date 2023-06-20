@@ -1,3 +1,6 @@
 {
-    "ref": "feature/184-build-out-ci-workflow-for-backend"
+    "_note": "This is not an example or properly formatted request for the GitHub API.",
+    "__note": "The API takes 'ref': 'develop' instead of the fully qualified ref.",
+    "ref": "/refs/heads/develop",
+    "ref_name": "develop"
 }
