@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     environment:
-      name: ${{ github.ref == 'refs/heads/main' && 'prd' || 'stg' }}
+      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
 
     steps:
 
@@ -23,6 +23,7 @@ jobs:
 
       - name: Set .env
         run: |
+          echo github.ref_name
           touch front/.env
           echo PUBLIC_MEDIA_URL='' >> front/.env
           echo PUBLIC_API_URL='${{ secrets.PUBLIC_API_URL }}' >> front/.env
@@ -46,7 +47,7 @@ jobs:
         run: bash _ci/build.sh
 
       - name: Robots
-        if: ${{ secrets.DEPLOYMENT_BRANCH }} == 'main'
+        if: ${{ github.ref_name == 'main' }}
         run: |
           sed -i 's/^Disallow\: \/$/Allow\: \//' front/build/robots.txt
 
