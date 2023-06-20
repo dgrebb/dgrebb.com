@@ -1,0 +1,32 @@
+name: Build & Deploy Tests
+
+on:
+  workflow_dispatch
+
+jobs:
+  front:
+    name: Frontend Test
+    runs-on: ubuntu-latest
+
+    environment:
+      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+
+    steps:
+
+      - name: Branch Information
+        run: |
+          printf "\033[0;34mRef:\033[0m ${{ github.ref }}\n"
+          printf "\033[0;34mRef Name:\033[0m ${{ github.ref_name }}\n"
+          printf "\033[0;34mSHA:\033[0m ${{ github.sha }}\n"
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: dgrebb/dgrebb.com
+          ref: ${{ github.ref }}
+          token: ${{ github.token }}
+          fetch-depth: 0
+
+      - name: Inspect Checkout
+        run: |
+          printf $(git log -n 5)
