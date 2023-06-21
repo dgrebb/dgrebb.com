@@ -27,19 +27,22 @@
     @apply mb-4 text-4xl dg--font-psbl;
   }
   h3 {
-    @apply mb-4 text-3xl font-bold;
+    @apply mb-4 text-3xl dg--font-psb;
   }
   h4 {
-    @apply mb-4 text-2xl font-bold;
+    @apply mb-4 text-2xl dg--font-psb;
   }
   h5 {
-    @apply mb-4 text-xl font-bold;
+    @apply mb-4 text-xl dg--font-psb;
   }
   h6 {
-    @apply mb-4 text-lg font-bold;
+    @apply mb-4 text-lg dg--font-psb;
   }
   p {
     @apply mb-4;
+  }
+  strong {
+    @apply dg--font-psb;
   }
   ol,
   ul {
