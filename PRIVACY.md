@@ -1,24 +1,29 @@
-## Effective Date: _June 20, 2023_
+## Effective Date: _June 21, 2023_
 
-Thank you for visiting my website. This Privacy Policy explains how I collect, use, and protect your personal information when you use this website and any related services. By accessing or using this website, you agree to the terms of this Privacy Policy. If you do not agree with the terms outlined in this Privacy Policy, please do not use this website or provide any personal information.
+Thank you for visiting! This Privacy Policy explains how I collect, use, and protect your personal information when you use this website and any related services.
+
+By accessing or using this website, you agree to the terms of this Privacy Policy. If you do not agree with the terms outlined in this Privacy Policy, please do not use this website or provide any personal information.
 
 ## Information I Collect
 
-1. **Personal Information**: Apart from browser and system information, no personal details are collected. I've taken great care in scrubbing all personally-identifiable information from both the Analytics and Error Logging tools used (details below). This includes visitors' IP addresses, which are of no use to me, nor do I condone the collection of.
+1. **Personal Information**: Apart from browser and system information, no personal details are collected. I've taken great care in scrubbing all personally-identifiable information from both the Analytics and Error Logging tools used (details below). This includes visitors' IP addresses and `server_name`, which refers to your computer's network name.
 
-    1. **Plausible Analytics** is used for pageview and visitor count tracking. See [their delightful post about privacy policies](https://plausible.io/blog/privacy-policy-page#privacy-policy-examples).
+   1. **Plausible Analytics** is used for pageview and visitor count tracking. See the company's [delightful post about privacy policies](https://plausible.io/blog/privacy-policy-page#privacy-policy-examples), which inspired most of this document. More details specific to Plausible's privacy practices can be found below in the [Third-Party Services](#third-party-services) section.
 
-    2. **Sentry.io** is used to capture errors on both the client (browser), and server (500s, 400s, and 300s). Sentry allows capturing browser and system information, which can be used to diagnose problems with this site. Sentry also allows a "playback" of user interaction on the site, aiding in further triage of broken code or user experience.
+   2. **Sentry.io** is used to capture errors on both the client (browser), and server (500s, 400s, and 300s). Sentry allows capturing browser and system information, which can be used to diagnose problems with this site. Sentry also allows a "playback" of user interaction on the site, aiding in further triage of broken code or user experience.
 
         Sentry, by default, logs IP addresses. I scrub this data before it is delivered to the sentry.io services and servers. The JavaScript performing this scrub is minified away from evident view on main dgrebb.com pages, but can be seen at the bottom of the static [404 page](/404):
 
         ```javascript
         beforeSend(event) {
             if (event.user) {
-                delete event.user.ip
+            delete event.user.ip
+            delete event.server_name
             }
         }
         ```
+
+        Regardless of the data scrubbing done on my side, Sentry's servers will log the requesting IP address when a client (your browser) loads JavaScript from their servers. Please see the [Third-Party Services](#third-party-services) section for details specific to Sentry's privacy practices.
 
 2. **Usage Information**: I may also collect certain non-personally identifiable information ("Usage Information") automatically when you visit dgrebb.com. This may include your browser type, operating system, referring website, pages you visit, and the date and time of your visit.
 
@@ -28,9 +33,9 @@ Thank you for visiting my website. This Privacy Policy explains how I collect, u
 
 ## How I Use Your Information
 
-1. **Personal Information**: Nothing collected is identifiable, and anonymized before sent to third-party services like Plausible and Sentry. In simple terms, I may know the type of browser and operating system used to access dgrebb.com, but am unable to associate those details back to a specific IP address, email address, mailing address, etc.
+1. **Personal Information**: Nothing collected is identifiable, and anonymized before sent to third-party services like Plausible and Sentry. In simple terms, I may know the type of browser and operating system used to access dgrebb.com, but am unable to associate those details back to a specific IP address, MAC address, email address, mailing address, etc.
 
-2. **Usage Information**: I may use Usage Information to analyze trends, administer the website, track users' movements, and gather demographic information for aggregate use. This information helps me improve the website, monitor its performance, and enhance the overall user experience.
+2. **Usage Information**: I may review Usage Information to analyze trends, administer the website, track users' movements, and gather anonymous geo-location information for aggregate use. This information helps with website improvements, performance monitoring, and overall user experience enhancements.
 
 ## Third-Party Services
 
@@ -38,11 +43,11 @@ Thank you for visiting my website. This Privacy Policy explains how I collect, u
 
 2. **Sentry.io**: We use Sentry.io to help us identify and fix errors and improve the performance of our website. Sentry.io may collect certain technical information, including your IP address and information about your browser and device. The information collected by Sentry.io is stored on servers controlled by Sentry.io and is subject to their privacy policy. To learn more about Sentry.io's data practices, please visit [their website](https://sentry.io/) and review their [privacy policy](https://sentry.io/privacy/).
 
-    Sentry's entire collection of legal documents can be [found on their site](https://sentry.io/legal/).
+Sentry's entire collection of legal documents can also be [found on their site](https://sentry.io/legal/).
 
 ## Data Security
 
-I take reasonable measures to protect the personal information we collect. However, please be aware that no security measures are perfect or impenetrable, and I cannot guarantee the security of your personal information.
+I take reasonable measures to protect the personal information collected. However, please be aware that no security measures are perfect or impenetrable, and I cannot guarantee the security of your personal information.
 
 ## Disclosure of Information
 
