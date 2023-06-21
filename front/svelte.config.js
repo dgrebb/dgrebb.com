@@ -11,6 +11,14 @@ const config = {
       precompress: true,
       strict: true,
     }),
+    prerender: {
+      handleHttpError: ({ path, referrer, message }) => {
+        if (path === "/404" && referrer === "/privacy") {
+          return;
+        }
+        throw new Error(message);
+      },
+    },
   },
   preprocess: vitePreprocess(),
 };
