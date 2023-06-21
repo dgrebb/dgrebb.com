@@ -8,7 +8,7 @@
   const { navHeading, navItems, copyright, copyleft } = data;
 </script>
 
-<span class="flourish"></span>
+<span class="flourish" />
 <Header {navHeading} {navItems} />
 <main id="main" class="main flex flex-col items-center">
   <slot />

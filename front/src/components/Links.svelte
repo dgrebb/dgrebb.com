@@ -1,21 +1,33 @@
 <script>
-  import Icon from '@iconify/svelte';
-  import Catchafire from './icons/Catchafire.svelte';
-
-  const Icons = {
-    GitHub: "line-md:github-loop",
-    Facebook: "line-md:facebook",
-    Instagram: "line-md:instagram",
-    SoundCloud: "ph:soundcloud-logo-bold",
-    StackOverflow: "mdi:stackoverflow",
-    LinkedIn: "line-md:linkedin",
-    Twitter: "line-md:twitter",
-    Mastodon: "line-md:mastodon",
-    Flickr: "icomoon-free:flickr2",
-    Goodreads: "ph:goodreads-logo-bold",
-    Pinboard: "typcn:pin-outline",
-    Link: "line-md:external-link",
-  };
+  import IconCatchafire from "./icons/Catchafire.svelte";
+  import IconGitHub from "~icons/mdi/github";
+  import IconFacebook from "~icons/mdi/facebook";
+  import IconInstagram from "~icons/mdi/instagram";
+  import IconSoundCloud from "~icons/ph/soundcloud-logo-bold";
+  import IconStackOverflow from "~icons/mdi/stackoverflow";
+  import IconLinkedIn from "~icons/entypo-social/linkedin-with-circle";
+  import IconTwitter from "~icons/mdi/twitter";
+  import IconMastodon from "~icons/mdi/mastodon";
+  import IconFlickr from "~icons/icomoon-free/flickr2";
+  import IconGoodreads from "~icons/ph/goodreads-logo-fill";
+  import IconPinboard from "~icons/typcn/pin-outline";
+  import IconLink from "~icons/mdi/external-link";
+  
+  const icons = {
+    IconCatchafire,
+    IconGitHub,
+    IconFacebook,
+    IconInstagram,
+    IconSoundCloud,
+    IconStackOverflow,
+    IconLinkedIn,
+    IconTwitter,
+    IconMastodon,
+    IconFlickr,
+    IconGoodreads,
+    IconPinboard,
+    IconLink,
+  }
 
   export let links;
 
@@ -26,7 +38,7 @@
       {
         title,
         url,
-        icon,
+        icon: `Icon${icon}`,
         linkClass: icon?.toLowerCase() || ""
       }
     )
@@ -48,11 +60,7 @@
         rel="noopener noreferrer"
         class={`${link.linkClass}-icon inline-block h-full p-1`}
       >
-        {#if link.icon === "Catchafire"}
-          <Catchafire />
-        {:else}
-          <Icon icon={Icons[link.icon ? link.icon : "Link"]} />
-        {/if}
+        <svelte:component this={icons[link.icon ? link.icon : IconLink]} />
       </a>
     </li>
   {/each}
