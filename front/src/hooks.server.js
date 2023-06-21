@@ -10,10 +10,11 @@ Sentry.init({
   integrations: [],
   beforeSend(event) {
     if (event.user) {
-      delete event.user.ip
-      delete event.server_name
+      delete event.user.ip;
     }
-  }
+    if (event.server_name) {
+      delete event.server_name;
+    }
 });
 
 export async function handleError({ error, event }) {
