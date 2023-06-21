@@ -2,6 +2,7 @@
   import { PUBLIC_MEDIA_URL } from "$env/static/public";
   import SvelteMarkdown from 'svelte-markdown';
   import { MetaTags } from "svelte-meta-tags";
+  import Flourish from "../components/Flourish.svelte";
   import Head from "../components/Head.svelte";
   import Image from "../components/Image.svelte";
   import Links from "../components/Links.svelte";
@@ -14,6 +15,7 @@
 </script>
 
 <section class="bio text-center">
+  <Flourish />
   {#if image}
     <Image
       src={`${PUBLIC_MEDIA_URL}${image.url}`}
