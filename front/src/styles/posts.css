@@ -12,6 +12,7 @@
   h5,
   h6 {
     @apply mt-7;
+    color: rgb(var(--foreground-rgb));
     &:first-child {
       @apply mt-0;
     }
@@ -20,22 +21,22 @@
     }
   }
   h1 {
-    @apply mb-5 text-5xl dg--font-psbl dark:text-white;
+    @apply mb-5 text-5xl dg--font-psbl;
   }
   h2 {
-    @apply mb-4 text-4xl dg--font-psbl dark:text-white;
+    @apply mb-4 text-4xl dg--font-psbl;
   }
   h3 {
-    @apply mb-4 text-3xl font-bold dark:text-white;
+    @apply mb-4 text-3xl font-bold;
   }
   h4 {
-    @apply mb-4 text-2xl font-bold dark:text-white;
+    @apply mb-4 text-2xl font-bold;
   }
   h5 {
-    @apply mb-4 text-xl font-bold dark:text-white;
+    @apply mb-4 text-xl font-bold;
   }
   h6 {
-    @apply mb-4 text-lg font-bold dark:text-white;
+    @apply mb-4 text-lg font-bold;
   }
   p {
     @apply mb-4;
@@ -55,8 +56,9 @@
     }
   }
   pre {
-    @apply brightness-50 p-3 rounded-md;
-    background-color: rgb(var(--background-end-rgb));
+    @apply p-3 rounded-md shadow-lg;
+    background-color: rgb(var(--background-pre-rgb));
+    color: rgb(var(--foreground-rgb));
   }
 }
 

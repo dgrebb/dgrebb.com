@@ -17,6 +17,7 @@
     --foreground-rgb-faded: 179, 181, 181;
     --background-start-rgb: 214, 219, 220;
     --background-end-rgb: 255, 255, 255;
+    --background-pre-rgb: 203, 213, 225;
     --btn--secondary-rgb: 190, 193, 194;
     --btn-secondary-highlight-rgb: 92, 92, 92;
     --highlight-rgb: 175, 83, 7;
@@ -28,6 +29,7 @@
     --foreground-rgb-faded: 89, 90, 91;
     --background-start-rgb: 35, 36, 38;
     --background-end-rgb: 29, 30, 32;
+    --background-pre-rgb: 3, 3, 3;
     --highlight-rgb: 255, 255, 21;
     --btn--secondary-rgb: 54, 54, 56;
     --btn-secondary-highlight-rgb: 92, 92, 92;
