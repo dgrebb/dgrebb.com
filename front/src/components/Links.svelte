@@ -44,8 +44,6 @@
     )
   });
 
-  let thing = IconMastodon;
-
 </script>
 
 <ul

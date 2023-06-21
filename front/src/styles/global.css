@@ -141,6 +141,7 @@ body {
 
 .bio {
   img {
+    @apply m-auto rounded-full;
     border: 1px solid rgba(var(--foreground-rgb), 0.5);
   }
   h1.headline {

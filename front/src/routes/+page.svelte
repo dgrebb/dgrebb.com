@@ -21,8 +21,17 @@
       title="Hi!"
       width={120}
       height={120}
-      classes="m-auto rounded-full"
     />
+    <noscript>
+      <img
+        src={`${PUBLIC_MEDIA_URL}${image.url}`}
+        alt={image.alternativeText}
+        title="Hi!"
+        width={120}
+        height={120}
+        aria-hidden="true"
+      />
+    </noscript>
   {/if}
   <h1 class="headline">{headline}</h1>
   <SvelteMarkdown 

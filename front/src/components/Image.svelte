@@ -7,7 +7,7 @@
   export let title;
   export let width;
   export let height;
-  export let classes;
+  export let classes = null;
   export let ariaHidden = "false";
 
   let loaded = false;
