@@ -59,6 +59,8 @@
     @apply p-3 rounded-md shadow-lg;
     background-color: rgb(var(--background-pre-rgb));
     color: rgb(var(--foreground-rgb));
+    position: relative;
+    z-index: 3;
   }
 }
 

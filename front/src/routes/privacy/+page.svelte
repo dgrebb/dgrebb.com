@@ -1,5 +1,6 @@
 <script>
   import SvelteMarkdown from 'svelte-markdown';
+  import Flourish from '../../components/Flourish.svelte';
   import Link from "../../components/markdown/Link.svelte";
 
   export let data;
@@ -7,6 +8,7 @@
 </script>
 
 <section class="privacy">
+  <Flourish />
   <h1>{title}</h1>
   <SvelteMarkdown renderers={{ link: Link }} source={details} />
 </section>

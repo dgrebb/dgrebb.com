@@ -67,11 +67,13 @@ body {
 }
 
 .flourish {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  @apply shadow-sm;
   border-top: 8px solid rgb(var(--foreground-rgb));
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
 }
 
 .header,
@@ -141,8 +143,10 @@ body {
 
 .bio {
   img {
-    @apply m-auto rounded-full;
+    @apply m-auto rounded-full shadow-lg;
     border: 1px solid rgba(var(--foreground-rgb), 0.5);
+    position: relative;
+    z-index: 3;
   }
   h1.headline {
     @apply dg--font-psb;
