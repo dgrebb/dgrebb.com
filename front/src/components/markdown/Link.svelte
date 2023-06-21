@@ -7,7 +7,7 @@
   let external;
 
   onMount(() => {
-    external = (href.charAt(0) === "/" ? false :
+    external = (href.charAt(0) === "/" || "#" || "m" || "t" ? false :
     (new URL(href).origin !== location.origin ? true : false));
   });
 </script>
