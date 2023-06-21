@@ -4,20 +4,20 @@
 @tailwind utilities;
 
 .not-found {
-  @apply flex;
-  @apply flex-col;
-  @apply items-center;
+  @apply flex
+    flex-col
+    items-center;
   img {
     @apply mb-11;
   }
   a {
-    @apply dg--link-hover;
-    @apply dg--transition-effect;
+    @apply dg--link-hover
+      dg--transition-effect;
   }
   h1 {
-    @apply text-9xl;
-    @apply font-black;
-    @apply pb-3;
+    @apply text-9xl
+      font-black
+      pb-3;
   }
   p {
     @apply pb-7;

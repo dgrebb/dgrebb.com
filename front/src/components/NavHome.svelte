@@ -34,12 +34,12 @@
     body.classList.toggle(lightTheme);
   }
 
-  const baseClasses = "theme-toggle ml-2 "
+  const baseClasses = "theme-toggle"
   $: classList = `${baseClasses} ${loaded ? "opacity-100" : "opacity-0"}`;
 
 </script>
 
-<a class="nav-home font-black text-2xl leading-none" href="/">
+<a class="nav-home" href="/">
   <h1>{navHeading}</h1>
 </a>
 <button class={classList} on:click={toggleTheme}>

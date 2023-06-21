@@ -1,7 +1,7 @@
 @layer components {
   .dg--link-hover {
-    @apply transition;
-    @apply dg--transition-effect;
+    @apply transition-colors
+      dg--transition-effect;
     color: rgb(var(--foreground-rgb));
     &:hover,
     &:focus {
@@ -9,14 +9,14 @@
     }
   }
   .dg--btn-primary {
-    @apply transition;
+    @apply transition-colors;
     &:hover,
     &:focus {
     }
   }
   .dg--btn-secondary {
-    @apply transition;
-    @apply dg--transition-effect;
+    @apply transition
+      dg--transition-effect;
     background: rgb(var(--btn--secondary-rgb));
     border: 2px solid rgb(var(--btn--secondary-rgb));
     border-top-width: 1px;

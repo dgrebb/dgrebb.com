@@ -9,7 +9,7 @@
 </script>
 
 <Header {navHeading} {navItems} />
-<main id="main" class="main flex flex-col items-center">
+<main id="main" class="main">
   <slot />
 </main>
 <Footer {copyleft} {copyright} />

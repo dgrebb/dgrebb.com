@@ -58,7 +58,7 @@
         title={link.title}
         target="_blank"
         rel="noopener noreferrer"
-        class={`${link.linkClass}-icon inline-block h-full p-1`}
+        class={`${link.linkClass}-icon`}
       >
         <svelte:component this={icons[link.icon ? link.icon : IconLink]} />
       </a>
