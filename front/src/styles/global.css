@@ -84,7 +84,9 @@ body {
 }
 
 .header {
-  @apply flex items-center pb-0;
+  @apply flex
+    items-center
+    pb-0;
   position: relative;
 }
 
@@ -105,7 +107,8 @@ body {
 }
 
 .site-title {
-  @apply flex flex-grow;
+  @apply flex
+    flex-grow;
 }
 
 .nav-home {
@@ -304,9 +307,16 @@ body {
     color: rgb(var(--subdued-rgb));
     a {
       @apply brightness-75
-        dark:brightness-50;
-      color: rgb(var(--foreground-rgb));
+        dark:brightness-50
+        transition
+        dg--transition-effect;
       border-color: rgb(var(--foreground-rgb));
+      color: rgb(var(--foreground-rgb));
+      &:hover,
+      &:focus {
+        @apply brightness-100
+          dark:brightness-100;
+      }
     }
   }
 }
