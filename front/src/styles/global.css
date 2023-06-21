@@ -27,8 +27,8 @@ html.dark-theme {
 }
 
 html {
-  @apply transition-colors;
-  @apply dg--transition-effect;
+  @apply transition-colors 
+    dg--transition-effect;
   background: linear-gradient(
       to bottom,
       transparent,
@@ -40,9 +40,9 @@ html {
 }
 
 body {
-  @apply dg--font-ps;
-  @apply transition-colors;
-  @apply dg--transition-effect;
+  @apply dg--font-ps
+    transition-colors
+    dg--transition-effect;
   color: rgb(var(--foreground-rgb));
   height: 100vh;
   min-height: 100vh;
@@ -52,9 +52,9 @@ body {
   .header,
   .main,
   .footer {
-    @apply transition-all;
-    @apply dg--transition-effect;
-    @apply opacity-0;
+    @apply transition-all
+      dg--transition-effect
+      opacity-0;
   }
   &.ready {
     .flourish,
@@ -78,22 +78,24 @@ body {
 
 .header,
 .footer {
-  @apply p-6;
-  @apply sm:p-8;
-  @apply lg:p-14;
+  @apply p-6
+    sm:p-8
+    lg:p-14;
 }
 
 .header {
-  @apply pb-0;
+  @apply flex
+    items-center
+    pb-0;
   position: relative;
 }
 
 .skip-to-content {
-  @apply dg--btn-secondary;
-  @apply px-5;
-  @apply py-3;
-  @apply transition-all;
-  @apply dg--transition-effect;
+  @apply dg--btn-secondary
+    px-5
+    py-3
+    transition-all
+    dg--transition-effect;
   position: absolute;
   transform: translateY(-100%);
   @apply opacity-0;
@@ -104,36 +106,64 @@ body {
   }
 }
 
+.site-title {
+  @apply flex
+    flex-grow;
+}
+
 .nav-home {
-  @apply dg--font-psbl;
-  @apply tracking-tight;
-  @apply dg--link-hover;
-  @apply ml-[2px];
+  @apply dg--font-psbl
+    tracking-tight
+    dg--link-hover
+    ml-[2px]
+    font-black
+    text-2xl
+    leading-none;
 }
 
 .theme-toggle {
-  @apply dg--link-hover;
-  @apply transition;
-  @apply dg--transition-effect;
-  @apply mt-0.5 ml-3;
+  @apply dg--link-hover
+    transition
+    dg--transition-effect
+    mt-0.5
+    ml-3;
   #moon {
     padding-bottom: 1px;
   }
 }
 
 .nav-bar {
+  @apply flex-shrink;
   .btn {
-    @apply dg--btn-secondary;
+    @apply dg--btn-secondary
+      font-semibold
+      py-2
+      px-4
+      rounded
+      shadow
+      align-text-bottom;
+  }
+  ul {
+    @apply justify-end;
   }
 }
 
+.nav-item {
+  @apply inline
+    mx-3
+    last:mr-0;
+}
+
 .main {
-  @apply p-8;
-  @apply md:p-11;
-  @apply lg:p-16;
-  @apply pb-3;
-  @apply flex-grow;
-  @apply justify-center;
+  @apply flex
+    flex-col
+    flex-grow
+    items-center
+    justify-center
+    p-8
+    md:p-11
+    lg:p-16
+    pb-3;
 }
 
 .bio,
@@ -143,17 +173,19 @@ body {
 
 .bio {
   img {
-    @apply m-auto rounded-full shadow-lg;
+    @apply m-auto
+      rounded-full
+      shadow-lg;
     border: 1px solid rgba(var(--foreground-rgb), 0.5);
     position: relative;
     z-index: 3;
   }
   h1.headline {
-    @apply dg--font-psb;
-    @apply font-bold;
-    @apply text-4xl;
-    @apply brightness-125;
-    @apply py-5;
+    @apply dg--font-psb
+      font-bold
+      text-4xl
+      brightness-125
+      py-5;
   }
 }
 
@@ -174,7 +206,8 @@ body {
 .footer,
 .not-found {
   a {
-    @apply pb-0.5 opacity-90;
+    @apply pb-0.5 
+      opacity-90;
     color: rgb(var(--foreground-rgb));
     border-bottom: 1px solid rgb(var(--foreground-rgb));
     &:hover,
@@ -187,52 +220,62 @@ body {
 
 .bio,
 .post,
-.posts {
+.posts,
+.privacy {
   line-height: 1.6;
-  @apply antialiased;
   @apply opacity-95;
   h1 {
-    @apply tracking-tight;
-    @apply dg--font-psb;
+    @apply tracking-tight 
+      dg--font-psb;
   }
-  p {
-    @apply pb-7;
+  p,
+  li ol,
+  li,
+  pre {
+    @apply mb-7;
+  }
+  li ol,
+  li ol li {
+    @apply mt-7;
   }
 }
 
 .links {
-  @apply flex;
-  @apply items-stretch;
-  @apply px-8;
+  @apply flex
+    items-stretch
+    px-8;
   .link-list {
-    @apply flex;
-    @apply flex-wrap;
-    @apply justify-center;
-    @apply items-center;
+    @apply flex
+      flex-wrap
+      justify-center
+      items-center;
   }
   .link {
-    @apply flex;
-    @apply leading-none;
-    @apply m-2;
+    @apply flex
+      leading-none
+      m-2;
     a {
-      @apply self-center;
+      @apply self-center
+        transition-colors
+        dg--transition-effect
+        inline-block
+        h-full 
+        p-1;
       color: rgb(var(--foreground-rgb-faded));
-      @apply transition-colors;
-      @apply dg--transition-effect;
       &:hover,
       &:focus {
         color: rgb(var(--highlight-rgb));
       }
     }
     svg {
-      @apply w-7;
-      @apply h-7;
+      @apply w-7
+        h-7;
     }
     .twitter-icon {
       @apply pt-[5px];
       svg {
-        @apply h-8;
-        @apply w-8;
+        @apply h-8
+          w-8;
       }
     }
     .instagram-icon {
@@ -255,17 +298,25 @@ body {
 }
 
 .footer {
-  @apply pb-9;
-  @apply flex-col;
-  @apply text-center;
-  @apply mt-auto;
-  @apply text-sm;
+  @apply pb-9
+    flex-col
+    text-center
+    mt-auto
+    text-sm;
   small {
     color: rgb(var(--subdued-rgb));
     a {
-      @apply brightness-125;
-      color: rgb(var(--subdued-rgb));
-      border-color: rgb(var(--subdued-rgb));
+      @apply brightness-75
+        dark:brightness-50
+        transition
+        dg--transition-effect;
+      border-color: rgb(var(--foreground-rgb));
+      color: rgb(var(--foreground-rgb));
+      &:hover,
+      &:focus {
+        @apply brightness-100
+          dark:brightness-100;
+      }
     }
   }
 }

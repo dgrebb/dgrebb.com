@@ -15,6 +15,7 @@ Sentry.init({
     if (event.server_name) {
       delete event.server_name;
     }
+  },
 });
 
 export async function handleError({ error, event }) {

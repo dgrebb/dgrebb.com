@@ -16,10 +16,12 @@ By accessing or using this website, you agree to the terms of this Privacy Polic
 
         ```javascript
         beforeSend(event) {
-            if (event.user) {
-            delete event.user.ip
-            delete event.server_name
-            }
+          if (event.user) {
+            delete event.user.ip;
+          }
+          if (event.server_name) {
+            delete event.server_name;
+          }
         }
         ```
 

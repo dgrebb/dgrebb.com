@@ -25,11 +25,6 @@
     url("/fonts/PublicSans-Black.otf") format("opentype");
 }
 
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 @layer utilities {
   .dg--font-ps {
     font-family: "Public Sans", sans-serif;
@@ -40,4 +35,9 @@
   .dg--font-psbl {
     font-family: "Public Sans Black", sans-serif;
   }
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

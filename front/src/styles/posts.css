@@ -4,39 +4,52 @@
 .posts,
 .post,
 .privacy {
-  @apply max-w-3xl;
+  @apply max-w-5xl;
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    @apply mt-7;
+    @apply my-7;
     color: rgb(var(--foreground-rgb));
     &:first-child {
       @apply mt-0;
     }
     span.highlight {
-      @apply text-blue-600 dark:text-blue-500;
+      @apply text-blue-600 
+        dark:text-blue-500;
     }
   }
   h1 {
-    @apply mb-5 text-5xl dg--font-psbl;
+    @apply mb-5
+      text-5xl
+      dg--font-psbl;
   }
   h2 {
-    @apply mb-4 text-4xl dg--font-psbl;
+    @apply mb-4
+      text-4xl
+      dg--font-psbl;
   }
   h3 {
-    @apply mb-4 text-3xl dg--font-psb;
+    @apply mb-4
+      text-3xl
+      dg--font-psb;
   }
   h4 {
-    @apply mb-4 text-2xl dg--font-psb;
+    @apply mb-4
+      text-2xl
+      dg--font-psb;
   }
   h5 {
-    @apply mb-4 text-xl dg--font-psb;
+    @apply mb-4
+      text-xl
+      dg--font-psb;
   }
   h6 {
-    @apply mb-4 text-lg dg--font-psb;
+    @apply mb-4
+      text-lg
+      dg--font-psb;
   }
   p {
     @apply mb-4;
@@ -49,9 +62,6 @@
     @apply list-decimal;
     li {
       @apply mb-3;
-      pre {
-        @apply my-3;
-      }
     }
     ol,
     ul {
@@ -59,23 +69,45 @@
     }
   }
   pre {
-    @apply p-3 rounded-md shadow-lg;
+    @apply my-7
+      p-3
+      rounded-lg
+      shadow-lg;
     background-color: rgb(var(--background-pre-rgb));
     color: rgb(var(--foreground-rgb));
     position: relative;
     z-index: 3;
   }
+  mark {
+    @apply px-3;
+    background-color: rgb(var(--foreground-mark-rgb));
+  }
 }
 
 .privacy {
+  font-size: 1rem;
+  @apply p-9
+    rounded-xl
+    shadow-xl;
+  background-color: rgb(var(--background-saturated));
+  h1.title {
+    @apply mt-0
+      dg--font-psbl;
+  }
   ol {
     counter-reset: item;
     list-style-type: none;
+  }
+  li:first-of-type {
+    @apply mb-5;
+  }
+  ol {
+    @apply mb-5;
   }
   ol > li {
     counter-increment: item;
   }
   ol > li::before {
-    content: counters(item, ".") " - ";
+    content: counters(item, ".") ". ";
   }
 }

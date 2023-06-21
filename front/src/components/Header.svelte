@@ -5,9 +5,9 @@
   export let navItems;
 </script>
 
-<header role="navigation" class="header flex items-center">
+<header role="navigation" class="header">
   <a href="#main" class="btn skip-to-content">Skip to Main Content</a>
-  <div class="title flex flex-grow">
+  <div class="site-title">
     <NavHome navHeading="{navHeading}" />
   </div>
   {#if navItems}<NavBar navItems={navItems} />{/if}
