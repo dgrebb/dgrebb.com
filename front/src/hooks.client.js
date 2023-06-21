@@ -17,6 +17,7 @@ Sentry.init({
   beforeSend(event) {
     if (event.user) {
       delete event.user.ip
+      delete event.server_name
     }
   }
 });

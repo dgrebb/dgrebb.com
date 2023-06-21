@@ -261,6 +261,11 @@ body {
   @apply mt-auto;
   @apply text-sm;
   small {
-    @apply opacity-20;
+    color: rgb(var(--subdued-rgb));
+    a {
+      @apply brightness-125;
+      color: rgb(var(--subdued-rgb));
+      border-color: rgb(var(--subdued-rgb));
+    }
   }
 }

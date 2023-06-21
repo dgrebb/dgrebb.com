@@ -1,13 +1,4 @@
 @layer utilities {
-  .dg--font-ps {
-    font-family: "Public Sans", sans-serif;
-  }
-  .dg--font-psb {
-    font-family: "Public Sans Bold", sans-serif;
-  }
-  .dg--font-psbl {
-    font-family: "Public Sans Black", sans-serif;
-  }
   .dg--transition-effect {
     transition-duration: var(--transform-duration);
     transition-timing-function: var(--transform-timing-function);
@@ -21,6 +12,7 @@
     --btn--secondary-rgb: 190, 193, 194;
     --btn-secondary-highlight-rgb: 92, 92, 92;
     --highlight-rgb: 175, 83, 7;
+    --subdued-rgb: 216, 216, 216;
     --transform-duration: 500ms;
     --transform-timing-function: ease-in-out;
   }
@@ -31,6 +23,7 @@
     --background-end-rgb: 29, 30, 32;
     --background-pre-rgb: 3, 3, 3;
     --highlight-rgb: 255, 255, 21;
+    --subdued-rgb: 71, 72, 73;
     --btn--secondary-rgb: 54, 54, 56;
     --btn-secondary-highlight-rgb: 92, 92, 92;
     --transform-duration: 500ms;
