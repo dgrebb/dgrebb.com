@@ -5,7 +5,7 @@
   import IconInstagram from "~icons/mdi/instagram";
   import IconSoundCloud from "~icons/ph/soundcloud-logo-bold";
   import IconStackOverflow from "~icons/mdi/stackoverflow";
-  import IconLinkedIn from "~icons/entypo-social/linkedin-with-circle";
+  import IconLinkedIn from "~icons/entypo-social/linkedin";
   import IconTwitter from "~icons/mdi/twitter";
   import IconMastodon from "~icons/mdi/mastodon";
   import IconFlickr from "~icons/icomoon-free/flickr2";
