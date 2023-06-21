@@ -16,8 +16,10 @@ Sentry.init({
   replaysOnErrorSampleRate: ( PUBLIC_ENV === "production" ? 0.1 : 1.0 ),
   beforeSend(event) {
     if (event.user) {
-      delete event.user.ip
-      delete event.server_name
+      delete event.user.ip;
+    }
+    if (event.server_name) {
+      delete event.server_name;
     }
   }
 });
