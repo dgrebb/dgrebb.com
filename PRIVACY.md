@@ -1,70 +1,68 @@
-## Effective Date: _June 21, 2023_
+Welcome, dear visitor! We appreciate your presence here and would like to take a moment to acquaint you with our Privacy Policy. It's a document that sheds light on how we handle your personal information with utmost care when you use this website and its related services.
 
-Thank you for visiting! This Privacy Policy explains how I collect, use, and protect your personal information when you use this website and any related services.
+By accessing or using this website, you're happily agreeing to the terms laid out in this Privacy Policy. However, if you don't find these terms amusing or to your liking, we kindly request that you refrain from using this website or providing any personal information.
 
-By accessing or using this website, you agree to the terms of this Privacy Policy. If you do not agree with the terms outlined in this Privacy Policy, please do not use this website or provide any personal information.
+## Information We Collect
 
-## Information I Collect
+1. **Personal Information**: Rest assured, we don't collect personal details apart from browser and system information. We've gone to great lengths to remove any personally identifiable information from our Analytics and Error Logging tools (more on those below). This includes visitors' IP addresses and even the fancy-sounding `server_name`, which refers to your computer's network name.
 
-1. **Personal Information**: Apart from browser and system information, no personal details are collected. I've taken great care in scrubbing all personally-identifiable information from both the Analytics and Error Logging tools used (details below). This includes visitors' IP addresses and `server_name`, which refers to your computer's network name.
+   1. **[Plausible Analytics](https://plausible.io)** is our trusty sidekick for keeping track of pageviews and counting visitors. You might enjoy checking out the company's [delightful post about privacy policies](https://plausible.io/blog/privacy-policy-page#privacy-policy-examples), which inspired most of this document. For more specific details about Plausible's privacy practices, please see the [Third-Party Services](#third-party-services) section below.
 
-   1. **Plausible Analytics** is used for pageview and visitor count tracking. See the company's [delightful post about privacy policies](https://plausible.io/blog/privacy-policy-page#privacy-policy-examples), which inspired most of this document. More details specific to Plausible's privacy practices can be found below in the [Third-Party Services](#third-party-services) section.
+   2. **[Sentry.io](https://www.sentry.io)** comes to our rescue when it comes to capturing errors on both the client (browser) and server (500s, 400s, and 300s). Sentry helps diagnose problems with this site by capturing browser and system information. It even allows us to "playback" user interactions on the site, which is quite handy for figuring out broken code or user experience blunders.
 
-   2. **Sentry.io** is used to capture errors on both the client (browser), and server (500s, 400s, and 300s). Sentry allows capturing browser and system information, which can be used to diagnose problems with this site. Sentry also allows a "playback" of user interaction on the site, aiding in further triage of broken code or user experience.
+    Now, here's the thing: Sentry, by default, logs IP addresses. But fear not! We scrub this data before it reaches the sentry.io services and servers. The JavaScript responsible for this scrubbing is cleverly hidden away from evident view on main dgrebb.com pages. However, you can spot it at the bottom of our static [404 page](/404). Go ahead, take a peek:
 
-        Sentry, by default, logs IP addresses. I scrub this data before it is delivered to the sentry.io services and servers. The JavaScript performing this scrub is minified away from evident view on main dgrebb.com pages, but can be seen at the bottom of the static [404 page](/404):
+    ```javascript
+    beforeSend(event) {
+      if (event.user) {
+        delete event.user.ip;
+      }
+      if (event.server_name) {
+        delete event.server_name;
+      }
+    }
+    ```
 
-        ```javascript
-        beforeSend(event) {
-          if (event.user) {
-            delete event.user.ip;
-          }
-          if (event.server_name) {
-            delete event.server_name;
-          }
-        }
-        ```
+    Despite our diligent data scrubbing efforts, please note that Sentry's servers will log the requesting IP address when a client (that's your browser) loads JavaScript from their servers. For more details about Sentry's privacy practices, please refer to the [Third-Party Services](#third-party-services) section.
 
-        Regardless of the data scrubbing done on my side, Sentry's servers will log the requesting IP address when a client (your browser) loads JavaScript from their servers. Please see the [Third-Party Services](#third-party-services) section for details specific to Sentry's privacy practices.
-
-2. **Usage Information**: I may also collect certain non-personally identifiable information ("Usage Information") automatically when you visit dgrebb.com. This may include your browser type, operating system, referring website, pages you visit, and the date and time of your visit.
+2. **Usage Information**: We may also collect certain non-personally identifiable information ("Usage Information") automatically when you grace us with your presence at dgrebb.com. This includes your browser type, operating system, referring website, pages you visit, and the glorious timestamp of your visit.
 
 ## Use of Cookies
 
-1. **I do not and will never use cookies**. Please contact privacy [at] dgrebb.com should you ever encounter a cookie on this site.
+1. **No cookies here, and never will be!** If, by some freakish occurrence, you encounter a cookie on this site, please alert us immediately by sending an email to privacy [at] dgrebb.com. We shall take swift action!
 
-## How I Use Your Information
+## How We Use Your Information
 
-1. **Personal Information**: Nothing collected is identifiable, and anonymized before sent to third-party services like Plausible and Sentry. In simple terms, I may know the type of browser and operating system used to access dgrebb.com, but am unable to associate those details back to a specific IP address, MAC address, email address, mailing address, etc.
+1. **Personal Information**: Everything we collect remains anonymous and is anonymized before being sent to our dear friends, the third-party services like Plausible and Sentry. In simpler terms, we may know the type of browser and operating system you use to access dgrebb.com, but we're unable to trace those details back to a specific IP address, MAC address, email address, mailing address, or anything remotely identifying.
 
-2. **Usage Information**: I may review Usage Information to analyze trends, administer the website, track users' movements, and gather anonymous geo-location information for aggregate use. This information helps with website improvements, performance monitoring, and overall user experience enhancements.
+2. **Usage Information**: We merrily review Usage Information to analyze trends, administer the website, track users' movements, and gather anonymous geo-location information for aggregate use. This information helps us improve the website, monitor its performance, and enhance the overall user experience. We believe in giving our users an experience as smooth as freshly churned butter.
 
 ## Third-Party Services
 
-1. **Plausible Analytics**: I use Plausible Analytics, a privacy-focused web analytics tool, to collect and analyze Usage Information. Plausible Analytics does not use cookies and does not collect any personally identifiable information. The information collected by Plausible Analytics is stored on servers controlled by Plausible Analytics and is subject to their privacy policy. To learn more about Plausible Analytics' data practices, please visit [their website](https://plausible.io) and review their [privacy policy](https://plausible.io/privacy).
+1. **Plausible Analytics**: We rely on Plausible Analytics, a privacy-focused web analytics tool that collects and analyzes Usage Information. Plausible Analytics doesn't use cookies and doesn't collect any personally identifiable information. The information they gather is stored on their own servers, and it's all subject to their privacy policy. To learn more about Plausible Analytics' data practices, we encourage you to visit [their website](https://plausible.io) and dive into their [privacy policy](https://plausible.io/privacy).
 
-2. **Sentry.io**: We use Sentry.io to help us identify and fix errors and improve the performance of our website. Sentry.io may collect certain technical information, including your IP address and information about your browser and device. The information collected by Sentry.io is stored on servers controlled by Sentry.io and is subject to their privacy policy. To learn more about Sentry.io's data practices, please visit [their website](https://sentry.io/) and review their [privacy policy](https://sentry.io/privacy/).
+2. **Sentry.io**: Ah, Sentry.io, our trusted ally in identifying and fixing errors while improving our website's performance. Sentry.io may collect certain technical information, including your IP address, browser details, and device information. The information they gather is stored on their servers, which they guard with great diligence. To learn more about Sentry.io's data practices, please visit [their website](https://sentry.io/) and cozy up with their [privacy policy](https://sentry.io/privacy/).
 
-Sentry's entire collection of legal documents can also be [found on their site](https://sentry.io/legal/).
+If you're feeling adventurous, you can find Sentry's entire collection of legal documents [on their site](https://sentry.io/legal/).
 
 ## Data Security
 
-I take reasonable measures to protect the personal information collected. However, please be aware that no security measures are perfect or impenetrable, and I cannot guarantee the security of your personal information.
+We take reasonable measures to protect the personal information we collect. However, let's be honest, no security measures are perfect or impenetrable. We can't promise you an impenetrable fortress, but we assure you that we're doing our best to keep your personal information safe and sound.
 
 ## Disclosure of Information
 
-I may disclose your Personal Information or Usage Information to third parties if required by law or when I believe that disclosure is necessary to protect my rights, comply with a judicial proceeding, court order, or legal process served on myself, or investigate suspected or actual fraudulent or illegal activities.
+There may come a time when we need to disclose your Personal Information or Usage Information to third parties. This would only occur if required by law or when we firmly believe that such disclosure is necessary to protect our rights, comply with a judicial proceeding, court order, or legal process served upon us, or investigate suspected or actual fraudulent or illegal activities. We hope that day never comes, but it's good to be prepared.
 
 ## Children's Privacy
 
-My website is not intended for children under the age of 13. I do not knowingly collect personal information from children under the age of 13. If you are a parent or guardian and believe that I may have inadvertently collected personal information from your child, please contact me at privacy [at] dgrebb.com to request deletion of the information.
+Please note that our website is not intended for children under the age of 13. We don't knowingly collect personal information from children under the age of 13. If you're a parent or guardian and believe that we may have inadvertently collected personal information from your child, please contact us at privacy [at] dgrebb.com. We'll promptly remove any such information, as we certainly don't want to get in trouble with the little ones.
 
 ## Changes to this Privacy Policy
 
-I reserve the right to update or modify this Privacy Policy at any time. The most recent version of the Privacy Policy will be posted on this page, with the effective date indicated at the top. Your continued use of this website after any changes to this Privacy Policy constitutes your acceptance of the updated terms.
+We reserve the right to update or modify this Privacy Policy at any time. The most recent version will be posted on this page, with the effective date proudly displayed at the top. By continuing to use this website after any changes to the Privacy Policy, you're embracing the updated terms with open arms.
 
 ## Contact
 
-If you have any questions, concerns, or requests regarding this Privacy Policy, please contact me at privacy [at] dgrebb.com.
+If you have any questions, concerns, or requests regarding this Privacy Policy, don't hesitate to reach out to us at privacy [at] dgrebb.com. We're here to listen, assist, and make you smile.
 
-By using this website, you acknowledge that you have read and understand this Privacy Policy and consent to the collection, use, and disclosure of your information as described herein.
+By using this website, you acknowledge that you've read and understood this Privacy Policy, and you wholeheartedly consent to the collection, use, and disclosure of your information as described herein. Now go forth and explore the wonders of dgrebb.com!
