@@ -1,0 +1,29 @@
+.syntax-highlighter {
+  position: relative;
+  .title,
+  pre {
+    @apply transition-colors
+            dg--transition-effect;
+  }
+  .title {
+    @apply p-3
+            rounded-t-md
+            font-mono;
+    background-color: rgb(var(--background-end-rgb));
+    color: rgb(var(--foreground-rgb));
+    position: absolute;
+    width: 100%;
+    z-index: 4;
+  }
+  pre {
+    @apply my-7
+        p-9
+        pt-20
+        rounded-lg
+        shadow-lg;
+    background-color: rgb(var(--background-pre-rgb));
+    color: rgb(var(--foreground-rgb));
+    position: relative;
+    z-index: 3;
+  }
+}
