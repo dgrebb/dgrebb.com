@@ -24,9 +24,12 @@
 
     root.classList = `${theme}`;
     body.classList.add("ready");
+
+    window.matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', () => toggleTheme());
   });
 
-  function toggleTheme(e) {
+  function toggleTheme() {
     dark = !dark;
     root.classList.toggle(darkTheme);
     root.classList.toggle(lightTheme);
