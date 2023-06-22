@@ -1,7 +1,6 @@
 <script>
   import Highlight, { LineNumbers } from "svelte-highlight";
   import JavaScript from "svelte-highlight/languages/javascript";
-  import "../../styles/components/Code.css";
 
   export let lang;
   export let text;
