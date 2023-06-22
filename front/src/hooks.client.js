@@ -1,6 +1,5 @@
 import * as Sentry from "@sentry/sveltekit";
 import { PUBLIC_ENV, PUBLIC_SENTRY_DSN } from "$env/static/public";
-import crypto from "node:crypto";
 
 Sentry.init({
   dsn: PUBLIC_SENTRY_DSN,
