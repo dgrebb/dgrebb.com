@@ -4,7 +4,9 @@
 .posts,
 .post,
 .privacy {
-  @apply max-w-5xl;
+  @apply max-w-5xl
+    transition-colors
+    dg--transition-effect;
   h1,
   h2,
   h3,
@@ -67,16 +69,6 @@
     ul {
       @apply mt-3 ml-3;
     }
-  }
-  pre {
-    @apply my-7
-      p-3
-      rounded-lg
-      shadow-lg;
-    background-color: rgb(var(--background-pre-rgb));
-    color: rgb(var(--foreground-rgb));
-    position: relative;
-    z-index: 3;
   }
   mark {
     @apply px-3;

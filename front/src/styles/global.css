@@ -2,28 +2,34 @@
 @import "./components.css";
 @import "./utilities.css";
 @import "./posts.css";
+@import "./syntax.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+html.light-theme {
+  @apply dg--light-theme;
+  @apply github-light;
+}
+
+html.dark-theme {
+  @apply dg--dark-theme;
+  @apply github-dark;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     @apply dg--light-theme;
+    @apply github-light;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     @apply dg--dark-theme;
+    @apply github-dark;
   }
-}
-
-html.light-theme {
-  @apply dg--light-theme;
-}
-
-html.dark-theme {
-  @apply dg--dark-theme;
 }
 
 html {
