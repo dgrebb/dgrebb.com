@@ -35,10 +35,7 @@
     </noscript>
   {/if}
   <h1 class="headline">{headline}</h1>
-  <SvelteMarkdown 
-    renderers={{ link: Link }}
-    source={intro} 
-  />
+  <SvelteMarkdown renderers={{ link: Link }} source={intro} />
 </section>
 {#if links.length}
   <section class="links">
