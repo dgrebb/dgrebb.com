@@ -31,8 +31,7 @@
       pt-20
       pb-5;
     color: rgb(var(--foreground-rgb));
-    overflow-x: scroll;
-    scrollbar-gutter: stable;
+    overflow-x: auto;
     position: relative;
   }
 }
