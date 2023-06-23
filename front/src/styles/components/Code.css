@@ -1,29 +1,37 @@
 .syntax-highlighter {
+  @apply shadow-lg
+    rounded-lg
+    w-full
+    sm:w-auto
+    my-9
+    px-9
+    pb-5;
+  background-color: rgb(var(--background-pre-rgb));
   position: relative;
+  z-index: 3;
   .title,
   pre {
     @apply transition-colors
-            dg--transition-effect;
+      dg--transition-effect;
   }
   .title {
     @apply p-3
-            rounded-t-md
-            font-mono;
+      rounded-t-md
+      font-mono;
     background-color: rgb(var(--background-end-rgb));
     color: rgb(var(--foreground-rgb));
     position: absolute;
-    width: 100%;
+    left: 0;
+    right: 0;
     z-index: 4;
   }
   pre {
-    @apply my-7
-        p-9
-        pt-20
-        rounded-lg
-        shadow-lg;
-    background-color: rgb(var(--background-pre-rgb));
+    @apply mb-0
+      pt-20
+      pb-5;
     color: rgb(var(--foreground-rgb));
+    overflow-x: scroll;
+    scrollbar-gutter: stable;
     position: relative;
-    z-index: 3;
   }
 }
