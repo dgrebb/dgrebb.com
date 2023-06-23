@@ -1,8 +1,8 @@
 <script>
   import { PlausibleAnalytics } from '@accuser/svelte-plausible-analytics';
   import "../styles/global.css";
-  import Footer from "../components/Footer.svelte";
-  import Header from "../components/Header.svelte";
+  import Footer from "../layout/Footer.svelte";
+  import Header from "../layout/Header.svelte";
 
   export let data;
   const { navHeading, navItems, copyright, copyleft } = data;

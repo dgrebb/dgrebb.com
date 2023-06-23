@@ -1,5 +1,5 @@
 <script>
-    import "../styles/loading.css";
+    import "../styles/components/loading.css";
 </script>
 
 <div class="dg-ripple">

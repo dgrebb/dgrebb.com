@@ -1,9 +1,8 @@
-@import "./fonts.css";
-@import "./components.css";
-@import "./utilities.css";
-@import "./posts.css";
-@import "./syntax.css";
-@import "./components/Code.css";
+@import "components/fonts.css";
+@import "components/tw-components.css";
+@import "components/utilities.css";
+@import "pages/posts.css";
+@import "components/Code/Code.css";
 
 @tailwind base;
 @tailwind components;
@@ -47,14 +46,18 @@ html {
 }
 
 body {
-  @apply dg--font-ps
+  @apply flex
+    flex-col
+    dg--font-ps
     transition-colors
-    dg--transition-effect;
+    dg--transition-effect
+    text-sm
+    sm:text-lg;
   color: rgb(var(--foreground-rgb));
   height: 100vh;
   min-height: 100vh;
   overflow: overlay;
-  scrollbar-gutter: stable both-edges;
+  scrollbar-gutter: stable;
   .flourish,
   .header,
   .main,
@@ -74,8 +77,10 @@ body {
 }
 
 .flourish {
-  @apply shadow-sm;
-  border-top: 8px solid rgb(var(--foreground-rgb));
+  @apply shadow-sm
+    h-1
+    sm:h-2;
+  background-color: rgb(var(--foreground-rgb));
   left: 0;
   position: fixed;
   right: 0;
@@ -85,8 +90,9 @@ body {
 
 .header,
 .footer {
-  @apply p-6
-    sm:p-8
+  @apply p-4
+    pt-6
+    sm:p-6
     lg:p-14;
 }
 
@@ -120,20 +126,24 @@ body {
 
 .nav-home {
   @apply dg--font-psbl
-    tracking-tight
     dg--link-hover
-    ml-[2px]
-    font-black
-    text-2xl
-    leading-none;
+    leading-none
+    text-xl
+    tracking-tight
+    sm:ml-[2px]
+    sm:text-2xl
+    flex-grow;
+  h1 {
+    transition: font-size;
+    @apply dg--transition-effect;
+  }
 }
 
 .theme-toggle {
   @apply dg--link-hover
-    transition
-    dg--transition-effect
-    mt-0.5
-    ml-3;
+  ml-3
+  transition
+  dg--transition-effect;
   #moon {
     padding-bottom: 1px;
   }
@@ -167,32 +177,44 @@ body {
     flex-grow
     items-center
     justify-center
-    p-8
-    md:p-11
-    lg:p-16
-    pb-3;
+    px-3
+    sm:px-8
+    sm:pb-3
+    pt-11;
 }
 
 .bio,
 .links {
-  max-width: 565px;
+  @apply dg--transition-effect
+    transition-[max-width]
+    max-w-sm
+    sm:max-w-xl;
 }
 
 .bio {
   img {
     @apply m-auto
       rounded-full
-      shadow-lg;
+      shadow-lg
+      transition-[height/width]
+      dg--transition-effect
+      h-[100px]
+      w-[100px]
+      sm:h-[120px]
+      sm:w-[120px];
     border: 1px solid rgba(var(--foreground-rgb), 0.5);
     position: relative;
     z-index: 3;
   }
   h1.headline {
-    @apply dg--font-psb
+    transition: font-size;
+    @apply dg--transition-effect
+      dg--font-psb
       font-bold
-      text-4xl
       brightness-125
-      py-5;
+      py-5
+      text-2xl
+      sm:text-4xl;
   }
 }
 
@@ -238,9 +260,6 @@ body {
   p,
   li ol,
   li,
-  pre {
-    @apply mb-7;
-  }
   li ol,
   li ol li {
     @apply mt-7;
@@ -305,7 +324,8 @@ body {
 }
 
 .footer {
-  @apply pb-9
+  @apply pb-3
+    md:pb-9
     flex-col
     text-center
     mt-auto

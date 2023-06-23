@@ -2,11 +2,11 @@
   import { PUBLIC_MEDIA_URL } from "$env/static/public";
   import SvelteMarkdown from 'svelte-markdown';
   import { MetaTags } from "svelte-meta-tags";
-  import Flourish from "../components/Flourish.svelte";
   import Head from "../components/Head.svelte";
   import Image from "../components/Image.svelte";
   import Links from "../components/Links.svelte";
   import Link from "../components/markdown/Link.svelte";
+  import Flourish from "../layout/Flourish.svelte";
 
   export let data;
   const { seo, headline, intro, links } = data;
@@ -21,25 +21,21 @@
       src={`${PUBLIC_MEDIA_URL}${image.url}`}
       alt={image.alternativeText}
       title="Hi!"
-      width={120}
-      height={120}
+      classes="bio-picture"
+      aria-hidden={true}
     />
     <noscript>
       <img
         src={`${PUBLIC_MEDIA_URL}${image.url}`}
         alt={image.alternativeText}
         title="Hi!"
-        width={120}
-        height={120}
-        aria-hidden="true"
+        classes="bio-picture"
+        aria-hidden={true}
       />
     </noscript>
   {/if}
   <h1 class="headline">{headline}</h1>
-  <SvelteMarkdown 
-    renderers={{ link: Link }}
-    source={intro} 
-  />
+  <SvelteMarkdown renderers={{ link: Link }} source={intro} />
 </section>
 {#if links.length}
   <section class="links">

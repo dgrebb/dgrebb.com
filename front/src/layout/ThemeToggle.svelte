@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  import ThemeToggle from "./ThemeToggle.svelte";
+  import ThemeToggleIcon from "./ThemeToggleIcon.svelte";
 
   const light = "light-theme";
   let root;
@@ -10,7 +10,6 @@
   $: theme = "";
   $: loaded = false;
   $: dark = null;
-	export let navHeading;
 
   onMount(async () => {
     loaded = true;
@@ -42,9 +41,6 @@
 
 </script>
 
-<a class="nav-home" href="/">
-  <h1>{navHeading}</h1>
-</a>
 <button class={classList} on:click={toggleTheme}>
-  <ThemeToggle {dark} />
+  <ThemeToggleIcon {dark} />
 </button>
