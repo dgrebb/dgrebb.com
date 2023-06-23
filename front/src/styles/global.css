@@ -58,7 +58,7 @@ body {
   height: 100vh;
   min-height: 100vh;
   overflow: overlay;
-  scrollbar-gutter: stable both-edges;
+  scrollbar-gutter: stable;
   .flourish,
   .header,
   .main,
@@ -91,8 +91,9 @@ body {
 
 .header,
 .footer {
-  @apply p-6
-    sm:p-8
+  @apply p-4
+    pt-6
+    sm:p-6
     lg:p-14;
 }
 
@@ -126,20 +127,24 @@ body {
 
 .nav-home {
   @apply dg--font-psbl
-    tracking-tight
     dg--link-hover
-    ml-[2px]
-    font-black
-    text-2xl
-    leading-none;
+    leading-none
+    text-xl
+    tracking-tight
+    sm:ml-[2px]
+    sm:text-2xl
+    flex-grow;
+  h1 {
+    transition: font-size;
+    @apply dg--transition-effect;
+  }
 }
 
 .theme-toggle {
   @apply dg--link-hover
-    transition
-    dg--transition-effect
-    mt-0.5
-    ml-3;
+  ml-3
+  transition
+  dg--transition-effect;
   #moon {
     padding-bottom: 1px;
   }
@@ -173,15 +178,18 @@ body {
     flex-grow
     items-center
     justify-center
-    p-8
-    md:p-11
-    lg:p-16
-    pb-3;
+    px-3
+    sm:px-8
+    sm:pb-3
+    pt-11;
 }
 
 .bio,
 .links {
-  max-width: 565px;
+  @apply dg--transition-effect
+    transition-[max-width]
+    max-w-sm
+    sm:max-w-xl;
 }
 
 .bio {
@@ -200,11 +208,14 @@ body {
     z-index: 3;
   }
   h1.headline {
-    @apply dg--font-psb
+    transition: font-size;
+    @apply dg--transition-effect
+      dg--font-psb
       font-bold
-      text-4xl
       brightness-125
-      py-5;
+      py-5
+      text-2xl
+      sm:text-4xl;
   }
 }
 
@@ -314,7 +325,8 @@ body {
 }
 
 .footer {
-  @apply pb-9
+  @apply pb-3
+    md:pb-9
     flex-col
     text-center
     mt-auto
