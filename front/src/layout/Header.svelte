@@ -4,15 +4,6 @@
 
   import ThemeToggle from "./ThemeToggle.svelte";
 
-  const light = "light-theme";
-  let root;
-  let body;
-  let darkTheme = "dark-theme";
-  let lightTheme = "light-theme";
-  $: theme = "";
-  $: loaded = false;
-  $: dark = null;
-
   export let navHeading;
   export let navItems;
 </script>
@@ -22,6 +13,6 @@
   <div class="site-title">
     <NavHome {navHeading} />
   </div>
-  <ThemeToggle {dark} />
+  <ThemeToggle />
   {#if navItems}<NavBar {navItems} />{/if}
 </header>
