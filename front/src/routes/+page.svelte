@@ -21,17 +21,16 @@
       src={`${PUBLIC_MEDIA_URL}${image.url}`}
       alt={image.alternativeText}
       title="Hi!"
-      width={120}
-      height={120}
+      classes="bio-picture"
+      aria-hidden={true}
     />
     <noscript>
       <img
         src={`${PUBLIC_MEDIA_URL}${image.url}`}
         alt={image.alternativeText}
         title="Hi!"
-        width={120}
-        height={120}
-        aria-hidden="true"
+        classes="bio-picture"
+        aria-hidden={true}
       />
     </noscript>
   {/if}
