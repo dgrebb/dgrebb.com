@@ -1,7 +1,6 @@
 <script>
   import NavBar from "./NavBar.svelte";
   import NavHome from "./NavHome.svelte";
-
   import ThemeToggle from "./ThemeToggle.svelte";
 
   export let navHeading;
