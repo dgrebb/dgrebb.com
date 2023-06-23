@@ -1,6 +1,6 @@
 <script>
   import SvelteMarkdown from 'svelte-markdown';
-  import Flourish from '../../components/Flourish.svelte';
+  import Flourish from '../../layout/Flourish.svelte';
   import Code from "../../components/markdown/Code.svelte";
   import Link from "../../components/markdown/Link.svelte";
 

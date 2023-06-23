@@ -1,9 +1,8 @@
-@import "./fonts.css";
-@import "./components.css";
-@import "./utilities.css";
-@import "./posts.css";
-@import "./syntax.css";
-@import "./components/Code.css";
+@import "components/fonts.css";
+@import "components/tw-components.css";
+@import "components/utilities.css";
+@import "pages/posts.css";
+@import "components/Code/Code.css";
 
 @tailwind base;
 @tailwind components;

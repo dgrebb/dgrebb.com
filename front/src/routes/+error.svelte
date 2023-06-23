@@ -1,10 +1,20 @@
 <script>
   import * as Sentry from "@sentry/sveltekit";
-  import "../styles/not-found.css";
+  import { PUBLIC_ENV, PUBLIC_SENTRY_DSN } from "$env/static/public";
+  import "../styles/pages/not-found.css";
   import { page } from "$app/stores";
 
   Sentry.captureMessage("Page Not Found", {
-    page: $page.route
+    page: $page.route,
+      environment: PUBLIC_ENV,
+      beforeSend(event) {
+        if (event.user) {
+          delete event.user.ip;
+        }
+        if (event.server_name) {
+          delete event.server_name;
+        }
+      },
   });
 
 </script>
