@@ -78,8 +78,10 @@ body {
 }
 
 .flourish {
-  @apply shadow-sm;
-  border-top: 8px solid rgb(var(--foreground-rgb));
+  @apply shadow-sm
+    h-1
+    sm:h-2;
+  background-color: rgb(var(--foreground-rgb));
   left: 0;
   position: fixed;
   right: 0;
