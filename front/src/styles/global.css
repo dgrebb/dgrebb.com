@@ -47,9 +47,13 @@ html {
 }
 
 body {
-  @apply dg--font-ps
+  @apply flex
+    flex-col
+    dg--font-ps
     transition-colors
-    dg--transition-effect;
+    dg--transition-effect
+    text-sm
+    sm:text-lg;
   color: rgb(var(--foreground-rgb));
   height: 100vh;
   min-height: 100vh;
