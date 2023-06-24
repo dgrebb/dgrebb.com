@@ -51,8 +51,8 @@ body {
     dg--font-ps
     transition-colors
     dg--transition-effect
-    text-sm
-    sm:text-lg;
+    text-base
+    md:text-lg;
   color: rgb(var(--foreground-rgb));
   height: 100vh;
   min-height: 100vh;
@@ -78,8 +78,7 @@ body {
 
 .flourish {
   @apply shadow-sm
-    h-1
-    sm:h-2;
+    h-2;
   background-color: rgb(var(--foreground-rgb));
   left: 0;
   position: fixed;
@@ -90,8 +89,8 @@ body {
 
 .header,
 .footer {
-  @apply p-4
-    pt-6
+  @apply
+    px-4
     sm:p-6
     lg:p-14;
 }
@@ -99,6 +98,9 @@ body {
 .header {
   @apply flex
     items-center
+    pt-3
+    sm:pt-5
+    md:pt-7
     pb-0;
   position: relative;
 }
@@ -131,8 +133,7 @@ body {
     text-xl
     tracking-tight
     sm:ml-[2px]
-    sm:text-2xl
-    flex-grow;
+    sm:text-2xl;
   h1 {
     transition: font-size;
     @apply dg--transition-effect;
@@ -142,6 +143,8 @@ body {
 .theme-toggle {
   @apply dg--link-hover
   ml-3
+  p-3
+  pr-0
   transition
   dg--transition-effect;
   #moon {
@@ -177,7 +180,7 @@ body {
     flex-grow
     items-center
     justify-center
-    px-3
+    px-5
     sm:px-8
     sm:pb-3
     pt-11;
@@ -196,12 +199,8 @@ body {
     @apply m-auto
       rounded-full
       shadow-lg
-      transition-[height/width]
-      dg--transition-effect
-      h-[100px]
-      w-[100px]
-      sm:h-[120px]
-      sm:w-[120px];
+      h-[120px]
+      w-[120px];
     border: 1px solid rgba(var(--foreground-rgb), 0.5);
     position: relative;
     z-index: 3;
@@ -210,10 +209,10 @@ body {
     transition: font-size;
     @apply dg--transition-effect
       dg--font-psb
-      font-bold
       brightness-125
-      py-5
-      text-2xl
+      font-bold
+      mt-7
+      text-3xl
       sm:text-4xl;
   }
 }
@@ -269,7 +268,8 @@ body {
 .links {
   @apply flex
     items-stretch
-    px-8;
+    px-8
+    mt-7;
   .link-list {
     @apply flex
       flex-wrap
@@ -325,6 +325,7 @@ body {
 
 .footer {
   @apply pb-3
+    pt-6
     md:pb-9
     flex-col
     text-center
