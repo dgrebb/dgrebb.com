@@ -33,5 +33,15 @@
     color: rgb(var(--foreground-rgb));
     overflow-x: auto;
     position: relative;
+    scrollbar-color: rgb(var(--foreground-rgb)) transparent;
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      width: 8px;
+      height: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgb(var(--foreground-rgb));
+      @apply rounded-full;
+    }
   }
 }
