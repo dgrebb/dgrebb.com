@@ -51,13 +51,16 @@
   }
   h5 {
     @apply mb-4
+      text-base
       md:text-lg
       dg--font-psb;
   }
   h6 {
     @apply mb-4
-      md:text-base
-      dg--font-psb;
+      text-base
+      md:text-lg
+      dg--font-psb
+      italic;
   }
   p {
     @apply mb-4;
