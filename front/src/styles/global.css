@@ -57,7 +57,7 @@ body {
   height: 100vh;
   min-height: 100vh;
   overflow: overlay;
-  scrollbar-gutter: stable;
+  scrollbar-gutter: stable both-edges;
   .flourish,
   .header,
   .main,
@@ -90,7 +90,7 @@ body {
 .header,
 .footer {
   @apply
-    px-4
+    px-3
     sm:p-6
     lg:p-14;
 }
@@ -98,9 +98,9 @@ body {
 .header {
   @apply flex
     items-center
-    pt-3
-    sm:pt-5
-    md:pt-7
+    pt-5
+    sm:pt-9
+    md:pt-11
     pb-0;
   position: relative;
 }
