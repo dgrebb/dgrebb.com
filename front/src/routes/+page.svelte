@@ -44,27 +44,32 @@
 {/if}
 
 <Head>
-  <meta name="viewport" content={seo.metaViewport} />
+  <meta
+    name="viewport"
+    content={seo?.metaViewport || "width=device-width, initial-scale=1"}
+  />
   <meta name="thumbnail" content={`${PUBLIC_MEDIA_URL}${image.url}`} />
 </Head>
 
 <MetaTags
-  title={seo.metaTitle}
-  description={seo.metaDescription}
-  openGraph={{
-    images: [
-      {
-        url: `${PUBLIC_MEDIA_URL}${metaSocialOG.image.data.attributes.url}`,
-        width: 1600,
-        height: 900,
-        alt: metaSocialOG.image.data.attributes.alternativeText,
-      },
-      {
-        url: `${PUBLIC_MEDIA_URL}${metaSocialOG.image.data.attributes.formats.medium.url}`,
-        width: 800,
-        height: 600,
-        alt: metaSocialOG.image.data.attributes.alternativeText,
-      },
-    ],
-  }}
+  title={seo.metaTitle || "Dan Grebb"}
+  description={seo.metaDescription || "Dan Grebb is a Software Engineer from Philadelphia, Pennsylvania."}
+  openGraph={metaSocialOG?.image
+    ? {
+        images: [
+          {
+            url: `${PUBLIC_MEDIA_URL}${metaSocialOG.image.data.attributes.url}`,
+            width: 1600,
+            height: 900,
+            alt: metaSocialOG.image.data.attributes.alternativeText,
+          },
+          {
+            url: `${PUBLIC_MEDIA_URL}${metaSocialOG.image.data.attributes.formats.medium.url}`,
+            width: 800,
+            height: 600,
+            alt: metaSocialOG.image.data.attributes.alternativeText,
+          },
+        ],
+      }
+    : null}
 />
