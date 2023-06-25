@@ -7,7 +7,7 @@ const homeEndpoint = `${PUBLIC_API_URL}${PUBLIC_API_PATH_HOME}`;
 export async function load({ params }) {
   const homeContent = await api(homeEndpoint);
   if (!homeContent) {
-    throw error("Home Error", "/404");
+    throw error(500, "Home Error", "/404");
   }
   return {
     ...homeContent.attributes,
