@@ -1,6 +1,8 @@
 #!/bin/bash
 source $directory/_scripts/functions.sh
 
+if [[ $1 != p ]]; then EVENT_JSON="dev"; else EVENT_JSON="main"; fi
+
 if [ $2 == "f" ]; then
     action="-j front"
 elif [ $2 == "b" ]; then
@@ -8,15 +10,16 @@ elif [ $2 == "b" ]; then
 elif [ $2 == "p" ]; then
     action="push"
 elif [ $2 == "d" ]; then
-    action="-j dispatch"
+    action="workflow_dispatch"
 else
     printDgErr "Argument needed to specify job."
 fi
 
-act --pull=false -P ubuntu-latest=github-actions-test:latest \
+act --pull=false \
+    -P ubuntu-latest=github-actions-test:latest \
+    -e $directory/../_ci/dispatches/${EVENT_JSON}.workflow_dispatch.json \
     -s GITHUB_TOKEN=$(pass dg/github/pat) \
-    -s DEPLOYMENT_BRANCH=develop \
-    -s PUBLIC_ENV=staging \
+    -s PUBLIC_ENV=development \
     -s PUBLIC_MEDIA_URL="" \
     -s PUBLIC_API_PATH_NAVIGATION="$(pass dg/cms/api/paths/navigation)" \
     -s PUBLIC_API_PATH_HOME="$(pass dg/cms/api/paths/home)" \

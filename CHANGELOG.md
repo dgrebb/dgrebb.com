@@ -2,6 +2,96 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.0] - 2023-06-24
+
+### 💡 Features
+
+- ***(front)*** Adds italic to h6 and sets text-base for h5/6
+- ***(front)*** Adds scrollbar behavior and style enhancements
+- ***(front)*** Adds more mobile-first style enhancements
+- ***(front)*** Adjustments to font-size, margin, and padding
+- ***(front)*** Adjusts Code component scrollbar
+- ***(front)*** Refactor file structure and import paths
+- ***(front)*** Refactors ThemeToggle component
+- ***(front)*** Adds global mobile styles
+- ***(front)*** Adds mobile styles for and refactors Code component
+- ***(front)*** Adds mobile styles for posts/privacy
+- ***(front)*** Adds mobile styles for and refactors Image component
+- ***(front)*** Updates flourish component styles
+- ***(front)*** Moves body classes and adds mobile text size
+- ***(front)*** Uses privacy updatedAt time for effective date
+- ***(front)*** Moves and adjusts styles for code in posts
+- ***(front)*** Adds syntax highlighter styles and loads based on theme
+- ***(front)*** Adds Code component as a markdown renderer
+- ***(front)*** Adds event listener to system color and toggles theme
+- ***(front)*** Installs svelte-highlight
+- ***(front)*** Refactors tailwind classes with @apply in css
+- ***(front)*** Adds Flourish component and sets z-index for media elements
+- ***(front)*** Deletes user.ip from Sentry log events
+- ***(front)*** Adds privacy route, new (and updated) styles
+- ***(strapi)*** Updates strapi to v4.11.2
+- ***(strapi)*** Installs and configures sentry for strapi
+- ***(strapi)*** Adds privacy singleton and api
+- ***(utils)*** Adds supporting sentry env vars to backend
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Removes unused ThemeToggle vars in Header
+- ***(front)*** Fixes @apply class error when importing css directly
+- ***(front)*** Removes crypto and uuid from client logging
+- ***(front)*** Fixes Link component for anchor, mailto, and tel variants
+- ***(front)*** Fixes closing Sentry.init() bracket
+- ***(front)*** Refactor beforeSend scrub conditionals
+- ***(front)*** Uses theme colors for pre tag on privacy page
+- ***(front)*** Refactors for and uses noscript styles
+- ***(front)*** Installs, uses, and refactors for unplugin-icons and inanimate svgs
+- ***(front)*** Adds error message to layout server
+
+### 📜 Documentation
+
+- ***(project)*** Updates privacy policy
+- ***(project)*** Updates privacy policy
+- ***(project)*** Updates privacy policy
+- ***(project)*** Adds PRIVACY.md
+
+### 👷 Build
+
+- ***(back)*** Reinstalls @strapi/plugin-seo after flexbox PR merged
+- ***(front)*** Removes unused crypto import
+- ***(front)*** Removes server_name from sentry events
+- ***(front)*** Adds exception for intentional link to 404 page
+- ***(front)*** Bumps sentry to latest version
+- ***(utils)*** Adds expose host to svelte-kit preview
+- ***(utils)*** Adds PUBLIC_API_PATH_PRIVACY env var to setup script
+
+### 💚 Continuous Integration
+
+- ***(front)*** Updates dispatch workflow to use workflow id/endpoint
+- ***(front)*** Adds privacy api endpoint to workflow
+- ***(project)*** Double quotes github var in payload
+- ***(project)*** Move testing steps out of github workflow file
+- ***(project)*** Adds and updates test configuration for workflow_dispatch
+- ***(project)*** Removes echo
+- ***(project)*** Uses github.ref_name for contitional and also logs the ref_name for testing
+- ***(project)*** Uses github.ref as environment conditional
+- ***(project)*** Removes colon
+- ***(project)*** Removes event types from workflow_dispatch
+- ***(project)*** Sets local environment to "development" in sentry logging
+- ***(project)*** Removes repository_dispatch while testing
+- ***(project)*** Removes unused steps and adjusts order
+- ***(project)*** Uses DEPLOYMENT_BRANCH instead of github.ref in robots step
+- ***(utils)*** Uses workflow_dispatch in act script
+
+### 🪮  Styling
+
+- ***(front)*** Removes extra line
+- ***(front)*** Formats markdown component
+- ***(front)*** Touches up css refactor
+- ***(front)*** Changes linkedin svg
+- ***(front)*** Moves font classes
+- ***(front)*** Refactors styles for privacy policy; makes footer link brighter
+- ***(front)*** Self-closes span
+
 ## [2.1.1] - 2023-06-19
 
 ### 🐛 Bug Fixes

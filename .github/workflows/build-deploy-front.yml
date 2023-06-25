@@ -1,11 +1,7 @@
 name: Build & Deploy Frontend
 
 on:
-  workflow_dispatch:
-  repository_dispatch:
-    types:
-      - Frontend
-      - Strapi
+  workflow_dispatch
 
 jobs:
   front:
@@ -13,42 +9,17 @@ jobs:
     runs-on: ubuntu-latest
 
     environment:
-      name: ${{ github.ref == 'refs/heads/main' && 'prd' || 'stg' }}
+      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
 
     steps:
-
-      - name: Add Masks
-        run: |
-          echo "::add-mask::${{ github.token }}"
-          echo "::add-mask::${{ secrets.PUBLIC_API_PATH_NAVIGATION }}"
-          echo "::add-mask::${{ secrets.PUBLIC_API_URL }}"
-          echo "::add-mask::${{ secrets.PUBLIC_API_PATH_HOME }}"
-          echo "::add-mask::${{ secrets.PUBLIC_API_PATH_FOOTER }}"
-          echo "::add-mask::${{ secrets.API_KEY }}"
-          echo "::add-mask::${{ secrets.PUBLIC_SENTRY_DSN }}"
-          echo "::add-mask::${{ secrets.PUBLIC_ENV }}"
-          echo "::add-mask::${{ secrets.AWS_ACCESS_KEY_ID }}"
-          echo "::add-mask::${{ secrets.AWS_SECRET_ACCESS_KEY }}"
-          echo "::add-mask::${{ secrets.AWS_REGION }}"
-          echo "::add-mask::${{ secrets.AWS_S3_BUCKET }}"
 
       - name: Checkout
         uses: actions/checkout@v3
         with:
           repository: dgrebb/dgrebb.com
-          ref: ${{ secrets.DEPLOYMENT_BRANCH }}
+          ref: ${{ github.ref }}
           token: ${{ github.token }}
           fetch-depth: 0
-
-      - name: Extract Branch Name
-        shell: bash
-        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
-        id: extract_branch
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18.x"
 
       - name: Set .env
         run: |
@@ -58,10 +29,16 @@ jobs:
           echo PUBLIC_API_PATH_NAVIGATION='${{ secrets.PUBLIC_API_PATH_NAVIGATION }}' >> front/.env
           echo PUBLIC_API_PATH_HOME='${{ secrets.PUBLIC_API_PATH_HOME }}' >> front/.env
           echo PUBLIC_API_PATH_FOOTER='${{ secrets.PUBLIC_API_PATH_FOOTER }}' >> front/.env
+          echo PUBLIC_API_PATH_PRIVACY='${{ secrets.PUBLIC_API_PATH_PRIVACY }}' >> front/.env
           echo API_KEY=${{ secrets.API_KEY }} >> front/.env
           echo PUBLIC_SENTRY_DSN=${{ secrets.PUBLIC_SENTRY_DSN }} >> front/.env
           echo PUBLIC_ENV=${{ secrets.PUBLIC_ENV }} >> front/.env
           cat front/.env
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
 
       - name: Build
         id: npm-build
@@ -70,7 +47,7 @@ jobs:
         run: bash _ci/build.sh
 
       - name: Robots
-        if: ${{ steps.extract_branch.outputs.branch }} == 'main'
+        if: ${{ github.ref_name == 'main' }}
         run: |
           sed -i 's/^Disallow\: \/$/Allow\: \//' front/build/robots.txt
 

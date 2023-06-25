@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  import ThemeToggle from "./ThemeToggle.svelte";
+  import ThemeToggleIcon from "./ThemeToggleIcon.svelte";
 
   const light = "light-theme";
   let root;
@@ -10,7 +10,6 @@
   $: theme = "";
   $: loaded = false;
   $: dark = null;
-	export let navHeading;
 
   onMount(async () => {
     loaded = true;
@@ -24,9 +23,12 @@
 
     root.classList = `${theme}`;
     body.classList.add("ready");
+
+    window.matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', () => toggleTheme());
   });
 
-  function toggleTheme(e) {
+  function toggleTheme() {
     dark = !dark;
     root.classList.toggle(darkTheme);
     root.classList.toggle(lightTheme);
@@ -34,14 +36,11 @@
     body.classList.toggle(lightTheme);
   }
 
-  const baseClasses = "theme-toggle ml-2 "
+  const baseClasses = "theme-toggle"
   $: classList = `${baseClasses} ${loaded ? "opacity-100" : "opacity-0"}`;
 
 </script>
 
-<a class="nav-home font-black text-2xl leading-none" href="/">
-  <h1>{navHeading}</h1>
-</a>
 <button class={classList} on:click={toggleTheme}>
-  <ThemeToggle {dark} />
+  <ThemeToggleIcon {dark} />
 </button>

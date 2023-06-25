@@ -1,0 +1,6 @@
+{
+    "_note": "This is not an example or properly formatted request for the GitHub API.",
+    "__note": "The API takes 'ref': 'main' instead of the fully qualified ref.",
+    "ref": "/refs/heads/main",
+    "ref_name": "main"
+}

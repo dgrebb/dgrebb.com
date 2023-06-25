@@ -8,22 +8,27 @@
 		"preview": "vite preview"
 	},
 	"devDependencies": {
-		"@iconify/svelte": "^3.1.4",
-		"@sveltejs/adapter-auto": "^2.1.0",
+		"@iconify-json/entypo-social": "^1.1.4",
+		"@iconify-json/icomoon-free": "^1.1.4",
+		"@iconify-json/mdi": "^1.1.52",
+		"@iconify-json/ph": "^1.1.5",
+		"@iconify-json/typcn": "^1.1.4",
 		"@sveltejs/adapter-static": "^2.0.2",
-		"@sveltejs/kit": "^1.20.2",
+		"@sveltejs/kit": "^1.20.4",
 		"autoprefixer": "^10.4.14",
 		"postcss": "^8.4.24",
 		"postcss-nesting": "^11.2.2",
-		"svelte": "^3.59.1",
+		"svelte": "^3.59.2",
+		"svelte-highlight": "^7.3.0",
 		"svelte-meta-tags": "^2.8.0",
 		"tailwindcss": "^3.3.2",
+		"unplugin-icons": "^0.16.3",
 		"vite": "^4.3.9"
 	},
 	"type": "module",
 	"dependencies": {
 		"@accuser/svelte-plausible-analytics": "github:dgrebb/svelte-plausible-analytics#release/v0.4.0",
-		"@sentry/sveltekit": "^7.55.2",
+		"@sentry/sveltekit": "^7.56.0",
 		"blurhash": "^1.1.5",
 		"svelte-blurhash": "^1.2.1",
 		"svelte-markdown": "^0.2.3"

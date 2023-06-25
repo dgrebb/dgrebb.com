@@ -6,6 +6,7 @@
   import Image from "../components/Image.svelte";
   import Links from "../components/Links.svelte";
   import Link from "../components/markdown/Link.svelte";
+  import Flourish from "../layout/Flourish.svelte";
 
   export let data;
   const { seo, headline, intro, links } = data;
@@ -14,21 +15,27 @@
 </script>
 
 <section class="bio text-center">
+  <Flourish />
   {#if image}
     <Image
       src={`${PUBLIC_MEDIA_URL}${image.url}`}
       alt={image.alternativeText}
       title="Hi!"
-      width={120}
-      height={120}
-      classes="m-auto rounded-full"
+      classes="bio-picture"
+      aria-hidden={true}
     />
+    <noscript>
+      <img
+        src={`${PUBLIC_MEDIA_URL}${image.url}`}
+        alt={image.alternativeText}
+        title="Hi!"
+        classes="bio-picture"
+        aria-hidden={true}
+      />
+    </noscript>
   {/if}
   <h1 class="headline">{headline}</h1>
-  <SvelteMarkdown 
-    renderers={{ link: Link }}
-    source={intro} 
-  />
+  <SvelteMarkdown renderers={{ link: Link }} source={intro} />
 </section>
 {#if links.length}
   <section class="links">

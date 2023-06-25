@@ -11,18 +11,24 @@ Sentry.init({
     }),
     new Sentry.Replay(),
   ],
-  tracesSampleRate: ( PUBLIC_ENV === "production" ? 0.1 : 1.0 ),
-  replaysSessionSampleRate: ( PUBLIC_ENV === "production" ? 0.1 : 1.0 ),
-  replaysOnErrorSampleRate: ( PUBLIC_ENV === "production" ? 0.1 : 1.0 ),
+  tracesSampleRate: PUBLIC_ENV === "production" ? 0.1 : 1.0,
+  replaysSessionSampleRate: PUBLIC_ENV === "production" ? 0.1 : 1.0,
+  replaysOnErrorSampleRate: PUBLIC_ENV === "production" ? 0.1 : 1.0,
+  beforeSend(event) {
+    if (event.user) {
+      delete event.user.ip;
+    }
+    if (event.server_name) {
+      delete event.server_name;
+    }
+  },
 });
 
 export async function handleError({ error, event }) {
-  const errorId = crypto.randomUUID();
   Sentry.setTag("environment", PUBLIC_ENV);
-  Sentry.captureException(error, { extra: { event, errorId } });
+  Sentry.captureException(error, { extra: { event } });
 
   return {
     message: "Client error.",
-    errorId,
   };
 }

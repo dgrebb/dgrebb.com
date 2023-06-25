@@ -1,0 +1,115 @@
+@import "../components/tw-components.css";
+@import "../components/utilities.css";
+
+.posts,
+.post,
+.privacy {
+  @apply w-full
+    max-w-5xl
+    transition-colors
+    dg--transition-effect;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply my-5
+      md:my-7;
+    color: rgb(var(--foreground-rgb));
+    &:first-child {
+      @apply mt-0;
+    }
+    span.highlight {
+      @apply text-blue-600 
+        dark:text-blue-500;
+    }
+  }
+  h1 {
+    @apply mb-5
+      text-4xl
+      md:text-5xl
+      dg--font-psbl;
+  }
+  h2 {
+    @apply mb-4
+      text-3xl
+      md:text-4xl
+      dg--font-psbl;
+  }
+  h3 {
+    @apply mb-4
+      text-2xl
+      md:text-3xl
+      dg--font-psb;
+  }
+  h4 {
+    @apply mb-4
+      text-xl
+      md:text-2xl
+      dg--font-psb;
+  }
+  h5 {
+    @apply mb-4
+      text-base
+      md:text-lg
+      dg--font-psb;
+  }
+  h6 {
+    @apply mb-4
+      text-base
+      md:text-lg
+      dg--font-psb
+      italic;
+  }
+  p {
+    @apply mb-4;
+  }
+  strong {
+    @apply dg--font-psb;
+  }
+  ol,
+  ul {
+    @apply list-decimal;
+    li {
+      @apply mb-3;
+    }
+    ol,
+    ul {
+      @apply mt-3 ml-3;
+    }
+  }
+  mark {
+    @apply px-3;
+    background-color: rgb(var(--foreground-mark-rgb));
+  }
+}
+
+.privacy {
+  font-size: 1rem;
+  @apply p-5
+    sm:p-9
+    rounded-xl
+    shadow-xl;
+  background-color: rgb(var(--background-saturated));
+  h1.title {
+    @apply mt-0
+      dg--font-psbl;
+  }
+  ol {
+    counter-reset: item;
+    list-style-type: none;
+  }
+  li:first-of-type {
+    @apply mb-5;
+  }
+  ol {
+    @apply mb-5;
+  }
+  ol > li {
+    counter-increment: item;
+  }
+  ol > li::before {
+    content: counters(item, ".") ". ";
+  }
+}

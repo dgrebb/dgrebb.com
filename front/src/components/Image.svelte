@@ -5,9 +5,9 @@
   export let src;
   export let alt;
   export let title;
-  export let width;
-  export let height;
-  export let classes;
+  export let width = null;
+  export let height = null;
+  export let classes = null;
   export let ariaHidden = "false";
 
   let loaded = false;

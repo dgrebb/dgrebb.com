@@ -1,0 +1,25 @@
+@import "../components/tw-components.css";
+@import "../components/utilities.css";
+@tailwind components;
+@tailwind utilities;
+
+.not-found {
+  @apply flex
+    flex-col
+    items-center;
+  img {
+    @apply mb-11;
+  }
+  a {
+    @apply dg--link-hover
+      dg--transition-effect;
+  }
+  h1 {
+    @apply text-9xl
+      font-black
+      pb-3;
+  }
+  p {
+    @apply pb-7;
+  }
+}
