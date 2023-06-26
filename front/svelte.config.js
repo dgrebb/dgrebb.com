@@ -8,6 +8,7 @@ const config = {
     adapter: adapter({
       pages: "build",
       assets: "build",
+      trailingSlash: "always",
       precompress: true,
       strict: true,
     }),
