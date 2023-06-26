@@ -8,8 +8,7 @@ export const trailingSlash = "always";
 
 export async function load({ params }) {
   const privacyContent = await api(privacyEndpoint);
-  let { error: { error } } = privacyContent || false;
-  if (error) {
+  if (!privacyContent.attributes) {
     throw error(500, {
       message: `Privacy Page Error: ${error}`
     });

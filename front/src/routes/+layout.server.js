@@ -14,12 +14,10 @@ const footerEndpoint = `${PUBLIC_API_URL}${PUBLIC_API_PATH_FOOTER}`;
 export async function load({ params }) {
   const navigationContent = await api(navigationEndpoint);
   const footerContent = await api(footerEndpoint);
-  
-  let { error: { error } } = navigationContent || footerContent || false;
 
-  if (error) {
+  if (!navigationContent.attributes || !footerContent.attributes) {
     throw error(500, {
-      message: `Layout Error: ${error}`
+      message: "Layout Error"
     });
   }
 
