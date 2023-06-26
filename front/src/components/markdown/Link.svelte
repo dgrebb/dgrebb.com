@@ -4,11 +4,12 @@
   export let href = "";
   export let text = "";
   export let title = undefined;
+  const internalPattern = /\/|\#|m|t/g;
   let external;
 
   onMount(() => {
-    external = (href.charAt(0) === "/" || "#" || "m" || "t" ? false :
-    (new URL(href).origin !== location.origin ? true : false));
+    external = href.charAt(0).match(internalPattern) ? "blue" :
+      new URL(href).origin !== location.origin ? true : false;
   });
 </script>
 
