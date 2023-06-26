@@ -3,6 +3,7 @@
   import Flourish from '../../layout/Flourish.svelte';
   import Code from "../../components/markdown/Code.svelte";
   import Link from "../../components/markdown/Link.svelte";
+  import ScrollTop from '../../layout/ScrollTop.svelte';
 
   export let data;
   const { title, details, updatedAt } = data;
@@ -16,3 +17,7 @@
   <h2 class="date">Effective Date: <mark>{date}</mark></h2>
   <SvelteMarkdown renderers={{ link: Link, code: Code }} source={details} />
 </section>
+
+<slot name="scroll-top">
+  <ScrollTop />
+</slot>
