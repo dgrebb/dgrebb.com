@@ -11,7 +11,7 @@ module.exports = ({ env }) => ({
     populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
     defaultHeaders: {
       Accept: "application/vnd.github+json",
-      Authorization: `Bearer ${env("WEBHOOK_TOKEN")}`,
+      Authorization: `Bearer ${env("DISPATCH_TOKEN")}`,
     },
     extraBody: {
       ref,
