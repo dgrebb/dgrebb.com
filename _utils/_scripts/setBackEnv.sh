@@ -33,6 +33,7 @@ echo "CDN_BASE_URL=$(pass dg/cms/stg-cdnbaseurl)" >>$backEnv
 echo "DATABASE_PASSWORD=$(pass dg/cms/db/password)" >>$backEnv
 echo "PUBLIC_ENV=${ENV}" >>$backEnv
 echo "PUBLIC_SENTRY_DSN=$(pass dg/www/logs/sentrydsn)" >>$backEnv
+echo "WEBHOOK_TOKEN=$(pass dg/github/webhook_token)" >>$backEnv
 
 while test "$1" != --; do
     case $1 in
