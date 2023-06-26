@@ -8,6 +8,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 html.light-theme {
   @apply dg--light-theme;
   @apply github-light;
@@ -43,6 +49,7 @@ html {
     rgb(var(--background-start-rgb));
   height: fit-content;
   overflow: clip;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -107,10 +114,9 @@ body {
 }
 
 .header,
-.main,
 .footer {
   @apply w-full
-    max-w-6xl;
+    max-w-7xl;
 }
 
 .skip-to-content {
@@ -191,7 +197,9 @@ body {
     px-5
     sm:px-8
     sm:pb-3
-    pt-11;
+    pt-11
+    w-full
+    max-w-6xl;
 }
 
 .bio,
@@ -329,6 +337,28 @@ body {
   display: flex;
   justify-content: center;
   margin: auto;
+}
+
+.scroll-top {
+  display: flex;
+  @apply text-sm
+    dg--link-hover
+    dg--transition-effect
+    brightness-75
+    dark:brightness-50
+    transition
+    md:hidden;
+  align-items: center;
+  flex-direction: column;
+  &:hover,
+  &:focus {
+    @apply brightness-100
+      dark:brightness-100;
+  }
+  svg {
+    @apply mt-5
+      mb-2;
+  }
 }
 
 .footer {

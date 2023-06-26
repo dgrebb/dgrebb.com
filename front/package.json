@@ -10,6 +10,7 @@
 	"devDependencies": {
 		"@iconify-json/entypo-social": "^1.1.4",
 		"@iconify-json/icomoon-free": "^1.1.4",
+		"@iconify-json/icon-park-outline": "^1.1.11",
 		"@iconify-json/mdi": "^1.1.52",
 		"@iconify-json/ph": "^1.1.5",
 		"@iconify-json/typcn": "^1.1.4",
