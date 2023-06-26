@@ -48,6 +48,7 @@ html {
 body {
   @apply flex
     flex-col
+    items-center
     dg--font-ps
     transition-colors
     dg--transition-effect
@@ -103,6 +104,13 @@ body {
     md:pt-11
     pb-0;
   position: relative;
+}
+
+.header,
+.main,
+.footer {
+  @apply w-full
+    max-w-6xl;
 }
 
 .skip-to-content {
