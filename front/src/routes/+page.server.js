@@ -8,10 +8,10 @@ export const trailingSlash = "always";
 
 export async function load({ params }) {
   const homeContent = await api(homeEndpoint);
-  let { error: { error } } = privacyContent || false;
-  if (error) {
+
+  if (!homeContent.attributes) {
     throw error(500, {
-      message: `Home Page Error: ${error}`
+      message: "Home Page Error"
     });
   }
   return {
