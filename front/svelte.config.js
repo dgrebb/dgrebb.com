@@ -14,7 +14,7 @@ const config = {
     }),
     prerender: {
       handleHttpError: ({ path, referrer, message }) => {
-        if (path === "/404" && referrer === "/privacy") {
+        if (path === "/404" && referrer === "/privacy/") {
           return;
         }
         throw new Error(message);
