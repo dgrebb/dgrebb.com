@@ -37,7 +37,14 @@ const config = {
       "app.components.HomePage.welcome.again": "Write Something!",
       "app.components.HomePage.welcomeBlock.content.again":
         "Inspire the world with your delightful thoughts and stupendous content!",
-      "app.components.HomePage.button.blog": " ",
+      "app.components.HomePage.github.repo": "GitHub Repo",
+      "app.components.HomePage.github.project": "GitHub Repo",
+      "app.components.HomePage.aws.link": "AWS Console",
+      "app.components.HomePage.community": "Get to Work",
+      "app.components.HomePage.community.content": "What",
+      "app.components.HomePage.plausible.title": "Analytics",
+      "app.components.HomePage.plausible.subtitle":
+        "See recent traffic to dgrebb.com",
     },
   },
 };

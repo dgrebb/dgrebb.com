@@ -13,4 +13,4 @@
   <slot />
 </main>
 <Footer {copyleft} {copyright} />
-<PlausibleAnalytics domain="dgrebb.com" enabled="true" />
+<PlausibleAnalytics domain="dgrebb.com" enabled={true} outboundLinks={true} />
