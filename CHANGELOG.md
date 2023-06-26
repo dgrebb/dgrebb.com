@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.3.0] - 2023-06-26
+
+### 💡 Features
+
+- ***(front)*** Adds ScrollTop component, functionality, and styles
+- ***(front)*** Adds trailingSlash to svelte config
+- ***(strapi)*** Adds custom analytics dashboard, middleware, and patch for strapi
+- ***(strapi)*** Adds custom webhook body and patch for strapi
+- ***(utils)*** Adds webhook token to envVar config for local dev
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Adjusts error logging for api failures
+- ***(front)*** Adds trailingSlash option to render index.html files instead of [routeName].html
+- ***(front)*** Removes characters from api endpoint
+- ***(front)*** Adds some defensive content and logs errors for failures
+- ***(front)*** Adjusts scrollbar-gutter and header padding
+
+### 👷 Build
+
+- ***(front)*** Sets max-width on layout
+- ***(strapi)*** Renames github dispatch token var
+
 ## [2.2.0] - 2023-06-24
 
 ### 💡 Features
