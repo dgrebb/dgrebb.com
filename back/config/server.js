@@ -1,5 +1,5 @@
-const URL = process.env.PUBLIC_ENV;
-const ref = URL === "production" ? "main" : "develop";
+const { PUBLIC_ENV } = process.env;
+const ref = PUBLIC_ENV === "production" ? "main" : "develop";
 
 module.exports = ({ env }) => ({
   host: env('HOST', '0.0.0.0'),

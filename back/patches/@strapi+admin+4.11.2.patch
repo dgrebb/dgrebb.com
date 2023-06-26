@@ -1,0 +1,208 @@
+diff --git a/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js b/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js
+index 84ec0ac..be45e18 100644
+--- a/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js
++++ b/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js
+@@ -32,11 +32,11 @@ const ContentBlocks = () => {
+         <ContentBox
+           title={formatMessage({
+             id: 'global.documentation',
+-            defaultMessage: 'Documentation',
++            defaultMessage: 'My Stuff',
+           })}
+           subtitle={formatMessage({
+             id: 'app.components.BlockLink.documentation.content',
+-            defaultMessage: 'Discover the essential concepts, guides and instructions.',
++            defaultMessage: "Here's some of my stuff.",
+           })}
+           icon={<InformationSquare />}
+           iconBackground="primary100"
+diff --git a/node_modules/@strapi/admin/admin/src/pages/HomePage/HomeHeader.js b/node_modules/@strapi/admin/admin/src/pages/HomePage/HomeHeader.js
+index 8fb94c5..b5f6a36 100644
+--- a/node_modules/@strapi/admin/admin/src/pages/HomePage/HomeHeader.js
++++ b/node_modules/@strapi/admin/admin/src/pages/HomePage/HomeHeader.js
+@@ -22,7 +22,7 @@ const HomeHeader = ({ hasCreatedContentType, onCreateCT }) => {
+             {hasCreatedContentType
+               ? formatMessage({
+                   id: 'app.components.HomePage.welcome.again',
+-                  defaultMessage: 'Welcome 👋',
++                  defaultMessage: "Hello here's a hand 👋",
+                 })
+               : formatMessage({
+                   id: 'app.components.HomePage.welcome',
+@@ -34,22 +34,15 @@ const HomeHeader = ({ hasCreatedContentType, onCreateCT }) => {
+               ? formatMessage({
+                   id: 'app.components.HomePage.welcomeBlock.content.again',
+                   defaultMessage:
+-                    'We hope you are making progress on your project! Feel free to read the latest news about Strapi. We are giving our best to improve the product based on your feedback.',
++                    'Make something',
+                 })
+               : formatMessage({
+                   id: 'app.components.HomePage.welcomeBlock.content',
+                   defaultMessage:
+-                    'Congrats! You are logged as the first administrator. To discover the powerful features provided by Strapi, we recommend you to create your first Content type!',
++                    'Congrats! You can make stuff.',
+                 })}
+           </WordWrap>
+-          {hasCreatedContentType ? (
+-            <Link isExternal href="https://strapi.io/blog">
+-              {formatMessage({
+-                id: 'app.components.HomePage.button.blog',
+-                defaultMessage: 'See more on the blog',
+-              })}
+-            </Link>
+-          ) : (
++          {hasCreatedContentType ? null : (
+             <Button size="L" onClick={onCreateCT} endIcon={<ArrowRight />}>
+               {formatMessage({
+                 id: 'app.components.HomePage.create',
+diff --git a/node_modules/@strapi/admin/admin/src/pages/HomePage/SocialLinks.js b/node_modules/@strapi/admin/admin/src/pages/HomePage/SocialLinks.js
+index e290ab2..f5a5edb 100644
+--- a/node_modules/@strapi/admin/admin/src/pages/HomePage/SocialLinks.js
++++ b/node_modules/@strapi/admin/admin/src/pages/HomePage/SocialLinks.js
+@@ -8,7 +8,7 @@ import React from 'react';
+ import { Box, Flex, Grid, GridItem, Typography } from '@strapi/design-system';
+ import { Link, LinkButton } from '@strapi/design-system/v2';
+ import { useAppInfo } from '@strapi/helper-plugin';
+-import { Discord, Discourse, ExternalLink, Github, Reddit, Strapi, Twitter } from '@strapi/icons';
++import { Discord, Discourse, ExternalLink, Github, Reddit, Strapi, Twitter, Check, Cog } from '@strapi/icons';
+ import { useIntl } from 'react-intl';
+ import styled from 'styled-components';
+ 
+@@ -64,50 +64,50 @@ const StyledDiscourse = styled(Discourse)`
+ 
+ const socialLinks = [
+   {
+-    name: { id: 'app.components.HomePage.community.links.github', defaultMessage: 'Github' },
+-    link: 'https://github.com/strapi/strapi/',
++    name: { id: 'app.components.HomePage.github.repo', defaultMessage: 'Github' },
++    link: 'https://github.com/dgrebb/dgrebb.com',
+     icon: <Github fill="#7289DA" />,
+     alt: 'github',
+   },
+   {
+-    name: { id: 'app.components.HomePage.community.links.discord', defaultMessage: 'Discord' },
+-    link: 'https://discord.strapi.io/',
+-    icon: <StyledDiscord />,
++    name: { id: 'app.components.HomePage.github.project', defaultMessage: 'Project' },
++    link: 'https://github.com/dgrebb/dgrebb.com',
++    icon: <Check />,
+     alt: 'discord',
+   },
+   {
+-    name: { id: 'app.components.HomePage.community.links.reddit', defaultMessage: 'Reddit' },
+-    link: 'https://www.reddit.com/r/Strapi/',
+-    icon: <StyledReddit />,
++    name: { id: 'app.components.HomePage.aws.link', defaultMessage: 'AWS Console' },
++    link: 'https://dgrebb.signin.aws.amazon.com/console',
++    icon: <Cog />,
+     alt: 'reddit',
+   },
+-  {
+-    name: { id: 'app.components.HomePage.community.links.twitter', defaultMessage: 'Twitter' },
+-    link: 'https://twitter.com/strapijs',
+-    icon: <StyledTwitter />,
+-    alt: 'twitter',
+-  },
+-  {
+-    name: { id: 'app.components.HomePage.community.links.forum', defaultMessage: 'Forum' },
+-    link: 'https://forum.strapi.io',
+-    icon: <StyledDiscourse />,
+-    alt: 'forum',
+-  },
+-  {
+-    name: { id: 'app.components.HomePage.community.links.blog', defaultMessage: 'Blog' },
+-    link: 'https://strapi.io/blog?utm_source=referral&utm_medium=admin&utm_campaign=career%20page',
+-    icon: <StyledStrapi />,
+-    alt: 'blog',
+-  },
+-  {
+-    name: {
+-      id: 'app.components.HomePage.community.links.career',
+-      defaultMessage: 'We are hiring!',
+-    },
+-    link: 'https://strapi.io/careers?utm_source=referral&utm_medium=admin&utm_campaign=blog',
+-    icon: <StyledStrapi />,
+-    alt: 'career',
+-  },
++  // {
++  //   name: { id: 'app.components.HomePage.community.links.twitter', defaultMessage: 'Twitter' },
++  //   link: 'https://twitter.com/strapijs',
++  //   icon: <StyledTwitter />,
++  //   alt: 'twitter',
++  // },
++  // {
++  //   name: { id: 'app.components.HomePage.community.links.forum', defaultMessage: 'Forum' },
++  //   link: 'https://forum.strapi.io',
++  //   icon: <StyledDiscourse />,
++  //   alt: 'forum',
++  // },
++  // {
++  //   name: { id: 'app.components.HomePage.community.links.blog', defaultMessage: 'Blog' },
++  //   link: 'https://strapi.io/blog?utm_source=referral&utm_medium=admin&utm_campaign=career%20page',
++  //   icon: <StyledStrapi />,
++  //   alt: 'blog',
++  // },
++  // {
++  //   name: {
++  //     id: 'app.components.HomePage.community.links.career',
++  //     defaultMessage: 'We are hiring!',
++  //   },
++  //   link: 'https://strapi.io/careers?utm_source=referral&utm_medium=admin&utm_campaign=blog',
++  //   icon: <StyledStrapi />,
++  //   alt: 'career',
++  // },
+ ];
+ 
+ const LinkCustom = styled(LinkButton)`
+@@ -166,23 +166,23 @@ const SocialLinks = () => {
+             <Typography variant="delta" as="h2" id="join-the-community">
+               {formatMessage({
+                 id: 'app.components.HomePage.community',
+-                defaultMessage: 'Join the community',
++                defaultMessage: 'Get to Work',
+               })}
+             </Typography>
+-            <Typography textColor="neutral600">
++            {/* <Typography textColor="neutral600">
+               {formatMessage({
+                 id: 'app.components.HomePage.community.content',
+                 defaultMessage:
+                   'Discuss with team members, contributors and developers on different channels',
+               })}
+-            </Typography>
++            </Typography> */}
+           </Flex>
+-          <Link href="https://feedback.strapi.io/" isExternal endIcon={<ExternalLink />}>
++          {/* <Link href="https://feedback.strapi.io/" isExternal endIcon={<ExternalLink />}>
+             {formatMessage({
+               id: 'app.components.HomePage.roadmap',
+               defaultMessage: 'See our road map',
+             })}
+-          </Link>
++          </Link> */}
+         </Flex>
+       </Box>
+       <GridGap>
+diff --git a/node_modules/@strapi/admin/admin/src/translations/en.json b/node_modules/@strapi/admin/admin/src/translations/en.json
+index 9f5a2e2..47d786a 100644
+--- a/node_modules/@strapi/admin/admin/src/translations/en.json
++++ b/node_modules/@strapi/admin/admin/src/translations/en.json
+@@ -429,14 +429,14 @@
+   "app.components.GuidedTour.skip": "Skip the tour",
+   "app.components.GuidedTour.title": "3 steps to get started",
+   "app.components.HomePage.button.blog": "See more on the blog",
+-  "app.components.HomePage.community": "Join the community",
++  "app.components.HomePage.community": "Have some links",
+   "app.components.HomePage.community.content": "Discuss with team members, contributors and developers on different channels.",
+   "app.components.HomePage.create": "Create your first Content type",
+   "app.components.HomePage.roadmap": "See our roadmap",
+-  "app.components.HomePage.welcome": "Welcome on board 👋",
+-  "app.components.HomePage.welcome.again": "Welcome 👋",
++  "app.components.HomePage.welcome": "Welcome on board 🧐",
++  "app.components.HomePage.welcome.again": "Make Something 👌",
+   "app.components.HomePage.welcomeBlock.content": "Congrats! You are logged as the first administrator. To discover the powerful features provided by Strapi, we recommend you to create your first Content type!",
+-  "app.components.HomePage.welcomeBlock.content.again": "We hope you are making progress on your project! Feel free to read the latest news about Strapi. We are giving our best to improve the product based on your feedback.",
++  "app.components.HomePage.welcomeBlock.content.again": "Write something beautiful.",
+   "app.components.HomePage.welcomeBlock.content.issues": "issues.",
+   "app.components.HomePage.welcomeBlock.content.raise": " or raise ",
+   "app.components.ImgPreview.hint": "Drag & drop your file into this area or {browse} for a file to upload",
