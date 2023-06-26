@@ -4,10 +4,15 @@ import { PUBLIC_API_URL, PUBLIC_API_PATH_HOME } from "$env/static/public";
 
 const homeEndpoint = `${PUBLIC_API_URL}${PUBLIC_API_PATH_HOME}`;
 
+export const trailingSlash = "always";
+
 export async function load({ params }) {
   const homeContent = await api(homeEndpoint);
-  if (!homeContent) {
-    throw error(500, "Home Error", "/404");
+  let { error: { error } } = privacyContent || false;
+  if (error) {
+    throw error(500, {
+      message: `Home Page Error: ${error}`
+    });
   }
   return {
     ...homeContent.attributes,

@@ -8,12 +8,13 @@ const config = {
     adapter: adapter({
       pages: "build",
       assets: "build",
+      trailingSlash: "always",
       precompress: true,
       strict: true,
     }),
     prerender: {
       handleHttpError: ({ path, referrer, message }) => {
-        if (path === "/404" && referrer === "/privacy") {
+        if (path === "/404" && referrer === "/privacy/") {
           return;
         }
         throw new Error(message);

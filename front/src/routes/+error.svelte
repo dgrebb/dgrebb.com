@@ -6,15 +6,15 @@
 
   Sentry.captureMessage("Page Not Found", {
     page: $page.route,
-      environment: PUBLIC_ENV,
-      beforeSend(event) {
-        if (event.user) {
-          delete event.user.ip;
-        }
-        if (event.server_name) {
-          delete event.server_name;
-        }
-      },
+    environment: PUBLIC_ENV,
+    beforeSend(event) {
+      if (event.user) {
+        delete event.user.ip;
+      }
+      if (event.server_name) {
+        delete event.server_name;
+      }
+    },
   });
 
 </script>
