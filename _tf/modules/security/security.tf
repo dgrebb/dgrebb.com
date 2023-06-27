@@ -6,7 +6,13 @@ data "external" "ip" {
   program = ["/bin/bash" , "${path.module}/../../_scripts/ip.sh"]
 }
 
-resource "aws_security_group" "svc" {
+resource "aws_security_group" "db" {
+  name_prefix = var.dashed_cmsdomain
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
   ingress {
     from_port       = 0
     to_port         = 0

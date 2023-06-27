@@ -28,12 +28,12 @@ module "containers" {
   strapi_instance_count = 1
   subnets               = module.network.subnets
   strapi_alb_tg         = module.scaling.strapi_alb_tg
-  service_sg            = module.security.service_sg
+  db_sg                 = module.security.db_sg
 }
 
 module "database" {
   source              = "../modules/database"
-  service_sg          = module.security.service_sg
+  db_sg               = module.security.db_sg
   db_subnet_group     = module.network.db_subnet_group
   dashed_cmsdomain    = var.dashed_cmsdomain
   db_password         = var.db_password
@@ -79,8 +79,9 @@ module "scaling" {
 }
 
 module "security" {
-  source = "../modules/security"
-  pub    = false
+  source           = "../modules/security"
+  dashed_cmsdomain = var.dashed_cmsdomain
+  pub              = false
 }
 
 module "state" {
