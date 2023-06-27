@@ -8,7 +8,7 @@
   let external;
 
   onMount(() => {
-    external = href.charAt(0).match(internalPattern) ? "blue" :
+    external = href.charAt(0).match(internalPattern) ? false :
       new URL(href).origin !== location.origin ? true : false;
   });
 </script>
