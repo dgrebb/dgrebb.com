@@ -15,8 +15,10 @@ export async function load({ params }) {
   const navigationContent = await api(navigationEndpoint);
   const footerContent = await api(footerEndpoint);
 
-  if (!navigationContent || !footerContent) {
-    throw error("Layout Error", "/404");
+  if (!navigationContent.attributes || !footerContent.attributes) {
+    throw error(500, {
+      message: "Layout Error"
+    });
   }
 
   return {

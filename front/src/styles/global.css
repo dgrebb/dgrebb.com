@@ -8,6 +8,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 html.light-theme {
   @apply dg--light-theme;
   @apply github-light;
@@ -43,11 +49,13 @@ html {
     rgb(var(--background-start-rgb));
   height: fit-content;
   overflow: clip;
+  scroll-behavior: smooth;
 }
 
 body {
   @apply flex
     flex-col
+    items-center
     dg--font-ps
     transition-colors
     dg--transition-effect
@@ -57,7 +65,7 @@ body {
   height: 100vh;
   min-height: 100vh;
   overflow: overlay;
-  scrollbar-gutter: stable;
+  scrollbar-gutter: stable both-edges;
   .flourish,
   .header,
   .main,
@@ -90,7 +98,7 @@ body {
 .header,
 .footer {
   @apply
-    px-4
+    px-3
     sm:p-6
     lg:p-14;
 }
@@ -98,11 +106,17 @@ body {
 .header {
   @apply flex
     items-center
-    pt-3
-    sm:pt-5
-    md:pt-7
+    pt-5
+    sm:pt-9
+    md:pt-11
     pb-0;
   position: relative;
+}
+
+.header,
+.footer {
+  @apply w-full
+    max-w-7xl;
 }
 
 .skip-to-content {
@@ -183,7 +197,9 @@ body {
     px-5
     sm:px-8
     sm:pb-3
-    pt-11;
+    pt-11
+    w-full
+    max-w-6xl;
 }
 
 .bio,
@@ -321,6 +337,28 @@ body {
   display: flex;
   justify-content: center;
   margin: auto;
+}
+
+.scroll-top {
+  display: flex;
+  @apply text-sm
+    dg--link-hover
+    dg--transition-effect
+    brightness-75
+    dark:brightness-50
+    transition
+    md:hidden;
+  align-items: center;
+  flex-direction: column;
+  &:hover,
+  &:focus {
+    @apply brightness-100
+      dark:brightness-100;
+  }
+  svg {
+    @apply mt-5
+      mb-2;
+  }
 }
 
 .footer {

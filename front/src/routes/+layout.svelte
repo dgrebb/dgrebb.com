@@ -12,5 +12,6 @@
 <main id="main" class="main">
   <slot />
 </main>
+<slot name="scroll-top" />
 <Footer {copyleft} {copyright} />
-<PlausibleAnalytics domain="dgrebb.com" enabled="true" />
+<PlausibleAnalytics domain="dgrebb.com" enabled={true} outboundLinks={true} />
