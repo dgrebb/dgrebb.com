@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.3.1] - 2023-06-27
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Fixes a silly leftover test
+- ***(front)*** Adjusts logic for external link detection
+- ***(terraform)*** Applies unique names to security and management resources
+
 ## [2.3.0] - 2023-06-26
 
 ### 💡 Features

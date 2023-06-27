@@ -2,7 +2,7 @@
 # CMS Database
 # ------------------------------------------------------------------------------
 resource "aws_db_instance" "this" {
-  depends_on                = [var.service_sg]
+  depends_on                = [var.db_sg]
   identifier                = var.dashed_cmsdomain
   allocated_storage         = 5
   engine                    = "postgres"
@@ -14,7 +14,7 @@ resource "aws_db_instance" "this" {
   password                  = var.db_password
   publicly_accessible       = var.public_access
   storage_encrypted         = false
-  vpc_security_group_ids    = ["${var.service_sg.id}"]
+  vpc_security_group_ids    = ["${var.db_sg.id}"]
   db_subnet_group_name      = var.db_subnet_group.id
   skip_final_snapshot       = var.skip_final_snapshot
   final_snapshot_identifier = var.dashed_cmsdomain

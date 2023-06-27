@@ -11,7 +11,7 @@ resource "aws_cloudwatch_log_group" "this" {
 }
 
 resource "aws_cloudwatch_event_rule" "this" {
-  name        = "container-stopped"
+  name        = "container-stopped_${var.dashed_cmsdomain}"
   description = "Notification for containers with exit code of 1 (error)."
 
   event_pattern = <<PATTERN
