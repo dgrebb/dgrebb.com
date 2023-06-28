@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.0] - 2023-06-28
+
+### 💡 Features
+
+- ***(docker)*** Adds patch-package step and improves caching
+- ***(strapi)*** Upgrades strapi to v4.11.3
+- ***(strapi)*** Adds plausible analytics dashboard to strapi
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Adjusts padding for `p`s and `h*`s
+
+### 👷 Build
+
+- ***(project)*** Updates and includes package files in cz bump
+- ***(strapi)*** Upgrades patches for strapi 4.11.3
+- ***(strapi)*** Uninstalls postinstall-postinstall
+
 ## [2.3.1] - 2023-06-27
 
 ### 🐛 Bug Fixes
