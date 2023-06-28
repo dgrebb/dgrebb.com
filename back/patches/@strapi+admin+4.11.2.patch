@@ -1,21 +1,145 @@
 diff --git a/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js b/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js
-index 84ec0ac..be45e18 100644
+index 84ec0ac..9d506bf 100644
 --- a/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js
 +++ b/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js
-@@ -32,11 +32,11 @@ const ContentBlocks = () => {
+@@ -1,17 +1,27 @@
+-import React from 'react';
++import React from "react";
+ 
+-import { Flex } from '@strapi/design-system';
+-import { ContentBox, useTracking } from '@strapi/helper-plugin';
+-import { CodeSquare, FeatherSquare, InformationSquare, PlaySquare } from '@strapi/icons';
+-import { useIntl } from 'react-intl';
+-import styled from 'styled-components';
+-
+-import CloudBox from './CloudBox';
++import { Box, Flex } from "@strapi/design-system";
++import { ContentBox, useTracking } from "@strapi/helper-plugin";
++import {
++  CodeSquare,
++  FeatherSquare,
++  InformationSquare,
++  PlaySquare,
++  ChartBubble,
++} from "@strapi/icons";
++import { useIntl } from "react-intl";
++import styled from "styled-components";
+ 
+ const BlockLink = styled.a`
+   text-decoration: none;
+ `;
+ 
++const StyledChartBubble = styled(ChartBubble)`
++  path {
++    fill: #7289da !important;
++  }
++`;
++
+ const ContentBlocks = () => {
+   const { formatMessage } = useIntl();
+   const { trackUsage } = useTracking();
+@@ -22,83 +32,36 @@ const ContentBlocks = () => {
+ 
+   return (
+     <Flex direction="column" alignItems="stretch" gap={5}>
+-      <CloudBox />
+       <BlockLink
+-        href="https://strapi.io/resource-center"
++        href="https://plausible.io/dgrebb.com"
+         target="_blank"
+         rel="noopener noreferrer nofollow"
+-        onClick={() => handleClick('didClickonReadTheDocumentationSection')}
++        onClick={() => handleClick("didClickonReadTheDocumentationSection")}
+       >
          <ContentBox
            title={formatMessage({
-             id: 'global.documentation',
+-            id: 'global.documentation',
 -            defaultMessage: 'Documentation',
-+            defaultMessage: 'My Stuff',
++            id: "app.components.HomePage.plausible.title",
++            defaultMessage: "Plausible Analytics",
            })}
            subtitle={formatMessage({
-             id: 'app.components.BlockLink.documentation.content',
+-            id: 'app.components.BlockLink.documentation.content',
 -            defaultMessage: 'Discover the essential concepts, guides and instructions.',
-+            defaultMessage: "Here's some of my stuff.",
++            id: "app.components.HomePage.plausible.subtitle",
++            defaultMessage: "See the traffic.",
            })}
-           icon={<InformationSquare />}
+-          icon={<InformationSquare />}
++          icon={<StyledChartBubble />}
            iconBackground="primary100"
+         />
+       </BlockLink>
+-      <BlockLink
+-        href="https://strapi.io/starters"
+-        target="_blank"
+-        rel="noopener noreferrer nofollow"
+-        onClick={() => handleClick('didClickonCodeExampleSection')}
+-      >
+-        <ContentBox
+-          title={formatMessage({
+-            id: 'app.components.BlockLink.code',
+-            defaultMessage: 'Code example',
+-          })}
+-          subtitle={formatMessage({
+-            id: 'app.components.BlockLink.code.content',
+-            defaultMessage: 'Learn by using ready-made starters for your projects.',
+-          })}
+-          icon={<CodeSquare />}
+-          iconBackground="warning100"
+-        />
+-      </BlockLink>
+-      <BlockLink
+-        href="https://strapi.io/blog/categories/tutorials"
+-        target="_blank"
+-        rel="noopener noreferrer nofollow"
+-        onClick={() => handleClick('didClickonTutorialSection')}
+-      >
+-        <ContentBox
+-          title={formatMessage({
+-            id: 'app.components.BlockLink.tutorial',
+-            defaultMessage: 'Tutorials',
+-          })}
+-          subtitle={formatMessage({
+-            id: 'app.components.BlockLink.tutorial.content',
+-            defaultMessage: 'Follow step-by-step instructions to use and customize Strapi.',
+-          })}
+-          icon={<PlaySquare />}
+-          iconBackground="secondary100"
+-        />
+-      </BlockLink>
+-      <BlockLink
+-        href="https://strapi.io/blog"
+-        target="_blank"
+-        rel="noopener noreferrer nofollow"
+-        onClick={() => handleClick('didClickonBlogSection')}
+-      >
+-        <ContentBox
+-          title={formatMessage({
+-            id: 'app.components.BlockLink.blog',
+-            defaultMessage: 'Blog',
+-          })}
+-          subtitle={formatMessage({
+-            id: 'app.components.BlockLink.blog.content',
+-            defaultMessage: 'Read the latest news about Strapi and the ecosystem.',
+-          })}
+-          icon={<FeatherSquare />}
+-          iconBackground="alternative100"
+-        />
+-      </BlockLink>
++      <Box padding={4} shadow="filterShadow">
++        <iframe
++          plausibleEmbed
++          src="https://plausible.io/share/dgrebb.com?auth=8sm72wfwKETpyquVl_Np_&embed=true&theme=dark"
++          scrolling="no"
++          frameborder="0"
++          loading="lazy"
++          style={{width: "1px", minWidth: "100%", height: "1600px"}}
++        ></iframe>
++        <script async src="https://plausible.io/js/embed.host.js"></script>
++      </Box>
+     </Flex>
+   );
+ };
 diff --git a/node_modules/@strapi/admin/admin/src/pages/HomePage/HomeHeader.js b/node_modules/@strapi/admin/admin/src/pages/HomePage/HomeHeader.js
 index 8fb94c5..b5f6a36 100644
 --- a/node_modules/@strapi/admin/admin/src/pages/HomePage/HomeHeader.js
@@ -56,47 +180,89 @@ index 8fb94c5..b5f6a36 100644
                {formatMessage({
                  id: 'app.components.HomePage.create',
 diff --git a/node_modules/@strapi/admin/admin/src/pages/HomePage/SocialLinks.js b/node_modules/@strapi/admin/admin/src/pages/HomePage/SocialLinks.js
-index e290ab2..f5a5edb 100644
+index e290ab2..4f025a0 100644
 --- a/node_modules/@strapi/admin/admin/src/pages/HomePage/SocialLinks.js
 +++ b/node_modules/@strapi/admin/admin/src/pages/HomePage/SocialLinks.js
-@@ -8,7 +8,7 @@ import React from 'react';
+@@ -8,17 +8,17 @@ import React from 'react';
  import { Box, Flex, Grid, GridItem, Typography } from '@strapi/design-system';
  import { Link, LinkButton } from '@strapi/design-system/v2';
  import { useAppInfo } from '@strapi/helper-plugin';
 -import { Discord, Discourse, ExternalLink, Github, Reddit, Strapi, Twitter } from '@strapi/icons';
-+import { Discord, Discourse, ExternalLink, Github, Reddit, Strapi, Twitter, Check, Cog } from '@strapi/icons';
++import { ExternalLink, Github, Strapi, Check, Cloud } from '@strapi/icons';
  import { useIntl } from 'react-intl';
  import styled from 'styled-components';
  
-@@ -64,50 +64,50 @@ const StyledDiscourse = styled(Discourse)`
+-const StyledDiscord = styled(Discord)`
++const StyledGithub = styled(Github)`
+   path {
+     fill: #7289da !important;
+   }
+ `;
  
+-const StyledReddit = styled(Reddit)`
++const StyledCheck = styled(Check)`
+   > path:first-child {
+     fill: #ff4500;
+   }
+@@ -35,82 +35,61 @@ const StyledStrapi = styled(Strapi)`
+   }
+ `;
+ 
+-const StyledTwitter = styled(Twitter)`
++const StyledCloud = styled(Cloud)`
+   path {
+     fill: #1da1f2 !important;
+   }
+ `;
+ 
+-const StyledDiscourse = styled(Discourse)`
+-  > path:first-child {
+-    fill: #231f20;
+-  }
+-  > path:nth-child(2) {
+-    fill: #fff9ae;
+-  }
+-  > path:nth-child(3) {
+-    fill: #00aeef;
+-  }
+-  > path:nth-child(4) {
+-    fill: #00a94f;
+-  }
+-  > path:nth-child(5) {
+-    fill: #f15d22;
+-  }
+-  > path:nth-child(6) {
+-    fill: #e31b23;
+-  }
+-`;
+-
  const socialLinks = [
    {
 -    name: { id: 'app.components.HomePage.community.links.github', defaultMessage: 'Github' },
 -    link: 'https://github.com/strapi/strapi/',
+-    icon: <Github fill="#7289DA" />,
+-    alt: 'github',
 +    name: { id: 'app.components.HomePage.github.repo', defaultMessage: 'Github' },
 +    link: 'https://github.com/dgrebb/dgrebb.com',
-     icon: <Github fill="#7289DA" />,
-     alt: 'github',
++    icon: <StyledGithub fill="#7289DA" />,
++    alt: 'github repository',
    },
    {
 -    name: { id: 'app.components.HomePage.community.links.discord', defaultMessage: 'Discord' },
 -    link: 'https://discord.strapi.io/',
 -    icon: <StyledDiscord />,
+-    alt: 'discord',
 +    name: { id: 'app.components.HomePage.github.project', defaultMessage: 'Project' },
-+    link: 'https://github.com/dgrebb/dgrebb.com',
-+    icon: <Check />,
-     alt: 'discord',
++    link: 'https://github.com/users/dgrebb/projects/12/views/1',
++    icon: <StyledCheck />,
++    alt: 'github project',
    },
    {
 -    name: { id: 'app.components.HomePage.community.links.reddit', defaultMessage: 'Reddit' },
 -    link: 'https://www.reddit.com/r/Strapi/',
 -    icon: <StyledReddit />,
-+    name: { id: 'app.components.HomePage.aws.link', defaultMessage: 'AWS Console' },
-+    link: 'https://dgrebb.signin.aws.amazon.com/console',
-+    icon: <Cog />,
-     alt: 'reddit',
-   },
+-    alt: 'reddit',
+-  },
 -  {
 -    name: { id: 'app.components.HomePage.community.links.twitter', defaultMessage: 'Twitter' },
 -    link: 'https://twitter.com/strapijs',
@@ -123,7 +289,11 @@ index e290ab2..f5a5edb 100644
 -    link: 'https://strapi.io/careers?utm_source=referral&utm_medium=admin&utm_campaign=blog',
 -    icon: <StyledStrapi />,
 -    alt: 'career',
--  },
++    name: { id: 'app.components.HomePage.aws.link', defaultMessage: 'AWS Console' },
++    link: 'https://dgrebb.signin.aws.amazon.com/console',
++    icon: <StyledCloud />,
++    alt: 'aws console',
+   },
 +  // {
 +  //   name: { id: 'app.components.HomePage.community.links.twitter', defaultMessage: 'Twitter' },
 +  //   link: 'https://twitter.com/strapijs',
@@ -153,8 +323,12 @@ index e290ab2..f5a5edb 100644
 +  // },
  ];
  
- const LinkCustom = styled(LinkButton)`
-@@ -166,23 +166,23 @@ const SocialLinks = () => {
+-const LinkCustom = styled(LinkButton)`
++const LinkCustom = styled(Link)`
+   display: flex;
+   align-items: center;
+   border: none;
+@@ -166,23 +145,23 @@ const SocialLinks = () => {
              <Typography variant="delta" as="h2" id="join-the-community">
                {formatMessage({
                  id: 'app.components.HomePage.community',
@@ -183,17 +357,49 @@ index e290ab2..f5a5edb 100644
          </Flex>
        </Box>
        <GridGap>
+diff --git a/node_modules/@strapi/admin/admin/src/pages/HomePage/index.js b/node_modules/@strapi/admin/admin/src/pages/HomePage/index.js
+index 2d44595..c7f77a5 100644
+--- a/node_modules/@strapi/admin/admin/src/pages/HomePage/index.js
++++ b/node_modules/@strapi/admin/admin/src/pages/HomePage/index.js
+@@ -71,20 +71,20 @@ const HomePage = () => {
+         </LogoContainer>
+         <Box padding={10}>
+           <Grid>
+-            <GridItem col={8} s={12}>
++            <GridItem col={12}>
+               <HomeHeader
+                 onCreateCT={handleClick}
+                 hasCreatedContentType={hasAlreadyCreatedContentTypes}
+               />
+             </GridItem>
+           </Grid>
+-          <Grid gap={6}>
+-            <GridItem col={8} s={12}>
++          <Grid>
++            <GridItem col={12}>
+               {showGuidedTour ? <GuidedTourHomepage /> : <ContentBlocks />}
+             </GridItem>
+-            <GridItem col={4} s={12}>
++            {/* <GridItem col={4}>
+               <SocialLinks />
+-            </GridItem>
++            </GridItem> */}
+           </Grid>
+         </Box>
+       </Main>
 diff --git a/node_modules/@strapi/admin/admin/src/translations/en.json b/node_modules/@strapi/admin/admin/src/translations/en.json
-index 9f5a2e2..47d786a 100644
+index 9f5a2e2..fc7f8a0 100644
 --- a/node_modules/@strapi/admin/admin/src/translations/en.json
 +++ b/node_modules/@strapi/admin/admin/src/translations/en.json
-@@ -429,14 +429,14 @@
+@@ -429,14 +429,16 @@
    "app.components.GuidedTour.skip": "Skip the tour",
    "app.components.GuidedTour.title": "3 steps to get started",
    "app.components.HomePage.button.blog": "See more on the blog",
 -  "app.components.HomePage.community": "Join the community",
 +  "app.components.HomePage.community": "Have some links",
    "app.components.HomePage.community.content": "Discuss with team members, contributors and developers on different channels.",
++  "app.components.HomePage.plausible.title": "Analytics Dashboard",
++  "app.components.HomePage.plausible.subtitle": "See recent traffic to dgrebb.com",
    "app.components.HomePage.create": "Create your first Content type",
    "app.components.HomePage.roadmap": "See our roadmap",
 -  "app.components.HomePage.welcome": "Welcome on board 👋",
