@@ -150,7 +150,8 @@ body {
     sm:text-2xl;
   h1 {
     transition: font-size;
-    @apply dg--transition-effect;
+    @apply dg--transition-effect
+      tracking-tight;
   }
 }
 
@@ -229,7 +230,8 @@ body {
       font-bold
       mt-7
       text-3xl
-      sm:text-4xl;
+      sm:text-4xl
+      tracking-tight;
   }
 }
 
@@ -262,23 +264,8 @@ body {
   }
 }
 
-.bio,
-.post,
-.posts,
-.privacy {
-  line-height: 1.6;
-  @apply opacity-95;
-  h1 {
-    @apply tracking-tight 
-      dg--font-psb;
-  }
-  p,
-  li ol,
-  li,
-  li ol,
-  li ol li {
-    @apply mt-7;
-  }
+.bio p {
+  @apply mt-7;
 }
 
 .links {

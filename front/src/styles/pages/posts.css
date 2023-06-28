@@ -7,18 +7,22 @@
   @apply w-full
     max-w-5xl
     transition-colors
-    dg--transition-effect;
+    dg--transition-effect
+    opacity-95;;
+    line-height: 1.6;
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    @apply my-5
-      md:my-7;
+    @apply pt-3
+      mb-5
+      md:pt-3
+      md:mb-7;
     color: rgb(var(--foreground-rgb));
     &:first-child {
-      @apply mt-0;
+      @apply pt-0;
     }
     span.highlight {
       @apply text-blue-600 
@@ -63,7 +67,7 @@
       italic;
   }
   p {
-    @apply mb-4;
+    @apply my-3;
   }
   strong {
     @apply dg--font-psb;
