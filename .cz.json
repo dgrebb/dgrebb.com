@@ -4,6 +4,12 @@
     "version": "2.3.1",
     "tag_format": "$major.$minor.$patch$prerelease",
     "version_type": "semver",
-    "bump_message": "release $current_version \u2192 $new_version"
+    "bump_message": "release $current_version \u2192 $new_version",
+    "version_files": [
+      "back/package.json",
+      "back/package-lock.json",
+      "front/package.json",
+      "front/package-lock.json"
+    ]
   }
 }
