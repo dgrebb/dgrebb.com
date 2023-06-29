@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.0] - 2023-06-29
+
+### 💡 Features
+
+- ***(docker)*** Adds patch-package step and improves caching
+- ***(strapi)*** Upgrades strapi to v4.11.3
+- ***(strapi)*** Adds plausible analytics dashboard to strapi
+- ***(utils)*** Adds back/front package version bumps to bump script
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Adjusts padding for `p`s and `h*`s
+
+### 👷 Build
+
+- ***(project)*** Updates package.json file versions and names
+- ***(strapi)*** Upgrades patches for strapi 4.11.3
+- ***(strapi)*** Uninstalls postinstall-postinstall
+- ***(utils)*** Renames cdcms to cdback
+
 ## [2.3.1] - 2023-06-27
 
 ### 🐛 Bug Fixes
