@@ -34,4 +34,10 @@ echo # newline
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     exit 1
 fi
+cdfront
+npm version $ver
+cdback
+npm version $ver
+cd $directory/../
+git add .
 cz bump
