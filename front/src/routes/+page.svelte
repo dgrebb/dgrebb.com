@@ -22,7 +22,7 @@
       alt={image.alternativeText}
       title="Hi!"
       classes="bio-picture"
-      aria-hidden={true}
+      ariaHidden={true}
     />
     <noscript>
       <img
@@ -30,7 +30,7 @@
         alt={image.alternativeText}
         title="Hi!"
         classes="bio-picture"
-        aria-hidden={true}
+        ariaHidden={true}
       />
     </noscript>
   {/if}
