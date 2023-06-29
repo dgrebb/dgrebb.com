@@ -10,33 +10,33 @@ while test "$1" != --; do
     case $1 in
     d | dev)
         setBackEnv ld
-        cdcms && \
+        cdback && \
         trap 'printf "\n"; shred ; printDgMsg "Done!" ; exit 0' SIGINT; \
         npm run develop
         break
         ;;
     ad | admin-dev)
         setBackEnv ld
-        cdcms && \
+        cdback && \
         trap 'printf "\n"; shred ; printDgMsg "Done!" ; exit 0' SIGINT; \
         npm run develop -- --watch-admin
         break
         ;;
     ds | dev-stage)
         setBackEnv ls
-        cdcms && \
+        cdback && \
         trap 'printf "\n"; shred ; printDgMsg "Done!" ; exit 0' SIGINT; \
         npm run develop -- --watch-admin
         break
         ;;
     i | install)
         setBackEnv l
-        cdcms && npm i
+        cdback && npm i
         break
         ;;
     b | build)
         setBackEnv l
-        cdcms && npm run build
+        cdback && npm run build
         break
         ;;
     ?)
