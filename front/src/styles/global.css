@@ -295,8 +295,7 @@ body {
 }
 
 .links {
-  @apply flex
-    items-stretch
+  @apply items-stretch
     px-8
     mt-7;
   .link-list {
