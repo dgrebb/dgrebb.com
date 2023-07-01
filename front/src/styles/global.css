@@ -9,7 +9,7 @@
 @tailwind utilities;
 
 @media (prefers-reduced-motion: reduce) {
-  html {
+  html, body {
     scroll-behavior: auto;
   }
 }
@@ -65,6 +65,7 @@ body {
   height: 100vh;
   min-height: 100vh;
   overflow: overlay;
+  scroll-behavior: smooth;
   scrollbar-gutter: stable both-edges;
   .main section .flourish,
   .header,
