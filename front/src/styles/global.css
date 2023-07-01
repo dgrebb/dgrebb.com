@@ -66,7 +66,7 @@ body {
   min-height: 100vh;
   overflow: overlay;
   scrollbar-gutter: stable both-edges;
-  .flourish,
+  .main section .flourish,
   .header,
   .main,
   .footer {
@@ -75,11 +75,37 @@ body {
       opacity-0;
   }
   &.ready {
-    .flourish,
+    div > .flourish {
+      transition: transform 1s;
+      transition-delay: 2s;
+      transform: translateY(-100%);
+      box-shadow: none !important;
+      @apply shadow-none;
+    }
+    .main section .flourish,
     .header,
     .main,
     .footer {
       @apply opacity-100;
+    }
+    .main section, .footer {
+      @apply opacity-95 
+        transition-opacity
+        dg--transition-effect;
+    }
+    &.animating {
+      div > .flourish {
+        transition: transform 0s;
+        transition-delay: 0s;
+        transform: translateY(0);
+        box-shadow: none !important;
+        @apply shadow-none;
+      }
+      .main section, .footer {
+        @apply opacity-0
+        transition-opacity
+        dg--transition-effect;
+      }
     }
   }
 }
@@ -97,8 +123,7 @@ body {
 
 .header,
 .footer {
-  @apply
-    px-3
+  @apply px-3
     sm:p-6
     lg:p-14;
 }
@@ -192,7 +217,6 @@ body {
 .main {
   @apply flex
     flex-col
-    flex-grow
     items-center
     justify-center
     px-5
@@ -212,6 +236,7 @@ body {
 }
 
 .bio {
+  @apply pt-7;
   img {
     @apply m-auto
       rounded-full
@@ -352,7 +377,10 @@ body {
   @apply pb-3
     pt-6
     md:pb-9
+    flex
     flex-col
+    flex-grow
+    justify-end
     text-center
     mt-auto
     text-sm;
