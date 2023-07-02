@@ -10,7 +10,8 @@
 @tailwind utilities;
 
 @media (prefers-reduced-motion: reduce) {
-  html, body {
+  html,
+  body {
     scroll-behavior: auto;
   }
 }
@@ -90,7 +91,8 @@ body {
     .footer {
       @apply opacity-100;
     }
-    .main section, .footer {
+    .main section,
+    .footer {
       @apply opacity-95 
         transition-opacity
         dg--transition-effect;
@@ -104,7 +106,8 @@ body {
         box-shadow: none !important;
         @apply shadow-none;
       }
-      .main section, .footer {
+      .main section,
+      .footer {
         @apply opacity-0
         transition-opacity
         dg--transition-effect;
@@ -187,15 +190,29 @@ body {
   @apply flex-shrink;
   .btn {
     @apply dg--btn-secondary
-      font-semibold
       py-2
       px-4
       rounded
-      shadow
       align-text-bottom;
   }
   ul {
     @apply justify-end;
+  }
+  .nav-link {
+    @apply dg--link-hover
+      font-bold
+      text-sm
+      border-b
+      opacity-60
+      align-text-top
+      py-1;
+    color: rgb(var(--foreground-rgb));
+    border-bottom-color: rgb(var(--btn-secondary-highlight-rgb));
+    &:hover,
+    &:focus {
+      @apply opacity-100;
+      border-bottom-color: rgb(var(--highlight-rgb));
+    }
   }
 }
 

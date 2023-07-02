@@ -7,7 +7,7 @@
     {#each navItems as navItem}
       <li class="nav-item">
         <a
-          class="btn"
+          class="nav-link"
           href={navItem.href}
         >
           {navItem.title}
