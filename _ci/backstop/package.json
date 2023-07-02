@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "ref": "backstop reference",
     "test": "backstop test",
     "backstop": "backstop"
   },
