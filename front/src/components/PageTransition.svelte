@@ -18,6 +18,7 @@
 
 {#key pathname}
   <div
+    class="transition-container"
     transition:fade={{ duration: 300, delay: 50 }}
     on:outrostart={animateOut}
     on:introend={animateIn}

@@ -135,3 +135,10 @@ crash.*.log
 ############################
 
 .cz.toml
+
+############################
+# Visual Regression Tests
+############################
+
+_ci/backstop/bd/bitmaps_test/*
+_ci/backstop/bd/html_report/*
