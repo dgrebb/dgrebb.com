@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "ref": "backstop reference",
-    "test": "backstop test",
+    "ref.l": "backstop reference --config=backstop.local.json",
+    "ref.s": "backstop reference --config=backstop.staging.json",
+    "ref.p": "backstop reference --config=backstop.production.json",
+    "test.l": "backstop test --config=backstop.local.json",
+    "test.s": "backstop test --config=backstop.staging.json",
+    "test.p": "backstop test --config=backstop.production.json",
     "backstop": "backstop"
   },
   "keywords": [],
