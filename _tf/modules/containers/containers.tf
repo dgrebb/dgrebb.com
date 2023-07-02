@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 
 resource "aws_ecr_repository" "strapi" {
-  name = var.cmsdomain
+  name         = var.cmsdomain
   force_delete = var.force_delete
 }
 
@@ -21,7 +21,7 @@ resource "aws_ecs_cluster" "this" {
 
   setting {
     name  = "containerInsights"
-    value = "enabled"
+    value = "disabled"
   }
 }
 
@@ -71,7 +71,7 @@ resource "aws_ecs_task_definition" "strapi" {
         "CMD-SHELL",
         "wget --no-verbose --tries=1 --spider http://localhost:1337/_health || exit 1"
       ]
-      interval    = 30
+      interval    = 900
       timeout     = 5
       retries     = 3
       startPeriod = 30
