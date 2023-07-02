@@ -122,6 +122,10 @@ body {
   z-index: 1;
 }
 
+.transition-container {
+  width: 100%;
+}
+
 .header,
 .footer {
   @apply px-3

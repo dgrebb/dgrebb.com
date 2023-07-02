@@ -4,8 +4,8 @@
 .posts,
 .post,
 .privacy {
-  @apply w-full
-    max-w-5xl
+  @apply 
+    sm:max-w-5xl
     transition-colors
     dg--transition-effect
     opacity-95;;
