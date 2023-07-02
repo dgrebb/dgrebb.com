@@ -12,6 +12,6 @@
   <div class="site-title">
     <NavHome {navHeading} />
   </div>
-  <ThemeToggle />
   {#if navItems}<NavBar {navItems} />{/if}
+  <ThemeToggle />
 </header>
