@@ -32,8 +32,6 @@
     dark = !dark;
     root.classList.toggle(darkTheme);
     root.classList.toggle(lightTheme);
-    body.classList.toggle(darkTheme);
-    body.classList.toggle(lightTheme);
   }
 
   const baseClasses = "theme-toggle"

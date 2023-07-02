@@ -4,19 +4,22 @@
   import Code from "../../components/markdown/Code.svelte";
   import Link from "../../components/markdown/Link.svelte";
   import ScrollTop from '../../layout/ScrollTop.svelte';
+  import PageTransition from "../../components/PageTransition.svelte";
 
   export let data;
-  const { title, details, updatedAt } = data;
+  const { title, details, updatedAt, pathname } = data;
   let date = new Date(updatedAt);
   date = date.toDateString();
 </script>
 
-<section class="privacy">
-  <Flourish />
-  <h1 class="title">{title}</h1>
-  <h2 class="date">Effective Date: <mark>{date}</mark></h2>
-  <SvelteMarkdown renderers={{ link: Link, code: Code }} source={details} />
-</section>
+<PageTransition {pathname}>
+  <section class="privacy">
+    <Flourish />
+    <h1 class="title">{title}</h1>
+    <h2 class="date">Effective Date: <mark>{date}</mark></h2>
+    <SvelteMarkdown renderers={{ link: Link, code: Code }} source={details} />
+  </section>
+</PageTransition>
 
 <slot name="scroll-top">
   <ScrollTop />

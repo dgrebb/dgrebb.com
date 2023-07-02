@@ -1,0 +1,18 @@
+{
+  "name": "backstop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "ref": "backstop reference",
+    "test": "backstop test",
+    "backstop": "backstop"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "backstopjs": "^6.2.2",
+    "puppeteer": "^20.7.4"
+  }
+}

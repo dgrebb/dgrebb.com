@@ -60,6 +60,14 @@ while test "$1" != --; do
         /bin/bash $directory/_scripts/act.sh $2 $3
         break
         ;;
+    tv | test-visual | backstop )
+        /bin/bash $directory/_scripts/visual-regression.sh
+        break
+        ;;
+    tvr | test-visual-ref | backstop-reference )
+        /bin/bash $directory/_scripts/visual-regression.sh ref
+        break
+        ;;
     -h | --help)
         showHelp
         break
