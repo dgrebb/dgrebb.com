@@ -33,6 +33,8 @@ fi
 if [[ $1 == 'ref' ]]; then
     npm run ref.${env}
 elif [[ $1 == 'test' ]]; then
+    npm run remote.${env}
     npm run test.${env}
-    npm run backstop openReport
+elif [[ $1 == 'approve' ]]; then
+    npm run approve.${env}
 fi

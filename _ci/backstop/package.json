@@ -10,6 +10,12 @@
     "test.l": "backstop test --config=backstop.local.json",
     "test.s": "backstop test --config=backstop.staging.json",
     "test.p": "backstop test --config=backstop.production.json",
+    "approve.l": "backstop approve --config=backstop.local.json",
+    "approve.s": "backstop approve --config=backstop.staging.json",
+    "approve.p": "backstop approve --config=backstop.production.json",
+    "remote.l": "BACKSTOP_REMOTE_HTTP_PORT=3000 backstop remote --config=backstop.local.json",
+    "remote.s": "BACKSTOP_REMOTE_HTTP_PORT=3000 backstop remote --config=backstop.staging.json",
+    "remote.p": "BACKSTOP_REMOTE_HTTP_PORT=3000 backstop remote --config=backstop.production.json",
     "backstop": "backstop"
   },
   "keywords": [],
