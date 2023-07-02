@@ -68,6 +68,10 @@ while test "$1" != --; do
         /bin/bash $directory/_scripts/visual-regression.sh ref $2
         break
         ;;
+    tva | test-visual-approve | backstop-approve )
+        /bin/bash $directory/_scripts/visual-regression.sh approve $2
+        break
+        ;;
     -h | --help)
         showHelp
         break
