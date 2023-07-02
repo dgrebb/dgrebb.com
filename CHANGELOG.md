@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.5.0] - 2023-07-02
+
+### 💡 Features
+
+- ***(front)*** Adds scroll-behavior to body
+- ***(front)*** Adds page transitions
+- ***(testing)*** Adds dg commands for visual regression tests
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Adds tailwind breakpoint and applies smaller padding
+- ***(front)*** Fixes PageTransition container flex layout
+- ***(front)*** Adds width fix to PageTransition and posts/privacy
+- ***(front)*** Reduces sentry tracing/replay to 0 in < production
+- ***(front)*** Fixes links section display
+- ***(front)*** Fixes bad ariaHidden prop name
+
+### 👷 Build
+
+- ***(front)*** Removes unnecessary ThemeToggle classList toggles
+- ***(testing)*** Renames lt_sm scenario to xs
+- ***(testing)*** Adds backstop reference script and reference images
+- ***(testing)*** Initializes backstop project
+- ***(testing)*** Adds backstopjs to project
+- ***(testing)*** Adds backstop reports and test images to .gitignore
+
+### 💚 Continuous Integration
+
+- ***(project)*** Adds release automation on bump and push
+
 ## [2.4.0] - 2023-06-29
 
 ### 💡 Features
