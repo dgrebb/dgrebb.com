@@ -4,7 +4,7 @@
 .posts,
 .post,
 .privacy {
-  @apply 
+  @apply w-full
     sm:max-w-5xl
     transition-colors
     dg--transition-effect

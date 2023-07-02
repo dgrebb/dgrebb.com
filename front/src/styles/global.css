@@ -227,7 +227,8 @@ body {
     flex-col
     items-center
     justify-center
-    px-5
+    px-2
+    xs:px-5
     sm:px-8
     sm:pb-3
     pt-11
