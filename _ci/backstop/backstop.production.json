@@ -1,5 +1,5 @@
 {
-  "id": "dgrebb.com",
+  "id": "www.dgrebb.com",
   "viewports": [
     {
       "label": "xs",
@@ -31,8 +31,8 @@
   "onReadyScript": "puppet/onReady.js",
   "scenarios": [
     {
-      "label": "Local Home Default",
-      "url": "http://local.dgrebb.com:8080",
+      "label": "Home Default",
+      "url": "https://www.dgrebb.com",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -49,8 +49,8 @@
       "requireSameDimensions": true
     },
     {
-      "label": "Local Home Theme Switch",
-      "url": "http://local.dgrebb.com:8080",
+      "label": "Home Theme Switch",
+      "url": "https://www.dgrebb.com",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -67,8 +67,8 @@
       "requireSameDimensions": true
     },
     {
-      "label": "Local Privacy Default",
-      "url": "http://local.dgrebb.com:8080/privacy",
+      "label": "Privacy Default",
+      "url": "https://www.dgrebb.com/privacy",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -85,8 +85,8 @@
       "requireSameDimensions": true
     },
     {
-      "label": "Local Privacy Theme Switch",
-      "url": "http://local.dgrebb.com:8080/privacy",
+      "label": "Privacy Theme Switch",
+      "url": "https://www.dgrebb.com/privacy",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -105,11 +105,11 @@
   ],
 
   "paths": {
-    "bitmaps_reference": "bd/bitmaps_reference",
-    "bitmaps_test": "bd/bitmaps_test",
+    "bitmaps_reference": "bd/bitmaps_reference/production",
+    "bitmaps_test": "bd/bitmaps_test/production",
     "engine_scripts": "bd/engine_scripts",
-    "html_report": "bd/html_report",
-    "ci_report": "bd/ci_report"
+    "html_report": "bd/html_report/production",
+    "ci_report": "bd/ci_report/production"
   },
   "report": ["browser"],
   "engine": "puppeteer",

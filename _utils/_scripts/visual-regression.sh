@@ -16,15 +16,25 @@ if ! [ -x "$(command -v live-server)" ]; then
     npm i -g live-server
 fi
 
-# build the static frontend
-dg f b
-# serve the frontend
-trap "kill 0" EXIT
-live-server --no-browser $directory/../front/build &
-cd $directory/../_ci/backstop
-if [[ $1 == 'ref' ]]; then
-    npm run ref
+if [ -z "$2" ]; then
+    env=l
 else
-    npm run test
-    npm run backstop openReport
+    env=$2
+fi
+
+cd $directory/../_ci/backstop
+if [[ $env == 'l' ]]; then
+    # build the static frontend
+    dg f b
+    # serve the frontend
+    trap "kill 0" EXIT
+    live-server --no-browser $directory/../front/build &
+fi
+if [[ $1 == 'ref' ]]; then
+    npm run ref.${env}
+elif [[ $1 == 'test' ]]; then
+    npm run remote.${env}
+    npm run test.${env}
+elif [[ $1 == 'approve' ]]; then
+    npm run approve.${env}
 fi
