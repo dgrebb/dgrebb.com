@@ -1,0 +1,124 @@
+{
+  "id": "dgrebb.com",
+  "viewports": [
+    {
+      "label": "lt_sm",
+      "width": 320,
+      "height": 640
+    },
+    {
+      "label": "sm",
+      "width": 640,
+      "height": 768
+    },
+    {
+      "label": "md",
+      "width": 810,
+      "height": 1080
+    },
+    {
+      "label": "lg",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "label": "xl",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "onBeforeScript": "puppet/onBefore.js",
+  "onReadyScript": "puppet/onReady.js",
+  "scenarios": [
+    {
+      "label": "Local Home Default",
+      "url": "http://local.dgrebb.com:8080",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 1000,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": 0,
+      "selectors": [],
+      "selectorExpansion": true,
+      "expect": 0,
+      "misMatchThreshold" : 0.1,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "Local Home Theme Switch",
+      "url": "http://local.dgrebb.com:8080",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": ".theme-toggle",
+      "postInteractionWait": 1000,
+      "selectors": [],
+      "selectorExpansion": true,
+      "expect": 0,
+      "misMatchThreshold" : 0.1,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "Local Privacy Default",
+      "url": "http://local.dgrebb.com:8080/privacy",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 1000,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": 0,
+      "selectors": [],
+      "selectorExpansion": true,
+      "expect": 0,
+      "misMatchThreshold" : 0.1,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "Local Privacy Theme Switch",
+      "url": "http://local.dgrebb.com:8080/privacy",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": ".theme-toggle",
+      "postInteractionWait": 1000,
+      "selectors": [],
+      "selectorExpansion": true,
+      "expect": 0,
+      "misMatchThreshold" : 0.1,
+      "requireSameDimensions": true
+    }
+  ],
+
+  "paths": {
+    "bitmaps_reference": "bd/bitmaps_reference",
+    "bitmaps_test": "bd/bitmaps_test",
+    "engine_scripts": "bd/engine_scripts",
+    "html_report": "bd/html_report",
+    "ci_report": "bd/ci_report"
+  },
+  "report": ["browser"],
+  "engine": "puppeteer",
+  "engineOptions": {
+    "args": ["--no-sandbox"],
+    "headless": "new"
+  },
+  "asyncCaptureLimit": 5,
+  "asyncCompareLimit": 50,
+  "debug": false,
+  "debugWindow": false
+}
