@@ -40,5 +40,5 @@
 </script>
 
 <button class={classList} on:click={toggleTheme}>
-  <ThemeToggleIcon {dark} />
+  <ThemeToggleIcon />
 </button>
