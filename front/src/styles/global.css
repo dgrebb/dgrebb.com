@@ -131,7 +131,9 @@ body {
 
 .header,
 .footer {
-  @apply px-3
+  @apply w-full
+    max-w-7xl
+    px-3
     sm:p-6
     lg:p-14;
 }
@@ -144,12 +146,6 @@ body {
     md:pt-11
     pb-0;
   position: relative;
-}
-
-.header,
-.footer {
-  @apply w-full
-    max-w-7xl;
 }
 
 .skip-to-content {
