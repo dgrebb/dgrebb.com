@@ -4,6 +4,9 @@ body .main,
 body .footer {
   opacity: 1 !important;
 }
+.theme-toggle {
+  display: none !important;
+}
 .image-loader {
   display: none;
 }
