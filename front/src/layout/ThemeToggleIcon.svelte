@@ -1,8 +1,4 @@
-<script>
-  export let dark = null;
-</script>
-
-{#if dark === true}
+<div class="themeset">
   <span class="sr-only">Turn on light theme.</span>
   <svg
     id="sun"
@@ -10,7 +6,7 @@
     width="20"
     height="20"
     viewBox="0 0 24 24"
-    fill="none"
+    fill="currentColor"
     stroke="currentColor"
     stroke-width="2"
     stroke-linecap="round"
@@ -27,7 +23,6 @@
     <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
     <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
   </svg>
-{:else}
   <span class="sr-only">Turn on dark theme.</span>
   <svg
     id="moon"
@@ -35,7 +30,7 @@
     width="20"
     height="20"
     viewBox="0 0 24 24"
-    fill="none"
+    fill="currentColor"
     stroke="currentColor"
     stroke-width="2"
     stroke-linecap="round"
@@ -44,4 +39,4 @@
   >
     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
   </svg>
-{/if}
+</div>
