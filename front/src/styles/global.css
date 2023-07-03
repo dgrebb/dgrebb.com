@@ -77,7 +77,7 @@ body {
   }
   &.ready {
     > .flourish {
-      transition: transform 1s;
+      transition: transform .5s;
       transition-delay: 2s;
       transform: translateY(-100%);
       box-shadow: none !important;
