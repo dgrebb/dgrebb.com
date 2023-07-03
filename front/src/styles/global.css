@@ -76,7 +76,7 @@ body {
       opacity-0;
   }
   &.ready {
-    div > .flourish {
+    > .flourish {
       transition: transform 1s;
       transition-delay: 2s;
       transform: translateY(-100%);
@@ -95,7 +95,8 @@ body {
         dg--transition-effect;
     }
     &.animating {
-      div > .flourish {
+      overflow: hidden;
+      > .flourish {
         transition: transform 0s;
         transition-delay: 0s;
         transform: translateY(0);
@@ -106,6 +107,10 @@ body {
         @apply opacity-0
         transition-opacity
         dg--transition-effect;
+      }
+      .main .transition-container:last-of-type {
+        height: 0;
+        flex-grow: 0;
       }
     }
   }
@@ -120,13 +125,6 @@ body {
   right: 0;
   top: 0;
   z-index: 1;
-}
-
-.transition-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .header,
@@ -218,16 +216,26 @@ body {
     last:mr-0;
 }
 
+.transition-container {
+  width: 100%;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .main {
   @apply flex
     flex-col
+    flex-grow
     items-center
     justify-center
+    justify-items-center
     px-2
-    xs:px-5
-    sm:px-8
-    sm:pb-3
-    pt-11
+    xs:px-3
+    pt-3
+    sm:pt-5
     w-full
     max-w-6xl;
 }
@@ -301,7 +309,10 @@ body {
 .links {
   @apply items-stretch
     px-8
-    mt-7;
+    mt-7
+    pb-3
+    sm:pb-5
+    md:pb-12;
   .link-list {
     @apply flex
       flex-wrap
@@ -379,14 +390,11 @@ body {
 
 .footer {
   @apply pb-3
-    pt-6
-    md:pb-9
+    pt-3
     flex
     flex-col
-    flex-grow
     justify-end
     text-center
-    mt-auto
     text-sm;
   small {
     color: rgb(var(--subdued-rgb));
