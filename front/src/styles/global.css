@@ -1,6 +1,7 @@
 @import "components/fonts.css";
 @import "components/tw-components.css";
 @import "components/utilities.css";
+@import "components/theme-toggle.css";
 @import "pages/posts.css";
 @import "components/Code/Code.css";
 
@@ -179,18 +180,6 @@ body {
     transition: font-size;
     @apply dg--transition-effect
       tracking-tight;
-  }
-}
-
-.theme-toggle {
-  @apply dg--link-hover
-  ml-3
-  p-3
-  pr-0
-  transition
-  dg--transition-effect;
-  #moon {
-    padding-bottom: 1px;
   }
 }
 

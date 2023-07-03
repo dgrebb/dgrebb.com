@@ -1,0 +1,44 @@
+.theme-toggle {
+  @apply
+    p-3
+    pr-0
+    transition
+    dg--transition-effect;
+  &:hover {
+    color: rgb(var(--highlight-rgb));
+  }
+  svg {
+    position: absolute;
+    transition: top 2s ease-in-out 0s;
+  }
+  #moon {
+    padding-bottom: 1px;
+  }
+}
+
+.themeset {
+  position: relative;
+  overflow: hidden;
+  height: 20px;
+  width: 20px;
+}
+
+.dark-theme .ready {
+  svg#sun {
+    top: 0;
+    transition-delay: 1s;
+  }
+  svg#moon {
+    top: 33px;
+  }
+}
+
+.light-theme .ready {
+  svg#moon {
+    top: 0;
+    transition-delay: 1s;
+  }
+  svg#sun {
+    top: 33px;
+  }
+}
