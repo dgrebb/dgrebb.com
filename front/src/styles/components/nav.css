@@ -51,14 +51,13 @@
 
 .nav-link {
   @apply dg--link-hover
-    font-bold
     text-sm
     border-b
-    opacity-60
     align-text-top
     py-1;
-  color: rgb(var(--foreground-rgb));
   border-bottom-color: rgb(var(--btn-secondary-highlight-rgb));
+  color: rgb(var(--foreground-rgb));
+  font: dg--font-psb;
   &:hover,
   &:focus {
     @apply opacity-100;
