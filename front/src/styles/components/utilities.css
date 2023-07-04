@@ -11,8 +11,8 @@
     --background-end-rgb: 255, 255, 255;
     --background-saturated: 236, 236, 235;
     --background-pre-rgb: 217, 217, 217;
-    --btn--secondary-rgb: 190, 193, 194;
-    --btn-secondary-highlight-rgb: 92, 92, 92;
+    --btn--secondary-rgb: 245, 245, 245;
+    --btn-secondary-highlight-rgb: 163, 163, 163;
     --highlight-rgb: 175, 83, 7;
     --subdued-rgb: 189, 189, 189;
     --transform-duration: 500ms;
@@ -28,8 +28,8 @@
     --background-pre-rgb: 3, 3, 3;
     --highlight-rgb: 255, 255, 21;
     --subdued-rgb: 71, 72, 73;
-    --btn--secondary-rgb: 54, 54, 56;
-    --btn-secondary-highlight-rgb: 92, 92, 92;
+    --btn--secondary-rgb: 23, 23, 23;
+    --btn-secondary-highlight-rgb: 82, 82, 82;
     --transform-duration: 500ms;
     --transform-timing-function: ease-in-out;
   }

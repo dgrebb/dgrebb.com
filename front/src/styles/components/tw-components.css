@@ -1,3 +1,4 @@
+@import "./utilities.css";
 @layer components {
   .dg--link-hover {
     @apply transition
@@ -16,14 +17,22 @@
   }
   .dg--btn-secondary {
     @apply transition
-      dg--transition-effect;
-    background: rgb(var(--btn--secondary-rgb));
-    border: 2px solid rgb(var(--btn--secondary-rgb));
-    border-top-width: 1px;
-    border-top-color: rgb(var(--btn--secondary-highlight-rgb));
+      duration-150
+      transform-gpu
+      shadow-sm
+      scale-100
+      inline-block
+      text-sm
+      border
+      font-extralight
+      drop-shadow-sm;
+    border-bottom-color: rgb(var(--btn-secondary-highlight-rgb));
     &:hover,
     &:focus {
-      @apply brightness-125;
+      @apply brightness-125
+        shadow-md
+        transform-gpu
+        scale-105;
     }
   }
 }

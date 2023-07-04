@@ -1,0 +1,66 @@
+.site-title {
+  @apply flex
+    flex-grow;
+}
+.skip-to-content {
+  @apply dg--btn-secondary
+    px-5
+    py-3
+    transition-all
+    dg--transition-effect;
+  position: absolute;
+  transform: translateY(-100%);
+  @apply opacity-0;
+
+  &:focus {
+    transform: translateY(0%);
+    @apply opacity-100;
+  }
+}
+
+.nav-home {
+  @apply dg--font-psbl
+    dg--link-hover
+    leading-none
+    text-xl
+    tracking-tight
+    sm:ml-[2px]
+    sm:text-2xl;
+  h1 {
+    transition: font-size;
+    @apply dg--transition-effect
+      tracking-tight;
+  }
+}
+
+.nav-bar {
+  @apply flex 
+    flex-shrink
+    justify-center
+    items-center;
+}
+
+.nav-list {
+  @apply justify-end;
+}
+
+.nav-item {
+  @apply inline
+    px-3;
+}
+
+.nav-link {
+  @apply dg--link-hover
+    text-sm
+    border-b
+    align-text-top
+    py-1;
+  border-bottom-color: rgb(var(--btn-secondary-highlight-rgb));
+  color: rgb(var(--foreground-rgb));
+  font: dg--font-psb;
+  &:hover,
+  &:focus {
+    @apply opacity-100;
+    border-bottom-color: rgb(var(--highlight-rgb));
+  }
+}
