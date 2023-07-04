@@ -1,6 +1,6 @@
 "use strict";
 
-const { sanitize } = require('@strapi/utils');
+const { sanitize } = require("@strapi/utils");
 const { createCoreController } = require("@strapi/strapi").factories;
 
 module.exports = createCoreController("api::post.post", ({ strapi }) => ({
