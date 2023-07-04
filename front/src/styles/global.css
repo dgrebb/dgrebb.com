@@ -1,6 +1,7 @@
 @import "components/fonts.css";
 @import "components/tw-components.css";
 @import "components/utilities.css";
+@import "components/nav.css";
 @import "components/theme-toggle.css";
 @import "pages/posts.css";
 @import "components/Code/Code.css";
@@ -131,6 +132,15 @@ body {
   z-index: 1;
 }
 
+.transition-container {
+  width: 100%;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .header,
 .footer {
   @apply w-full
@@ -148,87 +158,6 @@ body {
     md:pt-11
     pb-0;
   position: relative;
-}
-
-.skip-to-content {
-  @apply dg--btn-secondary
-    px-5
-    py-3
-    transition-all
-    dg--transition-effect;
-  position: absolute;
-  transform: translateY(-100%);
-  @apply opacity-0;
-
-  &:focus {
-    transform: translateY(0%);
-    @apply opacity-100;
-  }
-}
-
-.site-title {
-  @apply flex
-    flex-grow;
-}
-
-.nav-home {
-  @apply dg--font-psbl
-    dg--link-hover
-    leading-none
-    text-xl
-    tracking-tight
-    sm:ml-[2px]
-    sm:text-2xl;
-  h1 {
-    transition: font-size;
-    @apply dg--transition-effect
-      tracking-tight;
-  }
-}
-
-.nav-bar {
-  @apply flex-shrink;
-  .btn {
-    @apply dg--btn-secondary
-      py-2
-      px-4
-      rounded
-      align-text-bottom;
-  }
-  ul {
-    @apply justify-end;
-  }
-  .nav-link {
-    @apply dg--link-hover
-      font-bold
-      text-sm
-      border-b
-      opacity-60
-      align-text-top
-      py-1;
-    color: rgb(var(--foreground-rgb));
-    border-bottom-color: rgb(var(--btn-secondary-highlight-rgb));
-    &:hover,
-    &:focus {
-      @apply opacity-100;
-      border-bottom-color: rgb(var(--highlight-rgb));
-    }
-  }
-}
-
-.nav-item {
-  @apply inline
-    mx-3
-    last:mr-0;
-}
-
-.transition-container {
-  width: 100%;
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .main {

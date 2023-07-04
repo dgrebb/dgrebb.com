@@ -1,9 +1,11 @@
 <script>
+  // import NavToggle from "../components/NavToggle.svelte";
   export let navItems;
 </script>
 
 <nav class="nav-bar">
-  <ul>
+  <!-- <NavToggle /> -->
+  <ul class="nav-list">
     {#each navItems as navItem}
       <li class="nav-item">
         <a
