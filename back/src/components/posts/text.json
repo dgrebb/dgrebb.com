@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_posts_texts",
+  "info": {
+    "displayName": "Text",
+    "icon": "pencil"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "richtext"
+    }
+  }
+}

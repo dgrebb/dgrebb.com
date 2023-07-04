@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_posts_htmls",
+  "info": {
+    "displayName": "HTML",
+    "icon": "paint"
+  },
+  "options": {},
+  "attributes": {
+    "html": {
+      "type": "text"
+    }
+  }
+}
