@@ -1,19 +1,24 @@
 "use strict";
 
-/**
- * post controller
- */
-
+const { sanitize } = require("@strapi/utils");
 const { createCoreController } = require("@strapi/strapi").factories;
 
 module.exports = createCoreController("api::post.post", ({ strapi }) => ({
-  async findOne(ctx) {
-    const { slug } = ctx.params;
-    const entity = await strapi.db.query("api::post.post").findOne({
-      where: { slug },
-    });
-    const sanitizedEntity = await this.sanitizeOutput(entity);
+  async findBySlug(ctx) {
+    try {
+      const { slug } = ctx.params;
+      const query = {
+        filters: { slug },
+        ...ctx.query,
+      };
 
-    return this.transformResponse(sanitizedEntity);
+      const post = await strapi.entityService.findMany("api::post.post", query);
+      const schema = strapi.getModel("api::post.post");
+      const sanitizedEntity = await sanitize.contentAPI.output(post, schema);
+
+      return this.transformResponse(sanitizedEntity[0]);
+    } catch (error) {
+      ctx.body = error;
+    }
   },
 }));
