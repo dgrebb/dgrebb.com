@@ -3,10 +3,10 @@ module.exports = {
     {
       method: "GET",
       path: "/post/:slug",
-      handler: 'post.findOne',
+      handler: "post.findBySlug",
       config: {
         auth: false,
-      }
+      },
     },
   ],
 };
