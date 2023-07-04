@@ -34,6 +34,7 @@ echo "PUBLIC_API_PATH_NAVIGATION=$(pass dg/cms/api/paths/navigation)" | tee -a $
 echo "PUBLIC_API_PATH_HOME=$(pass dg/cms/api/paths/home)" | tee -a $dockerEnvFile $frontEnvFile >/dev/null
 echo "PUBLIC_API_PATH_FOOTER=$(pass dg/cms/api/paths/footer)" | tee -a $dockerEnvFile $frontEnvFile >/dev/null
 echo "PUBLIC_API_PATH_PRIVACY=$(pass dg/cms/api/paths/privacy)" | tee -a $dockerEnvFile $frontEnvFile >/dev/null
+echo "PUBLIC_API_PATH_POSTS_PAGE=$(pass dg/cms/api/paths/postspage)" | tee -a $dockerEnvFile $frontEnvFile >/dev/null
 echo "PUBLIC_API_PATH_POSTS=$(pass dg/cms/api/paths/posts)" | tee -a $dockerEnvFile $frontEnvFile >/dev/null
 echo "PUBLIC_API_PATH_POST=$(pass dg/cms/api/paths/post)" | tee -a $dockerEnvFile $frontEnvFile >/dev/null
 echo "PUBLIC_API_URL=\"$(pass dg/api/${1}/url)\"" | tee -a $dockerEnvFile $frontEnvFile >/dev/null
