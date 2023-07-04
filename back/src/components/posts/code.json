@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_posts_codes",
+  "info": {
+    "displayName": "Code",
+    "icon": "code"
+  },
+  "options": {},
+  "attributes": {
+    "language": {
+      "type": "string"
+    },
+    "code": {
+      "type": "text"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}
