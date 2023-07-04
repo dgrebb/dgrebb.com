@@ -1,5 +1,3 @@
-@import "./nav-toggle.css";
-
 .site-title {
   @apply flex
     flex-grow;
@@ -46,6 +44,11 @@
   @apply justify-end;
 }
 
+.nav-item {
+  @apply inline
+    px-3;
+}
+
 .nav-link {
   @apply dg--link-hover
     font-bold
@@ -61,10 +64,4 @@
     @apply opacity-100;
     border-bottom-color: rgb(var(--highlight-rgb));
   }
-}
-
-.nav-item {
-  @apply inline
-    mx-3
-    last:mr-0;
 }
