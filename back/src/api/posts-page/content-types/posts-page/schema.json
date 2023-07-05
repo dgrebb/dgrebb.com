@@ -12,10 +12,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Headline": {
+    "headline": {
       "type": "string"
     },
-    "Description": {
+    "description": {
       "type": "richtext"
     },
     "seo": {
