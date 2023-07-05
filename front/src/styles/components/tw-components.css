@@ -11,9 +11,6 @@
   }
   .dg--btn-primary {
     @apply transition;
-    &:hover,
-    &:focus {
-    }
   }
   .dg--btn-secondary {
     @apply transition
@@ -33,6 +30,37 @@
         shadow-md
         transform-gpu
         scale-105;
+    }
+  }
+  .dg--photo-vignette-light {
+    box-shadow: 0 0 33px rgba(var(--background-saturated), 0.18) inset;
+  }
+  .dg--photo-vignette-dark {
+    box-shadow: 0 0 200px rgba(var(--black),0.88) inset;
+  }
+  .dg--photo-link-light {
+    @apply dg--photo-vignette-light;
+    background: rgba(255,255,255, 0.77);
+    border: 1px solid rgba(var(--foreground-rgb), 0.11);
+    color: var(--black);
+    text-shadow: 0px 0px 23px rgb(var(--black));
+    &:hover,
+    &:focus {
+      background: rgba(var(--white), 0.01);
+      border-color: rgb(var(--background-saturated));
+      color: rgb(var(--white));
+    }
+  }
+  .dg--photo-link-dark {
+    @apply dg--photo-vignette-dark;
+    background: rgba(var(--black), 0.77);
+    color: rgb(var(--white));
+    text-shadow: 0px 0px 8px var(--black);
+    text-shadow: 0px 0px 23px rgb(var(--black));
+    &:hover,
+    &:focus {
+      background: rgba(var(--black), 0.11);
+      border-color: rgba(var(--background-saturated), 0.5);
     }
   }
 }

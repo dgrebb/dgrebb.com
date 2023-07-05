@@ -1,9 +1,10 @@
 @import "components/fonts.css";
-@import "components/tw-components.css";
 @import "components/utilities.css";
-@import "components/nav.css";
-@import "components/theme-toggle.css";
+@import "components/tw-components.css";
 @import "components/Code/Code.css";
+@import "components/nav.css";
+@import "components/posts-grid.css";
+@import "components/theme-toggle.css";
 @import "pages/posts.css";
 
 @tailwind base;
@@ -15,6 +16,11 @@
   body {
     scroll-behavior: auto;
   }
+}
+
+:root {
+  --white: 223, 224, 224;
+  --black: 19, 19, 20;
 }
 
 html.light-theme {
@@ -80,7 +86,7 @@ body {
   }
   &.ready {
     > .flourish {
-      transition: transform .5s;
+      transition: transform 0.5s;
       transition-delay: 2s;
       transform: translateY(-100%);
       box-shadow: none !important;
