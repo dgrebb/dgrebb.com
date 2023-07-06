@@ -43,7 +43,7 @@
           class="post-item"
           style={`background-image: url('${post.image ? post.image : null}')`}
         >
-          <a href={`/posts/${post.slug}`} class="post-link">
+          <a href={`/post/${post.slug}`} class="post-link">
             {post.title}
           </a>
         </li>
