@@ -1,0 +1,22 @@
+.post-header {
+  display: block;
+  position: relative;
+  height: 400px;
+  width: 100%;
+  .hero {
+    @apply rounded
+            shadow-md;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+    max-height: 100%;
+    height: 400px;
+    width: 100%;
+    overflow: clip;
+    position: relative;
+    z-index: 4;
+    &.image-bottom img {
+      bottom: 0;
+    }
+  }
+}

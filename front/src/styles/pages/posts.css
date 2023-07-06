@@ -91,6 +91,10 @@
   h1.title {
     text-align: center;
   }
+  .summary {
+    max-width: 77%;
+    margin: auto;
+  }
 }
 
 .privacy {

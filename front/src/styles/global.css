@@ -3,9 +3,10 @@
 @import "components/tw-components.css";
 @import "components/Code/Code.css";
 @import "components/nav.css";
-@import "components/posts-grid.css";
 @import "components/theme-toggle.css";
+@import "components/posts-grid.css";
 @import "pages/posts.css";
+@import "pages/post.css";
 
 @tailwind base;
 @tailwind components;
