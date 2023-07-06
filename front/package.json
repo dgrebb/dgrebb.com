@@ -33,8 +33,6 @@
 	"dependencies": {
 		"@accuser/svelte-plausible-analytics": "github:dgrebb/svelte-plausible-analytics#release/v0.4.0",
 		"@sentry/sveltekit": "^7.56.0",
-		"blurhash": "^1.1.5",
-		"svelte-blurhash": "^1.2.1",
 		"svelte-markdown": "^0.2.3"
 	}
 }
