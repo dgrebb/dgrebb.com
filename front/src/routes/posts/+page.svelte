@@ -7,20 +7,21 @@
 
   export let data;
   const { pathname } = data;
-  const { headline, description, seo } = data.content;
+  let image, blurhash, seo = false;
+  const { headline, description } = data.postsPageContent;
+  seo = data?.postsPageContent?.seo;
   const posts = [];
-  data.posts.map(post => {
-    const content = post.attributes;
-    const { title, slug, seo } = content;
-    const hero = post.attributes.hero?.data;
-    let image, blurhash = false;
 
-    if (hero) {
-      image = `${PUBLIC_MEDIA_URL}${hero.attributes.formats.medium.url}`;
-      blurhash = hero.attributes?.blurhash;
+  data.posts.map(post => {
+    const pageContent = post.attributes;
+    const { title, slug, seo } = pageContent;
+    const thumbnail = pageContent.hero?.data || false;
+
+    if (thumbnail) {
+      image = `${PUBLIC_MEDIA_URL}${thumbnail.attributes.formats.medium.url}`;
+      blurhash = thumbnail.attributes?.blurhash;
     }
     
-    console.log("🚀 ~ file: +page.svelte:19 ~ image:", image)
     posts.push({
       title,
       slug,
@@ -36,7 +37,9 @@
   <section class="posts">
     <Flourish />
     <h1 class="title">{headline}</h1>
-    <SvelteMarkdown renderers={{ link: Link }} source={description} />
+    <div class="summary">
+      <SvelteMarkdown renderers={{ link: Link }} source={description} />
+    </div>
     <ul class="posts-grid">
       {#each posts as post}
         <li
