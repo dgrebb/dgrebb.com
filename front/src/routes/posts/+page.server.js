@@ -28,7 +28,7 @@ export async function load({ params }) {
     console.log(error);
   }
   return {
-    content: { ...postsPageContent.attributes },
+    postsPageContent: { ...postsPageContent.attributes },
     posts: [ ...postsContent ],
   };
 }
