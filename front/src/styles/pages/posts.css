@@ -70,7 +70,8 @@
     @apply my-3;
   }
   strong {
-    @apply dg--font-psb;
+    @apply dg--font-psb
+    font-normal;
   }
   ol,
   ul {
