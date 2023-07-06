@@ -3,11 +3,12 @@ import api from "../../api";
 import {
   PUBLIC_API_URL,
   PUBLIC_API_PATH_POSTS_PAGE,
+  PUBLIC_POSTS_PAGE_PARAMS,
   PUBLIC_API_PATH_POSTS,
 } from "$env/static/public";
 
 const postsPageEndpoint = `${PUBLIC_API_URL}${PUBLIC_API_PATH_POSTS_PAGE}`;
-const postsEndpoint = `${PUBLIC_API_URL}${PUBLIC_API_PATH_POSTS}&pagination[pageSize]=23`;
+const postsEndpoint = `${PUBLIC_API_URL}${PUBLIC_API_PATH_POSTS}${PUBLIC_POSTS_PAGE_PARAMS}`;
 
 export const trailingSlash = "always";
 
