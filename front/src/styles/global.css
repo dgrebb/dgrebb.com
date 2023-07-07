@@ -86,7 +86,7 @@ body {
       opacity-0;
   }
   &.ready {
-    > .flourish {
+    > div > .flourish {
       transition: transform 0.5s;
       transition-delay: 2s;
       transform: translateY(-100%);
@@ -107,7 +107,7 @@ body {
     }
     &.animating {
       overflow: hidden;
-      > .flourish {
+      > div > .flourish {
         transition: transform 0s;
         transition-delay: 0s;
         transform: translateY(0);
