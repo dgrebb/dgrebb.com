@@ -1,5 +1,6 @@
 .posts,
-.post,
+.post-header,
+.post-main,
 .privacy {
   @apply w-full
     sm:max-w-5xl
