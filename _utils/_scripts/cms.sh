@@ -45,4 +45,4 @@ while test "$1" != --; do
         ;;
     esac
 done
-shred
+# shred
