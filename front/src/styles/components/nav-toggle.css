@@ -1,6 +1,3 @@
-@import "./tw-components.css";
-@import "./utilities.css";
-
 .nav-toggle {
   @apply hidden
     p-2;
