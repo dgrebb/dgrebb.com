@@ -1,6 +1,7 @@
 <script>
   import { PUBLIC_MEDIA_URL } from "$env/static/public";
   import SvelteMarkdown from "svelte-markdown";
+  import Code from "../../../components/markdown/Code.svelte";
   import PageTransition from "../../../components/PageTransition.svelte";
   import Link from "../../../components/markdown/Link.svelte";
   import Flourish from "../../../layout/Flourish.svelte";
@@ -35,20 +36,28 @@
           }
       />
     {/if}
+    <h1 class="post-title">{title}</h1>
   </section>
   <section class="post-main">
-    <article class="post-content">
-      <h1 class="post-title">{title}</h1>
+    <article class="post-article">
       {#if content.length}
         {#each content as c}
           {#if c.__component === "posts.text"}
             <SvelteMarkdown source={c.text} renderers={{ link: Link }} />
+          {/if}
+          {#if c.__component === "posts.code"}
+            <Code text={c.code} lang={c.language} title={c?.title} />
           {/if}
         {/each}
       {/if}
     </article>
     <aside class="post-aside">
       <h2>Categories</h2>
+      <ul>
+        {#each categories as category}
+          <li>{category.attributes.name}</li>
+        {/each}
+      </ul>
       <h2>Related Posts</h2>
     </aside>
   </section>
