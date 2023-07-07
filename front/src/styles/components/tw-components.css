@@ -1,4 +1,3 @@
-@import "./utilities.css";
 @layer components {
   .dg--link-hover {
     @apply transition
