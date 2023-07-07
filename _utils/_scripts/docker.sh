@@ -51,6 +51,6 @@ else
             break 2
             ;;
         esac
-        shred
+        # shred
     done
 fi
