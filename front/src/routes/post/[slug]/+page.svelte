@@ -12,6 +12,7 @@
   const { title } = post;
   const hero = post.hero?.data?.attributes || false;
   const heroImage = hero?.formats?.large?.url ? `${PUBLIC_MEDIA_URL}${hero.formats.large.url}` : false;
+  const position = post.position || "center center";
   const blurhash = hero.blurhash || false;
   const description = post.description || false;
   const content = post.content.length ? post.content : false;
@@ -29,7 +30,9 @@
     {#if heroImage}
       <div
         class="hero image-bottom"
-        style={heroImage ? `background-image: url('${heroImage}');` : false}
+        style={heroImage ? 
+          `background-image: url('${heroImage}'); background-position: ${position};` : false
+          }
       />
     {/if}
   </section>
