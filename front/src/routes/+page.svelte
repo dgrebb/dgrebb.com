@@ -1,6 +1,6 @@
 <script>
   import { PUBLIC_MEDIA_URL } from "$env/static/public";
-  import SvelteMarkdown from 'svelte-markdown';
+  import SvelteMarkdown from "svelte-markdown";
   import { MetaTags } from "svelte-meta-tags";
   import Image from "../components/Image.svelte";
   import Links from "../components/Links.svelte";
@@ -10,8 +10,13 @@
 
   export let data;
   const { seo, headline, intro, links, pathname } = data;
-  const image = seo?.metaImage?.data?.attributes.formats.small || { url: "/bio.jpg", alt: "A picture of Dan smiling" };
-  const metaSocialOG = seo?.metaSocial.find((obj) => obj.socialNetwork === "Facebook");
+  const image = seo?.metaImage?.data?.attributes.formats.small || {
+    url: "/bio.jpg",
+    alt: "A picture of Dan smiling",
+  };
+  const metaSocialOG = seo?.metaSocial.find(
+    (obj) => obj.socialNetwork === "Facebook"
+  );
 </script>
 
 <PageTransition {pathname}>
@@ -35,6 +40,7 @@
         />
       </noscript>
     {/if}
+    <a id="main">Main Content</a>
     <h1 class="headline">{headline}</h1>
     <SvelteMarkdown renderers={{ link: Link }} source={intro} />
   </section>
@@ -46,9 +52,9 @@
 </PageTransition>
 
 <MetaTags
-  title={seo.metaTitle || 'Dan Grebb'}
+  title={seo.metaTitle || "Dan Grebb"}
   description={seo.metaDescription ||
-    'Dan Grebb is a Software Engineer from Philadelphia, Pennsylvania.'}
+    "Dan Grebb is a Software Engineer from Philadelphia, Pennsylvania."}
   openGraph={metaSocialOG?.image
     ? {
         images: [
