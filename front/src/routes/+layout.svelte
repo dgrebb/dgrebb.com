@@ -1,13 +1,18 @@
 <script>
+  import { page } from "$app/stores";
+  import { browser } from "$app/environment";
   import { PlausibleAnalytics } from "@accuser/svelte-plausible-analytics";
-  import "../styles/global.css";
+  import { scrollTop } from "../_utils";
   import Footer from "../layout/Footer.svelte";
   import Header from "../layout/Header.svelte";
   import Flourish from "../layout/Flourish.svelte";
+  import "../styles/global.css";
 
   export let data;
   const { navHeading, navItems, copyright, copyleft } = data;
 
+  $: ({ id: route } = $page?.route);
+  $: if (browser && route) scrollTop();
 </script>
 
 <Flourish />
