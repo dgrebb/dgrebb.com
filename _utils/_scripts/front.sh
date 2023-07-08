@@ -30,8 +30,8 @@ while test "$1" != --; do
         cdfront && npm run build
         break
         ;;
-    s | start)
-        cdfront && serve ./build
+    s | live-server)
+        cdfront && live-server ./build
         break
         ;;
     p | preview)
