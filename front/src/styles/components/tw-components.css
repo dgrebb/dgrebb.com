@@ -33,33 +33,43 @@
   }
   .dg--photo-vignette-light {
     box-shadow: 0 0 33px rgba(var(--background-saturated), 0.18) inset;
+    border: 1px solid rgba(var(--foreground-rgb), 0.11);
+    overflow: hidden;
+    &:hover,
+    &:focus {
+      border-color: rgba(var(--foreground-rgb), 0.01)
+    }
   }
   .dg--photo-vignette-dark {
     box-shadow: 0 0 200px rgba(var(--black),0.88) inset;
+    border: 1px solid rgba(var(--foreground-rgb-faded), 0.01);
+    overflow: hidden;
+    &:hover,
+    &:focus {
+      border-color: rgba(var(--foreground-rgb-faded), 0.01)
+    }
   }
   .dg--photo-link-light {
+    transition-property: background, color, text-shadow;
     @apply dg--photo-vignette-light;
     background: rgba(255,255,255, 0.77);
-    border: 1px solid rgba(var(--foreground-rgb), 0.11);
     color: var(--black);
-    text-shadow: 0px 0px 23px rgb(var(--black));
+    text-shadow: 0px 0px 12px rgba(var(--black), 0.2);
     &:hover,
     &:focus {
       background: rgba(var(--white), 0.01);
-      border-color: rgb(var(--background-saturated));
       color: rgb(var(--white));
+      text-shadow: 0px 0px 12px rgba(var(--black), 1);
     }
   }
   .dg--photo-link-dark {
     @apply dg--photo-vignette-dark;
     background: rgba(var(--black), 0.77);
-    border: 1px solid rgba(var(--foreground-rgb), 0.11);
     color: rgb(var(--white));
     text-shadow: 0px 0px 23px rgb(var(--black));
     &:hover,
     &:focus {
       background: rgba(var(--black), 0.11);
-      border-color: rgba(var(--background-saturated), 0.5);
     }
   }
 }
