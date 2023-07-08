@@ -52,10 +52,15 @@
       <h2>Categories</h2>
       <ul>
         {#each categories as category}
-          <li>{category.attributes.name}</li>
+          <li><a href="/posts/category/{category.attributes.slug}">{category.attributes.name}</a></li>
         {/each}
       </ul>
       <h2>Related Posts</h2>
+      <ul>
+        {#each related as post}
+          <li><a href="/post/{post.attributes.slug}">{post.attributes.title}</a></li>
+        {/each}
+      </ul>
     </aside>
   </section>
 </PageTransition>
