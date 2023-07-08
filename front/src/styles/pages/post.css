@@ -3,6 +3,7 @@
   position: relative;
   height: 400px;
   width: 100%;
+  z-index: 1;
   .hero {
     @apply rounded
             shadow-md;
@@ -38,6 +39,7 @@
   display: flex;
   flex-direction: row;
   background-color: rgb(var(--background-saturated));
+  z-index: 0;
 }
 .post-article {
   width: 73%;
