@@ -12,7 +12,8 @@
 
 <Flourish />
 <Header {navHeading} {navItems} />
-<main id="main" class="main">
+<main class="main">
+  <a id="main">You've skipped to the main content area.</a>
   <slot />
 </main>
 <slot name="scroll-top" />

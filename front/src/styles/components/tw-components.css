@@ -16,12 +16,12 @@
       duration-150
       transform-gpu
       shadow-sm
-      scale-100
       inline-block
       text-sm
       border
       font-extralight
       drop-shadow-sm;
+    background-color: rgb(var(--background-end-rgb));
     border-bottom-color: rgb(var(--btn-secondary-highlight-rgb));
     &:hover,
     &:focus {
