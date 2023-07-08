@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_posts_footnotes",
+  "info": {
+    "displayName": "Footnote",
+    "icon": "book",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}
