@@ -7,21 +7,18 @@
   import Flourish from "../../../layout/Flourish.svelte";
 
   export let data;
-  const { pathname } = data;
-
-  const { post } = data;
-  const { title } = post;
-  const hero = post.hero?.data?.attributes || false;
-  const heroImage = hero?.formats?.large?.url ? `${PUBLIC_MEDIA_URL}${hero.formats.large.url}` : false;
-  const position = post.position || "center center";
-  const blurhash = hero.blurhash || false;
-  const description = post.description || false;
-  const content = post.content.length ? post.content : false;
-  const seo = post.seo || false;
-  const related = post.related?.data || false;
-  const categories = post.categories?.data || false;
-
-  // style={heroImage ? `background-image: url('${heroImage}');` : false}
+  
+  $: ({ pathname, post } = data);
+  $: ({ title } = post);
+  $: hero = post.hero?.data?.attributes || false;
+  $: heroImage = hero?.formats?.large?.url ? `${PUBLIC_MEDIA_URL}${hero.formats.large.url}` : false;
+  $: position = post.position || "center center";
+  $: blurhash = hero.blurhash || false;
+  $: description = post.description || false;
+  $: content = post.content.length ? post.content : false;
+  $: seo = post.seo || false;
+  $: related = post.related?.data || false;
+  $: categories = post.categories?.data || false;
 
 </script>
 
