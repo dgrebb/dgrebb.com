@@ -19,27 +19,27 @@ export async function load({ params }) {
     // throw error(500, {
     //   message: `Posts Page Error: ${error}`,
     // });
-    console.table({
-      route: $page.route.id,
+    console.error({
+      route: page.route,
       params,
       postsPageEndpoint,
       postsEndpoint,
       content: {
-        postsPageContent
+        postsPageContent,
       },
     });
   }
-  if (!postsContent) {
+  if (!postsContent.length) {
     // throw error(500, {
     //   message: `Posts Error: ${error}`,
     // });
-    console.table({
-      route: $page.route.id,
+    console.error({
+      route: page.route,
       params,
       postsPageEndpoint,
       postsEndpoint,
       content: {
-        postsContent
+        postsContent,
       },
     });
   }
