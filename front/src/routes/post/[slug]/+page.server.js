@@ -8,14 +8,19 @@ import {
 
 export const trailingSlash = "always";
 
-export async function load({ params }) {
-  const postEndpoint = `${PUBLIC_API_URL}${PUBLIC_API_PATH_POST}${params.slug}${PUBLIC_POST_PARAMS}`;
+export async function load({ params: { slug }, route }) {
+  const postEndpoint = `${PUBLIC_API_URL}${PUBLIC_API_PATH_POST}${slug}${PUBLIC_POST_PARAMS}`;
   const postContent = await api(postEndpoint);
   if (!postContent.attributes) {
-    throw error(500, {
-      message: `Post Page Error: ${error}`,
+    // throw error(500, {
+    //   message: `Post Page Error: ${error}`,
+    // });
+    console.error({
+      route,
+      slug,
+      endpoint: postEndpoint,
+      error: postContent.error,
     });
-    console.log(error);
   }
   return {
     post: postContent.attributes,

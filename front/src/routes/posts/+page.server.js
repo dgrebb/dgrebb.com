@@ -12,7 +12,7 @@ const postsEndpoint = `${PUBLIC_API_URL}${PUBLIC_API_PATH_POSTS}${PUBLIC_POSTS_P
 
 export const trailingSlash = "always";
 
-export async function load({ params }) {
+export async function load({ route }) {
   const postsPageContent = await api(postsPageEndpoint);
   const postsContent = await api(postsEndpoint);
   if (!postsPageContent.attributes) {
@@ -20,13 +20,9 @@ export async function load({ params }) {
     //   message: `Posts Page Error: ${error}`,
     // });
     console.error({
-      route: page.route,
-      params,
-      postsPageEndpoint,
-      postsEndpoint,
-      content: {
-        postsPageContent,
-      },
+      route: route.id,
+      endpoint: postsPageEndpoint,
+      error: postsPageContent.error,
     });
   }
   if (!postsContent.length) {
@@ -34,13 +30,9 @@ export async function load({ params }) {
     //   message: `Posts Error: ${error}`,
     // });
     console.error({
-      route: page.route,
-      params,
-      postsPageEndpoint,
-      postsEndpoint,
-      content: {
-        postsContent,
-      },
+      route,
+      endpoint: postsEndpoint,
+      error: postsPageContent.error,
     });
   }
   return {
