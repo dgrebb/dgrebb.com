@@ -6,12 +6,10 @@
   @apply dg--btn-secondary
     px-5
     py-3
-    transition-all
-    dg--transition-effect;
+    opacity-0;
   position: absolute;
-  transform: translateY(-100%);
-  @apply opacity-0;
-
+  transition: transform .3s ease, opacity .3s ease, color .3s ease;
+  transform: translateY(-133%);
   &:focus {
     transform: translateY(0%);
     @apply opacity-100;
