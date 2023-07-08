@@ -49,8 +49,8 @@ html.dark-theme {
 }
 
 html {
-  @apply transition-colors 
-    dg--transition-effect;
+  @apply dg--transition-effect 
+    transition-colors;
   background: linear-gradient(
       to bottom,
       transparent,
@@ -63,13 +63,13 @@ html {
 }
 
 body {
-  @apply flex
+  @apply dg--font-psxl
+    dg--transition-effect
+    flex
     flex-col
     items-center
-    dg--font-psxl
-    transition-colors
-    dg--transition-effect
     text-base
+    transition-colors
     md:text-lg;
   color: rgb(var(--foreground-rgb));
   height: 100vh;
@@ -77,13 +77,14 @@ body {
   overflow: overlay;
   scroll-behavior: smooth;
   scrollbar-gutter: stable both-edges;
-  .main section .flourish,
   .header,
   .main,
+  .main .flourish,
+  .main section,
   .footer {
-    @apply transition-all
-      dg--transition-effect
-      opacity-0;
+    @apply dg--transition-effect
+      transition-all;
+    opacity: 0;
   }
   &.ready {
     > div > .flourish {
@@ -97,13 +98,13 @@ body {
     .header,
     .main,
     .footer {
-      @apply opacity-100;
+      opacity: 1;
     }
     .main section,
     .footer {
-      @apply opacity-95 
-        transition-opacity
-        dg--transition-effect;
+      opacity: 1;
+      transition: opacity;
+      @apply dg--transition-effect;
     }
     &.animating {
       overflow: hidden;
@@ -116,9 +117,9 @@ body {
       }
       .main section,
       .footer {
-        @apply opacity-0
-        transition-opacity
-        dg--transition-effect;
+        @apply dg--transition-effect
+        opacity-0
+        transition-opacity;
       }
       .main .transition-container:last-of-type {
         height: 0;
@@ -129,8 +130,8 @@ body {
 }
 
 .flourish {
-  @apply shadow-sm
-    h-2;
+  @apply h-2
+    shadow-sm;
   background-color: rgb(var(--foreground-rgb));
   left: 0;
   position: fixed;
@@ -160,10 +161,10 @@ body {
 .header {
   @apply flex
     items-center
+    pb-0
     pt-5
     sm:pt-9
-    md:pt-11
-    pb-0;
+    md:pt-11;
   position: relative;
 }
 
@@ -173,24 +174,24 @@ body {
 
 .main {
   @apply flex
-    flex-col
+    w-full
+    max-w-6xl
     flex-grow
+    flex-col
     items-center
     justify-center
     justify-items-center
     px-2
-    xs:px-3
     pt-3
-    sm:pt-5
-    w-full
-    max-w-6xl;
+    xs:px-3
+    sm:pt-5;
 }
 
 .bio,
 .links {
   @apply dg--transition-effect
-    transition-[max-width]
     max-w-sm
+    transition-[max-width]
     sm:max-w-xl;
 }
 
@@ -198,10 +199,10 @@ body {
   @apply pt-7;
   img {
     @apply m-auto
-      rounded-full
-      shadow-lg
       h-[120px]
-      w-[120px];
+      w-[120px]
+      rounded-full
+      shadow-lg;
     border: 1px solid rgba(var(--foreground-rgb), 0.5);
     position: relative;
     z-index: 3;
@@ -210,22 +211,12 @@ body {
     transition: font-size;
     @apply dg--transition-effect
       dg--font-psb
-      brightness-125
-      font-bold
       mt-7
       text-3xl
-      sm:text-4xl
-      tracking-tight;
-  }
-}
-
-.bio,
-.post,
-.posts,
-.privacy,
-.footer {
-  a {
-    @apply dg--link-hover;
+      font-bold
+      tracking-tight
+      brightness-125
+      sm:text-4xl;
   }
 }
 
@@ -236,13 +227,20 @@ body {
 .footer,
 .not-found {
   a {
-    @apply pb-0.5 
-      opacity-90;
-    color: rgb(var(--foreground-rgb));
     border-bottom: 1px solid rgb(var(--foreground-rgb));
+    color: rgba(var(--foreground-rgb), 0.7);
+    padding-bottom: 0.125rem;
+    transition-property: color, border-color;
+    transition-duration: 500ms;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
     &:hover,
     &:focus {
-      @apply opacity-100;
+      color: rgba(var(--highlight-rgb), 1.0);
       border-color: rgb(var(--highlight-rgb));
     }
   }
@@ -253,29 +251,29 @@ body {
 }
 
 .links {
-  @apply items-stretch
+  @apply mt-7
+    items-stretch
     px-8
-    mt-7
     pb-3
     sm:pb-5
     md:pb-12;
   .link-list {
     @apply flex
       flex-wrap
-      justify-center
-      items-center;
+      items-center
+      justify-center;
   }
   .link {
-    @apply flex
-      leading-none
-      m-2;
+    @apply m-2
+      flex
+      leading-none;
     a {
-      @apply self-center
-        transition-colors
-        dg--transition-effect
+      @apply dg--transition-effect
         inline-block
-        h-full 
-        p-1;
+        h-full
+        self-center
+        p-1 
+        transition-colors;
       color: rgb(var(--foreground-rgb-faded));
       &:hover,
       &:focus {
@@ -283,8 +281,8 @@ body {
       }
     }
     svg {
-      @apply w-7
-        h-7;
+      @apply h-7
+        w-7;
     }
     .twitter-icon {
       @apply pt-[5px];
@@ -314,12 +312,12 @@ body {
 
 .scroll-top {
   display: flex;
-  @apply text-sm
-    dg--link-hover
+  @apply dg--link-hover
     dg--transition-effect
+    text-sm
     brightness-75
-    dark:brightness-50
     transition
+    dark:brightness-50
     md:hidden;
   align-items: center;
   flex-direction: column;
@@ -329,26 +327,26 @@ body {
       dark:brightness-100;
   }
   svg {
-    @apply mt-5
-      mb-2;
+    @apply mb-2
+      mt-5;
   }
 }
 
 .footer {
-  @apply pb-3
-    pt-3
-    flex
+  @apply flex
     flex-col
     justify-end
+    pb-3
+    pt-3
     text-center
     text-sm;
   small {
     color: rgb(var(--subdued-rgb));
     a {
-      @apply brightness-75
-        dark:brightness-50
+      @apply dg--transition-effect
+        brightness-75
         transition
-        dg--transition-effect;
+        dark:brightness-50;
       border-color: rgb(var(--foreground-rgb));
       color: rgb(var(--foreground-rgb));
       &:hover,

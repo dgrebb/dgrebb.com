@@ -20,12 +20,10 @@
     grid-column: span 6;
     position: relative;
     @apply text-center
-      justify-center
+      rounded-xl
       h-full
       mb-0
-      rounded-xl
       list-none
-      transition-[backdrop-filter]
       backdrop-brightness-90;
     &:hover,
     &:focus {
@@ -102,17 +100,16 @@
         grid-row: span 9;
       }
     }
-    @screen md {
-    }
-    &:not(first-of-type) {
-    }
     .post-link {
       display: block;
       height: 100%;
       width: 100%;
       border: unset;
       box-sizing: border-box;
-      @apply dg--photo-link-dark
+      overflow: hidden;
+      transition-property: background, border-color;
+      @apply dg--transition-effect
+        dg--photo-link-dark
         dg--font-psbl
         px-9
         py-3
