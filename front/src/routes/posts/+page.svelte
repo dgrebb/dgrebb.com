@@ -1,18 +1,20 @@
 <script>
   import { PUBLIC_MEDIA_URL } from "$env/static/public";
-  import Flourish from '../../layout/Flourish.svelte';
+  import Flourish from "../../layout/Flourish.svelte";
   import PageTransition from "../../components/PageTransition.svelte";
-  import SvelteMarkdown from 'svelte-markdown';
-  import Link from '../../components/markdown/Link.svelte';
+  import SvelteMarkdown from "svelte-markdown";
+  import Link from "../../components/markdown/Link.svelte";
 
   export let data;
   const { pathname } = data;
-  let image, blurhash, seo = false;
+  let image,
+    blurhash,
+    seo = false;
   const { headline, description } = data.postsPageContent;
   seo = data?.postsPageContent?.seo;
   const posts = [];
 
-  data.posts.map(post => {
+  data.posts.map((post) => {
     const pageContent = post.attributes;
     const { title, slug, seo } = pageContent;
     const thumbnail = pageContent.hero?.data || false;
@@ -21,21 +23,21 @@
       image = `${PUBLIC_MEDIA_URL}${thumbnail.attributes.formats.medium.url}`;
       blurhash = thumbnail.attributes?.blurhash;
     }
-    
+
     posts.push({
       title,
       slug,
       seo,
       image,
-      blurhash
+      blurhash,
     });
   });
-
 </script>
 
 <PageTransition {pathname}>
   <section class="posts">
     <Flourish />
+    <a id="main">Main Content</a>
     <h1 class="title">{headline}</h1>
     <div class="summary">
       <SvelteMarkdown renderers={{ link: Link }} source={description} />
