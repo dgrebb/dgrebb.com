@@ -59,6 +59,12 @@
         "posts.html"
       ]
     },
+    "note": {
+      "displayName": "Footnotes",
+      "type": "component",
+      "repeatable": true,
+      "component": "posts.footnotes"
+    },
     "related": {
       "type": "relation",
       "relation": "oneToMany",
