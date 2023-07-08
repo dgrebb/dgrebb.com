@@ -1,19 +1,42 @@
 import { error } from "@sveltejs/kit";
 import api from "../../api";
-import { PUBLIC_API_URL, PUBLIC_API_PATH_PRIVACY } from "$env/static/public";
+import {
+  PUBLIC_API_URL,
+  PUBLIC_API_PATH_POSTS_PAGE,
+  PUBLIC_API_PATH_POSTS,
+  PUBLIC_POSTS_PREVIEW_PARAMS,
+} from "$env/static/public";
 
-const privacyEndpoint = `${PUBLIC_API_URL}${PUBLIC_API_PATH_PRIVACY}`;
+const postsPageEndpoint = `${PUBLIC_API_URL}${PUBLIC_API_PATH_POSTS_PAGE}`;
+const postsEndpoint = `${PUBLIC_API_URL}${PUBLIC_API_PATH_POSTS}${PUBLIC_POSTS_PREVIEW_PARAMS}`;
 
 export const trailingSlash = "always";
 
-export async function load({ params }) {
-  const privacyContent = await api(privacyEndpoint);
-  if (!privacyContent.attributes) {
-    throw error(500, {
-      message: `Privacy Page Error: ${error}`
+export async function load({ route }) {
+  const postsPageContent = await api(postsPageEndpoint);
+  const postsContent = await api(postsEndpoint);
+  if (!postsPageContent.attributes) {
+    // throw error(500, {
+    //   message: `Posts Page Error: ${error}`,
+    // });
+    console.error({
+      route: route.id,
+      endpoint: postsPageEndpoint,
+      error: postsPageContent.error,
+    });
+  }
+  if (!postsContent.length) {
+    // throw error(500, {
+    //   message: `Posts Error: ${error}`,
+    // });
+    console.error({
+      route,
+      endpoint: postsEndpoint,
+      error: postsPageContent.error,
     });
   }
   return {
-    ...privacyContent.attributes,
+    postsPageContent: { ...postsPageContent.attributes },
+    posts: [...postsContent],
   };
 }

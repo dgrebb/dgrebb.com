@@ -1,0 +1,135 @@
+.posts-grid {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  @apply self-center
+      grid
+      grid-cols-6
+      grid-rows-6
+      gap-2
+      pb-0
+      sm:gap-3
+      md:pb-16
+      list-none;
+  .post-item {
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    grid-column: span 6;
+    position: relative;
+    @apply text-center
+      rounded-xl
+      h-full
+      mb-0
+      list-none
+      backdrop-brightness-90;
+    &:hover,
+    &:focus {
+      @apply backdrop-brightness-125;
+    }
+    &:first-child {
+      grid-column: span 6;
+      grid-row: span 24;
+      height: 16rem;
+    }
+    &:first-child:last-child {
+      height: 20rem;
+      grid-row: span 6;
+    }
+    &:nth-child(n + 2) {
+      grid-row: span 24;
+    }
+    &:nth-child(n + 3) {
+      grid-row: span 15;
+    }
+    &:nth-child(n + 4) {
+      grid-row: span 10;
+    }
+    @screen sm {
+      &:first-child {
+        grid-column: span 4;
+        grid-row: span 12;
+        &:last-child {
+          grid-column: span 6;
+        }
+      }
+      &:nth-child(n + 2) {
+        grid-column: span 2;
+        grid-row: span 12;
+      }
+      &:nth-child(n + 3) {
+        grid-column: span 2;
+        grid-row: span 12;
+      }
+      &:nth-child(n + 4) {
+        grid-column: span 4;
+        grid-row: span 12;
+      }
+      &:nth-child(n + 5) {
+        grid-column: span 2;
+        grid-row: span 9;
+      }
+      &:nth-child(n + 6) {
+        grid-column: span 2;
+        grid-row: span 9;
+      }
+      &:last-child:nth-child(n + 2) {
+        grid-column: span 2;
+        grid-row: span 12;
+      }
+      &:last-child:nth-child(n + 3) {
+        grid-column: span 6;
+        grid-row: span 9;
+      }
+      &:last-child:nth-child(n + 4) {
+        grid-column: span 4;
+        grid-row: span 12;
+      }
+      &:last-child:nth-child(n + 5) {
+        grid-column: span 6;
+        grid-row: span 9;
+      }
+      &:last-child:nth-child(n + 6) {
+        grid-column: span 2;
+        grid-row: span 9;
+      }
+      &:last-child:nth-child(n + 7) {
+        grid-column: span 2;
+        grid-row: span 9;
+      }
+    }
+    .post-link {
+      display: block;
+      height: 100%;
+      width: 100%;
+      border: unset;
+      box-sizing: border-box;
+      overflow: hidden;
+      transition-property: background, border-color;
+      @apply dg--transition-effect
+        dg--photo-link-dark
+        dg--font-psbl
+        px-9
+        py-3
+        sm:py-6
+        md:py-9
+        flex
+        flex-col
+        rounded-xl
+        justify-center;
+    }
+  }
+}
+
+/* Theme Overrides */
+html.light-theme .posts-grid .post-link {
+  @apply dg--photo-link-light;
+}
+
+@media (prefers-color-scheme: light) {
+  .posts-grid .post-link {
+    @apply dg--photo-link-light;
+  }
+}

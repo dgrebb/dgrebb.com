@@ -1,15 +1,13 @@
-@import "../components/tw-components.css";
-@import "../components/utilities.css";
-
 .posts,
-.post,
+.post-header,
+.post-main,
 .privacy {
   @apply w-full
     sm:max-w-5xl
     transition-colors
     dg--transition-effect
-    opacity-95;;
-    line-height: 1.6;
+    opacity-95;
+  line-height: 1.6;
   h1,
   h2,
   h3,
@@ -94,46 +92,9 @@
   h1.title {
     text-align: center;
   }
-
-  .posts-list {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    @apply self-center
-      grid
-      grid-cols-3
-      auto-rows-max
-      gap-2
-      list-none;
-      li {
-        @apply text-center
-          flex
-          flex-col
-          justify-center
-          h-full
-          mb-0
-          border
-          list-none;
-        &:first-of-type {
-          @apply col-span-2
-            row-span-2;
-        }
-        a {
-          display: block;
-          height: 100%;
-          width: 100%;
-          @apply p-9
-            border-0
-            flex
-            flex-col
-            justify-center;
-          &:hover,
-          &:focus {
-            @apply bg-neutral-700;
-          }
-        }
-      }
+  .summary {
+    max-width: 77%;
+    margin: auto;
   }
 }
 

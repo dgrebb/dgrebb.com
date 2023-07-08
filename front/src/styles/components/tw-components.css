@@ -1,4 +1,3 @@
-@import "./utilities.css";
 @layer components {
   .dg--link-hover {
     @apply transition
@@ -11,21 +10,18 @@
   }
   .dg--btn-primary {
     @apply transition;
-    &:hover,
-    &:focus {
-    }
   }
   .dg--btn-secondary {
     @apply transition
       duration-150
       transform-gpu
       shadow-sm
-      scale-100
       inline-block
       text-sm
       border
       font-extralight
       drop-shadow-sm;
+    background-color: rgb(var(--background-end-rgb));
     border-bottom-color: rgb(var(--btn-secondary-highlight-rgb));
     &:hover,
     &:focus {
@@ -33,6 +29,47 @@
         shadow-md
         transform-gpu
         scale-105;
+    }
+  }
+  .dg--photo-vignette-light {
+    box-shadow: 0 0 33px rgba(var(--background-saturated), 0.18) inset;
+    border: 1px solid rgba(var(--foreground-rgb), 0.11);
+    overflow: hidden;
+    &:hover,
+    &:focus {
+      border-color: rgba(var(--foreground-rgb), 0.01)
+    }
+  }
+  .dg--photo-vignette-dark {
+    box-shadow: 0 0 200px rgba(var(--black),0.88) inset;
+    border: 1px solid rgba(var(--foreground-rgb-faded), 0.01);
+    overflow: hidden;
+    &:hover,
+    &:focus {
+      border-color: rgba(var(--foreground-rgb-faded), 0.01)
+    }
+  }
+  .dg--photo-link-light {
+    transition-property: background, color, text-shadow;
+    @apply dg--photo-vignette-light;
+    background: rgba(255,255,255, 0.77);
+    color: var(--black);
+    text-shadow: 0px 0px 12px rgba(var(--black), 0.2);
+    &:hover,
+    &:focus {
+      background: rgba(var(--white), 0.01);
+      color: rgb(var(--white));
+      text-shadow: 0px 0px 12px rgba(var(--black), 1);
+    }
+  }
+  .dg--photo-link-dark {
+    @apply dg--photo-vignette-dark;
+    background: rgba(var(--black), 0.77);
+    color: rgb(var(--white));
+    text-shadow: 0px 0px 23px rgb(var(--black));
+    &:hover,
+    &:focus {
+      background: rgba(var(--black), 0.11);
     }
   }
 }
