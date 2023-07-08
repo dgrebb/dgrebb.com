@@ -1,18 +1,6 @@
 <script>
   import IconUp from "~icons/icon-park-outline/up-c";
-  import { onMount } from 'svelte'
-
-  let scrollTop;
-
-  onMount(() => {
-    scrollTop = (e) => {
-      e.preventDefault();
-      console.log('scoro');
-      document.getElementById("header").scrollIntoView({
-        behavior: "smooth"
-      });
-    }
-  });
+  import { scrollTop } from "../_utils";
 </script>
 
 <a href="#header" on:click={scrollTop} class="scroll-top">
