@@ -16,10 +16,11 @@
     position: relative;
     grid-column: span 6;
     cursor: pointer;
-    box-shadow: inset 0 0 0 .03rem rgb(var(--black));
+    box-shadow: inset 0 0 1px rgb(var(--subdued-rgb)), 0 0 .3rem rgba(var(--black), 0.8);
     background-position: center top;
     background-size: cover;
     background-repeat: no-repeat;
+    z-index: 1;
     @apply mb-0
       h-full
       list-none
@@ -125,9 +126,15 @@
 }
 
 /* Theme Overrides */
-html.light-theme .posts-grid .post-link {
-  @apply dg--photo-link-light;
+html.light-theme .posts-grid {
+  .post-item {
+    box-shadow: inset 0 0 0;
+  }
+  .post-link {
+    @apply dg--photo-link-light;
+  }
 }
+  
 
 @media (prefers-color-scheme: light) {
   .posts-grid .post-link {
