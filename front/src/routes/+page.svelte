@@ -2,7 +2,6 @@
   import { PUBLIC_MEDIA_URL } from "$env/static/public";
   import SvelteMarkdown from 'svelte-markdown';
   import { MetaTags } from "svelte-meta-tags";
-  import Head from "../components/Head.svelte";
   import Image from "../components/Image.svelte";
   import Links from "../components/Links.svelte";
   import Link from "../components/markdown/Link.svelte";
@@ -45,11 +44,6 @@
     </section>
   {/if}
 </PageTransition>
-
-<Head>
-  <meta name="viewport" content={seo?.metaViewport || 'width=device-width, initial-scale=1'} />
-  <meta name="thumbnail" content={`${PUBLIC_MEDIA_URL}${image.url}`} />
-</Head>
 
 <MetaTags
   title={seo.metaTitle || 'Dan Grebb'}
