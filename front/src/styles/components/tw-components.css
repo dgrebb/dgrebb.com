@@ -46,11 +46,11 @@
     overflow: hidden;
     &:hover,
     &:focus {
-      border-color: rgba(var(--foreground-rgb-faded), 0.01);
+      border: black;
+      border-width: 0.5px;
     }
   }
   .dg--photo-link-light {
-    transition-property: background, color, text-shadow;
     @apply dg--photo-vignette-light;
     background: rgba(255, 255, 255, 0.77);
     color: var(--black);
@@ -58,18 +58,19 @@
     &:hover,
     &:focus {
       background: rgba(var(--white), 0.01);
-      color: rgb(var(--white));
+      color: white;
       text-shadow: 0px 0px 12px rgba(var(--black), 1);
     }
   }
   .dg--photo-link-dark {
     @apply dg--photo-vignette-dark;
     background: rgba(var(--black), 0.77);
-    color: rgb(var(--white));
-    text-shadow: 0px 0px 23px rgb(var(--black));
+    color: rgba(var(--white), 0.88);
     &:hover,
     &:focus {
-      background: rgba(var(--black), 0.11);
+      background: rgba(var(--white), 0.33);
+      color: rgba(0, 0, 0, 1);
+      text-shadow: 0px 0px 23px rgb(var(--white));
     }
   }
 }

@@ -19,6 +19,7 @@
       md:pt-3
       md:mb-7;
     color: rgb(var(--foreground-rgb));
+    letter-spacing: -0.6px;
     &:first-child {
       @apply pt-0;
     }
