@@ -1,10 +1,10 @@
 <script>
   import SvelteMarkdown from "svelte-markdown";
-  import Flourish from "../../layout/Flourish.svelte";
-  import Code from "../../components/markdown/Code.svelte";
-  import Link from "../../components/markdown/Link.svelte";
-  import ScrollTop from "../../layout/ScrollTop.svelte";
   import PageTransition from "../../components/PageTransition.svelte";
+  import Code from "../../components/content/Code.svelte";
+  import Link from "../../components/content/renderers/Link.svelte";
+  import Flourish from "../../layout/Flourish.svelte";
+  import ScrollTop from "../../layout/ScrollTop.svelte";
 
   export let data;
   const { title, details, updatedAt, pathname } = data;
