@@ -3,7 +3,7 @@
   import Flourish from "../../layout/Flourish.svelte";
   import PageTransition from "../../components/PageTransition.svelte";
   import SvelteMarkdown from "svelte-markdown";
-  import Link from "../../components/markdown/Link.svelte";
+  import Link from "../../components/content/renderers/Link.svelte";
 
   export let data;
   const { pathname } = data;

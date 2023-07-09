@@ -126,3 +126,7 @@ printDgMsg() {
 printDgBnr() {
     printDg "${bluebg}${BOLDYELLOW}${1}${NC}"
 }
+
+warning() {
+    $directory/_scripts/warning.sh
+}
