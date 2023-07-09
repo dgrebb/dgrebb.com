@@ -2,30 +2,52 @@
   display: block;
   position: relative;
   z-index: 1;
+  background-color: rgba(var(--background-saturated), 0.77);
   width: 100%;
   height: 400px;
+  &.hide {
+    height: 0;
+  }
   .hero {
     @apply rounded
-            shadow-md;
-    position: relative;
+      shadow-md;
+    position: absolute;
+    opacity: 1;
     z-index: 4;
+    transition: opacity 0.5s ease-in;
     background-position: center bottom;
     background-size: cover;
     background-repeat: no-repeat;
+    background-color: rgba(var(--background-saturated), 0.77);
     width: 100%;
     height: 400px;
     max-height: 100%;
     overflow: clip;
-    &.image-bottom img {
-      bottom: 0;
+    &.hero-thumbnail {
+      opacity: 1;
+      &::before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        backdrop-filter: blur(0.5rem);
+        content: " ";
+      }
+      &.loaded {
+        opacity: 0;
+      }
+    }
+    &.loaded {
+      z-index: 5;
     }
   }
   h1 {
-    position: relative;
-    top: -1.68rem;
+    position: absolute;
+    bottom: -3.3rem;
     left: 0.33rem;
     z-index: 5;
-    text-shadow: 0 0 3.3rem rgba(var(--background-saturated), 0.77);
+    text-shadow: 0 -0.11rem 1.5rem rgba(var(--background-saturated), 0.77);
   }
 }
 .post-main {

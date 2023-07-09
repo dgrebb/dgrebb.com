@@ -19,7 +19,6 @@
   $: ({ id: route } = $page?.route);
   $: if (browser) anchor = !window.location.pathname.includes("#");
   $: if (browser && !anchor && route) scrollTop();
-  $: console.log("🚀 ~ file: +layout.svelte:16 ~ route:", anchor)
 </script>
 
 <Flourish />
