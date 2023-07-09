@@ -3,7 +3,8 @@
   import SvelteMarkdown from "svelte-markdown";
   import Code from "../../../components/markdown/Code.svelte";
   import PageTransition from "../../../components/PageTransition.svelte";
-  import Link from "../../../components/markdown/Link.svelte";
+  import Code from "../../../components/content/Code.svelte";
+  import Link from "../../../components/content/renderers/Link.svelte";
   import Flourish from "../../../layout/Flourish.svelte";
 
   export let data;
@@ -26,6 +27,7 @@
 <PageTransition {pathname}>
   <section class="post-header">
     <Flourish />
+    <a id="main">Main Content</a>
     {#if heroImage}
       <div
         class="hero image-bottom"
@@ -37,7 +39,6 @@
     <h1 class="post-title">{title}</h1>
   </section>
   <section class="post-main">
-    <a id="main">{title}</a>
     <article class="post-article">
       {#if content.length}
         {#each content as c}
