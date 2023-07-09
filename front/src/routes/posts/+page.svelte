@@ -1,10 +1,11 @@
 <script>
-  import { onMount } from "svelte";
   import { PUBLIC_MEDIA_URL } from "$env/static/public";
-  import Flourish from "../../layout/Flourish.svelte";
-  import PageTransition from "../../components/PageTransition.svelte";
+  import { onMount } from "svelte";
   import SvelteMarkdown from "svelte-markdown";
+  import Head from "../../components/Head.svelte";
+  import PageTransition from "../../components/PageTransition.svelte";
   import Link from "../../components/content/renderers/Link.svelte";
+  import Flourish from "../../layout/Flourish.svelte";
 
   export let data;
   let mounted = false;
@@ -64,10 +65,12 @@
   </section>
 </PageTransition>
 
-<svelte:head>
+<Head>
   {#if mounted}
     {#each posts as post}
-      <link rel="preload" as="image" href={post.image} />
+      {#if post.image}
+        <link rel="preload" as="image" href={post.image} />
+      {/if}
     {/each}
   {/if}
-</svelte:head>
+</Head>
