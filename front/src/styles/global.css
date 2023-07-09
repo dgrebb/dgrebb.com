@@ -57,9 +57,13 @@ html {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-  height: fit-content;
-  overflow: clip;
+  min-height: 100%;
   scroll-behavior: smooth;
+  overflow: clip;
+  @media (hover: none), (hover: on-demand), (-moz-touch-enabled: 1), (pointer:coarse) {
+    scrollbar-gutter: stable;
+    overflow: auto;
+  }
 }
 
 body {
@@ -77,6 +81,10 @@ body {
   overflow: overlay;
   scroll-behavior: smooth;
   scrollbar-gutter: stable both-edges;
+  @media (hover: none), (hover: on-demand), (-moz-touch-enabled: 1), (pointer:coarse) {
+    scrollbar-gutter: auto;
+    overflow: visible;
+  }
   .header,
   .main,
   .main .flourish,
@@ -88,9 +96,9 @@ body {
   }
   &.ready {
     > div > .flourish {
+      transform: translateY(-100%);
       transition: transform 0.5s;
       transition-delay: 2s;
-      transform: translateY(-100%);
       box-shadow: none !important;
       @apply shadow-none;
     }
@@ -109,9 +117,9 @@ body {
     &.animating {
       overflow: hidden;
       > div > .flourish {
+        transform: translateY(0);
         transition: transform 0s;
         transition-delay: 0s;
-        transform: translateY(0);
         box-shadow: none !important;
         @apply shadow-none;
       }
@@ -122,8 +130,8 @@ body {
         transition-opacity;
       }
       .main .transition-container:last-of-type {
-        height: 0;
         flex-grow: 0;
+        height: 0;
       }
     }
   }
@@ -132,21 +140,21 @@ body {
 .flourish {
   @apply h-2
     shadow-sm;
-  background-color: rgb(var(--foreground-rgb));
-  left: 0;
   position: fixed;
-  right: 0;
   top: 0;
+  right: 0;
+  left: 0;
   z-index: 1;
+  background-color: rgb(var(--foreground-rgb));
 }
 
 .transition-container {
-  width: 100%;
   display: flex;
   flex-grow: 1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .header,
@@ -203,9 +211,9 @@ body {
       w-[120px]
       rounded-full
       shadow-lg;
-    border: 1px solid rgba(var(--foreground-rgb), 0.5);
     position: relative;
     z-index: 3;
+    border: 1px solid rgba(var(--foreground-rgb), 0.5);
   }
   h1.headline {
     transition: font-size;
@@ -227,21 +235,21 @@ body {
 .footer,
 .not-found {
   a {
-    border-bottom: 1px solid rgb(var(--foreground-rgb));
-    color: rgba(var(--foreground-rgb), 0.7);
-    padding-bottom: 0.125rem;
-    transition-property: color, border-color;
-    transition-duration: 500ms;
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     transform-style: preserve-3d;
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     backface-visibility: hidden;
+    transition-duration: 500ms;
+    transition-property: color, border-color;
+    border-bottom: 1px solid rgb(var(--foreground-rgb));
+    padding-bottom: 0.125rem;
+    color: rgba(var(--foreground-rgb), 0.7);
     &:hover,
     &:focus {
-      color: rgba(var(--highlight-rgb), 1.0);
       border-color: rgb(var(--highlight-rgb));
+      color: rgba(var(--highlight-rgb), 1);
     }
   }
 }
@@ -304,9 +312,9 @@ body {
 }
 
 .image-loader {
-  align-items: center;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: auto;
 }
 
@@ -319,8 +327,8 @@ body {
     transition
     dark:brightness-50
     md:hidden;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   &:hover,
   &:focus {
     @apply brightness-100
