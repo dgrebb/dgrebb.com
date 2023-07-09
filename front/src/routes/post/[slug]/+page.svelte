@@ -1,17 +1,18 @@
 <script>
   import { PUBLIC_MEDIA_URL } from "$env/static/public";
+  import slugger from "slugger";
   import SvelteMarkdown from "svelte-markdown";
   import PageTransition from "../../../components/PageTransition.svelte";
   import Code from "../../../components/content/Code.svelte";
   import TableOfContents from "../../../components/content/TableOfContents.svelte";
-  import PostHeading from "../../../components/content/renderers/PostHeading.svelte";
   import Link from "../../../components/content/renderers/Link.svelte";
+  import PostHeading from "../../../components/content/renderers/PostHeading.svelte";
   import Flourish from "../../../layout/Flourish.svelte";
-  import slugger from "slugger";
 
   export let data;
 
-  let toc = [];
+  let toc;
+  $: if (data) toc = [];
   function filterTokens(event) {
     const tokens = event.detail.tokens;
     const headings = tokens.filter((t) => t.type === "heading");
