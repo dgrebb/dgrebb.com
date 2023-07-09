@@ -4,7 +4,7 @@
   import { MetaTags } from "svelte-meta-tags";
   import Image from "../components/Image.svelte";
   import Links from "../components/Links.svelte";
-  import Link from "../components/markdown/Link.svelte";
+  import Link from "../components/content/renderers/Link.svelte";
   import Flourish from "../layout/Flourish.svelte";
   import PageTransition from "../components/PageTransition.svelte";
 
