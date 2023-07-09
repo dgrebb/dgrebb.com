@@ -11,8 +11,15 @@
   export let data;
   const { navHeading, navItems, copyright, copyleft, seo } = data;
 
+  /**
+   * Checks if the browser path includes an
+   * anchor tag and prevents scrollTop animation
+   */
+  let anchor = true;
   $: ({ id: route } = $page?.route);
-  $: if (browser && route) scrollTop();
+  $: if (browser) anchor = !window.location.pathname.includes("#");
+  $: if (browser && !anchor && route) scrollTop();
+  $: console.log("🚀 ~ file: +layout.svelte:16 ~ route:", anchor)
 </script>
 
 <Flourish />
