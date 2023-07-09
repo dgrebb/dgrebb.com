@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.5.1] - 2023-07-09
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Fixes viewport meta on subroutes
+
 ## [2.5.0] - 2023-07-02
 
 ### 💡 Features
