@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from "svelte";
   import { PUBLIC_MEDIA_URL } from "$env/static/public";
   import slugger from "slugger";
   import SvelteMarkdown from "svelte-markdown";
@@ -34,7 +35,10 @@
   $: ({ pathname, post } = data);
   $: ({ title } = post);
   $: hero = post.hero?.data?.attributes || false;
-  $: heroImage = hero?.formats?.large?.url
+  $: heroThumb = hero?.formats?.thumbnail?.url
+    ? `${PUBLIC_MEDIA_URL}${hero.formats.thumbnail.url}`
+    : false;
+  $: heroImage = hero?.url
     ? `${PUBLIC_MEDIA_URL}${hero.formats.large.url}`
     : false;
   $: position = post.position || "center center";
@@ -45,17 +49,46 @@
   $: contents = [...toc];
   $: related = post.related?.data || false;
   $: categories = post.categories?.data || false;
+
+  let loaded = false;
+  let failed = false;
+  let loading = true;
+
+  onMount(() => {
+    if (heroImage) {
+      const img = new Image();
+      img.src = heroImage;
+      loading = true;
+
+      img.onload = () => {
+        loading = false;
+        loaded = true;
+      };
+      img.onerror = () => {
+        loading = false;
+        failed = true;
+      };
+    }
+  });
 </script>
 
 <PageTransition {pathname}>
-  <section class="post-header">
+  <section class="post-header {heroImage ? 'show' : 'hide'}">
     <Flourish />
     <a id="main">Main Content</a>
     {#if heroImage}
+      {#if loaded}
+        <div
+          class="hero loaded"
+          style={heroImage
+            ? `background-image: url('${heroImage}'); background-position: ${position};`
+            : false}
+        />
+      {/if}
       <div
-        class="hero image-bottom"
-        style={heroImage
-          ? `background-image: url('${heroImage}'); background-position: ${position};`
+        class="hero hero-thumbnail {loaded ? 'loaded' : null}"
+        style={heroThumb
+          ? `background-image: url('${heroThumb}'); background-position: ${position};`
           : false}
       />
     {/if}
@@ -108,3 +141,13 @@
     </aside>
   </section>
 </PageTransition>
+
+{#if failed}
+  <script>
+    Sentry.captureMessage("Image Not Found", {
+      image: src,
+      page: document.location.pathname,
+      { hostname }: document.location,
+    });
+  </script>
+{/if}
