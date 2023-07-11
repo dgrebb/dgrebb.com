@@ -29,8 +29,10 @@
       ? "stg.dgrebb.com"
       : "local.dgrebb.com";
 
+  const apiHost = "https://p.dgrebb.com";
+
   let mounted = false;
-  $: theme = "unknown";
+  let theme = "unknown";
 
   onMount(() => {
     mounted = true;
@@ -50,6 +52,7 @@
 {#if mounted}
   <PlausibleAnalytics
     {domain}
+    {apiHost}
     enabled={true}
     outboundLinks={true}
     pageviewprops={{ theme }}
