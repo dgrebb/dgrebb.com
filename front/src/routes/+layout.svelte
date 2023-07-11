@@ -13,21 +13,16 @@
   export let data;
   const { navHeading, navItems, copyright, copyleft, seo } = data;
 
-  /**
-   * Checks if the browser path includes an
-   * anchor tag and prevents scrollTop animation
-   */
   let anchor = true;
   $: ({ id: route } = $page?.route);
   $: if (browser) anchor = !window.location.pathname.includes("#");
   $: if (browser && !anchor && route) scrollTop();
 
-  const domain =
-    PUBLIC_ENV === "production"
-      ? "dgrebb.com"
-      : PUBLIC_ENV === "staging"
-      ? "stg.dgrebb.com"
-      : "local.dgrebb.com";
+  const domain = {
+    production: "dgrebb.com",
+    staging: "stg.dgrebb.com",
+    local: "local.dgrebb.com"
+  }[PUBLIC_ENV] || "local.dgrebb.com";
 
   const apiHost = "https://p.dgrebb.com";
 
@@ -53,8 +48,8 @@
   <PlausibleAnalytics
     {domain}
     {apiHost}
-    enabled={true}
-    outboundLinks={true}
+    enabled
+    outboundLinks
     pageviewprops={{ theme }}
   />
 {/if}
