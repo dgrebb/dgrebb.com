@@ -1,7 +1,9 @@
 <script>
-  import { page } from "$app/stores";
   import { browser } from "$app/environment";
+  import { page } from "$app/stores";
+  import { PUBLIC_ENV } from "$env/static/public";
   import { PlausibleAnalytics } from "@accuser/svelte-plausible-analytics";
+  import { onMount } from "svelte";
   import Head from "../components/Head.svelte";
   import Flourish from "../layout/Flourish.svelte";
   import Footer from "../layout/Footer.svelte";
@@ -19,6 +21,23 @@
   $: ({ id: route } = $page?.route);
   $: if (browser) anchor = !window.location.pathname.includes("#");
   $: if (browser && !anchor && route) scrollTop();
+
+  const domain =
+    PUBLIC_ENV === "production"
+      ? "dgrebb.com"
+      : PUBLIC_ENV === "staging"
+      ? "stg.dgrebb.com"
+      : "local.dgrebb.com";
+
+  let mounted = false;
+  $: theme = "unknown";
+
+  onMount(() => {
+    mounted = true;
+    theme = document.querySelector("html").classList.contains("dark-theme")
+      ? "dark"
+      : "light";
+  });
 </script>
 
 <Flourish />
@@ -28,7 +47,14 @@
 </main>
 <slot name="scroll-top" />
 <Footer {copyleft} {copyright} />
-<PlausibleAnalytics domain="dgrebb.com" enabled={true} outboundLinks={true} />
+{#if mounted}
+  <PlausibleAnalytics
+    {domain}
+    enabled={true}
+    outboundLinks={true}
+    pageviewprops={{ theme }}
+  />
+{/if}
 
 <Head>
   <meta

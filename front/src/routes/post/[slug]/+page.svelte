@@ -1,7 +1,8 @@
 <script>
-  import { onMount } from "svelte";
   import { PUBLIC_MEDIA_URL } from "$env/static/public";
+  import { plausibleClicks } from "$lib/clicktracking.js";
   import slugger from "slugger";
+  import { onMount } from "svelte";
   import SvelteMarkdown from "svelte-markdown";
   import PageTransition from "../../../components/PageTransition.svelte";
   import Code from "../../../components/content/Code.svelte";
@@ -70,6 +71,8 @@
       };
     }
   });
+
+  const { categoryClick, relatedClick } = plausibleClicks;
 </script>
 
 <PageTransition {pathname}>
@@ -121,7 +124,9 @@
         <ul>
           {#each categories as category}
             <li>
-              <a href="/posts/category/{category.attributes.slug}"
+              <a
+                on:click={categoryClick(pathname, category.attributes.name)}
+                href="/posts/category/{category.attributes.slug}"
                 >{category.attributes.name}</a
               >
             </li>
@@ -133,7 +138,10 @@
         <ul>
           {#each related as post}
             <li>
-              <a href="/post/{post.attributes.slug}">{post.attributes.title}</a>
+              <a
+                on:click={relatedClick(pathname, post.attributes.title)}
+                href="/post/{post.attributes.slug}">{post.attributes.title}</a
+              >
             </li>
           {/each}
         </ul>
