@@ -1,7 +1,9 @@
 <script>
-  import { page } from "$app/stores";
   import { browser } from "$app/environment";
+  import { page } from "$app/stores";
+  import { PUBLIC_ENV } from "$env/static/public";
   import { PlausibleAnalytics } from "@accuser/svelte-plausible-analytics";
+  import { onMount } from "svelte";
   import Head from "../components/Head.svelte";
   import Flourish from "../layout/Flourish.svelte";
   import Footer from "../layout/Footer.svelte";
@@ -11,14 +13,28 @@
   export let data;
   const { navHeading, navItems, copyright, copyleft, seo } = data;
 
-  /**
-   * Checks if the browser path includes an
-   * anchor tag and prevents scrollTop animation
-   */
   let anchor = true;
   $: ({ id: route } = $page?.route);
   $: if (browser) anchor = !window.location.pathname.includes("#");
   $: if (browser && !anchor && route) scrollTop();
+
+  const domain = {
+    production: "dgrebb.com",
+    staging: "stg.dgrebb.com",
+    local: "local.dgrebb.com"
+  }[PUBLIC_ENV] || "local.dgrebb.com";
+
+  const apiHost = "https://p.dgrebb.com";
+
+  let mounted = false;
+  let theme = "unknown";
+
+  onMount(() => {
+    mounted = true;
+    theme = document.querySelector("html").classList.contains("dark-theme")
+      ? "dark"
+      : "light";
+  });
 </script>
 
 <Flourish />
@@ -28,7 +44,15 @@
 </main>
 <slot name="scroll-top" />
 <Footer {copyleft} {copyright} />
-<PlausibleAnalytics domain="dgrebb.com" enabled={true} outboundLinks={true} />
+{#if mounted}
+  <PlausibleAnalytics
+    {domain}
+    {apiHost}
+    enabled
+    outboundLinks
+    pageviewprops={{ theme }}
+  />
+{/if}
 
 <Head>
   <meta
