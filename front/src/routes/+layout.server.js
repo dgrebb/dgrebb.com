@@ -1,30 +1,31 @@
 import { error } from "@sveltejs/kit";
 import api from "../api";
 import {
-  PUBLIC_API_URL,
-  PUBLIC_API_PATH_NAVIGATION,
-  PUBLIC_API_PATH_FOOTER,
+  PUBLIC_API_URL as URL,
+  PUBLIC_API_PATH_NAVIGATION as NAV,
+  PUBLIC_API_PATH_FOOTER as FOOT,
 } from "$env/static/public";
 
 export const prerender = true;
 
-const navigationEndpoint = `${PUBLIC_API_URL}${PUBLIC_API_PATH_NAVIGATION}`;
-const footerEndpoint = `${PUBLIC_API_URL}${PUBLIC_API_PATH_FOOTER}`;
+const navigationEndpoint = URL + NAV;
+const footerEndpoint = URL + FOOT;
 
-export async function load({ url }) {
-  const navigationContent = await api(navigationEndpoint);
-  const footerContent = await api(footerEndpoint);
-  const { pathname } = url;
+export async function load({ params: { pathname } }) {
+  const [navigationContent, footerContent] = await Promise.all([
+    api(navigationEndpoint),
+    api(footerEndpoint),
+  ]);
 
-  if (!navigationContent.attributes || !footerContent.attributes) {
+  if (!navigationContent || !footerContent) {
     throw error(500, {
       message: "Layout Error",
     });
   }
 
   return {
-    ...navigationContent.attributes,
-    ...footerContent.attributes,
+    ...navigationContent,
+    ...footerContent,
     pathname,
   };
 }

@@ -8,7 +8,6 @@ export default async function content(endpoint) {
   var requestOptions = {
     method: "GET",
     headers,
-    // ...cache,
     redirect: "follow",
   };
 
@@ -30,7 +29,9 @@ export default async function content(endpoint) {
       .then(checkStatus)
       .then(parseJSON);
 
-    return content.data;
+    return Array.isArray(content?.data)
+      ? content.data || []
+      : content.data.attributes || {};
   } catch (error) {
     return { error };
   }
