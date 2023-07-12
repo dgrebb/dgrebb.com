@@ -1,11 +1,11 @@
 <script>
-  import { plausibleClicks } from '$lib/clicktracking.js';
+  import { plausibleClicks } from "$lib/clicktracking.js";
   const { tocClick } = plausibleClicks;
   export let contents;
 </script>
 
 <ul class="toc">
-  {#each contents as item}
-    <li><a on:click={tocClick(item.text)} href="{item.link}">{item.text}</a></li>
+  {#each Object.entries(contents) as [id, { text, link }], i (id)}
+    <li><a on:click={tocClick(text)} href={link}>{text}</a></li>
   {/each}
 </ul>
