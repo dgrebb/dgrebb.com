@@ -1,5 +1,5 @@
 <script>
-  import { plausibleClicks } from "$lib/clicktracking.js";
+  import { plausibleClicks } from "@utils/clicktracking.js";
   const { tocClick } = plausibleClicks;
   export let contents;
 </script>

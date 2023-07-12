@@ -1,6 +1,9 @@
 import { error } from "@sveltejs/kit";
-import api from "../api";
-import { PUBLIC_API_URL as URL, PUBLIC_API_PATH_HOME as HOME } from "$env/static/public";
+import api from "@api";
+import {
+  PUBLIC_API_URL as URL,
+  PUBLIC_API_PATH_HOME as HOME,
+} from "$env/static/public";
 
 const endpoint = URL + HOME;
 

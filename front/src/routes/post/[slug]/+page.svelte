@@ -1,15 +1,15 @@
 <script>
   import { PUBLIC_MEDIA_URL as M } from "$env/static/public";
-  import { plausibleClicks } from "$lib/clicktracking.js";
+  import { plausibleClicks } from "@utils/clicktracking.js";
   import slugger from "slugger";
   import { onMount } from "svelte";
   import SvelteMarkdown from "svelte-markdown";
-  import PageTransition from "../../../components/PageTransition.svelte";
-  import Code from "../../../components/content/Code.svelte";
-  import TableOfContents from "../../../components/content/TableOfContents.svelte";
-  import Link from "../../../components/content/renderers/Link.svelte";
-  import PostHeading from "../../../components/content/renderers/PostHeading.svelte";
-  import Flourish from "../../../layout/Flourish.svelte";
+  import PageTransition from "@components/PageTransition.svelte";
+  import Code from "@components/content/Code.svelte";
+  import TableOfContents from "@components/content/TableOfContents.svelte";
+  import Link from "@components/content/renderers/Link.svelte";
+  import PostHeading from "@components/content/renderers/PostHeading.svelte";
+  import Flourish from "@layout/Flourish.svelte";
 
   export let data;
 
@@ -123,7 +123,7 @@
             <li>
               <a
                 on:click={() => categoryClick(pathname, name)}
-                href="/posts/category/{slug}">{name}</a
+                href="/posts/category/{slug}/">{name}</a
               >
             </li>
           {/each}
@@ -136,7 +136,7 @@
             <li>
               <a
                 on:click={() => relatedClick(pathname, title)}
-                href="/post/{slug}">{title}</a
+                href="/post/{slug}/">{title}</a
               >
             </li>
           {/each}
