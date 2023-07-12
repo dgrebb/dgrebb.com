@@ -4,6 +4,7 @@
   import { PUBLIC_ENV } from "$env/static/public";
   import { PlausibleAnalytics } from "@accuser/svelte-plausible-analytics";
   import { onMount } from "svelte";
+  import { scrollTop } from "../_utils/index.js";
   import Head from "../components/Head.svelte";
   import Flourish from "../layout/Flourish.svelte";
   import Footer from "../layout/Footer.svelte";
@@ -15,14 +16,15 @@
 
   let anchor = true;
   $: ({ id: route } = $page?.route);
-  $: if (browser) anchor = !window.location.pathname.includes("#");
+  $: if (browser) anchor = window.location.pathname.hash || false;
   $: if (browser && !anchor && route) scrollTop();
 
-  const domain = {
-    production: "dgrebb.com",
-    staging: "stg.dgrebb.com",
-    local: "local.dgrebb.com"
-  }[PUBLIC_ENV] || "local.dgrebb.com";
+  const domain =
+    {
+      production: "dgrebb.com",
+      staging: "stg.dgrebb.com",
+      local: "local.dgrebb.com",
+    }[PUBLIC_ENV] || "local.dgrebb.com";
 
   const apiHost = "https://p.dgrebb.com";
 

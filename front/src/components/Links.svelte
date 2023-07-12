@@ -31,19 +31,12 @@
 
   export let links;
 
-  let linkMap = [];
-  links.map((link) => {
-    const { title, url, icon } = link;
-    linkMap.push(
-      {
-        title,
-        url,
-        icon: `Icon${icon}`,
-        linkClass: icon?.toLowerCase() || ""
-      }
-    )
-  });
-
+  let linkMap = links.map(({ title, url, icon }) => ({
+    title,
+    url,
+    icon: icons[`Icon${icon}`],
+    linkClass: icon?.toLowerCase() || "",
+  }));
 </script>
 
 <ul
@@ -51,16 +44,16 @@
   aria-label="Links to Dan Grebb on The Internet"
   class="link-list"
 >
-  {#each linkMap as link}
+  {#each linkMap as { url, title, linkClass, icon }, i}
     <li class="link">
       <a
-        href={link.url}
-        title={link.title}
+        href={url}
+        {title}
         target="_blank"
         rel="noopener noreferrer"
-        class={`${link.linkClass}-icon`}
+        class={`${linkClass}-icon`}
       >
-        <svelte:component this={icons[link.icon ? link.icon : IconLink]} />
+        <svelte:component this={icon || IconLink} />
       </a>
     </li>
   {/each}
