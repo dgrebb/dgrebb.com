@@ -29,10 +29,10 @@ resource "aws_s3_object" "wonka" {
 
 resource "aws_s3_object" "notfound_html" {
   bucket       = var.bucket.id
-  key          = "404.html"
-  source       = "${path.module}/files/404.html"
+  key          = "404/index.html"
+  source       = "${path.module}/files/404/index.html"
   content_type = "text/html"
-  etag         = filemd5("${path.module}/files/404.html")
+  etag         = filemd5("${path.module}/files/404/index.html")
 }
 
 resource "aws_s3_object" "notfound_img" {

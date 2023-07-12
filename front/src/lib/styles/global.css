@@ -58,11 +58,14 @@ html {
     )
     rgb(var(--background-start-rgb));
   min-height: 100%;
-  scroll-behavior: smooth;
   overflow: clip;
-  @media (hover: none), (hover: on-demand), (-moz-touch-enabled: 1), (pointer:coarse) {
-    scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+  @media (hover: none),
+    (hover: on-demand),
+    (-moz-touch-enabled: 1),
+    (pointer: coarse) {
     overflow: auto;
+    scrollbar-gutter: stable;
   }
 }
 
@@ -75,15 +78,18 @@ body {
     text-base
     transition-colors
     md:text-lg;
-  color: rgb(var(--foreground-rgb));
   height: 100vh;
   min-height: 100vh;
   overflow: overlay;
   scroll-behavior: smooth;
   scrollbar-gutter: stable both-edges;
-  @media (hover: none), (hover: on-demand), (-moz-touch-enabled: 1), (pointer:coarse) {
-    scrollbar-gutter: auto;
+  color: rgb(var(--foreground-rgb));
+  @media (hover: none),
+    (hover: on-demand),
+    (-moz-touch-enabled: 1),
+    (pointer: coarse) {
     overflow: visible;
+    scrollbar-gutter: auto;
   }
   .header,
   .main,
@@ -108,11 +114,14 @@ body {
     .footer {
       opacity: 1;
     }
-    .main section,
-    .footer {
+    .main section {
       opacity: 1;
       transition: opacity;
       @apply dg--transition-effect;
+    }
+    .footer,
+    .scroll-top {
+      transition: opacity 0.3s;
     }
     &.animating {
       overflow: hidden;
@@ -123,11 +132,14 @@ body {
         box-shadow: none !important;
         @apply shadow-none;
       }
-      .main section,
-      .footer {
+      .main section {
         @apply dg--transition-effect
         opacity-0
         transition-opacity;
+      }
+      .footer,
+      .scroll-top {
+        opacity: 0;
       }
       .main .transition-container:last-of-type {
         flex-grow: 0;
