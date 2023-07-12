@@ -122,12 +122,11 @@
       {#if categories.length}
         <h2>Categories</h2>
         <ul>
-          {#each categories as category}
+          {#each Object.entries(categories) as [id, { attributes: { name, slug } }], i (id)}
             <li>
               <a
-                on:click={categoryClick(pathname, category.attributes.name)}
-                href="/posts/category/{category.attributes.slug}"
-                >{category.attributes.name}</a
+                on:click={categoryClick(pathname, name)}
+                href="/posts/category/{slug}">{name}</a
               >
             </li>
           {/each}
@@ -136,11 +135,10 @@
       {#if related.length}
         <h2>Related Posts</h2>
         <ul>
-          {#each related as post}
+          {#each Object.entries(related) as [id, { attributes: { title, slug } }], i (id)}
             <li>
-              <a
-                on:click={relatedClick(pathname, post.attributes.title)}
-                href="/post/{post.attributes.slug}">{post.attributes.title}</a
+              <a on:click={relatedClick(pathname, title)} href="/post/{slug}"
+                >{title}</a
               >
             </li>
           {/each}

@@ -49,15 +49,13 @@
       <SvelteMarkdown renderers={{ link: Link }} source={description} />
     </div>
     <ul class="posts-grid">
-      {#each posts as post}
+      {#each Object.entries(posts) as [id, { lazyImage, slug, title }], i (id)}
         <li
           class="post-item"
-          style={post.lazyImage
-            ? `background-image: url('${post.lazyImage}');`
-            : null}
+          style={lazyImage ? `background-image: url('${lazyImage}');` : null}
         >
-          <a href={`/post/${post.slug}`} class="post-link">
-            {post.title}
+          <a href={`/post/${slug}`} class="post-link">
+            {title}
           </a>
         </li>
       {/each}

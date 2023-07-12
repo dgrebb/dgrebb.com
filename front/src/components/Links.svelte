@@ -12,7 +12,7 @@
   import IconGoodreads from "~icons/ph/goodreads-logo-fill";
   import IconPinboard from "~icons/typcn/pin-outline";
   import IconLink from "~icons/mdi/external-link";
-  
+
   const icons = {
     IconCatchafire,
     IconGitHub,
@@ -27,23 +27,20 @@
     IconGoodreads,
     IconPinboard,
     IconLink,
-  }
+  };
 
   export let links;
 
   let linkMap = [];
   links.map((link) => {
     const { title, url, icon } = link;
-    linkMap.push(
-      {
-        title,
-        url,
-        icon: `Icon${icon}`,
-        linkClass: icon?.toLowerCase() || ""
-      }
-    )
+    linkMap.push({
+      title,
+      url,
+      icon: `Icon${icon}`,
+      linkClass: icon?.toLowerCase() || "",
+    });
   });
-
 </script>
 
 <ul
@@ -51,16 +48,16 @@
   aria-label="Links to Dan Grebb on The Internet"
   class="link-list"
 >
-  {#each linkMap as link}
+  {#each Object.entries(linkMap) as [id, { url, title, linkClass, icon }], i (id)}
     <li class="link">
       <a
-        href={link.url}
-        title={link.title}
+        href={url}
+        {title}
         target="_blank"
         rel="noopener noreferrer"
-        class={`${link.linkClass}-icon`}
+        class={`${linkClass}-icon`}
       >
-        <svelte:component this={icons[link.icon ? link.icon : IconLink]} />
+        <svelte:component this={icons[icon ? icon : IconLink]} />
       </a>
     </li>
   {/each}
