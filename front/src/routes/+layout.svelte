@@ -4,20 +4,20 @@
   import { PUBLIC_ENV } from "$env/static/public";
   import { PlausibleAnalytics } from "@accuser/svelte-plausible-analytics";
   import { onMount } from "svelte";
-  import { scrollTop } from "../_utils/index.js";
-  import Head from "../components/Head.svelte";
-  import Flourish from "../layout/Flourish.svelte";
-  import Footer from "../layout/Footer.svelte";
-  import Header from "../layout/Header.svelte";
-  import "../styles/global.css";
+  import { scrollTop } from "@utils";
+  import Head from "@components/Head.svelte";
+  import Flourish from "@layout/Flourish.svelte";
+  import Footer from "@layout/Footer.svelte";
+  import Header from "@layout/Header.svelte";
+  import "@styles/global.css";
 
   export let data;
   const { navHeading, navItems, copyright, copyleft, seo } = data;
 
   let anchor = true;
   $: ({ id: route } = $page?.route);
-  $: if (browser) anchor = window.location.pathname.hash || false;
-  $: if (browser && !anchor && route) scrollTop();
+  $: if (browser) anchor = window.location.hash || false;
+  $: if (browser && route && !anchor) scrollTop();
 
   const domain =
     {

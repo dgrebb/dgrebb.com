@@ -1,3 +1,4 @@
+import path from "path";
 import adapter from "@sveltejs/adapter-static";
 import { vitePreprocess } from "@sveltejs/kit/vite";
 
@@ -11,6 +12,13 @@ const config = {
       precompress: true,
       strict: true,
     }),
+    alias: {
+      "@api": path.resolve("./src/lib/api"),
+      "@components": path.resolve("./src/lib/components"),
+      "@layout": path.resolve("./src/lib/layout"),
+      "@styles": path.resolve("./src/lib/styles"),
+      "@utils": path.resolve("./src/lib/_utils"),
+    },
     prerender: {
       handleHttpError: ({ path, referrer, message }) => {
         if (path === "/404" && referrer === "/privacy/") {

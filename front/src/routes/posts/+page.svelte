@@ -1,38 +1,36 @@
 <script>
-  import { PUBLIC_MEDIA_URL } from "$env/static/public";
+  import { PUBLIC_MEDIA_URL as M } from "$env/static/public";
   import { onMount } from "svelte";
   import SvelteMarkdown from "svelte-markdown";
-  import Head from "../../components/Head.svelte";
-  import PageTransition from "../../components/PageTransition.svelte";
-  import Link from "../../components/content/renderers/Link.svelte";
-  import Flourish from "../../layout/Flourish.svelte";
+  import Head from "@components/Head.svelte";
+  import PageTransition from "@components/PageTransition.svelte";
+  import Link from "@components/content/renderers/Link.svelte";
+  import Flourish from "@layout/Flourish.svelte";
 
   export let data;
   let mounted = false;
-  const { pathname } = data;
-  let image,
-    thumbnail,
-    seo = false;
-  const { headline, description } = data.postsPageContent;
-  seo = data?.postsPageContent?.seo;
-  const posts = [];
-
-  data.posts.map((post) => {
-    const { title, slug, hero } = post.attributes;
-
+  const {
+    pathname,
+    page,
+    page: { headline, description },
+    posts,
+  } = data;
+  let seo = page?.seo;
+  const gridItems = posts.map(({ attributes: post }) => {
+    const { title, slug, hero } = post;
     const heroImages = hero?.data?.attributes;
     const full = heroImages?.url || false;
-    const { thumbnail } = heroImages?.formats || false;
-    const image = full ? `${PUBLIC_MEDIA_URL}${full.url}` : false;
-    const lazyImage = thumbnail ? `${PUBLIC_MEDIA_URL}${thumbnail.url}` : false;
+    const thumbnail = heroImages?.formats?.thumbnail?.url || false;
+    const image = full ? M + full : false;
+    const lazyImage = thumbnail ? M + thumbnail : false;
 
-    posts.push({
+    return {
       title,
       slug,
       seo,
       image,
       lazyImage,
-    });
+    };
   });
 
   onMount(() => {
@@ -49,12 +47,12 @@
       <SvelteMarkdown renderers={{ link: Link }} source={description} />
     </div>
     <ul class="posts-grid">
-      {#each Object.entries(posts) as [id, { lazyImage, slug, title }], i (id)}
+      {#each gridItems as { lazyImage, slug, title }, i (slug)}
         <li
           class="post-item"
-          style={lazyImage ? `background-image: url('${lazyImage}');` : null}
+          style={lazyImage && `background-image: url('${lazyImage}');`}
         >
-          <a href={`/post/${slug}`} class="post-link">
+          <a href="/post/{slug}/" class="post-link">
             {title}
           </a>
         </li>
@@ -62,12 +60,11 @@
     </ul>
   </section>
 </PageTransition>
-
 <Head>
   {#if mounted}
-    {#each posts as post}
-      {#if post.image}
-        <link rel="preload" as="image" href={post.image} />
+    {#each gridItems as { image }}
+      {#if image}
+        <link rel="preload" as="image" href={image} />
       {/if}
     {/each}
   {/if}

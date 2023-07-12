@@ -27,5 +27,6 @@ export async function handleError({ error, event }) {
   return {
     message: "Server error!",
     errorId,
+    event,
   };
 }

@@ -1,5 +1,5 @@
 <script>
-  import { plausibleClicks } from "$lib/clicktracking.js";
+  import { plausibleClicks } from "@utils/clicktracking.js";
   const { tocClick } = plausibleClicks;
   export let contents;
 </script>
@@ -7,7 +7,11 @@
 <ul class="toc">
   {#each Object.values(contents) as { text, link }, i}
     <li>
-      <a on:click={() => tocClick(text)} href={link}>
+      <a
+        on:click={() => tocClick(text)}
+        href={link}
+        data-sveltekit-replacestate
+      >
         {text}
       </a>
     </li>
