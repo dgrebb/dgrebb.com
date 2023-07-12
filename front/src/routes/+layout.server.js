@@ -1,5 +1,5 @@
 import { error } from "@sveltejs/kit";
-import api from "../api";
+import api from "@api";
 import {
   PUBLIC_API_URL as URL,
   PUBLIC_API_PATH_NAVIGATION as NAV,

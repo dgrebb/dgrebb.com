@@ -2,11 +2,11 @@
   import { PUBLIC_MEDIA_URL } from "$env/static/public";
   import SvelteMarkdown from "svelte-markdown";
   import { MetaTags } from "svelte-meta-tags";
-  import Image from "../components/Image.svelte";
-  import Links from "../components/Links.svelte";
-  import Link from "../components/content/renderers/Link.svelte";
-  import Flourish from "../layout/Flourish.svelte";
-  import PageTransition from "../components/PageTransition.svelte";
+  import Image from "@components/Image.svelte";
+  import Links from "@components/Links.svelte";
+  import Link from "@components/content/renderers/Link.svelte";
+  import Flourish from "@layout/Flourish.svelte";
+  import PageTransition from "@components/PageTransition.svelte";
 
   export let data;
   const { seo, headline, intro, links, pathname } = data;

@@ -2,14 +2,19 @@
   import { PUBLIC_MEDIA_URL as M } from "$env/static/public";
   import { onMount } from "svelte";
   import SvelteMarkdown from "svelte-markdown";
-  import Head from "../../components/Head.svelte";
-  import PageTransition from "../../components/PageTransition.svelte";
-  import Link from "../../components/content/renderers/Link.svelte";
-  import Flourish from "../../layout/Flourish.svelte";
+  import Head from "@components/Head.svelte";
+  import PageTransition from "@components/PageTransition.svelte";
+  import Link from "@components/content/renderers/Link.svelte";
+  import Flourish from "@layout/Flourish.svelte";
 
   export let data;
   let mounted = false;
-  const { pathname, page, page: { headline, description }, posts } = data;
+  const {
+    pathname,
+    page,
+    page: { headline, description },
+    posts,
+  } = data;
   let seo = page?.seo;
   const gridItems = posts.map(({ attributes: post }) => {
     const { title, slug, hero } = post;
@@ -47,7 +52,7 @@
           class="post-item"
           style={lazyImage && `background-image: url('${lazyImage}');`}
         >
-          <a href={`/post/${slug}`} class="post-link">
+          <a href="/post/{slug}/" class="post-link">
             {title}
           </a>
         </li>
