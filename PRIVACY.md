@@ -10,7 +10,7 @@ By accessing or using this website, you're happily agreeing to the terms laid ou
 
    2. **[Sentry.io](https://www.sentry.io)** comes to our rescue when it comes to capturing errors on both the client (browser) and server (500s, 400s, and 300s). Sentry helps diagnose problems with this site by capturing browser and system information. It even allows us to "playback" user interactions on the site, which is quite handy for figuring out broken code or user experience blunders.
 
-    Now, here's the thing: Sentry, by default, logs IP addresses. But fear not! We scrub this data before it reaches the sentry.io services and servers. The JavaScript responsible for this scrubbing is cleverly hidden away from evident view on main dgrebb.com pages. However, you can spot it at the bottom of our static [404 page](/404). Go ahead, take a peek:
+    Now, here's the thing: Sentry, by default, logs IP addresses. But fear not! We scrub this data before it reaches the sentry.io services and servers. The JavaScript responsible for this scrubbing is cleverly hidden away from evident view on main dgrebb.com pages. However, you can spot it in the `<head>` of our static [404 page](/404.html) (look for the `<script>` tag with `id="four-ohhhhh-four"`). Go ahead, take a peek:
 
     ```javascript
     beforeSend(event) {

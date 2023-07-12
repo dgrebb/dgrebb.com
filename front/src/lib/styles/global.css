@@ -120,7 +120,7 @@ body {
       @apply dg--transition-effect;
     }
     .footer,
-    scroll-top {
+    .scroll-top {
       transition: opacity 0.3s;
     }
     &.animating {
@@ -138,7 +138,7 @@ body {
         transition-opacity;
       }
       .footer,
-      scroll-top {
+      .scroll-top {
         opacity: 0;
       }
       .main .transition-container:last-of-type {
