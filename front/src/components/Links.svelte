@@ -1,46 +1,30 @@
 <script>
   import IconCatchafire from "./icons/Catchafire.svelte";
-  import IconGitHub from "~icons/mdi/github";
-  import IconFacebook from "~icons/mdi/facebook";
-  import IconInstagram from "~icons/mdi/instagram";
-  import IconSoundCloud from "~icons/ph/soundcloud-logo-bold";
-  import IconStackOverflow from "~icons/mdi/stackoverflow";
-  import IconLinkedIn from "~icons/entypo-social/linkedin";
-  import IconTwitter from "~icons/mdi/twitter";
-  import IconMastodon from "~icons/mdi/mastodon";
-  import IconFlickr from "~icons/icomoon-free/flickr2";
-  import IconGoodreads from "~icons/ph/goodreads-logo-fill";
-  import IconPinboard from "~icons/typcn/pin-outline";
+  import * as Icons from "~icons/mdi";
+  import * as SocialIcons from "~icons/ph";
+  import * as EntypoIcons from "~icons/entypo-social";
+  import * as IcomoonIcons from "~icons/icomoon-free";
+  import * as TypcnIcons from "~icons/typcn";
   import IconLink from "~icons/mdi/external-link";
 
   const icons = {
     IconCatchafire,
-    IconGitHub,
-    IconFacebook,
-    IconInstagram,
-    IconSoundCloud,
-    IconStackOverflow,
-    IconLinkedIn,
-    IconTwitter,
-    IconMastodon,
-    IconFlickr,
-    IconGoodreads,
-    IconPinboard,
+    ...Icons,
+    ...SocialIcons,
+    ...EntypoIcons,
+    ...IcomoonIcons,
+    ...TypcnIcons,
     IconLink,
   };
 
   export let links;
 
-  let linkMap = [];
-  links.map((link) => {
-    const { title, url, icon } = link;
-    linkMap.push({
-      title,
-      url,
-      icon: `Icon${icon}`,
-      linkClass: icon?.toLowerCase() || "",
-    });
-  });
+  let linkMap = links.map(({ title, url, icon }) => ({
+    title,
+    url,
+    icon: icons[`Icon${icon}`],
+    linkClass: icon?.toLowerCase() || "",
+  }));
 </script>
 
 <ul
@@ -48,7 +32,7 @@
   aria-label="Links to Dan Grebb on The Internet"
   class="link-list"
 >
-  {#each Object.entries(linkMap) as [id, { url, title, linkClass, icon }], i (id)}
+  {#each linkMap as { url, title, linkClass, icon }, i}
     <li class="link">
       <a
         href={url}
@@ -57,7 +41,7 @@
         rel="noopener noreferrer"
         class={`${linkClass}-icon`}
       >
-        <svelte:component this={icons[icon ? icon : IconLink]} />
+        <svelte:component this={icon || IconLink} />
       </a>
     </li>
   {/each}
