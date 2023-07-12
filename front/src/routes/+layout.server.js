@@ -11,7 +11,7 @@ export const prerender = true;
 const navigationEndpoint = URL + NAV;
 const footerEndpoint = URL + FOOT;
 
-export async function load({ params: { pathname } }) {
+export async function load({ url: { pathname } }) {
   const [navigationContent, footerContent] = await Promise.all([
     api(navigationEndpoint),
     api(footerEndpoint),
