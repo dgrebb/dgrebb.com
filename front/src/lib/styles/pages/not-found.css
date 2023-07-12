@@ -4,6 +4,9 @@
   @apply flex
     flex-col
     items-center;
+  height: auto;
+  line-height: 1.5;
+  padding-bottom: 3rem;
   img {
     @apply mb-11;
   }
@@ -18,9 +21,8 @@
     }
   }
   h1 {
-    @apply text-9xl
-      font-black
-      pb-3;
+    font-size: 11rem;
+    font-family: "Public Sans Black", sans-serif;
   }
   p {
     @apply pb-7;
