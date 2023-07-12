@@ -1,26 +1,10 @@
 <script>
-  import { page } from "$app/stores";
-  import { PUBLIC_ENV } from "$env/static/public";
   import PageTransition from "@components/PageTransition.svelte";
   import Flourish from "@layout/Flourish.svelte";
-  import * as Sentry from "@sentry/sveltekit";
   import "@styles/pages/not-found.css";
   export const trailingSlash = "always";
   export let data;
   $: ({ pathname } = data);
-
-  Sentry.captureMessage("Page Not Found", {
-    page: $page.route,
-    environment: PUBLIC_ENV,
-    beforeSend(event) {
-      if (event.user) {
-        delete event.user.ip;
-      }
-      if (event.server_name) {
-        delete event.server_name;
-      }
-    },
-  });
 </script>
 
 <PageTransition {pathname}>
