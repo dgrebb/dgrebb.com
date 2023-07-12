@@ -18,23 +18,24 @@
   function filterTokens(event) {
     const tokens = event.detail.tokens;
     const headings = tokens.filter((t) => t.type === "heading");
-    headings.map((h) => {
-      toc = [
-        ...toc,
-        {
-          text: h.text,
-          link: `#${slugger(h.text)}`,
-        },
-      ];
-    });
+    toc = [
+      ...toc,
+      ...headings.map((h) => ({
+        text: h.text,
+        link: `#${slugger(h.text)}`,
+      })),
+    ];
   }
 
   function handleParsed(event) {
     filterTokens(event);
   }
 
-  $: ({ pathname, post } = data);
-  $: ({ title } = post);
+  $: ({
+    pathname,
+    post,
+    post: { title },
+  } = data);
   $: hero = post.hero?.data?.attributes || false;
   $: heroThumb = hero?.formats?.thumbnail?.url
     ? `${PUBLIC_MEDIA_URL}${hero.formats.thumbnail.url}`
@@ -72,7 +73,7 @@
     }
   });
 
-  const { categoryClick, relatedClick } = plausibleClicks;
+  let { categoryClick, relatedClick } = plausibleClicks;
 </script>
 
 <PageTransition {pathname}>
@@ -83,16 +84,14 @@
       {#if loaded}
         <div
           class="hero loaded"
-          style={heroImage
-            ? `background-image: url('${heroImage}'); background-position: ${position};`
-            : false}
+          style={heroImage &&
+            `background-image: url('${heroImage}'); background-position: ${position};`}
         />
       {/if}
       <div
         class="hero hero-thumbnail {loaded ? 'loaded' : null}"
-        style={heroThumb
-          ? `background-image: url('${heroThumb}'); background-position: ${position};`
-          : false}
+        style={heroThumb &&
+          `background-image: url('${heroThumb}'); background-position: ${position};`}
       />
     {/if}
     <h1 class="post-title">{title}</h1>
@@ -122,11 +121,11 @@
       {#if categories.length}
         <h2>Categories</h2>
         <ul>
-          {#each Object.entries(categories) as [id, { attributes: { name, slug } }], i (id)}
+          {#each categories as { attributes: { name, slug } }, i}
             <li>
               <a
-                on:click={categoryClick(pathname, name)}
-                href="/posts/category/{slug}">{name}</a
+                on:click={() => categoryClick(pathname, name)}
+                href={`/posts/category/${slug}`}>{name}</a
               >
             </li>
           {/each}
@@ -135,10 +134,11 @@
       {#if related.length}
         <h2>Related Posts</h2>
         <ul>
-          {#each Object.entries(related) as [id, { attributes: { title, slug } }], i (id)}
+          {#each related as { attributes: { title, slug } }, i}
             <li>
-              <a on:click={relatedClick(pathname, title)} href="/post/{slug}"
-                >{title}</a
+              <a
+                on:click={() => relatedClick(pathname, title)}
+                href={`/post/${slug}`}>{title}</a
               >
             </li>
           {/each}

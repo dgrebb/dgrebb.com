@@ -23,6 +23,6 @@ export async function load({ params: { slug }, route }) {
     });
   }
   return {
-    post: postContent.attributes,
+    post: postContent.attributes || {},
   };
 }

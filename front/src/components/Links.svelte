@@ -1,21 +1,33 @@
 <script>
   import IconCatchafire from "./icons/Catchafire.svelte";
-  import * as Icons from "~icons/mdi";
-  import * as SocialIcons from "~icons/ph";
-  import * as EntypoIcons from "~icons/entypo-social";
-  import * as IcomoonIcons from "~icons/icomoon-free";
-  import * as TypcnIcons from "~icons/typcn";
+  import IconGitHub from "~icons/mdi/github";
+  import IconFacebook from "~icons/mdi/facebook";
+  import IconInstagram from "~icons/mdi/instagram";
+  import IconSoundCloud from "~icons/ph/soundcloud-logo-bold";
+  import IconStackOverflow from "~icons/mdi/stackoverflow";
+  import IconLinkedIn from "~icons/entypo-social/linkedin";
+  import IconTwitter from "~icons/mdi/twitter";
+  import IconMastodon from "~icons/mdi/mastodon";
+  import IconFlickr from "~icons/icomoon-free/flickr2";
+  import IconGoodreads from "~icons/ph/goodreads-logo-fill";
+  import IconPinboard from "~icons/typcn/pin-outline";
   import IconLink from "~icons/mdi/external-link";
-
+  
   const icons = {
     IconCatchafire,
-    ...Icons,
-    ...SocialIcons,
-    ...EntypoIcons,
-    ...IcomoonIcons,
-    ...TypcnIcons,
+    IconGitHub,
+    IconFacebook,
+    IconInstagram,
+    IconSoundCloud,
+    IconStackOverflow,
+    IconLinkedIn,
+    IconTwitter,
+    IconMastodon,
+    IconFlickr,
+    IconGoodreads,
+    IconPinboard,
     IconLink,
-  };
+  }
 
   export let links;
 

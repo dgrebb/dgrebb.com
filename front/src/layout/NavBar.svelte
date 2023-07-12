@@ -6,14 +6,9 @@
 <nav class="nav-bar">
   <!-- <NavToggle /> -->
   <ul class="nav-list">
-    {#each navItems as navItem}
+    {#each navItems as { href, title }}
       <li class="nav-item">
-        <a
-          class="nav-link"
-          href={navItem.href}
-        >
-          {navItem.title}
-        </a>
+        <a class="nav-link" {href}>{title}</a>
       </li>
     {/each}
   </ul>

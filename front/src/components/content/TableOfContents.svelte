@@ -5,7 +5,11 @@
 </script>
 
 <ul class="toc">
-  {#each Object.entries(contents) as [id, { text, link }], i (id)}
-    <li><a on:click={tocClick(text)} href={link}>{text}</a></li>
+  {#each Object.values(contents) as { text, link }, i}
+    <li>
+      <a on:click={() => tocClick(text)} href={link}>
+        {text}
+      </a>
+    </li>
   {/each}
 </ul>
