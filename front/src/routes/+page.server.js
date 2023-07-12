@@ -1,20 +1,17 @@
 import { error } from "@sveltejs/kit";
 import api from "../api";
-import { PUBLIC_API_URL, PUBLIC_API_PATH_HOME } from "$env/static/public";
+import { PUBLIC_API_URL as URL, PUBLIC_API_PATH_HOME as HOME } from "$env/static/public";
 
-const homeEndpoint = `${PUBLIC_API_URL}${PUBLIC_API_PATH_HOME}`;
+const endpoint = URL + HOME;
 
 export const trailingSlash = "always";
 
 export async function load({ params }) {
-  const homeContent = await api(homeEndpoint);
+  const home = await api(endpoint);
 
-  if (!homeContent.attributes) {
-    throw error(500, {
-      message: "Home Page Error"
-    });
+  if (!home) {
+    throw error(500, "Home Page Error");
   }
-  return {
-    ...homeContent.attributes,
-  };
+
+  return home;
 }

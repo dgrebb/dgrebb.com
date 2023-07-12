@@ -1,42 +1,41 @@
 import { error } from "@sveltejs/kit";
 import api from "../../api";
 import {
-  PUBLIC_API_URL,
-  PUBLIC_API_PATH_POSTS_PAGE,
-  PUBLIC_API_PATH_POSTS,
-  PUBLIC_POSTS_PREVIEW_PARAMS,
+  PUBLIC_API_URL as URL,
+  PUBLIC_API_PATH_POSTS_PAGE as PAGE,
+  PUBLIC_API_PATH_POSTS as POSTS,
+  PUBLIC_POSTS_PREVIEW_PARAMS as PARAMS,
 } from "$env/static/public";
 
-const postsPageEndpoint = `${PUBLIC_API_URL}${PUBLIC_API_PATH_POSTS_PAGE}`;
-const postsEndpoint = `${PUBLIC_API_URL}${PUBLIC_API_PATH_POSTS}${PUBLIC_POSTS_PREVIEW_PARAMS}`;
+const pageEndpoint = URL + PAGE;
+const postsEndpoint = URL + POSTS + PARAMS;
 
 export const trailingSlash = "always";
 
 export async function load({ route }) {
-  const postsPageContent = await api(postsPageEndpoint);
-  const postsContent = await api(postsEndpoint);
-  if (!postsPageContent.attributes) {
-    // throw error(500, {
-    //   message: `Posts Page Error: ${error}`,
-    // });
+  const [page, posts] = await Promise.all([
+    api(pageEndpoint),
+    api(postsEndpoint),
+  ]);
+
+  if (!page) {
     console.error({
       route: route.id,
-      endpoint: postsPageEndpoint,
-      error: postsPageContent.error,
+      endpoint: pageEndpoint,
+      error: page.error,
     });
   }
-  if (!postsContent.length) {
-    // throw error(500, {
-    //   message: `Posts Error: ${error}`,
-    // });
+
+  if (!posts.length) {
     console.error({
       route,
       endpoint: postsEndpoint,
-      error: postsPageContent.error,
+      error: posts.error,
     });
   }
+
   return {
-    postsPageContent: { ...postsPageContent.attributes },
-    posts: [...postsContent],
+    page: page || {},
+    posts: posts || [],
   };
 }

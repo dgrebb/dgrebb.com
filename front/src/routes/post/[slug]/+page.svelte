@@ -1,5 +1,5 @@
 <script>
-  import { PUBLIC_MEDIA_URL } from "$env/static/public";
+  import { PUBLIC_MEDIA_URL as M } from "$env/static/public";
   import { plausibleClicks } from "$lib/clicktracking.js";
   import slugger from "slugger";
   import { onMount } from "svelte";
@@ -38,11 +38,9 @@
   } = data);
   $: hero = post.hero?.data?.attributes || false;
   $: heroThumb = hero?.formats?.thumbnail?.url
-    ? `${PUBLIC_MEDIA_URL}${hero.formats.thumbnail.url}`
+    ? M + hero.formats.thumbnail.url
     : false;
-  $: heroImage = hero?.url
-    ? `${PUBLIC_MEDIA_URL}${hero.formats.large.url}`
-    : false;
+  $: heroImage = hero?.url ? M + hero.url : false;
   $: position = post.position || "center center";
   $: blurhash = hero.blurhash || false;
   $: description = post.description || false;
@@ -125,7 +123,7 @@
             <li>
               <a
                 on:click={() => categoryClick(pathname, name)}
-                href={`/posts/category/${slug}`}>{name}</a
+                href="/posts/category/{slug}">{name}</a
               >
             </li>
           {/each}
@@ -138,7 +136,7 @@
             <li>
               <a
                 on:click={() => relatedClick(pathname, title)}
-                href={`/post/${slug}`}>{title}</a
+                href="/post/{slug}">{title}</a
               >
             </li>
           {/each}

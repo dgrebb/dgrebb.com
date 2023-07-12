@@ -1,28 +1,30 @@
 import { error } from "@sveltejs/kit";
 import api from "../../../api";
 import {
-  PUBLIC_API_URL,
-  PUBLIC_API_PATH_POST,
-  PUBLIC_POST_PARAMS,
+  PUBLIC_API_URL as URL,
+  PUBLIC_API_PATH_POST as POST,
+  PUBLIC_POST_PARAMS as PARAMS,
 } from "$env/static/public";
 
 export const trailingSlash = "always";
 
 export async function load({ params: { slug }, route }) {
-  const postEndpoint = `${PUBLIC_API_URL}${PUBLIC_API_PATH_POST}${slug}${PUBLIC_POST_PARAMS}`;
-  const postContent = await api(postEndpoint);
-  if (!postContent.attributes) {
+  const endpoint = URL + POST + slug + PARAMS;
+  const post = await api(endpoint);
+
+  if (!post) {
     // throw error(500, {
     //   message: `Post Page Error: ${error}`,
     // });
     console.error({
       route,
       slug,
-      endpoint: postEndpoint,
-      error: postContent.error,
+      endpoint: endpoint,
+      error: post?.error,
     });
   }
+
   return {
-    post: postContent.attributes || {},
+    post: post || {},
   };
 }

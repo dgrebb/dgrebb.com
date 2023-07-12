@@ -16,8 +16,8 @@
 
   let anchor = true;
   $: ({ id: route } = $page?.route);
-  $: if (browser) anchor = window.location.pathname.hash || false;
-  $: if (browser && !anchor && route) scrollTop();
+  $: if (browser) anchor = window.location.hash || false;
+  $: if (browser && route && !anchor) scrollTop();
 
   const domain =
     {
