@@ -389,10 +389,10 @@ index 2d44595..c7f77a5 100644
          </Box>
        </Main>
 diff --git a/node_modules/@strapi/admin/admin/src/translations/en.json b/node_modules/@strapi/admin/admin/src/translations/en.json
-index 9f5a2e2..fc7f8a0 100644
+index d0bc64c..727252e 100644
 --- a/node_modules/@strapi/admin/admin/src/translations/en.json
 +++ b/node_modules/@strapi/admin/admin/src/translations/en.json
-@@ -429,14 +429,16 @@
+@@ -432,14 +432,16 @@
    "app.components.GuidedTour.skip": "Skip the tour",
    "app.components.GuidedTour.title": "3 steps to get started",
    "app.components.HomePage.button.blog": "See more on the blog",
