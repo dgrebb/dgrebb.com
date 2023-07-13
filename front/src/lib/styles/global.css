@@ -119,8 +119,7 @@ body {
       transition: opacity;
       @apply dg--transition-effect;
     }
-    .footer,
-    .scroll-top {
+    .footer {
       transition: opacity 0.3s;
     }
     &.animating {
@@ -332,19 +331,15 @@ body {
 
 .scroll-top {
   display: flex;
-  @apply dg--link-hover
-    dg--transition-effect
-    text-sm
-    brightness-75
-    transition
-    dark:brightness-50
+  @apply text-xs
     md:hidden;
   flex-direction: column;
   align-items: center;
+  opacity: 0.57;
+  transition: color 0.5s ease-in-out, opacity 0.5s ease-in-out;
   &:hover,
   &:focus {
-    @apply brightness-100
-      dark:brightness-100;
+    color: rgb(var(--highlight-rgb));
   }
   svg {
     @apply mb-2
