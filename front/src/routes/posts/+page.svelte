@@ -1,11 +1,12 @@
 <script>
   import { PUBLIC_MEDIA_URL as M } from "$env/static/public";
-  import { onMount } from "svelte";
-  import SvelteMarkdown from "svelte-markdown";
   import Head from "@components/Head.svelte";
   import PageTransition from "@components/PageTransition.svelte";
   import Link from "@components/content/renderers/Link.svelte";
   import Flourish from "@layout/Flourish.svelte";
+  import { pageMeta } from "@store";
+  import { onMount } from "svelte";
+  import SvelteMarkdown from "svelte-markdown";
 
   export let data;
   let mounted = false;
@@ -16,6 +17,7 @@
     posts,
   } = data;
   let seo = page?.seo;
+  $pageMeta = { ...seo, title: headline, titleTemplate: "%s | Dan Grebb" };
   const gridItems = posts.map(({ attributes: post }) => {
     const { title, slug, hero } = post;
     const heroImages = hero?.data?.attributes;
@@ -60,11 +62,12 @@
     </ul>
   </section>
 </PageTransition>
+
 <Head>
   {#if mounted}
     {#each gridItems as { image }}
       {#if image}
-        <link rel="preload" as="image" href={image} />
+        <link rel="prefetch" href={image} as="image" fetchPriority="low" crossorigin />
       {/if}
     {/each}
   {/if}

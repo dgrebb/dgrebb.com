@@ -2,7 +2,6 @@
   import PageTransition from "@components/PageTransition.svelte";
   import Flourish from "@layout/Flourish.svelte";
   import "@styles/pages/not-found.css";
-  export const trailingSlash = "always";
   export let data;
   $: ({ pathname } = data);
 </script>
