@@ -10,6 +10,7 @@
   import Link from "@components/content/renderers/Link.svelte";
   import PostHeading from "@components/content/renderers/PostHeading.svelte";
   import Flourish from "@layout/Flourish.svelte";
+  import { pageMeta } from "@store";
 
   export let data;
 
@@ -53,6 +54,8 @@
   let loaded = false;
   let failed = false;
   let loading = true;
+
+  $: $pageMeta = { ...seo, title, titleTemplate: "%s | Writing | Dan Grebb" };
 
   onMount(() => {
     if (heroImage) {
