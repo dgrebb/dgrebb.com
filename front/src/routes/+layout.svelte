@@ -72,7 +72,6 @@
   title={$pageMeta?.metaTitle || $pageMeta?.title || "Dan Grebb"}
   titleTemplate={$pageMeta?.titleTemplate}
   description={$pageMeta?.metaDescription || "Dan Grebb is a Software Engineer from Philadelphia, Pennsylvania."}
-  keywords={$pageMeta?.keywords || false}
   robots={$pageMeta?.metaRobots || undefined}
   canonical={$pageMeta.canonicalURL}
   additionalMetaTags={[
@@ -82,7 +81,7 @@
     },
     {
       name: "keywords",
-      content: $pageMeta?.keywords,
+      content: $pageMeta?.keywords || false,
     },
   ]}
   openGraph={{
