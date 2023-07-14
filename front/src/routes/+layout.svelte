@@ -31,8 +31,6 @@
   let mounted = false;
   let theme = "unknown";
 
-  $: console.log("🚀 ~ file: +layout.svelte:49 ~ pageMeta:", $pageMeta);
-
   $: OGImageProp = $pageMeta?.metaImage?.data?.attributes?.formats || false;
   $: OGImage = OGImageProp?.large ? M + OGImageProp.large?.url : $pageMeta.heroImage || "https://s.dgrebb.com/img/default_banner_2a50e43220.png";
   $: OGImageWidth = OGImageProp.large?.width || OGImageProp.medium?.width;
