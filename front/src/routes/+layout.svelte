@@ -35,13 +35,13 @@
   $: OGImage = OGImageProp?.large ? M + OGImageProp.large?.url : $pageMeta.heroImage || "https://s.dgrebb.com/img/default_banner_2a50e43220.png";
   $: OGImageWidth = OGImageProp.large?.width || OGImageProp.medium?.width;
   $: OGImageHeight = OGImageProp.large?.height || OGImageProp.medium?.height;
-  $: OGImageAlt = $pageMeta?.metaImage?.data?.attributes?.alternativeText || "A photo of Dan smiling";
+  $: OGImageAlt = $pageMeta?.metaImage?.data?.attributes?.alternativeText || "The Circuit of Life";
 
   let twitter = $pageMeta?.metaSocial?.find(obj => obj.socialNetwork === "Twitter");
   let twitterImage, twitterImageAlt;
   $: if (twitter) {
     twitterImage = twitter.image?.data?.attributes?.formats.large?.url || false;
-    twitterImageAlt = twitter?.data?.attributes?.alternativeText || "A photo of Dan smiling";
+    twitterImageAlt = twitter?.data?.attributes?.alternativeText || "The Circuit of Life";
   }
 
   onMount(() => {
@@ -109,6 +109,6 @@
     title: twitter.title,
     description: twitter.description,
     image: twitterImage ? M + twitterImage : "https://s.dgrebb.com/img/default_banner_2a50e43220.png",
-    imageAlt: twitterImageAlt || "A photo of Dan smiling",
+    imageAlt: twitterImageAlt || "The Circuit of Life",
   }}
 />
