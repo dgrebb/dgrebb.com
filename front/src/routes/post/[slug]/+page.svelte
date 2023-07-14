@@ -7,7 +7,7 @@
   import PostHeading from "@components/content/renderers/PostHeading.svelte";
   import Flourish from "@layout/Flourish.svelte";
   import { pageMeta } from "@store";
-  import { plausibleClicks } from "@utils/clicktracking.js";
+  import { pokeTrapper } from "@utils/pokeTrapper.js";
   import slugger from "slugger";
   import { onMount } from "svelte";
   import SvelteMarkdown from "svelte-markdown";
@@ -82,7 +82,7 @@
     }
   });
 
-  let { categoryClick, relatedClick } = plausibleClicks;
+  let { categoryClick, relatedClick } = pokeTrapper;
 </script>
 
 <PageTransition {pathname}>

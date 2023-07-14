@@ -64,7 +64,6 @@
     {apiHost}
     enabled
     outboundLinks
-    pageviewprops={{ theme }}
   />
 {/if}
 
