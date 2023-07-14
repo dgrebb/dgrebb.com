@@ -1,9 +1,5 @@
 <script>
   import { PUBLIC_MEDIA_URL as M } from "$env/static/public";
-  import { plausibleClicks } from "@utils/clicktracking.js";
-  import slugger from "slugger";
-  import { onMount } from "svelte";
-  import SvelteMarkdown from "svelte-markdown";
   import PageTransition from "@components/PageTransition.svelte";
   import Code from "@components/content/Code.svelte";
   import TableOfContents from "@components/content/TableOfContents.svelte";
@@ -11,6 +7,10 @@
   import PostHeading from "@components/content/renderers/PostHeading.svelte";
   import Flourish from "@layout/Flourish.svelte";
   import { pageMeta } from "@store";
+  import { plausibleClicks } from "@utils/clicktracking.js";
+  import slugger from "slugger";
+  import { onMount } from "svelte";
+  import SvelteMarkdown from "svelte-markdown";
 
   export let data;
 
@@ -35,7 +35,7 @@
   $: ({
     pathname,
     post,
-    post: { title },
+    post: { title, createdAt, updatedAt, publishedAt },
   } = data);
   $: hero = post.hero?.data?.attributes || false;
   $: heroThumb = hero?.formats?.thumbnail?.url
@@ -43,7 +43,6 @@
     : false;
   $: heroImage = hero?.url ? M + hero.url : false;
   $: position = post.position || "center center";
-  $: blurhash = hero.blurhash || false;
   $: description = post.description || false;
   $: content = post.content.length ? post.content : false;
   $: seo = post.seo || false;
@@ -55,7 +54,16 @@
   let failed = false;
   let loading = true;
 
-  $: $pageMeta = { ...seo, title, titleTemplate: "%s | Writing | Dan Grebb" };
+  $: $pageMeta = {
+    ...seo,
+    type: "post",
+    title,
+    heroImage,
+    createdAt,
+    updatedAt,
+    publishedAt,
+    titleTemplate: "%s | Writing | Dan Grebb",
+  };
 
   onMount(() => {
     if (heroImage) {
