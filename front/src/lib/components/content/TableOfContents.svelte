@@ -1,6 +1,6 @@
 <script>
-  import { plausibleClicks } from "@utils/clicktracking.js";
-  const { tocClick } = plausibleClicks;
+  import { pokeTrapper } from "@utils/pokeTrapper.js";
+  const { tocClick } = pokeTrapper;
   export let contents;
 </script>
 
