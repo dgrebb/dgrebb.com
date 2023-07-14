@@ -1,0 +1,75 @@
+diff --git a/node_modules/svelte-meta-tags/dist/MetaTags.svelte b/node_modules/svelte-meta-tags/dist/MetaTags.svelte
+index 8d6ed7a..9d4d9c2 100644
+--- a/node_modules/svelte-meta-tags/dist/MetaTags.svelte
++++ b/node_modules/svelte-meta-tags/dist/MetaTags.svelte
+@@ -11,6 +11,9 @@
+   /** @type {import("./types").MetaTagsProps['nofollow']} */
+   export let nofollow = false;
+ 
++  /** @type {import("./types").MetaTagsProps['robots']} */
++  export let robots = undefined;
++
+   /** @type {import("./types").MetaTagsProps['robotsProps']} */
+   export let robotsProps = undefined;
+ 
+@@ -64,14 +67,23 @@
+   }
+ </script>
+ 
++<!-- svelte-ignore empty-block -->
+ <svelte:head>
+   <title>{updatedTitle}</title>
+ 
+-  <meta name="robots" content={`${noindex ? 'noindex' : 'index'},${nofollow ? 'nofollow' : 'follow'}${robotsParams}`} />
+-  <meta
+-    name="googlebot"
+-    content={`${noindex ? 'noindex' : 'index'},${nofollow ? 'nofollow' : 'follow'}${robotsParams}`}
+-  />
++  {#if robots}
++    <meta name="robots" content={`${robots}${robotsParams}`} />
++    <meta name="googlebot" content={`${robots}${robotsParams}`} />
++  {:else if robots === false}{:else}
++    <meta
++      name="robots"
++      content={`${noindex ? 'noindex' : 'index'},${nofollow ? 'nofollow' : 'follow'}${robotsParams}`}
++    />
++    <meta
++      name="googlebot"
++      content={`${noindex ? 'noindex' : 'index'},${nofollow ? 'nofollow' : 'follow'}${robotsParams}`}
++    />
++  {/if}
+ 
+   {#if description}
+     <meta name="description" content={description} />
+diff --git a/node_modules/svelte-meta-tags/dist/MetaTags.svelte.d.ts b/node_modules/svelte-meta-tags/dist/MetaTags.svelte.d.ts
+index 4fc6552..60e082d 100644
+--- a/node_modules/svelte-meta-tags/dist/MetaTags.svelte.d.ts
++++ b/node_modules/svelte-meta-tags/dist/MetaTags.svelte.d.ts
+@@ -6,6 +6,7 @@ export default class MetaTags extends SvelteComponentTyped<{
+     titleTemplate?: string;
+     noindex?: boolean;
+     nofollow?: boolean;
++    nofollow?: string | boolean;
+     robotsProps?: import("./types").AdditionalRobotsProps;
+     description?: string;
+     mobileAlternate?: import("./types").MobileAlternate;
+@@ -30,6 +31,7 @@ declare const __propDef: {
+         titleTemplate?: import("./types").MetaTagsProps['titleTemplate'];
+         noindex?: import("./types").MetaTagsProps['noindex'];
+         nofollow?: import("./types").MetaTagsProps['nofollow'];
++        robots?: import("./types").MetaTagsProps['robots'];
+         robotsProps?: import("./types").MetaTagsProps['robotsProps'];
+         description?: import("./types").MetaTagsProps['description'];
+         mobileAlternate?: import("./types").MetaTagsProps['mobileAlternate'];
+diff --git a/node_modules/svelte-meta-tags/dist/types.d.ts b/node_modules/svelte-meta-tags/dist/types.d.ts
+index de97bdb..0d8ab18 100644
+--- a/node_modules/svelte-meta-tags/dist/types.d.ts
++++ b/node_modules/svelte-meta-tags/dist/types.d.ts
+@@ -136,6 +136,7 @@ export interface MetaTagsProps {
+   titleTemplate?: string;
+   noindex?: boolean;
+   nofollow?: boolean;
++  robots?: string | boolean;
+   robotsProps?: AdditionalRobotsProps;
+   description?: string;
+   canonical?: string;
