@@ -8,8 +8,8 @@
     py-3
     opacity-0;
   position: absolute;
-  transition: top .3s ease, opacity .3s ease, color .3s ease;
   top: -3rem;
+  transition: top 0.3s ease, opacity 0.3s ease, color 0.3s ease;
   &:focus {
     top: 1.77rem;
     @apply opacity-100;
@@ -19,8 +19,8 @@
 .nav-home {
   @apply dg--font-psbl
     dg--link-hover
-    leading-none
     text-xl
+    leading-none
     tracking-tight
     sm:ml-[2px]
     sm:text-2xl;
@@ -34,8 +34,8 @@
 .nav-bar {
   @apply flex 
     flex-shrink
-    justify-center
-    items-center;
+    items-center
+    justify-center;
 }
 
 .nav-list {
@@ -48,17 +48,26 @@
 }
 
 .nav-link {
-  @apply dg--link-hover
-    text-sm
-    border-b
+  @apply border-b
+    py-1
     align-text-top
-    py-1;
-  border-bottom-color: rgb(var(--btn-secondary-highlight-rgb));
+    text-sm;
+  opacity: 0.42;
+  transition: opacity 0.5s ease-in-out, border-color 0.5s ease-in-out;
+  border-bottom-color: rgb(var(--foreground-rgb));
   color: rgb(var(--foreground-rgb));
-  font: dg--font-psb;
   &:hover,
   &:focus {
-    @apply opacity-100;
+    opacity: 1;
     border-bottom-color: rgb(var(--highlight-rgb));
+  }
+  &.active {
+    opacity: 1;
+    color: rgb(var(--foreground-rgb));
+    &:hover,
+    &:focus {
+      opacity: 1;
+      color: rgb(var(--foreground-rgb));
+    }
   }
 }
