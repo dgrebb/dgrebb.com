@@ -29,7 +29,7 @@ fi
 while test "$1" != --; do
     case $1 in
     c | cms)
-        /bin/bash $directory/_scripts/cms.sh $2
+        /bin/bash $directory/_scripts/cms.sh $2 $3
         break
         ;;
     f | front)
