@@ -19,21 +19,21 @@ while test "$1" != --; do
         fi
         setBackEnv ld
         cdback && \
-        trap 'printf "\n"; shred ; printDgMsg "Done!" ; exit 0' SIGINT; \
+        trap 'printf "\n"; printDgMsg "Done!" ; exit 0' SIGINT; \
         npm run develop
         break
         ;;
     ad | admin-dev)
         setBackEnv ld
         cdback && \
-        trap 'printf "\n"; shred ; printDgMsg "Done!" ; exit 0' SIGINT; \
+        trap 'printf "\n"; printDgMsg "Done!" ; exit 0' SIGINT; \
         npm run develop -- --watch-admin
         break
         ;;
     ds | dev-stage)
         setBackEnv ls
         cdback && \
-        trap 'printf "\n"; shred ; printDgMsg "Done!" ; exit 0' SIGINT; \
+        trap 'printf "\n"; printDgMsg "Done!" ; exit 0' SIGINT; \
         npm run develop -- --watch-admin
         break
         ;;
