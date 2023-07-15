@@ -2,7 +2,7 @@
   import { page } from "$app/stores";
   // import NavToggle from "../components/NavToggle.svelte";
   export let navItems;
-  $: postsActive = $page.route.id.includes("post");
+  $: postsActive = $page?.route?.id?.includes("post") || false;
 </script>
 
 <nav class="nav-bar">

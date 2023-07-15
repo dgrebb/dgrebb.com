@@ -19,32 +19,46 @@ while test "$1" != --; do
         fi
         setBackEnv ld
         cdback && \
-        trap 'printf "\n"; shred ; printDgMsg "Done!" ; exit 0' SIGINT; \
+        trap 'printf "\n"; printDgMsg "Done!" ; exit 0' SIGINT; \
         npm run develop
         break
         ;;
     ad | admin-dev)
         setBackEnv ld
         cdback && \
-        trap 'printf "\n"; shred ; printDgMsg "Done!" ; exit 0' SIGINT; \
+        trap 'printf "\n"; printDgMsg "Done!" ; exit 0' SIGINT; \
         npm run develop -- --watch-admin
         break
         ;;
     ds | dev-stage)
         setBackEnv ls
         cdback && \
-        trap 'printf "\n"; shred ; printDgMsg "Done!" ; exit 0' SIGINT; \
+        trap 'printf "\n"; printDgMsg "Done!" ; exit 0' SIGINT; \
         npm run develop -- --watch-admin
         break
         ;;
     i | install)
-        setBackEnv l
+        setBackEnv ld
         cdback && npm i
         break
         ;;
     b | build)
-        setBackEnv l
+        setBackEnv ld
         cdback && npm run build
+        break
+        ;;
+    ba | backup)
+        setBackEnv ld
+        APP_KEYS=$(pass dg/cms/appkeys)
+        filename=export_$(date '+%Y.%m.%d_%H-%M-%S')
+        cdback && npm run --silent strapi export -- -f ./.backups/${filename} -k ${APP_KEYS}
+        break
+        ;;
+    im | import)
+        setBackEnv ld
+        APP_KEYS=$(pass dg/cms/appkeys)
+        filename=export_$(date '+%Y.%m.%d_%H-%M-%S')
+        cdback && npm run --silent strapi import -- -f ./.backups/$2 -k ${APP_KEYS}
         break
         ;;
     ?)
