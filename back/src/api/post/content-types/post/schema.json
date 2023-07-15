@@ -30,6 +30,9 @@
         "images"
       ]
     },
+    "summary": {
+      "type": "text"
+    },
     "position": {
       "type": "enumeration",
       "enum": [
