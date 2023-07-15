@@ -18,14 +18,17 @@ Sentry.init({
   },
 });
 
-export async function handleError({ error, event }) {
-  const errorId = crypto.randomUUID();
-  Sentry.captureException(error, { extra: { event, errorId } });
+export function handleError({ error, event }) {
+  Sentry.captureException(error, { extra: { event } });
 
-  console.log(`\x1b[33mError: ${error}`);
+  console.log("Event:");
+  console.log(event);
+  console.log('')
+  console.log("Error:")
+  console.log(error);
 
   return {
-    message: "Server error!",
-    errorId,
+      message: 'Whoops!',
+      code: error?.code ?? 'UNKNOWN'
   };
 }

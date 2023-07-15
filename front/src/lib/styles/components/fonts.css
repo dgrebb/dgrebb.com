@@ -1,0 +1,38 @@
+@font-face {
+  font-display: swap;
+  font-family: "Public Sans Extra Light";
+  src: url("/fonts/PublicSans-ExtraLight.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Public Sans";
+  src: url("/fonts/PublicSans-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Public Sans Bold";
+  src: url("/fonts/PublicSans-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Public Sans Black";
+  src: url("/fonts/PublicSans-Black.woff2") format("woff2");
+}
+
+@layer utilities {
+  .dg--font-psxl {
+    font-family: "Public Sans Extra Light", sans-serif;
+  }
+  .dg--font-ps {
+    font-family: "Public Sans", sans-serif;
+  }
+  .dg--font-psb {
+    font-family: "Public Sans Bold", sans-serif;
+  }
+  .dg--font-psbl {
+    font-family: "Public Sans Black", sans-serif;
+  }
+}

@@ -1,0 +1,30 @@
+@tailwind components;
+
+.not-found {
+  @apply flex
+    flex-col
+    items-center;
+  height: auto;
+  line-height: 1.5;
+  padding-bottom: 3rem;
+  img {
+    @apply mb-11;
+  }
+  a {
+    @apply transition;
+    transition-duration: var(--transform-duration);
+    transition-timing-function: var(--transform-timing-function);
+    color: rgb(var(--foreground-rgb));
+    &:hover,
+    &:focus {
+      color: rgb(var(--highlight-rgb));
+    }
+  }
+  h1 {
+    font-size: 11rem;
+    font-family: "Public Sans Black", sans-serif;
+  }
+  p {
+    @apply pb-7;
+  }
+}

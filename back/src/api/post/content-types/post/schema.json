@@ -4,22 +4,81 @@
   "info": {
     "singularName": "post",
     "pluralName": "posts",
-    "displayName": "Post"
+    "displayName": "Post",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
     "title": {
       "type": "string",
       "required": true,
       "unique": true
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "title",
-      "required": true
+    "hero": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "position": {
+      "type": "enumeration",
+      "enum": [
+        "left top",
+        "left center",
+        "left bottom",
+        "center top",
+        "center center",
+        "center bottom",
+        "right top",
+        "right center",
+        "right bottom"
+      ]
+    },
+    "heroAuthor": {
+      "type": "string"
+    },
+    "heroAuthorLink": {
+      "type": "string"
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "posts.text",
+        "posts.image-carousel",
+        "posts.code",
+        "posts.html"
+      ]
+    },
+    "note": {
+      "displayName": "Footnotes",
+      "type": "component",
+      "repeatable": true,
+      "component": "posts.footnotes"
+    },
+    "related": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::post.post"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }

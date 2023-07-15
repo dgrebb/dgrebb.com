@@ -1,0 +1,73 @@
+.site-title {
+  @apply flex
+    flex-grow;
+}
+.skip-to-content {
+  @apply dg--btn-secondary
+    px-5
+    py-3
+    opacity-0;
+  position: absolute;
+  top: -3rem;
+  transition: top 0.3s ease, opacity 0.3s ease, color 0.3s ease;
+  &:focus {
+    top: 1.77rem;
+    @apply opacity-100;
+  }
+}
+
+.nav-home {
+  @apply dg--font-psbl
+    dg--link-hover
+    text-xl
+    leading-none
+    tracking-tight
+    sm:ml-[2px]
+    sm:text-2xl;
+  h1 {
+    transition: font-size;
+    @apply dg--transition-effect
+      tracking-tight;
+  }
+}
+
+.nav-bar {
+  @apply flex 
+    flex-shrink
+    items-center
+    justify-center;
+}
+
+.nav-list {
+  @apply justify-end;
+}
+
+.nav-item {
+  @apply inline
+    px-3;
+}
+
+.nav-link {
+  @apply border-b
+    py-1
+    align-text-top
+    text-sm;
+  opacity: 0.42;
+  transition: opacity 0.5s ease-in-out, border-color 0.5s ease-in-out;
+  border-bottom-color: rgb(var(--foreground-rgb));
+  color: rgb(var(--foreground-rgb));
+  &:hover,
+  &:focus {
+    opacity: 1;
+    border-bottom-color: rgb(var(--highlight-rgb));
+  }
+  &.active {
+    opacity: 1;
+    color: rgb(var(--foreground-rgb));
+    &:hover,
+    &:focus {
+      opacity: 1;
+      color: rgb(var(--foreground-rgb));
+    }
+  }
+}

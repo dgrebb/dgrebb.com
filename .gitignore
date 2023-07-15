@@ -83,6 +83,7 @@ nbproject
 public/uploads/*
 !public/uploads/.gitkeep
 .vscode
+*.code-workspace
 
 ############################
 # Node.js
@@ -114,6 +115,7 @@ exports
 dist
 build
 .strapi-updater.json
+back/.backups
 
 ############################
 # Terraform
