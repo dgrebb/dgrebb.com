@@ -1,13 +1,13 @@
 <script>
   import PageTransition from "@components/PageTransition.svelte";
-  import Flourish from "@layout/Flourish";
+  import Flourish from "@layout/Flourish.svelte";
 
   export let data;
   let mounted = false;
   const { pathname } = data;
 </script>
 
-<PageTransition>
+<PageTransition {pathname}>
   <section class="categories">
     <Flourish />
     <a id="main">Main Content</a>
