@@ -55,6 +55,7 @@
   let loading = true;
 
   $: $pageMeta = {
+    ...$pageMeta,
     ...seo,
     type: "post",
     title,

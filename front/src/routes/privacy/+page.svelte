@@ -9,7 +9,7 @@
 
   export let data;
   const { title, details, updatedAt, seo, pathname } = data;
-  $pageMeta = { ...seo, title, titleTemplate: "%s | Dan Grebb" };
+  $pageMeta = { ...$pageMeta, ...seo, title, titleTemplate: "%s | Dan Grebb" };
   let date = new Date(updatedAt);
   date = date.toDateString();
 </script>

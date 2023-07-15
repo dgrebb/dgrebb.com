@@ -17,7 +17,7 @@
     posts,
   } = data;
   let seo = page?.seo;
-  $pageMeta = { ...seo, title: headline, titleTemplate: "%s | Dan Grebb" };
+  $pageMeta = { ...$pageMeta, ...seo, title: headline, titleTemplate: "%s | Dan Grebb" };
   const gridItems = posts.map(({ attributes: post }) => {
     const { title, slug, hero } = post;
     const heroImages = hero?.data?.attributes;

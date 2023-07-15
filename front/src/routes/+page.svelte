@@ -15,7 +15,7 @@
     alt: "A picture of Dan smiling",
   };
 
-  $pageMeta = { ...seo, pathname };
+  $pageMeta = { ...$pageMeta, ...seo, pathname };
 </script>
 
 <PageTransition {pathname}>
