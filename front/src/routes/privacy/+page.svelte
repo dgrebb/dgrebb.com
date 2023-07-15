@@ -1,13 +1,15 @@
 <script>
-  import SvelteMarkdown from "svelte-markdown";
   import PageTransition from "@components/PageTransition.svelte";
   import Code from "@components/content/Code.svelte";
   import Link from "@components/content/renderers/Link.svelte";
   import Flourish from "@layout/Flourish.svelte";
   import ScrollTop from "@layout/ScrollTop.svelte";
+  import { pageMeta } from "@store";
+  import SvelteMarkdown from "svelte-markdown";
 
   export let data;
-  const { title, details, updatedAt, pathname } = data;
+  const { title, details, updatedAt, seo, pathname } = data;
+  $pageMeta = { ...$pageMeta, ...seo, title, titleTemplate: "%s | Dan Grebb" };
   let date = new Date(updatedAt);
   date = date.toDateString();
 </script>

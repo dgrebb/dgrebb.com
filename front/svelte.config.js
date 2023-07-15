@@ -16,6 +16,7 @@ const config = {
       "@api": path.resolve("./src/lib/api"),
       "@components": path.resolve("./src/lib/components"),
       "@layout": path.resolve("./src/lib/layout"),
+      "@store": path.resolve("./src/lib/store"),
       "@styles": path.resolve("./src/lib/styles"),
       "@utils": path.resolve("./src/lib/_utils"),
     },

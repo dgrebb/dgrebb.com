@@ -1,12 +1,12 @@
 <script>
   import { PUBLIC_MEDIA_URL } from "$env/static/public";
-  import SvelteMarkdown from "svelte-markdown";
-  import { MetaTags } from "svelte-meta-tags";
   import Image from "@components/Image.svelte";
   import Links from "@components/Links.svelte";
+  import PageTransition from "@components/PageTransition.svelte";
   import Link from "@components/content/renderers/Link.svelte";
   import Flourish from "@layout/Flourish.svelte";
-  import PageTransition from "@components/PageTransition.svelte";
+  import { pageMeta } from "@store";
+  import SvelteMarkdown from "svelte-markdown";
 
   export let data;
   const { seo, headline, intro, links, pathname } = data;
@@ -14,9 +14,8 @@
     url: "/bio.jpg",
     alt: "A picture of Dan smiling",
   };
-  const metaSocialOG = seo?.metaSocial.find(
-    (obj) => obj.socialNetwork === "Facebook"
-  );
+
+  $pageMeta = { ...$pageMeta, ...seo, pathname };
 </script>
 
 <PageTransition {pathname}>
@@ -50,27 +49,3 @@
     </section>
   {/if}
 </PageTransition>
-
-<MetaTags
-  title={seo.metaTitle || "Dan Grebb"}
-  description={seo.metaDescription ||
-    "Dan Grebb is a Software Engineer from Philadelphia, Pennsylvania."}
-  openGraph={metaSocialOG?.image
-    ? {
-        images: [
-          {
-            url: `${PUBLIC_MEDIA_URL}${metaSocialOG.image.data.attributes.url}`,
-            width: 1600,
-            height: 900,
-            alt: metaSocialOG.image.data.attributes.alternativeText,
-          },
-          {
-            url: `${PUBLIC_MEDIA_URL}${metaSocialOG.image.data.attributes.formats.medium.url}`,
-            width: 800,
-            height: 600,
-            alt: metaSocialOG.image.data.attributes.alternativeText,
-          },
-        ],
-      }
-    : null}
-/>
