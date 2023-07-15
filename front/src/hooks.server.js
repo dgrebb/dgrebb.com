@@ -21,9 +21,9 @@ Sentry.init({
 export function handleError({ error, event }) {
   Sentry.captureException(error, { extra: { event } });
 
-  console.log("Event:");
-  console.log(event);
-  console.log('')
+  // console.log("Event:");
+  // console.log(event);
+  // console.log('')
   console.log("Error:")
   console.log(error);
 
