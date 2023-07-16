@@ -11,7 +11,6 @@ export const trailingSlash = "always";
 export async function load({ params: { slug }, route }) {
   const endpoint = URL + POST + slug + PARAMS;
   const post = await api(endpoint);
-  console.log("🚀 ~ file: +page.server.js:14 ~ load ~ post:", post)
 
   if (!post || post.error) {
     console.info({
