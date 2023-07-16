@@ -2,7 +2,8 @@
   "collectionName": "components_posts_codes",
   "info": {
     "displayName": "Code",
-    "icon": "code"
+    "icon": "code",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -13,6 +14,9 @@
       "type": "text"
     },
     "title": {
+      "type": "string"
+    },
+    "highlightLineNumbers": {
       "type": "string"
     }
   }
