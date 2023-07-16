@@ -158,10 +158,6 @@
       </aside>
     </div>
   </section>
-
-  <!-- <section class="post-main">
-    
-  </section> -->
 </PageTransition>
 
 {#if failed}
