@@ -79,10 +79,10 @@ body {
     transition-colors
     md:text-lg;
   background: radial-gradient(
-    ellipse at top,
-    rgba(var(--foreground-rgb), 0.03) 0.5%,
-    transparent 53%,
-    transparent 53%
+    200% 90% at top,
+    rgba(var(--foreground-rgb), 0.05) 0.9%,
+    transparent 73%,
+    transparent 83%
   );
   background-position: top center;
   background-repeat: no-repeat;
