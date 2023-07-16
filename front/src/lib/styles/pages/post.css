@@ -56,21 +56,37 @@
   h1 {
     position: relative;
     top: -2.3rem;
-    left: 0.33rem;
     z-index: 5;
     text-shadow: 0 -0.11rem 1.5rem rgba(var(--background-saturated), 0.77);
   }
   .post-article,
   .post-aside {
     display: block;
+    a {
+      transition: color, border-color;
+      color: rgba(var(--text-accent-rgb), 0.77);
+      @apply dg--transition-effect;
+      &:hover,
+      &:focus {
+        color: rgba(var(--text-accent-rgb), 1);
+      }
+    }
   }
   .post-article {
     float: left;
     padding-right: 0.5rem;
     width: 75%;
+    a {
+      border-bottom: 1px solid rgba(var(--text-accent-rgb), 0.67);
+      &:hover,
+      &:focus {
+        border-bottom: 1px solid rgba(var(--highlight-rgb), 1);
+      }
+    }
   }
   .post-aside {
     float: right;
+    opacity: 0.8;
     padding-left: 0.5rem;
     width: 25%;
     text-align: right;
@@ -78,11 +94,8 @@
       font-size: 1.77rem;
     }
     li {
-      font-size: 1rem;
+      font-size: 0.875rem;
       list-style-type: none;
-    }
-    a {
-      @apply dg--link-hover;
     }
   }
 }

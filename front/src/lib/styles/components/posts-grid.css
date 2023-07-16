@@ -7,10 +7,9 @@
       list-none
       grid-cols-6
       grid-rows-6
-      gap-2
+      gap-3
       self-center
       pb-0
-      sm:gap-3
       md:pb-16;
   .post-item {
     position: relative;

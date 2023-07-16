@@ -14,9 +14,10 @@
     --btn--secondary-rgb: 245, 245, 245;
     --btn-secondary-highlight-rgb: 163, 163, 163;
     --highlight-rgb: 175, 83, 7;
-    --subdued-rgb: 189, 189, 189;
+    --subdued-rgb: 175, 175, 175;
     --transform-duration: 500ms;
     --transform-timing-function: ease-in-out;
+    --text-accent-rgb: 28, 28, 0;
   }
   .dg--dark-theme {
     --foreground-rgb: 223, 224, 224;
@@ -32,5 +33,6 @@
     --btn-secondary-highlight-rgb: 82, 82, 82;
     --transform-duration: 500ms;
     --transform-timing-function: ease-in-out;
+    --text-accent-rgb: 245, 245, 230;
   }
 }

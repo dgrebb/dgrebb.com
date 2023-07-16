@@ -17,7 +17,9 @@
       pt-3
       md:mb-7
       md:pt-3;
-    color: rgb(var(--foreground-rgb));
+    transition: color;
+    @apply dg--transition-effect;
+    color: rgb(var(--text-accent-rgb));
     letter-spacing: -0.6px;
     &:first-child {
       @apply pt-0;
@@ -100,10 +102,10 @@
 
 .privacy {
   font-size: 1rem;
-  @apply p-5
+  @apply max-w-4xl
+    p-5
     shadow-xl
-    sm:p-9
-    max-w-4xl;
+    sm:p-9;
   @screen sm {
     margin-top: 3rem;
     padding-top: 7.77rem;
