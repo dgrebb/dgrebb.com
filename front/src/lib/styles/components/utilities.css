@@ -22,8 +22,8 @@
     --foreground-rgb: 223, 224, 224;
     --foreground-mark-rgb: 207, 207, 0;
     --foreground-rgb-faded: 89, 90, 91;
-    --background-start-rgb: 35, 36, 38;
-    --background-end-rgb: 29, 30, 32;
+    --background-start-rgb: 33, 33, 33;
+    --background-end-rgb: 22, 22, 22;
     --background-saturated: 19, 19, 20;
     --background-pre-rgb: 3, 3, 3;
     --highlight-rgb: 255, 255, 21;
