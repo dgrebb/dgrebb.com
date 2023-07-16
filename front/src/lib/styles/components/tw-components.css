@@ -61,7 +61,6 @@
     &:focus {
       background: rgba(var(--white), 0.1);
       color: rgba(var(--black), 1);
-      text-shadow: 0px 0px 0.33rem rgba(var(--white), 0.5);
     }
   }
   .dg--photo-link-dark {
@@ -72,7 +71,6 @@
     &:focus {
       background: rgba(var(--white), 0.03);
       color: rgb(var(--white));
-      text-shadow: 0px 0px 0.33rem rgba(var(--white), 0.33);
     }
   }
 }
