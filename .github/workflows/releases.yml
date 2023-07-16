@@ -1,4 +1,4 @@
-name: Dispatch Build & Deploy
+name: Release Dispatch
 
 on:
   push:
