@@ -44,7 +44,7 @@
   $: heroImage = hero?.url ? M + hero.url : false;
   $: position = post.position || "center center";
   $: description = post.description || false;
-  $: content = post.content.length ? post.content : false;
+  $: content = post?.content?.length ? post.content : false;
   $: seo = post.seo || false;
   $: contents = [...toc];
   $: related = post.related?.data || false;
@@ -108,7 +108,7 @@
   </section>
   <section class="post-main">
     <article class="post-article">
-      {#if content.length}
+      {#if content}
         {#each content as c}
           {#if c.__component === "posts.text"}
             <SvelteMarkdown

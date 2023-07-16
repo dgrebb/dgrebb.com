@@ -28,8 +28,8 @@ export default async function content(endpoint) {
       .then(parseJSON);
 
     return Array.isArray(content?.data)
-      ? content.data || []
-      : content.data.attributes || {};
+      ? content.data
+      : content.data.attributes;
   } catch (error) {
     return { error };
   }
