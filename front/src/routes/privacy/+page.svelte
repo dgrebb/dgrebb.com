@@ -17,9 +17,11 @@
 <PageTransition {pathname}>
   <section class="privacy">
     <Flourish />
-    <a id="main">Main Content</a>
-    <h1 class="title">{title}</h1>
-    <h2 class="date">Effective Date: <mark>{date}</mark></h2>
+    <div class="masthead">
+      <a id="main">Main Content</a>
+      <h1 class="title">{title}</h1>
+      <h2 class="date">Effective Date: <mark>{date}</mark></h2>
+    </div>
     <SvelteMarkdown renderers={{ link: Link, code: Code }} source={details} />
   </section>
 </PageTransition>

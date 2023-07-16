@@ -87,74 +87,76 @@
 </script>
 
 <PageTransition {pathname}>
-  <section class="post-header {heroImage ? 'show' : 'hide'}">
+  <section class="post">
     <Flourish />
-    <a id="main">Main Content</a>
-    {#if heroImage}
-      {#if loaded}
-        <div
-          class="hero loaded"
-          style={heroImage &&
-            `background-image: url('${heroImage}'); background-position: ${position};`}
-        />
-      {/if}
-      <div
-        class="hero hero-thumbnail {loaded ? 'loaded' : null}"
-        style={heroThumb &&
-          `background-image: url('${heroThumb}'); background-position: ${position};`}
-      />
-    {/if}
-    <h1 class="post-title">{title}</h1>
-  </section>
-  <section class="post-main">
-    <article class="post-article">
-      {#if content}
-        {#each content as c}
-          {#if c.__component === "posts.text"}
-            <SvelteMarkdown
-              source={c.text}
-              renderers={{ link: Link, heading: PostHeading }}
-              on:parsed={handleParsed}
+    <div class="background">
+      <a id="main">Main Content</a>
+      {#if heroImage}
+        <div class="hero-wrap {heroImage ? 'show' : 'hide'}">
+          {#if loaded}
+            <div
+              class="hero loaded"
+              style={heroImage &&
+                `background-image: url('${heroImage}'); background-position: ${position};`}
             />
           {/if}
-          {#if c.__component === "posts.code"}
-            <Code text={c.code} lang={c.language} title={c?.title} />
-          {/if}
-        {/each}
+          <div
+            class="hero hero-thumbnail {loaded ? 'loaded' : null}"
+            style={heroThumb &&
+              `background-image: url('${heroThumb}'); background-position: ${position};`}
+          />
+        </div>
       {/if}
-    </article>
-    <aside class="post-aside">
-      {#if contents.length}
-        <h2>Table of Contents</h2>
-        <TableOfContents {contents} />
-      {/if}
-      {#if categories.length}
-        <h2>Categories</h2>
-        <ul>
-          {#each categories as { attributes: { name, slug } }, i}
-            <li>
-              <a
-                on:click={() => categoryClick(pathname, name)}
-                href="/posts/category/{slug}/">{name}</a
-              >
-            </li>
+      <h1 class="post-title">{title}</h1>
+      <article class="post-article">
+        {#if content}
+          {#each content as c}
+            {#if c.__component === "posts.text"}
+              <SvelteMarkdown
+                source={c.text}
+                renderers={{ link: Link, heading: PostHeading }}
+                on:parsed={handleParsed}
+              />
+            {/if}
+            {#if c.__component === "posts.code"}
+              <Code text={c.code} lang={c.language} title={c?.title} />
+            {/if}
           {/each}
-        </ul>
-      {/if}
-      {#if related.length}
-        <h2>Related Posts</h2>
-        <ul>
-          {#each related as { attributes: { title, slug } }, i}
-            <li>
-              <a
-                on:click={() => relatedClick(pathname, title)}
-                href="/post/{slug}/">{title}</a
-              >
-            </li>
-          {/each}
-        </ul>
-      {/if}
-    </aside>
+        {/if}
+      </article>
+      <aside class="post-aside">
+        {#if contents.length}
+          <h2>Table of Contents</h2>
+          <TableOfContents {contents} />
+        {/if}
+        {#if categories.length}
+          <h2>Categories</h2>
+          <ul>
+            {#each categories as { attributes: { name, slug } }, i}
+              <li>
+                <a
+                  on:click={() => categoryClick(pathname, name)}
+                  href="/posts/category/{slug}/">{name}</a
+                >
+              </li>
+            {/each}
+          </ul>
+        {/if}
+        {#if related.length}
+          <h2>Related Posts</h2>
+          <ul>
+            {#each related as { attributes: { title, slug } }, i}
+              <li>
+                <a
+                  on:click={() => relatedClick(pathname, title)}
+                  href="/post/{slug}/">{title}</a
+                >
+              </li>
+            {/each}
+          </ul>
+        {/if}
+      </aside>
+    </div>
   </section>
 </PageTransition>
 
