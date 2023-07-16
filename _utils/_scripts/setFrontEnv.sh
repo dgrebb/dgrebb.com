@@ -39,5 +39,7 @@ echo "PUBLIC_API_PATH_POSTS=$(pass dg/cms/api/paths/posts)" | tee -a $dockerEnvF
 echo "PUBLIC_API_PATH_POST=$(pass dg/cms/api/paths/post)" | tee -a $dockerEnvFile $frontEnvFile >/dev/null
 echo "PUBLIC_POSTS_PREVIEW_PARAMS=$(pass dg/cms/api/paths/posts/params/preview)" | tee -a $dockerEnvFile $frontEnvFile >/dev/null
 echo "PUBLIC_POST_PARAMS=$(pass dg/cms/api/paths/post/params)" | tee -a $dockerEnvFile $frontEnvFile >/dev/null
+echo "PUBLIC_API_PATH_CATEGORY=$(pass dg/cms/api/paths/category)" | tee -a $dockerEnvFile $frontEnvFile >/dev/null
+echo "PUBLIC_CATEGORY_PAGE_PARAMS=$(pass dg/cms/api/paths/category/params)" | tee -a $dockerEnvFile $frontEnvFile >/dev/null
 echo "PUBLIC_API_URL=\"$(pass dg/api/${1}/url)\"" | tee -a $dockerEnvFile $frontEnvFile >/dev/null
 echo "PUBLIC_SENTRY_DSN=\"$(pass dg/www/logs/sentrydsn)\"" | tee -a $dockerEnvFile $frontEnvFile >/dev/null

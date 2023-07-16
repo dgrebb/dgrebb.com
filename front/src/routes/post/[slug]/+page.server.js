@@ -12,15 +12,16 @@ export async function load({ params: { slug }, route }) {
   const endpoint = URL + POST + slug + PARAMS;
   const post = await api(endpoint);
 
-  if (!post) {
-    // throw error(500, {
-    //   message: `Post Page Error: ${error}`,
-    // });
-    console.error({
+  if (!post || post.error) {
+    console.info({
       route,
       slug,
       endpoint: endpoint,
       error: post?.error,
+    });
+
+    throw error(404, {
+      message: `Page not found!`,
     });
   }
 
