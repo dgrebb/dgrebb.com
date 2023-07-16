@@ -183,7 +183,6 @@ body {
   @apply w-full
     max-w-7xl
     px-3
-    sm:p-6
     lg:p-14;
 }
 
@@ -204,7 +203,7 @@ body {
 .main {
   @apply flex
     w-full
-    max-w-6xl
+    max-w-4xl
     flex-grow
     flex-col
     items-center
