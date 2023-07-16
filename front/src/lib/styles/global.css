@@ -97,9 +97,9 @@ body {
     (hover: on-demand),
     (-moz-touch-enabled: 1),
     (pointer: coarse) {
+    height: 100%;
     overflow: visible;
     scrollbar-gutter: auto;
-    height: 100%;
   }
   .header,
   .main,
@@ -126,7 +126,7 @@ body {
     }
     .main section {
       opacity: 1;
-      transition: opacity;
+      transition: opacity, background-color;
       @apply dg--transition-effect;
     }
     .footer {
@@ -248,13 +248,14 @@ body {
       sm:text-4xl;
   }
   a {
-    color: rgba(var(--foreground-rgb), 0.77);
+    transition: color , border-color;
+    @apply dg--transition-effect;
     border-bottom: 1px solid rgba(var(--foreground-rgb), 0.77);
-    transition: color .5s ease-out, border-color .5s ease-out;
+    color: rgba(var(--text-accent-rgb), 0.77);
     &:hover,
     &:focus {
       border-color: rgb(var(--highlight-rgb));
-      color: rgba(var(--highlight-rgb), 1);
+      color: rgba(var(--text-accent-rgb), 1);
     }
   }
 }
@@ -362,14 +363,34 @@ body {
     a {
       @apply dg--transition-effect
         brightness-75
-        transition
-        dark:brightness-50;
+        transition;
       border-color: rgb(var(--foreground-rgb));
       color: rgb(var(--foreground-rgb));
       &:hover,
       &:focus {
-        @apply brightness-100
-          dark:brightness-100;
+        @apply brightness-100;
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html.dark-theme {
+    .footer {
+      small {
+        a {
+          --tw-brightness: brightness(0.5);
+          filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
+            var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert)
+            var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+          &:hover,
+          &:focus {
+            --tw-brightness: brightness(1);
+            filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
+              var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert)
+              var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+          }
+        }
       }
     }
   }

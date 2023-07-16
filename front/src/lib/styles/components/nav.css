@@ -53,9 +53,10 @@
     align-text-top
     text-sm;
   opacity: 0.42;
-  transition: opacity 0.5s ease-in-out, border-color 0.5s ease-in-out;
+  transition: opacity, border-color;
+  @apply dg--transition-effect;
   border-bottom-color: rgb(var(--foreground-rgb));
-  color: rgb(var(--foreground-rgb));
+  color: rgb(var(--text-accent-rgb));
   &:hover,
   &:focus {
     opacity: 1;
@@ -63,11 +64,11 @@
   }
   &.active {
     opacity: 1;
-    color: rgb(var(--foreground-rgb));
+    color: rgb(var(--text-accent-rgb));
     &:hover,
     &:focus {
       opacity: 1;
-      color: rgb(var(--foreground-rgb));
+      color: rgb(var(--text-accent-rgb));
     }
   }
 }
