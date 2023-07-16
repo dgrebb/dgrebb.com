@@ -1,12 +1,12 @@
 .posts,
-.post-header,
-.post-main,
+.post,
+.post-body,
 .privacy {
-  @apply w-full
-    sm:max-w-5xl
+  @apply dg--transition-effect
+    w-full
+    opacity-95
     transition-colors
-    dg--transition-effect
-    opacity-95;
+    sm:max-w-5xl;
   line-height: 1.6;
   h1,
   h2,
@@ -14,10 +14,10 @@
   h4,
   h5,
   h6 {
-    @apply pt-3
-      mb-5
-      md:pt-3
-      md:mb-7;
+    @apply mb-5
+      pt-3
+      md:mb-7
+      md:pt-3;
     color: rgb(var(--foreground-rgb));
     letter-spacing: -0.6px;
     &:first-child {
@@ -29,41 +29,41 @@
     }
   }
   h1 {
-    @apply mb-5
+    @apply dg--font-psbl
+      mb-5
       text-4xl
-      md:text-5xl
-      dg--font-psbl;
+      md:text-5xl;
   }
   h2 {
-    @apply mb-4
+    @apply dg--font-psbl
+      mb-4
       text-3xl
-      md:text-4xl
-      dg--font-psbl;
+      md:text-4xl;
   }
   h3 {
-    @apply mb-4
+    @apply dg--font-psb
+      mb-4
       text-2xl
-      md:text-3xl
-      dg--font-psb;
+      md:text-3xl;
   }
   h4 {
-    @apply mb-4
+    @apply dg--font-psb
+      mb-4
       text-xl
-      md:text-2xl
-      dg--font-psb;
+      md:text-2xl;
   }
   h5 {
-    @apply mb-4
+    @apply dg--font-psb
+      mb-4
       text-base
-      md:text-lg
-      dg--font-psb;
+      md:text-lg;
   }
   h6 {
-    @apply mb-4
+    @apply dg--font-psb
+      mb-4
       text-base
-      md:text-lg
-      dg--font-psb
-      italic;
+      italic
+      md:text-lg;
   }
   p {
     @apply my-3;
@@ -80,7 +80,7 @@
     }
     ol,
     ul {
-      @apply mt-3 ml-3;
+      @apply ml-3 mt-3;
     }
   }
   mark {
@@ -94,21 +94,35 @@
     text-align: center;
   }
   .summary {
-    max-width: 77%;
     margin: auto;
+    max-width: 77%;
   }
 }
 
 .privacy {
   font-size: 1rem;
   @apply p-5
+    shadow-xl
     sm:p-9
-    rounded-xl
-    shadow-xl;
-  background-color: rgb(var(--background-saturated));
+    max-w-4xl;
+  @screen sm {
+    margin-top: 3rem;
+    padding-top: 7.77rem;
+  }
+  position: relative;
+  border-radius: 0.77rem;
+  background-color: rgba(var(--background-saturated), 0.77);
+  .masthead {
+    display: block;
+    @screen sm {
+      position: absolute;
+      top: -2rem;
+      left: 1.33rem;
+    }
+  }
   h1.title {
-    @apply mt-0
-      dg--font-psbl;
+    @apply dg--font-psbl
+      mt-0;
   }
   ol {
     counter-reset: item;
