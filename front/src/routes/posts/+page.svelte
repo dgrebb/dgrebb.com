@@ -55,7 +55,7 @@
           style={lazyImage && `background-image: url('${lazyImage}');`}
         >
           <a href="/post/{slug}/" class="post-link">
-            {title}
+            <span class="link-bg">{title}</span>
           </a>
         </li>
       {/each}
