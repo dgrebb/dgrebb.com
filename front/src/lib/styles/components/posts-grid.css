@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   margin: 0;
+  background-repeat: no-repeat;
   @apply grid
       list-none
       grid-cols-6
