@@ -57,6 +57,7 @@ html {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  background-repeat: no-repeat;
   min-height: 100%;
   overflow: clip;
   scroll-behavior: smooth;
@@ -65,7 +66,7 @@ html {
     (-moz-touch-enabled: 1),
     (pointer: coarse) {
     overflow: auto;
-    scrollbar-gutter: stable;
+    scrollbar-gutter: stable both-edges;
   }
 }
 
@@ -79,10 +80,10 @@ body {
     transition-colors
     md:text-lg;
   background: radial-gradient(
-    ellipse at top,
-    rgba(var(--foreground-rgb), 0.03) 0.5%,
-    transparent 53%,
-    transparent 53%
+    200% 90% at top,
+    rgba(var(--foreground-rgb), 0.05) 0.9%,
+    transparent 73%,
+    transparent 83%
   );
   background-position: top center;
   background-repeat: no-repeat;
@@ -96,6 +97,7 @@ body {
     (hover: on-demand),
     (-moz-touch-enabled: 1),
     (pointer: coarse) {
+    height: 100%;
     overflow: visible;
     scrollbar-gutter: auto;
   }
@@ -124,7 +126,7 @@ body {
     }
     .main section {
       opacity: 1;
-      transition: opacity;
+      transition: opacity, background-color;
       @apply dg--transition-effect;
     }
     .footer {
@@ -181,7 +183,6 @@ body {
   @apply w-full
     max-w-7xl
     px-3
-    sm:p-6
     lg:p-14;
 }
 
@@ -202,7 +203,7 @@ body {
 .main {
   @apply flex
     w-full
-    max-w-6xl
+    max-w-4xl
     flex-grow
     flex-col
     items-center
@@ -246,13 +247,14 @@ body {
       sm:text-4xl;
   }
   a {
-    color: rgba(var(--foreground-rgb), 0.77);
+    transition: color , border-color;
+    @apply dg--transition-effect;
     border-bottom: 1px solid rgba(var(--foreground-rgb), 0.77);
-    transition: color .5s ease-out, border-color .5s ease-out;
+    color: rgba(var(--text-accent-rgb), 0.77);
     &:hover,
     &:focus {
       border-color: rgb(var(--highlight-rgb));
-      color: rgba(var(--highlight-rgb), 1);
+      color: rgba(var(--text-accent-rgb), 1);
     }
   }
 }
@@ -360,14 +362,34 @@ body {
     a {
       @apply dg--transition-effect
         brightness-75
-        transition
-        dark:brightness-50;
+        transition;
       border-color: rgb(var(--foreground-rgb));
       color: rgb(var(--foreground-rgb));
       &:hover,
       &:focus {
-        @apply brightness-100
-          dark:brightness-100;
+        @apply brightness-100;
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html.dark-theme {
+    .footer {
+      small {
+        a {
+          --tw-brightness: brightness(0.5);
+          filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
+            var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert)
+            var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+          &:hover,
+          &:focus {
+            --tw-brightness: brightness(1);
+            filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
+              var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert)
+              var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+          }
+        }
       }
     }
   }
