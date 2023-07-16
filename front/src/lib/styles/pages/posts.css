@@ -1,6 +1,5 @@
 .posts,
 .post,
-.post-body,
 .privacy {
   @apply dg--transition-effect
     w-full
