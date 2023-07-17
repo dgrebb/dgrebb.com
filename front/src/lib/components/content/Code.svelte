@@ -2,6 +2,7 @@
   import Highlight, { LineNumbers } from "svelte-highlight";
   import plaintext from "svelte-highlight/languages/plaintext";
   import JavaScript from "svelte-highlight/languages/javascript";
+  import CodeCopy from "./CodeCopy.svelte";
 
   export let lang;
   export let text;
@@ -17,21 +18,32 @@
   let language = which[langLower] || plaintext;
 </script>
 
-{#if highlightedLines}
-  <div class="syntax-highlighter">
-    <span class="title">{title ? title : lang}</span>
-    <Highlight code={text} {language} let:highlighted>
+<div class="syntax-highlighter">
+  <CodeCopy {text} />
+  {#if highlightedLines}
+    {#if title}
+      <span class="title">{title} {highlightedLines}</span>
+    {/if}
+    {#if lang}
+      <span class="language">{lang}</span>
+    {/if}
+    <Highlight code={text} {language} let:highlighted langtag>
       <LineNumbers
         {highlighted}
         {highlightedLines}
-        --highlighted-background="#fefefe"
+        --highlighted-background="transparent"
+        --padding-left="0"
+        --line-number-color="rgba(var(--foreground-rgb), 0.3"
         hideBorder
       />
     </Highlight>
-  </div>
-{:else}
-  <div class="syntax-highlighter">
-    <span class="title">{title ? title : lang}</span>
-    <Highlight code={text} {language} />
-  </div>
-{/if}
+  {:else}
+    {#if title}
+      <span class="title">{title}</span>
+    {/if}
+    {#if lang}
+      <span class="language">{lang}</span>
+    {/if}
+    <Highlight code={text} {language} langtag />
+  {/if}
+</div>

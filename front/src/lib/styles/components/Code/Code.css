@@ -1,32 +1,53 @@
 @import "syntax.css";
 
 .syntax-highlighter {
-  @apply shadow-lg
-    rounded-lg
+  @apply my-9
     w-full
-    sm:w-auto
-    my-9
+    rounded-lg
     px-9
-    pb-5;
-  background-color: rgb(var(--background-pre-rgb));
+    pb-5
+    shadow-lg
+    sm:w-auto;
   position: relative;
   z-index: 3;
+  background-color: rgb(var(--background-pre-rgb));
   .title,
-  pre {
-    @apply transition-colors
-      dg--transition-effect;
+  > pre {
+    @apply dg--transition-effect
+      transition-colors;
+  }
+  .title,
+  .language {
+    position: absolute;
+    z-index: 4;
+    background-color: rgb(var(--background-start-rgb));
+    padding: 0.75rem;
+    width: 50%;
+    color: rgb(var(--foreground-rgb));
   }
   .title {
-    @apply p-3
-      rounded-t-md;
-    background-color: rgb(var(--background-end-rgb));
-    color: rgb(var(--foreground-rgb));
-    position: absolute;
     left: 0;
-    right: 0;
-    z-index: 4;
+    border-top-left-radius: 0.375rem;
   }
-  pre {
+  .language {
+    right: 0;
+    border-top-right-radius: 0.375rem;
+    padding-right: 2.5rem;
+    color: rgba(var(--foreground-rgb), 0.5);
+    text-align: right;
+  }
+  .code-copy-btn {
+    position: absolute;
+    right: 0;
+    vertical-align: baseline;
+    z-index: 5;
+    transition: color;
+    padding: 0.8rem 0.75rem 0.5rem;
+    @apply dg--transition-effect;
+    &:hover {
+      color: rgba(var(--highlight-rgb));
+    }
+  }
     @apply mb-0
       pt-20
       pb-5;
