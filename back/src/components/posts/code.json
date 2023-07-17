@@ -16,7 +16,7 @@
     "title": {
       "type": "string"
     },
-    "highlightLineNumbers": {
+    "highlightedLines": {
       "type": "string"
     }
   }
