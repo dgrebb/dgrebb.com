@@ -93,6 +93,9 @@
         border-bottom: 1px solid rgba(var(--highlight-rgb), 1);
       }
     }
+    h2.footnotes-title {
+      margin-top: 3rem;
+    }
   }
   .post-aside {
     float: right;
