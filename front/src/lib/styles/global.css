@@ -80,9 +80,10 @@ body {
     transition-colors
     md:text-lg;
   background: radial-gradient(
-    200% 90% at top,
-    rgba(var(--foreground-rgb), 0.05) 0.9%,
-    transparent 73%,
+    187% 100% at top,
+    rgb(var(--subdued-rgb)),
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb)) 100%,
     transparent 83%
   );
   background-position: top center;
