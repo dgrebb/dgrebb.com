@@ -59,9 +59,12 @@
     z-index: 5;
     text-shadow: 0 -0.11rem 1.5rem rgba(var(--background-saturated), 0.77);
   }
+  .aside-toggle {
+    display: inline;
+    float: right;
+  }
   .post-article,
   .post-aside {
-    display: block;
     a {
       transition: color, border-color;
       color: rgba(var(--text-accent-rgb), 0.77);
@@ -73,9 +76,16 @@
     }
   }
   .post-article {
+    display: block;
     float: left;
     padding-right: 0.5rem;
     width: 75%;
+    /* transition: width; */
+    /* @apply dg--transition-effect; */
+    &.full {
+      width: 100%;
+      float: none;
+    }
     a {
       border-bottom: 1px solid rgba(var(--text-accent-rgb), 0.67);
       &:hover,
@@ -88,8 +98,13 @@
     float: right;
     opacity: 0.8;
     padding-left: 0.5rem;
-    width: 25%;
     text-align: right;
+    width: 0;
+    display: none;
+    &.show {
+      width: 25%;
+      display: block;
+    }
     h2 {
       font-size: 1.77rem;
     }

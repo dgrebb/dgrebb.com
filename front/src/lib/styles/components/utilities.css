@@ -11,6 +11,7 @@
     --background-end-rgb: 255, 255, 255;
     --background-saturated: 236, 236, 235;
     --background-pre-rgb: 217, 217, 217;
+    --background-pre-highlight-rgb: 255, 140, 156;
     --btn--secondary-rgb: 245, 245, 245;
     --btn-secondary-highlight-rgb: 163, 163, 163;
     --highlight-rgb: 175, 83, 7;
@@ -27,6 +28,7 @@
     --background-end-rgb: 22, 22, 22;
     --background-saturated: 19, 19, 20;
     --background-pre-rgb: 3, 3, 3;
+    --background-pre-highlight-rgb: 48, 48, 0;
     --highlight-rgb: 255, 255, 21;
     --subdued-rgb: 71, 72, 73;
     --btn--secondary-rgb: 23, 23, 23;

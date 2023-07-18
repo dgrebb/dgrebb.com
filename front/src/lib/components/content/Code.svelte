@@ -22,18 +22,17 @@
   <CodeCopy {text} />
   {#if highlightedLines}
     {#if title}
-      <span class="title">{title} {highlightedLines}</span>
+      <span class="title">{title}</span>
     {/if}
     {#if lang}
       <span class="language">{lang}</span>
     {/if}
-    <Highlight code={text} {language} let:highlighted langtag>
+    <Highlight code={text} {language} let:highlighted>
       <LineNumbers
         {highlighted}
         {highlightedLines}
         --highlighted-background="transparent"
         --padding-left="0"
-        --line-number-color="rgba(var(--foreground-rgb), 0.3"
         hideBorder
       />
     </Highlight>
@@ -44,6 +43,6 @@
     {#if lang}
       <span class="language">{lang}</span>
     {/if}
-    <Highlight code={text} {language} langtag />
+    <Highlight code={text} {language} />
   {/if}
 </div>

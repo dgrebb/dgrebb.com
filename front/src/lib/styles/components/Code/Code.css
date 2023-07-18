@@ -48,13 +48,14 @@
       color: rgba(var(--highlight-rgb));
     }
   }
+  > pre {
     @apply mb-0
-      pt-20
-      pb-5;
-    color: rgb(var(--foreground-rgb));
-    overflow-x: auto;
+      pb-5
+      pt-20;
     position: relative;
+    overflow-x: auto;
     scrollbar-color: rgb(var(--foreground-rgb)) transparent;
+    color: rgb(var(--foreground-rgb));
     &::-webkit-scrollbar {
       background-color: transparent;
       width: 8px;
@@ -63,6 +64,58 @@
     &::-webkit-scrollbar-thumb {
       background: rgb(var(--foreground-rgb));
       @apply rounded-full;
+    }
+  }
+  > div[style] > .line-number-wrap {
+    overflow-x: auto;
+    /* scrollbar-gutter: stable;
+    &:hover {
+      overflow-x: auto;
+    } */
+    & > table {
+      margin: 5rem 0 2rem;
+      tr:hover,
+      tr:focus {
+        td:first-child {
+          color: rgba(var(--foreground-rgb), 0.5);
+        }
+      }
+      td:first-child {
+        transition: color 0.3s;
+        background: rgb(var(--background-pre-rgb));
+        background: linear-gradient(
+          90deg,
+          rgba(var(--background-pre-rgb), 1) 65%,
+          rgba(var(--background-pre-rgb), 0.5452380781414128) 81%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        color: rgba(var(--foreground-rgb), 0.15);
+      }
+      tbody {
+        tr:first-child td {
+          padding-top: 0;
+        }
+        tr:last-child td {
+          padding-bottom: 0;
+        }
+        tr.highlight {
+          td:last-child {
+            background-color: rgba(var(--background-pre-highlight-rgb));
+          }
+          &.first {
+            td:last-child {
+              border-top-right-radius: 0.5rem;
+              border-top-left-radius: 0.5rem;
+            }
+          }
+          &.last {
+            td:last-child {
+              border-bottom-right-radius: 0.5rem;
+              border-bottom-left-radius: 0.5rem;
+            }
+          }
+        }
+      }
     }
   }
 }
