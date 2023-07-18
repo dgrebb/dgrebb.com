@@ -11,6 +11,7 @@
   import slugger from "slugger";
   import { onMount } from "svelte";
   import SvelteMarkdown from "svelte-markdown";
+  import Footnotes from "@components/content/renderers/Footnotes.svelte";
 
   export let data;
 
@@ -47,6 +48,7 @@
   $: content = post?.content?.length ? post.content : false;
   $: seo = post.seo || false;
   $: contents = [...toc];
+  $: footnotes = post?.footnotes ? post.footnotes : false;
   $: related = post.related?.data || false;
   $: categories = post.categories?.data || false;
 
@@ -149,6 +151,11 @@
               </div>
             {/if}
           {/each}
+        {/if}
+        {#if footnotes}
+          <footer class="footnotes-footer">
+            <Footnotes {footnotes} />
+          </footer>
         {/if}
       </article>
       <aside class="post-aside" class:show={showAside}>
