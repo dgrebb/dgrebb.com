@@ -62,7 +62,7 @@
         "posts.html"
       ]
     },
-    "note": {
+    "footnotes": {
       "displayName": "Footnotes",
       "type": "component",
       "repeatable": true,
