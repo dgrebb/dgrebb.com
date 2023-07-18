@@ -127,15 +127,15 @@
             {/if}
             {#if c.__component === "posts.code"}
               {@const lines =
-                c.highlightedLines.split(",").map((item) => Number(item - 1)) ||
+                c?.highlightedLines?.split(",").map((item) => Number(item - 1)) ||
                 false}
               <Code
                 text={c.code}
                 lang={c.language}
                 title={c?.title}
-                highlightedLines={lines.sort((a, b) => {
+                highlightedLines={lines ? lines.sort((a, b) => {
                   return a - b;
-                })}
+                }) : false}
               />
             {/if}
           {/each}
