@@ -17,7 +17,8 @@
       "type": "string"
     },
     "highlightedLines": {
-      "type": "string"
+      "type": "string",
+      "regex": "^ *\\d+ *(?:, *\\d+ *)*$"
     }
   }
 }
