@@ -9,4 +9,7 @@ export default defineConfig({
       compiler: "svelte",
     }),
   ],
+  optimizeDeps: {
+    include: ['highlight.js/lib/core'],
+  },
 });
