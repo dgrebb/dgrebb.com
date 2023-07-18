@@ -3,7 +3,7 @@
   margin: 0;
   gap: 0.5rem;
   list-style-type: none;
-  grid-template-row: repeat(6, minmax(0, 1fr));
+  grid-template-rows: repeat(6, minmax(0, 1fr));
   grid-template-columns: repeat(6, minmax(0, 1fr));
   align-self: center;
   padding-bottom: 0;
