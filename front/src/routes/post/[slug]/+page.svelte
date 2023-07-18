@@ -84,6 +84,12 @@
   });
 
   let { categoryClick, relatedClick } = pokeTrapper;
+
+  $: showAside = true;
+  $: asideLabel = showAside ? "Hide" : "Show";
+  function asideToggle() {
+    showAside = !showAside;
+  }
 </script>
 
 <PageTransition {pathname}>
@@ -108,7 +114,8 @@
         </div>
       {/if}
       <h1 class="post-title">{title}</h1>
-      <article class="post-article">
+      <button on:click={asideToggle} class="aside-toggle">{asideLabel} Sidebar</button>
+      <article class="post-article" class:full={!showAside}>
         {#if content}
           {#each content as c}
             {#if c.__component === "posts.text"}
@@ -119,12 +126,22 @@
               />
             {/if}
             {#if c.__component === "posts.code"}
-              <Code text={c.code} lang={c.language} title={c?.title} />
+              {@const lines =
+                c.highlightedLines.split(",").map((item) => Number(item - 1)) ||
+                false}
+              <Code
+                text={c.code}
+                lang={c.language}
+                title={c?.title}
+                highlightedLines={lines.sort((a, b) => {
+                  return a - b;
+                })}
+              />
             {/if}
           {/each}
         {/if}
       </article>
-      <aside class="post-aside">
+      <aside class="post-aside" class:show={showAside}>
         {#if contents.length}
           <h2>Table of Contents</h2>
           <TableOfContents {contents} />

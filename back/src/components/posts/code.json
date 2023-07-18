@@ -2,7 +2,8 @@
   "collectionName": "components_posts_codes",
   "info": {
     "displayName": "Code",
-    "icon": "code"
+    "icon": "code",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -14,6 +15,10 @@
     },
     "title": {
       "type": "string"
+    },
+    "highlightedLines": {
+      "type": "string",
+      "regex": "^ *\\d+ *(?:, *\\d+ *)*$"
     }
   }
 }

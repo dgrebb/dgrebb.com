@@ -1,0 +1,39 @@
+diff --git a/node_modules/svelte-highlight/LineNumbers.svelte b/node_modules/svelte-highlight/LineNumbers.svelte
+index 4312cb3..87e26a7 100644
+--- a/node_modules/svelte-highlight/LineNumbers.svelte
++++ b/node_modules/svelte-highlight/LineNumbers.svelte
+@@ -14,14 +14,32 @@ $:
+   len = len_digits - MIN_DIGITS < 1 ? MIN_DIGITS : len_digits;
+ $:
+   width = len * DIGIT_WIDTH;
++
++function isHighlightStart(lines, n) {
++  const i = lines.indexOf(n);
++  const prev = lines[i - 1];
++  return prev !== n - 1;
++}
++
++function isHighlightEnd(lines, n) {
++  const i = lines.indexOf(n);
++  const next = lines[i + 1];
++  return next !== n + 1;
++}
+ </script>
+ 
+-<div style:overflow-x="auto" {...$$restProps}>
++<div class="line-number-wrap" {...$$restProps}>
+   <table>
+     <tbody class:hljs={true}>
+       {#each lines as line, i}
+         {@const lineNumber = i + startingLineNumber}
+-        <tr>
++        <tr
++          class:highlight={highlightedLines.includes(i)}
++          class:first={highlightedLines.includes(i) &&
++            isHighlightStart(highlightedLines, i)}
++          class:last={highlightedLines.includes(i) &&
++            isHighlightEnd(highlightedLines, i)}
++        >
+           <td
+             class:hljs={true}
+             class:hideBorder
