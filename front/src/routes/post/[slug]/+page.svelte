@@ -114,7 +114,9 @@
         </div>
       {/if}
       <h1 class="post-title">{title}</h1>
-      <button on:click={asideToggle} class="aside-toggle">{asideLabel} Sidebar</button>
+      <button on:click={asideToggle} class="aside-toggle"
+        >{asideLabel} Sidebar</button
+      >
       <article class="post-article" class:full={!showAside}>
         {#if content}
           {#each content as c}
@@ -127,16 +129,24 @@
             {/if}
             {#if c.__component === "posts.code"}
               {@const lines =
-                c?.highlightedLines?.split(",").map((item) => Number(item - 1)) ||
-                false}
+                c?.highlightedLines
+                  ?.split(",")
+                  .map((item) => Number(item - 1)) || false}
               <Code
                 text={c.code}
                 lang={c.language}
                 title={c?.title}
-                highlightedLines={lines ? lines.sort((a, b) => {
-                  return a - b;
-                }) : false}
+                highlightedLines={lines
+                  ? lines.sort((a, b) => {
+                      return a - b;
+                    })
+                  : false}
               />
+            {/if}
+            {#if c.__component === "posts.html"}
+              <div class="inline-html">
+                {@html c.html}
+              </div>
             {/if}
           {/each}
         {/if}
