@@ -3,9 +3,12 @@
 	"version": "2.5.1",
 	"private": true,
 	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview"
+		"dev.local": "vite --config vite.local.config.js dev",
+		"dev": "vite --config vite.config.js dev",
+		"build.local": "vite --config vite.local.config.js build",
+		"build": "vite --config vite.config.js build",
+		"preview.local": "vite --config vite.local.config.js preview",
+		"preview": "vite --config vite.config.js preview"
 	},
 	"devDependencies": {
 		"@accuser/svelte-plausible-analytics": "github:dgrebb/svelte-plausible-analytics#release/v0.6.0",
