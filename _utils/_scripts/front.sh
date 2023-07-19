@@ -18,7 +18,7 @@ while test "$1" != --; do
     d | dev)
         setFrontEnv ${env}
         cdfront &&
-            npm run dev -- --host
+            npm run dev.local -- --host
         break
         ;;
     i | install)
@@ -27,7 +27,7 @@ while test "$1" != --; do
         ;;
     b | build)
         setFrontEnv ${env}
-        cdfront && npm run build
+        cdfront && npm run build.local
         break
         ;;
     s | live-server)
@@ -35,7 +35,7 @@ while test "$1" != --; do
         break
         ;;
     p | preview)
-        cdfront && npm run preview -- --host
+        cdfront && npm run preview.local -- --host
         break
         ;;
     ?)
