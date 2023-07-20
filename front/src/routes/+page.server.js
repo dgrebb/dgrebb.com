@@ -7,8 +7,6 @@ import {
 
 const endpoint = URL + HOME;
 
-export const trailingSlash = "always";
-
 export async function load({ params }) {
   const home = await api(endpoint);
 

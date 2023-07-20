@@ -56,18 +56,6 @@
   let failed = false;
   let loading = true;
 
-  $: $pageMeta = {
-    ...$pageMeta,
-    ...seo,
-    type: "post",
-    title,
-    heroImage,
-    createdAt,
-    updatedAt,
-    publishedAt,
-    titleTemplate: "%s | Writing | Dan Grebb",
-  };
-
   onMount(() => {
     if (heroImage) {
       const img = new Image();
@@ -83,6 +71,18 @@
         failed = true;
       };
     }
+
+    $pageMeta = {
+      ...$pageMeta,
+      ...seo,
+      type: "post",
+      title,
+      heroImage,
+      createdAt,
+      updatedAt,
+      publishedAt,
+      titleTemplate: "%s | Writing | Dan Grebb",
+    };
   });
 
   let { categoryClick, relatedClick } = pokeTrapper;

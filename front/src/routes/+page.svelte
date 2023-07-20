@@ -1,5 +1,5 @@
 <script>
-  import { PUBLIC_MEDIA_URL } from "$env/static/public";
+  import { PUBLIC_MEDIA_URL as M } from "$env/static/public";
   import Image from "@components/Image.svelte";
   import Links from "@components/Links.svelte";
   import PageTransition from "@components/PageTransition.svelte";
@@ -9,13 +9,19 @@
   import SvelteMarkdown from "svelte-markdown";
 
   export let data;
-  const { seo, headline, intro, links, pathname } = data;
-  const image = seo?.metaImage?.data?.attributes.formats.small || {
+  const { seo, headline, bioPicture, intro, links, pathname } = data;
+  const image = bioPicture?.data?.attributes?.formats?.small || {
     url: "/bio.jpg",
-    alt: "A picture of Dan smiling",
+    alternativeText: "A picture of Dan smiling",
   };
-
-  $pageMeta = { ...$pageMeta, ...seo, pathname };
+  
+  $pageMeta = {
+    ...$pageMeta,
+    ...seo,
+    title: seo.metaTitle,
+    type: "website",
+    heroImage: M + seo?.metaImage?.data?.attributes?.url || M + image.url,
+  };
 </script>
 
 <PageTransition {pathname}>
@@ -23,7 +29,7 @@
     <Flourish />
     {#if image}
       <Image
-        src={`${PUBLIC_MEDIA_URL}${image.url}`}
+        src={M + image.url}
         alt={image.alternativeText}
         title="Hi!"
         classes="bio-picture"
@@ -31,7 +37,7 @@
       />
       <noscript>
         <img
-          src={`${PUBLIC_MEDIA_URL}${image.url}`}
+          src={M + image.url}
           alt={image.alternativeText}
           title="Hi!"
           classes="bio-picture"

@@ -7,6 +7,7 @@ import {
 } from "$env/static/public";
 
 export const prerender = true;
+export const trailingSlash = "always";
 
 const navigationEndpoint = URL + NAV;
 const footerEndpoint = URL + FOOT;

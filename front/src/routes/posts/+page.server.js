@@ -10,8 +10,6 @@ import {
 const pageEndpoint = URL + PAGE;
 const postsEndpoint = URL + POSTS + PARAMS;
 
-export const trailingSlash = "always";
-
 export async function load({ route }) {
   const [page, posts] = await Promise.all([
     api(pageEndpoint),

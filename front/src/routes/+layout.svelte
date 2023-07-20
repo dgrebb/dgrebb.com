@@ -20,33 +20,50 @@
   if (browser) anchor = window.location.hash || false;
   if (browser && route && !anchor) scrollTop();
 
-  const domain = {
-    production: "dgrebb.com",
-    staging: "stg.dgrebb.com",
-    local: "local.dgrebb.com",
-  }[ENV] || "local.dgrebb.com";
+  const domain =
+      {
+        production: "dgrebb.com",
+        staging: "stg.dgrebb.com",
+        local: "local.dgrebb.com",
+      }[ENV] || "local.dgrebb.com",
+    apiHost = "https://p.dgrebb.com";
 
-  const apiHost = "https://p.dgrebb.com";
+  let OGImageProp,
+    OGImage,
+    OGImageHeight,
+    OGImageWidth,
+    OGImageAlt,
+    twitter = $pageMeta?.metaSocial?.find(
+      (obj) => obj.socialNetwork === "Twitter"
+    ),
+    twitterImageProp,
+    twitterImage,
+    twitterImageAlt,
+    mounted = false;
 
-  let mounted = false;
-  let theme = "unknown";
+  $: {
+    OGImageProp = $pageMeta?.metaImage?.data?.attributes?.formats || false;
+    OGImage = OGImageProp?.large
+      ? M + OGImageProp.large?.url
+      : $pageMeta.heroImage ||
+        "https://s.dgrebb.com/img/default_posts_813772ab64.png";
+    OGImageWidth = OGImageProp.large?.width || OGImageProp.medium?.width;
+    OGImageHeight = OGImageProp.large?.height || OGImageProp.medium?.height;
+    OGImageAlt =
+      $pageMeta?.metaImage?.data?.attributes?.alternativeText ||
+      "The Circuit of Life";
 
-  $: OGImageProp = $pageMeta?.metaImage?.data?.attributes?.formats || false;
-  $: OGImage = OGImageProp?.large ? M + OGImageProp.large?.url : $pageMeta.heroImage || "https://s.dgrebb.com/img/default_banner_2a50e43220.png";
-  $: OGImageWidth = OGImageProp.large?.width || OGImageProp.medium?.width;
-  $: OGImageHeight = OGImageProp.large?.height || OGImageProp.medium?.height;
-  $: OGImageAlt = $pageMeta?.metaImage?.data?.attributes?.alternativeText || "The Circuit of Life";
-
-  let twitter = $pageMeta?.metaSocial?.find(obj => obj.socialNetwork === "Twitter");
-  let twitterImage, twitterImageAlt;
-  $: if (twitter) {
-    twitterImage = twitter.image?.data?.attributes?.formats.large?.url || false;
-    twitterImageAlt = twitter?.data?.attributes?.alternativeText || "The Circuit of Life";
+    twitterImageProp = twitter?.image?.data?.attributes || false;
+    twitterImage = twitterImageProp?.formats?.large
+      ? M + twitterImageProp?.formats.large?.url
+      : $pageMeta?.heroImage ||
+        "https://s.dgrebb.com/img/default_posts_813772ab64.png";
+    twitterImageAlt =
+      twitterImageProp?.alternativeText || "The Circuit of Life";
   }
 
   onMount(() => {
     mounted = true;
-    theme = document.querySelector("html").classList.contains("dark-theme") ? "dark" : "light";
   });
 </script>
 
@@ -59,18 +76,14 @@
 <Footer {copyleft} {copyright} />
 
 {#if mounted}
-  <PlausibleAnalytics
-    {domain}
-    {apiHost}
-    enabled
-    outboundLinks
-  />
+  <PlausibleAnalytics {domain} {apiHost} enabled outboundLinks />
 {/if}
 
 <MetaTags
   title={$pageMeta?.metaTitle || $pageMeta?.title || "Dan Grebb"}
   titleTemplate={$pageMeta?.titleTemplate}
-  description={$pageMeta?.metaDescription || "Dan Grebb is a Software Engineer from Philadelphia, Pennsylvania."}
+  description={$pageMeta?.metaDescription ||
+    "Dan Grebb is a Software Engineer from Philadelphia, Pennsylvania."}
   robots={$pageMeta?.metaRobots || undefined}
   canonical={$pageMeta.canonicalURL}
   additionalMetaTags={[
@@ -101,13 +114,13 @@
       },
     ],
   }}
-  twitter={twitter && {
+  twitter={{
     site: "@dgrebb",
     creator: "@dgrebb",
     cardType: "summary_large_image",
-    title: twitter.title,
-    description: twitter.description,
-    image: twitterImage ? M + twitterImage : "https://s.dgrebb.com/img/default_banner_2a50e43220.png",
-    imageAlt: twitterImageAlt || "The Circuit of Life",
+    title: twitter?.title || $pageMeta.title,
+    description: twitter?.description || $pageMeta.description,
+    image: twitterImage,
+    imageAlt: twitterImageAlt,
   }}
 />
