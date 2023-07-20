@@ -1,4 +1,5 @@
 node_modules
+.backups
 .cache
 .tmp
 build
