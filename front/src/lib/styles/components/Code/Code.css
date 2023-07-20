@@ -54,26 +54,66 @@
       pt-20;
     position: relative;
     overflow-x: auto;
-    scrollbar-color: rgb(var(--foreground-rgb)) transparent;
     color: rgb(var(--foreground-rgb));
+    scrollbar-color: transparent transparent;
+    transition: scrollbar-color 0.5s;
     &::-webkit-scrollbar {
       background-color: transparent;
       width: 8px;
       height: 8px;
     }
     &::-webkit-scrollbar-thumb {
-      background: rgb(var(--foreground-rgb));
+      background: transparent;
       @apply rounded-full;
+    }
+    &:hover,
+    &:focus {
+      scrollbar-color: rgb(var(--subdued-rgb)) transparent;
+      &::-webkit-scrollbar {
+        background-color: transparent;
+        width: 8px;
+        height: 8px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgb(var(--foreground-rgb));
+        @apply rounded-full;
+      }
     }
   }
   > div[style] > .line-number-wrap {
     overflow-x: auto;
+    scrollbar-color: transparent transparent;
+    transition: scrollbar-color 0.5s;
+    &::-webkit-scrollbar {
+      transition: background-color 0.5s;
+      background-color: transparent;
+      width: 8px;
+      height: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      transition: background-color 0.5s;
+      background: transparent, 0.0);
+      @apply rounded-full;
+    }
+    &:hover,
+    &:focus {
+      scrollbar-color: rgb(var(--subdued-rgb)) transparent;
+      &::-webkit-scrollbar {
+        background-color: transparent;
+        width: 8px;
+        height: 8px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgba(var(--foreground-rgb), 1.0);
+        @apply rounded-full;
+      }
+    }
     /* scrollbar-gutter: stable;
     &:hover {
       overflow-x: auto;
     } */
     & > table {
-      margin: 5rem 0 2rem;
+      margin-top: 5rem;
       tr:hover,
       tr:focus {
         td:first-child {
