@@ -5,7 +5,6 @@ import {
   PUBLIC_API_PATH_PRIVACY as PRIVACY,
 } from "$env/static/public";
 
-export const trailingSlash = "always";
 const endpoint = URL + PRIVACY;
 
 export async function load({ params }) {

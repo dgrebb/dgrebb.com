@@ -1,9 +1,7 @@
 import * as Sentry from "@sentry/sveltekit";
 import { PUBLIC_ENV, PUBLIC_SENTRY_DSN } from "$env/static/public";
 
-export const trailingSlash = "always";
-
-console.log("404 - Not Found ~ /404 handler");
+console.info("404 - Not Found ~ /404 handler");
 
 Sentry.captureMessage("Page Not Found", {
   environment: PUBLIC_ENV,

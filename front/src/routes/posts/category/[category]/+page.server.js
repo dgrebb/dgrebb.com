@@ -7,8 +7,6 @@ import {
   PUBLIC_CATEGORY_PAGE_PARAMS as PARAMS,
 } from "$env/static/public";
 
-export const trailingSlash = "always";
-
 export async function load({ params }) {
   const { category } = params;
   const categoryEndpoint = URL + CAT + category;
