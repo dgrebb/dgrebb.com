@@ -12,6 +12,12 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "bioPicture": {
+      "allowedTypes": ["images"],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
     "headline": {
       "type": "string"
     },
