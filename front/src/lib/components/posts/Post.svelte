@@ -1,10 +1,10 @@
 <script>
-  import ListIcon from "~icons/gg/list";
+  import { onMount } from "svelte";
   import Code from "@components/content/Code.svelte";
   import Footnotes from "@components/content/renderers/Footnotes.svelte";
   import Link from "@components/content/renderers/Link.svelte";
-  import PostNav from "@components/posts/PostNav.svelte";
   import PostHeading from "@components/content/renderers/PostHeading.svelte";
+  import PostNav from "@components/posts/PostNav.svelte";
   import slugger from "slugger";
   import SvelteMarkdown from "svelte-markdown";
 
@@ -15,7 +15,7 @@
   export let related;
   export let pathname;
 
-  let toc;
+  let toc, postNavCheckbox, miniPostNav;
   $: if (content) toc = [];
   function filterTokens(event) {
     const tokens = event.detail.tokens;
@@ -41,29 +41,32 @@
     showAside = !showAside;
   }
 
-  function togglePostNav() {
-    console.log("postnav clickseds");
-    const postNavCheckbox = document.getElementById("post-navigation");
+  function togglePostNav(e) {
     postNavCheckbox.checked = postNavCheckbox.checked ? false : true;
   }
+
+  onMount(() => {
+    postNavCheckbox = document.getElementById("post-navigation-checkbox");
+    miniPostNav = document.querySelector(".post-navigation.mini");
+    setTimeout(() => {
+      document
+        .querySelectorAll(".post-navigation.mini .toc li")
+        .forEach((link) => {
+          link.addEventListener("click", (e) => {
+            togglePostNav(e);
+          });
+        });
+    }, 200);
+    document.addEventListener("click", (e) => {
+      if (postNavCheckbox.checked) postNavCheckbox.checked = false;
+    });
+    miniPostNav.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+  });
 </script>
 
-<nav class="post-navigation">
-  <input type="checkbox" name="post-navigation" id="post-navigation" tabindex="-1" />
-  <label for="post-navigation" class="post-navigation-toggle"
-    ><ListIcon /></label
-  >
-  <div
-    class="post-navigation-list"
-    on:click={togglePostNav}
-    on:keydown={togglePostNav}
-  >
-    <PostNav {contents} {categories} {related} {pathname} />
-    <label for="post-navigation" class="post-navigation-toggle bottom"
-      ><ListIcon /></label
-    >
-  </div>
-</nav>
+<PostNav {contents} {categories} {related} {pathname} mini={true} />
 <h1 class="post-title">{title}</h1>
 <article class="post-article" class:full={!showAside}>
   {#if content}

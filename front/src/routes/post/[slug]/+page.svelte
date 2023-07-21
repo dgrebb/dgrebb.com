@@ -79,7 +79,7 @@
       </div>
     {/if}
     <a id="main">Main Content</a>
-    <Post {title} {content} {footnotes} {categories} {related} />
+    <Post {title} {content} {footnotes} {categories} {related} {pathname} />
   </section>
 </PageTransition>
 
