@@ -1,16 +1,20 @@
 .post {
   display: block;
+  position: relative;
+  margin-top: 3rem;
   margin-bottom: 3.33rem;
-  .background {
-    border-radius: 0.77rem;
-    background-color: rgba(var(--background-saturated), 0.77);
+  border-radius: 0.77rem;
+  background-color: rgba(var(--background-saturated), 0.77);
+  padding: 2.33rem 0;
+  @apply shadow-xl;
+  @screen md {
+    margin-top: 5rem;
     padding: 2.33rem;
-    overflow: auto;
-    @apply shadow-xl;
   }
   .hero-wrap {
     display: block;
     position: relative;
+    top: -5rem;
     z-index: 1;
     width: 100%;
     height: 400px;
@@ -52,12 +56,91 @@
         z-index: 5;
       }
     }
+    ~ h1.post-title,
+    ~ .post-article,
+    ~ .post-aside,
+    ~ .aside-toggle {
+      top: -6.7rem;
+      z-index: 8;
+    }
+  }
+  .post-navigation {
+    position: absolute;
+    top: -2rem;
+    right: 0.7rem;
+    z-index: 10;
+    text-align: right;
+    @screen md {
+      display: none;
+    }
+    &-toggle {
+      display: inline-block;
+      transition: background-color, color;
+      cursor: pointer;
+      border-radius: 0.33rem;
+      background-color: rgba(var(--background-saturated), 0.5);
+      padding: 0.33rem;
+      @apply dg--transition-effect;
+      &:hover,
+      &:focus {
+        background-color: rgba(var(--background-saturated), 0.9);
+        color: rgb(var(--highlight-rgb));
+      }
+    }
+    input#post-navigation {
+      display: none;
+      ~ label {
+        position: relative;
+        z-index: 1;
+        & + .post-navigation-list {
+          display: block;
+          position: relative;
+          top: -2.6rem;
+          left: 0.33rem;
+          /* animation: fadeIn 0.5s;
+          animation-direction: reverse; */
+          opacity: 0;
+          backdrop-filter: blur(0.5rem);
+          border-radius: 0.33rem;
+          background-color: rgba(var(--background-saturated), 0.9);
+          padding: 2rem;
+          max-height: 0;
+          overflow: hidden;
+          @apply dg--transition-effect;
+        }
+      }
+      &:checked {
+        ~ label {
+          background-color: rgba(var(--background-saturated), 0);
+          & + .post-navigation-list {
+            opacity: 1;
+            animation: fadeIn 0.5s;
+            max-height: 100%;
+          }
+        }
+      }
+    }
+
+    ul {
+      li {
+        list-style-type: none;
+      }
+    }
+  }
+  h1.post-title,
+  .post-article,
+  .post-aside,
+  .aside-toggle {
+    position: relative;
+    top: -4.3rem;
   }
   h1.post-title {
-    position: relative;
-    top: -2.3rem;
     z-index: 5;
+    padding-left: 1rem;
     text-shadow: 0 -0.11rem 1.5rem rgba(var(--background-saturated), 0.77);
+    @screen sm {
+      padding-left: 0;
+    }
   }
   .aside-toggle {
     display: inline;
@@ -77,14 +160,17 @@
   }
   .post-article {
     display: block;
-    float: left;
-    padding-right: 0.5rem;
-    width: 75%;
     /* transition: width; */
     /* @apply dg--transition-effect; */
-    &.full {
-      width: 100%;
-      float: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    float: none;
+    width: 100%;
+    @screen sm {
+      float: left;
+      width: 75%;
+      padding-right: 0.5rem;
+      padding-left: 0;
     }
     a {
       border-bottom: 1px solid rgba(var(--text-accent-rgb), 0.67);
@@ -98,15 +184,19 @@
     }
   }
   .post-aside {
-    float: right;
+    display: none;
     opacity: 0.8;
     padding-left: 0.5rem;
-    text-align: right;
     width: 0;
-    display: none;
-    &.show {
-      width: 25%;
+    text-align: right;
+    /* &.show {
       display: block;
+      width: 25%;
+    } */
+    @screen sm {
+      display: block;
+      float: right;
+      width: 25%;
     }
     h2 {
       font-size: 1.77rem;
@@ -115,5 +205,17 @@
       font-size: 0.875rem;
       list-style-type: none;
     }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+
+  to {
+    opacity: 1;
+    max-height: 100%;
   }
 }
