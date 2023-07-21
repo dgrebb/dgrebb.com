@@ -95,8 +95,13 @@
     text-align: center;
   }
   .summary {
-    margin: auto;
+    margin: auto auto 2rem;
     max-width: 77%;
+    column-count: 2;
+    column-gap: 3.33rem;
+    p {
+      margin: 0 auto;
+    }
   }
 }
 
