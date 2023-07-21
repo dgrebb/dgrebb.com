@@ -61,8 +61,6 @@
       twitterImageProp?.alternativeText || "The Circuit of Life";
   }
 
-  $: console.log("🚀 ~ file: +layout.svelte:49 ~ $pageMeta:", $pageMeta);
-  $: console.log("🚀 ~ file: +layout.svelte:47 ~ OGImage:", OGImage);
   onMount(() => {
     mounted = true;
   });
