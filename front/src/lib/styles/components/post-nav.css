@@ -1,0 +1,99 @@
+.post-navigation.mini {
+  position: absolute;
+  top: -2.67rem;
+  z-index: 10;
+  right: -0.07rem;
+  overflow: hidden;
+  padding: 0.33rem;
+  text-align: right;
+  @screen sm {
+    display: none;
+  }
+  .post-navigation-toggle {
+    display: inline-block;
+    border-radius: 0.33rem;
+    transition: background-color, color;
+    cursor: pointer;
+    background-color: rgba(var(--background-saturated), 0.5);
+    padding: 0.33rem;
+    @apply dg--transition-effect;
+    &:hover,
+    &:focus {
+      background-color: rgba(var(--background-saturated), 0.9);
+      color: rgb(var(--highlight-rgb));
+    }
+  }
+  input#post-navigation-checkbox {
+    display: none;
+    border-radius: 0.77rem;
+    ~ label {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      vertical-align: middle;
+      .post-navigation-open {
+        display: block;
+      }
+      .post-navigation-close {
+        display: none;
+      }
+      & + .post-navigation-list {
+        position: relative;
+        top: -1.95rem;
+        right: -333px;
+        opacity: 0;
+        backdrop-filter: blur(0.5rem);
+        transition: right, opacity;
+        border-radius: 0.33rem;
+        background-color: rgba(var(--background-saturated), 0.9);
+        padding: 2rem;
+        overflow: hidden;
+        @apply dg--transition-effect;
+        label.bottom {
+          display: inline-block;
+          bottom: 0;
+          position: absolute;
+          right: 0;
+          .post-navigation-open {
+            display: block;
+          }
+          .post-navigation-close {
+            display: none;
+            height: 97%;
+          }
+        }
+      }
+    }
+    &:checked {
+      ~ label,
+      label.bottom {
+        background-color: rgba(var(--background-saturated), 0);
+        .post-navigation-open {
+          display: none;
+        }
+        .post-navigation-close {
+          display: block;
+        }
+        & + .post-navigation-list {
+          right: 0;
+          opacity: 1;
+          & label.bottom {
+            background-color: rgba(var(--background-saturated), 0);
+            .post-navigation-open {
+              display: none;
+            }
+            .post-navigation-close {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  ul {
+    li {
+      list-style-type: none;
+    }
+  }
+}
