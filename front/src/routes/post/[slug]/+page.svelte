@@ -1,9 +1,10 @@
 <script>
   import { PUBLIC_MEDIA_URL as M } from "$env/static/public";
-  import PageTransition from "@components/PageTransition.svelte"; import Flourish from "@layout/Flourish.svelte";
+  import PageTransition from "@components/PageTransition.svelte";
+  import Post from "@components/posts/Post.svelte";
+  import Flourish from "@layout/Flourish.svelte";
   import { pageMeta } from "@store";
   import { onMount } from "svelte";
-  import Post from "@components/posts/Post.svelte";
 
   export let data;
 
