@@ -113,10 +113,11 @@ body {
   }
   &.ready {
     > div > .flourish {
-      transform: translateY(-100%);
-      transition: transform 0.5s;
+      max-height: 0;
+      transition: max-height 0.5s;
       transition-delay: 2s;
       box-shadow: none !important;
+      z-index: 0;
       @apply shadow-none;
     }
     .main section .flourish,
@@ -136,8 +137,8 @@ body {
     &.animating {
       overflow: hidden;
       > div > .flourish {
-        transform: translateY(0);
-        transition: transform 0s;
+        max-height: 0.5rem;
+        transition: max-height 0s;
         transition-delay: 0s;
         box-shadow: none !important;
         @apply shadow-none;
@@ -199,20 +200,24 @@ body {
 
 #main {
   @apply sr-only;
+  height: 0;
+  width: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .main {
   @apply flex
     w-full
-    max-w-4xl
+    max-w-5xl
     flex-grow
     flex-col
     items-center
     justify-center
     justify-items-center
-    px-2
+    px-3
     pt-3
-    xs:px-3
+    xs:px-4
     sm:pt-5;
 }
 

@@ -3,6 +3,7 @@
   import Head from "@components/Head.svelte";
   import PageTransition from "@components/PageTransition.svelte";
   import Link from "@components/content/renderers/Link.svelte";
+  import PostsGrid from "@components/posts/PostsGrid.svelte";
   import Flourish from "@layout/Flourish.svelte";
   import { pageMeta } from "@store";
   import { onMount } from "svelte";
@@ -17,7 +18,6 @@
     posts,
   } = data;
   let seo = page?.seo;
-  $pageMeta = { ...$pageMeta, ...seo, title: headline, titleTemplate: "%s | Dan Grebb" };
   const gridItems = posts.map(({ attributes: post }) => {
     const { title, slug, hero } = post;
     const heroImages = hero?.data?.attributes;
@@ -35,6 +35,14 @@
     };
   });
 
+  $pageMeta = {
+    ...$pageMeta,
+    ...seo,
+    title: headline,
+    titleTemplate: "%s | Dan Grebb",
+    heroImage: "https://s.dgrebb.com/img/default_posts_813772ab64.png",
+  };
+
   onMount(() => {
     mounted = true;
   });
@@ -48,18 +56,7 @@
     <div class="summary">
       <SvelteMarkdown renderers={{ link: Link }} source={description} />
     </div>
-    <ul class="posts-grid">
-      {#each gridItems as { lazyImage, slug, title }, i (slug)}
-        <li
-          class="post-item"
-          style={lazyImage && `background-image: url('${lazyImage}');`}
-        >
-          <a href="/post/{slug}/" class="post-link">
-            <span class="link-bg">{title}</span>
-          </a>
-        </li>
-      {/each}
-    </ul>
+    <PostsGrid {gridItems} />
   </section>
 </PageTransition>
 
@@ -67,7 +64,13 @@
   {#if mounted}
     {#each gridItems as { image }}
       {#if image}
-        <link rel="prefetch" href={image} as="image" fetchPriority="low" crossorigin />
+        <link
+          rel="prefetch"
+          href={image}
+          as="image"
+          fetchPriority="low"
+          crossorigin
+        />
       {/if}
     {/each}
   {/if}

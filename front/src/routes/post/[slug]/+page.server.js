@@ -6,8 +6,6 @@ import {
   PUBLIC_POST_PARAMS as PARAMS,
 } from "$env/static/public";
 
-export const trailingSlash = "always";
-
 export async function load({ params: { slug }, route }) {
   const endpoint = URL + POST + slug + PARAMS;
   const post = await api(endpoint);
