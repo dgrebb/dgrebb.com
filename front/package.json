@@ -13,6 +13,7 @@
 	"devDependencies": {
 		"@accuser/svelte-plausible-analytics": "github:dgrebb/svelte-plausible-analytics#release/v0.6.0",
 		"@iconify-json/entypo-social": "^1.1.4",
+		"@iconify-json/gg": "^1.1.5",
 		"@iconify-json/icomoon-free": "^1.1.4",
 		"@iconify-json/icon-park-outline": "^1.1.11",
 		"@iconify-json/line-md": "^1.1.25",
