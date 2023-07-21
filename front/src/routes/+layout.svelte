@@ -28,7 +28,7 @@
       }[ENV] || "local.dgrebb.com",
     apiHost = "https://p.dgrebb.com";
 
-  let OGImageProp,
+  let OGImageProp = $pageMeta?.metaImage?.data?.attributes?.formats || false,
     OGImage,
     OGImageHeight,
     OGImageWidth,
@@ -42,10 +42,9 @@
     mounted = false;
 
   $: {
-    OGImageProp = $pageMeta?.metaImage?.data?.attributes?.formats || false;
     OGImage = OGImageProp?.large
       ? M + OGImageProp.large?.url
-      : $pageMeta.heroImage ||
+      : $pageMeta?.heroImage ||
         "https://s.dgrebb.com/img/default_posts_813772ab64.png";
     OGImageWidth = OGImageProp.large?.width || OGImageProp.medium?.width;
     OGImageHeight = OGImageProp.large?.height || OGImageProp.medium?.height;
@@ -62,6 +61,8 @@
       twitterImageProp?.alternativeText || "The Circuit of Life";
   }
 
+  $: console.log("🚀 ~ file: +layout.svelte:49 ~ $pageMeta:", $pageMeta);
+  $: console.log("🚀 ~ file: +layout.svelte:47 ~ OGImage:", OGImage);
   onMount(() => {
     mounted = true;
   });
