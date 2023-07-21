@@ -199,20 +199,24 @@ body {
 
 #main {
   @apply sr-only;
+  height: 0;
+  width: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .main {
   @apply flex
     w-full
-    max-w-4xl
+    max-w-5xl
     flex-grow
     flex-col
     items-center
     justify-center
     justify-items-center
-    px-2
+    px-3
     pt-3
-    xs:px-3
+    xs:px-4
     sm:pt-5;
 }
 
