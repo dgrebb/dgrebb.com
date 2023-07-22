@@ -19,6 +19,10 @@
     "highlightedLines": {
       "type": "string",
       "regex": "^ *\\d+ *(?:, *\\d+ *)*$"
+    },
+    "maxHeight": {
+      "type": "integer",
+      "min": 300
     }
   }
 }
