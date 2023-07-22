@@ -1,6 +1,10 @@
 body .flourish,
 body .header,
 body .main,
+body .bio,
+body .main,
+body .main .flourish,
+body .main section,
 body .footer {
   opacity: 1 !important;
 }
