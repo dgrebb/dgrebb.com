@@ -1,9 +1,7 @@
 <script>
-  import { PUBLIC_MEDIA_URL as M } from "$env/static/public";
   import { MetaTags } from "svelte-meta-tags";
 
   export let pageMeta;
-  let mounted = false;
 
   const {
     metaTitle,
