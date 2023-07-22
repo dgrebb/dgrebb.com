@@ -1,17 +1,18 @@
 <script>
-  import { PUBLIC_MEDIA_URL as M } from "$env/static/public";
   import SvelteMarkdown from "svelte-markdown";
   import Link from "@components/content/renderers/Link.svelte";
   import PageTransition from "@components/PageTransition.svelte";
+  import Meta from "@components/Meta.svelte";
   import Flourish from "@layout/Flourish.svelte";
 
   export let data;
   let mounted = false;
-  const {
-    content: { name, description, seo },
+  $: ({
+    content: { name, description },
     posts,
+    pageMeta,
     pathname,
-  } = data;
+  } = data);
 </script>
 
 <PageTransition {pathname}>
@@ -22,16 +23,22 @@
     {#if description}
       <SvelteMarkdown renderers={{ link: Link }} source={description} />
     {/if}
-    <ul class="posts-list">
-      {#each posts as { attributes: { title, slug, summary, hero: { alternativeText, data: { attributes: { formats: { thumbnail, small, medium } } } } } }, i}
-        <a href="/post/{slug}">
-          <h2>{title}</h2>
-          <img src={M + thumbnail?.url} alt={alternativeText} />
-        </a>
-        {#if summary}
-          <SvelteMarkdown renderers={{ link: Link }} source={summary} />
-        {/if}
-      {/each}
-    </ul>
+    {#if posts}
+      <ul class="posts-list">
+        {#each posts as { attributes: { title, slug, summary, hero: { alternativeText, data: { attributes: { formats: { thumbnail, small, medium } } } } } }, i}
+          <a href="/post/{slug}">
+            <h2>{title}</h2>
+            <img src={thumbnail?.url} alt={alternativeText} />
+          </a>
+          {#if summary}
+            <SvelteMarkdown renderers={{ link: Link }} source={summary} />
+          {/if}
+        {/each}
+      </ul>
+    {:else}
+      <h2>There aren't any posts yet! Come back soon.</h2>
+    {/if}
   </section>
 </PageTransition>
+
+<Meta {pageMeta} />

@@ -32,8 +32,22 @@ export async function load({ route }) {
     });
   }
 
+  var pageMeta = {
+    ...page.seo,
+    type: "website",
+    metaTitle: page.seo.metaTitle || page.headline,
+  };
+
+  pageMeta.titleTemplate = "%s | Dan Grebb";
+
+  /**
+   * Isolates the `metaImage` object properties we care about
+   */
+  pageMeta.metaImage = pageMeta?.metaImage?.data?.attributes;
+
   return {
     page: page || {},
     posts: posts || [],
+    pageMeta,
   };
 }

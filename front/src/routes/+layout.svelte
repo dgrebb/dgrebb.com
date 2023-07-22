@@ -1,9 +1,8 @@
 <script>
   import { browser } from "$app/environment";
   import { page } from "$app/stores";
-  import { PUBLIC_ENV as ENV, PUBLIC_MEDIA_URL as M } from "$env/static/public";
+  import { PUBLIC_ENV as ENV } from "$env/static/public";
   import { PlausibleAnalytics } from "@accuser/svelte-plausible-analytics";
-  import Meta from "@components/Meta.svelte";
   import Flourish from "@layout/Flourish.svelte";
   import Footer from "@layout/Footer.svelte";
   import Header from "@layout/Header.svelte";
@@ -13,7 +12,6 @@
 
   export let data;
   const { navHeading, navItems, copyright, copyleft } = data;
-  export const pageMeta = { titleTemplate: false };
 
   let anchor = true;
   let { id: route } = $page?.route;
@@ -46,5 +44,3 @@
 {#if mounted}
   <PlausibleAnalytics {domain} {apiHost} enabled outboundLinks />
 {/if}
-
-<Meta {pageMeta} />

@@ -8,8 +8,7 @@
   import SvelteMarkdown from "svelte-markdown";
 
   export let data;
-  const { title, details, updatedAt, seo, pathname } = data;
-  $: pageMeta = { ...seo, title, titleTemplate: "%s | Dan Grebb" };
+  const { title, details, pageMeta, updatedAt, seo, pathname } = data;
   let date = new Date(updatedAt);
   date = date.toDateString();
 </script>
