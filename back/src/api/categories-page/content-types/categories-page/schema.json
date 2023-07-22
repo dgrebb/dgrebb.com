@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "categories_pages",
+  "info": {
+    "singularName": "categories-page",
+    "pluralName": "categories-pages",
+    "displayName": "Categories Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "headline": {
+      "type": "string"
+    },
+    "introduction": {
+      "type": "richtext"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.seo"
+    }
+  }
+}
