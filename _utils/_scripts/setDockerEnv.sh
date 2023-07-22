@@ -10,17 +10,6 @@ fi
 dockerEnv=$directory/../_docker/.env
 >$dockerEnv
 
-if [ $1 == "l" ]; then
-    ENV="development"
-    echo "PUBLIC_MEDIA_URL=\"$(pass dg/cms/l/mediaurl)\"" >> $dockerEnv
-elif [ $1 == "s" ]; then
-    ENV="staging"
-    echo "PUBLIC_MEDIA_URL=\"\"" >> $dockerEnv
-else
-    ENV="production"
-    echo "PUBLIC_MEDIA_URL=\"\"" >> $dockerEnv
-fi
-
 printDgBnr "Setting ${ENV} Docker environment variables..."
 
 echo "PROJECT_NAME=\"$(pass dg/www/${1}/dashed-domain)\"" >> $dockerEnv
