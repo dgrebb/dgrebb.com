@@ -5,7 +5,7 @@
   import Link from "@components/content/renderers/Link.svelte";
   import PostsGrid from "@components/posts/PostsGrid.svelte";
   import Flourish from "@layout/Flourish.svelte";
-  import { pageMeta } from "@store";
+  import Meta from "@components/Meta.svelte";
   import { onMount } from "svelte";
   import SvelteMarkdown from "svelte-markdown";
 
@@ -35,8 +35,7 @@
     };
   });
 
-  $pageMeta = {
-    ...$pageMeta,
+  $: pageMeta = {
     ...seo,
     title: headline,
     titleTemplate: "%s | Dan Grebb",
@@ -75,3 +74,5 @@
     {/each}
   {/if}
 </Head>
+
+<Meta {pageMeta} />

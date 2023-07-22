@@ -4,12 +4,12 @@
   import Link from "@components/content/renderers/Link.svelte";
   import Flourish from "@layout/Flourish.svelte";
   import ScrollTop from "@layout/ScrollTop.svelte";
-  import { pageMeta } from "@store";
+  import Meta from "@components/Meta.svelte";
   import SvelteMarkdown from "svelte-markdown";
 
   export let data;
   const { title, details, updatedAt, seo, pathname } = data;
-  $pageMeta = { ...$pageMeta, ...seo, title, titleTemplate: "%s | Dan Grebb" };
+  $: pageMeta = { ...seo, title, titleTemplate: "%s | Dan Grebb" };
   let date = new Date(updatedAt);
   date = date.toDateString();
 </script>
@@ -29,3 +29,5 @@
 <slot name="scroll-top">
   <ScrollTop />
 </slot>
+
+<Meta {pageMeta} />
