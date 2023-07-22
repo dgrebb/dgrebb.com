@@ -57,10 +57,11 @@
     title: metaTitle,
     description: metaDescription,
     url: canonicalURL,
-    type: type === "post" ? "article" : "website",
-    article: type === "post" && {
-      publishedTime: publishedAt,
-      modifiedTime: updatedAt,
+    type: type,
+    article: {
+      author: "Dan Grebb",
+      publishedTime: publishedAt ? publishedAt : "0000-01-01T00:00:00.000Z",
+      modifiedTime: updatedAt ? updatedAt : "0000-01-01T03:33:00.000Z",
     },
     images: OGImages,
   }}
