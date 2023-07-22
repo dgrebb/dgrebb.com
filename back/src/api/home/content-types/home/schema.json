@@ -13,16 +13,20 @@
   "pluginOptions": {},
   "attributes": {
     "bioPicture": {
-      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "headline": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "intro": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true
     },
     "links": {
       "displayName": "Links",
