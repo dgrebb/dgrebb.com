@@ -3,7 +3,7 @@
   import PageTransition from "@components/PageTransition.svelte";
   import Post from "@components/posts/Post.svelte";
   import Flourish from "@layout/Flourish.svelte";
-  import { pageMeta } from "@store";
+  import Meta from "@components/Meta.svelte";
   import { onMount } from "svelte";
 
   export let data;
@@ -26,10 +26,21 @@
   $: related = post.related?.data || false;
   $: categories = post.categories?.data || false;
 
-  let loaded = false;
-  let failed = false;
+  let loaded,
+    failed = false;
   let loading = true;
 
+  $: pageMeta = {
+    ...seo,
+    type: "post",
+    title,
+    metaImage: heroImage,
+    createdAt,
+    updatedAt,
+    publishedAt,
+    titleTemplate: "%s | Writing | Dan Grebb",
+  };
+  
   onMount(() => {
     if (heroImage) {
       const img = new Image();
@@ -45,18 +56,6 @@
         failed = true;
       };
     }
-
-    $pageMeta = {
-      ...$pageMeta,
-      ...seo,
-      type: "post",
-      title,
-      heroImage,
-      createdAt,
-      updatedAt,
-      publishedAt,
-      titleTemplate: "%s | Writing | Dan Grebb",
-    };
   });
 </script>
 
@@ -93,3 +92,5 @@
     });
   </script>
 {/if}
+
+<Meta {pageMeta} />

@@ -3,9 +3,9 @@
   import Image from "@components/Image.svelte";
   import Links from "@components/Links.svelte";
   import PageTransition from "@components/PageTransition.svelte";
+  import Meta from "@components/Meta.svelte";
   import Link from "@components/content/renderers/Link.svelte";
   import Flourish from "@layout/Flourish.svelte";
-  import { pageMeta } from "@store";
   import SvelteMarkdown from "svelte-markdown";
 
   export let data;
@@ -15,12 +15,11 @@
     alternativeText: "A picture of Dan smiling",
   };
   
-  $pageMeta = {
-    ...$pageMeta,
+  $: pageMeta = {
     ...seo,
     title: seo.metaTitle,
     type: "website",
-    heroImage: M + seo?.metaImage?.data?.attributes?.url || M + image.url,
+    metaImage: M + seo?.metaImage?.data?.attributes?.url || M + image.url,
   };
 </script>
 
@@ -55,3 +54,5 @@
     </section>
   {/if}
 </PageTransition>
+
+<Meta {pageMeta} />
