@@ -1,5 +1,4 @@
 <script>
-  import { PUBLIC_MEDIA_URL as M } from "$env/static/public";
   import Image from "@components/Image.svelte";
   import Links from "@components/Links.svelte";
   import PageTransition from "@components/PageTransition.svelte";
@@ -9,17 +8,10 @@
   import SvelteMarkdown from "svelte-markdown";
 
   export let data;
-  const { seo, headline, bioPicture, intro, links, pathname } = data;
-  const image = bioPicture?.data?.attributes?.formats?.small || {
-    url: "/bio.jpg",
-    alternativeText: "A picture of Dan smiling",
-  };
-  
-  $: pageMeta = {
-    ...seo,
-    title: seo.metaTitle,
-    type: "website",
-    metaImage: M + seo?.metaImage?.data?.attributes?.url || M + image.url,
+  const { headline, image, intro, links, pageMeta, pathname } = data;
+  const homeMeta = {
+    ...pageMeta,
+    metaTitle: pageMeta.metaTitle || headline,
   };
 </script>
 
@@ -28,16 +20,16 @@
     <Flourish />
     {#if image}
       <Image
-        src={M + image.url}
-        alt={image.alternativeText}
+        src={image.url}
+        alt={image.alt}
         title="Hi!"
         classes="bio-picture"
         ariaHidden={true}
       />
       <noscript>
         <img
-          src={M + image.url}
-          alt={image.alternativeText}
+          src={image.url}
+          alt={image.alt}
           title="Hi!"
           classes="bio-picture"
           ariaHidden={true}
@@ -55,4 +47,4 @@
   {/if}
 </PageTransition>
 
-<Meta {pageMeta} />
+<Meta pageMeta={homeMeta} />

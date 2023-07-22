@@ -3,76 +3,68 @@
   import { MetaTags } from "svelte-meta-tags";
 
   export let pageMeta;
-  $: console.log("🚀 ~ file: Meta.svelte:6 ~ pageMeta:", pageMeta);
-
   let mounted = false;
-  let OGImageProp,
-    OGImage,
-    OGImageWidth,
-    OGImageHeight,
-    OGImageAlt,
-    twitter,
-    twitterImageProp,
-    twitterImage,
-    twitterImageAlt;
 
-  $: {
-    OGImage = OGImageProp?.large
-      ? M + OGImageProp.large?.url
-      : pageMeta?.heroImage ||
-        "https://s.dgrebb.com/img/default_posts_813772ab64.png";
-    OGImageWidth = OGImageProp.large?.width || OGImageProp.medium?.width;
-    OGImageHeight = OGImageProp.large?.height || OGImageProp.medium?.height;
-    OGImageAlt =
-      pageMeta?.metaImage?.data?.attributes?.alternativeText ||
-      "The Circuit of Life";
+  const {
+    metaTitle,
+    metaImage,
+    metaDescription,
+    metaRobots,
+    canonicalURL,
+    metaViewport,
+    metaKeywords,
+    metaSocial,
+    updatedAt,
+    publishedAt,
+    type,
+    titleTemplate,
+  } = pageMeta;
 
-    twitterImageProp = twitter?.image?.data?.attributes || false;
-    twitterImage = twitterImageProp?.formats?.large
-      ? M + twitterImageProp?.formats.large?.url
-      : pageMeta?.heroImage ||
-        "https://s.dgrebb.com/img/default_posts_813772ab64.png";
-    twitterImageAlt =
-      twitterImageProp?.alternativeText || "The Circuit of Life";
-  }
+  const OGImages = [
+    {
+      url: metaImage?.url,
+      width: metaImage?.width || 1600,
+      height: metaImage?.width || 900,
+      alt: metaImage?.alternativeText,
+    },
+  ];
+
+  const twitter =
+    metaSocial?.find((obj) => obj.socialNetwork === "Twitter") || false;
+
+  const facebook =
+    metaSocial?.find((obj) => obj.socialNetwork === "Facebook") || false;
 </script>
 
 <MetaTags
-  title={pageMeta?.metaTitle || pageMeta?.title || "Dan Grebb"}
-  titleTemplate={pageMeta?.titleTemplate}
-  description={pageMeta?.metaDescription ||
+  title={metaTitle || "Dan Grebb"}
+  {titleTemplate}
+  description={metaDescription ||
     "Dan Grebb is a Software Engineer from Philadelphia, Pennsylvania."}
-  robots={pageMeta?.metaRobots || undefined}
-  canonical={pageMeta.canonicalURL}
+  robots={metaRobots || undefined}
+  canonical={canonicalURL}
   additionalMetaTags={[
     {
       name: "viewport",
-      content: pageMeta?.metaViewport || "width=device-width, initial-scale=1",
+      content: metaViewport || "width=device-width, initial-scale=1",
     },
     {
       name: "keywords",
       content:
-        pageMeta?.keywords ||
+        metaKeywords ||
         "Dan Grebb, dgrebb, software, engineer, volunteer, craft, developer, web, Philadelphia, Pennsylvania",
     },
   ]}
   openGraph={{
-    title: pageMeta.title,
-    description: pageMeta.metaDescription,
-    url: pageMeta.canonicalURL,
-    type: pageMeta.type === "post" ? "article" : "website",
-    article: pageMeta.type === "post" && {
-      publishedTime: pageMeta.publishedAt,
-      modifiedTime: pageMeta.updatedAt,
+    title: metaTitle,
+    description: metaDescription,
+    url: canonicalURL,
+    type: type === "post" ? "article" : "website",
+    article: type === "post" && {
+      publishedTime: publishedAt,
+      modifiedTime: updatedAt,
     },
-    images: [
-      {
-        url: OGImage,
-        width: OGImageWidth || 1600,
-        height: OGImageHeight || 900,
-        alt: OGImageAlt,
-      },
-    ],
+    images: OGImages,
   }}
   twitter={{
     site: "@dgrebb",
@@ -80,7 +72,8 @@
     cardType: "summary_large_image",
     title: twitter?.title || pageMeta.title,
     description: twitter?.description || pageMeta.description,
-    image: twitterImage,
-    imageAlt: twitterImageAlt,
+    image: twitter?.image?.data?.attributes?.url || metaImage.url,
+    imageAlt:
+      twitter?.image?.data?.attributes?.alternativeText || metaImage.alt,
   }}
 />

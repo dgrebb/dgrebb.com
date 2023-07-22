@@ -1,5 +1,4 @@
 <script>
-  import { PUBLIC_MEDIA_URL as M } from "$env/static/public";
   import PageTransition from "@components/PageTransition.svelte";
   import Post from "@components/posts/Post.svelte";
   import Flourish from "@layout/Flourish.svelte";
@@ -11,17 +10,17 @@
   $: ({
     pathname,
     post,
-    post: { title, createdAt, updatedAt, publishedAt },
+    post: { title },
+    pageMeta,
   } = data);
   $: hero = post.hero?.data?.attributes || false;
   $: heroThumb = hero?.formats?.thumbnail?.url
-    ? M + hero.formats.thumbnail.url
+    ? hero.formats.thumbnail.url
     : false;
-  $: heroImage = hero?.url ? M + hero.url : false;
+  $: heroImage = hero?.url ? hero.url : false;
   $: position = post.position || "center center";
-  $: description = post.description || false;
+  $: summary = post.summary || false;
   $: content = post?.content?.length ? post.content : false;
-  $: seo = post.seo || false;
   $: footnotes = post?.footnotes ? post.footnotes : false;
   $: related = post.related?.data || false;
   $: categories = post.categories?.data || false;
@@ -29,17 +28,6 @@
   let loaded,
     failed = false;
   let loading = true;
-
-  $: pageMeta = {
-    ...seo,
-    type: "post",
-    title,
-    metaImage: heroImage,
-    createdAt,
-    updatedAt,
-    publishedAt,
-    titleTemplate: "%s | Writing | Dan Grebb",
-  };
   
   onMount(() => {
     if (heroImage) {
@@ -79,7 +67,7 @@
       </div>
     {/if}
     <a id="main">Main Content</a>
-    <Post {title} {content} {footnotes} {categories} {related} {pathname} />
+    <Post {title} {summary} {content} {footnotes} {categories} {related} {pathname} />
   </section>
 </PageTransition>
 

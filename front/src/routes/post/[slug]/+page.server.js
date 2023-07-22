@@ -23,7 +23,30 @@ export async function load({ params: { slug }, route }) {
     });
   }
 
+  const { title, hero, summary, createdAt, updatedAt, publishedAt, seo } = post;
+
+  const pageMeta = {
+    ...seo,
+    createdAt,
+    updatedAt,
+    publishedAt,
+    type: "article",
+    metaTitle: seo?.metaTitle || title,
+    titleTemplate: "%s | Writing | Dan Grebb",
+    metaDescription: seo?.metaDescription || summary || "Dan wrote a lovely story for you. Check it out!",
+  };
+
+  /**
+   * Isolates the `metaImage` object properties we care about
+   */
+  pageMeta.metaImage = pageMeta?.metaImage?.data?.attributes ||
+    hero?.data?.attributes || {
+      url: "https://s.dgrebb.com/img/default_banner_2a50e43220.png",
+      alternativeText: "The Circuit of Life",
+    };
+
   return {
     post: post || {},
+    pageMeta,
   };
 }
