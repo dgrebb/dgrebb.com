@@ -20,7 +20,6 @@ act --pull=false \
     -e $directory/../_ci/dispatches/${EVENT_JSON}.workflow_dispatch.json \
     -s GITHUB_TOKEN=$(pass dg/github/pat) \
     -s PUBLIC_ENV=development \
-    -s PUBLIC_MEDIA_URL="" \
     -s PUBLIC_API_PATH_NAVIGATION="$(pass dg/cms/api/paths/navigation)" \
     -s PUBLIC_API_PATH_HOME="$(pass dg/cms/api/paths/home)" \
     -s PUBLIC_API_PATH_FOOTER="$(pass dg/cms/api/paths/footer)" \
