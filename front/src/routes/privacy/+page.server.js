@@ -29,7 +29,7 @@ export async function load({ params }) {
    * Isolates the `metaImage` object properties we care about
    */
   pageMeta.metaImage = pageMeta?.metaImage?.data?.attributes || {
-      url: "https://s.dgrebb.com/img/default_banner_2a50e43220.png",
+      url: "https://s.dgrebb.com/img/default_privacy_meta_Image_c5581a5569.jpg",
       alternativeText: "The Circuit of Life",
     };
   return {

@@ -11,7 +11,7 @@ export async function load({ params: { slug }, route }) {
   const post = await api(endpoint);
 
   if (!post || post.error) {
-    console.info({
+    console.warn({
       route,
       slug,
       endpoint: endpoint,

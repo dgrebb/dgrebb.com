@@ -46,7 +46,6 @@ export async function load({ params }) {
    alternativeText: "The Circuit of Life",
   };
   
-  console.log("🚀 ~ file: +page.server.js:34 ~ load ~ pageMeta:", pageMeta)
   return {
     content,
     posts: [...posts] || [],

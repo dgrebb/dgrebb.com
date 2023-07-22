@@ -9,10 +9,6 @@
 
   export let data;
   const { headline, image, intro, links, pageMeta, pathname } = data;
-  const homeMeta = {
-    ...pageMeta,
-    metaTitle: pageMeta.metaTitle || headline,
-  };
 </script>
 
 <PageTransition {pathname}>
@@ -47,4 +43,4 @@
   {/if}
 </PageTransition>
 
-<Meta pageMeta={homeMeta} />
+<Meta pageMeta={pageMeta} />

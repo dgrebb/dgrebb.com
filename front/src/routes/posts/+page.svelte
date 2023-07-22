@@ -12,7 +12,6 @@
   let mounted = false;
   const {
     pathname,
-    page,
     page: { headline, description },
     posts,
     pageMeta,

@@ -8,8 +8,15 @@ import { error } from "@sveltejs/kit";
 const endpoint = URL + HOME;
 
 export async function load({ params }) {
+var home;
   let seo, bioPicture, headline, image, intro, links;
-  const home = await api(endpoint);
+
+  try {
+    home = await api(endpoint);
+  } catch (error) {
+    console.warn("Homepage API error.");
+    console.error(error);
+  }
 
   if (!home) {
     throw error(500, "Home Page Error");
@@ -17,7 +24,7 @@ export async function load({ params }) {
 
   ({ seo, bioPicture, headline, image, intro, links } = home);
 
-  image = { ...bioPicture.data?.attributes } || {
+  image = { ...bioPicture?.data?.attributes } || {
     url: "/bio.jpg",
     alternativeText: "A picture of Dan smiling",
   };
@@ -31,6 +38,7 @@ export async function load({ params }) {
   var pageMeta = {
     ...seo,
     type: "website",
+    metaTitle: seo?.metaTitle || headline
   };
 
   /**
