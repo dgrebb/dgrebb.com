@@ -21,7 +21,7 @@
   $: position = post.position || "center center";
   $: summary = post.summary || false;
   $: content = post?.content?.length ? post.content : false;
-  $: footnotes = post?.footnotes ? post.footnotes : false;
+  $: footnotes = post.footnotes.length ? post.footnotes : false;
   $: related = post.related?.data || false;
   $: categories = post.categories?.data || false;
 
