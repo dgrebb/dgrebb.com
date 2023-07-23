@@ -51,13 +51,13 @@ html.dark-theme {
 html {
   @apply dg--transition-effect 
     transition-colors;
+  background-repeat: no-repeat;
   /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     ) */
   background-color: rgb(var(--background-saturated));
-  background-repeat: no-repeat;
   min-height: 100%;
   overflow: clip;
   scroll-behavior: smooth;
@@ -80,11 +80,11 @@ body {
     transition-colors
     md:text-lg;
   background: radial-gradient(
-    187% 100% at top,
+    187% 77vh at top,
     rgb(var(--subdued-rgb)),
-    /*rgb(var(--background-start-rgb)),
-     rgb(var(--background-end-rgb)) 100%, */
-    transparent 83%
+    rgb(var(--background-start-rgb)),
+     /* rgb(var(--background-end-rgb)) 100%, */
+      transparent 83%
   );
   background-position: top center;
   background-repeat: no-repeat;
@@ -113,12 +113,14 @@ body {
   }
   &.ready {
     > div > .flourish {
-      max-height: 0;
+      z-index: 0;
       transition: max-height 0.5s;
       transition-delay: 2s;
       box-shadow: none !important;
-      z-index: 0;
+      max-height: 0;
       @apply shadow-none;
+      border-top: 8px solid rgb(var(--foreground-rgb));
+      background-color: transparent;
     }
     .main section .flourish,
     .header,
@@ -137,10 +139,10 @@ body {
     &.animating {
       overflow: hidden;
       > div > .flourish {
-        max-height: 0.5rem;
-        transition: max-height 0s;
-        transition-delay: 0s;
+        transition: max-height 1s ease-in-out 1s;
         box-shadow: none !important;
+        height: 100%;
+        max-height: 100%;
         @apply shadow-none;
       }
       .main section {
@@ -200,10 +202,10 @@ body {
 
 #main {
   @apply sr-only;
-  height: 0;
-  width: 0;
   margin: 0;
   padding: 0;
+  width: 0;
+  height: 0;
 }
 
 .main {
@@ -219,6 +221,7 @@ body {
     pt-3
     xs:px-4
     sm:pt-5;
+  transition: height 1s;
 }
 
 .bio,
@@ -253,7 +256,7 @@ body {
       sm:text-4xl;
   }
   a {
-    transition: color , border-color;
+    transition: color, border-color;
     @apply dg--transition-effect;
     border-bottom: 1px solid rgba(var(--foreground-rgb), 0.77);
     color: rgba(var(--text-accent-rgb), 0.77);
