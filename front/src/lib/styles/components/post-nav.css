@@ -44,18 +44,17 @@
       & + .post-navigation-list {
         position: relative;
         top: -1.85rem;
+        margin-bottom: -1.85rem;
         right: -333px;
-        max-height: 0;
         opacity: 0;
         backdrop-filter: blur(0.5rem);
-        transition: right, max-height, opacity;
+        transition: right, opacity;
         border-radius: 0.33rem;
         background-color: rgba(var(--background-saturated), 0.9);
         padding: 2rem;
         overflow: hidden;
         @apply dg--transition-effect;
         label.bottom {
-          display: inline-block;
           bottom: 0;
           position: absolute;
           right: 0;
@@ -64,7 +63,6 @@
           }
           .post-navigation-close {
             display: none;
-            height: 97%;
           }
         }
       }
@@ -82,7 +80,6 @@
         & + .post-navigation-list {
           right: 0;
           opacity: 1;
-          max-height: 100%;
           & label.bottom {
             background-color: rgba(var(--background-saturated), 0);
             .post-navigation-open {
