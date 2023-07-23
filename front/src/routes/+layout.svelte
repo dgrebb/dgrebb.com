@@ -7,16 +7,16 @@
   import Footer from "@layout/Footer.svelte";
   import Header from "@layout/Header.svelte";
   import "@styles/global.css";
-  import { scrollTop } from "@utils";
+  // import { scrollTop } from "@utils";
   import { onMount } from "svelte";
 
   export let data;
   const { navHeading, navItems, copyright, copyleft } = data;
 
-  let anchor = true;
-  let { id: route } = $page?.route;
-  if (browser) anchor = window.location.hash || false;
-  if (browser && route && !anchor) scrollTop();
+  // let anchor = true;
+  // let { id: route } = $page?.route;
+  // if (browser) anchor = window.location.hash || false;
+  // if (browser && route && !anchor) scrollTop();
 
   const domain =
       {
