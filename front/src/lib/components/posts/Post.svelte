@@ -65,11 +65,11 @@
       ) {
         return;
       } else {
-        if (postNavCheckbox.checked) postNavCheckbox.checked = false;
+        if (postNavCheckbox?.checked) postNavCheckbox.checked = false;
         return;
       }
     });
-    miniPostNav.addEventListener("click", (e) => {
+    miniPostNav?.addEventListener("click", (e) => {
       if (
         e.target.tagName.toLowerCase() === "a" &&
         e.target.className.indexOf("transition-link") > -1

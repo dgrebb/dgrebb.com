@@ -4,10 +4,13 @@
   @apply my-9
     w-full
     rounded-lg
-    px-9
-    pb-5
+    px-7
     shadow-lg
     sm:w-auto;
+  padding-bottom: 2rem;
+  @screen sm {
+    padding-bottom: 2rem;
+  }
   position: relative;
   z-index: 3;
   background-color: rgb(var(--background-pre-rgb));
@@ -113,7 +116,7 @@
       overflow-x: auto;
     } */
     & > table {
-      margin-top: 5rem;
+      margin-top: 4.75rem;
       tr:hover,
       tr:focus {
         td:first-child {
