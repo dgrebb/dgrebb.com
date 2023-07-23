@@ -25,6 +25,9 @@ const config = {
         if (path === "/404" && referrer === "/privacy/") {
           return;
         }
+        if (process.env.WARN_ONLY && path.includes("/uploads")) {
+          return;
+        }
         throw new Error(message);
       },
     },

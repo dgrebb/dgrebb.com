@@ -9,6 +9,7 @@
   import SvelteMarkdown from "svelte-markdown";
 
   export let title;
+  export let summary;
   export let content;
   export let footnotes;
   export let categories;
@@ -69,6 +70,9 @@
 <PostNav {contents} {categories} {related} {pathname} mini={true} />
 <h1 class="post-title">{title}</h1>
 <article class="post-article" class:full={!showAside}>
+  {#if summary}
+    {summary}
+  {/if}
   {#if content}
     {#each content as c}
       {#if c.__component === "posts.text"}

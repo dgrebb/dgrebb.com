@@ -1,6 +1,5 @@
-import * as Sentry from "@sentry/sveltekit";
-import crypto from "crypto";
 import { PUBLIC_ENV, PUBLIC_SENTRY_DSN } from "$env/static/public";
+import * as Sentry from "@sentry/sveltekit";
 
 Sentry.init({
   dsn: PUBLIC_SENTRY_DSN,
@@ -24,11 +23,11 @@ export function handleError({ error, event }) {
   // console.log("Event:");
   // console.log(event);
   // console.log('')
-  console.log("Error:")
+  console.log("Error:");
   console.log(error);
 
   return {
-      message: 'Whoops!',
-      code: error?.code ?? 'UNKNOWN'
+    message: "Whoops!",
+    code: error?.code ?? "UNKNOWN",
   };
 }

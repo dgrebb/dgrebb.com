@@ -1,11 +1,10 @@
 <script>
-  import { PUBLIC_MEDIA_URL as M } from "$env/static/public";
   import Head from "@components/Head.svelte";
   import PageTransition from "@components/PageTransition.svelte";
   import Link from "@components/content/renderers/Link.svelte";
   import PostsGrid from "@components/posts/PostsGrid.svelte";
   import Flourish from "@layout/Flourish.svelte";
-  import { pageMeta } from "@store";
+  import Meta from "@components/Meta.svelte";
   import { onMount } from "svelte";
   import SvelteMarkdown from "svelte-markdown";
 
@@ -13,18 +12,18 @@
   let mounted = false;
   const {
     pathname,
-    page,
     page: { headline, description },
     posts,
+    pageMeta,
   } = data;
-  let seo = page?.seo;
+
   const gridItems = posts.map(({ attributes: post }) => {
-    const { title, slug, hero } = post;
+    const { title, slug, hero, seo } = post;
     const heroImages = hero?.data?.attributes;
     const full = heroImages?.url || false;
     const thumbnail = heroImages?.formats?.thumbnail?.url || false;
-    const image = full ? M + full : false;
-    const lazyImage = thumbnail ? M + thumbnail : false;
+    const image = full ? full : false;
+    const lazyImage = thumbnail ? thumbnail : false;
 
     return {
       title,
@@ -34,14 +33,6 @@
       lazyImage,
     };
   });
-
-  $pageMeta = {
-    ...$pageMeta,
-    ...seo,
-    title: headline,
-    titleTemplate: "%s | Dan Grebb",
-    heroImage: "https://s.dgrebb.com/img/default_posts_813772ab64.png",
-  };
 
   onMount(() => {
     mounted = true;
@@ -75,3 +66,5 @@
     {/each}
   {/if}
 </Head>
+
+<Meta {pageMeta} />

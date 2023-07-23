@@ -27,8 +27,28 @@ export async function load({ params }) {
     });
   }
 
+
+  const { name, seo } = content;
+
+  const pageMeta = {
+    ...seo,
+    type: "website",
+    metaTitle: seo?.metaTitle || name,
+    titleTemplate: "%s | Categories | Dan Grebb",
+    metaDescription: seo?.metaDescription || `Here's a collection of posts about ${name}`,
+  };
+  
+  /**
+   * Isolates the `metaImage` object properties we care about
+  */
+ pageMeta.metaImage = pageMeta?.metaImage?.data?.attributes || {
+   url: "https://s.dgrebb.com/img/default_banner_2a50e43220.png",
+   alternativeText: "The Circuit of Life",
+  };
+  
   return {
     content,
     posts: [...posts] || [],
+    pageMeta,
   };
 }
