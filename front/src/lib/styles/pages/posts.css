@@ -97,10 +97,12 @@
   .summary {
     margin: auto auto 2rem;
     max-width: 77%;
-    column-count: 2;
-    column-gap: 3.33rem;
     p {
       margin: 0 auto;
+    }
+    @screen md {
+      column-gap: 2rem;
+      column-count: 2;
     }
   }
 }

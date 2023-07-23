@@ -2,10 +2,14 @@
   position: absolute;
   top: -2.67rem;
   z-index: 10;
-  right: -0.07rem;
+  right: -1.83%;
   overflow: hidden;
   padding: 0.33rem;
   text-align: right;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-text-select: none;
+  -webkit-user-select: none;
   @screen sm {
     display: none;
   }
@@ -39,11 +43,12 @@
       }
       & + .post-navigation-list {
         position: relative;
-        top: -1.95rem;
+        top: -1.85rem;
         right: -333px;
+        max-height: 0;
         opacity: 0;
         backdrop-filter: blur(0.5rem);
-        transition: right, opacity;
+        transition: right, max-height, opacity;
         border-radius: 0.33rem;
         background-color: rgba(var(--background-saturated), 0.9);
         padding: 2rem;
@@ -77,6 +82,7 @@
         & + .post-navigation-list {
           right: 0;
           opacity: 1;
+          max-height: 100%;
           & label.bottom {
             background-color: rgba(var(--background-saturated), 0);
             .post-navigation-open {

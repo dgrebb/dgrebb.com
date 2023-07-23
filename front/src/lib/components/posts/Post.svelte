@@ -58,20 +58,37 @@
           });
         });
     }, 200);
-    document.addEventListener("click", (e) => {
-      if (postNavCheckbox.checked) postNavCheckbox.checked = false;
+    document.body.addEventListener("click", (e) => {
+      if (
+        e.target.tagName.toLowerCase() === "a" &&
+        e.target.className.indexOf("transition-link") > -1
+      ) {
+        return;
+      } else {
+        if (postNavCheckbox.checked) postNavCheckbox.checked = false;
+        return;
+      }
     });
     miniPostNav.addEventListener("click", (e) => {
-      e.stopPropagation();
+      if (
+        e.target.tagName.toLowerCase() === "a" &&
+        e.target.className.indexOf("transition-link") > -1
+      ) {
+        return;
+      } else {
+        e.stopImmediatePropagation();
+      }
     });
   });
 </script>
 
-<PostNav {contents} {categories} {related} {pathname} mini={true} />
+{#if toc || categories.length || related.length}
+  <PostNav {contents} {categories} {related} {pathname} mini={true} />
+{/if}
 <h1 class="post-title">{title}</h1>
 <article class="post-article" class:full={!showAside}>
   {#if summary}
-    {summary}
+    <p class="summary">{summary}</p>
   {/if}
   {#if content}
     {#each content as c}
