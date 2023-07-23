@@ -1,7 +1,6 @@
 <script>
-  import { onMount } from "svelte";
-  import IconCopy from "~icons/mdi/clipboard-multiple-outline";
   import IconCopied from "~icons/line-md/confirm-circle";
+  import IconCopy from "~icons/mdi/clipboard-multiple-outline";
 
   export let text;
   $: copied = false;

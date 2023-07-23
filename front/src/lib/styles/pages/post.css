@@ -118,12 +118,8 @@
       text-wrap: pretty;
       &::first-letter {
         @apply dg--font-lbb;
+        font-size: 1.5rem;
         /* font-style: italic; */
-        font-size: 2rem;
-        line-height: 1;
-        padding-right: 0.12rem;
-        float: left;
-        margin-left: -0.5rem;
       }
     }
     a {
@@ -131,6 +127,20 @@
       &:hover,
       &:focus {
         border-bottom: 1px solid rgba(var(--highlight-rgb), 1);
+      }
+    }
+    h1, h2, h3, h4, h5, h6 {
+      a {
+        @apply dg--font-lb;
+        margin-left: 0.5rem;
+        opacity: 0;
+        transition: opacity 1s ease-in-out, color 0.5s, border-color 0.5s;
+      }
+      &:hover,
+      &:focus {
+        a {
+          opacity: 1.0;
+        }
       }
     }
     h2.footnotes-title {

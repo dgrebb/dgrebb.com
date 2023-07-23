@@ -59,24 +59,25 @@
         });
     }, 200);
     document.body.addEventListener("click", (e) => {
-      if (
-        e.target.tagName.toLowerCase() === "a" &&
-        e.target.className.indexOf("transition-link") > -1
-      ) {
-        return;
-      } else {
-        if (postNavCheckbox?.checked) postNavCheckbox.checked = false;
-        return;
+      if (e.target !== miniPostNav && !miniPostNav.contains(e.target)) {
+        if (
+          e.target.className.indexOf("transition-link") > -1
+        ) {
+          return;
+        } else {
+          if (postNavCheckbox?.checked) postNavCheckbox.checked = false;
+        }
       }
     });
     miniPostNav?.addEventListener("click", (e) => {
-      if (
-        e.target.tagName.toLowerCase() === "a" &&
-        e.target.className.indexOf("transition-link") > -1
-      ) {
-        return;
-      } else {
-        e.stopImmediatePropagation();
+      if (typeof e.target.className === "string") {
+        if (
+          e.target.className.indexOf("transition-link") > -1
+        ) {
+          return;
+        } else {
+          e.stopImmediatePropagation();
+        }
       }
     });
   });
