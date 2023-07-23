@@ -7,13 +7,16 @@
     px-7
     shadow-lg
     sm:w-auto;
-  padding-bottom: 2rem;
-  @screen sm {
-    padding-bottom: 2rem;
-  }
+  padding-bottom: 1.5rem;
   position: relative;
   z-index: 3;
   background-color: rgb(var(--background-pre-rgb));
+  &:hover,
+  &:focus {
+    .title, .language, .code-copy-btn {
+      color: rgba(var(--foreground-rgb), 0.77);
+    }
+  }
   .title,
   > pre {
     @apply dg--transition-effect
@@ -27,6 +30,11 @@
     padding: 0.75rem;
     width: 50%;
     color: rgb(var(--foreground-rgb));
+    &.full {
+      width: 100%;
+      border-top-left-radius: 0.375rem;
+      border-top-right-radius: 0.375rem;
+    }
   }
   .title {
     left: 0;
@@ -36,19 +44,21 @@
     right: 0;
     border-top-right-radius: 0.375rem;
     padding-right: 2.5rem;
-    color: rgba(var(--foreground-rgb), 0.5);
+    color: rgba(var(--foreground-rgb), 0.33);
     text-align: right;
+    transition: color 0.5s;
   }
   .code-copy-btn {
     position: absolute;
     right: 0;
-    vertical-align: baseline;
+    vertical-align: middle;
     z-index: 5;
     transition: color;
-    padding: 0.8rem 0.75rem 0.5rem;
+    padding: 0.85rem 0.75rem 0 0.75rem;
     @apply dg--transition-effect;
+    color: rgba(var(--foreground-rgb), 0.33);
     &:hover {
-      color: rgba(var(--highlight-rgb));
+      color: rgba(var(--highlight-rgb), 1.0);
     }
   }
   > pre {
@@ -59,6 +69,7 @@
     overflow-x: auto;
     color: rgb(var(--foreground-rgb));
     scrollbar-color: transparent transparent;
+    scrollbar-width: thin;
     transition: scrollbar-color 0.5s;
     &::-webkit-scrollbar {
       background-color: transparent;
@@ -84,8 +95,11 @@
     }
   }
   > div[style] > .line-number-wrap {
+    padding-bottom: 2rem;
+    margin-bottom: -2rem;
     overflow-x: auto;
     scrollbar-color: transparent transparent;
+    scrollbar-width: thin;
     transition: scrollbar-color 0.5s;
     &::-webkit-scrollbar {
       transition: background-color 0.5s;
