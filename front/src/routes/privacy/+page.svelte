@@ -8,7 +8,7 @@
   import SvelteMarkdown from "svelte-markdown";
 
   export let data;
-  const { title, details, pageMeta, updatedAt, seo, pathname } = data;
+  const { title, details, pageMeta, updatedAt, pathname } = data;
   let date = new Date(updatedAt);
   date = date.toDateString();
 </script>
