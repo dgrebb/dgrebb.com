@@ -13,7 +13,7 @@
   let { categoryClick, relatedClick } = pokeTrapper;
 </script>
 
-<nav class="post-navigation" class:mini={mini}>
+<nav class="post-navigation" class:mini>
   {#if mini}
     <input
       type="checkbox"
@@ -38,7 +38,8 @@
           <li>
             <a
               on:click={() => categoryClick(pathname, name)}
-              href="/posts/category/{slug}/">{name}</a
+              href="/posts/category/{slug}/"
+              class="transition-link">{name}</a
             >
           </li>
         {/each}
@@ -51,14 +52,18 @@
           <li>
             <a
               on:click={() => relatedClick(pathname, title)}
-              href="/post/{slug}/">{title}</a
+              href="/post/{slug}/"
+              class="transition-link">{title}</a
             >
           </li>
         {/each}
       </ul>
     {/if}
     {#if mini}
-      <label for="post-navigation-checkbox" class="post-navigation-toggle bottom">
+      <label
+        for="post-navigation-checkbox"
+        class="post-navigation-toggle bottom"
+      >
         <ListIcon class="post-navigation-open" />
         <ClosePostNav />
       </label>
