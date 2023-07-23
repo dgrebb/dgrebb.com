@@ -19,14 +19,14 @@
 </script>
 
 <div class="syntax-highlighter">
-  <CodeCopy {text} />
   {#if highlightedLines}
     {#if title}
-      <span class="title">{title}</span>
+      <span class="title" class:full={!lang}>{title}</span>
     {/if}
     {#if lang}
-      <span class="language">{lang}</span>
+      <span class="language" class:full={!title}>{lang}</span>
     {/if}
+    <CodeCopy {text} />
     <Highlight code={text} {language} let:highlighted>
       <LineNumbers
         {highlighted}
@@ -38,11 +38,12 @@
     </Highlight>
   {:else}
     {#if title}
-      <span class="title">{title}</span>
+      <span class="title" class:full={!lang}>{title}</span>
     {/if}
     {#if lang}
-      <span class="language">{lang}</span>
+      <span class="language" class:full={!title}>{lang}</span>
     {/if}
+    <CodeCopy {text} />
     <Highlight code={text} {language} />
   {/if}
 </div>
