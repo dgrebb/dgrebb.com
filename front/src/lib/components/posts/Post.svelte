@@ -54,7 +54,6 @@
         .querySelectorAll(".post-navigation.mini .toc li")
         .forEach((link) => {
           link.addEventListener("click", (e) => {
-            console.log("closing the nav");
             togglePostNav(e);
           });
         });
