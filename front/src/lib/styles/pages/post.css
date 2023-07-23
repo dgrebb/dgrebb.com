@@ -34,10 +34,15 @@
       background-size: cover;
       background-repeat: no-repeat;
       background-color: rgba(var(--background-saturated), 0.77);
-      width: 100%;
       height: 400px;
       max-height: 100%;
-      overflow: clip;
+      width: 104%;
+      left: -2%;
+      padding: initial 2rem;
+      @screen md {
+        width: 100%;
+        left: 0;
+      }
       &.hero-thumbnail {
         opacity: 1;
         &::before {
@@ -75,6 +80,7 @@
   h1.post-title {
     z-index: 5;
     padding-left: 1rem;
+    padding-right: 1rem;
     text-shadow: 0 -0.11rem 1.5rem rgba(var(--background-saturated), 0.77);
   }
   .aside-toggle {

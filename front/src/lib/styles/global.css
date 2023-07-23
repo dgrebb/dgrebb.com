@@ -51,12 +51,12 @@ html.dark-theme {
 html {
   @apply dg--transition-effect 
     transition-colors;
-  background: linear-gradient(
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    ) */
+  background-color: rgb(var(--background-saturated));
   background-repeat: no-repeat;
   min-height: 100%;
   overflow: clip;
@@ -82,8 +82,8 @@ body {
   background: radial-gradient(
     187% 100% at top,
     rgb(var(--subdued-rgb)),
-    rgb(var(--background-start-rgb)),
-    rgb(var(--background-end-rgb)) 100%,
+    /*rgb(var(--background-start-rgb)),
+     rgb(var(--background-end-rgb)) 100%, */
     transparent 83%
   );
   background-position: top center;
