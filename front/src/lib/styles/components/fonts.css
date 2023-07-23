@@ -22,6 +22,18 @@
   src: url("/fonts/PublicSans-Black.woff2") format("woff2");
 }
 
+@font-face {
+  font-display: swap;
+  font-family: "Libre Baskerville";
+  src: url("/fonts/LibreBaskerville-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Libre Baskerville Bold";
+  src: url("/fonts/LibreBaskerville-Bold.woff2") format("woff2");
+}
+
 @layer utilities {
   .dg--font-psxl {
     font-family: "Public Sans Extra Light", sans-serif;
@@ -34,5 +46,11 @@
   }
   .dg--font-psbl {
     font-family: "Public Sans Black", sans-serif;
+  }
+  .dg--font-lb {
+    font-family: "Libre Baskerville", serif;
+  }
+  .dg--font-lbb {
+    font-family: "Libre Baskerville Bold", serif;
   }
 }
