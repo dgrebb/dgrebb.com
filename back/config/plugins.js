@@ -51,5 +51,11 @@ module.exports = ({ env }) => {
     seo: {
       enabled: true,
     },
+    "open-ai": {
+      enabled: true,
+      config: {
+        API_TOKEN: env("OPEN_AI_TOKEN")
+      }
+    }
   };
 };
