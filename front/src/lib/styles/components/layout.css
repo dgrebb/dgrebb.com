@@ -1,0 +1,10 @@
+.posts,
+.post,
+.privacy,
+.category {
+  @apply dg--transition-effect
+    w-full
+    opacity-95
+    transition-colors
+    sm:max-w-5xl;
+}

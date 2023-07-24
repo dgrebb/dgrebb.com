@@ -19,7 +19,7 @@
   <section class="category">
     <Flourish />
     <a id="main">Main Content</a>
-    <h1>{name}</h1>
+    <h1 class="category-name">{name}</h1>
     {#if description}
       <SvelteMarkdown renderers={{ link: Link }} source={description} />
     {/if}

@@ -1,12 +1,16 @@
 @import "components/fonts.css";
+@import "components/layout.css";
+@import "components/typography.css";
 @import "components/utilities.css";
 @import "components/tw-components.css";
 @import "components/Code/Code.css";
 @import "components/nav.css";
 @import "components/theme-toggle.css";
 @import "components/posts-grid.css";
-@import "pages/posts.css";
+@import "pages/categories.css";
 @import "pages/post.css";
+@import "pages/posts.css";
+@import "pages/privacy.css";
 
 @tailwind base;
 @tailwind components;
@@ -83,8 +87,7 @@ body {
     187% 77vh at top,
     rgb(var(--subdued-rgb)),
     rgb(var(--background-start-rgb)),
-     /* rgb(var(--background-end-rgb)) 100%, */
-      transparent 83%
+    /* rgb(var(--background-end-rgb)) 100%, */ transparent 83%
   );
   background-position: top center;
   background-repeat: no-repeat;
