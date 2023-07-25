@@ -1,5 +1,43 @@
 .category {
-  h1.category-name {
-    font-size: 3rem;
+  &-summary {
+    padding-bottom: 1rem;
+    max-height: 33rem;
+    text-align: center;
+    @apply dg--transition-effect
+      transition-opacity;
+    @screen md {
+      padding-bottom: 2rem;
+    }
+    h1.category-name {
+      font-size: 3rem;
+    }
+  }
+  .category-posts-list {
+    display: inline-block;
+    float: left;
+    width: 70%;
+    min-height: 9rem;
+  }
+  .category-aside {
+    display: block;
+    position: relative;
+    right: 0;
+    float: right;
+    opacity: 1;
+    width: 20%;
+    li {
+      list-style-type: none;
+    }
+  }
+}
+
+.animating-page {
+  .category {
+    .category-summary {
+      opacity: 0;
+      .transition-container:last-of-type {
+        height: 0;
+      }
+    }
   }
 }
