@@ -11,7 +11,7 @@ export async function load({ params }) {
   const { category } = params;
   const categoriesEndpoint = URL + "/categories";
   const categoryEndpoint = URL + CAT + category;
-  const postsEndpoint = URL + POSTS + PARAMS;
+  const postsEndpoint = URL + POSTS + PARAMS + category;
   const [categories, content, posts] = await Promise.all([
     api(categoriesEndpoint),
     categoryAPI(categoryEndpoint),
