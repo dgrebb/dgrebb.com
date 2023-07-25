@@ -13,7 +13,7 @@
   date = date.toDateString();
 </script>
 
-<PageTransition {pathname}>
+<PageTransition transitionKey={pathname}>
   <section class="privacy">
     <Flourish />
     <div class="masthead">

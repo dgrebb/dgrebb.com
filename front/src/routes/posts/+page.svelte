@@ -39,7 +39,7 @@
   });
 </script>
 
-<PageTransition {pathname}>
+<PageTransition transitionKey={pathname}>
   <section class="posts">
     <Flourish />
     <a id="main">Main Content</a>

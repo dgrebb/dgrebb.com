@@ -11,7 +11,7 @@
   const { headline, image, intro, links, pageMeta, pathname } = data;
 </script>
 
-<PageTransition {pathname}>
+<PageTransition transitionKey={pathname}>
   <section class="bio text-center">
     <Flourish />
     {#if image}
