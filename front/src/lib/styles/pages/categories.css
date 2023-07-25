@@ -17,6 +17,32 @@
     float: left;
     width: 70%;
     min-height: 9rem;
+    .post-item {
+      margin-bottom: 1.75rem;
+      list-style-type: none;
+      a {
+        display: flex;
+        flex-direction: row;
+      }
+      .post-item-heading {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        .post-title {
+          margin-bottom: 0;
+        }
+      }
+      .post-item-image {
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        border-radius: 100%;
+        width: 77px;
+        height: 77px;
+        margin-left: 1.75rem;
+        align-self: start;
+      }
+    }
   }
   .category-aside {
     display: block;
