@@ -2,7 +2,7 @@
   import { fade } from "svelte/transition";
   import { scrollTop } from "@utils";
 
-  export let pathname;
+  export let transitionKey;
 
   function animateOut() {
     document.body.classList.add("animating");
@@ -15,7 +15,7 @@
   }
 </script>
 
-{#key pathname}
+{#key transitionKey}
   <div
     class="transition-container"
     transition:fade={{ duration: 333, delay: 50 }}
