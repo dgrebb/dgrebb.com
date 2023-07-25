@@ -34,14 +34,25 @@
       <Flourish />
       {#if posts}
         <ul>
-          {#each posts as { attributes: { title, slug, summary, hero: { alternativeText, data: { attributes: { formats: { thumbnail, small, medium } } } } } }, i}
-            <a href="/post/{slug}">
-              <h2>{title}</h2>
-              <img src={thumbnail?.url} alt={alternativeText} />
-            </a>
-            {#if summary}
-              <SvelteMarkdown renderers={{ link: Link }} source={summary} />
-            {/if}
+          {#each posts as { attributes: { title, publishedAt, slug, summary, position, hero: { alternativeText, data: { attributes: { formats: { thumbnail, small, medium } } } } } }, i}
+            {@const date = new Date(publishedAt).toDateString()}
+            <li class="post-item">
+              <a href="/post/{slug}">
+                <div class="post-item-heading">
+                  <h2 class="post-title">{title}</h2>
+                  <time datetime={date} class="post-date">{date}</time>
+                </div>
+                <div
+                  class="post-item-image"
+                  style="background-image: url('{thumbnail?.url}'); {position && `background-position: ${position};`}"
+                />
+              </a>
+              {#if summary}
+                <div class="post-item-summary">
+                  <SvelteMarkdown renderers={{ link: Link }} source={summary} />
+                </div>
+              {/if}
+            </li>
           {/each}
         </ul>
       {:else}
