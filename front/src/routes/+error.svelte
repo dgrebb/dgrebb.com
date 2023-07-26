@@ -6,7 +6,7 @@
   $: ({ pathname } = data);
 </script>
 
-<PageTransition {pathname}>
+<PageTransition transitionKey={pathname}>
   <section class="not-found">
     <Flourish />
     <a id="main">Main Content</a>

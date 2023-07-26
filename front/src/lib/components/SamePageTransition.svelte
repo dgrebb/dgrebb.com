@@ -1,11 +1,19 @@
 <script>
+  import { page } from "$app/stores";
   import { fade } from "svelte/transition";
   import { scrollTop } from "@utils";
 
   export let transitionKey;
+  export let classList = false;
+
+  function doIt() {
+    return {
+      duration: 333,
+    };
+  }
 
   function animateOut() {
-    document.body.classList.add("animating");
+    document.body.classList.add("animating-page");
   }
 
   function animateIn() {
@@ -18,8 +26,8 @@
 
 {#key transitionKey}
   <div
-    class="transition-container"
-    transition:fade={{ duration: 333, delay: 50 }}
+    class="page-transition-container {classList ? classList : ''}"
+    transition:doIt
     on:outrostart={animateOut}
     on:introend={animateIn}
   >

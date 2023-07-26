@@ -47,7 +47,7 @@
   });
 </script>
 
-<PageTransition {pathname}>
+<PageTransition transitionKey={pathname}>
   <section class="post">
     <Flourish />
     {#if heroImage}

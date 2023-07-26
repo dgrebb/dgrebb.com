@@ -1,0 +1,42 @@
+.privacy {
+  font-size: 1rem;
+  @apply max-w-4xl
+    p-5
+    shadow-xl
+    sm:p-9;
+  @screen sm {
+    margin-top: 3rem;
+    padding-top: 7.77rem;
+  }
+  position: relative;
+  border-radius: 0.77rem;
+  background-color: rgba(var(--background-saturated), 0.77);
+  .masthead {
+    display: block;
+    @screen sm {
+      position: absolute;
+      top: -2rem;
+      left: 1.33rem;
+    }
+  }
+  h1.title {
+    @apply dg--font-psbl
+      mt-0;
+  }
+  ol {
+    counter-reset: item;
+    list-style-type: none;
+  }
+  li:first-of-type {
+    @apply mb-5;
+  }
+  ol {
+    @apply mb-5;
+  }
+  ol > li {
+    counter-increment: item;
+  }
+  ol > li::before {
+    content: counters(item, ".") ". ";
+  }
+}
