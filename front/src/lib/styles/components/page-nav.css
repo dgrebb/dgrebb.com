@@ -1,0 +1,102 @@
+.page-navigation.mini {
+  position: absolute;
+  top: -2.67rem;
+  z-index: 10;
+  right: -1.83%;
+  overflow: hidden;
+  padding: 0.33rem;
+  text-align: right;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-text-select: none;
+  -webkit-user-select: none;
+  @screen sm {
+    display: none;
+  }
+  .page-navigation-toggle {
+    display: inline-block;
+    border-radius: 0.33rem;
+    transition: background-color, color;
+    cursor: pointer;
+    background-color: rgba(var(--background-saturated), 0.5);
+    padding: 0.33rem;
+    @apply dg--transition-effect;
+    &:hover,
+    &:focus {
+      background-color: rgba(var(--background-saturated), 0.9);
+      color: rgb(var(--highlight-rgb));
+    }
+  }
+  input#page-navigation-checkbox {
+    display: none;
+    border-radius: 0.77rem;
+    ~ label {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      vertical-align: middle;
+      .page-navigation-open {
+        display: block;
+      }
+      .page-navigation-close {
+        display: none;
+      }
+      & + .page-navigation-list {
+        position: relative;
+        top: -1.85rem;
+        margin-bottom: -1.85rem;
+        right: -333px;
+        opacity: 0;
+        backdrop-filter: blur(0.5rem);
+        transition: right, opacity;
+        border-radius: 0.33rem;
+        background-color: rgba(var(--background-saturated), 0.9);
+        padding: 2rem;
+        overflow: hidden;
+        @apply dg--transition-effect;
+        label.bottom {
+          bottom: 0;
+          position: absolute;
+          right: 0;
+          .page-navigation-open {
+            display: block;
+          }
+          .page-navigation-close {
+            display: none;
+          }
+        }
+      }
+    }
+    &:checked {
+      ~ label,
+      label.bottom {
+        background-color: rgba(var(--background-saturated), 0);
+        .page-navigation-open {
+          display: none;
+        }
+        .page-navigation-close {
+          display: block;
+        }
+        & + .page-navigation-list {
+          right: 0;
+          opacity: 1;
+          & label.bottom {
+            background-color: rgba(var(--background-saturated), 0);
+            .page-navigation-open {
+              display: none;
+            }
+            .page-navigation-close {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  ul {
+    li {
+      list-style-type: none;
+    }
+  }
+}
