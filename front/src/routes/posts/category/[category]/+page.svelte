@@ -6,12 +6,12 @@
   import SamePageTransition from "@components/SamePageTransition.svelte";
   import Meta from "@components/Meta.svelte";
   import Flourish from "@layout/Flourish.svelte";
-  import CategoryAside from "@components/CategoryAside.svelte";
+  import PageNav from "../../../../lib/components/PageNav.svelte";
 
   export let data;
   const route = $page.route.id;
   $: ({
-    content: { name, description },
+    content: { name },
     categories,
     posts,
     pageMeta,
@@ -24,9 +24,6 @@
       <SamePageTransition transitionKey={name}>
         <a id="main">Main Content</a>
         <h1 class="category-name">{name}</h1>
-        {#if description}
-          <SvelteMarkdown renderers={{ link: Link }} source={description} />
-        {/if}
       </SamePageTransition>
     </div>
     <div class="category-posts-list">
@@ -64,7 +61,10 @@
         {/if}
       </SamePageTransition>
     </div>
-    <CategoryAside {categories} />
+
+    <aside class="category-aside">
+      <PageNav {categories} />
+    </aside>
   </section>
 </PageTransition>
 <Meta {pageMeta} />

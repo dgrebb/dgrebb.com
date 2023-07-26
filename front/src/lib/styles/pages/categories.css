@@ -1,15 +1,25 @@
+@import "../components/page-nav.css";
 .transition-container.category-page {
   flex-grow: 0;
   justify-items: top;
 }
 .category {
+  margin-top: 3rem;
+  margin-bottom: 3.33rem;
+  border-radius: 0.77rem;
+  background-color: rgba(var(--background-saturated), 0.77);
+  padding: 2.33rem 0;
+  @apply shadow-xl;
+  @screen md {
+    margin-top: 5rem;
+    padding: 2.33rem;
+  }
   .category-summary {
     @apply dg--font-lb;
     display: flex;
-    align-items: center;
     padding-bottom: 1rem;
-    min-height: 400px;
-    max-height: 11rem;
+    position: relative;
+    top: -5rem;
     @screen md {
       padding-bottom: 2rem;
     }
@@ -25,6 +35,8 @@
     }
   }
   .category-posts-list {
+    position: relative;
+    top: -5rem;
     float: left;
     width: 72%;
     padding: 0.5rem;
