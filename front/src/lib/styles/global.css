@@ -176,55 +176,12 @@ body {
   background-color: rgb(var(--foreground-rgb));
 }
 
-.transition-container {
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.header,
-.footer {
-  @apply w-full
-    max-w-7xl
-    px-3
-    lg:p-14;
-}
-
-.header {
-  @apply flex
-    items-center
-    pb-0
-    pt-5
-    sm:pt-9
-    md:pt-11;
-  position: relative;
-}
-
 #main {
   @apply sr-only;
   margin: 0;
   padding: 0;
   width: 0;
   height: 0;
-}
-
-.main {
-  @apply flex
-    w-full
-    max-w-5xl
-    flex-grow
-    flex-col
-    items-center
-    justify-center
-    justify-items-center
-    px-3
-    pt-3
-    xs:px-4
-    sm:pt-5;
-  transition: height 1s;
 }
 
 .bio,
@@ -289,7 +246,7 @@ body {
     px-8
     pb-3
     sm:pb-5
-    md:pb-12;
+    md:pb-9;
   .link-list {
     @apply flex
       flex-wrap
@@ -358,51 +315,5 @@ body {
   svg {
     @apply mb-2
       mt-5;
-  }
-}
-
-.footer {
-  @apply flex
-    flex-col
-    justify-end
-    pb-3
-    pt-3
-    text-center
-    text-sm;
-  small {
-    color: rgb(var(--subdued-rgb));
-    a {
-      @apply dg--transition-effect
-        brightness-75
-        transition;
-      border-color: rgb(var(--foreground-rgb));
-      color: rgb(var(--foreground-rgb));
-      &:hover,
-      &:focus {
-        @apply brightness-100;
-      }
-    }
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  html.dark-theme {
-    .footer {
-      small {
-        a {
-          --tw-brightness: brightness(0.5);
-          filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
-            var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert)
-            var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-          &:hover,
-          &:focus {
-            --tw-brightness: brightness(1);
-            filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
-              var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert)
-              var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-          }
-        }
-      }
-    }
   }
 }

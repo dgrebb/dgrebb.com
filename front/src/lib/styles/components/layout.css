@@ -1,3 +1,41 @@
+.main {
+  /* height: 100%; */
+  @apply flex
+    w-full
+    max-w-5xl
+    flex-col
+    items-center
+    justify-center
+    justify-items-center
+    px-3
+    pt-3
+    xs:px-4
+    sm:pt-5;
+  transition: height 1s;
+  &.main-secondary {
+    flex-grow: 0;
+    justify-items: start;
+  }
+}
+
+.header,
+.footer {
+  @apply w-full
+    max-w-7xl
+    px-3
+    lg:p-14;
+}
+
+.header {
+  @apply flex
+    items-center
+    pb-0
+    pt-5
+    sm:pt-9
+    md:pt-11;
+  position: relative;
+}
+
 .posts,
 .post,
 .privacy,
@@ -7,4 +45,64 @@
     opacity-95
     transition-colors
     sm:max-w-5xl;
+}
+.footer {
+  flex-grow: 1;
+  justify-items: end;
+}
+
+
+.footer {
+  @apply flex
+    flex-col
+    justify-end
+    pb-3
+    pt-3
+    text-center
+    text-sm;
+  small {
+    color: rgb(var(--subdued-rgb));
+    a {
+      @apply dg--transition-effect
+        brightness-75
+        transition;
+      border-color: rgb(var(--foreground-rgb));
+      color: rgb(var(--foreground-rgb));
+      &:hover,
+      &:focus {
+        @apply brightness-100;
+      }
+    }
+  }
+}
+
+.transition-container {
+  display: flex;
+  /* flex-grow: 1; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+@media (prefers-color-scheme: dark) {
+  html.dark-theme {
+    .footer {
+      small {
+        a {
+          --tw-brightness: brightness(0.5);
+          filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
+            var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert)
+            var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+          &:hover,
+          &:focus {
+            --tw-brightness: brightness(1);
+            filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
+              var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert)
+              var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+          }
+        }
+      }
+    }
+  }
 }

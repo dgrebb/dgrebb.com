@@ -11,6 +11,7 @@
   function animateIn() {
     setTimeout(() => {
       document.body.classList.remove("animating");
+      document.body.classList.remove("animating-page");
     }, 333);
   }
 </script>
