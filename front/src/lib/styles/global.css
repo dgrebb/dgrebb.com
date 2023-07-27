@@ -7,7 +7,8 @@
 @import "components/nav.css";
 @import "components/theme-toggle.css";
 @import "components/posts-grid.css";
-@import "pages/categories.css";
+@import "components/page-nav.css";
+@import "pages/category.css";
 @import "pages/post.css";
 @import "pages/posts.css";
 @import "pages/privacy.css";
