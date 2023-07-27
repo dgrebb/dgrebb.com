@@ -6,29 +6,37 @@
   import SamePageTransition from "@components/SamePageTransition.svelte";
   import Meta from "@components/Meta.svelte";
   import Flourish from "@layout/Flourish.svelte";
-  import CategoryAside from "@components/CategoryAside.svelte";
+  import PageNav from "../../../../lib/components/PageNav.svelte";
 
   export let data;
   const route = $page.route.id;
   $: ({
-    content: { name, description },
+    content: { name },
     categories,
     posts,
     pageMeta,
+    pathname,
   } = data);
+
+  const toggleActive = (e) => {
+    const links = e.target.closest("ul").querySelectorAll("a");
+    const miniNav = document.getElementById("page-navigation-checkbox");
+    links.forEach(link => {
+      link.classList.toggle("active", false);
+    });
+    e.target.classList.toggle("active", true);
+  }
 </script>
 
-<PageTransition transitionKey={route} classList="category-page">
+<PageTransition transitionKey={route}>
   <section class="category">
-    <div class="category-summary">
+    <head class="category-head">
+      <PageNav {categories} mini={true} top={true} {pathname} toggleHandler={toggleActive} />
       <SamePageTransition transitionKey={name}>
         <a id="main">Main Content</a>
         <h1 class="category-name">{name}</h1>
-        {#if description}
-          <SvelteMarkdown renderers={{ link: Link }} source={description} />
-        {/if}
       </SamePageTransition>
-    </div>
+    </head>
     <div class="category-posts-list">
       <Flourish />
       <SamePageTransition transitionKey={name}>
@@ -64,7 +72,10 @@
         {/if}
       </SamePageTransition>
     </div>
-    <CategoryAside {categories} />
+
+    <aside class="category-aside">
+      <PageNav {categories} {pathname} toggleHandler={toggleActive} />
+    </aside>
   </section>
 </PageTransition>
 <Meta {pageMeta} />

@@ -1,11 +1,12 @@
 @layer components {
   .dg--link-hover {
-    transition-property: color;
-    @apply dg--transition-effect;
-    color: rgb(var(--foreground-rgb));
+    transition: color, border-color;
+    color: rgba(var(--text-accent-rgb), 0.77);
     &:hover,
-    &:focus {
-      color: rgb(var(--highlight-rgb));
+    &:focus,
+    &:active,
+    &.active {
+      color: rgba(var(--text-accent-rgb), 1);
     }
   }
   .dg--btn-primary {
