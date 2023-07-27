@@ -111,7 +111,7 @@
         }
         ~ .page-fence {
           opacity: 0.7;
-          transition: opacity 0.33s ease-in-out 0s;
+          transition: opacity 0.33s ease-in-out 0.2s;
           max-height: 100%;
         }
       }

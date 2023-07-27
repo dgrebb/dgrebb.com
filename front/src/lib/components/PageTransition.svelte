@@ -1,5 +1,6 @@
 <script>
   import { fade } from "svelte/transition";
+  import { scrollTop } from "@utils";
 
   export let transitionKey;
 
@@ -8,6 +9,7 @@
   }
 
   function animateIn() {
+    scrollTop();
     setTimeout(() => {
       document.body.classList.remove("animating");
       document.body.classList.remove("animating-page");

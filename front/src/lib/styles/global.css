@@ -94,7 +94,7 @@ body {
   background-repeat: no-repeat;
   height: 100vh;
   min-height: 100vh;
-  overflow: overlay;
+  overflow: auto;
   scroll-behavior: smooth;
   scrollbar-gutter: stable both-edges;
   color: rgb(var(--foreground-rgb));
