@@ -4,6 +4,7 @@
   import Flourish from "@layout/Flourish.svelte";
   import Meta from "@components/Meta.svelte";
   import { onMount } from "svelte";
+  import PostHero from "@components/posts/PostHero.svelte";
 
   export let data;
 
@@ -28,7 +29,7 @@
   let loaded,
     failed = false;
   let loading = true;
-  
+
   onMount(() => {
     if (heroImage) {
       const img = new Image();
@@ -51,23 +52,18 @@
   <section class="post">
     <Flourish />
     {#if heroImage}
-      <div class="hero-wrap {heroImage ? 'show' : 'hide'}">
-        {#if loaded}
-          <div
-            class="hero loaded"
-            style={heroImage &&
-              `background-image: url('${heroImage}'); background-position: ${position};`}
-          />
-        {/if}
-        <div
-          class="hero hero-thumbnail {loaded ? 'loaded' : null}"
-          style={heroThumb &&
-            `background-image: url('${heroThumb}'); background-position: ${position};`}
-        />
-      </div>
+      <PostHero {heroImage} {loaded} {position} {heroThumb} />
     {/if}
     <a id="main">Main Content</a>
-    <Post {title} {summary} {content} {footnotes} {categories} {related} {pathname} />
+    <Post
+      {title}
+      {summary}
+      {content}
+      {footnotes}
+      {categories}
+      {related}
+      {pathname}
+    />
   </section>
 </PageTransition>
 
