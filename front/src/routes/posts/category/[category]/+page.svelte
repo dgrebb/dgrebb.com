@@ -18,7 +18,7 @@
     pathname,
   } = data);
 
-  const toggleActive = (e) => {
+  const activeHandler = (e) => {
     const links = e.target.closest("ul").querySelectorAll("a");
     const miniNav = document.getElementById("page-navigation-checkbox");
     links.forEach(link => {
@@ -31,7 +31,7 @@
 <PageTransition transitionKey={route}>
   <section class="category">
     <head class="category-head">
-      <PageNav {categories} mini={true} top={true} {pathname} toggleHandler={toggleActive} />
+      <PageNav {categories} mini={true} top={true} {pathname} {activeHandler} />
       <SamePageTransition transitionKey={name}>
         <a id="main">Main Content</a>
         <h1 class="category-name">{name}</h1>
@@ -74,7 +74,7 @@
     </div>
 
     <aside class="category-aside">
-      <PageNav {categories} {pathname} toggleHandler={toggleActive} />
+      <PageNav {categories} {pathname} {activeHandler} />
     </aside>
   </section>
 </PageTransition>

@@ -159,6 +159,7 @@
     li {
       font-size: 0.875rem;
       list-style-type: none;
+      @apply dg--font-lb;
     }
     /* &.show {
       display: block;

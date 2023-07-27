@@ -4,7 +4,7 @@
   import Footnotes from "@components/content/renderers/Footnotes.svelte";
   import Link from "@components/content/renderers/Link.svelte";
   import PostHeading from "@components/content/renderers/PostHeading.svelte";
-  import PostNav from "@components/posts/PostNav.svelte";
+  import PageNav from "@components/PageNav.svelte";
   import slugger from "slugger";
   import SvelteMarkdown from "svelte-markdown";
 
@@ -42,49 +42,65 @@
     showAside = !showAside;
   }
 
-  function togglePostNav(e) {
-    postNavCheckbox.checked = postNavCheckbox.checked ? false : true;
-  }
+  const activeHandler = (e) => {
+    const links = e.target.closest("ul").querySelectorAll("a");
+    const miniNav = document.getElementById("page-navigation-checkbox");
+    links.forEach((link) => {
+      link.classList.toggle("active", false);
+    });
+    e.target.classList.toggle("active", true);
+  };
 
-  onMount(() => {
-    postNavCheckbox = document.getElementById("post-navigation-checkbox");
-    miniPostNav = document.querySelector(".post-navigation.mini");
-    setTimeout(() => {
-      document
-        .querySelectorAll(".post-navigation.mini .toc li")
-        .forEach((link) => {
-          link.addEventListener("click", (e) => {
-            togglePostNav(e);
-          });
-        });
-    }, 200);
-    document.body.addEventListener("click", (e) => {
-      if (e.target !== miniPostNav && !miniPostNav.contains(e.target)) {
-        if (
-          e.target.className.indexOf("transition-link") > -1
-        ) {
-          return;
-        } else {
-          if (postNavCheckbox?.checked) postNavCheckbox.checked = false;
-        }
-      }
-    });
-    miniPostNav?.addEventListener("click", (e) => {
-      if (typeof e.target.className === "string") {
-        if (
-          e.target.className.indexOf("transition-link") > -1
-        ) {
-          return;
-        } else {
-          e.stopImmediatePropagation();
-        }
-      }
-    });
-  });
+  // function togglePostNav(e) {
+  //   postNavCheckbox.checked = postNavCheckbox.checked ? false : true;
+  // }
+
+  // onMount(() => {
+  //   postNavCheckbox = document.getElementById("post-navigation-checkbox");
+  //   miniPostNav = document.querySelector(".post-navigation.mini");
+  //   setTimeout(() => {
+  //     document
+  //       .querySelectorAll(".post-navigation.mini .toc li")
+  //       .forEach((link) => {
+  //         link.addEventListener("click", (e) => {
+  //           togglePostNav(e);
+  //         });
+  //       });
+  //   }, 200);
+  //   document.body.addEventListener("click", (e) => {
+  //     if (e.target !== miniPostNav && !miniPostNav.contains(e.target)) {
+  //       if (
+  //         e.target.className.indexOf("transition-link") > -1
+  //       ) {
+  //         return;
+  //       } else {
+  //         if (postNavCheckbox?.checked) postNavCheckbox.checked = false;
+  //       }
+  //     }
+  //   });
+  //   miniPostNav?.addEventListener("click", (e) => {
+  //     if (typeof e.target.className === "string") {
+  //       if (
+  //         e.target.className.indexOf("transition-link") > -1
+  //       ) {
+  //         return;
+  //       } else {
+  //         e.stopImmediatePropagation();
+  //       }
+  //     }
+  //   });
+  // });
 </script>
 
 {#if toc || categories.length || related.length}
-  <PostNav {contents} {categories} {related} {pathname} mini={true} />
+  <PageNav
+    {contents}
+    {categories}
+    {related}
+    {pathname}
+    mini
+    {activeHandler}
+  />
 {/if}
 <h1 class="post-title">{title}</h1>
 <article class="post-article" class:full={!showAside}>
@@ -133,5 +149,11 @@
   >{asideLabel} Sidebar</button
 > -->
 <aside class="post-aside" class:show={showAside}>
-  <PostNav {contents} {categories} {related} {pathname} />
+  <PageNav
+    {contents}
+    {categories}
+    {related}
+    {pathname}
+    {activeHandler}
+  />
 </aside>

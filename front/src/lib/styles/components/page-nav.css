@@ -4,7 +4,8 @@
   }
   a {
     @apply dg--transition-effect
-        dg--link-hover;
+      dg--link-hover
+      dg--font-lb;
     &.active {
       &:after {
         padding-left: 0.5rem;
@@ -57,7 +58,6 @@
         }
         & + .page-navigation-list {
           position: relative;
-          max-height: 0;
           top: -1.85rem;
           right: -333px;
           opacity: 0;
@@ -67,6 +67,7 @@
           border-radius: 0.77rem;
           background-color: rgba(var(--background-saturated), 0.8);
           padding: 2rem;
+          max-height: 0;
           overflow: hidden;
           @apply dg--transition-effect;
           label.bottom {
@@ -95,8 +96,8 @@
           & + .page-navigation-list {
             right: 0;
             opacity: 1;
-            max-height: 100%;
             transition: max-height 0 0, opacity, max-height;
+            max-height: 100%;
             & label.bottom {
               background-color: rgba(var(--background-saturated), 0);
               .page-navigation-open {
