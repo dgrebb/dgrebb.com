@@ -11,7 +11,7 @@
   export let pathname = false;
   export let mini = false;
   export let top = false;
-  export let toggleHandler = null;
+  export let activeHandler = null;
 
   let toc, pageNavCheckbox, miniPageNav;
   let { categoryClick, relatedClick } = pokeTrapper;
@@ -42,9 +42,9 @@
     </label>
   {/if}
   <div class="page-navigation-list">
-    {#if contents}
+    {#if contents && contents.length}
       <h2>Table of Contents</h2>
-      <TableOfContents {contents} />
+      <TableOfContents {contents} {pageFenceClickHandler} {activeHandler} {activeLink} />
     {/if}
     {#if categories}
       <h2>Categories</h2>
@@ -52,11 +52,13 @@
         {#each categories as { attributes: { name, slug } }, i}
           <li>
             <a
-              on:click={() => categoryClick(pathname, name)}
+              on:click={(e) => {
+                categoryClick(pathname, name);
+                activeHandler(e);
+              }}
               href="/posts/category/{slug}/"
               class="transition-link"
               use:activeLink
-              on:click={toggleHandler}
             >
               {name}
             </a>
