@@ -1,6 +1,5 @@
 <script>
   import { fade } from "svelte/transition";
-  import { scrollTop } from "@utils";
 
   export let transitionKey;
 

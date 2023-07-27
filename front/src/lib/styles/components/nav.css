@@ -18,12 +18,17 @@
 
 .nav-home {
   @apply dg--font-psbl
-    dg--link-hover
+    dg--transition-effect
     text-xl
     leading-none
     tracking-tight
     sm:ml-[2px]
     sm:text-2xl;
+    color: rgb(var(--foreground-color));
+    &:hover,
+    &:focus {
+      color: rgb(var(--highlight-rgb));
+    }
   h1 {
     transition: font-size;
     @apply dg--transition-effect
