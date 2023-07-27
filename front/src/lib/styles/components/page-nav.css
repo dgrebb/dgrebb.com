@@ -57,11 +57,12 @@
         }
         & + .page-navigation-list {
           position: relative;
+          max-height: 0;
           top: -1.85rem;
           right: -333px;
           opacity: 0;
           backdrop-filter: blur(0.5rem);
-          transition: right, opacity;
+          transition: right, opacity, max-height 0;
           margin-bottom: -1.85rem;
           border-radius: 0.77rem;
           background-color: rgba(var(--background-saturated), 0.8);
@@ -94,6 +95,8 @@
           & + .page-navigation-list {
             right: 0;
             opacity: 1;
+            max-height: 100%;
+            transition: max-height 0 0, opacity, max-height;
             & label.bottom {
               background-color: rgba(var(--background-saturated), 0);
               .page-navigation-open {
