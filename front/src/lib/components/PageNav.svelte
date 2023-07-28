@@ -46,7 +46,7 @@
       <h2>Table of Contents</h2>
       <TableOfContents {contents} {pageFenceClickHandler} {activeHandler} {activeLink} />
     {/if}
-    {#if categories}
+    {#if categories && categories.length}
       <h2>Categories</h2>
       <ul class="page-navigation-list">
         {#each categories as { attributes: { name, slug } }, i}
@@ -66,7 +66,7 @@
         {/each}
       </ul>
     {/if}
-    {#if related}
+    {#if related && related.length}
       <h2>Related Posts</h2>
       <ul class="page-navigation-list">
         {#each related as { attributes: { title, slug } }, i}

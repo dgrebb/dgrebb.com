@@ -52,7 +52,7 @@
   };
 </script>
 
-{#if toc || categories.length || related.length}
+{#if (contents && contents.length) || (categories && categories.length) || (related && related.length)}
   <PageNav {contents} {categories} {related} {pathname} mini {activeHandler} />
 {/if}
 <h1 class="post-title">{title}</h1>
@@ -102,5 +102,7 @@
   >{asideLabel} Sidebar</button
 > -->
 <aside class="post-aside" class:show={showAside}>
-  <PageNav {contents} {categories} {related} {pathname} {activeHandler} />
+  {#if (contents && contents.length) || (categories && categories.length) || (related && related.length)}
+    <PageNav {contents} {categories} {related} {pathname} {activeHandler} />
+  {/if}
 </aside>
