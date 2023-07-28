@@ -50,57 +50,10 @@
     });
     e.target.classList.toggle("active", true);
   };
-
-  // function togglePostNav(e) {
-  //   postNavCheckbox.checked = postNavCheckbox.checked ? false : true;
-  // }
-
-  // onMount(() => {
-  //   postNavCheckbox = document.getElementById("post-navigation-checkbox");
-  //   miniPostNav = document.querySelector(".post-navigation.mini");
-  //   setTimeout(() => {
-  //     document
-  //       .querySelectorAll(".post-navigation.mini .toc li")
-  //       .forEach((link) => {
-  //         link.addEventListener("click", (e) => {
-  //           togglePostNav(e);
-  //         });
-  //       });
-  //   }, 200);
-  //   document.body.addEventListener("click", (e) => {
-  //     if (e.target !== miniPostNav && !miniPostNav.contains(e.target)) {
-  //       if (
-  //         e.target.className.indexOf("transition-link") > -1
-  //       ) {
-  //         return;
-  //       } else {
-  //         if (postNavCheckbox?.checked) postNavCheckbox.checked = false;
-  //       }
-  //     }
-  //   });
-  //   miniPostNav?.addEventListener("click", (e) => {
-  //     if (typeof e.target.className === "string") {
-  //       if (
-  //         e.target.className.indexOf("transition-link") > -1
-  //       ) {
-  //         return;
-  //       } else {
-  //         e.stopImmediatePropagation();
-  //       }
-  //     }
-  //   });
-  // });
 </script>
 
 {#if toc || categories.length || related.length}
-  <PageNav
-    {contents}
-    {categories}
-    {related}
-    {pathname}
-    mini
-    {activeHandler}
-  />
+  <PageNav {contents} {categories} {related} {pathname} mini {activeHandler} />
 {/if}
 <h1 class="post-title">{title}</h1>
 <article class="post-article" class:full={!showAside}>
@@ -149,11 +102,5 @@
   >{asideLabel} Sidebar</button
 > -->
 <aside class="post-aside" class:show={showAside}>
-  <PageNav
-    {contents}
-    {categories}
-    {related}
-    {pathname}
-    {activeHandler}
-  />
+  <PageNav {contents} {categories} {related} {pathname} {activeHandler} />
 </aside>
