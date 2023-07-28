@@ -12,8 +12,9 @@
     xs:px-4
     sm:pt-5;
   transition: height 1s;
+  flex-grow: 1;
   &.main-secondary {
-    flex-grow: 0;
+    /* flex-grow: 0; */
     justify-items: start;
   }
 }
