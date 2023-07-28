@@ -1,6 +1,6 @@
 .transition-container.category-page {
-  flex-grow: 0;
-  justify-items: top;
+  /* flex-grow: 0; */
+  /* justify-items: top; */
 }
 .category {
   margin-top: 3rem;
@@ -20,6 +20,7 @@
     position: relative;
     top: -5rem;
     padding-bottom: 1rem;
+    min-height: 80px;
     @screen md {
       padding-bottom: 2rem;
     }
@@ -52,18 +53,42 @@
     position: relative;
     top: -5rem;
     margin-bottom: -5rem;
+    li {
+      overflow: hidden;
+      position: relative;
+      right: -1rem;
+    }
+    a:after {
+      display: inline-block;
+      position: relative;
+      right: -0.5rem;
+      transition: right 0.5s;
+      padding-left: 0.5rem;
+      content: "•";
+    }
+    a.active {
+      &:after {
+        right: 0;
+      }
+    }
   }
   .category-posts-list {
     padding-right: 1rem;
     padding-left: 1rem;
     width: 100%;
+    min-height: 80px;
+    overflow: hidden;
     @screen sm {
       float: left;
       padding-right: 0.5rem;
       width: 72%;
     }
     .post-item {
-      margin-bottom: 1.75rem;
+      margin-top: 1.75rem;
+      margin-bottom: 0;
+      &:first-of-type {
+        margin-top: 0;
+      }
       list-style-type: none;
       a {
         display: flex;
@@ -95,7 +120,7 @@
     position: relative;
     right: 0;
     float: right;
-    opacity: 1;
+    opacity: 0.8;
     padding-left: 1rem;
     width: 25%;
     @screen sm {
@@ -110,8 +135,9 @@
 .page-transition-container {
   opacity: 1;
   transition: opacity;
-  min-height: 100%;
+  /* max-height: 100%; */
   @apply dg--transition-effect;
+  overflow: hidden;
 }
 
 .animating-page {
@@ -122,11 +148,10 @@
       .page-transition-container {
         opacity: 0;
         &:last-of-type {
-          height: 0;
-          overflow: hidden;
+          max-height: 0;
         }
         &:first-of-type:last-of-type {
-          height: 100% !important;
+          max-height: 100%;
         }
       }
     }
