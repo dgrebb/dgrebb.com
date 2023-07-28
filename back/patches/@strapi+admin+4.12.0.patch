@@ -359,10 +359,10 @@ index e290ab2..4f025a0 100644
        </Box>
        <GridGap>
 diff --git a/node_modules/@strapi/admin/admin/src/pages/HomePage/index.js b/node_modules/@strapi/admin/admin/src/pages/HomePage/index.js
-index 2d44595..c7f77a5 100644
+index a22f746..2233b31 100644
 --- a/node_modules/@strapi/admin/admin/src/pages/HomePage/index.js
 +++ b/node_modules/@strapi/admin/admin/src/pages/HomePage/index.js
-@@ -71,20 +71,20 @@ const HomePage = () => {
+@@ -68,20 +68,20 @@ export const HomePageCE = () => {
          </LogoContainer>
          <Box padding={10}>
            <Grid>
@@ -389,7 +389,7 @@ index 2d44595..c7f77a5 100644
          </Box>
        </Main>
 diff --git a/node_modules/@strapi/admin/admin/src/translations/en.json b/node_modules/@strapi/admin/admin/src/translations/en.json
-index d0bc64c..727252e 100644
+index f999eac..b0550d6 100644
 --- a/node_modules/@strapi/admin/admin/src/translations/en.json
 +++ b/node_modules/@strapi/admin/admin/src/translations/en.json
 @@ -432,14 +432,16 @@
