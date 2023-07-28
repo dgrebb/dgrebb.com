@@ -21,11 +21,11 @@
   const activeHandler = (e) => {
     const links = e.target.closest("ul").querySelectorAll("a");
     const miniNav = document.getElementById("page-navigation-checkbox");
-    links.forEach(link => {
+    links.forEach((link) => {
       link.classList.toggle("active", false);
     });
     e.target.classList.toggle("active", true);
-  }
+  };
 </script>
 
 <PageTransition transitionKey={route}>
@@ -39,7 +39,7 @@
     </head>
     <div class="category-posts-list">
       <Flourish />
-      <SamePageTransition transitionKey={name}>
+      <SamePageTransition transitionKey={name} animateHeight>
         {#if posts}
           <ul>
             {#each posts as { attributes: { title, publishedAt, slug, summary, position, hero: { alternativeText, data: { attributes: { formats: { thumbnail, small, medium } } } } } }, i}

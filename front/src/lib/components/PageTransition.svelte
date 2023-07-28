@@ -5,14 +5,14 @@
   export let transitionKey;
 
   function animateOut() {
-    document.body.classList.add("animating");
+    document.body.classList.toggle("animating", true);
   }
 
   function animateIn() {
     scrollTop();
     setTimeout(() => {
-      document.body.classList.remove("animating");
-      document.body.classList.remove("animating-page");
+      document.body.classList.toggle("animating", false);
+      document.body.classList.toggle("animating-page", false);
     }, 333);
   }
 </script>
