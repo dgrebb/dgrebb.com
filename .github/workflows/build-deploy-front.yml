@@ -6,6 +6,9 @@ on:
 jobs:
   front:
     name: Frontend
+    concurrency: 
+      group: frontend
+      cancel-in-progress: true
     runs-on: ubuntu-latest
 
     environment:
