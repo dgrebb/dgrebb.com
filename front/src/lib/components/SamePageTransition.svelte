@@ -7,26 +7,15 @@
 
   function doIt() {
     return {
-      duration: 333,
+      duration: 500,
     };
   }
 
-  let routeChange = false;
-  $: if ($navigating) {
-  console.log("from:", $navigating.from.route.id);
-  console.log("to:", $navigating.to.route.id);
-    if ($navigating.from.route.id !== $navigating.from.route.id) {
-      routeChange = true;
-    }
-  }
-  
   function animateOut(node) {
+    document.body.classList.toggle("animating-page", true);
 
     if ($navigating) {
       if ($navigating.from.route.id === $navigating.to.route.id) {
-          console.log("in-page animating out");
-        
-        document.body.classList.toggle("animating-page", true);
         if (animateHeight) {
           const initialHeight = node.currentTarget.offsetHeight;
           const nodeOut = node.currentTarget;
@@ -43,50 +32,18 @@
             ],
             { duration: 500, fill: "both" }
           );
-          // animation.pause();
           animation.play();
         }
       }
     }
-
-
-
-    // if ($navigating.from.route.id !== $navigating.from.route.id) {
-    //   return false;
-    // }
-    // console.log("in-page animating out");
-    // document.body.classList.toggle("animating-page", true);
-    // if (animateHeight) {
-    //   const initialHeight = node.currentTarget.offsetHeight;
-    //   const nodeOut = node.currentTarget;
-    //   let animation = nodeOut.animate(
-    //     [
-    //       {
-    //         height: initialHeight + "px",
-    //         overflow: "hidden",
-    //       },
-    //       {
-    //         height: "180px",
-    //         overflow: "hidden",
-    //       },
-    //     ],
-    //     { duration: 500, fill: "both" }
-    //   );
-    //   // animation.pause();
-    //   animation.play();
-    // }
   }
 
   function animateIn(node) {
-    console.log("in-page animating in");
-    setTimeout(() => {
-      document.body.classList.toggle("animating", false);
-      document.body.classList.toggle("animating-page", false);
-    }, 700);
+    let animation;
     if (animateHeight) {
       const initialHeight = node.target.querySelector("ul").offsetHeight;
       const nodeIn = node.target;
-      let animation = nodeIn.animate(
+      animation = nodeIn.animate(
         [
           {
             height: 0,
@@ -97,11 +54,14 @@
             overflow: "hidden",
           },
         ],
-        { duration: 500, fill: "both" }
+        { duration: 800, fill: "both" }
       );
-      // animation.pause();
       animation.play();
     }
+    setTimeout(() => {
+      document.body.classList.toggle("animating", false);
+      document.body.classList.toggle("animating-page", false);
+    }, 500);
   }
 </script>
 

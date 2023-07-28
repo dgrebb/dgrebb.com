@@ -54,22 +54,7 @@
     top: -5rem;
     margin-bottom: -5rem;
     li {
-      overflow: hidden;
-      position: relative;
-      right: -1rem;
-    }
-    a:after {
-      display: inline-block;
-      position: relative;
-      right: -0.5rem;
-      transition: right 0.5s;
-      padding-left: 0.5rem;
-      content: "•";
-    }
-    a.active {
-      &:after {
-        right: 0;
-      }
+      list-style-type: none;
     }
   }
   .category-posts-list {
@@ -86,10 +71,10 @@
     .post-item {
       margin-top: 1.75rem;
       margin-bottom: 0;
+      list-style-type: none;
       &:first-of-type {
         margin-top: 0;
       }
-      list-style-type: none;
       a {
         display: flex;
         flex-direction: row;
@@ -127,7 +112,22 @@
       display: block;
     }
     li {
-      list-style-type: none;
+      position: relative;
+      right: -1rem;
+      overflow: hidden;
+    }
+    a:after {
+      display: inline-block;
+      position: relative;
+      right: -0.5rem;
+      transition: right 0.5s;
+      padding-left: 0.5rem;
+      content: "•";
+    }
+    a.active {
+      &:after {
+        right: 0;
+      }
     }
   }
 }
