@@ -40,7 +40,7 @@
     <div class="category-posts-list">
       <Flourish />
       <SamePageTransition transitionKey={name} animateHeight>
-        {#if posts}
+        {#if posts && posts.length}
           <ul>
             {#each posts as { attributes: { title, publishedAt, slug, summary, position, hero: { alternativeText, data: { attributes: { formats: { thumbnail, small, medium } } } } } }, i}
               {@const date = new Date(publishedAt).toDateString()}
@@ -68,7 +68,7 @@
             {/each}
           </ul>
         {:else}
-          <h2>There aren't any posts yet! Come back soon.</h2>
+          <p class="summary">There aren't any posts yet! Come back soon.</p>
         {/if}
       </SamePageTransition>
     </div>
