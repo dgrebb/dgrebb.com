@@ -110,18 +110,6 @@
       padding-right: 0.5rem;
       width: 75%;
     }
-    .summary {
-      @apply dg--font-lb;
-      font-size: 1.2rem;
-      padding: 2rem;
-      text-indent: 0;
-      text-wrap: pretty;
-      &::first-letter {
-        @apply dg--font-lbb;
-        font-size: 1.5rem;
-        /* font-style: italic; */
-      }
-    }
     a {
       border-bottom: 1px solid rgba(var(--text-accent-rgb), 0.67);
       &:hover,

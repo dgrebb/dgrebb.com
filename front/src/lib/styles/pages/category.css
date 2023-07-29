@@ -59,7 +59,7 @@
   }
   .category-posts-list {
     padding-right: 1rem;
-    padding-left: 1rem;
+    padding-left: 0.5rem;
     width: 100%;
     min-height: 80px;
     overflow: hidden;
@@ -107,6 +107,7 @@
     float: right;
     opacity: 0.8;
     padding-left: 1rem;
+    padding-right: 0.5rem;
     width: 25%;
     @screen sm {
       display: block;
