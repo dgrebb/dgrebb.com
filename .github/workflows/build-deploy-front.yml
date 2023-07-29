@@ -2,6 +2,8 @@ name: Build & Deploy Frontend
 
 on:
   pull_request:
+    paths: 
+      - 'front/**'
     branches: [main, develop]
   workflow_dispatch:
   
