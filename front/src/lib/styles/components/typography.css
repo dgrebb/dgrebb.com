@@ -85,7 +85,16 @@
       md:text-lg;
   }
 }
-
+h1.page-heading {
+  transition: color;
+  @apply dg--transition-effect;
+  color: rgb(var(--text-accent-rgb));
+  letter-spacing: -0.6px;
+  @apply dg--font-psbl
+    mb-5
+    text-4xl
+    md:text-5xl;
+}
 .summary {
   @apply dg--font-lb;
   font-size: 1.2rem;

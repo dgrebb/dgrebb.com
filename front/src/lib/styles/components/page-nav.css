@@ -4,10 +4,12 @@
     text-align: right;
   }
   h2 {
-    font-size: 1.33rem;
     color: rgb(var(--text-accent-rgb));
+    font-size: 1.33rem;
   }
   li {
+    position: relative;
+    overflow: hidden;
     font-size: 0.875rem;
     list-style-type: none;
   }
@@ -15,6 +17,20 @@
     @apply dg--transition-effect
       dg--link-hover
       dg--font-lb;
+  }
+  a:after {
+    display: inline-block;
+    position: relative;
+    right: -0.5rem;
+    transition: right 0.5s;
+    content: "";
+  }
+  a.active {
+    &:after {
+      right: 0;
+      padding-left: 0.5rem;
+      content: "•";
+    }
   }
   &.mini {
     -webkit-text-select: none;
@@ -65,7 +81,10 @@
           right: -333px;
           opacity: 0;
           backdrop-filter: blur(0.5rem);
-          transition: right, opacity, max-height 0;
+          transition:
+            right,
+            opacity,
+            max-height 0;
           margin-bottom: -1.85rem;
           border-radius: 0.77rem;
           background-color: rgba(var(--background-saturated), 0.8);
@@ -99,7 +118,10 @@
           & + .page-navigation-list {
             right: 0;
             opacity: 1;
-            transition: max-height 0 0, opacity, max-height;
+            transition:
+              max-height 0 0,
+              opacity,
+              max-height;
             max-height: 100%;
             & label.bottom {
               background-color: rgba(var(--background-saturated), 0);
@@ -128,7 +150,9 @@
       left: 0;
       opacity: 0;
       z-index: -1;
-      transition: max-height 0s 0.4s, opacity 0.33s ease-in-out 0s;
+      transition:
+        max-height 0s 0.4s,
+        opacity 0.33s ease-in-out 0s;
       background-color: rgba(0, 0, 0, 0.5);
       max-height: 0;
     }
