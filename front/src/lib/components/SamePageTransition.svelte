@@ -1,26 +1,66 @@
 <script>
-  import { page } from "$app/stores";
-  import { fade } from "svelte/transition";
-  import { scrollTop } from "@utils";
+  import { navigating } from "$app/stores";
 
   export let transitionKey;
   export let classList = false;
+  export let animateHeight = false;
 
   function doIt() {
     return {
-      duration: 333,
+      duration: 500,
     };
   }
 
-  function animateOut() {
-    document.body.classList.add("animating-page");
+  function animateOut(node) {
+    document.body.classList.toggle("animating-page", true);
+
+    if ($navigating) {
+      if ($navigating.from.route.id === $navigating.to.route.id) {
+        if (animateHeight) {
+          const initialHeight = node.currentTarget.offsetHeight;
+          const nodeOut = node.currentTarget;
+          let animation = nodeOut.animate(
+            [
+              {
+                height: initialHeight + "px",
+                overflow: "hidden",
+              },
+              {
+                height: 0 + "px",
+                overflow: "hidden",
+              },
+            ],
+            { duration: 500, fill: "both", easing: "ease-out" }
+          );
+          animation.play();
+        }
+      }
+    }
   }
 
-  function animateIn() {
+  function animateIn(node) {
+    if (animateHeight) {
+      const initialHeight = node.target.firstElementChild.offsetHeight;
+      const nodeIn = node.target;
+      let animation = nodeIn.animate(
+        [
+          {
+            height: 0 + "px",
+            overflow: "hidden",
+          },
+          {
+            height: initialHeight + "px",
+            overflow: "hidden",
+          },
+        ],
+        { duration: 800, fill: "both" }
+      );
+      animation.play();
+    }
     setTimeout(() => {
-      document.body.classList.remove("animating");
-      document.body.classList.remove("animating-page");
-    }, 333);
+      document.body.classList.toggle("animating", false);
+      document.body.classList.toggle("animating-page", false);
+    }, 600);
   }
 </script>
 
@@ -29,7 +69,7 @@
     class="page-transition-container {classList ? classList : ''}"
     transition:doIt
     on:outrostart={animateOut}
-    on:introend={animateIn}
+    on:introstart={animateIn}
   >
     <slot />
   </div>

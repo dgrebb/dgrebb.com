@@ -1,17 +1,20 @@
 .page-navigation {
+  h2,
   li {
+    text-align: right;
+  }
+  h2 {
+    font-size: 1.33rem;
+    color: rgb(var(--text-accent-rgb));
+  }
+  li {
+    font-size: 0.875rem;
     list-style-type: none;
   }
   a {
     @apply dg--transition-effect
       dg--link-hover
       dg--font-lb;
-    &.active {
-      &:after {
-        padding-left: 0.5rem;
-        content: "•";
-      }
-    }
   }
   &.mini {
     -webkit-text-select: none;

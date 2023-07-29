@@ -21,11 +21,11 @@
   const activeHandler = (e) => {
     const links = e.target.closest("ul").querySelectorAll("a");
     const miniNav = document.getElementById("page-navigation-checkbox");
-    links.forEach(link => {
+    links.forEach((link) => {
       link.classList.toggle("active", false);
     });
     e.target.classList.toggle("active", true);
-  }
+  };
 </script>
 
 <PageTransition transitionKey={route}>
@@ -39,8 +39,8 @@
     </head>
     <div class="category-posts-list">
       <Flourish />
-      <SamePageTransition transitionKey={name}>
-        {#if posts}
+      <SamePageTransition transitionKey={name} animateHeight>
+        {#if posts && posts.length}
           <ul>
             {#each posts as { attributes: { title, publishedAt, slug, summary, position, hero: { alternativeText, data: { attributes: { formats: { thumbnail, small, medium } } } } } }, i}
               {@const date = new Date(publishedAt).toDateString()}
@@ -68,7 +68,7 @@
             {/each}
           </ul>
         {:else}
-          <h2>There aren't any posts yet! Come back soon.</h2>
+          <p class="summary">There aren't any posts yet! Come back soon.</p>
         {/if}
       </SamePageTransition>
     </div>

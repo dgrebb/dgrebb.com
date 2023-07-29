@@ -60,7 +60,7 @@
       md:text-4xl;
   }
   h3 {
-    @apply dg--font-psb
+    @apply dg--font-psbl
       mb-4
       text-2xl
       md:text-3xl;
@@ -83,5 +83,18 @@
       text-base
       italic
       md:text-lg;
+  }
+}
+
+.summary {
+  @apply dg--font-lb;
+  font-size: 1.2rem;
+  padding: 2rem;
+  text-indent: 0;
+  text-wrap: pretty;
+  &::first-letter {
+    @apply dg--font-lbb;
+    font-size: 1.5rem;
+    /* font-style: italic; */
   }
 }
