@@ -134,6 +134,11 @@
     h2.footnotes-title {
       margin-top: 3rem;
     }
+    .footnotes {
+      li {
+        margin-left: 1.2rem;
+      }
+    }
   }
   .post-aside {
     display: none;
