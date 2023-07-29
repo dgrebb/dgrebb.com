@@ -11,21 +11,19 @@
   export let pathname = false;
   export let mini = false;
   export let top = false;
-  export let activeHandler = null;
+  export let setActiveLink = null;
 
-  let toc, pageNavCheckbox, miniPageNav;
   let { categoryClick, relatedClick } = pokeTrapper;
 
   function activeLink(node) {
     const link = node.attributes.href.value;
-    if (link === pathname) node.classList.add("active");
-  };
+    if (link === pathname) node.classList.toggle("active", true);
+  }
 
   function pageFenceClickHandler(e) {
     const pageNavCheckbox = document.getElementById("page-navigation-checkbox");
     pageNavCheckbox.checked = false;
   }
-
 </script>
 
 <nav class="page-navigation" class:mini class:top>
@@ -44,7 +42,12 @@
   <div class="page-navigation-list">
     {#if contents && contents.length}
       <h2>Table of Contents</h2>
-      <TableOfContents {contents} {pageFenceClickHandler} {activeHandler} {activeLink} />
+      <TableOfContents
+        {contents}
+        {pageFenceClickHandler}
+        {setActiveLink}
+        {activeLink}
+      />
     {/if}
     {#if categories && categories.length}
       <h2>Categories</h2>
@@ -54,7 +57,8 @@
             <a
               on:click={(e) => {
                 categoryClick(pathname, name);
-                activeHandler(e);
+                setActiveLink(e);
+                if (mini) pageFenceClickHandler();
               }}
               href="/posts/category/{slug}/"
               class="transition-link"
@@ -90,5 +94,9 @@
       </label>
     {/if}
   </div>
-  <div class="page-fence" on:click={pageFenceClickHandler} on:keydown={pageFenceClickHandler}></div>
+  <!-- svelte-ignore a11y-no-static-element-interactions -->
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  {#if mini}
+    <div class="page-fence" on:click={pageFenceClickHandler}></div>
+  {/if}
 </nav>

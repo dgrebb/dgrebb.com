@@ -4,7 +4,7 @@
   export let contents;
   export let pageFenceClickHandler = null;
   export let activeLink = null;
-  export let activeHandler = null;
+  export let setActiveLink = null;
 </script>
 
 <ul class="toc">
@@ -13,7 +13,7 @@
       <a
         on:click={(e) => {
           tocClick(text);
-          activeHandler(e);
+          setActiveLink(e);
           pageFenceClickHandler(e);
         }}
         href={link}
