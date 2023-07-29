@@ -3,7 +3,7 @@
   /* justify-items: top; */
 }
 .category {
-  margin-top: 3rem;
+  margin-top: 7rem;
   margin-bottom: 3.33rem;
   border-radius: 0.5rem;
   border-top-right-radius: 0;
@@ -17,12 +17,18 @@
   .category-head {
     @apply dg--font-lb;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     position: relative;
-    top: -5rem;
+    top: -6.5rem;
     padding-bottom: 1rem;
     min-height: 80px;
     @screen md {
       padding-bottom: 2rem;
+      top: -7.5rem;
+    }
+    h1.page-heading {
+      margin-bottom: 0;
     }
     .category-name {
       max-width: 77%;
@@ -34,7 +40,7 @@
     }
     .page-navigation.mini.top {
       position: absolute;
-      top: 1rem;
+      top: 4rem;
       right: 0;
       padding: 0;
       label {
@@ -51,15 +57,15 @@
   .category-posts-list,
   .category-aside {
     position: relative;
-    top: -5rem;
-    margin-bottom: -5rem;
+    top: -8rem;
+    margin-bottom: -8rem;
     li {
       list-style-type: none;
     }
   }
   .category-posts-list {
     padding-right: 1rem;
-    padding-left: 0.5rem;
+    padding-left: 1.5rem;
     width: 100%;
     min-height: 80px;
     overflow: hidden;
@@ -129,28 +135,10 @@
     float: right;
     opacity: 0.8;
     padding-left: 1rem;
-    padding-right: 0.5rem;
     width: 25%;
     @screen sm {
+      padding-right: 1.5rem;
       display: block;
-    }
-    li {
-      position: relative;
-      right: -1rem;
-      overflow: hidden;
-    }
-    a:after {
-      display: inline-block;
-      position: relative;
-      right: -0.5rem;
-      transition: right 0.5s;
-      padding-left: 0.5rem;
-      content: "•";
-    }
-    a.active {
-      &:after {
-        right: 0;
-      }
     }
   }
 }
