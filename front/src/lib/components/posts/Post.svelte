@@ -77,6 +77,7 @@
           text={c.code}
           lang={c.language}
           title={c?.title}
+          lineNumbers={c.showLineNumbers === true}
           highlightedLines={lines
             ? lines.sort((a, b) => {
                 return a - b;
