@@ -26,11 +26,11 @@
                 overflow: "hidden",
               },
               {
-                height: "180px",
+                height: 0 + "px",
                 overflow: "hidden",
               },
             ],
-            { duration: 500, fill: "both" }
+            { duration: 500, fill: "both", easing: "ease-out" }
           );
           animation.play();
         }
@@ -39,14 +39,13 @@
   }
 
   function animateIn(node) {
-    let animation;
     if (animateHeight) {
-      const initialHeight = node.target.querySelector("ul").offsetHeight;
+      const initialHeight = node.target.firstElementChild.offsetHeight;
       const nodeIn = node.target;
-      animation = nodeIn.animate(
+      let animation = nodeIn.animate(
         [
           {
-            height: 0,
+            height: 0 + "px",
             overflow: "hidden",
           },
           {
@@ -61,7 +60,7 @@
     setTimeout(() => {
       document.body.classList.toggle("animating", false);
       document.body.classList.toggle("animating-page", false);
-    }, 500);
+    }, 600);
   }
 </script>
 
