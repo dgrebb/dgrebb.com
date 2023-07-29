@@ -4,7 +4,9 @@
   }
   .summary {
     margin: auto auto 2rem;
-    max-width: 77%;
+    @screen md {
+      max-width: 77%;
+    }
     p {
       margin: 0 auto;
     }

@@ -7,6 +7,7 @@
   export let lang;
   export let text;
   export let title = null;
+  export let lineNumbers = false;
   export let highlightedLines = false;
   let langLower = lang.toLowerCase();
 
@@ -27,15 +28,19 @@
       <span class="language" class:full={!title}>{lang}</span>
     {/if}
     <CodeCopy {text} />
-    <Highlight code={text} {language} let:highlighted>
-      <LineNumbers
-        {highlighted}
-        {highlightedLines}
-        --highlighted-background="transparent"
-        --padding-left="0"
-        hideBorder
-      />
-    </Highlight>
+    {#if lineNumbers === true}
+      <Highlight code={text} {language} let:highlighted>
+        <LineNumbers
+          {highlighted}
+          {highlightedLines}
+          --highlighted-background="transparent"
+          --padding-left="0"
+          hideBorder
+        />
+      </Highlight>
+    {:else}
+      <Highlight code={text} {language} />
+    {/if}
   {:else}
     {#if title}
       <span class="title" class:full={!lang}>{title}</span>
