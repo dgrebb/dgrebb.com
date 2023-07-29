@@ -16,6 +16,10 @@
     "title": {
       "type": "string"
     },
+    "showLineNumbers": {
+      "type": "boolean",
+      "default": false
+    },
     "highlightedLines": {
       "type": "string",
       "regex": "^ *\\d+ *(?:, *\\d+ *)*$"

@@ -14,3 +14,11 @@ body .footer {
 .image-loader {
   display: none;
 }
+.syntax-highlighter 
+  .language {
+    padding-right: 0.75rem;
+  }
+  .code-copy-btn {
+    display: none;
+  }
+}
