@@ -30,13 +30,13 @@
 
 <PageTransition transitionKey={route}>
   <section class="category">
-    <head class="category-head">
+    <header class="category-head">
       <PageNav {categories} mini={true} top={true} {pathname} {activeHandler} />
       <SamePageTransition transitionKey={name}>
         <a id="main">Main Content</a>
         <h1 class="category-name">{name}</h1>
       </SamePageTransition>
-    </head>
+    </header>
     <div class="category-posts-list">
       <Flourish />
       <SamePageTransition transitionKey={name} animateHeight>
