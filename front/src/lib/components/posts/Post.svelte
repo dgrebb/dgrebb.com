@@ -42,9 +42,8 @@
     showAside = !showAside;
   }
 
-  const activeHandler = (e) => {
+  const setActiveLink = (e) => {
     const links = e.target.closest("ul").querySelectorAll("a");
-    const miniNav = document.getElementById("page-navigation-checkbox");
     links.forEach((link) => {
       link.classList.toggle("active", false);
     });
@@ -53,7 +52,7 @@
 </script>
 
 {#if (contents && contents.length) || (categories && categories.length) || (related && related.length)}
-  <PageNav {contents} {categories} {related} {pathname} mini {activeHandler} />
+  <PageNav {contents} {categories} {related} {pathname} mini {setActiveLink} />
 {/if}
 <h1 class="post-title">{title}</h1>
 <article class="post-article" class:full={!showAside}>
@@ -104,6 +103,6 @@
 > -->
 <aside class="post-aside" class:show={showAside}>
   {#if (contents && contents.length) || (categories && categories.length) || (related && related.length)}
-    <PageNav {contents} {categories} {related} {pathname} {activeHandler} />
+    <PageNav {contents} {categories} {related} {pathname} {setActiveLink} />
   {/if}
 </aside>
