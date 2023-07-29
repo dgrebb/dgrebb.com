@@ -318,3 +318,12 @@ body {
       mt-5;
   }
 }
+
+.post, .category {
+
+  aside, .page-navigation-list {
+    a {
+      display: inline-block;
+    }
+  }
+}
