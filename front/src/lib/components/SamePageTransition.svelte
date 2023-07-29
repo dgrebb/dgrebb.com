@@ -67,7 +67,7 @@
 {#key transitionKey}
   <div
     class="page-transition-container {classList ? classList : ''}"
-    transition:doIt
+    transition:doIt|global
     on:outrostart={animateOut}
     on:introstart={animateIn}
   >
