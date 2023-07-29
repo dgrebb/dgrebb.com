@@ -77,4 +77,6 @@
   </script>
 {/if}
 
-<Meta {pageMeta} />
+{#key pathname}
+  <Meta {pageMeta} />
+{/key}

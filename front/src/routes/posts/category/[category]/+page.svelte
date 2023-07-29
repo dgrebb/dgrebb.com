@@ -78,4 +78,7 @@
     </aside>
   </section>
 </PageTransition>
-<Meta {pageMeta} />
+
+{#key pathname}
+  <Meta {pageMeta} />
+{/key}
