@@ -75,9 +75,25 @@
       &:first-of-type {
         margin-top: 0;
       }
+      .post-item-summary,
+      a {
+        transition: opacity 0.5s;
+        opacity: 0.67;
+      }
+      &:hover,
+      &:focus {
+        .post-item-summary,
+        a {
+          opacity: 0.8;
+        }
+      }
       a {
         display: flex;
         flex-direction: row;
+        &:hover,
+        &:focus {
+          opacity: 1;
+        }
       }
       .post-item-heading {
         display: flex;
@@ -85,6 +101,9 @@
         flex-direction: column;
         .post-title {
           margin-bottom: 0;
+        }
+        .post-date {
+          font-size: 1rem;
         }
       }
       .post-item-image {
@@ -97,6 +116,9 @@
         border-radius: 100%;
         width: 77px;
         height: 77px;
+      }
+      .post-item-summary {
+        transition: opacity 0.5s;
       }
     }
   }
@@ -135,9 +157,7 @@
 
 .page-transition-container {
   opacity: 1;
-  transition: opacity;
-  /* max-height: 100%; */
-  @apply dg--transition-effect;
+  transition: opacity 0.33s;
   overflow: hidden;
 }
 
