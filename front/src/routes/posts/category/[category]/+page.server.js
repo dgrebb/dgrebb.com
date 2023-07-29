@@ -10,7 +10,7 @@ import {
 export async function load({ params }) {
   const { category } = params;
   const categoriesEndpoint = URL + "/categories";
-  const categoryEndpoint = URL + CAT + category;
+  const categoryEndpoint = URL + CAT + category + "?populate[0]=seo.metaImage";
   const postsEndpoint = URL + POSTS + PARAMS + category;
   const [categories, content, posts] = await Promise.all([
     api(categoriesEndpoint),
@@ -29,7 +29,6 @@ export async function load({ params }) {
     });
   }
 
-
   const { name, seo } = content;
 
   const pageMeta = {
@@ -37,21 +36,30 @@ export async function load({ params }) {
     type: "website",
     metaTitle: seo?.metaTitle || name,
     titleTemplate: "%s | Categories | Dan Grebb",
-    metaDescription: seo?.metaDescription || `Here's a collection of posts about ${name}`,
+    metaDescription:
+      seo?.metaDescription ||
+      content?.description ||
+      `Here's a collection of posts about ${name}`,
   };
-  
+
   /**
    * Isolates the `metaImage` object properties we care about
-  */
- pageMeta.metaImage = pageMeta?.metaImage?.data?.attributes || {
-   url: "https://s.dgrebb.com/img/default_banner_2a50e43220.png",
-   alternativeText: "The Circuit of Life",
+   */
+  pageMeta.metaImage = {
+    url:
+      pageMeta?.metaImage?.formats?.large?.url ||
+      categories?.seo?.metaImage?.formats?.large?.url ||
+      "https://s.dgrebb.com/img/default_categories_34209a13ff.png",
+    alternativeText:
+      pageMeta?.metaImage?.alternativeText ||
+      categories?.seo?.metaImage?.alternativeText ||
+      "A tree with various objects floating around it, signifying many different categories of information.",
   };
-  
+
   return {
     categories,
     content,
-    posts: [...posts] || [],
+    posts: posts || [],
     pageMeta,
   };
 }
