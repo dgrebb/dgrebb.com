@@ -9,16 +9,18 @@ import {
 
 export async function load({ params }) {
   const { category } = params;
-  const categoriesEndpoint = URL + "/categories";
+  const categoriesSingletonEndpoint = URL + "/categories-page?populate[0]=seo.metaImage";
+  const categoryCollectionEndpoint = URL + "/categories";
   const categoryEndpoint = URL + CAT + category + "?populate[0]=seo.metaImage";
   const postsEndpoint = URL + POSTS + PARAMS + category;
-  const [categories, content, posts] = await Promise.all([
-    api(categoriesEndpoint),
+  const [categoriesSingletonContent, categoryCollectionContent, categoryContent, posts] = await Promise.all([
+    api(categoriesSingletonEndpoint),
+    api(categoryCollectionEndpoint),
     categoryAPI(categoryEndpoint),
     api(postsEndpoint),
   ]);
 
-  if (!content) {
+  if (!categoryContent) {
     console.info({
       params,
       postsEndpoint,
@@ -29,7 +31,7 @@ export async function load({ params }) {
     });
   }
 
-  const { name, seo } = content;
+  const { name, seo } = categoryContent;
 
   const pageMeta = {
     ...seo,
@@ -38,7 +40,7 @@ export async function load({ params }) {
     titleTemplate: "%s | Categories | Dan Grebb",
     metaDescription:
       seo?.metaDescription ||
-      content?.description ||
+      categoryContent?.description ||
       `Here's a collection of posts about ${name}`,
   };
 
@@ -48,17 +50,18 @@ export async function load({ params }) {
   pageMeta.metaImage = {
     url:
       pageMeta?.metaImage?.formats?.large?.url ||
-      categories?.seo?.metaImage?.formats?.large?.url ||
+      categoriesSingletonContent?.seo?.metaImage?.formats?.large?.url ||
       "https://s.dgrebb.com/img/default_categories_34209a13ff.png",
     alternativeText:
       pageMeta?.metaImage?.alternativeText ||
-      categories?.seo?.metaImage?.alternativeText ||
+      categoriesSingletonContent?.seo?.metaImage?.alternativeText ||
       "A tree with various objects floating around it, signifying many different categories of information.",
   };
 
   return {
-    categories,
-    content,
+    categoriesSingletonContent,
+    categoryCollectionContent,
+    categoryContent,
     posts: posts || [],
     pageMeta,
   };

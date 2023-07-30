@@ -8,7 +8,8 @@
 		"build.local": "WARN_ONLY=true vite --config vite.local.config.js build",
 		"build": "vite --config vite.config.js build",
 		"preview.local": "vite --config vite.local.config.js preview",
-		"preview": "vite --config vite.config.js preview"
+		"preview": "vite --config vite.config.js preview",
+    "postinstall": "patch-package"
 	},
 	"devDependencies": {
 		"@accuser/svelte-plausible-analytics": "github:dgrebb/svelte-plausible-analytics#release/v0.6.0",

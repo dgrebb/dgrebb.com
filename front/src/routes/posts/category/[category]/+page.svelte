@@ -11,16 +11,16 @@
   export let data;
   const route = $page.route.id;
   $: ({
-    content: { name },
-    categories,
+    categoriesSingletonContent: { headline },
+    categoryCollectionContent: categories,
+    categoryContent: { name },
     posts,
     pageMeta,
     pathname,
   } = data);
 
-  const activeHandler = (e) => {
+  const setActiveLink = (e) => {
     const links = e.target.closest("ul").querySelectorAll("a");
-    const miniNav = document.getElementById("page-navigation-checkbox");
     links.forEach((link) => {
       link.classList.toggle("active", false);
     });
@@ -31,10 +31,11 @@
 <PageTransition transitionKey={route}>
   <section class="category">
     <header class="category-head">
-      <PageNav {categories} mini={true} top={true} {pathname} {activeHandler} />
+      <h1 class="page-heading">{headline}</h1>
+      <PageNav {categories} mini top {pathname} {setActiveLink} />
       <SamePageTransition transitionKey={name}>
         <a id="main">Main Content</a>
-        <h1 class="category-name">{name}</h1>
+        <h2 class="category-name">{name}</h2>
       </SamePageTransition>
     </header>
     <div class="category-posts-list">
@@ -42,12 +43,12 @@
       <SamePageTransition transitionKey={name} animateHeight>
         {#if posts && posts.length}
           <ul>
-            {#each posts as { attributes: { title, publishedAt, slug, summary, position, hero: { alternativeText, data: { attributes: { formats: { thumbnail, small, medium } } } } } }, i}
+            {#each posts as { attributes: { title, publishedAt, slug, summary, position, hero: { data: { attributes: { formats: { thumbnail } } } } } }, i}
               {@const date = new Date(publishedAt).toDateString()}
               <li class="post-item">
                 <a href="/post/{slug}">
                   <div class="post-item-heading">
-                    <h2 class="post-title">{title}</h2>
+                    <h3 class="post-title">{title}</h3>
                     <time datetime={date} class="post-date">{date}</time>
                   </div>
                   <div
@@ -74,7 +75,7 @@
     </div>
 
     <aside class="category-aside">
-      <PageNav {categories} {pathname} {activeHandler} />
+      <PageNav {categories} {pathname} {setActiveLink} />
     </aside>
   </section>
 </PageTransition>
