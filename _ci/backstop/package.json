@@ -4,18 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "ref": "backstop reference --config=backstop.config.js",
-    "test": "backstop test --config=backstop.config.js",
     "approve": "backstop approve --config=backstop.config.js",
+    "backstop": "backstop",
+    "monitor": "pm2 monit",
+    "pm2": "node ./node_modules/pm2/bin/pm2",
+    "ref": "backstop reference --config=backstop.config.js",
     "remote": "backstop remote --config=backstop.config.js",
-    "backstop": "backstop"
+    "start": "ENVIRONMENT='local' pm2 start",
+    "stop": "pm2 stop backstop",
+    "test": "backstop test --config=backstop.config.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "backstopjs": "github:dgrebb/backstopjs#release/6.2.3",
+    "backstopjs": "github:dgrebb/backstopjs#release/6.33.0",
     "live-server": "^1.2.2",
+    "pm2": "^5.3.0",
     "puppeteer": "^20.7.4"
   }
 }
