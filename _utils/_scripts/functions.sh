@@ -103,6 +103,10 @@ run() {
     docker run -p 1337:1337 -it ${back_img}
 }
 
+cdbackstop() {
+    cd ${directory}/../_ci/backstop
+}
+
 cdback() {
     cd ${directory}/../back
 }
