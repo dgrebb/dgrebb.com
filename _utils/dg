@@ -65,6 +65,10 @@ while test "$1" != --; do
         break
         ;;
     tvr | test-visual-ref | backstop-reference )
+        /bin/bash $directory/_scripts/visual-regression.sh remote $2
+        break
+        ;;
+    tvref | test-visual-ref | backstop-reference )
         /bin/bash $directory/_scripts/visual-regression.sh ref $2
         break
         ;;

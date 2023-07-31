@@ -1,4 +1,14 @@
-const BACKSTOP_TEST_CSS_OVERRIDE = 'html {background-image: none;}';
+const BACKSTOP_TEST_CSS_OVERRIDE = `
+  html {background-image: none;}
+
+  .header,
+  .main,
+  .main .flourish,
+  .main section,
+  .footer {
+    opacity: 1;
+  }
+`;
 
 module.exports = async (page, scenario) => {
   // inject arbitrary css to override styles
