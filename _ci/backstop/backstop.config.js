@@ -1,4 +1,5 @@
-const { homepage_default, privacy_default } = require("./scenarios");
+const { homepage } = require("./scenarios");
+const { privacy } = require("./scenarios");
 
 module.exports = {
   id: "dgrebb.com",
@@ -36,7 +37,7 @@ module.exports = {
   ],
   onBeforeScript: "puppet/onBefore.js",
   onReadyScript: "puppet/onReady.js",
-  scenarios: [homepage_default, privacy_default],
+  scenarios: [homepage.homepage_default, homepage.theme_switch, privacy.privacy_default],
   paths: {
     bitmaps_reference: "bd/bitmaps_reference",
     bitmaps_test: "bd/bitmaps_test",
