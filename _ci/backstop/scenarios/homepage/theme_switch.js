@@ -1,17 +1,17 @@
-const { URL } = require("../vars");
+const { URL } = require("../../vars");
 
 module.exports = {
-  label: "Privacy Policy",
-  url: URL + "/privacy",
+  label: "Local Home Theme Switch",
+  url: URL,
   referenceUrl: "",
   readyEvent: "",
   readySelector: "",
-  delay: 800,
+  delay: 0,
   hideSelectors: [],
   removeSelectors: [],
   hoverSelector: "",
-  clickSelector: "",
-  postInteractionWait: 0,
+  clickSelector: ".theme-toggle",
+  postInteractionWait: 2000,
   selectors: [],
   selectorExpansion: true,
   expect: 0,

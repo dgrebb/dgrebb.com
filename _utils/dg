@@ -60,6 +60,11 @@ while test "$1" != --; do
         /bin/bash $directory/_scripts/act.sh $2 $3
         break
         ;;
+    tp | test-post | backstop-post )
+        # post to the Backstop remote instance and rerun tests
+        curl -X POST http://localhost:3000/test -H "Content-Type: multipart/form-data" &
+        break
+        ;;
     tv | test-visual | backstop )
         /bin/bash $directory/_scripts/visual-regression.sh test $2
         break

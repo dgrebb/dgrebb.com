@@ -6,6 +6,7 @@
   "scripts": {
     "approve": "backstop approve --config=backstop.config.js",
     "backstop": "backstop",
+    "dev": "nodemon ./scenarios/index.js",
     "monitor": "pm2 monit",
     "pm2": "node ./node_modules/pm2/bin/pm2",
     "ref": "backstop reference --config=backstop.config.js",
