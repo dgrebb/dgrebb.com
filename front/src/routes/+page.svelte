@@ -17,16 +17,20 @@
     {#if image}
       <Image
         src={image.url}
-        alt={image.alt}
+        alt={image.alternativeText}
         title="Hi!"
+        height={image.height}
+        width={image.width}
         classes="bio-picture"
         ariaHidden={true}
       />
       <noscript>
         <img
           src={image.url}
-          alt={image.alt}
+          alt={image.alternativeText}
           title="Hi!"
+          height={image.height}
+          width={image.width}
           classes="bio-picture"
           ariaHidden={true}
         />
