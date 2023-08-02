@@ -6,7 +6,7 @@ module.exports = {
   referenceUrl: "",
   readyEvent: "",
   readySelector: "",
-  delay: 800,
+  delay: 1200,
   hideSelectors: [],
   removeSelectors: [],
   hoverSelector: "",
