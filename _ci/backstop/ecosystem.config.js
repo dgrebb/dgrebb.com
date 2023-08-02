@@ -1,10 +1,10 @@
 module.exports = {
   apps: [
     {
-      name: "local.dgrebb.com live-server :8080",
+      name: "local.dgrebb.com http.server :8080",
       namespace: "backstop",
-      script: "live-server",
-      args: "../../front/build --no-browser --port=8080",
+      script: "npm",
+      args: "run serve",
     },
     {
       name: "BackstopJS Remote :3000",
