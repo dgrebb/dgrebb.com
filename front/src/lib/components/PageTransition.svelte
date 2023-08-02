@@ -20,7 +20,7 @@
 {#key transitionKey}
   <div
     class="transition-container"
-    transition:fade|global={{ duration: 333, delay: 50 }}
+    transition:fade|global={{ duration: 333 }}
     on:outrostart={animateOut}
     on:introend={animateIn}
   >
