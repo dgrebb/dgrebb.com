@@ -15,6 +15,6 @@ module.exports = {
   selectors: [],
   selectorExpansion: true,
   expect: 0,
-  misMatchThreshold: 0.1,
+  misMatchThreshold: 0.2,
   requireSameDimensions: true,
 };

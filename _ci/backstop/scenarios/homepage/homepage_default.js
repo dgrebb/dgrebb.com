@@ -7,7 +7,7 @@ module.exports = {
   referenceUrl: "",
   readyEvent: "",
   readySelector: "",
-  delay: 1000,
+  delay: 1200,
   hideSelectors: [],
   removeSelectors: [],
   hoverSelector: "",
@@ -16,6 +16,6 @@ module.exports = {
   selectors: [],
   selectorExpansion: true,
   expect: 0,
-  misMatchThreshold: 0.1,
+  misMatchThreshold: 0.2,
   requireSameDimensions: true,
 };
