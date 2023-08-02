@@ -33,26 +33,31 @@ module.exports = {
       label: "2xl",
       width: 1536,
       height: 1280,
-    },
+    }
   ],
   onBeforeScript: "puppet/onBefore.js",
   onReadyScript: "puppet/onReady.js",
-  scenarios: [homepage.homepage_default, homepage.theme_switch, privacy.privacy_default],
+  scenarios: [
+    homepage.homepage_default,
+    homepage.theme_switch,
+    privacy.privacy_default
+  ],
   paths: {
     bitmaps_reference: "bd/bitmaps_reference",
     bitmaps_test: "bd/bitmaps_test",
     engine_scripts: "bd/engine_scripts",
     html_report: "bd/html_report",
-    ci_report: "bd/ci_report",
+    ci_report: "bd/ci_report"
   },
   report: [],
   engine: "puppeteer",
   engineOptions: {
     args: ["--no-sandbox"],
-    headless: "new",
+    headless: "new"
   },
   asyncCaptureLimit: 10,
   asyncCompareLimit: 100,
   debug: false,
   debugWindow: false,
+  scenarioLogsInReports: true
 };
