@@ -24,10 +24,13 @@ var home;
 
   ({ seo, bioPicture, headline, image, intro, links } = home);
 
-  image = { ...bioPicture?.data?.attributes } || {
+  image = { ...bioPicture?.data?.attributes?.formats?.thumbnail } || {
     url: "/bio.jpg",
     alternativeText: "A picture of Dan smiling",
   };
+
+  image.height = "120";
+  image.width = "120";
 
   const page = {
     headline,
