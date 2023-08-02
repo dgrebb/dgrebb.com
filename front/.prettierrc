@@ -3,7 +3,7 @@
   "useTabs": false,
   "trailingComma": "es5",
   "semi": true,
-  "singleQuote": false,
+  "singleQuote": true,
   "plugins": [
     "prettier-plugin-svelte",
     "prettier-plugin-css-order",

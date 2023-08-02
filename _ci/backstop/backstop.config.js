@@ -45,7 +45,7 @@ module.exports = {
     html_report: "bd/html_report",
     ci_report: "bd/ci_report",
   },
-  report: ["browser"],
+  report: [],
   engine: "puppeteer",
   engineOptions: {
     args: ["--no-sandbox"],
