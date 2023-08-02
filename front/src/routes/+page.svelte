@@ -16,11 +16,11 @@
     <Flourish />
     {#if image}
       <Image
-        src={image.url}
+        src="/bio.jpg"
         alt={image.alternativeText}
         title="Hi!"
-        height={image.height}
-        width={image.width}
+        height={120}
+        width={120}
         classes="bio-picture"
         ariaHidden={true}
       />
@@ -29,8 +29,8 @@
           src={image.url}
           alt={image.alternativeText}
           title="Hi!"
-          height={image.height}
-          width={image.width}
+          height={120}
+          width={120}
           classes="bio-picture"
           ariaHidden={true}
         />
