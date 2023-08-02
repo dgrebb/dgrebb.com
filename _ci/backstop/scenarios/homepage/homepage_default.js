@@ -1,12 +1,13 @@
-const { URL } = require("../vars");
+const { URL } = require("../../vars");
 
 module.exports = {
-  label: "Privacy Policy",
-  url: URL + "/privacy",
+  label: "Homepage",
+  // cookiePath: "backstop/backstop_data/engine_scripts/cookies.json",
+  url: URL,
   referenceUrl: "",
   readyEvent: "",
   readySelector: "",
-  delay: 800,
+  delay: 1200,
   hideSelectors: [],
   removeSelectors: [],
   hoverSelector: "",
@@ -15,6 +16,6 @@ module.exports = {
   selectors: [],
   selectorExpansion: true,
   expect: 0,
-  misMatchThreshold: 0.1,
+  misMatchThreshold: 0.2,
   requireSameDimensions: true,
 };

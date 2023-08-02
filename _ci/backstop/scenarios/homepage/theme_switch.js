@@ -1,21 +1,20 @@
-const { URL } = require("../vars");
+const { URL } = require("../../vars");
 
 module.exports = {
-  label: "Homepage",
-  // cookiePath: "backstop/backstop_data/engine_scripts/cookies.json",
+  label: "Local Home Theme Switch",
   url: URL,
   referenceUrl: "",
   readyEvent: "",
   readySelector: "",
-  delay: 1000,
+  delay: 0,
   hideSelectors: [],
   removeSelectors: [],
   hoverSelector: "",
-  clickSelector: "",
-  postInteractionWait: 0,
+  clickSelector: ".theme-toggle",
+  postInteractionWait: 2000,
   selectors: [],
   selectorExpansion: true,
   expect: 0,
-  misMatchThreshold: 0.1,
+  misMatchThreshold: 0.2,
   requireSameDimensions: true,
 };

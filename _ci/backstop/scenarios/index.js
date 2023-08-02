@@ -1,9 +1,13 @@
 var fs = require("fs");
 
-// Read in the libs from this directory and add them as exports
-// This way you can just reference
-fs.readdirSync("./scenarios").forEach(function(file) {
-  console.log(file);
-  if (file.indexOf(".js") > -1 && file != "index.js")
-    exports[file.replace(".js", "")] = require("./" + file);
-});
+// Read through scenario directories, their main 
+// manifest file, and export their tests by name
+fs.readdirSync("./scenarios", { withFileTypes: true })
+  .filter((item) => item.isDirectory())
+  .map((dir) =>
+    fs.readdirSync(`./scenarios/${dir.name}`).forEach(function(file) {
+      if (file.indexOf(`${dir.name}.js`) > -1 && file != "index.js") {
+        exports[file.replace(".js", "")] = require(`${__dirname}/${dir.name}/${file}`);
+      }
+    })
+  );

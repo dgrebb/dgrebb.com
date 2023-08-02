@@ -103,6 +103,10 @@ run() {
     docker run -p 1337:1337 -it ${back_img}
 }
 
+backstopRunTests() {
+    curl -X POST http://localhost:3000/test -H "Content-Type: multipart/form-data"
+}
+
 cdbackstop() {
     cd ${directory}/../_ci/backstop
 }
