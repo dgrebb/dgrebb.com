@@ -8,25 +8,40 @@ else
 fi
 
 cd $directory/../_ci/backstop
-if [[ $env == 'l' ]]; then
-    # build the static frontend with STG
-    dg f b s
-    # serve the frontend and run backstop remote with pm2
-    cdbackstop
-    npm start
-fi
 if [[ $1 == 'ref' ]]; then
     npm run ref
 elif [[ $1 == 'remote' ]]; then
     npm run remote
 elif [[ $1 == 'test' ]]; then
+    if [[ $env == 'l' ]]; then
+        # build the static frontend with STG
+        dg f b s
+    fi
+    # serve the frontend and run backstop remote with pm2
+    cdbackstop
+    npm start
     echo ''
-    read -p 'Pausing for backstop remote startup...' -t 5 
+    read -p 'Pausing for backstop remote startup...' -t 5
     echo ''
     echo 'Running tests...'
-    curl -X POST http://localhost:3000/test -H "Content-Type: multipart/form-data" &
+    backstopRunTests &
+    open http://localhost:3000/bd/html_report
+    npm run monitor
+    npm stop
+elif [[ $1 == 'test-now' ]]; then
+    # serve the frontend and run backstop remote with pm2
+    cdbackstop
+    npm start
+    echo ''
+    read -p 'Pausing for backstop remote startup...' -t 5
+    echo ''
+    echo 'Running tests...'
+    backstopRunTests &
+    open http://localhost:3000/bd/html_report
     npm run monitor
     npm stop
 elif [[ $1 == 'approve' ]]; then
     npm run approve
+else
+    echo "Do you know what you're doing? Double check."
 fi
