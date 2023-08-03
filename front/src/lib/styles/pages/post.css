@@ -88,17 +88,6 @@
     float: right;
   }
   .post-article,
-  .post-aside {
-    a {
-      transition: color, border-color;
-      color: rgba(var(--text-accent-rgb), 0.77);
-      @apply dg--transition-effect;
-      &:hover,
-      &:focus {
-        color: rgba(var(--text-accent-rgb), 1);
-      }
-    }
-  }
   .post-article {
     display: block;
     float: none;
