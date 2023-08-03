@@ -1,63 +1,65 @@
-const { homepage } = require("./scenarios");
-const { privacy } = require("./scenarios");
+const { homepage, privacy, posts } = require('./scenarios');
 
 module.exports = {
-  id: "dgrebb.com",
+  id: 'dgrebb.com',
   viewports: [
     {
-      label: "xs",
+      label: 'xs',
       width: 320,
       height: 480,
     },
     {
-      label: "sm",
+      label: 'sm',
       width: 375,
       height: 667,
     },
     {
-      label: "md",
+      label: 'md',
       width: 768,
       height: 1024,
     },
     {
-      label: "lg",
+      label: 'lg',
       width: 1024,
       height: 768,
     },
     {
-      label: "xl",
+      label: 'xl',
       width: 1280,
       height: 960,
     },
     {
-      label: "2xl",
+      label: '2xl',
       width: 1536,
       height: 1280,
-    }
+    },
   ],
-  onBeforeScript: "puppet/onBefore.js",
-  onReadyScript: "puppet/onReady.js",
+  onBeforeScript: 'puppet/onBefore.js',
+  onReadyScript: 'puppet/onReady.js',
   scenarios: [
     homepage.homepage_default,
     homepage.theme_switch,
-    privacy.privacy_default
+    privacy.privacy_default,
+    posts.posts_navigate_from_home,
+    posts.posts_hover_post_1,
+    posts.posts_hover_post_7,
   ],
   paths: {
-    bitmaps_reference: "bd/bitmaps_reference",
-    bitmaps_test: "bd/bitmaps_test",
-    engine_scripts: "bd/engine_scripts",
-    html_report: "bd/html_report",
-    ci_report: "bd/ci_report"
+    bitmaps_reference: 'bd/bitmaps_reference',
+    bitmaps_test: 'bd/bitmaps_test',
+    engine_scripts: 'bd/engine_scripts',
+    html_report: 'bd/html_report',
+    ci_report: 'bd/ci_report',
   },
   report: [],
-  engine: "puppeteer",
+  engine: 'puppeteer',
   engineOptions: {
-    args: ["--no-sandbox"],
-    headless: "new"
+    args: ['--no-sandbox'],
+    headless: 'new',
   },
   asyncCaptureLimit: 10,
   asyncCompareLimit: 100,
   debug: false,
   debugWindow: false,
-  scenarioLogsInReports: true
+  scenarioLogsInReports: true,
 };
