@@ -16,17 +16,21 @@
     <Flourish />
     {#if image}
       <Image
-        src={image.url}
-        alt={image.alt}
+        src="/bio.jpg"
+        alt={image.alternativeText}
         title="Hi!"
+        height={120}
+        width={120}
         classes="bio-picture"
         ariaHidden={true}
       />
       <noscript>
         <img
           src={image.url}
-          alt={image.alt}
+          alt={image.alternativeText}
           title="Hi!"
+          height={120}
+          width={120}
           classes="bio-picture"
           ariaHidden={true}
         />

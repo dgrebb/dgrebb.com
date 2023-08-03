@@ -1,33 +1,36 @@
 import {
   PUBLIC_API_PATH_HOME as HOME,
   PUBLIC_API_URL as URL,
-} from "$env/static/public";
-import api from "@api";
-import { error } from "@sveltejs/kit";
+} from '$env/static/public';
+import api from '@api';
+import { error } from '@sveltejs/kit';
 
 const endpoint = URL + HOME;
 
-export async function load({ params }) {
-var home;
+export async function load({ params: { pathname } }) {
+  var home;
   let seo, bioPicture, headline, image, intro, links;
 
   try {
     home = await api(endpoint);
   } catch (error) {
-    console.warn("Homepage API error.");
+    console.warn('Homepage API error.');
     console.error(error);
   }
 
   if (!home) {
-    throw error(500, "Home Page Error");
+    throw error(500, 'Home Page Error');
   }
 
   ({ seo, bioPicture, headline, image, intro, links } = home);
 
-  image = { ...bioPicture?.data?.attributes } || {
-    url: "/bio.jpg",
-    alternativeText: "A picture of Dan smiling",
+  image = { ...bioPicture?.data?.attributes?.formats?.thumbnail } || {
+    url: '/bio.jpg',
+    alternativeText: 'A picture of Dan smiling',
   };
+
+  image.height = '120';
+  image.width = '120';
 
   const page = {
     headline,
@@ -37,8 +40,8 @@ var home;
   };
   var pageMeta = {
     ...seo,
-    type: "website",
-    metaTitle: seo?.metaTitle || headline
+    type: 'website',
+    metaTitle: seo?.metaTitle || headline,
   };
 
   /**

@@ -1,5 +1,4 @@
 <script>
-  import { onMount } from 'svelte'
   import Loading from './Loading.svelte';
 
   export let src;
@@ -8,31 +7,28 @@
   export let width = null;
   export let height = null;
   export let classes = null;
-  export let ariaHidden = "false";
+  export let ariaHidden = 'false';
 
-  let loaded = false;
-  let failed = false;
-  let loading = true;
+  const preload = async (src) => {
+    const resp = await fetch(src);
+    const blob = await resp.blob();
 
-  onMount(() => {
-    const img = new Image();
-    img.src = src;
-    loading = true;
-
-    img.onload = () => {
-        loading = false;
-        loaded = true;
-    };
-    img.onerror = () => {
-        loading = false;
-        failed = true;
-    };
-  })
+    return new Promise(function (resolve) {
+      let reader = new FileReader();
+      reader.readAsDataURL(blob);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject('Error: ', error);
+    });
+  };
 </script>
 
-{#if loaded}
+{#await preload(src)}
+  <div class="image-loader" style={`height: ${height}px; width: ${width}px`}>
+    <Loading />
+  </div>
+{:then base64}
   <img
-    {src}
+    src={base64}
     {alt}
     {title}
     {width}
@@ -40,17 +36,4 @@
     class={classes}
     aria-hidden={ariaHidden}
   />
-{:else if failed}
-  <p>That image was lost. Poor thing.</p>
-  <script>
-    Sentry.captureMessage("Image Not Found", {
-      image: src,
-      page: document.location.pathname,
-      { hostname }: document.location,
-    });
-  </script>
-{:else if loading}
-  <div class="image-loader" style={`height: ${height}px; width: ${width}px`}>
-    <Loading />
-  </div>
-{/if}
+{/await}
