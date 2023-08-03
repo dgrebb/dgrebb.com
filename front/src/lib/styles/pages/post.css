@@ -66,7 +66,7 @@
     ~ .post-article,
     ~ .post-aside,
     ~ .aside-toggle {
-      top: -6.7rem;
+      top: -7rem;
       z-index: 8;
     }
   }
@@ -79,6 +79,7 @@
   }
   h1.post-title {
     z-index: 5;
+    line-height: 1.2;
     padding-left: 1rem;
     padding-right: 1rem;
     text-shadow: 0 -0.11rem 1.5rem rgba(var(--background-saturated), 0.77);
@@ -96,7 +97,7 @@
     width: 100%;
     @screen sm {
       float: left;
-      padding-right: 0.5rem;
+      padding-right: 1.5rem;
       width: 75%;
     }
     a {
@@ -132,7 +133,6 @@
   .post-aside {
     display: none;
     opacity: 0.8;
-    padding: 0 1rem;
     width: 0;
     text-align: right;
     h2 {
