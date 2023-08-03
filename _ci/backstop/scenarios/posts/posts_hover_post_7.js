@@ -1,18 +1,18 @@
 const { URL } = require('../../vars');
+const POSTS_URL = `${URL}/posts`;
 
 module.exports = {
-  label: 'Homepage',
+  label: 'Posts - Hover Seventh Post',
   // cookiePath: "backstop/backstop_data/engine_scripts/cookies.json",
-  url: URL,
-  referenceUrl: '',
+  url: POSTS_URL,
   readyEvent: '',
   readySelector: '',
-  delay: 3000,
+  delay: 800,
+  onReadyScript: 'puppet/onReadyPosts.js',
   hideSelectors: [],
   removeSelectors: [],
-  hoverSelector: '',
-  clickSelector: '',
-  postInteractionWait: 0,
+  hoverSelector: '.posts-grid li:nth-child(7) .post-link',
+  postInteractionWait: 2500,
   selectors: [],
   selectorExpansion: true,
   expect: 0,

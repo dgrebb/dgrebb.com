@@ -1,6 +1,8 @@
 #!/bin/bash
 source $directory/_scripts/functions.sh
 
+backstopURL='http://localhost:3000/bd/html_report?remote'
+
 if [ -z "$2" ]; then
     env=l
 else
@@ -25,7 +27,7 @@ elif [[ $1 == 'test' ]]; then
     echo ''
     echo 'Running tests...'
     backstopRunTests &
-    open http://localhost:3000/bd/html_report
+    # open $backstopURL
     npm run monitor
     npm stop
 elif [[ $1 == 'test-now' ]]; then
@@ -37,7 +39,7 @@ elif [[ $1 == 'test-now' ]]; then
     echo ''
     echo 'Running tests...'
     backstopRunTests &
-    open http://localhost:3000/bd/html_report
+    # open $backstopURL
     npm run monitor
     npm stop
 elif [[ $1 == 'approve' ]]; then
