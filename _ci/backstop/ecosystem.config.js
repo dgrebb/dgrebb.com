@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "local.dgrebb.com http.server :8080",
+      name: "UI http-server :8080",
       namespace: "backstop",
       script: "npm",
       args: "run serve",

@@ -10,7 +10,7 @@ module.exports = {
   removeSelectors: [],
   hoverSelector: '',
   clickSelector: 'a[href="/posts"]',
-  postInteractionWait: 1200,
+  postInteractionWait: 1400,
   selectors: ['document'],
   selectorExpansion: true,
   expect: 0,
