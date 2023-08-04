@@ -27,12 +27,15 @@
 }
 
 .header {
-  @apply flex
-    items-center
-    pb-0
-    pt-5
-    sm:pt-9
-    md:pt-11;
+  display: flex;
+  align-items: center;
+  padding: 2rem 1.5rem 0;
+  @screen sm {
+    padding-top: 2.25rem;
+  }
+  @screen md {
+    padding-top: 2.75rem;
+  }
   position: relative;
 }
 
