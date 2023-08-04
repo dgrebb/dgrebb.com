@@ -17,11 +17,10 @@
 
   function activeLink(node) {
     const link = node.attributes.href.value;
-    if (
-      link === pathname ||
-      (location.hash > 0 && node.href.includes(location.hash))
-    )
+    const hash = location.hash;
+    if (link === pathname || link === hash) {
       node.classList.toggle('active', true);
+    }
   }
 
   function pageFenceClickHandler(e) {
