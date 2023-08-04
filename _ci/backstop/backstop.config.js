@@ -15,6 +15,7 @@ module.exports = {
     posts.posts_hover_post_7,
     post.post_navigate_from_posts,
     post.post_aside_anchor_click,
+    post.post_anchor_active_aside,
   ],
   paths: {
     bitmaps_reference: 'bd/bitmaps_reference',
@@ -29,7 +30,7 @@ module.exports = {
     args: ['--no-sandbox', '--font-render-hinting=none'],
     headless: 'new',
   },
-  asyncCaptureLimit: 10,
+  asyncCaptureLimit: 20,
   asyncCompareLimit: 100,
   debug: false,
   debugWindow: false,
