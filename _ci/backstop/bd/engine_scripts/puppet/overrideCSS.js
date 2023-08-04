@@ -1,4 +1,4 @@
-const BACKSTOP_TEST_CSS_OVERRIDE = `html {background-image: none;} .main section, .main section .flourish, .header, .main, .footer { -webkit-transition-duration: 0s !important; -moz-transition-duration: 0s !important; -o-transition-duration: 0s !important; transition-duration: 0s !important; opacity: 1 !important;}`;
+const BACKSTOP_TEST_CSS_OVERRIDE = `html {background-image: none; overflow: auto !important; min-height: 100% !important; height: 100% !important;} body {overflow: visible !important; min-height: 100% !important; height: 100% !important;} .main section, .main section .flourish, .header, .main, .footer { -webkit-transition-duration: 0s !important; -moz-transition-duration: 0s !important; -o-transition-duration: 0s !important; transition-duration: 0s !important; opacity: 1 !important;}`;
 
 module.exports = async (page, scenario) => {
   // inject arbitrary css to override styles
