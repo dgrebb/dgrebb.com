@@ -1,4 +1,4 @@
-const { homepage, privacy, posts } = require('./scenarios');
+const { homepage, privacy, posts, post } = require('./scenarios');
 
 module.exports = {
   id: 'dgrebb.com',
@@ -43,6 +43,7 @@ module.exports = {
     posts.posts_navigate_from_home,
     posts.posts_hover_post_1,
     posts.posts_hover_post_7,
+    post.post_navigate_from_posts,
   ],
   paths: {
     bitmaps_reference: 'bd/bitmaps_reference',
@@ -54,7 +55,7 @@ module.exports = {
   report: [],
   engine: 'puppeteer',
   engineOptions: {
-    args: ['--no-sandbox'],
+    args: ['--no-sandbox', '--font-render-hinting=none'],
     headless: 'new',
   },
   asyncCaptureLimit: 10,
