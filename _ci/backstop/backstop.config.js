@@ -1,39 +1,9 @@
 const { homepage, privacy, posts, post } = require('./scenarios');
+const { allViewports } = require('./vars.js');
 
 module.exports = {
   id: 'dgrebb.com',
-  viewports: [
-    {
-      label: 'xs',
-      width: 320,
-      height: 480,
-    },
-    {
-      label: 'sm',
-      width: 375,
-      height: 667,
-    },
-    {
-      label: 'md',
-      width: 768,
-      height: 1024,
-    },
-    {
-      label: 'lg',
-      width: 1024,
-      height: 768,
-    },
-    {
-      label: 'xl',
-      width: 1280,
-      height: 960,
-    },
-    {
-      label: '2xl',
-      width: 1536,
-      height: 1280,
-    },
-  ],
+  viewports: allViewports,
   onBeforeScript: 'puppet/onBefore.js',
   onReadyScript: 'puppet/onReady.js',
   scenarios: [
@@ -44,6 +14,7 @@ module.exports = {
     posts.posts_hover_post_1,
     posts.posts_hover_post_7,
     post.post_navigate_from_posts,
+    post.post_aside_anchor_click,
   ],
   paths: {
     bitmaps_reference: 'bd/bitmaps_reference',
