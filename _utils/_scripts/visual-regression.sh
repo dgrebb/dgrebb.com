@@ -21,26 +21,24 @@ elif [[ $1 == 'test' ]]; then
     fi
     # serve the frontend and run backstop remote with pm2
     cdbackstop
-    npm start
+    npm run boot
     echo ''
     read -p 'Pausing for backstop remote startup...' -t 5
     echo ''
     echo 'Running tests...'
     backstopRunTests &
     # open $backstopURL
-    npm run monitor
     npm stop
 elif [[ $1 == 'test-now' ]]; then
     # serve the frontend and run backstop remote with pm2
     cdbackstop
-    npm start
+    npm run boot
     echo ''
     read -p 'Pausing for backstop remote startup...' -t 5
     echo ''
     echo 'Running tests...'
     backstopRunTests &
     # open $backstopURL
-    npm run monitor
     npm stop
 elif [[ $1 == 'approve' ]]; then
     npm run approve
