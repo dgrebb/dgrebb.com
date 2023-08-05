@@ -2,7 +2,6 @@ const { URL } = require('../../vars');
 
 module.exports = {
   label: 'Homepage',
-  // cookiePath: "backstop/backstop_data/engine_scripts/cookies.json",
   url: URL,
   referenceUrl: '',
   readyEvent: '',

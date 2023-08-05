@@ -4,7 +4,6 @@ const { aboveSmallViewports } = require('../../vars.js');
 
 module.exports = {
   label: 'Post - Anchor Active Aside',
-  // cookiePath: "backstop/backstop_data/engine_scripts/cookies.json",
   url: POST_URL,
   viewports: aboveSmallViewports,
   onReadyScript: 'puppet/postScrollToTop.js',

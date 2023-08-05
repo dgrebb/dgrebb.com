@@ -3,7 +3,6 @@ const POSTS_URL = `${URL}/posts`;
 
 module.exports = {
   label: 'Posts - Hover First Post',
-  // cookiePath: "backstop/backstop_data/engine_scripts/cookies.json",
   url: POSTS_URL,
   readyEvent: '',
   readySelector: '',
