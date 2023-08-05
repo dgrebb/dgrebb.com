@@ -4,7 +4,6 @@ const { aboveSmallViewports } = require('../../vars.js');
 
 module.exports = {
   label: 'Post - Aside Anchor Click',
-  // cookiePath: "backstop/backstop_data/engine_scripts/cookies.json",
   url: POST_URL,
   viewports: aboveSmallViewports,
   readyEvent: '',

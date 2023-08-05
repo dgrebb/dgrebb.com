@@ -4,7 +4,6 @@ const { allViewports } = require('./vars.js');
 module.exports = {
   id: 'dgrebb.com',
   viewports: allViewports,
-  onBeforeScript: 'puppet/onBefore.js',
   onReadyScript: 'puppet/onReady.js',
   scenarios: [
     homepage.homepage_default,
