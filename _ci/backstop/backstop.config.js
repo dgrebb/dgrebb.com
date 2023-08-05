@@ -25,7 +25,7 @@ module.exports = {
     ci_report: 'bd/ci_report',
   },
   report: [],
-  engine: 'puppeteer',
+  engine: 'puppet',
   engineOptions: {
     args: ['--no-sandbox', '--font-render-hinting=none'],
     headless: 'new',

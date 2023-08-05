@@ -21,7 +21,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "backstopjs": "github:dgrebb/BackstopJS#release/6.33.1",
+    "backstopjs": "github:dgrebb/BackstopJS#release/6.33.2",
     "cors": "^2.8.5",
     "http-server": "^14.1.1",
     "patch-package": "^8.0.0",
