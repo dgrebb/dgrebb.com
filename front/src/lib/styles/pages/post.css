@@ -2,7 +2,6 @@
 .post {
   display: block;
   position: relative;
-  margin-top: 3rem;
   margin-bottom: 3.33rem;
   border-radius: 0.77rem;
   background-color: rgba(var(--background-saturated), 0.77);

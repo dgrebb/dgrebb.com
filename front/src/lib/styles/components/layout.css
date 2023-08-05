@@ -14,14 +14,14 @@
   flex-grow: 1;
   &.main-secondary {
     /* flex-grow: 0; */
-    justify-items: start;
+    padding-top: 3.77rem;
   }
 }
 
 .header,
 .footer {
   @apply w-full
-    max-w-7xl
+    max-w-6xl
     px-3
     lg:p-14;
 }
@@ -29,7 +29,7 @@
 .header {
   display: flex;
   align-items: center;
-  padding: 2rem 1.5rem 0;
+  padding: 1.5rem 1.5rem 0;
   @screen sm {
     padding-top: 2.25rem;
   }
