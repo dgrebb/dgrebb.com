@@ -4,7 +4,7 @@ const { allViewports } = require('./vars.js');
 module.exports = {
   id: 'dgrebb.com',
   viewports: allViewports,
-  onReadyScript: 'puppet/onReady.js',
+  onReadyScript: 'playwright/onReady.js',
   scenarios: [
     homepage.homepage_default,
     homepage.theme_switch,
@@ -24,12 +24,12 @@ module.exports = {
     ci_report: 'bd/ci_report',
   },
   report: [],
-  engine: 'puppet',
+  engine: 'playwright',
   engineOptions: {
-    args: ['--no-sandbox', '--font-render-hinting=none'],
-    headless: 'new',
+    args: [],
+    headless: true,
   },
-  asyncCaptureLimit: 20,
+  asyncCaptureLimit: 15,
   asyncCompareLimit: 100,
   debug: false,
   debugWindow: false,
