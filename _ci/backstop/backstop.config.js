@@ -1,5 +1,5 @@
+const { allViewports } = require('./scenarios/vars.js');
 const { homepage, privacy, posts, post } = require('./scenarios');
-const { allViewports } = require('./vars.js');
 
 module.exports = {
   id: 'dgrebb.com',
