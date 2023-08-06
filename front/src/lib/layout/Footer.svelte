@@ -5,7 +5,10 @@
 </script>
 
 <small>
-  {#if copyleft}{@html copyleft}{/if}
-  {year} AD | {#if copyright}{copyright}{/if}
-  | <a href="/privacy">Privacy Policy</a>
+  <p>
+    {#if copyleft}{@html copyleft}{/if}
+  </p>
+  <p>
+    {#if copyright}{@html copyright}{/if}{year} A.D. | Some Rights Reserved | <a href="/privacy">Privacy Policy</a>
+  </p>
 </small>
