@@ -1,19 +1,12 @@
-const { URL } = require('../../vars');
+const { URL } = require('../vars');
 
 module.exports = {
   label: 'Posts - Navigate From Home',
   url: URL,
-  readyEvent: '',
-  readySelector: '',
-  delay: 0,
-  hideSelectors: [],
-  removeSelectors: [],
-  hoverSelector: '',
+  onReadyScript: 'playwright/onReadyPosts.js',
   clickSelector: 'a[href="/posts"]',
-  postInteractionWait: 1400,
+  postInteractionWait: 2000,
   selectors: ['document'],
-  selectorExpansion: true,
-  expect: 0,
   misMatchThreshold: 0.2,
   requireSameDimensions: true,
 };

@@ -1,4 +1,4 @@
-const { URL } = require('../../vars');
+const { URL } = require('../vars');
 
 module.exports = {
   label: 'Homepage',

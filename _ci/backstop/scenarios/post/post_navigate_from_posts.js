@@ -1,4 +1,4 @@
-const { URL } = require('../../vars');
+const { URL } = require('../vars');
 const POSTS_URL = `${URL}/posts`;
 
 module.exports = {
@@ -7,7 +7,7 @@ module.exports = {
   readyEvent: '',
   readySelector: '',
   delay: 0,
-  onReadyScript: 'puppet/onReadyPosts.js',
+  onReadyScript: 'playwright/onReadyPosts.js',
   hideSelectors: [],
   removeSelectors: [],
   hoverSelector: '',
