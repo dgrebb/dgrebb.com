@@ -8,7 +8,7 @@ switch (env) {
     URL = 'https://www.dgrebb.com';
 
   default:
-    URL = 'http://127.0.0.1:8080';
+    URL = 'http://local.dgrebb.com:8080';
     break;
 }
 

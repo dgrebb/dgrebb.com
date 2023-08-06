@@ -5,7 +5,6 @@ const BACKSTOP_TEST_CSS_OVERRIDE = `
     transition-delay: 0 !important;
   } 
   html {
-    background-image: none;
   }
   body {
     height: 100% !important;
