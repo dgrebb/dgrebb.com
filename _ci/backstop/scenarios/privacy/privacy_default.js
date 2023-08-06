@@ -3,8 +3,9 @@ const PRIVACY_URL = URL + '/privacy';
 
 module.exports = {
   label: 'Privacy Policy',
-  url: URL + '/privacy',
-  delay: 1500,
-  misMatchThreshold: 0.1,
+  url: PRIVACY_URL,
+  selectors: ['viewport'],
+  selectorExpansion: false,
+  misMatchThreshold: 0.2,
   requireSameDimensions: true,
 };

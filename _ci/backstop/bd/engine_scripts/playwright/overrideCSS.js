@@ -7,6 +7,10 @@ const BACKSTOP_TEST_CSS_OVERRIDE = `
   html {
     background-image: none;
   }
+  body {
+    height: 100% !important;
+    min-height: 100% !important;
+  }
 `;
 
 module.exports = async (page, scenario) => {
