@@ -1,4 +1,4 @@
-const { URL } = require('../../vars');
+const { URL } = require('../vars');
 const PRIVACY_URL = URL + '/privacy';
 
 module.exports = {

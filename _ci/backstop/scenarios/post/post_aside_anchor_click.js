@@ -1,6 +1,6 @@
-const { URL } = require('../../vars');
+const { URL } = require('../vars');
 const POST_URL = `${URL}/post/chicken-caesar-salad-an-overrated-concoction-of-lettuce-and-delusion/`;
-const { aboveSmallViewports } = require('../../vars.js');
+const { aboveSmallViewports } = require('../vars.js');
 
 module.exports = {
   label: 'Post - Aside Anchor Click',
