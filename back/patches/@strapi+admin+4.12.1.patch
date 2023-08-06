@@ -1,3 +1,16 @@
+diff --git a/node_modules/@strapi/admin/admin/src/content-manager/pages/EditSettingsView/index.js b/node_modules/@strapi/admin/admin/src/content-manager/pages/EditSettingsView/index.js
+index aa64bb8..f386433 100644
+--- a/node_modules/@strapi/admin/admin/src/content-manager/pages/EditSettingsView/index.js
++++ b/node_modules/@strapi/admin/admin/src/content-manager/pages/EditSettingsView/index.js
+@@ -133,7 +133,7 @@ const EditSettingsView = ({ mainLayout, components, isContentTypeView, slug, upd
+       return put(
+         isContentTypeView
+           ? `/content-manager/content-types/${slug}/configuration`
+-          : `components/${slug}/configuration`,
++          : `content-manager/components/${slug}/configuration`,
+         body
+       );
+     },
 diff --git a/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js b/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js
 index 84ec0ac..48c6079 100644
 --- a/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js
@@ -389,7 +402,7 @@ index a22f746..2233b31 100644
          </Box>
        </Main>
 diff --git a/node_modules/@strapi/admin/admin/src/translations/en.json b/node_modules/@strapi/admin/admin/src/translations/en.json
-index f999eac..b0550d6 100644
+index 0943546..f0cb859 100644
 --- a/node_modules/@strapi/admin/admin/src/translations/en.json
 +++ b/node_modules/@strapi/admin/admin/src/translations/en.json
 @@ -432,14 +432,16 @@
