@@ -24,9 +24,7 @@
   "author": {
     "name": "dgrebb"
   },
-  "strapi": {
-    "uuid": "a88d5600-baef-47fb-8bf4-ff51888cc148"
-  },
+  "strapi": {},
   "engines": {
     "node": ">=14.19.1 <=18.x.x",
     "npm": ">=6.0.0"
