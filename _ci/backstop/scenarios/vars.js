@@ -12,79 +12,60 @@ switch (env) {
     break;
 }
 
+// Viewport Definitions
+const xs = {
+  label: 'xs',
+  width: 320,
+  height: 480,
+};
+
+const tallXS = {
+  label: 'tall xs',
+  width: 320,
+  height: 568
+}
+
+const sm = {
+  label: 'sm',
+  width: 375,
+  height: 667,
+};
+
+const md = {
+  label: 'md',
+  width: 768,
+  height: 1024,
+};
+
+const lg = {
+  label: 'lg',
+  width: 1024,
+  height: 768,
+};
+
+const xl = {
+  label: 'xl',
+  width: 1280,
+  height: 960,
+};
+
+const xxl = {
+  label: '2xl',
+  width: 1536,
+  height: 1280,
+};
+
 module.exports = {
   URL: URL,
-  allViewports: [
-    {
-      label: 'xs',
-      width: 320,
-      height: 480,
-    },
-    {
-      label: 'sm',
-      width: 375,
-      height: 667,
-    },
-    {
-      label: 'md',
-      width: 768,
-      height: 1024,
-    },
-    {
-      label: 'lg',
-      width: 1024,
-      height: 768,
-    },
-    {
-      label: 'xl',
-      width: 1280,
-      height: 960,
-    },
-    {
-      label: '2xl',
-      width: 1536,
-      height: 1280,
-    },
-  ],
-  upToSmallViewports: [
-    {
-      label: 'xs',
-      width: 320,
-      height: 480,
-    },
-  ],
-  upToMediumViewports: [
-    {
-      label: 'xs',
-      width: 320,
-      height: 480,
-    },
-    {
-      label: 'sm',
-      width: 375,
-      height: 667,
-    },
-  ],
-  aboveSmallViewports: [
-    {
-      label: 'md',
-      width: 768,
-      height: 1024,
-    },
-    {
-      label: 'lg',
-      width: 1024,
-      height: 768,
-    },
-    {
-      label: 'xl',
-      width: 1280,
-      height: 960,
-    },
-    {
-      label: '2xl',
-      width: 1536,
-      height: 1280,
-    },
-  ],
+  allViewports: [xs, sm, md, lg, xl, xxl],
+  upToSmallViewports: [xs],
+  upToMediumViewports: [xs, sm],
+  aboveSmallViewports: [md, lg, xl, xxl],
+  xs: xs,
+  tallXS: tallXS,
+  sm: sm,
+  md: md,
+  lg: lg,
+  xl: xl,
+  xxl: xxl,
 };
