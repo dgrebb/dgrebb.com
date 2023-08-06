@@ -10,11 +10,15 @@ const BACKSTOP_TEST_CSS_OVERRIDE = `
   body {
     height: 100% !important;
     min-height: 100% !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
   }
 `;
 
 module.exports = async (page, scenario) => {
-  // inject arbitrary css to override styles
   await page.addStyleTag({
     content: BACKSTOP_TEST_CSS_OVERRIDE,
   });
