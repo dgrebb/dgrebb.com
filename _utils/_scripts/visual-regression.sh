@@ -27,6 +27,7 @@ elif [[ $1 == 'test' ]]; then
     echo ''
     echo 'Running tests...'
     backstopRunTests &
+    npm run mon
     # open $backstopURL
     npm stop
 elif [[ $1 == 'test-now' ]]; then
@@ -38,6 +39,7 @@ elif [[ $1 == 'test-now' ]]; then
     echo ''
     echo 'Running tests...'
     backstopRunTests &
+    npm run mon
     # open $backstopURL
     npm stop
 elif [[ $1 == 'approve' ]]; then

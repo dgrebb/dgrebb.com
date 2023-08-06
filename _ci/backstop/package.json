@@ -22,7 +22,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "backstopjs": "github:dgrebb/BackstopJS#release/6.33.2",
+    "backstopjs": "github:dgrebb/BackstopJS#feature/theme-and-filter-enhancements",
     "cors": "^2.8.5",
     "http-server": "^14.1.1",
     "patch-package": "^8.0.0",
