@@ -6,15 +6,16 @@
   "scripts": {
     "approve": "backstop approve --config=backstop.config.js",
     "backstop": "backstop",
+    "boot": "ENVIRONMENT='local' pm2 start",
     "dev": "nodemon ./scenarios/index.js",
     "mon": "pm2 monit",
     "pm2": "node ./node_modules/pm2/bin/pm2",
     "ref": "backstop reference --config=backstop.config.js",
     "remote": "backstop remote --config=backstop.config.js",
+    "restart": "ENVIRONMENT='local' pm2 restart backstop && pm2 monit",
     "serve": "http-server ../../front/build -p 8080",
     "start": "ENVIRONMENT='local' pm2 start && pm2 monit",
-    "boot": "ENVIRONMENT='local' pm2 start",
-    "stop": "pm2 stop backstop",
+    "stop": "pm2 stop backstop --watch",
     "test": "backstop test --config=backstop.config.js",
     "post-install": "patch-package"
   },
