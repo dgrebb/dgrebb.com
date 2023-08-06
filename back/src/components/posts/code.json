@@ -7,14 +7,18 @@
   },
   "options": {},
   "attributes": {
+    "title": {
+      "type": "string"
+    },
     "language": {
       "type": "string"
     },
+    "showCopyButton": {
+      "type": "boolean",
+      "default": true
+    },
     "code": {
       "type": "text"
-    },
-    "title": {
-      "type": "string"
     },
     "showLineNumbers": {
       "type": "boolean",
