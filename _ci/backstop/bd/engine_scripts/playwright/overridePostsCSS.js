@@ -5,6 +5,7 @@ const BACKSTOP_TEST_CSS_OVERRIDE = `
     transition-delay: 0 !important;
   } 
   html {
+    overflow: auto;
   } 
   body {
     overflow: visible !important;
