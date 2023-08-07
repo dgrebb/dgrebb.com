@@ -13,8 +13,8 @@ module.exports = {
     posts.posts_hover_post_1,
     posts.posts_hover_post_7,
     post.post_navigate_from_posts,
-    post.post_aside_anchor_click,
-    post.post_anchor_active_aside,
+    post.post_aside_toc_click,
+    post.post_aside_toc_active_onload,
   ],
   paths: {
     bitmaps_reference: 'bd/bitmaps_reference',
