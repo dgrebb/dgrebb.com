@@ -3,7 +3,7 @@ const POST_URL = `${URL}/post/chicken-caesar-salad-an-overrated-concoction-of-le
 const { aboveSmallViewports } = require('../vars.js');
 
 module.exports = {
-  label: 'Post - Anchor Active Aside',
+  label: 'Post - Aside TOC Active Item Onload',
   url: POST_URL,
   viewports: aboveSmallViewports,
   delay: 500,
