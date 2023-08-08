@@ -1,12 +1,12 @@
-const { URL } = require('../vars');
+const { URL, upToMediumViewports } = require('../vars');
 const POSTS_URL = `${URL}/posts`;
 
 module.exports = {
-  label: 'Post - Navigate From Posts',
+  label: 'Post - Mobile Navigate From Posts',
   url: POSTS_URL,
+  viewports: upToMediumViewports,
   onReadyScript: 'playwright/onReadyPosts.js',
-  clickSelector:
-    'a[href="/post/chicken-caesar-salad-an-overrated-concoction-of-lettuce-and-delusion/"]',
+  clickSelector: 'a[href="/post/the-little-end-to-end-testing-engineer-who-could-a-tale-of-heroism-and-headaches/"]',
   postInteractionWait: 1000,
   selectors: ['document'],
   selectorExpansion: false,
