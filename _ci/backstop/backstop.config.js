@@ -12,6 +12,7 @@ module.exports = {
     posts.posts_navigate_from_home,
     posts.posts_hover_post_1,
     posts.posts_hover_post_7,
+    post.post_mobile_navigate_from_posts,
     post.post_navigate_from_posts,
     post.post_aside_toc_click,
     post.post_aside_toc_active_onload,
