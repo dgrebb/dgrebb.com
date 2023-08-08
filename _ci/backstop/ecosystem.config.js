@@ -11,7 +11,7 @@ module.exports = {
       namespace: 'backstop',
       script: 'npm',
       args: 'run remote',
-      watch: ['scenarios', 'bd/engine_scripts'],
+      watch: ['backstop.config.js', 'scenarios', 'bd/engine_scripts'],
       watch_delay: 1000,
       env: {
         ENVIRONMENT: process.env.ENVIRONMENT,
