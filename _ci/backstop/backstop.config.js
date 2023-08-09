@@ -17,6 +17,7 @@ module.exports = {
     post.post_aside_toc_active,
     post.post_mobile_mininav_expand,
     post.post_mobile_mininav_expand_toc_active,
+    cats.cats_mobile,
     cats.cats_navigate_from_post,
     cats.cats_mobile_select_tests_category,
     cats.cats_mobile_mini_nav_active,
