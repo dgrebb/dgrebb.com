@@ -1,5 +1,5 @@
 const { allViewports } = require('./scenarios/vars.js');
-const { homepage, privacy, posts, post } = require('./scenarios');
+const { homepage, privacy, posts, post, cats } = require('./scenarios');
 
 module.exports = {
   id: 'dgrebb.com',
@@ -12,10 +12,15 @@ module.exports = {
     posts.posts_navigate_from_home,
     posts.posts_hover_post_1,
     posts.posts_hover_post_7,
-    post.post_mobile_navigate_from_posts,
     post.post_navigate_from_posts,
     post.post_aside_toc_click,
-    post.post_aside_toc_active_onload,
+    post.post_aside_toc_active,
+    post.post_mobile_mininav_expand,
+    post.post_mobile_mininav_expand_toc_active,
+    cats.cats_navigate_from_post,
+    cats.cats_mobile_select_tests_category,
+    cats.cats_mobile_mini_nav_active,
+    cats.cats_select_tests_category,
   ],
   paths: {
     bitmaps_reference: 'bd/bitmaps_reference',
