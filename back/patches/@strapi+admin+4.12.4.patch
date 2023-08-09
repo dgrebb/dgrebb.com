@@ -1,23 +1,22 @@
-diff --git a/node_modules/@strapi/admin/admin/src/content-manager/pages/EditSettingsView/index.js b/node_modules/@strapi/admin/admin/src/content-manager/pages/EditSettingsView/index.js
-index aa64bb8..f386433 100644
---- a/node_modules/@strapi/admin/admin/src/content-manager/pages/EditSettingsView/index.js
-+++ b/node_modules/@strapi/admin/admin/src/content-manager/pages/EditSettingsView/index.js
-@@ -133,7 +133,7 @@ const EditSettingsView = ({ mainLayout, components, isContentTypeView, slug, upd
-       return put(
-         isContentTypeView
-           ? `/content-manager/content-types/${slug}/configuration`
--          : `components/${slug}/configuration`,
-+          : `content-manager/components/${slug}/configuration`,
-         body
-       );
-     },
+diff --git a/node_modules/@strapi/admin/admin/src/StrapiApp.js b/node_modules/@strapi/admin/admin/src/StrapiApp.js
+index bbe0ef2..2c60534 100644
+--- a/node_modules/@strapi/admin/admin/src/StrapiApp.js
++++ b/node_modules/@strapi/admin/admin/src/StrapiApp.js
+@@ -37,7 +37,7 @@ class StrapiApp {
+       notifications: { releases: true },
+       themes: { light: lightTheme, dark: darkTheme },
+       translations: {},
+-      tutorials: true,
++      tutorials: false,
+     };
+     this.appPlugins = appPlugins || {};
+     this.library = library;
 diff --git a/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js b/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js
-index 84ec0ac..48c6079 100644
+index 84ec0ac..7b9a585 100644
 --- a/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js
 +++ b/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js
 @@ -1,17 +1,27 @@
--import React from 'react';
-+import React from "react";
+ import React from 'react';
  
 -import { Flex } from '@strapi/design-system';
 -import { ContentBox, useTracking } from '@strapi/helper-plugin';
@@ -51,7 +50,7 @@ index 84ec0ac..48c6079 100644
  const ContentBlocks = () => {
    const { formatMessage } = useIntl();
    const { trackUsage } = useTracking();
-@@ -22,83 +32,37 @@ const ContentBlocks = () => {
+@@ -22,83 +32,36 @@ const ContentBlocks = () => {
  
    return (
      <Flex direction="column" alignItems="stretch" gap={5}>
@@ -62,7 +61,6 @@ index 84ec0ac..48c6079 100644
          target="_blank"
          rel="noopener noreferrer nofollow"
 -        onClick={() => handleClick('didClickonReadTheDocumentationSection')}
-+        onClick={() => handleClick("didClickonReadTheDocumentationSection")}
        >
          <ContentBox
            title={formatMessage({
@@ -155,7 +153,7 @@ index 84ec0ac..48c6079 100644
    );
  };
 diff --git a/node_modules/@strapi/admin/admin/src/pages/HomePage/HomeHeader.js b/node_modules/@strapi/admin/admin/src/pages/HomePage/HomeHeader.js
-index 8fb94c5..b5f6a36 100644
+index 8fb94c5..5ee061b 100644
 --- a/node_modules/@strapi/admin/admin/src/pages/HomePage/HomeHeader.js
 +++ b/node_modules/@strapi/admin/admin/src/pages/HomePage/HomeHeader.js
 @@ -22,7 +22,7 @@ const HomeHeader = ({ hasCreatedContentType, onCreateCT }) => {
@@ -172,13 +170,13 @@ index 8fb94c5..b5f6a36 100644
                    id: 'app.components.HomePage.welcomeBlock.content.again',
                    defaultMessage:
 -                    'We hope you are making progress on your project! Feel free to read the latest news about Strapi. We are giving our best to improve the product based on your feedback.',
-+                    'Make something',
++                  'Make something',
                  })
                : formatMessage({
                    id: 'app.components.HomePage.welcomeBlock.content',
                    defaultMessage:
 -                    'Congrats! You are logged as the first administrator. To discover the powerful features provided by Strapi, we recommend you to create your first Content type!',
-+                    'Congrats! You can make stuff.',
++                  'Congrats! You can make stuff.',
                  })}
            </WordWrap>
 -          {hasCreatedContentType ? (
@@ -194,7 +192,7 @@ index 8fb94c5..b5f6a36 100644
                {formatMessage({
                  id: 'app.components.HomePage.create',
 diff --git a/node_modules/@strapi/admin/admin/src/pages/HomePage/SocialLinks.js b/node_modules/@strapi/admin/admin/src/pages/HomePage/SocialLinks.js
-index e290ab2..4f025a0 100644
+index e290ab2..13b36c6 100644
 --- a/node_modules/@strapi/admin/admin/src/pages/HomePage/SocialLinks.js
 +++ b/node_modules/@strapi/admin/admin/src/pages/HomePage/SocialLinks.js
 @@ -8,17 +8,17 @@ import React from 'react';
@@ -218,7 +216,7 @@ index e290ab2..4f025a0 100644
    > path:first-child {
      fill: #ff4500;
    }
-@@ -35,82 +35,61 @@ const StyledStrapi = styled(Strapi)`
+@@ -35,82 +35,34 @@ const StyledStrapi = styled(Strapi)`
    }
  `;
  
@@ -308,33 +306,6 @@ index e290ab2..4f025a0 100644
 +    icon: <StyledCloud />,
 +    alt: 'aws console',
    },
-+  // {
-+  //   name: { id: 'app.components.HomePage.community.links.twitter', defaultMessage: 'Twitter' },
-+  //   link: 'https://twitter.com/strapijs',
-+  //   icon: <StyledTwitter />,
-+  //   alt: 'twitter',
-+  // },
-+  // {
-+  //   name: { id: 'app.components.HomePage.community.links.forum', defaultMessage: 'Forum' },
-+  //   link: 'https://forum.strapi.io',
-+  //   icon: <StyledDiscourse />,
-+  //   alt: 'forum',
-+  // },
-+  // {
-+  //   name: { id: 'app.components.HomePage.community.links.blog', defaultMessage: 'Blog' },
-+  //   link: 'https://strapi.io/blog?utm_source=referral&utm_medium=admin&utm_campaign=career%20page',
-+  //   icon: <StyledStrapi />,
-+  //   alt: 'blog',
-+  // },
-+  // {
-+  //   name: {
-+  //     id: 'app.components.HomePage.community.links.career',
-+  //     defaultMessage: 'We are hiring!',
-+  //   },
-+  //   link: 'https://strapi.io/careers?utm_source=referral&utm_medium=admin&utm_campaign=blog',
-+  //   icon: <StyledStrapi />,
-+  //   alt: 'career',
-+  // },
  ];
  
 -const LinkCustom = styled(LinkButton)`
@@ -342,40 +313,36 @@ index e290ab2..4f025a0 100644
    display: flex;
    align-items: center;
    border: none;
-@@ -166,23 +145,23 @@ const SocialLinks = () => {
+@@ -166,23 +118,10 @@ const SocialLinks = () => {
              <Typography variant="delta" as="h2" id="join-the-community">
                {formatMessage({
                  id: 'app.components.HomePage.community',
 -                defaultMessage: 'Join the community',
+-              })}
+-            </Typography>
+-            <Typography textColor="neutral600">
+-              {formatMessage({
+-                id: 'app.components.HomePage.community.content',
+-                defaultMessage:
+-                  'Discuss with team members, contributors and developers on different channels',
 +                defaultMessage: 'Get to Work',
                })}
              </Typography>
--            <Typography textColor="neutral600">
-+            {/* <Typography textColor="neutral600">
-               {formatMessage({
-                 id: 'app.components.HomePage.community.content',
-                 defaultMessage:
-                   'Discuss with team members, contributors and developers on different channels',
-               })}
--            </Typography>
-+            </Typography> */}
            </Flex>
 -          <Link href="https://feedback.strapi.io/" isExternal endIcon={<ExternalLink />}>
-+          {/* <Link href="https://feedback.strapi.io/" isExternal endIcon={<ExternalLink />}>
-             {formatMessage({
-               id: 'app.components.HomePage.roadmap',
-               defaultMessage: 'See our road map',
-             })}
+-            {formatMessage({
+-              id: 'app.components.HomePage.roadmap',
+-              defaultMessage: 'See our road map',
+-            })}
 -          </Link>
-+          </Link> */}
          </Flex>
        </Box>
        <GridGap>
 diff --git a/node_modules/@strapi/admin/admin/src/pages/HomePage/index.js b/node_modules/@strapi/admin/admin/src/pages/HomePage/index.js
-index a22f746..2233b31 100644
+index a22f746..7457d68 100644
 --- a/node_modules/@strapi/admin/admin/src/pages/HomePage/index.js
 +++ b/node_modules/@strapi/admin/admin/src/pages/HomePage/index.js
-@@ -68,20 +68,20 @@ export const HomePageCE = () => {
+@@ -68,19 +68,16 @@ export const HomePageCE = () => {
          </LogoContainer>
          <Box padding={10}>
            <Grid>
@@ -389,20 +356,18 @@ index a22f746..2233b31 100644
            </Grid>
 -          <Grid gap={6}>
 -            <GridItem col={8} s={12}>
+-              {showGuidedTour ? <GuidedTourHomepage /> : <ContentBlocks />}
+-            </GridItem>
+-            <GridItem col={4} s={12}>
+-              <SocialLinks />
 +          <Grid>
 +            <GridItem col={12}>
-               {showGuidedTour ? <GuidedTourHomepage /> : <ContentBlocks />}
++              <ContentBlocks />
              </GridItem>
--            <GridItem col={4} s={12}>
-+            {/* <GridItem col={4}>
-               <SocialLinks />
--            </GridItem>
-+            </GridItem> */}
            </Grid>
          </Box>
-       </Main>
 diff --git a/node_modules/@strapi/admin/admin/src/translations/en.json b/node_modules/@strapi/admin/admin/src/translations/en.json
-index 0943546..f0cb859 100644
+index 3edb2e2..06b88be 100644
 --- a/node_modules/@strapi/admin/admin/src/translations/en.json
 +++ b/node_modules/@strapi/admin/admin/src/translations/en.json
 @@ -432,14 +432,16 @@
