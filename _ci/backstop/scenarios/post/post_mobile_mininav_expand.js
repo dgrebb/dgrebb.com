@@ -1,14 +1,14 @@
 const { URL, upToMediumViewports } = require('../vars');
-const POSTS_URL = `${URL}/posts`;
+const POST_URL = `${URL}/post/the-little-end-to-end-testing-engineer-who-could-a-tale-of-heroism-and-headaches/`;
 
 module.exports = {
-  label: 'Post - Mobile Navigate From Posts',
-  url: POSTS_URL,
+  label: 'Post - Mobile Expand Mininav',
+  url: POST_URL,
   viewports: upToMediumViewports,
   onReadyScript: 'playwright/onReadyPosts.js',
-  clickSelector: 'a[href="/post/the-little-end-to-end-testing-engineer-who-could-a-tale-of-heroism-and-headaches/"]',
+  clickSelector: '.page-navigation.mini .page-navigation-toggle',
   postInteractionWait: 1000,
-  selectors: ['document'],
+  selectors: ['viewport'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,
   requireSameDimensions: true,
