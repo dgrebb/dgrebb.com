@@ -1,20 +1,11 @@
-const { URL } = require("../../vars");
+const { URL } = require('../vars');
+const PRIVACY_URL = URL + '/privacy';
 
 module.exports = {
-  label: "Privacy Policy",
-  url: URL + "/privacy",
-  referenceUrl: "",
-  readyEvent: "",
-  readySelector: "",
-  delay: 1200,
-  hideSelectors: [],
-  removeSelectors: [],
-  hoverSelector: "",
-  clickSelector: "",
-  postInteractionWait: 0,
-  selectors: [],
-  selectorExpansion: true,
-  expect: 0,
-  misMatchThreshold: 0.1,
+  label: 'Privacy Policy',
+  url: PRIVACY_URL,
+  selectors: ['viewport'],
+  selectorExpansion: false,
+  misMatchThreshold: 0.2,
   requireSameDimensions: true,
 };

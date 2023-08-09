@@ -1,6 +1,8 @@
 #!/bin/bash
 source $directory/_scripts/functions.sh
 
+backstopURL='http://localhost:3000/bd/html_report?remote'
+
 if [ -z "$2" ]; then
     env=l
 else
@@ -19,26 +21,26 @@ elif [[ $1 == 'test' ]]; then
     fi
     # serve the frontend and run backstop remote with pm2
     cdbackstop
-    npm start
+    npm run boot
     echo ''
     read -p 'Pausing for backstop remote startup...' -t 5
     echo ''
     echo 'Running tests...'
     backstopRunTests &
-    open http://localhost:3000/bd/html_report
-    npm run monitor
+    npm run mon
+    # open $backstopURL
     npm stop
 elif [[ $1 == 'test-now' ]]; then
     # serve the frontend and run backstop remote with pm2
     cdbackstop
-    npm start
+    npm run boot
     echo ''
     read -p 'Pausing for backstop remote startup...' -t 5
     echo ''
     echo 'Running tests...'
     backstopRunTests &
-    open http://localhost:3000/bd/html_report
-    npm run monitor
+    npm run mon
+    # open $backstopURL
     npm stop
 elif [[ $1 == 'approve' ]]; then
     npm run approve

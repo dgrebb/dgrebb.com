@@ -38,7 +38,7 @@
     &:first-child {
       grid-row: span 24;
       grid-column: span 6;
-      height: 14rem;
+      min-height: 14rem;
     }
     &:first-child:last-child {
       grid-row: span 24;

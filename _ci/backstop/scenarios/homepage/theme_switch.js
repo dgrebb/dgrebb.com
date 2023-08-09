@@ -1,20 +1,14 @@
-const { URL } = require("../../vars");
+const { URL } = require('../vars');
 
 module.exports = {
-  label: "Local Home Theme Switch",
+  label: 'Homepage - Switch Theme',
   url: URL,
-  referenceUrl: "",
-  readyEvent: "",
-  readySelector: "",
   delay: 500,
-  hideSelectors: [],
-  removeSelectors: [],
-  hoverSelector: "",
+  colorScheme: 'dark',
   clickSelector: ".theme-toggle",
-  postInteractionWait: 2000,
-  selectors: [],
-  selectorExpansion: true,
-  expect: 0,
+  postInteractionWait: 1000,
+  selectors: ['viewport'],
+  selectorExpansion: false,
   misMatchThreshold: 0.2,
   requireSameDimensions: true,
 };

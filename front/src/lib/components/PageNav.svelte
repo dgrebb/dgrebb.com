@@ -1,9 +1,9 @@
 <script>
-  import { onMount } from "svelte";
-  import TableOfContents from "@components/content/TableOfContents.svelte";
-  import ClosePageNav from "@components/icons/ClosePageNav.svelte";
-  import { pokeTrapper } from "@utils/pokeTrapper.js";
-  import ListIcon from "~icons/gg/list";
+  import { onMount } from 'svelte';
+  import TableOfContents from '@components/content/TableOfContents.svelte';
+  import ClosePageNav from '@components/icons/ClosePageNav.svelte';
+  import { pokeTrapper } from '@utils/pokeTrapper.js';
+  import ListIcon from '~icons/gg/list';
 
   export let contents = false;
   export let categories = false;
@@ -17,11 +17,14 @@
 
   function activeLink(node) {
     const link = node.attributes.href.value;
-    if (link === pathname) node.classList.toggle("active", true);
+    const hash = location.hash;
+    if (link === pathname || link === hash) {
+      node.classList.toggle('active', true);
+    }
   }
 
   function pageFenceClickHandler(e) {
-    const pageNavCheckbox = document.getElementById("page-navigation-checkbox");
+    const pageNavCheckbox = document.getElementById('page-navigation-checkbox');
     pageNavCheckbox.checked = false;
   }
 </script>

@@ -12,24 +12,35 @@
     overflow: hidden;
     font-size: 0.875rem;
     list-style-type: none;
+    @screen sm {
+    }
   }
   a {
+    transition: color, border-color;
+    color: rgba(var(--text-accent-rgb), 0.77);
     @apply dg--transition-effect
-      dg--link-hover
       dg--font-lb;
+    &:hover,
+    &:focus {
+      color: rgba(var(--text-accent-rgb), 1);
+    }
   }
   a:after {
     display: inline-block;
-    position: relative;
+    position: absolute;
     right: -0.5rem;
+    heigfht: 100%;
     transition: right 0.5s;
-    content: "";
+    content: '';
   }
   a.active {
+    color: rgba(var(--text-accent-rgb), 1);
+    padding-right: 1rem;
     &:after {
       right: 0;
+      top: calc(50% - 0.75rem);
       padding-left: 0.5rem;
-      content: "•";
+      content: '•';
     }
   }
   &.mini {

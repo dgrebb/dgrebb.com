@@ -1,4 +1,4 @@
-const BACKSTOP_TEST_CSS_OVERRIDE = `html {background-image: none;} .main section, .main section .flourish, .header, .main, .footer { -webkit-transition-duration: 0s; -moz-transition-duration: 0s; -o-transition-duration: 0s; transition-duration: 0s; opacity: 1;}`;
+const BACKSTOP_TEST_CSS_OVERRIDE = `* {transition: none !important; transition-duration: 0 !important; transition-delay: 0 !important;} html {background-image: none;}`;
 
 module.exports = async (page, scenario) => {
   // inject arbitrary css to override styles

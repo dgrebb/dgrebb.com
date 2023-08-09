@@ -6,14 +6,16 @@
   "scripts": {
     "approve": "backstop approve --config=backstop.config.js",
     "backstop": "backstop",
+    "boot": "ENVIRONMENT='local' pm2 start",
     "dev": "nodemon ./scenarios/index.js",
-    "monitor": "pm2 monit",
+    "mon": "pm2 monit",
     "pm2": "node ./node_modules/pm2/bin/pm2",
     "ref": "backstop reference --config=backstop.config.js",
     "remote": "backstop remote --config=backstop.config.js",
+    "restart": "ENVIRONMENT='local' pm2 restart backstop && pm2 monit",
     "serve": "http-server ../../front/build -p 8080",
-    "start": "ENVIRONMENT='local' pm2 start",
-    "stop": "pm2 stop backstop",
+    "start": "ENVIRONMENT='local' pm2 start ecosystem.config.js && pm2 monit",
+    "stop": "pm2 stop backstop && pm2 delete backstop && kill -9 $( lsof -i:3000 -t )",
     "test": "backstop test --config=backstop.config.js",
     "post-install": "patch-package"
   },
@@ -21,7 +23,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "backstopjs": "github:dgrebb/BackstopJS#release/6.33.1",
+    "backstopjs": "github:dgrebb/BackstopJS#feature/clear-storage",
     "cors": "^2.8.5",
     "http-server": "^14.1.1",
     "patch-package": "^8.0.0",

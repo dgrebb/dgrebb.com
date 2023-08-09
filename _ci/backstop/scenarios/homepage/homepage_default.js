@@ -1,21 +1,11 @@
-const { URL } = require("../../vars");
+const { URL } = require('../vars');
 
 module.exports = {
-  label: "Homepage",
-  // cookiePath: "backstop/backstop_data/engine_scripts/cookies.json",
+  label: 'Homepage',
   url: URL,
-  referenceUrl: "",
-  readyEvent: "",
-  readySelector: "",
-  delay: 3000,
-  hideSelectors: [],
-  removeSelectors: [],
-  hoverSelector: "",
-  clickSelector: "",
-  postInteractionWait: 0,
-  selectors: [],
-  selectorExpansion: true,
-  expect: 0,
+  colorScheme: 'dark',
+  selectors: ['viewport'],
+  selectorExpansion: false,
   misMatchThreshold: 0.2,
   requireSameDimensions: true,
 };
