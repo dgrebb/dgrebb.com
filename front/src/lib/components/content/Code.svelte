@@ -1,11 +1,12 @@
 <script>
-  import Highlight, { LineNumbers } from "svelte-highlight";
-  import plaintext from "svelte-highlight/languages/plaintext";
-  import JavaScript from "svelte-highlight/languages/javascript";
-  import XML from "svelte-highlight/languages/xml";
-  import CSS from "svelte-highlight/languages/css";
-  import CodeCopy from "./CodeCopy.svelte";
+  import Highlight, { LineNumbers } from 'svelte-highlight';
+  import plaintext from 'svelte-highlight/languages/plaintext';
+  import JavaScript from 'svelte-highlight/languages/javascript';
+  import XML from 'svelte-highlight/languages/xml';
+  import CSS from 'svelte-highlight/languages/css';
+  import CodeCopy from './CodeCopy.svelte';
 
+  export let key;
   export let lang;
   export let text;
   export let title = null;
@@ -30,9 +31,13 @@
       <span class="title" class:full={!lang}>{title}</span>
     {/if}
     {#if lang}
-      <span class="language" class:full={!title} class:copy={copyButton === true}>{lang}</span>
+      <span
+        class="language"
+        class:full={!title}
+        class:copy={copyButton === true}>{lang}</span
+      >
     {/if}
-    {#if copyButton === true}<CodeCopy {text} />{/if}
+    {#if copyButton === true}<CodeCopy {text} {key} />{/if}
     {#if lineNumbers === true}
       <Highlight code={text} {language} let:highlighted>
         <LineNumbers
@@ -48,12 +53,18 @@
     {/if}
   {:else}
     {#if title}
-      <span class="title" class:full={!lang} class:copy={copyButton === true}>{title}</span>
+      <span class="title" class:full={!lang} class:copy={copyButton === true}
+        >{title}</span
+      >
     {/if}
     {#if lang}
-      <span class="language" class:full={!title} class:copy={copyButton === true}>{lang}</span>
+      <span
+        class="language"
+        class:full={!title}
+        class:copy={copyButton === true}>{lang}</span
+      >
     {/if}
-    {#if copyButton === true}<CodeCopy {text} />{/if}
+    {#if copyButton === true}<CodeCopy {text} {key} />{/if}
     <Highlight code={text} {language} />
   {/if}
 </div>
