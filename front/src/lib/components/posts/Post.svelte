@@ -77,6 +77,7 @@
           lang={c.language}
           title={c?.title}
           lineNumbers={c.showLineNumbers === true || lines.length > 0}
+          copyButton={c?.showCopyButton === true}
           highlightedLines={lines
             ? lines.sort((a, b) => {
                 return a - b;
