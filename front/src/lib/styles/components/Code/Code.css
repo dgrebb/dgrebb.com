@@ -43,10 +43,12 @@
   .language {
     right: 0;
     border-top-right-radius: 0.375rem;
-    padding-right: 2.5rem;
     color: rgba(var(--foreground-rgb), 0.33);
     text-align: right;
     transition: color 0.5s;
+    &.copy {
+      padding-right: 2.5rem;
+    }
   }
   .code-copy-btn {
     position: absolute;

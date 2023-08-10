@@ -53,7 +53,6 @@
     border: 0;
     border-left-width: 1px;
     border-left-style: solid;
-    padding: 0 1rem;
     border-image: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 0),
@@ -61,6 +60,7 @@
         rgba(0, 0, 0, 0)
       )
       1;
+    padding: 0 1rem;
     @screen sm {
       padding: 2rem 1rem 0;
     }
@@ -81,6 +81,7 @@
     text-sm;
   small {
     color: rgb(var(--subdued-rgb));
+    transition: color 1.5s !important;
     a {
       @apply dg--transition-effect
         brightness-75
@@ -92,6 +93,21 @@
         @apply brightness-100;
       }
     }
+    p, img {
+      transition-property: color, opacity;
+      transition-duration: 0.5s;
+    }
+    &:hover,
+    &:focus {
+      p, img {
+        color: rgb(var(--foreground-rgb));
+        opacity: 1.0 !important;
+      }
+    }
+  }
+  img {
+    opacity: 0.2;
+    transition: opacity 0.33s;
   }
 }
 
@@ -121,6 +137,9 @@
               var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
           }
         }
+      }
+      img {
+        opacity: 0.5;
       }
     }
   }

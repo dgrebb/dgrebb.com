@@ -9,6 +9,7 @@
   export let lang;
   export let text;
   export let title = null;
+  export let copyButton = false;
   export let lineNumbers = false;
   export let highlightedLines = false;
   let langLower = lang.toLowerCase();
@@ -29,9 +30,9 @@
       <span class="title" class:full={!lang}>{title}</span>
     {/if}
     {#if lang}
-      <span class="language" class:full={!title}>{lang}</span>
+      <span class="language" class:full={!title} class:copy={copyButton === true}>{lang}</span>
     {/if}
-    <CodeCopy {text} />
+    {#if copyButton === true}<CodeCopy {text} />{/if}
     {#if lineNumbers === true}
       <Highlight code={text} {language} let:highlighted>
         <LineNumbers
@@ -47,12 +48,12 @@
     {/if}
   {:else}
     {#if title}
-      <span class="title" class:full={!lang}>{title}</span>
+      <span class="title" class:full={!lang} class:copy={copyButton === true}>{title}</span>
     {/if}
     {#if lang}
-      <span class="language" class:full={!title}>{lang}</span>
+      <span class="language" class:full={!title} class:copy={copyButton === true}>{lang}</span>
     {/if}
-    <CodeCopy {text} />
+    {#if copyButton === true}<CodeCopy {text} />{/if}
     <Highlight code={text} {language} />
   {/if}
 </div>
