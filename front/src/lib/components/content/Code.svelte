@@ -6,7 +6,7 @@
   import CSS from 'svelte-highlight/languages/css';
   import CodeCopy from './CodeCopy.svelte';
 
-  export let key;
+  export let key = false;
   export let lang;
   export let text;
   export let title = null;
@@ -27,16 +27,16 @@
 
 <div class="syntax-highlighter">
   {#if highlightedLines}
-    {#if title}
-      <span class="title" class:full={!lang}>{title}</span>
-    {/if}
-    {#if lang}
+    <span class="title full">
+      {#if title}{title}{:else}Example:{/if}
+    </span>
+    <!-- {#if lang}
       <span
         class="language"
         class:full={!title}
         class:copy={copyButton === true}>{lang}</span
       >
-    {/if}
+    {/if} -->
     {#if copyButton === true}<CodeCopy {text} {key} />{/if}
     {#if lineNumbers === true}
       <Highlight code={text} {language} let:highlighted>
@@ -52,18 +52,16 @@
       <Highlight code={text} {language} />
     {/if}
   {:else}
-    {#if title}
-      <span class="title" class:full={!lang} class:copy={copyButton === true}
-        >{title}</span
-      >
-    {/if}
-    {#if lang}
+    <span class="title full" class:copy={copyButton === true}>
+      {#if title}{title}{:else}Example:{/if}
+    </span>
+    <!-- {#if lang}
       <span
         class="language"
         class:full={!title}
         class:copy={copyButton === true}>{lang}</span
       >
-    {/if}
+    {/if} -->
     {#if copyButton === true}<CodeCopy {text} {key} />{/if}
     <Highlight code={text} {language} />
   {/if}
