@@ -53,7 +53,6 @@
     border: 0;
     border-left-width: 1px;
     border-left-style: solid;
-    padding: 0 1rem;
     border-image: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 0),
@@ -61,6 +60,7 @@
         rgba(0, 0, 0, 0)
       )
       1;
+    padding: 0 1rem;
     @screen sm {
       padding: 2rem 1rem 0;
     }
@@ -75,21 +75,37 @@
   @apply flex
     flex-col
     justify-end
-    pb-3
+    pb-0
     pt-3
     text-center
     text-sm;
   small {
     color: rgb(var(--subdued-rgb));
+    transition: color 1.5s !important;
+    padding: 1rem 0;
     a {
       @apply dg--transition-effect
         brightness-75
         transition;
-      border-color: rgb(var(--foreground-rgb));
-      color: rgb(var(--foreground-rgb));
+      border-bottom: 1px solid rgba(var(--foreground-rgb), 0.5);
+      color: rgb(var(--subdued-rgb));
       &:hover,
       &:focus {
         @apply brightness-100;
+      }
+    }
+    p, img {
+      color: rgb(var(--foreground-rgb));
+      transition-property: opacity;
+      transition-duration: 0.5s;
+      opacity: 0.2;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+    }
+    &:hover,
+    &:focus {
+      p, img {
+        opacity: 1.0 !important;
       }
     }
   }
@@ -121,6 +137,9 @@
               var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
           }
         }
+      }
+      img {
+        opacity: 0.5;
       }
     }
   }

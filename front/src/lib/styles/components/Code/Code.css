@@ -1,5 +1,4 @@
-@import "syntax.css";
-
+@import 'syntax.css';
 .syntax-highlighter {
   @apply my-9
     w-full
@@ -7,13 +6,20 @@
     px-7
     shadow-lg
     sm:w-auto;
-  padding-bottom: 1.5rem;
   position: relative;
   z-index: 3;
+  transition: transform 0s;
   background-color: rgb(var(--background-pre-rgb));
+  padding-bottom: 1.5rem;
+  &.copied {
+    transform: scale(1.01);
+    transition: transform 50ms ease-out;
+  }
   &:hover,
   &:focus {
-    .title, .language, .code-copy-btn {
+    .title,
+    .language,
+    .code-copy-btn {
       color: rgba(var(--foreground-rgb), 0.77);
     }
   }
@@ -30,10 +36,13 @@
     padding: 0.75rem;
     width: 50%;
     color: rgb(var(--foreground-rgb));
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      'Liberation Mono', 'Courier New', monospace; /* 1 */
+
     &.full {
-      width: 100%;
-      border-top-left-radius: 0.375rem;
       border-top-right-radius: 0.375rem;
+      border-top-left-radius: 0.375rem;
+      width: 100%;
     }
   }
   .title {
@@ -42,23 +51,54 @@
   }
   .language {
     right: 0;
+    transition: color 0.5s;
     border-top-right-radius: 0.375rem;
-    padding-right: 2.5rem;
     color: rgba(var(--foreground-rgb), 0.33);
     text-align: right;
-    transition: color 0.5s;
+    &.copy {
+      padding-right: 2.77rem;
+    }
   }
   .code-copy-btn {
     position: absolute;
     right: 0;
-    vertical-align: middle;
     z-index: 5;
-    transition: color;
-    padding: 0.85rem 0.75rem 0 0.75rem;
-    @apply dg--transition-effect;
+    padding: 0.75rem;
     color: rgba(var(--foreground-rgb), 0.33);
-    &:hover {
-      color: rgba(var(--highlight-rgb), 1.0);
+    line-height: 1.6;
+    > * {
+      @apply dg--transition-effect;
+      pointer-events: none;
+    }
+    &:hover,
+    &:focus {
+      color: rgba(var(--highlight-rgb), 1);
+    }
+    &:active {
+      top: 2px;
+    }
+    svg {
+      vertical-align: text-bottom;
+    }
+    .icon-code-copy {
+      display: inline;
+      opacity: 1;
+      transition:
+        opacity 1s,
+        color 0.5s;
+    }
+    .icon-code-copied {
+      display: none;
+    }
+    &.copied {
+      color: rgba(var(--foreground-rgb), 0.77);
+      .icon-code-copy {
+        opacity: 0;
+        height: 0;
+      }
+      .icon-code-copied {
+        display: inline;
+      }
     }
   }
   > pre {
@@ -66,11 +106,11 @@
       pb-5
       pt-20;
     position: relative;
+    transition: scrollbar-color 0.5s;
     overflow-x: auto;
-    color: rgb(var(--foreground-rgb));
     scrollbar-color: transparent transparent;
     scrollbar-width: thin;
-    transition: scrollbar-color 0.5s;
+    color: rgb(var(--foreground-rgb));
     &::-webkit-scrollbar {
       background-color: transparent;
       width: 8px;
@@ -95,12 +135,12 @@
     }
   }
   > div[style] > .line-number-wrap {
-    padding-bottom: 2rem;
+    transition: scrollbar-color 0.5s;
     margin-bottom: -2rem;
+    padding-bottom: 2rem;
     overflow-x: auto;
     scrollbar-color: transparent transparent;
     scrollbar-width: thin;
-    transition: scrollbar-color 0.5s;
     &::-webkit-scrollbar {
       transition: background-color 0.5s;
       background-color: transparent;
@@ -109,7 +149,7 @@
     }
     &::-webkit-scrollbar-thumb {
       transition: background-color 0.5s;
-      background: transparent, 0.0);
+      background: transparent;
       @apply rounded-full;
     }
     &:hover,
@@ -121,14 +161,10 @@
         height: 8px;
       }
       &::-webkit-scrollbar-thumb {
-        background: rgba(var(--foreground-rgb), 1.0);
+        background: rgba(var(--foreground-rgb), 1);
         @apply rounded-full;
       }
     }
-    /* scrollbar-gutter: stable;
-    &:hover {
-      overflow-x: auto;
-    } */
     & > table {
       margin-top: 4.75rem;
       code {
@@ -161,8 +197,8 @@
         }
         tr.highlight {
           td:last-child code {
-            background-color: rgba(var(--background-pre-highlight-rgb));
             border: 1px solid rgba(var(--background-pre-highlight-rgb));
+            background-color: rgba(var(--background-pre-highlight-rgb));
             padding-right: 1rem;
           }
           &.first {

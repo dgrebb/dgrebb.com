@@ -27,6 +27,7 @@
 :root {
   --white: 223, 224, 224;
   --black: 19, 19, 20;
+  text-rendering: optimizeLegibility !important;
 }
 
 html.light-theme {
@@ -62,7 +63,7 @@ html {
       transparent,
       rgb(var(--background-end-rgb))
     ) */
-  background-color: rgb(var(--background-saturated));
+  background-color: rgb(var(--background-end-rgb));
   min-height: 100%;
   overflow: clip;
   scroll-behavior: smooth;
