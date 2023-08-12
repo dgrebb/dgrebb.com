@@ -1,16 +1,20 @@
 const env = process.env.ENVIRONMENT;
 let URL;
 let refDir;
+
 switch (env) {
+
   case 'staging':
     ID = 'Staging';
     URL = 'https://stg.dgrebb.com';
     refDir = 'stg';
     break;
+
   case 'production':
     ID = 'Production';
     URL = 'https://www.dgrebb.com';
     refDir = 'prod';
+    break;
 
   default:
     ID = 'Local'

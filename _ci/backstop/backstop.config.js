@@ -1,28 +1,38 @@
 const { ID, refDir, allViewports } = require('./scenarios/vars.js');
 const { homepage, privacy, posts, post, cats } = require('./scenarios');
 
+let scenarios = [
+  homepage.homepage_default,
+  homepage.theme_switch,
+  privacy.privacy_default,
+  posts.posts_navigate_from_home,
+  posts.posts_hover_post_1,
+  posts.posts_hover_post_7,
+  post.post_navigate_from_posts,
+  post.post_aside_toc_click,
+  post.post_aside_toc_active,
+  post.post_mobile_mininav_expand,
+  post.post_mobile_mininav_expand_toc_active,
+  cats.cats_mobile,
+  cats.cats_navigate_from_post,
+  cats.cats_mobile_select_tests_category,
+  cats.cats_mobile_mini_nav_active,
+  cats.cats_select_tests_category,
+];
+
+if (process.env.ENVIRONMENT === 'production') {
+  scenarios = [
+    homepage.homepage_default,
+    homepage.theme_switch,
+    privacy.privacy_default,
+  ];
+}
+
 module.exports = {
   id: ID,
   viewports: allViewports,
   onReadyScript: 'playwright/onReady.js',
-  scenarios: [
-    homepage.homepage_default,
-    homepage.theme_switch,
-    privacy.privacy_default,
-    posts.posts_navigate_from_home,
-    posts.posts_hover_post_1,
-    posts.posts_hover_post_7,
-    post.post_navigate_from_posts,
-    post.post_aside_toc_click,
-    post.post_aside_toc_active,
-    post.post_mobile_mininav_expand,
-    post.post_mobile_mininav_expand_toc_active,
-    cats.cats_mobile,
-    cats.cats_navigate_from_post,
-    cats.cats_mobile_select_tests_category,
-    cats.cats_mobile_mini_nav_active,
-    cats.cats_select_tests_category,
-  ],
+  scenarios,
   paths: {
     bitmaps_reference: `bd/bitmaps_reference/${refDir}`,
     bitmaps_test: `bd/bitmaps_test/${refDir}`,
