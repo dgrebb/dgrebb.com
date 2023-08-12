@@ -86,7 +86,6 @@
     img {
       transform-style: preserve-3d;
       opacity: 0.2;
-      backface-visibility: hidden;
       transition-duration: 0.5s;
       transition-property: opacity, filter;
       color: rgb(var(--foreground-rgb));
