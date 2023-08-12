@@ -8,6 +8,7 @@
 @import 'components/theme-toggle.css';
 @import 'components/posts-grid.css';
 @import 'components/page-nav.css';
+@import 'pages/home.css';
 @import 'pages/category.css';
 @import 'pages/post.css';
 @import 'pages/posts.css';
@@ -55,8 +56,7 @@ html.dark-theme {
 }
 
 html {
-  @apply dg--transition-effect 
-    transition-colors;
+  transition: background-color 0.5s;
   background-repeat: no-repeat;
   /* background: linear-gradient(
       to bottom,
@@ -78,12 +78,10 @@ html {
 
 body {
   @apply dg--font-psxl
-    dg--transition-effect
     flex
     flex-col
     items-center
     text-base
-    transition-colors
     md:text-lg;
   background: radial-gradient(
     187% 77vh at top,
@@ -109,12 +107,11 @@ body {
   }
   .header,
   .main,
-  .main .flourish,
-  .main section,
   .footer {
-    @apply dg--transition-effect
-      transition-all;
     opacity: 0;
+    transition: opacity;
+    will-change: opacity;
+    @apply dg--transition-effect;
   }
   &.ready {
     > div > .flourish {
@@ -127,14 +124,12 @@ body {
       border-top: 8px solid rgb(var(--foreground-rgb));
       background-color: transparent;
     }
-    .main section .flourish,
     .header,
     .main,
     .footer {
       opacity: 1;
     }
     .main section {
-      opacity: 1;
       transition: opacity, background-color;
       @apply dg--transition-effect;
     }
@@ -155,13 +150,17 @@ body {
         opacity-0
         transition-opacity;
       }
-      .footer,
-      .scroll-top {
+      .scroll-top,
+      .footer {
         opacity: 0;
       }
+      .main .transition-container:first-of-type:last-of-type {
+        height: auto;
+        max-height: auto;
+      }
       .main .transition-container:last-of-type {
-        flex-grow: 0;
         height: 0;
+        max-height: 0;
       }
     }
   }
@@ -175,7 +174,9 @@ body {
   right: 0;
   left: 0;
   z-index: 1;
+  transition: background-color;
   background-color: rgb(var(--foreground-rgb));
+  @apply dg--transition-effect;
 }
 
 #main {
@@ -184,115 +185,6 @@ body {
   padding: 0;
   width: 0;
   height: 0;
-}
-
-.bio,
-.links {
-  @apply dg--transition-effect
-    max-w-sm
-    transition-[max-width]
-    sm:max-w-xl;
-}
-
-.bio {
-  @apply pt-7;
-  img {
-    @apply m-auto
-      h-[120px]
-      w-[120px]
-      rounded-full
-      shadow-lg;
-    position: relative;
-    z-index: 3;
-    border: 1px solid rgba(var(--foreground-rgb), 0.5);
-  }
-  h1.headline {
-    transition: font-size;
-    @apply dg--transition-effect
-      dg--font-psb
-      mt-7
-      text-3xl
-      font-bold
-      tracking-tight
-      brightness-125
-      sm:text-4xl;
-  }
-  a {
-    transition: color, border-color;
-    @apply dg--transition-effect;
-    border-bottom: 1px solid rgba(var(--foreground-rgb), 0.77);
-    color: rgba(var(--text-accent-rgb), 0.77);
-    &:hover,
-    &:focus {
-      border-color: rgb(var(--highlight-rgb));
-      color: rgba(var(--text-accent-rgb), 1);
-    }
-  }
-}
-
-.bio,
-.privacy,
-.footer,
-.not-found {
-  a {
-  }
-}
-
-.bio p {
-  @apply mt-7;
-}
-
-.links {
-  @apply mt-7
-    items-stretch
-    px-8
-    pb-3
-    sm:pb-5
-    md:pb-9;
-  .link-list {
-    @apply flex
-      flex-wrap
-      items-center
-      justify-center;
-  }
-  .link {
-    @apply m-2
-      flex
-      leading-none;
-    a {
-      @apply dg--transition-effect
-        inline-block
-        h-full
-        self-center
-        p-1 
-        transition-colors;
-      color: rgb(var(--foreground-rgb-faded));
-      &:hover,
-      &:focus {
-        color: rgb(var(--highlight-rgb));
-      }
-    }
-    svg {
-      @apply h-7
-        w-7;
-    }
-    .twitter-icon {
-      @apply pt-[5px];
-      svg {
-        @apply h-8
-          w-8;
-      }
-    }
-    .instagram-icon {
-      @apply pt-[6px];
-    }
-    .link-icon {
-      @apply pt-[7px];
-    }
-    .pinboard-icon {
-      @apply pl-[3px];
-    }
-  }
 }
 
 .image-loader {

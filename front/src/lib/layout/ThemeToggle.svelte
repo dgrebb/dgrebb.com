@@ -6,11 +6,9 @@
   const lightTheme = "light-theme";
   const darkTheme = "dark-theme";
   $: theme = "";
-  $: loaded = false;
   $: dark = null;
 
   onMount(() => {
-    loaded = true;
     const storedTheme = themeStorage();
     const themeListener = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -37,10 +35,8 @@
     themeStorage(dark);
   }
 
-  const baseClasses = "theme-toggle";
-  $: classList = `${baseClasses} ${loaded ? "opacity-100" : "opacity-0"}`;
 </script>
 
-<button class={classList} on:click={toggleTheme}>
+<button class="theme-toggle" on:click={toggleTheme}>
   <ThemeToggleIcon />
 </button>
