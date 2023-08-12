@@ -1,24 +1,25 @@
-@import "../components/post-nav.css";
+@import '../components/post-nav.css';
 .post {
   display: block;
   position: relative;
   margin-bottom: 3.33rem;
   border-radius: 0.77rem;
   background-color: rgba(var(--background-saturated), 0.77);
-  padding: 2.33rem 0;
   @apply shadow-xl;
   @screen md {
-    margin-top: 5rem;
+    margin-top: 2.75rem;
     padding: 2.33rem;
   }
   .hero-wrap {
     display: block;
     position: relative;
-    top: -5rem;
     z-index: 1;
     width: 100%;
     height: 400px;
     @apply shadow-xl;
+    @screen md {
+      top: -5rem;
+    }
     &.hide {
       height: 0;
     }
@@ -26,6 +27,7 @@
       @apply rounded
         shadow-md;
       position: absolute;
+      left: -2%;
       opacity: 1;
       z-index: 4;
       transition: opacity 0.5s ease-in;
@@ -33,14 +35,18 @@
       background-size: cover;
       background-repeat: no-repeat;
       background-color: rgba(var(--background-saturated), 0.77);
-      height: 400px;
-      max-height: 100%;
-      width: 104%;
-      left: -2%;
       padding: initial 2rem;
+      width: 104%;
+      height: 277px;
+      max-height: 100%;
+      @screen sm {
+        height: 400px;
+        left: -1%;
+        width: 102%;
+      }
       @screen md {
-        width: 100%;
         left: 0;
+        width: 100%;
       }
       &.hero-thumbnail {
         opacity: 1;
@@ -51,7 +57,7 @@
           bottom: 0;
           left: 0;
           backdrop-filter: blur(0.5rem);
-          content: " ";
+          content: ' ';
         }
         &.loaded {
           opacity: 0;
@@ -65,8 +71,14 @@
     ~ .post-article,
     ~ .post-aside,
     ~ .aside-toggle {
-      top: -7rem;
+      top: -9.33rem;
       z-index: 8;
+      @screen sm {
+        top: -1.6rem;
+      }
+      @screen md {
+        top: -7rem;
+      }
     }
   }
   h1.post-title,
@@ -78,9 +90,9 @@
   }
   h1.post-title {
     z-index: 5;
-    line-height: 1.2;
-    padding-left: 1rem;
     padding-right: 1rem;
+    padding-left: 1rem;
+    line-height: 1.2;
     text-shadow: 0 -0.11rem 1.5rem rgba(var(--background-saturated), 0.77);
   }
   .aside-toggle {
@@ -106,17 +118,25 @@
         border-bottom: 1px solid rgba(var(--highlight-rgb), 1);
       }
     }
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       a {
         @apply dg--font-lb;
-        margin-left: 0.5rem;
         opacity: 0;
-        transition: opacity 1s ease-in-out, color 0.5s, border-color 0.5s;
+        transition:
+          opacity 1s ease-in-out,
+          color 0.5s,
+          border-color 0.5s;
+        margin-left: 0.5rem;
       }
       &:hover,
       &:focus {
         a {
-          opacity: 1.0;
+          opacity: 1;
         }
       }
     }

@@ -1,7 +1,6 @@
 .bio,
 .links {
   @apply max-w-sm
-    transition-[max-width]
     sm:max-w-xl;
 }
 

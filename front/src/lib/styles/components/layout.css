@@ -25,14 +25,13 @@
 .header {
   display: flex;
   align-items: center;
-  padding: 1.5rem 1.5rem 0;
+  padding: 1.25rem 1.5rem 0rem 1.5rem;
+  position: relative;
   @screen sm {
-    padding-top: 2.25rem;
+    padding: 2rem 1.5rem 0.75rem 1.5rem;
   }
   @screen md {
-    padding-top: 2.75rem;
   }
-  position: relative;
 }
 
 .posts,
@@ -67,11 +66,11 @@
   padding: 0.75rem;
   text-align: center;
   small {
-    font-size: 0.7rem;
-    line-height: 1.75;
     transition: color 1.5s !important;
     padding: 1rem 0;
     color: rgb(var(--subdued-rgb));
+    font-size: 0.7rem;
+    line-height: 1.75;
     a {
       border-bottom: 1px solid rgba(var(--foreground-rgb), 0.5);
       color: rgb(var(--subdued-rgb));
@@ -93,8 +92,8 @@
       color: rgb(var(--foreground-rgb));
     }
     img {
-      border: 0;
       display: inline;
+      border: 0;
       &:hover,
       &:focus {
         @apply brightness-200;
