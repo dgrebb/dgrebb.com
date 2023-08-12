@@ -46,7 +46,7 @@
   &.mini {
     -webkit-text-select: none;
     position: absolute;
-    top: -2.67rem;
+    top: 0;
     right: -1.83%;
     z-index: 10;
     padding: 0.33rem;
