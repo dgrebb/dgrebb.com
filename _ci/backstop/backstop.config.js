@@ -1,8 +1,8 @@
-const { allViewports } = require('./scenarios/vars.js');
+const { ID, refDir, allViewports } = require('./scenarios/vars.js');
 const { homepage, privacy, posts, post, cats } = require('./scenarios');
 
 module.exports = {
-  id: 'dgrebb.com',
+  id: ID,
   viewports: allViewports,
   onReadyScript: 'playwright/onReady.js',
   scenarios: [
@@ -24,8 +24,8 @@ module.exports = {
     cats.cats_select_tests_category,
   ],
   paths: {
-    bitmaps_reference: 'bd/bitmaps_reference',
-    bitmaps_test: 'bd/bitmaps_test',
+    bitmaps_reference: `bd/bitmaps_reference/${refDir}`,
+    bitmaps_test: `bd/bitmaps_test/${refDir}`,
     engine_scripts: 'bd/engine_scripts',
     html_report: 'bd/html_report',
     ci_report: 'bd/ci_report',
