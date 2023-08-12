@@ -1,7 +1,5 @@
-export const scrollTop = (e) => {
-  e?.preventDefault();
-  document.getElementById("header")?.scrollIntoView();
-};
+export const darkTheme = 'dark-theme';
+export const lightTheme = 'light-theme';
 
 export const themeStorage = (dark) => {
   const key = "dgd";
@@ -13,4 +11,13 @@ export const themeStorage = (dark) => {
       ? storedValue
       : false;
   }
+};
+
+export const themeName = async function (preference) {
+  return preference ? darkTheme : lightTheme;
+}
+
+export const scrollTop = (e) => {
+  e?.preventDefault();
+  document.getElementById("header")?.scrollIntoView();
 };
