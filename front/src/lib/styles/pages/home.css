@@ -1,0 +1,106 @@
+.bio,
+.links {
+  @apply max-w-sm
+    transition-[max-width]
+    sm:max-w-xl;
+}
+
+.bio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition-property: max-width;
+  @apply dg--transition-effect;
+  img {
+    position: relative;
+    z-index: 5;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+      var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    border: 1px solid rgba(var(--foreground-rgb), 0.5);
+    border-radius: 100%;
+    width: 120px;
+    height: 120px;
+    transition-property: border-color;
+    @apply dg--transition-effect;
+  }
+  h1.headline {
+    transition: color, font-size;
+    @apply dg--transition-effect
+      dg--font-psb
+      pt-7
+      text-3xl
+      font-bold
+      tracking-tight
+      brightness-125
+      sm:text-4xl;
+  }
+  p {
+    padding-top: 1.75rem;
+    transition-property: color, font-size;
+    @apply dg--transition-effect;
+  }
+  a {
+    transition: color, border-color;
+    @apply dg--transition-effect;
+    border-bottom: 1px solid rgba(var(--foreground-rgb), 0.77);
+    color: rgba(var(--text-accent-rgb), 0.77);
+    &:hover,
+    &:focus {
+      border-color: rgb(var(--highlight-rgb));
+      color: rgba(var(--text-accent-rgb), 1);
+    }
+  }
+}
+
+.links {
+  @apply pt-7
+    items-stretch
+    px-8
+    pb-3
+    sm:pb-5
+    md:pb-9;
+  .link-list {
+    @apply flex
+      flex-wrap
+      items-center
+      justify-center;
+  }
+  .link {
+    display: flex;
+    padding: 0.5rem;
+    line-height: 1;
+    color: rgb(var(--foreground-rgb-faded));
+    transition-property: color;
+    @apply dg--transition-effect;
+    &:hover,
+    &:focus {
+      color: rgb(var(--highlight-rgb));
+    }
+    a {
+      @apply inline-block
+        h-full
+        self-center
+        p-1;
+    }
+    svg {
+      @apply h-7
+        w-7;
+    }
+    .twitter-icon {
+      @apply pt-[5px];
+      svg {
+        @apply h-8
+          w-8;
+      }
+    }
+    .instagram-icon {
+      @apply pt-[6px];
+    }
+    .link-icon {
+      @apply pt-[7px];
+    }
+    .pinboard-icon {
+      @apply pl-[3px];
+    }
+  }
+}
