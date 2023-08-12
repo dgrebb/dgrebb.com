@@ -1,10 +1,10 @@
 .theme-toggle {
-  @apply p-3
-    pr-0
-    transition
-    dg--transition-effect;
+  transition-property: opacity;
+  padding: 0.75rem 0 0.75rem 0.75rem;
+  @apply dg--transition-effect;
+  opacity: 0.7;
   &:hover {
-    color: rgb(var(--highlight-rgb));
+    opacity: 1;
   }
   svg {
     position: absolute;
@@ -17,29 +17,29 @@
 
 .themeset {
   position: relative;
-  overflow: hidden;
-  height: 20px;
   width: 20px;
+  height: 20px;
+  overflow: hidden;
 }
 
 .dark-theme .ready {
   svg#sun {
-    transition-duration: .2s;
     top: 33px;
+    transition-duration: 0.2s;
   }
   svg#moon {
     top: 0;
-    transition-delay: .2s;
+    transition-delay: 0.2s;
   }
 }
 
 .light-theme .ready {
   svg#moon {
-    transition-duration: .2s;
     top: 33px;
+    transition-duration: 0.2s;
   }
   svg#sun {
     top: 0;
-    transition-delay: .2s;
+    transition-delay: 0.2s;
   }
 }
