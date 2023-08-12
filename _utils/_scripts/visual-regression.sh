@@ -21,7 +21,7 @@ elif [[ $1 == 'test' ]]; then
     fi
     # serve the frontend and run backstop remote with pm2
     cdbackstop
-    npm run boot
+    npm run boot.${env}
     echo ''
     read -p 'Pausing for backstop remote startup...' -t 5
     echo ''
@@ -33,7 +33,7 @@ elif [[ $1 == 'test' ]]; then
 elif [[ $1 == 'test-now' ]]; then
     # serve the frontend and run backstop remote with pm2
     cdbackstop
-    npm run boot
+    npm run boot.${env}
     echo ''
     read -p 'Pausing for backstop remote startup...' -t 5
     echo ''
