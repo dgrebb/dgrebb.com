@@ -1,42 +1,43 @@
 <script>
-  import { themeStorage } from "@utils";
-  import { onMount } from "svelte";
-  import ThemeToggleIcon from "./ThemeToggleIcon.svelte";
+  import { themeStorage, themeName, darkTheme, lightTheme } from '@utils';
+  import { onMount } from 'svelte';
+  import ThemeToggleIcon from './ThemeToggleIcon.svelte';
+  import { pokeTrapper } from '@utils/pokeTrapper.js';
 
-  const lightTheme = "light-theme";
-  const darkTheme = "dark-theme";
-  $: theme = "";
+  const { themeToggleClick } = pokeTrapper;
+  $: theme = '';
   $: dark = null;
 
-  onMount(() => {
+  onMount(async () => {
     const storedTheme = themeStorage();
-    const themeListener = window.matchMedia("(prefers-color-scheme: dark)");
+    const themeListener = window.matchMedia('(prefers-color-scheme: dark)');
 
-    if (storedTheme === "true" || storedTheme === "false") {
-      dark = storedTheme === "true";
+    if (storedTheme === 'true' || storedTheme === 'false') {
+      dark = storedTheme === 'true';
     } else {
       dark = window.matchMedia && themeListener.matches;
       themeStorage(dark);
     }
 
-    theme = dark ? darkTheme : lightTheme;
+    theme = await themeName(dark);
     document.documentElement.classList = `${theme}`;
-    document.body.classList.add("ready");
+    document.body.classList.toggle('ready', true);
 
     window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", toggleTheme);
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', toggleTheme);
   });
 
-  function toggleTheme() {
+  async function toggleTheme(e) {
+    if (e.repeat) return;
     dark = !dark;
     document.documentElement.classList.toggle(darkTheme);
     document.documentElement.classList.toggle(lightTheme);
     themeStorage(dark);
+    themeToggleClick(await themeName(dark));
   }
-
 </script>
 
-<button class="theme-toggle" on:click={toggleTheme}>
+<button class="theme-toggle" on:click={toggleTheme} on:keydown={toggleTheme}>
   <ThemeToggleIcon />
 </button>
