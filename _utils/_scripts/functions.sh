@@ -119,6 +119,10 @@ cdfront() {
     cd ${directory}/../front
 }
 
+cdperf() {
+    cd ${directory}/../_ci/perf
+}
+
 printDg() {
     printf "\n${1}\n"
 }
