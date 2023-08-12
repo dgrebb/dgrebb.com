@@ -145,3 +145,8 @@ crash.*.log
 _ci/backstop/bd/bitmaps_test/*
 _ci/backstop/bd/bitmaps_reference/**/*.log.json
 _ci/backstop/bd/html_report/*
+
+############################
+# Browser Performance Tests
+############################
+_ci/perf/**/*.html
