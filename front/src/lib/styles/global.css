@@ -56,6 +56,7 @@ html.dark-theme {
 }
 
 html {
+  transition: background-color 0.5s;
   background-repeat: no-repeat;
   /* background: linear-gradient(
       to bottom,
@@ -66,7 +67,6 @@ html {
   min-height: 100%;
   overflow: clip;
   scroll-behavior: smooth;
-  transition: background-color 0.5s;
   @media (hover: none),
     (hover: on-demand),
     (-moz-touch-enabled: 1),
@@ -110,6 +110,7 @@ body {
   .footer {
     opacity: 0;
     transition: opacity;
+    will-change: opacity;
     @apply dg--transition-effect;
   }
   &.ready {
@@ -173,8 +174,8 @@ body {
   right: 0;
   left: 0;
   z-index: 1;
-  background-color: rgb(var(--foreground-rgb));
   transition: background-color;
+  background-color: rgb(var(--foreground-rgb));
   @apply dg--transition-effect;
 }
 
