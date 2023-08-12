@@ -3,11 +3,13 @@
   "version": "2.5.1",
   "private": true,
   "scripts": {
-    "dev.local": "vite --config vite.local.config.js dev",
+    "dev.l": "vite --config vite.local.config.js dev",
     "dev": "vite --config vite.config.js dev",
-    "build.local": "WARN_ONLY=true vite --config vite.local.config.js build",
+    "build.l": "WARN_ONLY=true vite --config vite.local.config.js build",
+    "build.s": "vite --config vite.config.js build",
+    "build.p": "vite --config vite.config.js build",
     "build": "vite --config vite.config.js build",
-    "preview.local": "vite --config vite.local.config.js preview",
+    "preview.l": "vite --config vite.local.config.js preview",
     "preview": "vite --config vite.config.js preview",
     "postinstall": "patch-package"
   },
