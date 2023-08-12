@@ -14,6 +14,8 @@
     "mon": "pm2 monit",
     "pm2": "node ./node_modules/pm2/bin/pm2",
     "ref": "backstop reference --config=backstop.config.js",
+    "ref.s": "ENVIRONMENT='staging' backstop reference --config=backstop.config.js",
+    "ref.p": "ENVIRONMENT='production' backstop reference --config=backstop.config.js",
     "remote": "backstop remote --config=backstop.config.js",
     "remote.l": "ENVIRONMENT='local' backstop remote --config=backstop.config.js",
     "remote.s": "ENVIRONMENT='staging' backstop remote --config=backstop.config.js",
@@ -25,6 +27,8 @@
     "start.p": "ENVIRONMENT='production' pm2 start ecosystem.config.js && pm2 monit",
     "stop": "pm2 stop backstop && pm2 delete backstop && kill -9 $( lsof -i:3000 -t )",
     "test": "backstop test --config=backstop.config.js",
+    "test.s": "ENVIRONMENT='staging' backstop test --config=backstop.config.js",
+    "test.p": "ENVIRONMENT='production' backstop test --config=backstop.config.js",
     "post-install": "patch-package"
   },
   "keywords": [],
