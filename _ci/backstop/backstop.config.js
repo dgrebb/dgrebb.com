@@ -1,4 +1,4 @@
-const { ID, refDir, allViewports } = require('./scenarios/vars.js');
+const { ID, envDir, allViewports } = require('./scenarios/vars.js');
 const { homepage, privacy, posts, post, cats } = require('./scenarios');
 
 let scenarios = [
@@ -34,11 +34,11 @@ module.exports = {
   onReadyScript: 'playwright/onReady.js',
   scenarios,
   paths: {
-    bitmaps_reference: `bd/bitmaps_reference/${refDir}`,
-    bitmaps_test: `bd/bitmaps_test/${refDir}`,
+    bitmaps_reference: `bd/bitmaps_reference/${envDir}`,
+    bitmaps_test: `bd/bitmaps_test/${envDir}`,
     engine_scripts: 'bd/engine_scripts',
-    html_report: 'bd/html_report',
-    ci_report: 'bd/ci_report',
+    html_report: `bd/html_report/${envDir}`,
+    ci_report: `bd/ci_report/${envDir}`,
   },
   report: [],
   engine: 'playwright',
