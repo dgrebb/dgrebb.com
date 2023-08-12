@@ -13,7 +13,7 @@ cd $directory/../_ci/backstop
 if [[ $1 == 'ref' ]]; then
     npm run ref
 elif [[ $1 == 'remote' ]]; then
-    npm run remote
+    npm run remote.${env}
 elif [[ $1 == 'test' ]]; then
     if [[ $env == 'l' ]]; then
         # build the static frontend with STG
@@ -21,6 +21,9 @@ elif [[ $1 == 'test' ]]; then
     fi
     # serve the frontend and run backstop remote with pm2
     cdbackstop
+    echo ''
+    echo 'Starting test for ${2}'
+    echo ''
     npm run boot.${env}
     echo ''
     read -p 'Pausing for backstop remote startup...' -t 5
