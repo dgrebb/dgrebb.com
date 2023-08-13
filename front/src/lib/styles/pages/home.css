@@ -70,21 +70,21 @@
   }
   .link {
     display: flex;
-    transition-property: color;
-    will-change: opacity;
     padding: 0.5rem;
-    color: rgb(var(--foreground-rgb-faded));
     line-height: 1;
-    @apply dg--transition-effect;
-    &:hover,
-    &:focus {
-      color: rgb(var(--highlight-rgb));
-    }
     a {
+      color: rgb(var(--foreground-rgb-faded));
+      transition-property: color;
+      @apply dg--transition-effect;
       @apply inline-block
         h-full
         self-center
         p-1;
+        &:hover,
+        &:focus,
+        &:focus {
+          color: rgb(var(--highlight-rgb));
+        }
     }
     svg {
       @apply h-7

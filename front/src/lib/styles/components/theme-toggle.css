@@ -3,7 +3,10 @@
   padding: 0.75rem 0 0.75rem 0.75rem;
   @apply dg--transition-effect;
   opacity: 0.7;
-  &:hover {
+  &:hover,
+  &:focus,
+  &:focus-visible,
+  &:active {
     opacity: 1;
   }
   svg {
@@ -12,6 +15,9 @@
   }
   #moon {
     padding-bottom: 1px;
+  }
+  * {
+    pointer-events: none;
   }
 }
 

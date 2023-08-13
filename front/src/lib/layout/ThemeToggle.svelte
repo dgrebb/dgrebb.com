@@ -7,6 +7,7 @@
   const { themeToggleClick } = pokeTrapper;
   $: theme = '';
   $: dark = null;
+  let repeat, timer;
 
   onMount(async () => {
     const storedTheme = themeStorage();
@@ -29,15 +30,24 @@
   });
 
   async function toggleTheme(e) {
-    if (e.repeat) return;
+    if (repeat || e.repeat) return;
+    if (e.detail === 0) {
+      repeat = true;
+      clearTimeout(timer);
+      timer = setTimeout(function() {
+        repeat = false;
+      }, 1000);
+    }
+    
     dark = !dark;
     document.documentElement.classList.toggle(darkTheme);
     document.documentElement.classList.toggle(lightTheme);
     themeStorage(dark);
     themeToggleClick(await themeName(dark));
   }
+  
 </script>
 
-<button class="theme-toggle" on:click={toggleTheme} on:keydown={toggleTheme}>
+<button type="button" class="theme-toggle" on:click={toggleTheme}>
   <ThemeToggleIcon />
 </button>
