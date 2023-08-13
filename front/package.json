@@ -9,8 +9,8 @@
     "build.s": "vite --config vite.config.js build",
     "build.p": "vite --config vite.config.js build",
     "build": "vite --config vite.config.js build",
-    "preview.l": "vite --config vite.local.config.js preview",
     "preview": "vite --config vite.config.js preview",
+    "preview.local": "vite --config vite.local.config.js preview",
     "postinstall": "patch-package"
   },
   "devDependencies": {
@@ -24,7 +24,7 @@
     "@iconify-json/typcn": "^1.1.4",
     "@sentry/sveltekit": "^7.56.0",
     "@sveltejs/adapter-static": "^2.0.2",
-    "@sveltejs/kit": "^1.20.4",
+    "@sveltejs/kit": "^1.22.5",
     "autoprefixer": "^10.4.14",
     "patch-package": "^8.0.0",
     "postcss": "^8.4.24",
