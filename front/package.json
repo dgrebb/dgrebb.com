@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev.l": "vite --config vite.local.config.js dev",
+    "dev.p": "vite --config vite.config.js dev",
     "dev": "vite --config vite.config.js dev",
     "build.l": "WARN_ONLY=true vite --config vite.local.config.js build",
     "build.s": "vite --config vite.config.js build",
@@ -26,6 +27,7 @@
     "@sveltejs/adapter-static": "^2.0.2",
     "@sveltejs/kit": "^1.22.5",
     "autoprefixer": "^10.4.14",
+    "html-minifier-terser": "^7.2.0",
     "patch-package": "^8.0.0",
     "postcss": "^8.4.24",
     "postcss-import": "^15.1.0",
