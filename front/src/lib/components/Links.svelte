@@ -40,7 +40,6 @@
 </script>
 
 <ul
-  role="complementary"
   aria-label="Links to Dan Grebb on The Internet"
   class="link-list"
 >
