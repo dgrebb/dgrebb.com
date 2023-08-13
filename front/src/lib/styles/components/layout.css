@@ -101,6 +101,7 @@
     }
     &:hover,
     &:focus,
+    &:focus-within,
     &:active {
       p {
         opacity: 1;
