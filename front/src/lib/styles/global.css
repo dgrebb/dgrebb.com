@@ -68,11 +68,6 @@ html.dark-theme {
 html {
   transition: background-color 0.5s;
   background-repeat: no-repeat;
-  /* background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    ) */
   background-color: rgb(var(--background-end-rgb));
   min-height: 100%;
   overflow: clip;
@@ -116,11 +111,12 @@ body {
     scrollbar-gutter: auto;
   }
   .header,
-  .main,
-  .footer {
+  .footer,
+  .flourish,
+  .main section > *:not(.bio-picture):not(.image-loader),
+  .main.main-secondary {
     opacity: 0;
     transition: opacity;
-    will-change: opacity;
     @apply dg--transition-effect;
   }
   &.ready {
@@ -135,8 +131,10 @@ body {
       background-color: transparent;
     }
     .header,
-    .main,
-    .footer {
+    .footer,
+    .flourish,
+    .main section > *:not(.bio-picture):not(.image-loader),
+    .main.main-secondary {
       opacity: 1;
     }
     .main section {
