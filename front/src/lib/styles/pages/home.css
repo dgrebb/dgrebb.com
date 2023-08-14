@@ -10,11 +10,10 @@
   align-items: center;
   transition-property: max-width;
   @apply dg--transition-effect;
-  img {
+  .bio-picture {
     position: relative;
     z-index: 5;
-    transition-property: border-color;
-    will-change: opacity;
+    transition-property: border-color, opacity;
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
       var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
     border: 1px solid rgba(var(--foreground-rgb), 0.5);
@@ -22,10 +21,13 @@
     width: 120px;
     height: 120px;
     @apply dg--transition-effect;
+    opacity: 0;
+    &.loaded {
+      opacity: 1.0;
+    }
   }
   h1.headline {
     transition: color, font-size;
-    will-change: opacity;
     @apply dg--transition-effect
       dg--font-psb
       pt-7
@@ -39,12 +41,10 @@
     transition-property: color, font-size;
     padding-top: 1.75rem;
     @apply dg--transition-effect;
-    will-change: opacity;
   }
   a {
     transition: color, border-color;
     @apply dg--transition-effect;
-    will-change: opacity;
     border-bottom: 1px solid rgba(var(--foreground-rgb), 0.77);
     color: rgba(var(--text-accent-rgb), 0.77);
     &:hover,
@@ -70,21 +70,21 @@
   }
   .link {
     display: flex;
-    transition-property: color;
-    will-change: opacity;
     padding: 0.5rem;
-    color: rgb(var(--foreground-rgb-faded));
     line-height: 1;
-    @apply dg--transition-effect;
-    &:hover,
-    &:focus {
-      color: rgb(var(--highlight-rgb));
-    }
     a {
+      color: rgb(var(--foreground-rgb-faded));
+      transition-property: color;
+      @apply dg--transition-effect;
       @apply inline-block
         h-full
         self-center
         p-1;
+        &:hover,
+        &:focus,
+        &:focus {
+          color: rgb(var(--highlight-rgb));
+        }
     }
     svg {
       @apply h-7

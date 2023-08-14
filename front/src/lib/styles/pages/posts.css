@@ -3,6 +3,7 @@
     text-align: center;
   }
   .summary {
+    @apply dg--font-lb;
     margin: auto auto 2rem;
     @screen md {
       max-width: 77%;

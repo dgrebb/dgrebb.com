@@ -5,7 +5,7 @@
   $: postsActive = $page?.route?.id?.includes("post") || false;
 </script>
 
-<nav class="nav-bar">
+<nav class="nav-bar" aria-label="Site Pages">
   <!-- <NavToggle /> -->
   <ul class="nav-list">
     {#each navItems as { href, title }}

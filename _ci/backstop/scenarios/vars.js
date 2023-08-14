@@ -1,25 +1,25 @@
 const env = process.env.ENVIRONMENT;
 let URL;
-let refDir;
+let envDir;
 
 switch (env) {
 
   case 'staging':
     ID = 'Staging';
     URL = 'https://stg.dgrebb.com';
-    refDir = 'stg';
+    envDir = 'stg';
     break;
 
   case 'production':
     ID = 'Production';
     URL = 'https://www.dgrebb.com';
-    refDir = 'prod';
+    envDir = 'prod';
     break;
 
   default:
     ID = 'Local'
     URL = 'http://local.dgrebb.com:8080';
-    refDir = 'local';
+    envDir = 'local';
     break;
 }
 
@@ -69,7 +69,7 @@ const xxl = {
 module.exports = {
   ID: ID,
   URL: URL,
-  refDir: refDir,
+  envDir: envDir,
   allViewports: [xs, sm, md, lg, xl, xxl],
   upToSmallViewports: [xs],
   upToMediumViewports: [xs, sm],

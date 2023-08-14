@@ -8,6 +8,7 @@
   export let height = null;
   export let classes = null;
   export let ariaHidden = 'false';
+  let loaded = false;
 
   const preload = async (src) => {
     const resp = await fetch(src);
@@ -16,7 +17,12 @@
     return new Promise(function (resolve) {
       let reader = new FileReader();
       reader.readAsDataURL(blob);
-      reader.onload = () => resolve(reader.result);
+      reader.onload = () => {
+        resolve(reader.result);
+        setTimeout(() => {
+          loaded = true;
+        }, 100);
+      };
       reader.onerror = (error) => reject('Error: ', error);
     });
   };
@@ -34,6 +40,7 @@
     {width}
     {height}
     class={classes}
+    class:loaded={loaded}
     aria-hidden={ariaHidden}
   />
 {/await}

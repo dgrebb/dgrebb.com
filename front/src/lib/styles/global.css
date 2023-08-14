@@ -29,11 +29,18 @@
   --white: 223, 224, 224;
   --black: 19, 19, 20;
   text-rendering: optimizeLegibility !important;
+  :focus-visible {
+    outline: thin dotted rgb(var(--highlight-rgb));
+    outline-offset: 0.25rem;
+  }
 }
 
 html.light-theme {
   @apply dg--light-theme;
   @apply github-light;
+  :focus-visible {
+    outline-width: 2px;
+  }
 }
 
 html.dark-theme {
@@ -45,6 +52,9 @@ html.dark-theme {
   :root {
     @apply dg--light-theme;
     @apply github-light;
+    :focus-visible {
+      outline-width: 2px;
+    }
   }
 }
 
@@ -58,11 +68,6 @@ html.dark-theme {
 html {
   transition: background-color 0.5s;
   background-repeat: no-repeat;
-  /* background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    ) */
   background-color: rgb(var(--background-end-rgb));
   min-height: 100%;
   overflow: clip;
@@ -106,11 +111,12 @@ body {
     scrollbar-gutter: auto;
   }
   .header,
-  .main,
-  .footer {
+  .footer,
+  .flourish,
+  .main section > *:not(.bio-picture):not(.image-loader),
+  .main.main-secondary {
     opacity: 0;
     transition: opacity;
-    will-change: opacity;
     @apply dg--transition-effect;
   }
   &.ready {
@@ -125,8 +131,10 @@ body {
       background-color: transparent;
     }
     .header,
-    .main,
-    .footer {
+    .footer,
+    .flourish,
+    .main section > *:not(.bio-picture):not(.image-loader),
+    .main.main-secondary {
       opacity: 1;
     }
     .main section {

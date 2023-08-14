@@ -1,0 +1,17 @@
+{
+  "name": "perf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "webpagetest": "webpagetest test process.env.URL",
+    "test": "lighthouse \"$URL\" --view --chrome-flags='--headless'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lighthouse": "^11.0.0",
+    "webpagetest": "^0.7.1"
+  }
+}

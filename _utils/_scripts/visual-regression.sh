@@ -3,28 +3,32 @@ source $directory/_scripts/functions.sh
 
 backstopURL='http://localhost:3000/bd/html_report?remote'
 
-if [ -z "$2" ]; then
-    env=l
+if [ $2 == "s" ]; then
+  ENV=staging
+elif [ $2 == "p" ]; then
+  ENV=production
 else
-    env=$2
+  ENV=local
 fi
+
+echo "${ENV} is the environment"
 
 cd $directory/../_ci/backstop
 if [[ $1 == 'ref' ]]; then
-    npm run ref
+    ENV=$ENV npm run ref
 elif [[ $1 == 'remote' ]]; then
-    npm run remote.${env}
+    ENV=$ENV npm run remote
 elif [[ $1 == 'test' ]]; then
-    if [[ $env == 'l' ]]; then
+    if [[ $ENV == 'local' ]]; then
         # build the static frontend with STG
         dg f b s
     fi
     # serve the frontend and run backstop remote with pm2
     cdbackstop
     echo ''
-    echo 'Starting test for ${2}'
+    echo "Starting test for ${2}"
     echo ''
-    npm run boot.${env}
+    ENV=$ENV npm run boot
     echo ''
     read -p 'Pausing for backstop remote startup...' -t 5
     echo ''
@@ -36,7 +40,7 @@ elif [[ $1 == 'test' ]]; then
 elif [[ $1 == 'test-now' ]]; then
     # serve the frontend and run backstop remote with pm2
     cdbackstop
-    npm run boot.${env}
+    ENV=$ENV npm run boot
     echo ''
     read -p 'Pausing for backstop remote startup...' -t 5
     echo ''
@@ -46,7 +50,7 @@ elif [[ $1 == 'test-now' ]]; then
     # open $backstopURL
     npm stop
 elif [[ $1 == 'approve' ]]; then
-    npm run approve
+    ENV=$ENV npm run approve
 else
     echo "Do you know what you're doing? Double check."
 fi
