@@ -3,9 +3,9 @@
   @apply my-9
     w-full
     rounded-lg
-    px-7
     shadow-lg
     sm:w-auto;
+  padding: 0 1.75rem 0 1.5rem;
   position: relative;
   z-index: 3;
   transition: transform 0s;
@@ -102,14 +102,15 @@
     }
   }
   > pre {
-    @apply mb-0
-      pb-5
-      pt-20;
+    padding-top: 5rem;
+    margin-bottom: -0.5rem;
+    padding-bottom: 0.5rem;
     position: relative;
     transition: scrollbar-color 0.5s;
     overflow-x: auto;
     scrollbar-color: transparent transparent;
     scrollbar-width: thin;
+    scrollbar-gutter: stable both-edges;
     color: rgb(var(--foreground-rgb));
     &::-webkit-scrollbar {
       background-color: transparent;
@@ -136,9 +137,9 @@
   }
   > div[style] > .line-number-wrap {
     transition: scrollbar-color 0.5s;
-    margin-bottom: -2rem;
-    padding-bottom: 2rem;
+    margin-bottom: -0.5rem;
     overflow-x: auto;
+    scrollbar-gutter: stable both-edges;
     scrollbar-color: transparent transparent;
     scrollbar-width: thin;
     &::-webkit-scrollbar {
@@ -211,6 +212,7 @@
             td:last-child code {
               /* border-bottom-right-radius: 0.5rem; */
               /* border-bottom-left-radius: 0.5rem; */
+              margin-bottom: 1rem;
             }
           }
         }
