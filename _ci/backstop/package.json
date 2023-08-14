@@ -22,7 +22,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "backstopjs": "github:dgrebb/BackstopJS#feature/serve-static-image-subdirs",
+    "backstopjs": "github:dgrebb/BackstopJS#release/0.0.4",
     "cors": "^2.8.5",
     "http-server": "^14.1.1",
     "patch-package": "^8.0.0",
