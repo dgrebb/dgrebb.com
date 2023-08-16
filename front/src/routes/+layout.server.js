@@ -1,13 +1,11 @@
-import { error } from "@sveltejs/kit";
-import api from "@api";
 import {
-  PUBLIC_API_URL as URL,
-  PUBLIC_API_PATH_NAVIGATION as NAV,
-  PUBLIC_API_PATH_FOOTER as FOOT,
-} from "$env/static/public";
+  PUBLIC_API_PATH_FOOTER as FOOT, PUBLIC_API_PATH_NAVIGATION as NAV, PUBLIC_API_URL as URL
+} from '$env/static/public';
+import api from '@api';
+import { error } from '@sveltejs/kit';
 
 export const prerender = true;
-export const trailingSlash = "always";
+export const trailingSlash = 'always';
 
 const navigationEndpoint = URL + NAV;
 const footerEndpoint = URL + FOOT;
@@ -20,7 +18,7 @@ export async function load({ url: { pathname } }) {
 
   if (!navigationContent || !footerContent) {
     throw error(500, {
-      message: "Layout Error",
+      message: 'Layout Error',
     });
   }
 
