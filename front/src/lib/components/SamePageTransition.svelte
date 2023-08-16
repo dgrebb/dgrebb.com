@@ -1,5 +1,5 @@
 <script>
-  import { navigating } from "$app/stores";
+  import { navigating } from '$app/stores';
 
   export let transitionKey;
   export let classList = false;
@@ -12,7 +12,7 @@
   }
 
   function animateOut(node) {
-    document.body.classList.toggle("animating-page", true);
+    document.body.classList.toggle('animating-page', true);
 
     if ($navigating) {
       if ($navigating.from.route.id === $navigating.to.route.id) {
@@ -22,15 +22,15 @@
           let animation = nodeOut.animate(
             [
               {
-                height: initialHeight + "px",
-                overflow: "hidden",
+                height: initialHeight + 'px',
+                overflow: 'hidden',
               },
               {
-                height: 0 + "px",
-                overflow: "hidden",
+                height: 0 + 'px',
+                overflow: 'hidden',
               },
             ],
-            { duration: 500, fill: "both", easing: "ease-out" }
+            { duration: 500, fill: 'both', easing: 'ease-out' }
           );
           animation.play();
         }
@@ -45,21 +45,21 @@
       let animation = nodeIn.animate(
         [
           {
-            height: 0 + "px",
-            overflow: "hidden",
+            height: 0 + 'px',
+            overflow: 'hidden',
           },
           {
-            height: initialHeight + "px",
-            overflow: "hidden",
+            height: initialHeight + 'px',
+            overflow: 'hidden',
           },
         ],
-        { duration: 800, fill: "both" }
+        { duration: 800, fill: 'both' }
       );
       animation.play();
     }
     setTimeout(() => {
-      document.body.classList.toggle("animating", false);
-      document.body.classList.toggle("animating-page", false);
+      document.body.classList.toggle('animating', false);
+      document.body.classList.toggle('animating-page', false);
     }, 600);
   }
 </script>

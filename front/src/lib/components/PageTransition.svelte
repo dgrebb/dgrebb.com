@@ -1,18 +1,32 @@
 <script>
-  import { fade } from "svelte/transition";
-  import { scrollTop } from "@utils";
+  import { navigating } from '$app/stores';
+  import { isElementOutsideViewport, scrollTop } from '@utils';
+  import { fade } from 'svelte/transition';
 
   export let transitionKey;
+  let to;
 
-  function animateOut() {
-    document.body.classList.toggle("animating", true);
+  async function animateOutroStart() {
+    const header = document.querySelector('.header');
+    to = $navigating?.to.route.id;
+    document.body.classList.toggle('animating', true);
+    if (isElementOutsideViewport(header)) {
+      header.classList.toggle('scroll-transition', true);
+    }
   }
 
-  function animateIn() {
+  function animateOutroEnd() {
+    if (to === '/') return;
     scrollTop();
+  }
+
+  function animateIntroStart() {}
+
+  function animateIntroEnd() {
     setTimeout(() => {
-      document.body.classList.toggle("animating", false);
-      document.body.classList.toggle("animating-page", false);
+      header.classList.toggle('scroll-transition', false);
+      document.body.classList.toggle('animating', false);
+      document.body.classList.toggle('animating-page', false);
     }, 333);
   }
 </script>
@@ -21,8 +35,10 @@
   <div
     class="transition-container"
     transition:fade|global={{ duration: 333 }}
-    on:outrostart={animateOut}
-    on:introend={animateIn}
+    on:outrostart={animateOutroStart}
+    on:outroend={animateOutroEnd}
+    on:introstart={animateIntroStart}
+    on:introend={animateIntroEnd}
   >
     <slot />
   </div>

@@ -1,12 +1,12 @@
 <script>
-  import { page } from "$app/stores";
-  import SvelteMarkdown from "svelte-markdown";
-  import Link from "@components/content/renderers/Link.svelte";
-  import PageTransition from "@components/PageTransition.svelte";
-  import SamePageTransition from "@components/SamePageTransition.svelte";
-  import Meta from "@components/Meta.svelte";
-  import Flourish from "@layout/Flourish.svelte";
-  import PageNav from "../../../../lib/components/PageNav.svelte";
+  import { page } from '$app/stores';
+  import Meta from '@components/Meta.svelte';
+  import PageTransition from '@components/PageTransition.svelte';
+  import SamePageTransition from '@components/SamePageTransition.svelte';
+  import Link from '@components/content/renderers/Link.svelte';
+  import Flourish from '@layout/Flourish.svelte';
+  import SvelteMarkdown from 'svelte-markdown';
+  import PageNav from '../../../../lib/components/PageNav.svelte';
 
   export let data;
   const route = $page.route.id;
@@ -20,11 +20,11 @@
   } = data);
 
   const setActiveLink = (e) => {
-    const links = e.target.closest("ul").querySelectorAll("a");
+    const links = e.target.closest('ul').querySelectorAll('a');
     links.forEach((link) => {
-      link.classList.toggle("active", false);
+      link.classList.toggle('active', false);
     });
-    e.target.classList.toggle("active", true);
+    e.target.classList.toggle('active', true);
   };
 </script>
 

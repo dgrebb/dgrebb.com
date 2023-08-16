@@ -204,8 +204,7 @@ body {
 
 .scroll-top {
   display: flex;
-  @apply text-xs
-    md:hidden;
+  @apply text-xs;
   flex-direction: column;
   align-items: center;
   opacity: 0.57;
