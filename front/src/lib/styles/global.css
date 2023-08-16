@@ -88,17 +88,10 @@ body {
     items-center
     text-base
     md:text-lg;
-  background: radial-gradient(
-    187% 77vh at top,
-    rgb(var(--subdued-rgb)),
-    rgb(var(--background-start-rgb)),
-    transparent 83%
-  );
-  background-position: top center;
-  background-repeat: no-repeat;
   height: 100vh;
   min-height: 100vh;
   overflow: auto;
+  position: relative;
   scroll-behavior: smooth;
   scrollbar-gutter: stable both-edges;
   color: rgb(var(--foreground-rgb));
@@ -109,6 +102,21 @@ body {
     height: 100%;
     overflow: visible;
     scrollbar-gutter: auto;
+  }
+  &::before {
+    position: fixed;
+    z-index: -1;
+    background: radial-gradient(
+      187% 77vh at top,
+      rgb(var(--subdued-rgb)),
+      rgb(var(--background-start-rgb)),
+      transparent 83%
+    );
+    background-position: top center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    content: '';
   }
   .header,
   .footer,
