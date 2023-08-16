@@ -41,7 +41,7 @@
 </main>
 <!-- <slot name="scroll-top" /> -->
 
-<footer class="footer" class:footer-secondary={secondary}>
+<footer class="footer" class:footer-secondary={secondary} data-sveltekit-noscroll>
   <Footer {copyleft} {copyright} />
 </footer>
 

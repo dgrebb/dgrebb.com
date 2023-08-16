@@ -1,10 +1,15 @@
 <script>
   import { navigating } from '$app/stores';
   import { isElementOutsideViewport, scrollTop } from '@utils';
-  import { fade } from 'svelte/transition';
 
   export let transitionKey;
   let to;
+
+  function doIt() {
+    return {
+      duration: 500,
+    };
+  }
 
   async function animateOutroStart() {
     const header = document.querySelector('.header');
@@ -34,7 +39,7 @@
 {#key transitionKey}
   <div
     class="transition-container"
-    transition:fade|global={{ duration: 333 }}
+    transition:doIt|global
     on:outrostart={animateOutroStart}
     on:outroend={animateOutroEnd}
     on:introstart={animateIntroStart}
