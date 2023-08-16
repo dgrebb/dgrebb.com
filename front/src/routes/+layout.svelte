@@ -36,12 +36,12 @@
 
 <Flourish />
 <Header {navHeading} {navItems} />
-<main class="main" class:main-secondary={secondary}>
+<main class="main" class:main-secondary={secondary} data-sveltekit-noscroll>
   <slot />
 </main>
-<slot name="scroll-top" />
+<!-- <slot name="scroll-top" /> -->
 
-<footer class="footer" class:footer-secondary={secondary}>
+<footer class="footer" class:footer-secondary={secondary} data-sveltekit-noscroll>
   <Footer {copyleft} {copyright} />
 </footer>
 

@@ -24,16 +24,20 @@
 
 .header {
   display: flex;
+  position: relative;
   align-items: center;
   padding: 1.25rem 1.5rem 0rem 1.5rem;
-  position: relative;
   @screen sm {
     padding: 2rem 1.5rem 0.75rem 1.5rem;
   }
-  @screen md {
-  }
 }
-
+body.ready .header {
+  transition: opacity 333ms;
+}
+body.ready .header.scroll-transition {
+  opacity: 0;
+  transition: opacity 0s;
+}
 .posts,
 .post,
 .privacy,

@@ -1,10 +1,11 @@
 <script>
-  import PageTransition from "@components/PageTransition.svelte";
-  import Post from "@components/posts/Post.svelte";
-  import Flourish from "@layout/Flourish.svelte";
-  import Meta from "@components/Meta.svelte";
-  import { onMount } from "svelte";
-  import PostHero from "@components/posts/PostHero.svelte";
+  import ScrollTop from '$lib/layout/ScrollTop.svelte';
+  import Meta from '@components/Meta.svelte';
+  import PageTransition from '@components/PageTransition.svelte';
+  import Post from '@components/posts/Post.svelte';
+  import PostHero from '@components/posts/PostHero.svelte';
+  import Flourish from '@layout/Flourish.svelte';
+  import { onMount } from 'svelte';
 
   export let data;
 
@@ -19,7 +20,7 @@
     ? hero.formats.thumbnail.url
     : false;
   $: heroImage = hero?.url ? hero.url : false;
-  $: position = post.position || "center center";
+  $: position = post.position || 'center center';
   $: summary = post.summary || false;
   $: content = post?.content?.length ? post.content : false;
   $: footnotes = post.footnotes.length ? post.footnotes : false;
@@ -65,6 +66,10 @@
       {pathname}
     />
   </section>
+
+  <slot name="scroll-top">
+    <ScrollTop />
+  </slot>
 </PageTransition>
 
 {#if failed}

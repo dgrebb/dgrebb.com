@@ -1,18 +1,37 @@
 <script>
-  import { fade } from "svelte/transition";
-  import { scrollTop } from "@utils";
+  import { navigating } from '$app/stores';
+  import { isElementOutsideViewport, scrollTop } from '@utils';
 
   export let transitionKey;
+  let to;
 
-  function animateOut() {
-    document.body.classList.toggle("animating", true);
+  function doIt() {
+    return {
+      duration: 500,
+    };
   }
 
-  function animateIn() {
+  async function animateOutroStart() {
+    const header = document.querySelector('.header');
+    to = $navigating?.to.route.id;
+    document.body.classList.toggle('animating', true);
+    if (isElementOutsideViewport(header)) {
+      header.classList.toggle('scroll-transition', true);
+    }
+  }
+
+  function animateOutroEnd() {
+    if (to === '/') return;
     scrollTop();
+  }
+
+  function animateIntroStart() {}
+
+  function animateIntroEnd() {
     setTimeout(() => {
-      document.body.classList.toggle("animating", false);
-      document.body.classList.toggle("animating-page", false);
+      header.classList.toggle('scroll-transition', false);
+      document.body.classList.toggle('animating', false);
+      document.body.classList.toggle('animating-page', false);
     }, 333);
   }
 </script>
@@ -20,9 +39,11 @@
 {#key transitionKey}
   <div
     class="transition-container"
-    transition:fade|global={{ duration: 333 }}
-    on:outrostart={animateOut}
-    on:introend={animateIn}
+    transition:doIt|global
+    on:outrostart={animateOutroStart}
+    on:outroend={animateOutroEnd}
+    on:introstart={animateIntroStart}
+    on:introend={animateIntroEnd}
   >
     <slot />
   </div>
