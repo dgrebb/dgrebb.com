@@ -15,26 +15,29 @@
     const svg = button.querySelectorAll('svg');
     animations = button.querySelectorAll('.icon-code-copied animate');
     resets = button.querySelectorAll('.icon-code-copied set');
-
     button.closest('.syntax-highlighter').classList.toggle('copying', false);
+
     if (e.type === 'click' || e.code === 'Enter' || e.code === 'Space') {
       await navigator.clipboard.writeText(text);
-      copied = true;
-      button.closest('.syntax-highlighter').classList.toggle('copied', true);
+      button.classList.toggle('copying', true);
       setTimeout(() => {
         resets[1].beginElement();
         animations[0].beginElement();
       }, 100);
+      setTimeout(() => {
+        copied = true;
+      }, 2000);
+      setTimeout(() => {
+        copied = false;
+        button.classList.toggle('copying', false);
+        resets.forEach((a) => a.beginElement());
+      }, 2333);
     }
   }
 
   async function handleFocusOut(e) {
     const button = e.target;
-    setTimeout(() => {
-      copied = false;
-      button.closest('.syntax-highlighter').classList.toggle('copied', false);
-      resets.forEach((a) => a.beginElement());
-    }, 1000);
+    resets = button.querySelectorAll('.icon-code-copied set');
   }
 </script>
 
@@ -42,8 +45,6 @@
   class="code-copy-btn"
   class:copied
   on:mousedown={handleCopying}
-  on:mouseout={handleFocusOut}
-  on:blur={handleFocusOut}
   on:click={handleCopy}
   on:keyup={handleCopy}
 >
