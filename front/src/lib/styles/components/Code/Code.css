@@ -66,12 +66,12 @@
     padding: 0.75rem;
     color: rgba(var(--foreground-rgb), 0.33);
     line-height: 1.6;
+    transition: color 333ms;
     > * {
-      @apply dg--transition-effect;
       pointer-events: none;
     }
     &:hover,
-    &:focus {
+    &:focus-visible {
       color: rgba(var(--foreground-rgb), 1);
     }
     &:active {
@@ -84,29 +84,39 @@
       display: inline;
       opacity: 1;
       transition:
-        opacity 333ms,
+        opacity 1s,
         color 0.5s;
     }
     .icon-code-copied {
       display: none;
-      transition: opacity 333ms;
       opacity: 0;
+      transition: opacity 333ms;
+    }
+    &.copying {
+      pointer-events: none;
+      cursor: default;
+      color: rgba(var(--foreground-rgb), 1);
+      .icon-code-copy {
+        display: none;
+      }
+      .icon-code-copied {
+        display: inline;
+        opacity: 1;
+      }
+      &.copied {
+        .icon-code-copy {
+          display: inline;
+          opacity: 0;
+        }
+      }
     }
     &.copied {
-      color: rgba(var(--foreground-rgb), 0.77);
       .icon-code-copy {
-        opacity: 0;
-        height: 0;
-        opacity: 0;
+        opacity: 1;
       }
       .icon-code-copied {
         display: inline;
         opacity: 0;
-      }
-      &.copying {
-        .icon-code-copied {
-          opacity: 1;
-        }
       }
     }
   }

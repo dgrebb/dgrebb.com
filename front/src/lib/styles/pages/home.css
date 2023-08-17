@@ -43,14 +43,14 @@
     @apply dg--transition-effect;
   }
   a {
-    transition: filter, border-color;
+    transition: color, border-color;
     transition-duration: 0.33s;
     border-bottom: 1px solid rgba(var(--foreground-rgb), 0.77);
-    color: rgb(var(--link-rgb));
+    color: rgba(var(--text-accent-rgb), 0.7);
     &:hover,
     &:focus {
+      color: rgba(var(--text-accent-rgb), 1);
       border-color: rgb(var(--highlight-rgb));
-      filter: brightness(1);
     }
   }
 }
