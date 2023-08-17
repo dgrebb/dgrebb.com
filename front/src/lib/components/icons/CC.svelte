@@ -35,8 +35,8 @@
 <style>
   .cc-link {
     display: inline-block;
-    height: 20px;
-    width: 20px;
+    height: 17px;
+    width: 17px;
     opacity: 0.8;
     transition: opacity 0.5s !important;
     vertical-align: top;
@@ -48,8 +48,8 @@
     }
   }
   .icon-cc {
-    width: 20px;
-    height: 20px;
+    width: 17px;
+    height: 17px;
     color: darkred;
   }
   .fil0 {

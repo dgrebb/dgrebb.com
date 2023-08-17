@@ -77,7 +77,7 @@ body.ready .header.scroll-transition {
     line-height: 1.75;
     a {
       border-bottom: 1px solid rgba(var(--foreground-rgb), 0.5);
-      color: rgb(var(--subdued-rgb));
+      color: rgb(var(--link-rgb));
       &.cc-link {
         border: none;
       }
@@ -132,11 +132,11 @@ body.ready .header.scroll-transition {
       transition:
         border 0.5s,
         color 0.5s;
-      color: rgba(var(--foreground-rgb), 0.8);
+      color: rgba(var(--link-rgb), 0.8);
       &:hover,
       &:focus {
         border-bottom-color: rgb(var(--highlight-rgb));
-        color: rgba(var(--foreground-rgb), 1);
+        color: rgba(var(--link-rgb), 1);
       }
     }
     img {
@@ -163,11 +163,11 @@ body.ready .header.scroll-transition {
         transition:
           border 0.5s,
           color 0.5s;
-        color: rgba(var(--foreground-rgb), 0.8);
+        color: rgba(var(--link-rgb), 0.8);
         &:hover,
         &:focus {
           border-bottom-color: rgb(var(--highlight-rgb));
-          color: rgba(var(--foreground-rgb), 1);
+          color: rgba(var(--link-rgb), 1);
         }
       }
       img {

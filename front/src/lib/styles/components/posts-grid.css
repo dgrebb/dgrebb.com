@@ -128,7 +128,7 @@
       .link-bg {
         align-self: center;
         transition: background-color 0.5s ease-in-out;
-        border-radius: 1rem;
+        border-radius: 0.5rem;
         background-color: transparent;
         padding: 0.5rem 2rem;
         width: auto;
