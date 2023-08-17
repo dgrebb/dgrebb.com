@@ -101,7 +101,12 @@
       }
       .icon-code-copied {
         display: inline;
-        opacity: 1.0;
+        opacity: 0;
+      }
+      &.copying {
+        .icon-code-copied {
+          opacity: 1;
+        }
       }
     }
   }

@@ -59,15 +59,13 @@
     py-1
     align-text-top
     text-sm;
-  opacity: 0.42;
-  transition: opacity, color, border-color;
-  @apply dg--transition-effect;
-  border-bottom-color: rgb(var(--foreground-rgb));
-  color: rgb(var(--link-rgb));
+  transition: color var(--transform-duration), border-color 333ms;
+  border-bottom-color: rgab(var(--foreground-rgb), 0.5);
+  color: rgba(var(--text-accent-rgb), 0.5);
   &:hover,
   &:focus {
-    opacity: 1;
-    border-bottom-color: rgb(var(--highlight-rgb));
+    color: rgba(var(--text-accent-rgb), 1);
+    border-bottom-color: rgba(var(--highlight-rgb), 1);
   }
   &.active {
     opacity: 1;
