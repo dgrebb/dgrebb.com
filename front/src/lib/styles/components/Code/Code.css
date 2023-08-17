@@ -1,26 +1,26 @@
 @import 'syntax.css';
+
 .syntax-highlighter {
   @apply my-9
     w-full
     rounded-lg
     shadow-lg
     sm:w-auto;
-  padding: 0 1.75rem 0 1.5rem;
   position: relative;
   z-index: 3;
   transition: transform 0s;
   background-color: rgb(var(--background-pre-rgb));
+  padding: 0 1.75rem 0 1.5rem;
   padding-bottom: 1.5rem;
-  &.copied {
-    transform: scale(1.01);
-    transition: transform 50ms ease-out;
+  &.copying {
+    transform: scale(101%);
   }
   &:hover,
   &:focus {
     .title,
     .language,
     .code-copy-btn {
-      color: rgba(var(--foreground-rgb), 0.77);
+      color: rgba(var(--link-rgb), 0.77);
     }
   }
   .title,
@@ -72,7 +72,7 @@
     }
     &:hover,
     &:focus {
-      color: rgba(var(--highlight-rgb), 1);
+      color: rgba(var(--foreground-rgb), 1);
     }
     &:active {
       top: 2px;
@@ -84,33 +84,37 @@
       display: inline;
       opacity: 1;
       transition:
-        opacity 1s,
+        opacity 333ms,
         color 0.5s;
     }
     .icon-code-copied {
       display: none;
+      transition: opacity 333ms;
+      opacity: 0;
     }
     &.copied {
       color: rgba(var(--foreground-rgb), 0.77);
       .icon-code-copy {
         opacity: 0;
         height: 0;
+        opacity: 0;
       }
       .icon-code-copied {
         display: inline;
+        opacity: 1.0;
       }
     }
   }
   > pre {
-    padding-top: 5rem;
-    margin-bottom: -0.5rem;
-    padding-bottom: 0.5rem;
     position: relative;
     transition: scrollbar-color 0.5s;
+    margin-bottom: -0.5rem;
+    padding-top: 5rem;
+    padding-bottom: 0.5rem;
     overflow-x: auto;
     scrollbar-color: transparent transparent;
-    scrollbar-width: thin;
     scrollbar-gutter: stable both-edges;
+    scrollbar-width: thin;
     color: rgb(var(--foreground-rgb));
     &::-webkit-scrollbar {
       background-color: transparent;
@@ -139,8 +143,8 @@
     transition: scrollbar-color 0.5s;
     margin-bottom: -0.5rem;
     overflow-x: auto;
-    scrollbar-gutter: stable both-edges;
     scrollbar-color: transparent transparent;
+    scrollbar-gutter: stable both-edges;
     scrollbar-width: thin;
     &::-webkit-scrollbar {
       transition: background-color 0.5s;

@@ -18,6 +18,7 @@
         }}
         href={link}
         data-sveltekit-replacestate
+        data-sveltekit-noscroll="false"
         use:activeLink
       >
         {text}

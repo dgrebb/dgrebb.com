@@ -17,12 +17,12 @@
   }
   a {
     transition: color, border-color;
-    color: rgba(var(--text-accent-rgb), 0.77);
+    color: rgba(var(--link-color), 0.77);
     @apply dg--transition-effect
       dg--font-lb;
     &:hover,
     &:focus {
-      color: rgba(var(--text-accent-rgb), 1);
+      color: rgba(var(--link-color), 1);
     }
   }
   a:after {
@@ -34,7 +34,7 @@
     content: '';
   }
   a.active {
-    color: rgba(var(--text-accent-rgb), 1);
+    color: rgba(var(--link-color), 1);
     padding-right: 1rem;
     &:after {
       right: 0;

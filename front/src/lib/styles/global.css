@@ -216,12 +216,15 @@ body {
   flex-direction: column;
   align-items: center;
   opacity: 0.57;
+  color: rgba(var(--link-color), 0.77);
   transition:
     color 0.5s ease-in-out,
     opacity 0.5s ease-in-out;
   &:hover,
-  &:focus {
-    color: rgb(var(--highlight-rgb));
+  &:focus,
+  &:focus-visible,
+  &:active {
+    color: rgba(var(--link-color), 1);
   }
   svg {
     @apply mb-2

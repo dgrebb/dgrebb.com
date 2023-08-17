@@ -17,7 +17,7 @@
   export let pathname;
 
   let toc, postNavCheckbox, miniPostNav;
-  $: if (content) toc = [];
+  $: toc = [];
   function filterTokens(event) {
     const tokens = event.detail.tokens;
     const headings = tokens.filter((t) => t.type === 'heading');
