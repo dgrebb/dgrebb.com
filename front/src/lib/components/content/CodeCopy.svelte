@@ -5,31 +5,46 @@
   let animations;
   let resets;
 
+  async function handleCopying(e) {
+    const button = e.target;
+    button.closest('.syntax-highlighter').classList.toggle('copying', true);
+  }
+
   async function handleCopy(e) {
     const button = e.target;
+    const svg = button.querySelectorAll('svg');
     animations = button.querySelectorAll('.icon-code-copied animate');
     resets = button.querySelectorAll('.icon-code-copied set');
-    button.addEventListener('focusout', () => {
-      copied = false;
-      resets.forEach((a) => a.beginElement());
-    });
-    const svg = button.querySelectorAll('svg');
+    button.closest('.syntax-highlighter').classList.toggle('copying', false);
+
     if (e.type === 'click' || e.code === 'Enter' || e.code === 'Space') {
       await navigator.clipboard.writeText(text);
-      copied = true;
-      button.closest('.syntax-highlighter').classList.toggle('copied', true);
+      button.classList.toggle('copying', true);
       setTimeout(() => {
         resets[1].beginElement();
         animations[0].beginElement();
-        button.closest('.syntax-highlighter').classList.toggle('copied', false);
       }, 100);
+      setTimeout(() => {
+        copied = true;
+      }, 2000);
+      setTimeout(() => {
+        copied = false;
+        button.classList.toggle('copying', false);
+        resets.forEach((a) => a.beginElement());
+      }, 2333);
     }
+  }
+
+  async function handleFocusOut(e) {
+    const button = e.target;
+    resets = button.querySelectorAll('.icon-code-copied set');
   }
 </script>
 
 <button
   class="code-copy-btn"
   class:copied
+  on:mousedown={handleCopying}
   on:click={handleCopy}
   on:keyup={handleCopy}
 >

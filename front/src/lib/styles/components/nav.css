@@ -3,16 +3,19 @@
     flex-grow;
 }
 .skip-to-content {
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
-  background-color: rgb(var(--background-end-rgb));
-  opacity: 0;
-  padding: 0.75rem 1.25rem;
   position: absolute;
   top: -3rem;
-  transition: top 0.3s ease, opacity 0.3s ease, color 0.3s ease;
+  opacity: 0;
+  transition:
+    top 0.3s ease,
+    opacity 0.3s ease,
+    color 0.3s ease;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
+  background-color: rgb(var(--background-end-rgb));
+  padding: 0.75rem 1.25rem;
   &:focus,
   &:focus-visible {
-    top: 1.77rem;
+    top: 2rem;
     opacity: 1;
   }
 }
@@ -22,17 +25,17 @@
     text-xl
     sm:ml-[2px]
     sm:text-2xl;
-    transition: unset;
-    transition: font-size, color;
-    @apply dg--transition-effect;
-    letter-spacing: -0.025em;
-    line-height: 1;
-    color: rgb(var(--foreground-color));
-    &:hover,
-    &:focus,
-    &:active {
-      color: rgb(var(--highlight-rgb));
-    }
+  transition: unset;
+  transition: font-size, color;
+  transition-duration: 0.33s;
+  color: rgb(var(--foreground-color));
+  line-height: 1;
+  letter-spacing: -0.025em;
+  &:hover,
+  &:focus,
+  &:active {
+    color: rgb(var(--highlight-rgb));
+  }
 }
 
 .nav-bar {
@@ -56,23 +59,25 @@
     py-1
     align-text-top
     text-sm;
-  opacity: 0.42;
-  transition: opacity, border-color;
-  @apply dg--transition-effect;
-  border-bottom-color: rgb(var(--foreground-rgb));
-  color: rgb(var(--text-accent-rgb));
+  transition: color var(--transform-duration), border-color 333ms;
+  border-bottom-color: rgab(var(--foreground-rgb), 0.5);
+  color: rgba(var(--text-accent-rgb), 0.5);
   &:hover,
   &:focus {
-    opacity: 1;
-    border-bottom-color: rgb(var(--highlight-rgb));
+    color: rgba(var(--text-accent-rgb), 1);
+    border-bottom-color: rgba(var(--highlight-rgb), 1);
   }
   &.active {
     opacity: 1;
+    cursor: default;
+    border-bottom-color: rgb(var(--highlight-rgb));
     color: rgb(var(--text-accent-rgb));
-    &:hover,
-    &:focus {
-      opacity: 1;
-      color: rgb(var(--text-accent-rgb));
+    &.subactive {
+      cursor: pointer;
+      &:hover,
+      &:focus {
+        color: rgb(var(--foreground-rgb));
+      }
     }
   }
 }

@@ -115,7 +115,8 @@ body {
     background-position: top center;
     background-repeat: no-repeat;
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    opacity: 0.77;
     content: '';
   }
   .header,
@@ -216,12 +217,15 @@ body {
   flex-direction: column;
   align-items: center;
   opacity: 0.57;
+  color: rgba(var(--text-accent-rgb), 0.77);
   transition:
     color 0.5s ease-in-out,
     opacity 0.5s ease-in-out;
   &:hover,
-  &:focus {
-    color: rgb(var(--highlight-rgb));
+  &:focus,
+  &:focus-visible,
+  &:active {
+    color: rgba(var(--text-accent-rgb), 1);
   }
   svg {
     @apply mb-2

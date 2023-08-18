@@ -2,7 +2,6 @@
 .post {
   display: block;
   position: relative;
-  margin-bottom: 3.33rem;
   border-radius: 0.77rem;
   background-color: rgba(var(--background-saturated), 0.77);
   @apply shadow-xl;
@@ -119,9 +118,14 @@
       width: 75%;
     }
     a {
+      color: rgba(var(--link-rgb), 0.77);
       border-bottom: 1px solid rgba(var(--text-accent-rgb), 0.67);
+      transition-property: border, color;
+      transition-duration: var(--transform-duration);
+      transition-timing-function: var(--transition-timing-function);
       &:hover,
       &:focus {
+        color: rgba(var(--foreground-rgb), 1);
         border-bottom: 1px solid rgba(var(--highlight-rgb), 1);
       }
     }

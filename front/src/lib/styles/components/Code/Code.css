@@ -1,26 +1,26 @@
 @import 'syntax.css';
+
 .syntax-highlighter {
   @apply my-9
     w-full
     rounded-lg
     shadow-lg
     sm:w-auto;
-  padding: 0 1.75rem 0 1.5rem;
   position: relative;
   z-index: 3;
   transition: transform 0s;
   background-color: rgb(var(--background-pre-rgb));
+  padding: 0 1.75rem 0 1.5rem;
   padding-bottom: 1.5rem;
-  &.copied {
-    transform: scale(1.01);
-    transition: transform 50ms ease-out;
+  &.copying {
+    transform: scale(101%);
   }
   &:hover,
   &:focus {
     .title,
     .language,
     .code-copy-btn {
-      color: rgba(var(--foreground-rgb), 0.77);
+      color: rgba(var(--link-rgb), 0.77);
     }
   }
   .title,
@@ -66,13 +66,13 @@
     padding: 0.75rem;
     color: rgba(var(--foreground-rgb), 0.33);
     line-height: 1.6;
+    transition: color 333ms;
     > * {
-      @apply dg--transition-effect;
       pointer-events: none;
     }
     &:hover,
-    &:focus {
-      color: rgba(var(--highlight-rgb), 1);
+    &:focus-visible {
+      color: rgba(var(--foreground-rgb), 1);
     }
     &:active {
       top: 2px;
@@ -89,28 +89,47 @@
     }
     .icon-code-copied {
       display: none;
+      opacity: 0;
+      transition: opacity 333ms;
     }
-    &.copied {
-      color: rgba(var(--foreground-rgb), 0.77);
+    &.copying {
+      pointer-events: none;
+      cursor: default;
+      color: rgba(var(--foreground-rgb), 1);
       .icon-code-copy {
-        opacity: 0;
-        height: 0;
+        display: none;
       }
       .icon-code-copied {
         display: inline;
+        opacity: 1;
+      }
+      &.copied {
+        .icon-code-copy {
+          display: inline;
+          opacity: 0;
+        }
+      }
+    }
+    &.copied {
+      .icon-code-copy {
+        opacity: 1;
+      }
+      .icon-code-copied {
+        display: inline;
+        opacity: 0;
       }
     }
   }
   > pre {
-    padding-top: 5rem;
-    margin-bottom: -0.5rem;
-    padding-bottom: 0.5rem;
     position: relative;
     transition: scrollbar-color 0.5s;
+    margin-bottom: -0.5rem;
+    padding-top: 5rem;
+    padding-bottom: 0.5rem;
     overflow-x: auto;
     scrollbar-color: transparent transparent;
-    scrollbar-width: thin;
     scrollbar-gutter: stable both-edges;
+    scrollbar-width: thin;
     color: rgb(var(--foreground-rgb));
     &::-webkit-scrollbar {
       background-color: transparent;
@@ -139,8 +158,8 @@
     transition: scrollbar-color 0.5s;
     margin-bottom: -0.5rem;
     overflow-x: auto;
-    scrollbar-gutter: stable both-edges;
     scrollbar-color: transparent transparent;
+    scrollbar-gutter: stable both-edges;
     scrollbar-width: thin;
     &::-webkit-scrollbar {
       transition: background-color 0.5s;
