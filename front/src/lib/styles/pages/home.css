@@ -17,7 +17,7 @@
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
       var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
     border: 1px solid rgba(var(--foreground-rgb), 0.5);
-    border-radius: 100%;
+    border-radius: 50%;
     width: 120px;
     height: 120px;
     @apply dg--transition-effect;

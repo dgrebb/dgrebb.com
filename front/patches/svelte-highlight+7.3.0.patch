@@ -1,5 +1,5 @@
 diff --git a/node_modules/svelte-highlight/LineNumbers.svelte b/node_modules/svelte-highlight/LineNumbers.svelte
-index 4312cb3..87e26a7 100644
+index 4312cb3..d9380da 100644
 --- a/node_modules/svelte-highlight/LineNumbers.svelte
 +++ b/node_modules/svelte-highlight/LineNumbers.svelte
 @@ -14,14 +14,32 @@ $:
@@ -37,3 +37,52 @@ index 4312cb3..87e26a7 100644
            <td
              class:hljs={true}
              class:hideBorder
+@@ -34,21 +52,9 @@ $:
+             <code style:color="var(--line-number-color, currentColor)">
+               {lineNumber}
+             </code>
+-            {#if highlightedLines.includes(i)}
+-              <div
+-                class:line-background={true}
+-                style:background="var(--highlighted-background, {HIGHLIGHTED_BACKGROUND})"
+-              />
+-            {/if}
+           </td>
+           <td>
+             <pre class:wrapLines><code>{@html line || "\n"}</code></pre>
+-            {#if highlightedLines.includes(i)}
+-              <div
+-                class:line-background={true}
+-                style:background="var(--highlighted-background, {HIGHLIGHTED_BACKGROUND})"
+-              />
+-            {/if}
+           </td>
+         </tr>
+       {/each}
+@@ -117,26 +123,4 @@ $:
+   pre {
+     z-index: 1;
+   }
+-
+-  .line-background {
+-    position: absolute;
+-    z-index: 0;
+-    top: 0;
+-    left: 0;
+-    width: 100%;
+-    height: 100%;
+-  }
+-
+-  tr:first-of-type td .line-background,
+-  tr:last-of-type td .line-background {
+-    height: calc(100% - 1em);
+-  }
+-
+-  tr:first-of-type td .line-background {
+-    top: 1em;
+-  }
+-
+-  tr:last-of-type td .line-background {
+-    bottom: 1em;
+-  }
+ </style>
