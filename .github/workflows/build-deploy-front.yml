@@ -1,17 +1,16 @@
-name: Build & Deploy Frontend
+name: 🚜 B&D FE
 
 on:
   pull_request:
-    paths: 
-      - 'front/**'
+    paths:
+      - "front/**"
     branches: [main, develop]
   workflow_dispatch:
-  
 
 jobs:
   front:
     name: Frontend
-    concurrency: 
+    concurrency:
       group: frontend
       cancel-in-progress: true
     runs-on: ubuntu-latest
@@ -20,8 +19,7 @@ jobs:
       name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
 
     steps:
-
-      - name: Checkout
+      - name: ⬇ Checkout
         uses: actions/checkout@v3
         with:
           repository: dgrebb/dgrebb.com
@@ -29,7 +27,7 @@ jobs:
           token: ${{ github.token }}
           fetch-depth: 0
 
-      - name: Set .env
+      - name: ⚙ Set .env
         run: |
           touch front/.env
           echo PUBLIC_API_URL='${{ secrets.PUBLIC_API_URL }}' >> front/.env
@@ -49,23 +47,25 @@ jobs:
           echo PUBLIC_ENV=${{ secrets.PUBLIC_ENV }} >> front/.env
           cat front/.env
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: ⬢ Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: "18.x"
+          cache: "npm"
+          cache-dependency-path: front/package-lock.json
 
-      - name: Build
-        id: npm-build
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: bash _ci/build.sh
+      - name: ⇣ Install
+        run: cd front && npm ci
 
-      - name: Robots
+      - name: ↻ Build
+        run: npm run build
+
+      - name: 🤖 Robots
         if: ${{ github.ref_name == 'main' }}
         run: |
           sed -i 's/^Disallow\: \/$/Allow\: \//' front/build/robots.txt
 
-      - name: Deploy
+      - name: ↥ Deploy
         uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks --delete --cache-control max-age=2853200,public
@@ -76,7 +76,7 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           SOURCE_DIR: "front/build"
 
-      - name: Invalidate CloudFront
+      - name: ∅ Invalidate CloudFront
         uses: chetan/invalidate-cloudfront-action@v2
         env:
           DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
