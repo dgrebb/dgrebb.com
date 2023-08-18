@@ -1,16 +1,14 @@
-name: Release Dispatch
+name: ➡ Merge B&D FE
 
 on:
   push:
     branches:
-      - release/**
-  pull_request:
-    branches:
       - main
+      - develop
 
 jobs:
 
-  release:
+  frontend:
     runs-on: ubuntu-latest
 
     steps:
