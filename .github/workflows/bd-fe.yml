@@ -2,6 +2,7 @@ name: 🚜 B&D Front End
 
 on:
   workflow_dispatch:
+    branches: [main, develop]
   pull_request:
     paths:
       - "front/**"
