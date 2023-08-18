@@ -39,7 +39,8 @@
 }
 
 .nav-bar {
-  @apply flex 
+  @apply dg--font-ps
+    flex 
     flex-shrink
     items-center
     justify-center;
