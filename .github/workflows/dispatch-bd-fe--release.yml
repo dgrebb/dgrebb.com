@@ -1,19 +1,21 @@
-name: Dispatch Frontend Build & Deploy
+name: ➡ 🚀 B&D FE Release
 
 on:
   push:
     branches:
+      - release/**
+  pull_request:
+    branches:
       - main
-      - develop
 
 jobs:
 
-  frontend:
+  release:
     runs-on: ubuntu-latest
 
     steps:
 
-      - name: Dispatch Frontend
+      - name: 🛰️ Dispatch B&D FE
         run: |
           curl -X POST https://api.github.com/repos/dgrebb/dgrebb.com/actions/workflows/${{ secrets.FRONTEND_WORKFLOW_ID }}/dispatches \
           -H 'Accept: application/vnd.github+json' \
