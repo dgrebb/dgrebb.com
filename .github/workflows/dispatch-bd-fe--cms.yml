@@ -5,6 +5,22 @@ on:
     branches: [main, develop]
 
 jobs:
+  approve:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: ✓ Approve CMS Dispatch
+        uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: dgrebb
+          minimum-approvals: 1
+          issue-title: "Deploying ${{ github.ref_name }} via CMS Dispatch Event"
+          issue-body: "Please approve or deny the deployment of version ${{ github.ref_name }}."
+          exclude-workflow-initiator-as-approver: false
+          additional-approved-words: ""
+          additional-denied-words: ""
 
   frontend:
     runs-on: ubuntu-latest
