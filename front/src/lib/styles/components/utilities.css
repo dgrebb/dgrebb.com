@@ -14,11 +14,11 @@
     --background-pre-highlight-rgb: 243, 250, 157;
     --btn--secondary-rgb: 170	45	64;
     --btn-secondary-highlight-rgb: 233,	223, 212;
-    --highlight-rgb: 244,	66,	54;
+    --highlight-rgb: 145, 15, 35;
     --subdued-rgb: 232, 234, 205;
     --transform-duration: 500ms;
     --transform-timing-function: ease-in-out;
-    --text-accent-rgb: 64, 11, 19;
+    --text-accent-rgb: 82, 2, 15;
     --link-rgb: 244, 67, 54;
   }
   .dg--dark-theme {
