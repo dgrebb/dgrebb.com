@@ -58,7 +58,7 @@ jobs:
         run: cd front && npm ci
 
       - name: ↻ Build
-        run: npm run build
+        run: cd front && npm run build
 
       - name: 🤖 Robots
         if: ${{ github.ref_name == 'main' }}
