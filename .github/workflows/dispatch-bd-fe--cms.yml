@@ -3,13 +3,14 @@ name: 📡 CMS Publish
 on:
   workflow_dispatch:
     branches: [main, develop]
+    permissions:
+      issues: write
 
 jobs:
   approve:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: ✓ Approve CMS Dispatch
         uses: trstringer/manual-approval@v1
         with:
@@ -26,7 +27,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: 🛰️ Dispatch B&D FE
         run: |
           curl -X POST https://api.github.com/repos/dgrebb/dgrebb.com/actions/workflows/bd-fe.yml/dispatches \
