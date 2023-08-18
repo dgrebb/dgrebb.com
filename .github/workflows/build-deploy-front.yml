@@ -47,18 +47,15 @@ jobs:
           echo PUBLIC_ENV=${{ secrets.PUBLIC_ENV }} >> front/.env
           cat front/.env
 
-      - name: ⬢ Use Node.js ${{ matrix.node-version }}
+      - name: ⬢ Install & Build
         uses: actions/setup-node@v3
         with:
           node-version: "18.x"
           cache: "npm"
           cache-dependency-path: front/package-lock.json
-
-      - name: ⇣ Install
-        run: cd front && npm ci
-
-      - name: ↻ Build
-        run: cd front && npm run build
+        
+      - run: cd front && npm ci
+      - run: cd front && npm run build
 
       - name: 🤖 Robots
         if: ${{ github.ref_name == 'main' }}
