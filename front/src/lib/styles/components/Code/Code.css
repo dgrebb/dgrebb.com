@@ -208,6 +208,9 @@
         );
         color: rgba(var(--foreground-rgb), 0.15);
       }
+      td:last-child code {
+        padding: 0 0.5rem;
+      }
       tbody {
         tr:first-child td {
           padding-top: 0;
@@ -219,7 +222,6 @@
           td:last-child code {
             border: 1px solid rgba(var(--background-pre-highlight-rgb));
             background-color: rgba(var(--background-pre-highlight-rgb));
-            padding-right: 1rem;
           }
           &.first {
             td:last-child code {
