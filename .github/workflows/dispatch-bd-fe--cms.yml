@@ -3,12 +3,12 @@ name: 📡 CMS Publish
 on:
   workflow_dispatch:
     branches: [main, develop]
-    permissions:
-      issues: write
 
 jobs:
   approve:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
 
     steps:
       - name: ✓ Approve CMS Dispatch
