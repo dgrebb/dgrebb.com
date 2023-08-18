@@ -20,6 +20,7 @@ const config = {
       '@styles': path.resolve('./src/lib/styles'),
       '@utils': path.resolve('./src/lib/_utils'),
     },
+    inlineStyleThreshold: Infinity,
     prerender: {
       handleHttpError: ({ path, referrer, message }) => {
         if (path === '/404' && referrer === '/privacy/') {
