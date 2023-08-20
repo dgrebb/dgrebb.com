@@ -2,7 +2,8 @@
   import { page } from '$app/stores';
   import Meta from '@components/Meta.svelte';
   import PageTransition from '@components/PageTransition.svelte';
-  import SamePageTransition from '@components/SamePageTransition.svelte';
+  import TransitionFade from '@components/TransitionFade.svelte';
+  import TransitionElasticFly from '@components/TransitionElasticFly.svelte';
   import Link from '@components/content/renderers/Link.svelte';
   import Flourish from '@layout/Flourish.svelte';
   import SvelteMarkdown from 'svelte-markdown';
@@ -26,21 +27,24 @@
     });
     e.target.classList.toggle('active', true);
   };
+
 </script>
 
 <PageTransition transitionKey={route}>
   <section class="category">
     <header class="category-head">
-      <h1 class="page-heading">{headline}</h1>
+      <a id="main">Main Content</a>
+      <h1 class="page-heading">{headline} /</h1>
+      <TransitionFade transitionKey={name} delay={500} duration={333}>
+        <h2 class="category-name">
+          {name}
+        </h2>
+      </TransitionFade>
       <PageNav {categories} mini top {pathname} {setActiveLink} />
-      <SamePageTransition transitionKey={name}>
-        <a id="main">Main Content</a>
-        <h2 class="category-name">{name}</h2>
-      </SamePageTransition>
     </header>
     <div class="category-posts-list">
       <Flourish />
-      <SamePageTransition transitionKey={name} animateHeight>
+      <TransitionElasticFly transitionKey={name} delay={500}>
         {#if posts && posts.length}
           <ul>
             {#each posts as { attributes: { title, publishedAt, slug, summary, position, hero: { data: { attributes: { formats: { thumbnail } } } } } }, i}
@@ -57,7 +61,7 @@
                       `background-position: ${position};`}"
                   />
                 </a>
-                {#if summary}
+                {#if summary && summary.length}
                   <div class="post-item-summary">
                     <SvelteMarkdown
                       renderers={{ link: Link }}
@@ -71,7 +75,7 @@
         {:else}
           <p class="summary">There aren't any posts yet! Come back soon.</p>
         {/if}
-      </SamePageTransition>
+      </TransitionElasticFly>
     </div>
 
     <aside class="category-aside">
