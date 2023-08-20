@@ -41,6 +41,7 @@
           if (event.server_name) {
             delete event.server_name;
           }
+          return event;
         },
       });
       Sentry.captureMessage("Page Not Found", {
