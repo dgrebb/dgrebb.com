@@ -41,7 +41,7 @@ while test "$1" != --; do
         pwd
         cdfront && sudo http-server -b -S -p 443 -a local.dgrebb.com \
         -C local.dgrebb.com.crt -K local.dgrebb.com.key \
-        ./build
+        --cors='*' ./build
         break
         ;;
     p | preview)

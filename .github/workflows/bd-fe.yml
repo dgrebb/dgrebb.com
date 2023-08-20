@@ -9,18 +9,18 @@ on:
     branches: [main, develop]
 
 jobs:
-  front:
-    name: Build & Deploy
+  build:
+    name: 🏗️ Build
+    runs-on: ubuntu-latest
     concurrency:
       group: frontend
       cancel-in-progress: true
-    runs-on: ubuntu-latest
 
     environment:
       name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
 
     steps:
-      - name:  Checkout
+      - name: 𐂷 Checkout
         uses: actions/checkout@v3
         with:
           repository: dgrebb/dgrebb.com
@@ -59,14 +59,47 @@ jobs:
         run: cd front && npm ci
 
       - name: ↻ Build
-        run: cd front && npm run build
+        id: build
+        run: cd front && npm run build >> "$GITHUB_OUTPUT"
 
+  sentry:
+    name: ⟁ Sentry release
+    runs-on: ubuntu-latest
+    concurrency:
+      group: frontend
+      cancel-in-progress: true
+    needs: build
+
+    steps:
+      - name: 🗺️ Release & Map
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+        with:
+          environment: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+          finalize: ${{ github.ref_name == 'main' && true || false }}
+          sourcemaps: "front/build"
+          version: ${{ github.ref_name == 'staging' && 'pre-' }}${{ github.ref }}
+
+  deploy:
+    name: 🚀 Deploy
+    runs-on: ubuntu-latest
+    concurrency:
+      group: frontend
+      cancel-in-progress: true
+    environment:
+      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+    needs: build
+
+    steps:
       - name: 🤖 Robots
         if: ${{ github.ref_name == 'main' }}
         run: |
           sed -i 's/^Disallow\: \/$/Allow\: \//' front/build/robots.txt
 
-      - name: ↥ Deploy
+      - name: 🫙 Sync S3
         uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks --delete --cache-control max-age=2853200,public
