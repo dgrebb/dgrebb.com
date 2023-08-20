@@ -1,3 +1,4 @@
+import { sentrySvelteKit } from '@sentry/sveltekit';
 import { sveltekit } from '@sveltejs/kit/vite';
 import path from 'path';
 import Icons from 'unplugin-icons/vite';
@@ -6,6 +7,12 @@ import postcss from './postcss.config.js';
 
 export default defineConfig({
   plugins: [
+    sentrySvelteKit({
+      sourceMapsUploadOptions: {
+        org: 'dgrebb',
+        project: 'dgrebb',
+      },
+    }),
     sveltekit(),
     Icons({
       compiler: 'svelte',
