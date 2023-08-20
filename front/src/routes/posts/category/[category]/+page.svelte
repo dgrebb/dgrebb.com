@@ -27,7 +27,6 @@
     });
     e.target.classList.toggle('active', true);
   };
-
 </script>
 
 <PageTransition transitionKey={route}>
