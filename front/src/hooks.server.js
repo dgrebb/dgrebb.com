@@ -6,8 +6,9 @@ import { dev, building } from '$app/environment';
 Sentry.init({
   dsn: PUBLIC_SENTRY_DSN,
   environment: PUBLIC_ENV,
-  tracesSampleRate: PUBLIC_ENV === 'production' ? 0.1 : 1.0,
-  profilesSampleRate: PUBLIC_ENV === 'production' ? 0.1 : 1.0,
+  tracesSampleRate: PUBLIC_ENV === 'production' ? 0.3 : 0.5,
+  replaysSessionSampleRate: PUBLIC_ENV === 'production' ? 0.3 : 0.5,
+  replaysOnErrorSampleRate: PUBLIC_ENV === 'production' ? 0.3 : 0.5,
   integrations: [],
   beforeSend(event) {
     if (event.user) {
@@ -16,6 +17,7 @@ Sentry.init({
     if (event.server_name) {
       delete event.server_name;
     }
+    return event;
   },
 });
 

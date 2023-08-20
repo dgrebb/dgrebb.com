@@ -11,9 +11,9 @@ Sentry.init({
     }),
     new Sentry.Replay(),
   ],
-  tracesSampleRate: PUBLIC_ENV === "production" ? 0.3 : 0.0,
-  replaysSessionSampleRate: PUBLIC_ENV === "production" ? 0.3 : 0.0,
-  replaysOnErrorSampleRate: PUBLIC_ENV === "production" ? 0.3 : 0.0,
+  tracesSampleRate: PUBLIC_ENV === "production" ? 0.3 : 0.5,
+  replaysSessionSampleRate: PUBLIC_ENV === "production" ? 0.3 : 0.5,
+  replaysOnErrorSampleRate: PUBLIC_ENV === "production" ? 0.3 : 0.5,
   beforeSend(event) {
     if (event.user) {
       delete event.user.ip;
@@ -21,6 +21,7 @@ Sentry.init({
     if (event.server_name) {
       delete event.server_name;
     }
+    return event;
   },
 });
 
