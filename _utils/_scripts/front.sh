@@ -38,7 +38,10 @@ while test "$1" != --; do
         break
         ;;
     s | http-server)
-        cdfront && http-server ./build
+        pwd
+        cdfront && sudo http-server -b -S -p 443 -a local.dgrebb.com \
+        -C local.dgrebb.com.crt -K local.dgrebb.com.key \
+        ./build
         break
         ;;
     p | preview)
