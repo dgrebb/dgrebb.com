@@ -10,3 +10,6 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 *.crt
 *.key
+
+# Sentry Auth Token
+.sentryclirc
