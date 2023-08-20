@@ -10,10 +10,6 @@
 
   function animateOut(node) {
     const nodeOut = node.currentTarget;
-    console.log(
-      '🚀 ~ file: TransitionElasticFly.svelte:12 ~ animateOut ~ nodeOut:',
-      nodeOut
-    );
 
     if ($navigating) {
       if ($navigating.from.route.id === $navigating.to.route.id) {
@@ -22,16 +18,13 @@
           [
             {
               height: initialHeight + 'px',
-              overflow: 'hidden',
             },
             {
-              height: 80 + 'px',
-              overflow: 'hidden',
+              height: 0 + 'px',
             },
           ],
-          { duration: 4500, fill: 'both', easing: 'ease-out' }
+          { duration, fill: 'both', easing: 'ease-in-out' }
         );
-        // animation.play();
       }
     }
   }
@@ -46,16 +39,13 @@
           [
             {
               height: initialHeight + 'px',
-              overflow: 'hidden',
             },
             {
               height: newHeight + 'px',
-              overflow: 'hidden',
             },
           ],
-          { duration: 1000, fill: 'both', easing: 'ease-out' }
+          { duration, fill: 'both', easing: 'ease-in-out' }
         );
-        // animation.play();
       }
     }
   }
