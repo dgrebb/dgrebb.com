@@ -3,7 +3,7 @@ import { PUBLIC_ENV, PUBLIC_SENTRY_DSN } from '$env/static/public';
 
 Sentry.init({
   dsn: PUBLIC_SENTRY_DSN,
-  debug: true,
+  debug: PUBLIC_ENV === 'development' ? true : false,
   environment: PUBLIC_ENV,
   integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
   tracePropagationTargets: ['localhost', /^https:\/\/\*\.dgrebb\.com\/api/],
