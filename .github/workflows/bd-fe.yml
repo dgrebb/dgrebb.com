@@ -7,10 +7,12 @@ on:
     paths:
       - "front/**"
     branches: [main, develop]
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
 jobs:
   build:
-    name: 🏗️ Build
+    name: 🚜 Build & Deploy
     runs-on: ubuntu-latest
     concurrency:
       group: frontend
@@ -46,60 +48,40 @@ jobs:
           echo API_KEY=${{ secrets.API_KEY }} >> front/.env
           echo PUBLIC_SENTRY_DSN=${{ secrets.PUBLIC_SENTRY_DSN }} >> front/.env
           echo PUBLIC_ENV=${{ secrets.PUBLIC_ENV }} >> front/.env
+          echo SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} >> front/.env
           cat front/.env
 
       - name: ⬢ Setup Node & Cache
         uses: actions/setup-node@v3
         with:
-          node-version: "18.x"
+          node-version: "18.17.1"
           cache: "npm"
           cache-dependency-path: front/package-lock.json
-        
-      - name: ↧ Install
+
+      - name: ↧ Install & Patch
         run: cd front && npm ci
+
+      - name: 📛 Set Sentry Release
+        if: ${{ github.ref_name != 'main' }}
+        env:
+          name: "${{env.BRANCH_NAME}}"
+        run: |
+          echo "RELEASE_NAME=stg-${name/\//-}" >> $GITHUB_ENV
 
       - name: ↻ Build
         id: build
-        run: cd front && npm run build >> "$GITHUB_OUTPUT"
+        run: >
+          cd front &&
+          SENTRY_RELEASE=${{ env.RELEASE_NAME }}
+          SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} 
+          npm run build
 
-  sentry:
-    name: ⟁ Sentry release
-    runs-on: ubuntu-latest
-    concurrency:
-      group: frontend
-      cancel-in-progress: true
-    needs: build
-
-    steps:
-      - name: 🗺️ Release & Map
-        uses: getsentry/action-release@v1
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
-          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
-        with:
-          environment: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
-          finalize: ${{ github.ref_name == 'main' && true || false }}
-          sourcemaps: "front/build"
-          version: ${{ github.ref_name == 'staging' && 'pre-' }}${{ github.ref }}
-
-  deploy:
-    name: 🚀 Deploy
-    runs-on: ubuntu-latest
-    concurrency:
-      group: frontend
-      cancel-in-progress: true
-    environment:
-      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
-    needs: build
-
-    steps:
       - name: 🤖 Robots
         if: ${{ github.ref_name == 'main' }}
         run: |
           sed -i 's/^Disallow\: \/$/Allow\: \//' front/build/robots.txt
 
-      - name: 🫙 Sync S3
+      - name: ↕ Sync S3
         uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks --delete --cache-control max-age=2853200,public
@@ -118,3 +100,41 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+  # sentry:
+  #   name: ⟁ Sentry Release
+  #   runs-on: ubuntu-latest
+  #   concurrency:
+  #     group: sentry
+  #     cancel-in-progress: true
+  #   needs: build
+
+  #   steps:
+  #     - name: 📛 Set Friendly Branch Name
+  #       if: ${{ github.ref_name != 'main' }}
+  #       env:
+  #         name: "${{env.BRANCH_NAME}}"
+  #       run: |
+  #         echo "MODIFIED_BRANCH_NAME=${name/\//-}" >> $GITHUB_ENV
+
+  #     - name: 📋 Release Summary
+  #       run: |
+  #         SUMMARY=$'# Sentry Release Summary\n- Environment: ${{ github.ref_name == 'main' && 'production' || 'staging' }}\n- Finalize: ${{ github.ref_name == 'main' && true || false }}\n- Version: ${{ github.ref_name == 'main' && '${{ GITHUB_REF }}' || 'stg-' }}${{ env.MODIFIED_BRANCH_NAME }}'
+  #         echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
+
+  #     - name: 📦 Download Build Artifact
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name: build
+
+  #     - name: 🗺️ Release & Map
+  #       uses: getsentry/action-release@v1
+  #       env:
+  #         SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+  #         SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+  #         SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+  #       with:
+  #         environment: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+  #         finalize: ${{ github.ref_name == 'main' && true || false }}
+  #         sourcemaps: "s"
+  #         version: ${{ github.ref_name == 'main' && '${{ GITHUB_REF }}' || 'stg-' }}${{ env.MODIFIED_BRANCH_NAME }}'
