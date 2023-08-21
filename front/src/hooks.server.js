@@ -6,9 +6,9 @@ import { dev, building } from '$app/environment';
 Sentry.init({
   dsn: PUBLIC_SENTRY_DSN,
   environment: PUBLIC_ENV,
-  tracesSampleRate: PUBLIC_ENV === 'production' ? 0.3 : 0.5,
-  replaysSessionSampleRate: PUBLIC_ENV === 'production' ? 0.3 : 0.5,
-  replaysOnErrorSampleRate: PUBLIC_ENV === 'production' ? 0.3 : 0.5,
+  tracesSampleRate: PUBLIC_ENV === 'production' ? 0.3 : 0,
+  replaysSessionSampleRate: PUBLIC_ENV === 'production' ? 0.3 : 0,
+  replaysOnErrorSampleRate: PUBLIC_ENV === 'production' ? 0.3 : 0,
   integrations: [],
   beforeSend(event) {
     if (event.user) {
@@ -24,9 +24,6 @@ Sentry.init({
 export function handleError({ error, event }) {
   Sentry.captureException(error, { extra: { event } });
 
-  // console.log("Event:");
-  // console.log(event);
-  // console.log('')
   console.log('Error:');
   console.log(error);
 
