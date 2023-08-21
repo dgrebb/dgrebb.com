@@ -1,7 +1,7 @@
 <script>
-  import PageTransition from "@components/PageTransition.svelte";
-  import Flourish from "@layout/Flourish.svelte";
-  import "@styles/pages/not-found.css";
+  import PageTransition from '@components/PageTransition.svelte';
+  import Flourish from '@layout/Flourish.svelte';
+  import '@styles/pages/not-found.css';
   export let data;
   $: ({ pathname } = data);
 </script>
@@ -18,21 +18,22 @@
 
 <svelte:head>
   <script
-    src="https://browser.sentry-cdn.com/7.54.0/bundle.tracing.min.js"
-    integrity="sha384-+h0OKHbAGUGuqyOQt8GPxoAlivqJAJnscoCE5ftl2SV77nWLjqoXvT4p6QLPjEh1"
+    src="https://js.sentry-cdn.com/02b9c4dc55d14cf5bbdd30b7e592eb9a.min.js"
     crossorigin="anonymous"
   ></script>
   <script id="four-ohhhhh-four">
-    const { hostname: e } = document.location;
-    const environment = e.includes("local")
-      ? "development"
-      : e.includes("stg")
-      ? "staging"
-      : "production";
+    const { hostname: sentEnv } = document.location;
+    const environment = sentEnv.includes('local')
+      ? 'development'
+      : sentEnv.includes('stg')
+      ? 'staging'
+      : 'production';
     if (Sentry) {
       Sentry.init({
-        dsn: "https://02b9c4dc55d14cf5bbdd30b7e592eb9a@o4505287560462336.ingest.sentry.io/4505312527187968",
-        tracesSampleRate: 1,
+        dsn: 'https://02b9c4dc55d14cf5bbdd30b7e592eb9a@o4505287560462336.ingest.sentry.io/4505312527187968',
+        tracesSampleRate: 1.0,
+        replaysSessionSampleRate: 0.1,
+        replaysOnErrorSampleRate: 1.0,
         environment,
         beforeSend(event) {
           if (event.user) {
@@ -44,7 +45,7 @@
           return event;
         },
       });
-      Sentry.captureMessage("Page Not Found", {
+      Sentry.captureMessage('Page Not Found', {
         page: document.location.pathname,
       });
     }
