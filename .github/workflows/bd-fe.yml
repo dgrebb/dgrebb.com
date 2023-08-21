@@ -67,13 +67,15 @@ jobs:
           name: "${{env.BRANCH_NAME}}"
         run: |
           echo "RELEASE_NAME=stg-${name/\//-}" >> $GITHUB_ENV
+          echo "DIST=$(date +%y%m%d-%H%M%S)"
 
       - name: ↻ Build
         id: build
         run: >
           cd front &&
-          SENTRY_RELEASE=${{ env.RELEASE_NAME }}
+          RELEASE_NAME=${{ env.RELEASE_NAME }}
           SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} 
+          DIST=${{ env.DIST }}
           npm run build
 
       - name: 🤖 Robots

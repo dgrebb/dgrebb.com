@@ -9,19 +9,19 @@ export default defineConfig({
   plugins: [
     sentrySvelteKit({
       sourceMapsUploadOptions: {
-        telemetry: false,
-        debug: true,
         authToken: process.env.SENTRY_AUTH_TOKEN,
-        rewrite: false,
         org: 'dgrebb',
         project: 'dgrebb',
-        release: {
-          name: process.env.SENTRY_RELEASE,
-          finalize: false,
-          setCommits: {
-            auto: true,
-          },
+        telemetry: false,
+        debug: true,
+        rewrite: false,
+        include: ['build'],
+        setCommits: {
+          auto: true,
         },
+        release: process.env.RELEASE_NAME,
+        dist: process.env.DIST,
+        finalize: false,
       },
     }),
     sveltekit(),
