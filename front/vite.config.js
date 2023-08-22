@@ -14,7 +14,6 @@ export default defineConfig({
         project: 'dgrebb',
         telemetry: false,
         debug: true,
-        rewrite: false,
         include: ['build'],
         setCommits: {
           auto: true,

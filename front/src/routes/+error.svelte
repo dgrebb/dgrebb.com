@@ -4,16 +4,22 @@
   import Flourish from '@layout/Flourish.svelte';
   import * as Sentry from '@sentry/sveltekit';
   import '@styles/pages/not-found.css';
-  import { error } from '@sveltejs/kit';
   export let data;
   $: ({ pathname } = data);
   Sentry.setContext('SvelteKit', {
-    page: $page,
+    url: $page.url,
+    params: $page.params,
+    route: $page.route.id,
+    status: $page.status,
+    error: $page.error.message,
+    data: $page.data,
   });
+  console.log("🚀 ~ file: +error.svelte:11 ~ $page:", $page)
   Sentry.captureMessage('Page Not Found', {
-    extra: {
-      error,
+    tags: {
+      status: 'NOT_FOUND',
     },
+    status: 'NOT_FOUND',
   });
 </script>
 

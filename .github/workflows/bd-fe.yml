@@ -67,7 +67,7 @@ jobs:
           name: "${{env.BRANCH_NAME}}"
         run: |
           echo "RELEASE_NAME=stg-${name/\//-}" >> $GITHUB_ENV
-          echo "DIST=$(date +%y%m%d-%H%M%S)"
+          echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
 
       - name: ↻ Build
         id: build
@@ -103,40 +103,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-  # sentry:
-  #   name: ⟁ Sentry Release
-  #   runs-on: ubuntu-latest
-  #   concurrency:
-  #     group: sentry
-  #     cancel-in-progress: true
-  #   needs: build
-
-  #   steps:
-  #     - name: 📛 Set Friendly Branch Name
-  #       if: ${{ github.ref_name != 'main' }}
-  #       env:
-  #         name: "${{env.BRANCH_NAME}}"
-  #       run: |
-  #         echo "MODIFIED_BRANCH_NAME=${name/\//-}" >> $GITHUB_ENV
-
-  #     - name: 📋 Release Summary
-  #       run: |
-  #         SUMMARY=$'# Sentry Release Summary\n- Environment: ${{ github.ref_name == 'main' && 'production' || 'staging' }}\n- Finalize: ${{ github.ref_name == 'main' && true || false }}\n- Version: ${{ github.ref_name == 'main' && '${{ GITHUB_REF }}' || 'stg-' }}${{ env.MODIFIED_BRANCH_NAME }}'
-  #         echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
-
-  #     - name: 📦 Download Build Artifact
-  #       uses: actions/download-artifact@v3
-  #       with:
-  #         name: build
-
-  #     - name: 🗺️ Release & Map
-  #       uses: getsentry/action-release@v1
-  #       env:
-  #         SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-  #         SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
-  #         SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
-  #       with:
-  #         environment: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
-  #         finalize: ${{ github.ref_name == 'main' && true || false }}
-  #         sourcemaps: "s"
-  #         version: ${{ github.ref_name == 'main' && '${{ GITHUB_REF }}' || 'stg-' }}${{ env.MODIFIED_BRANCH_NAME }}'
+      - name: 📋 Summary
+        run: |
+          SUMMARY=$'# Workflow Summary\## Run Initiator\n- Actor: ${{ env.GITHUB_ACTOR }}\n- Event: ${{ env.GITHUB_EVENT_NAME }} ## Sentry Release\n- Environment: ${{ github.ref_name == 'main' && 'production' || 'staging' }}\n- Release: [${{ env.RELEASE_NAME }} }}](https://dgrebb.sentry.io/releases/${{ env.RELEASE_NAME }})\n- Dist: ${{ env.DIST }}'
+          echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY

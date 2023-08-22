@@ -13,11 +13,9 @@ export default defineConfig({
         uploadSourceMaps: process.env.UPLOAD_SOURCEMAPS || false,
         telemetry: false,
         debug: true,
-        rewrite: false,
         org: 'dgrebb',
         project: 'dgrebb',
         include: ['build'],
-        cleanArtifacts: true,
         setCommits: {
           auto: true,
         },
