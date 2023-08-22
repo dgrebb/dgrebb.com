@@ -9,7 +9,8 @@ Sentry.init({
   tracePropagationTargets: ['localhost', /^https:\/\/\*\.dgrebb\.com\/api/],
   tracesSampleRate: PUBLIC_ENV === 'production' ? 0.3 : 0.5,
   replaysSessionSampleRate: PUBLIC_ENV === 'production' ? 0.3 : 0.5,
-  replaysOnErrorSampleRate: PUBLIC_ENV === 'production' ? 1 : 0.5,
+  replaysOnErrorSampleRate: PUBLIC_ENV === 'production' ? 1 : 0,
+  normalizeDepth: 0,
   beforeSend(event) {
     if (event.user) {
       delete event.user.ip;
