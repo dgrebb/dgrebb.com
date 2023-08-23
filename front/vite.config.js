@@ -21,6 +21,9 @@ export default defineConfig({
         release: process.env.RELEASE_NAME,
         dist: process.env.DIST,
         finalize: false,
+        deploy: {
+          env: process.env.DEPLOY_ENV,
+        },
       },
     }),
     sveltekit(),
