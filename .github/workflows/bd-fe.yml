@@ -22,6 +22,21 @@ jobs:
       name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
 
     steps:
+      - name: 📋 Summary
+        env:
+          name: "${{env.BRANCH_NAME}}"
+          EVENT_NAME: "${{ github.event_name }}"
+        run: |
+          echo "RELEASE_NAME=stg-${name/\//-}" >> $GITHUB_ENV
+          echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
+          echo "DEPLOY_ENV=${{ vars.ENV_NAME }}" >> $GITHUB_ENV
+          echo '# Job Summary' >> $GITHUB_STEP_SUMMARY
+          echo '## Run Details \n- Environment: ${{ vars.ENV_NAME }}\n- Branch: [${{ env.BRANCH_NAME }}](https://github.com/dgrebb/dgrebb.com/tree/${{ env.BRANCH_NAME }})' >> $GITHUB_STEP_SUMMARY
+          if [ "$EVENT_NAME" = "pull_request" ]; then 
+            echo '- Pull Request: [#${{ github.event.number }}](https://github.com/dgrebb/dgrebb.com/pull/${{ github.event.number }})' >> $GITHUB_STEP_SUMMARY
+          fi
+          echo '## Run Initiator\n- Actor: ${{ github.actor }}\n- Event: ${{ github.event_name }}\n## Sentry Release\n- Release: [${{ env.RELEASE_NAME }}](https://dgrebb.sentry.io/releases/${{ env.RELEASE_NAME }})\n- Dist: ${{ env.DIST }}' >> $GITHUB_STEP_SUMMARY
+
       - name: 𐂷 Checkout
         uses: actions/checkout@v3
         with:
@@ -61,15 +76,6 @@ jobs:
       - name: ↧ Install & Patch
         run: cd front && npm ci
 
-      - name: 📛 Set Sentry Release
-        if: ${{ github.ref_name != 'main' }}
-        env:
-          name: "${{env.BRANCH_NAME}}"
-        run: |
-          echo "RELEASE_NAME=stg-${name/\//-}" >> $GITHUB_ENV
-          echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
-          echo "DEPLOY_ENV=${{ vars.ENV_NAME }}" >> $GITHUB_ENV
-
       - name: ↻ Build
         id: build
         run: >
@@ -104,8 +110,3 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
-      - name: 📋 Summary
-        run: |
-          SUMMARY=$'# Job Summary \n## Run Details \n- Environment: ${{ vars.ENV_NAME }}\n- Branch: [${{ env.BRANCH_NAME }}](https://github.com/dgrebb/dgrebb.com/tree/${{ env.BRANCH_NAME }}) \n## Run Initiator\n- Actor: ${{ github.actor }}\n- Event: ${{ github.event_name }}\n## Sentry Release\n- Release: [${{ env.RELEASE_NAME }}](https://dgrebb.sentry.io/releases/${{ env.RELEASE_NAME }})\n- Dist: ${{ env.DIST }}'
-          echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
