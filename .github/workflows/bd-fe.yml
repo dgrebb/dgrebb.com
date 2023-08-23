@@ -68,13 +68,13 @@ jobs:
         run: |
           echo "RELEASE_NAME=stg-${name/\//-}" >> $GITHUB_ENV
           echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
-        with:
-          environment: ${{ vars.ENV_NAME }}
+          echo "DEPLOY_ENV=${{ vars.ENV_NAME }}" >> $GITHUB_ENV
 
       - name: ↻ Build
         id: build
         run: >
           cd front &&
+          DEPLOY_ENV=${{ env.DEPLOY_ENV }}
           RELEASE_NAME=${{ env.RELEASE_NAME }}
           SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} 
           DIST=${{ env.DIST }}
