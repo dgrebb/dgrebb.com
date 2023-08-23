@@ -32,7 +32,7 @@ echo "AWS_S3_BUCKET=$(pass dg/cms/s/bucket)" >>$backEnv
 echo "CDN_BASE_URL=$(pass dg/cms/stg-cdnbaseurl)" >>$backEnv
 echo "DATABASE_PASSWORD=$(pass dg/cms/db/password)" >>$backEnv
 echo "PUBLIC_ENV=${ENV}" >>$backEnv
-echo "PUBLIC_SENTRY_DSN=$(pass dg/www/logs/sentrydsn)" >>$backEnv
+echo "PUBLIC_SENTRY_DSN=$(pass dg/cms/monitoring/sentry/dsn)" >>$backEnv
 echo "DISPATCH_TOKEN=$(pass dg/github/dispatch_token)" >>$backEnv
 echo "OPEN_AI_TOKEN=$(pass dg/cms/services/openai/test_api_key)" >>$backEnv
 
