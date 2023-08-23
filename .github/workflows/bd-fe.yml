@@ -21,6 +21,9 @@ jobs:
     environment:
       name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
 
+    env:
+      ENVIRONMENT_NAME: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+
     steps:
       - name: 𐂷 Checkout
         uses: actions/checkout@v3
@@ -105,5 +108,5 @@ jobs:
 
       - name: 📋 Summary
         run: |
-          SUMMARY=$'# Workflow Summary\## Run Initiator\n- Actor: ${{ vars.GITHUB_ACTOR }}\n- Event: ${{ vars.GITHUB_EVENT_NAME }}\n ## Sentry Release\n- Environment: ${{ github.ref_name == 'main' && 'production' || 'staging' }}\n- Release: [${{ env.RELEASE_NAME }}](https://dgrebb.sentry.io/releases/${{ env.RELEASE_NAME }})\n- Dist: ${{ env.DIST }}'
+          SUMMARY=$'# Job Summary\n## Run Initiator\n- Actor: $GITHUB_ACTOR\n- Event: $GITHUB_EVENT_NAME\n ## Sentry Release\n- Environment: $ENVIRONMENT_NAME\n- Release: [${{ env.RELEASE_NAME }}](https://dgrebb.sentry.io/releases/${{ env.RELEASE_NAME }})\n- Dist: ${{ env.DIST }}'
           echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
