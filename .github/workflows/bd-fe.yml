@@ -68,6 +68,8 @@ jobs:
         run: |
           echo "RELEASE_NAME=stg-${name/\//-}" >> $GITHUB_ENV
           echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
+        with:
+          environment: ${{ vars.ENV_NAME }}
 
       - name: ↻ Build
         id: build
@@ -104,8 +106,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
       - name: 📋 Summary
-        env:
-          ENVIRONMENT_NAME: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
         run: |
-          SUMMARY=$'# Job Summary \n## Run Details \n- Environment: ${{ env.ENVIRONMENT_NAME }}\n- Branch: [${{ env.BRANCH_NAME }}](https://github.com/dgrebb/dgrebb.com/tree/${{ env.BRANCH_NAME }}) \n## Run Initiator\n- Actor: ${{ github.actor }}\n- Event: ${{ github.event_name }}\n## Sentry Release\n- Release: [${{ env.RELEASE_NAME }}](https://dgrebb.sentry.io/releases/${{ env.RELEASE_NAME }})\n- Dist: ${{ env.DIST }}'
+          SUMMARY=$'# Job Summary \n## Run Details \n- Environment: ${{ vars.ENV_NAME }}\n- Branch: [${{ env.BRANCH_NAME }}](https://github.com/dgrebb/dgrebb.com/tree/${{ env.BRANCH_NAME }}) \n## Run Initiator\n- Actor: ${{ github.actor }}\n- Event: ${{ github.event_name }}\n## Sentry Release\n- Release: [${{ env.RELEASE_NAME }}](https://dgrebb.sentry.io/releases/${{ env.RELEASE_NAME }})\n- Dist: ${{ env.DIST }}'
           echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
