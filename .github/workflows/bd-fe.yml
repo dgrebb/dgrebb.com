@@ -11,50 +11,9 @@ env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
 jobs:
-  summary:
-    name: 📋 Details
-    runs-on: ubuntu-latest
-    outputs:
-      DEPLOY_ENV: ${{ steps.summary.outputs.DEPLOY_ENV }}
-      RELEASE_NAME: ${{ steps.summary.outputs.RELEASE_NAME }}
-      DIST: ${{ steps.summary.outputs.DIST }}
-
-    environment:
-      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
-
-    steps:
-      - name: 🤿 Set Release Vars
-        env:
-          name: "${{ env.BRANCH_NAME }}"
-        run: |
-          echo "RELEASE_NAME=stg-${name/\//-}" >> $GITHUB_ENV
-          echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
-          echo "DEPLOY_ENV=${{ vars.ENV_NAME }}" >> $GITHUB_ENV
-
-      - name: ✍ Summarize
-        id: summary
-        run: |
-          echo '# Job Summary' >> $GITHUB_STEP_SUMMARY
-          echo '## Run Details' >> $GITHUB_STEP_SUMMARY
-          echo '- Environment: ${{ env.DEPLOY_ENV }}' >> $GITHUB_STEP_SUMMARY
-          echo '- Branch: [${{ env.BRANCH_NAME }}](https://github.com/dgrebb/dgrebb.com/tree/${{ env.BRANCH_NAME }})' >> $GITHUB_STEP_SUMMARY
-          if [ "${{ github.event_name }}" = "pull_request" ]; then 
-            echo '- Pull Request: [#${{ github.event.number }}](https://github.com/dgrebb/dgrebb.com/pull/${{ github.event.number }})' >> $GITHUB_STEP_SUMMARY
-          fi
-          echo '## Run Initiator'
-          echo '- Actor: ${{ github.actor }}' >> $GITHUB_STEP_SUMMARY 
-          echo '- Event: ${{ github.event_name }}' >> $GITHUB_STEP_SUMMARY
-          echo '## Sentry Release' >> $GITHUB_STEP_SUMMARY
-          echo '- Release: [${{ env.RELEASE_NAME }}](https://dgrebb.sentry.io/releases/${{ env.RELEASE_NAME }})' >> $GITHUB_STEP_SUMMARY
-          echo '- Dist: ${{ env.DIST }}' >> $GITHUB_STEP_SUMMARY
-          echo "RELEASE_NAME=${{ env.RELEASE_NAME }}" >> $GITHUB_OUTPUT
-          echo "DIST=${{ env.DIST }}" >> $GITHUB_OUTPUT
-          echo "DEPLOY_ENV=${{ env.DEPLOY_ENV }}" >> $GITHUB_OUTPUT
-
   build_deploy:
     name: 🚜 Build & Deploy
     runs-on: ubuntu-latest
-    needs: summary
     concurrency:
       group: frontend
       cancel-in-progress: true
@@ -70,15 +29,14 @@ jobs:
           ref: ${{ github.ref }}
           token: ${{ github.token }}
           fetch-depth: 0
-        
-      - name: ≠ Changes
+
+      - name: 🤿 Set Release Vars
+        env:
+          name: "${{ env.BRANCH_NAME }}"
         run: |
-          if [ "$EVENT_NAME" = "pull_request" ]; then 
-            echo '### Changes:' >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-            git show --name-only --format=tformat: >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-          fi
+          echo "RELEASE_NAME=stg-${name/\//-}" >> $GITHUB_ENV
+          echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
+          echo "DEPLOY_ENV=${{ vars.ENV_NAME }}" >> $GITHUB_ENV
 
       - name: 🎩 Setup Svelte Environment
         run: |
@@ -114,10 +72,10 @@ jobs:
         id: build
         run: >
           cd front &&
-          DEPLOY_ENV=${{ needs.summary.outputs.DEPLOY_ENV }}
-          RELEASE_NAME=${{ needs.summary.outputs.RELEASE_NAME }}
+          DEPLOY_ENV=${{ env.DEPLOY_ENV }}
+          RELEASE_NAME=${{ env.RELEASE_NAME }}
           SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} 
-          DIST=${{ needs.summary.outputs.DIST }}
+          DIST=${{ env.DIST }}
           npm run build
 
       - name: 🤖 Robots
@@ -144,3 +102,28 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: ✍ Summarize
+        id: summary
+        run: |
+          echo '# Job Summary' >> $GITHUB_STEP_SUMMARY
+          echo '## Run Details' >> $GITHUB_STEP_SUMMARY
+          echo '- Environment: ${{ env.DEPLOY_ENV }}' >> $GITHUB_STEP_SUMMARY
+          echo '- Branch: [${{ env.BRANCH_NAME }}](https://github.com/dgrebb/dgrebb.com/tree/${{ env.BRANCH_NAME }})' >> $GITHUB_STEP_SUMMARY
+          if [ "${{ github.event_name }}" = "pull_request" ]; then 
+            echo '- Pull Request: [#${{ github.event.number }}](https://github.com/dgrebb/dgrebb.com/pull/${{ github.event.number }})' >> $GITHUB_STEP_SUMMARY
+          fi
+          echo '## Run Initiator'
+          echo '- Actor: ${{ github.actor }}' >> $GITHUB_STEP_SUMMARY 
+          echo '- Event: ${{ github.event_name }}' >> $GITHUB_STEP_SUMMARY
+          echo '## Sentry Release' >> $GITHUB_STEP_SUMMARY
+          echo '- Release: [${{ env.RELEASE_NAME }}](https://dgrebb.sentry.io/releases/${{ env.RELEASE_NAME }})' >> $GITHUB_STEP_SUMMARY
+          echo '- Dist: ${{ env.DIST }}' >> $GITHUB_STEP_SUMMARY
+
+      - name: ≠ Changes
+        if: ${{ github.event_name == "pull_request" }}
+        run: |
+          echo '### Changes:' >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          git show --name-only --format=tformat: >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
