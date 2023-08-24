@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -22,24 +22,26 @@
     />
     <style>
       @font-face {
-        src: url("/fonts/PublicSans-Regular.woff2") format("woff2"),
-          url("/fonts/PublicSans-Regular.woff") format("woff"),
-          url("/fonts/PublicSans-Regular.ttf") format("truetype"),
-          url("/fonts/PublicSans-Regular.otf") format("opentype");
-        font-family: "Public Sans";
+        src:
+          url('/fonts/PublicSans-Regular.woff2') format('woff2'),
+          url('/fonts/PublicSans-Regular.woff') format('woff'),
+          url('/fonts/PublicSans-Regular.ttf') format('truetype'),
+          url('/fonts/PublicSans-Regular.otf') format('opentype');
+        font-family: 'Public Sans';
         font-display: swap;
       }
       @font-face {
-        src: url("/fonts/PublicSans-Black.woff2") format("woff2"),
-          url("/fonts/PublicSans-Black.woff") format("woff"),
-          url("/fonts/PublicSans-Black.ttf") format("truetype"),
-          url("/fonts/PublicSans-Black.otf") format("opentype");
-        font-family: "Public Sans Black";
+        src:
+          url('/fonts/PublicSans-Black.woff2') format('woff2'),
+          url('/fonts/PublicSans-Black.woff') format('woff'),
+          url('/fonts/PublicSans-Black.ttf') format('truetype'),
+          url('/fonts/PublicSans-Black.otf') format('opentype');
+        font-family: 'Public Sans Black';
         font-display: swap;
       }
       @font-face {
-        src: url("/fonts/PublicSans-ExtraLight.woff2") format("woff2");
-        font-family: "Public Sans Extra Light";
+        src: url('/fonts/PublicSans-ExtraLight.woff2') format('woff2');
+        font-family: 'Public Sans Extra Light';
         font-display: swap;
       }
 
@@ -72,7 +74,7 @@
           rgb(var(--background-start-rgb));
         height: 100%;
         color: rgb(var(--foreground-rgb));
-        font-family: "Public Sans", sans-serif;
+        font-family: 'Public Sans', sans-serif;
       }
       .not-found {
         display: flex;
@@ -84,15 +86,17 @@
         align-self: center;
         margin: 0;
         font-size: 3.33rem;
-        font-family: "Public Sans Black", sans-serif;
+        font-family: 'Public Sans Black', sans-serif;
         text-align: center;
       }
       a {
-        transition: color 0.5s ease-in-out, border-color 0.5s ease-in-out;
+        transition:
+          color 0.5s ease-in-out,
+          border-color 0.5s ease-in-out;
         border-bottom: 1px solid rgba(223, 224, 224, 0.84);
         padding-bottom: 2px;
         color: rgb(var(--foreground-rgb));
-        font-family: "Public Sans Extra Light", sans-serif;
+        font-family: 'Public Sans Extra Light', sans-serif;
         text-decoration: none;
       }
       a:hover {
@@ -119,20 +123,21 @@
     </section>
   </body>
   <script
-    src="https://browser.sentry-cdn.com/7.54.0/bundle.tracing.min.js"
-    integrity="sha384-+h0OKHbAGUGuqyOQt8GPxoAlivqJAJnscoCE5ftl2SV77nWLjqoXvT4p6QLPjEh1"
+    src="https://js.sentry-cdn.com/02b9c4dc55d14cf5bbdd30b7e592eb9a.min.js"
     crossorigin="anonymous"
   ></script>
-  <script>
+  <script id=""four-ohhhhh-four>
     const { hostname: e } = document.location;
-    const environment = e.includes("local")
-      ? "development"
-      : e.includes("stg")
-      ? "staging"
-      : "production";
+    const environment = e.includes('local')
+      ? 'development'
+      : e.includes('stg')
+      ? 'staging'
+      : 'production';
     Sentry.init({
-      dsn: "https://02b9c4dc55d14cf5bbdd30b7e592eb9a@o4505287560462336.ingest.sentry.io/4505312527187968",
-      tracesSampleRate: 1,
+      dsn: 'https://02b9c4dc55d14cf5bbdd30b7e592eb9a@o4505287560462336.ingest.sentry.io/4505312527187968',
+      tracesSampleRate: 1.0,
+      replaysSessionSampleRate: 0.1,
+      replaysOnErrorSampleRate: 1.0,
       environment,
       beforeSend(event) {
         if (event.user) {
@@ -141,10 +146,13 @@
         if (event.server_name) {
           delete event.server_name;
         }
+        return event;
       },
     });
-    Sentry.captureMessage("Page Not Found", {
-      page: document.location.pathname,
+    Sentry.captureMessage('Page Not Found', {
+      extra: {
+        page: document.location.pathname,
+      },
     });
   </script>
 </html>

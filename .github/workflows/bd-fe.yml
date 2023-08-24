@@ -7,20 +7,22 @@ on:
     paths:
       - "front/**"
     branches: [main, develop]
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
 jobs:
-  front:
-    name: Build & Deploy
+  build_deploy:
+    name: 🚜 Build & Deploy
+    runs-on: ubuntu-latest
     concurrency:
       group: frontend
       cancel-in-progress: true
-    runs-on: ubuntu-latest
 
     environment:
       name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
 
     steps:
-      - name:  Checkout
+      - name: 𐂷 Checkout
         uses: actions/checkout@v3
         with:
           repository: dgrebb/dgrebb.com
@@ -28,7 +30,15 @@ jobs:
           token: ${{ github.token }}
           fetch-depth: 0
 
-      - name: ⚙ Set .env
+      - name: 🤿 Set Release Vars
+        env:
+          name: "${{ env.BRANCH_NAME }}"
+        run: |
+          echo "RELEASE_NAME=stg-${name/\//-}" >> $GITHUB_ENV
+          echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
+          echo "DEPLOY_ENV=${{ vars.ENV_NAME }}" >> $GITHUB_ENV
+
+      - name: 🎩 Setup Svelte Environment
         run: |
           touch front/.env
           echo PUBLIC_API_URL='${{ secrets.PUBLIC_API_URL }}' >> front/.env
@@ -51,22 +61,29 @@ jobs:
       - name: ⬢ Setup Node & Cache
         uses: actions/setup-node@v3
         with:
-          node-version: "18.x"
+          node-version: "18.17.1"
           cache: "npm"
           cache-dependency-path: front/package-lock.json
-        
-      - name: ↧ Install
+
+      - name: ↧ Install & Patch
         run: cd front && npm ci
 
       - name: ↻ Build
-        run: cd front && npm run build
+        id: build
+        run: >
+          cd front &&
+          DEPLOY_ENV=${{ env.DEPLOY_ENV }}
+          RELEASE_NAME=${{ env.RELEASE_NAME }}
+          SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} 
+          DIST=${{ env.DIST }}
+          npm run build
 
       - name: 🤖 Robots
         if: ${{ github.ref_name == 'main' }}
         run: |
           sed -i 's/^Disallow\: \/$/Allow\: \//' front/build/robots.txt
 
-      - name: ↥ Deploy
+      - name: ↕ Sync S3
         uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks --delete --cache-control max-age=2853200,public
@@ -85,3 +102,20 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: ✍ Summarize
+        id: summary
+        run: |
+          echo '# Job Summary' >> $GITHUB_STEP_SUMMARY
+          echo '## Run Initiator'
+          echo '- Actor: ${{ github.actor }}' >> $GITHUB_STEP_SUMMARY 
+          echo '- Event: ${{ github.event_name }}' >> $GITHUB_STEP_SUMMARY
+          echo '## Run Details' >> $GITHUB_STEP_SUMMARY
+          echo '- Environment: ${{ env.DEPLOY_ENV }}' >> $GITHUB_STEP_SUMMARY
+          echo '- Branch: [${{ env.BRANCH_NAME }}](https://github.com/dgrebb/dgrebb.com/tree/${{ env.BRANCH_NAME }})' >> $GITHUB_STEP_SUMMARY
+          if [ "${{ github.event_name }}" = "pull_request" ]; then 
+            echo '- Pull Request: [#${{ github.event.number }}](https://github.com/dgrebb/dgrebb.com/pull/${{ github.event.number }})' >> $GITHUB_STEP_SUMMARY
+          fi
+          echo '## Release Details' >> $GITHUB_STEP_SUMMARY
+          echo '- Release: [${{ env.RELEASE_NAME }}](https://dgrebb.sentry.io/releases/${{ env.RELEASE_NAME }})' >> $GITHUB_STEP_SUMMARY
+          echo '- Dist: ${{ env.DIST }}' >> $GITHUB_STEP_SUMMARY

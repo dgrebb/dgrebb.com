@@ -1,9 +1,24 @@
 <script>
-  import PageTransition from "@components/PageTransition.svelte";
-  import Flourish from "@layout/Flourish.svelte";
-  import "@styles/pages/not-found.css";
+  import { page } from '$app/stores';
+  import PageTransition from '@components/PageTransition.svelte';
+  import Flourish from '@layout/Flourish.svelte';
+  import * as Sentry from '@sentry/sveltekit';
+  import '@styles/pages/not-found.css';
   export let data;
   $: ({ pathname } = data);
+  Sentry.setContext('SvelteKit', {
+    url: $page.url,
+    params: $page.params,
+    route: $page.route,
+    status: $page.status,
+    error: $page.error,
+    data: $page.data,
+  });
+  Sentry.captureMessage('Page Not Found', {
+    trace: {
+      status: 'NOT_FOUND',
+    },
+  });
 </script>
 
 <PageTransition transitionKey={pathname}>
@@ -15,37 +30,3 @@
     <a href="/">Go Home</a>
   </section>
 </PageTransition>
-
-<svelte:head>
-  <script
-    src="https://browser.sentry-cdn.com/7.54.0/bundle.tracing.min.js"
-    integrity="sha384-+h0OKHbAGUGuqyOQt8GPxoAlivqJAJnscoCE5ftl2SV77nWLjqoXvT4p6QLPjEh1"
-    crossorigin="anonymous"
-  ></script>
-  <script id="four-ohhhhh-four">
-    const { hostname: e } = document.location;
-    const environment = e.includes("local")
-      ? "development"
-      : e.includes("stg")
-      ? "staging"
-      : "production";
-    if (Sentry) {
-      Sentry.init({
-        dsn: "https://02b9c4dc55d14cf5bbdd30b7e592eb9a@o4505287560462336.ingest.sentry.io/4505312527187968",
-        tracesSampleRate: 1,
-        environment,
-        beforeSend(event) {
-          if (event.user) {
-            delete event.user.ip;
-          }
-          if (event.server_name) {
-            delete event.server_name;
-          }
-        },
-      });
-      Sentry.captureMessage("Page Not Found", {
-        page: document.location.pathname,
-      });
-    }
-  </script>
-</svelte:head>
