@@ -220,11 +220,13 @@
     @apply dg--font-lbb;
     vertical-align: middle;
     float: left;
-    padding-top: 0.5rem;
-    padding-right: 0.33rem;
+    padding-top: 0.1rem;
+    padding-right: 0.42rem;
     color: rgb(var(--highlight-rgb));
     font-size: 3rem;
+    line-height: 1;
     @screen md {
+      padding-top: 0.2rem;
       font-size: 3.5rem;
     }
   }
