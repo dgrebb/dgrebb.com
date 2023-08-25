@@ -22,7 +22,6 @@ while test "$1" != --; do
         break
         ;;
     dn | dev-network)
-        # this hosts over port 5173 on the local network without ssl
         setFrontEnv ${env}
         cdfront &&
             npm run dev -- --host
