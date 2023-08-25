@@ -63,9 +63,6 @@ jobs:
     steps:
       - name: 𐂷 Checkout
         uses: actions/checkout@v3
-        env:
-          RELEASE_NAME: ${{ needs.summary.vars.RELEASE_NAME }}
-          DIST: ${{ needs.summary.vars.DIST }}
         with:
           repository: dgrebb/dgrebb.com
           ref: ${{ github.ref }}
@@ -103,13 +100,15 @@ jobs:
         run: cd front && npm ci
 
       - name: ↻ Build
-        id: build
+        env:
+          RELEASE_NAME: ${{ needs.summary.vars.RELEASE_NAME }}
+          DIST: ${{ needs.summary.vars.DIST }}
         run: >
           cd front &&
-          DEPLOY_ENV=${{ vars.ENV_NAME }}
-          RELEASE_NAME=${{ env.RELEASE_NAME }}
           SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} 
-          DIST=${{ env.DIST }}
+          DEPLOY_ENV=${{ vars.ENV_NAME }}
+          RELEASE_NAME=$RELEASE_NAME
+          DIST=$DIST
           npm run build
 
       - name: 🤖 Robots
