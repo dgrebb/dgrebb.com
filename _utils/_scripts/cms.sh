@@ -61,6 +61,22 @@ while test "$1" != --; do
         cdback && npm run --silent strapi import -- -f ./.backups/$2 -k ${APP_KEYS}
         break
         ;;
+    u | update)
+        cdback
+        current=$(npm list | grep @strapi/strapi | cut -d'@' -f3)
+        latest=$(npm info @strapi/strapi version)
+        echo "The current Strapi version is $current. Have you updated package.json with $latest?"
+        read -p $'\e[44m\n y/n \n  > ' -r
+        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+            exit 1
+        fi
+        echo "Updating Strapi, related packages, installing, patching, and building..."
+        rm -rf package-lock.json node_modules && npm i
+        npx patch-package @strapi/strapi
+        npx patch-package @strapi/admin
+        npm run build && dg c d
+        break
+        ;;
     ?)
         echo "script usage: $(basename \$0) [dev]" >&2
         break
