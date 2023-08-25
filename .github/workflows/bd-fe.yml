@@ -36,13 +36,12 @@ jobs:
         run: |
           echo "RELEASE_NAME=stg-${name/\//-}" >> $GITHUB_ENV
           echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
-          echo "RELEASE_NAME=stg-${name/\//-}" >> $GITHUB_OUTPUT
-          echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_OUTPUT
+          echo "RELEASE_NAME=stg-${name/\//-}" >> "$GITHUB_OUTPUT"
+          echo "DIST=$(date +%y%m%d-%H%M%S)" >> "$GITHUB_OUTPUT"
 
       - name: ✍ Summarize
-        id: summary
         run: |
-          echo '# Job Summary' >> $GITHUB_STEP_SUMMARY
+          echo '# Summary' >> $GITHUB_STEP_SUMMARY
           echo '## Run Initiator'
           echo '- Actor: ${{ github.actor }}' >> $GITHUB_STEP_SUMMARY 
           echo '- Event: ${{ github.event_name }}' >> $GITHUB_STEP_SUMMARY
@@ -60,7 +59,14 @@ jobs:
     needs: summary
     runs-on: ubuntu-latest
 
+    environment:
+      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+
+    env:
+      DEPLOY_ENV: '${{ vars.ENV_NAME }}'
+
     steps:
+
       - name: 𐂷 Checkout
         uses: actions/checkout@v3
         with:
@@ -69,7 +75,9 @@ jobs:
           token: ${{ github.token }}
           fetch-depth: 0
 
-      - name: 🎩 Setup Svelte Environment
+      - name: 📐 Set Environment
+        env:
+          name: "${{ env.BRANCH_NAME }}"
         run: |
           touch front/.env
           echo PUBLIC_API_URL='${{ secrets.PUBLIC_API_URL }}' >> front/.env
@@ -88,6 +96,8 @@ jobs:
           echo PUBLIC_SENTRY_DSN=${{ secrets.PUBLIC_SENTRY_DSN }} >> front/.env
           echo PUBLIC_ENV=${{ secrets.PUBLIC_ENV }} >> front/.env
           cat front/.env
+          echo "RELEASE_NAME=stg-${name/\//-}" >> $GITHUB_ENV
+          echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
 
       - name: ⬢ Setup Node & Cache
         uses: actions/setup-node@v3
@@ -100,15 +110,12 @@ jobs:
         run: cd front && npm ci
 
       - name: ↻ Build
-        env:
-          RELEASE_NAME: ${{ needs.summary.vars.RELEASE_NAME }}
-          DIST: ${{ needs.summary.vars.DIST }}
         run: >
           cd front &&
           SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} 
-          DEPLOY_ENV=${{ vars.ENV_NAME }}
-          RELEASE_NAME=${{ needs.summary.vars.RELEASE_NAME }}
-          DIST=${{ needs.summary.vars.DIST }}
+          DEPLOY_ENV=$DEPLOY_ENV
+          RELEASE_NAME=${{ env.RELEASE_NAME }}
+          DIST=${{ env.DIST }}
           npm run build
 
       - name: 🤖 Robots
