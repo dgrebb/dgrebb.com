@@ -8,28 +8,36 @@ on:
     paths:
       - "front/**"
     branches: [main, develop]
+
 env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
 jobs:
-  build_deploy:
-    name: 🚜 Build & Deploy
+  summary:
+    name: 📋 Summarize & Setup
     runs-on: ubuntu-latest
+
     concurrency:
       group: frontend
       cancel-in-progress: true
+
+    outputs:
+      RELEASE_NAME: ${{ steps.vars.outputs.RELEASE_NAME }}
+      DIST: ${{ steps.vars.outputs.DIST }}
 
     environment:
       name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
 
     steps:
       - name: 🤿 Set Vars
+        id: vars
         env:
           name: "${{ env.BRANCH_NAME }}"
         run: |
           echo "RELEASE_NAME=stg-${name/\//-}" >> $GITHUB_ENV
           echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
-          echo "DEPLOY_ENV=${{ vars.ENV_NAME }}" >> $GITHUB_ENV
+          echo "RELEASE_NAME=stg-${name/\//-}" >> "$GITHUB_OUTPUT"
+          echo "DIST=$(date +%y%m%d-%H%M%S)" >> "$GITHUB_OUTPUT"
 
       - name: ✍ Summarize
         id: summary
@@ -39,7 +47,6 @@ jobs:
           echo '- Actor: ${{ github.actor }}' >> $GITHUB_STEP_SUMMARY 
           echo '- Event: ${{ github.event_name }}' >> $GITHUB_STEP_SUMMARY
           echo '## Run Details' >> $GITHUB_STEP_SUMMARY
-          echo '- Environment: ${{ env.DEPLOY_ENV }}' >> $GITHUB_STEP_SUMMARY
           echo '- Branch: [${{ env.BRANCH_NAME }}](https://github.com/dgrebb/dgrebb.com/tree/${{ env.BRANCH_NAME }})' >> $GITHUB_STEP_SUMMARY
           if [ "${{ github.event_name }}" = "pull_request" ]; then 
             echo '- Pull Request: [#${{ github.event.number }}](https://github.com/dgrebb/dgrebb.com/pull/${{ github.event.number }})' >> $GITHUB_STEP_SUMMARY
@@ -48,8 +55,17 @@ jobs:
           echo '- Release: [${{ env.RELEASE_NAME }}](https://dgrebb.sentry.io/releases/${{ env.RELEASE_NAME }})' >> $GITHUB_STEP_SUMMARY
           echo '- Dist: ${{ env.DIST }}' >> $GITHUB_STEP_SUMMARY
 
+  build_deploy:
+    name: 🚜 Build & Deploy ${{ github.ref_name == 'PROD' && 'Production' || 'STG' }}
+    needs: summary
+    runs-on: ubuntu-latest
+
+    steps:
       - name: 𐂷 Checkout
         uses: actions/checkout@v3
+        env:
+          RELEASE_NAME: ${{ needs.summary.vars.RELEASE_NAME }}
+          DIST: ${{ needs.summary.vars.DIST }}
         with:
           repository: dgrebb/dgrebb.com
           ref: ${{ github.ref }}
@@ -90,7 +106,7 @@ jobs:
         id: build
         run: >
           cd front &&
-          DEPLOY_ENV=${{ env.DEPLOY_ENV }}
+          DEPLOY_ENV=${{ vars.ENV_NAME }}
           RELEASE_NAME=${{ env.RELEASE_NAME }}
           SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} 
           DIST=${{ env.DIST }}
