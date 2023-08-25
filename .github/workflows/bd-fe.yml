@@ -14,7 +14,7 @@ env:
 
 jobs:
   summary:
-    name: 📋 Summarize & Setup
+    name: 📋 Summary & Setup
     runs-on: ubuntu-latest
 
     concurrency:
@@ -36,8 +36,8 @@ jobs:
         run: |
           echo "RELEASE_NAME=stg-${name/\//-}" >> $GITHUB_ENV
           echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
-          echo "RELEASE_NAME=stg-${name/\//-}" >> "$GITHUB_OUTPUT"
-          echo "DIST=$(date +%y%m%d-%H%M%S)" >> "$GITHUB_OUTPUT"
+          echo "RELEASE_NAME=stg-${name/\//-}" >> $GITHUB_OUTPUT
+          echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_OUTPUT
 
       - name: ✍ Summarize
         id: summary
@@ -107,8 +107,8 @@ jobs:
           cd front &&
           SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} 
           DEPLOY_ENV=${{ vars.ENV_NAME }}
-          RELEASE_NAME=$RELEASE_NAME
-          DIST=$DIST
+          RELEASE_NAME=${{ needs.summary.vars.RELEASE_NAME }}
+          DIST=${{ needs.summary.vars.DIST }}
           npm run build
 
       - name: 🤖 Robots
