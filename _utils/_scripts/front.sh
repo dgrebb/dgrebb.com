@@ -41,7 +41,10 @@ while test "$1" != --; do
         branch=$(git branch --show-current)
         DIST=$(date +%y%m%d-%H%M%S)
         RELEASE_NAME=dev-$(sed "s/\//-/g" <<< "$branch")
-        cdfront && UPLOAD_SOURCEMAPS=true RELEASE_NAME=$RELEASE_NAME DIST=$DIST npm run build.${env}
+        DEPLOY_ENV=development
+        cdfront && UPLOAD_SOURCEMAPS=true \
+        RELEASE_NAME=$RELEASE_NAME DIST=$DIST \
+        DEPLOY_ENV=$DEPLOY_ENV npm run build.${env}
         break
         ;;
     s | http-server)
