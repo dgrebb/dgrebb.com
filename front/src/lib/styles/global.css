@@ -1,8 +1,9 @@
-@import 'components/fonts.css';
-@import 'components/layout.css';
-@import 'components/typography.css';
-@import 'components/utilities.css';
-@import 'components/tw-components.css';
+@import 'base/transitions.css';
+@import 'base/fonts.css';
+@import 'base/layout.css';
+@import 'base/typography.css';
+@import 'base/utilities.css';
+@import 'base/tw-components.css';
 @import 'components/Code/Code.css';
 @import 'components/nav.css';
 @import 'components/theme-toggle.css';

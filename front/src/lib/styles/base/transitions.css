@@ -1,0 +1,9 @@
+.bio-picture {
+  opacity: 0.77;
+}
+
+body.ready {
+  .bio-picture {
+    opacity: 1;
+  }
+}
