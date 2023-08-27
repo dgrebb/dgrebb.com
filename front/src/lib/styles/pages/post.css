@@ -205,17 +205,17 @@
       display: inline;
       position: absolute;
       left: -1.5rem;
-      padding: 0 0.5rem;
       opacity: 0;
       transition:
         opacity 500ms ease-in-out,
         color 500ms;
       border: none;
+      padding: 0 0.5rem;
       font-size: 1rem;
       @screen md {
         left: -2.5rem;
-        font-size: unset;
         vertical-align: middle;
+        font-size: unset;
       }
     }
     &:hover,
@@ -230,6 +230,44 @@
   }
   h2.footnotes-title {
     margin-top: 3rem;
+  }
+  blockquote {
+    @apply dg--font-lb;
+    position: relative;
+    margin: 1.5rem 0.5rem 0 0.5rem;
+    border-radius: 0.5rem;
+    background-color: rgba(var(--background-start-rgb), 0.5);
+    padding: 0.5rem 1.5rem;
+    overflow: visible;
+    color: rgba(var(--foreground-rgb), 0.8);
+    font-style: italic;
+    &::before,
+    &::after {
+      position: absolute;
+      font-size: 4rem;
+      @screen md {
+        font-size: 5rem;
+      }
+    }
+    &::before {
+      top: -1.5rem;
+      left: -1.5rem;
+      content: '“';
+      color: rgb(var(--foreground-rgb-faded));
+      @screen md {
+        top: -2rem;
+      }
+    }
+    &::after {
+      right: 0;
+      bottom: 0;
+      height: 2rem;
+      content: '”';
+      color: rgb(var(--foreground-rgb-faded));
+      @screen md {
+        bottom: 0.5rem;
+      }
+    }
   }
   .footnotes {
     li {
