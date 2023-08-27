@@ -71,26 +71,20 @@
         z-index: 5;
       }
     }
-    ~ h1.post-title,
-    ~ .post-article,
-    ~ .post-aside,
-    ~ .aside-toggle {
-      top: -1rem;
-      z-index: 8;
-      @screen sm {
-        top: -1.6rem;
-      }
-      @screen md {
-        top: -6.3rem;
-      }
-    }
   }
   h1.post-title,
   .post-article,
   .post-aside,
   .aside-toggle {
     position: relative;
-    top: -4.3rem;
+    top: -1rem;
+    z-index: 8;
+    @screen sm {
+      top: -1.6rem;
+    }
+    @screen md {
+      top: -6.3rem;
+    }
   }
   h1.post-title {
     z-index: 5;
@@ -139,7 +133,7 @@
   @apply dg--font-lb;
   text-wrap: pretty;
   margin: 0;
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 1rem 0.5rem 1rem;
   font-size: 1.2rem;
   font-size: 1rem;
   text-indent: 0;
@@ -177,14 +171,20 @@
 
 .post-article {
   display: block;
+  top: -1rem;
   float: none;
+  margin-bottom: 0;
   padding-right: 1rem;
   padding-left: 1rem;
   width: 100%;
   @screen sm {
     float: left;
+    margin-bottom: -0.5rem;
     padding-right: 1.5rem;
     width: 75%;
+  }
+  @screen md {
+    margin-bottom: -6rem;
   }
   a {
     transition-duration: var(--transform-duration);
@@ -226,7 +226,8 @@
     }
   }
   h2:first-of-type {
-    padding-top: 0;
+    margin-top: 0;
+    padding-top: 1rem;
   }
   h2.footnotes-title {
     margin-top: 3rem;
@@ -236,7 +237,7 @@
     position: relative;
     margin: 1.5rem 0.5rem 0 0.5rem;
     border-radius: 0.5rem;
-    background-color: rgba(var(--background-start-rgb), 0.5);
+    background-color: rgb(var(--background-start-rgb));
     padding: 0.5rem 1.5rem;
     overflow: visible;
     color: rgba(var(--foreground-rgb), 0.8);
