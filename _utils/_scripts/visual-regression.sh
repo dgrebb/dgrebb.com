@@ -4,17 +4,18 @@ source $directory/_scripts/functions.sh
 backstopURL='http://localhost:3000/bd/html_report?remote'
 
 if [ $2 == "s" ]; then
-  ENV=staging
+    ENV=staging
 elif [ $2 == "p" ]; then
-  ENV=production
+    ENV=production
 else
-  ENV=local
+    ENV=local
 fi
 
 echo "${ENV} is the environment"
 
 cd $directory/../_ci/backstop
 if [[ $1 == 'ref' ]]; then
+    echo "Generating reference bitmaps for ${ENV}"
     ENV=$ENV npm run ref
 elif [[ $1 == 'remote' ]]; then
     ENV=$ENV npm run remote
@@ -26,7 +27,7 @@ elif [[ $1 == 'test' ]]; then
     # serve the frontend and run backstop remote with pm2
     cdbackstop
     echo ''
-    echo "Starting test for ${2}"
+    echo "Starting test for ${ENV}"
     echo ''
     ENV=$ENV npm run boot
     echo ''
