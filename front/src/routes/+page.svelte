@@ -1,12 +1,11 @@
 <script>
-  import Image from '@components/Image.svelte';
   import Links from '@components/Links.svelte';
-  import PageTransition from '@components/PageTransition.svelte';
   import Meta from '@components/Meta.svelte';
+  import PageTransition from '@components/PageTransition.svelte';
   import Link from '@components/content/renderers/Link.svelte';
+  import BioBitmap from '@components/static/BioBitmap.svelte';
   import Flourish from '@layout/Flourish.svelte';
   import SvelteMarkdown from 'svelte-markdown';
-  import BioBitmap from '@components/static/BioBitmap.svelte';
 
   export let data;
   const { headline, image, intro, links, pageMeta, pathname } = data;
