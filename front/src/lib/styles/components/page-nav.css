@@ -4,7 +4,7 @@
     text-align: right;
   }
   h2 {
-    color: rgb(var(--text-accent-rgb));
+    color: rgba(var(--text-accent-rgb), 0.77);
     font-size: 1.33rem;
   }
   li {
@@ -17,28 +17,28 @@
   }
   a {
     transition: color, border-color;
-    color: rgba(var(--link-color), 0.77);
+    color: rgba(var(--foreground-rgb), 0.77);
     @apply dg--transition-effect
       dg--font-lb;
     &:hover,
     &:focus {
-      color: rgba(var(--link-color), 1);
+      color: rgba(var(--link-rgb), 1);
     }
   }
   a:after {
     display: inline-block;
     position: absolute;
     right: -0.5rem;
-    heigfht: 100%;
     transition: right 0.5s;
+    height: 100%;
     content: '';
   }
   a.active {
-    color: rgba(var(--link-color), 1);
     padding-right: 1rem;
+    color: rgba(var(--link-rgb), 1);
     &:after {
-      right: 0;
       top: calc(50% - 0.75rem);
+      right: 0;
       padding-left: 0.5rem;
       content: '•';
     }
