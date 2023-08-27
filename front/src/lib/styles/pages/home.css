@@ -21,10 +21,6 @@
     width: 120px;
     height: 120px;
     @apply dg--transition-effect;
-    opacity: 0;
-    &.loaded {
-      opacity: 1.0;
-    }
   }
   h1.headline {
     transition: color, font-size;
@@ -49,8 +45,8 @@
     color: rgba(var(--text-accent-rgb), 0.7);
     &:hover,
     &:focus {
-      color: rgba(var(--text-accent-rgb), 1);
       border-color: rgb(var(--highlight-rgb));
+      color: rgba(var(--text-accent-rgb), 1);
     }
   }
 }
@@ -73,18 +69,18 @@
     padding: 0.5rem;
     line-height: 1;
     a {
-      color: rgb(var(--foreground-rgb-faded));
       transition-property: color;
+      color: rgb(var(--foreground-rgb-faded));
       @apply dg--transition-effect;
       @apply inline-block
         h-full
         self-center
         p-1;
-        &:hover,
-        &:focus,
-        &:focus {
-          color: rgb(var(--highlight-rgb));
-        }
+      &:hover,
+      &:focus,
+      &:focus {
+        color: rgb(var(--highlight-rgb));
+      }
     }
     svg {
       @apply h-7

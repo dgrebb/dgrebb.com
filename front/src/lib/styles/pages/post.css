@@ -71,33 +71,27 @@
         z-index: 5;
       }
     }
-    ~ h1.post-title,
-    ~ .post-article,
-    ~ .post-aside,
-    ~ .aside-toggle {
-      top: -1rem;
-      z-index: 8;
-      @screen sm {
-        top: -1.6rem;
-      }
-      @screen md {
-        top: -6.3rem;
-      }
-    }
   }
   h1.post-title,
   .post-article,
   .post-aside,
   .aside-toggle {
     position: relative;
-    top: -4.3rem;
+    top: -1rem;
+    z-index: 8;
+    @screen sm {
+      top: -1.6rem;
+    }
+    @screen md {
+      top: -6.3rem;
+    }
   }
   h1.post-title {
     z-index: 5;
     margin-bottom: 0;
     padding: 0 1rem;
-    text-shadow: 0 -0.11rem 1.5rem rgba(var(--background-saturated), 0.77);
     line-height: 1;
+    text-shadow: 0 -0.11rem 1.5rem rgba(var(--background-saturated), 0.77);
     @screen sm {
       line-height: 1.2;
     }
@@ -105,63 +99,6 @@
   .aside-toggle {
     display: inline;
     float: right;
-  }
-  .post-article {
-    display: block;
-    float: none;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    width: 100%;
-    @screen sm {
-      float: left;
-      padding-right: 1.5rem;
-      width: 75%;
-    }
-    a {
-      color: rgba(var(--link-rgb), 0.77);
-      border-bottom: 1px solid rgba(var(--text-accent-rgb), 0.67);
-      transition-property: border, color;
-      transition-duration: var(--transform-duration);
-      transition-timing-function: var(--transition-timing-function);
-      &:hover,
-      &:focus {
-        color: rgba(var(--foreground-rgb), 1);
-        border-bottom: 1px solid rgba(var(--highlight-rgb), 1);
-      }
-    }
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      a {
-        @apply dg--font-lb;
-        opacity: 0;
-        transition:
-          opacity 1s ease-in-out,
-          color 0.5s,
-          border-color 0.5s;
-        margin-left: 0.5rem;
-      }
-      &:hover,
-      &:focus {
-        a {
-          opacity: 1;
-        }
-      }
-    }
-    h2:first-of-type {
-      padding-top: 0;
-    }
-    h2.footnotes-title {
-      margin-top: 3rem;
-    }
-    .footnotes {
-      li {
-        margin-left: 1.2rem;
-      }
-    }
   }
   .post-aside {
     display: none;
@@ -196,7 +133,7 @@
   @apply dg--font-lb;
   text-wrap: pretty;
   margin: 0;
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 1rem 0.5rem 1rem;
   font-size: 1.2rem;
   font-size: 1rem;
   text-indent: 0;
@@ -220,12 +157,122 @@
     @apply dg--font-lbb;
     vertical-align: middle;
     float: left;
-    padding-top: 0.5rem;
-    padding-right: 0.33rem;
+    padding-top: 0.1rem;
+    padding-right: 0.42rem;
     color: rgb(var(--highlight-rgb));
     font-size: 3rem;
+    line-height: 1;
     @screen md {
+      padding-top: 0.2rem;
       font-size: 3.5rem;
+    }
+  }
+}
+
+.post-article {
+  display: block;
+  top: -1rem;
+  float: none;
+  margin-bottom: 0;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  width: 100%;
+  @screen sm {
+    float: left;
+    margin-bottom: -0.5rem;
+    padding-right: 1.5rem;
+    width: 75%;
+  }
+  @screen md {
+    margin-bottom: -6rem;
+  }
+  a {
+    transition-duration: var(--transform-duration);
+    transition-property: border, color;
+    transition-timing-function: var(--transition-timing-function);
+    border-bottom: 1px solid rgba(var(--text-accent-rgb), 0.67);
+    color: rgba(var(--link-rgb), 0.77);
+    &:hover,
+    &:focus {
+      border-bottom: 1px solid rgba(var(--highlight-rgb), 1);
+      color: rgba(var(--foreground-rgb), 1);
+    }
+  }
+  .post-heading {
+    position: relative;
+    .heading-anchor-link {
+      @apply dg--font-lb;
+      display: inline;
+      position: absolute;
+      left: -1.5rem;
+      opacity: 0;
+      transition:
+        opacity 500ms ease-in-out,
+        color 500ms;
+      border: none;
+      padding: 0 0.5rem;
+      font-size: 1rem;
+      @screen md {
+        left: -2.5rem;
+        vertical-align: middle;
+        font-size: unset;
+      }
+    }
+    &:hover,
+    &:focus {
+      .heading-anchor-link {
+        opacity: 1;
+      }
+    }
+  }
+  h2:first-of-type {
+    margin-top: 0;
+    padding-top: 1rem;
+  }
+  h2.footnotes-title {
+    margin-top: 3rem;
+  }
+  blockquote {
+    @apply dg--font-lb;
+    position: relative;
+    margin: 1.5rem 0.5rem 0 0.5rem;
+    border-radius: 0.5rem;
+    background-color: rgb(var(--background-start-rgb));
+    padding: 0.5rem 1.5rem;
+    overflow: visible;
+    color: rgba(var(--foreground-rgb), 0.8);
+    font-style: italic;
+    &::before,
+    &::after {
+      position: absolute;
+      font-size: 4rem;
+      @screen md {
+        font-size: 5rem;
+      }
+    }
+    &::before {
+      top: -1.5rem;
+      left: -1.5rem;
+      content: '“';
+      color: rgb(var(--foreground-rgb-faded));
+      @screen md {
+        top: -2rem;
+      }
+    }
+    &::after {
+      right: 0;
+      bottom: 0;
+      height: 2rem;
+      content: '”';
+      color: rgb(var(--foreground-rgb-faded));
+      @screen md {
+        bottom: 0.5rem;
+      }
+    }
+  }
+  .footnotes {
+    li {
+      margin-left: 1.2rem;
     }
   }
 }

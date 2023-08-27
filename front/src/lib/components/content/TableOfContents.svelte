@@ -1,5 +1,6 @@
 <script>
-  import { pokeTrapper } from "@utils/pokeTrapper.js";
+  import { pokeTrapper } from '@utils/pokeTrapper.js';
+  import SvelteMarkdown from 'svelte-markdown';
   const { tocClick } = pokeTrapper;
   export let contents;
   export let pageFenceClickHandler = null;
@@ -21,7 +22,7 @@
         data-sveltekit-noscroll="false"
         use:activeLink
       >
-        {text}
+        <SvelteMarkdown source={text} isInline />
       </a>
     </li>
   {/each}
