@@ -1,11 +1,12 @@
 <script>
-  import Image from "@components/Image.svelte";
-  import Links from "@components/Links.svelte";
-  import PageTransition from "@components/PageTransition.svelte";
-  import Meta from "@components/Meta.svelte";
-  import Link from "@components/content/renderers/Link.svelte";
-  import Flourish from "@layout/Flourish.svelte";
-  import SvelteMarkdown from "svelte-markdown";
+  import Image from '@components/Image.svelte';
+  import Links from '@components/Links.svelte';
+  import PageTransition from '@components/PageTransition.svelte';
+  import Meta from '@components/Meta.svelte';
+  import Link from '@components/content/renderers/Link.svelte';
+  import Flourish from '@layout/Flourish.svelte';
+  import SvelteMarkdown from 'svelte-markdown';
+  import BioBitmap from '@components/static/BioBitmap.svelte';
 
   export let data;
   const { headline, image, intro, links, pageMeta, pathname } = data;
@@ -14,28 +15,7 @@
 <PageTransition transitionKey={pathname}>
   <section class="bio text-center">
     <Flourish />
-    {#if image}
-      <Image
-        src="/bio.jpg"
-        alt={image.alternativeText}
-        title="Hi!"
-        height={120}
-        width={120}
-        classes="bio-picture"
-        ariaHidden={true}
-      />
-      <noscript>
-        <img
-          src={image.url}
-          alt={image.alternativeText}
-          title="Hi!"
-          height={120}
-          width={120}
-          classes="bio-picture"
-          ariaHidden={true}
-        />
-      </noscript>
-    {/if}
+    <BioBitmap alt={image.alternativeText} />
     <a id="main">Main Content</a>
     <h1 class="headline">{headline}</h1>
     <SvelteMarkdown renderers={{ link: Link }} source={intro} />
@@ -47,4 +27,4 @@
   {/if}
 </PageTransition>
 
-<Meta pageMeta={pageMeta} />
+<Meta {pageMeta} />
