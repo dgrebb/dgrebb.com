@@ -76,6 +76,7 @@ body.ready .header.scroll-transition {
     font-size: 0.7rem;
     line-height: 1.75;
     a {
+      display: inline-block;
       border-bottom: 1px solid rgba(var(--foreground-rgb), 0.5);
       color: rgba(var(--text-accent-rgb), 0.77);
       &.cc-link {
@@ -132,7 +133,7 @@ body.ready .header.scroll-transition {
       transition:
         border 0.5s,
         color 0.5s;
-        color: rgba(var(--text-accent-rgb), 0.77);
+      color: rgba(var(--text-accent-rgb), 0.77);
       &:hover,
       &:focus {
         border-bottom-color: rgb(var(--highlight-rgb));
@@ -163,7 +164,7 @@ body.ready .header.scroll-transition {
         transition:
           border 0.5s,
           color 0.5s;
-          color: rgba(var(--text-accent-rgb), 0.77);
+        color: rgba(var(--text-accent-rgb), 0.77);
         &:hover,
         &:focus {
           border-bottom-color: rgb(var(--highlight-rgb));
