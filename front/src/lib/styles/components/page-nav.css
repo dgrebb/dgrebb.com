@@ -169,3 +169,13 @@
     }
   }
 }
+
+.post,
+.category {
+  aside,
+  .page-navigation-list {
+    a {
+      display: inline-block;
+    }
+  }
+}
