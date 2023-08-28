@@ -1,16 +1,14 @@
 <script>
-  import TableOfContents from "@components/content/TableOfContents.svelte";
-  import ClosePostNav from "@components/icons/ClosePostNav.svelte";
-  import { pokeTrapper } from "@utils/pokeTrapper.js";
-  import ListIcon from "~icons/gg/list";
+  import TableOfContents from '@components/content/TableOfContents.svelte';
+  import ClosePostNav from '@components/icons/ClosePostNav.svelte';
+  import { categoryClick, relatedClick } from '@utils/uiHelpers.js';
+  import ListIcon from '~icons/gg/list';
 
   export let contents,
     categories,
     related,
     pathname,
     mini = false;
-
-  let { categoryClick, relatedClick } = pokeTrapper;
 </script>
 
 <nav class="post-navigation" class:mini>

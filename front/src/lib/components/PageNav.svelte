@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import TableOfContents from '@components/content/TableOfContents.svelte';
   import ClosePageNav from '@components/icons/ClosePageNav.svelte';
-  import { pokeTrapper } from '@utils/pokeTrapper.js';
+  import { categoryClick, relatedClick } from '@utils/uiHelpers.js';
   import ListIcon from '~icons/gg/list';
 
   export let contents = false;
@@ -12,8 +12,6 @@
   export let mini = false;
   export let top = false;
   export let setActiveLink = null;
-
-  let { categoryClick, relatedClick } = pokeTrapper;
 
   function activeLink(node) {
     const link = node.attributes.href.value;
