@@ -1,7 +1,6 @@
 <script>
-  import { pokeTrapper } from '@utils/pokeTrapper.js';
+  import { tocClick } from '@utils/uiHelpers.js';
   import SvelteMarkdown from 'svelte-markdown';
-  const { tocClick } = pokeTrapper;
   export let contents;
   export let pageFenceClickHandler = null;
   export let activeLink = null;

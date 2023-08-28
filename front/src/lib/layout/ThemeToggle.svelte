@@ -2,9 +2,8 @@
   import { themeStorage, themeName, darkTheme, lightTheme } from '@utils';
   import { onMount } from 'svelte';
   import ThemeToggleIcon from './ThemeToggleIcon.svelte';
-  import { pokeTrapper } from '@utils/pokeTrapper.js';
+  import { themeToggleClick } from '@utils/uiHelpers.js';
 
-  const { themeToggleClick } = pokeTrapper;
   $: theme = '';
   $: dark = null;
   let repeat, timer;
@@ -34,18 +33,17 @@
     if (e.detail === 0) {
       repeat = true;
       clearTimeout(timer);
-      timer = setTimeout(function() {
+      timer = setTimeout(function () {
         repeat = false;
       }, 1000);
     }
-    
+
     dark = !dark;
     document.documentElement.classList.toggle(darkTheme);
     document.documentElement.classList.toggle(lightTheme);
     themeStorage(dark);
     themeToggleClick(await themeName(dark));
   }
-  
 </script>
 
 <button type="button" class="theme-toggle" on:click={toggleTheme}>
