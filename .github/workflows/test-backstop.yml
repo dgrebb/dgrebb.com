@@ -1,0 +1,53 @@
+name: 🧪 Test Front End
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "front/**"
+    branches: [main, develop]
+
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+
+jobs:
+  visual_regression:
+    name: 🙈 BackstopJS
+    runs-on: ubuntu-latest
+
+    concurrency:
+      group: tests
+      cancel-in-progress: true
+
+    # outputs:
+    #   RELEASE_NAME: ${{ steps.vars.outputs.RELEASE_NAME }}
+    #   DIST: ${{ steps.vars.outputs.DIST }}
+
+    environment:
+      name: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+
+    steps:
+      - name: ⬢ Setup Node & Cache
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.17.1"
+          cache: "npm"
+          cache-dependency-path: _ci/backstop/package-lock.json
+
+      - name: ↧ Install & Patch
+        run: cd _ci/backstop && npm ci
+
+      - name: ⌛️ Running Visual Regression
+        run: ENVIRONMENT=${{ vars.ENV_NAME }} backstop test --config=backstop.config.js
+
+      - name: ¿ Do something if it fails
+        if: failure()
+        run: echo 'oh noes! something went horribly wrong.'
+
+      - name: ❌ Fail
+        if: failure()
+        run: echo 'oh noes! something went horribly wrong.'
+
+      - name: ✅ Success
+        if: failure()
+        run: echo 'let us continue.'
