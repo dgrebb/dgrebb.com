@@ -8,6 +8,7 @@ if [ $# -eq 0 ]; then
 else
     while test "$2" != --; do
         cd $directory/../_tf/$environment
+        printDgMsg "Working with Terraform in --- ${environment} --- environment!"
         case $2 in
         f | fmt | format)
             printDgMsg "Formatting..."
