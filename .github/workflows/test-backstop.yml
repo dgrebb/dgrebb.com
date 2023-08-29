@@ -26,7 +26,18 @@ jobs:
     environment:
       name: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
 
+    env:
+      DEPLOY_ENV: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+
     steps:
+      - name: 𐂷 Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: dgrebb/dgrebb.com
+          ref: ${{ github.ref }}
+          token: ${{ github.token }}
+          fetch-depth: 0
+
       - name: ⬢ Setup Node & Cache
         uses: actions/setup-node@v3
         with:
@@ -38,16 +49,11 @@ jobs:
         run: cd _ci/backstop && npm ci
 
       - name: ⌛️ Running Visual Regression
-        run: ENVIRONMENT=${{ vars.ENV_NAME }} backstop test --config=backstop.config.js
-
-      - name: ¿ Do something if it fails
-        if: failure()
-        run: echo 'oh noes! something went horribly wrong.'
+        run: cd _ci/backstop && ENV=$DEPLOY_ENV npm run test
 
       - name: ❌ Fail
         if: failure()
         run: echo 'oh noes! something went horribly wrong.'
 
       - name: ✅ Success
-        if: failure()
         run: echo 'let us continue.'
