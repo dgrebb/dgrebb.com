@@ -1,5 +1,5 @@
-name: 🚜 B&D Front End
-run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Build ${{ github.event_name == 'pull_request' && format('PR #{0}: {1} to ', github.event.pull_request.number, github.event.pull_request.title) || format('latest `{0}` to ', github.ref_name) }}"
+name: 🚜 Build, Deploy, and Test
+run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - BD&T ${{ github.event_name == 'pull_request' && format('PR #{0}: {1} to ', github.event.pull_request.number, github.event.pull_request.title) || format('latest `{0}` to ', github.ref_name) }}"
 
 on:
   workflow_dispatch:
@@ -7,6 +7,10 @@ on:
     paths:
       - "front/**"
     branches: [main, develop]
+
+permissions:
+  checks: write
+  contents: write
 
 env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
@@ -55,7 +59,7 @@ jobs:
           echo '- Dist: ${{ env.DIST }}' >> $GITHUB_STEP_SUMMARY
 
   build_deploy:
-    name: 🚜 Build & Deploy ${{ github.ref_name == 'PROD' && 'Production' || 'STG' }}
+    name: 🚜 Build & Deploy ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
     runs-on: ubuntu-latest
 
     environment:
@@ -140,3 +144,8 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+  test:
+    name: 🦠 Test ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
+    needs: build_deploy
+    uses: ./.github/workflows/test-backstop.yml
