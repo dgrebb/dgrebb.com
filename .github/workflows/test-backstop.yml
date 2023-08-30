@@ -70,5 +70,5 @@ jobs:
         run: |
           cd _ci/backstop
           FAIL_TABLE=$(./_utils/parse-report.sh)
-          echo "#Backstop Summary" >> $GITHUB_STEP_SUMMARY
+          echo "# Backstop Summary" >> $GITHUB_STEP_SUMMARY
           echo $FAIL_TABLE >> $GITHUB_STEP_SUMMARY
