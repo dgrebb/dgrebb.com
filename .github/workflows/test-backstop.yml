@@ -2,11 +2,16 @@ name: 🔬 Test Front End
 run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Test ${{ github.event_name == 'pull_request' && format('PR #{0}: {1} on ', github.event.pull_request.number, github.event.pull_request.title) || format('latest `{0}` in ', github.ref_name) }}"
 
 on:
+  workflow_call:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - "front/**"
-    branches: [main, develop]
+  # pull_request:
+  #   paths:
+  #     - "front/**"
+  #   branches: [main, develop]
+
+permissions:
+  checks: write
+  contents: write
 
 env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
@@ -15,9 +20,6 @@ jobs:
   visual_regression:
     name: 🙈 BackstopJS
     runs-on: ubuntu-latest
-    permissions:
-      checks: write
-      contents: write
 
     concurrency:
       group: tests
@@ -53,7 +55,7 @@ jobs:
 
       - name: ⌛️ Running Visual Regression
         id: backstop
-        run: cd _ci/backstop && ENV=$DEPLOY_ENV npm run test
+        run: cd _ci/backstop && ENV=$DEPLOY_ENV npm run test.gh
 
       - name: ${{ steps.backstop.conclusion == 'failure' && '❌ Failure' || '✅ Success' }}
         if: failure()
