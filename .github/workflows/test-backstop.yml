@@ -26,7 +26,37 @@ jobs:
     environment:
       name: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
 
+    env:
+      DEPLOY_ENV: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+      GH_TOKEN: ${{ github.token }}
+
     steps:
+      - name: Create Check Run
+        # https://www.kenmuse.com/blog/creating-github-checks/
+        run: |
+          gh api -X POST -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            /repos/${{ github.repository }}/check-runs
+            --input - <<- EOF
+              {
+                "name: "BackstopJS",
+                "head_sha": "${{ github.event.pull_request.head.sha }}",
+                "status": "queued",
+                "output": {
+                    "title": "Starting Visual Regression",
+                    "summary": "Here's where we'll list the failed tests."
+                }
+              }
+          EOF
+
+      - name: 𐂷 Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: dgrebb/dgrebb.com
+          ref: ${{ github.ref }}
+          token: ${{ github.token }}
+          fetch-depth: 0
+
       - name: ⬢ Setup Node & Cache
         uses: actions/setup-node@v3
         with:
@@ -37,17 +67,49 @@ jobs:
       - name: ↧ Install & Patch
         run: cd _ci/backstop && npm ci
 
-      - name: ⌛️ Running Visual Regression
-        run: ENVIRONMENT=${{ vars.ENV_NAME }} backstop test --config=backstop.config.js
+      - name: Start Check
+        # https://www.kenmuse.com/blog/creating-github-checks/
+        run: |
+          gh api -X POST -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            /repos/${{ github.repository }}/check-runs
+            --input - <<- EOF
+              {
+                "head_sha": "${{ github.event.pull_request.head.sha }}",
+                "status": "in_progress",
+                "output": {
+                    "title": "Running Visual Regression 🪤",
+                    "summary": "Here's where we'll list the failed tests."
+                }
+              }
+          EOF
 
-      - name: ¿ Do something if it fails
-        if: failure()
-        run: echo 'oh noes! something went horribly wrong.'
+      - name: ⌛️ Running Visual Regression
+        id: backstop
+        run: cd _ci/backstop && ENV=$DEPLOY_ENV npm run test
+
+      - name: Complete Check
+        env:
+          RESULT: "${{ steps.backstop.conclusion && '❌' || '✅' }}"
+        run: |
+          gh api -X POST -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            /repos/${{ github.repository }}/check-runs
+            --input - <<- EOF
+              {
+                "name: "BackstopJS",
+                "head_sha": "${{ github.event.pull_request.head.sha }}",
+                "status": "complete",
+                "output": {
+                    "title": "Visual Regression Complete $RESULT",
+                    "summary": "Here's where we'll list the failed tests."
+                }
+              }
+          EOF
 
       - name: ❌ Fail
         if: failure()
         run: echo 'oh noes! something went horribly wrong.'
 
       - name: ✅ Success
-        if: failure()
         run: echo 'let us continue.'
