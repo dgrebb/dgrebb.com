@@ -16,6 +16,7 @@
     "start": "ENVIRONMENT=\"$ENV\" pm2 start ecosystem.config.js && pm2 monit",
     "stop": "pm2 stop backstop && pm2 delete backstop && kill -9 $( lsof -i:3000 -t )",
     "test": "ENVIRONMENT=\"$ENV\" backstop test --config=backstop.config.js",
+    "test.gh": "ENVIRONMENT=gh-\"$ENV\" backstop test --config=backstop.config.js",
     "post-install": "patch-package"
   },
   "keywords": [],
