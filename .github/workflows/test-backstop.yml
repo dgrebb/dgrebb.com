@@ -1,5 +1,5 @@
 name: 🧪 Test Front End
-run-name: "🔬 Run Tests on ${{ github.event_name == 'pull_request' && format('{0}: {1} on ', github.event.pull_request.number, github.event.pull_request.title) || format('latest `{0}` in ', github.ref_name) }} ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}"
+run-name: "🔬 Test ${{ github.event_name == 'pull_request' && format('PR #{0}: {1} on ', github.event.pull_request.number, github.event.pull_request.title) || format('latest `{0}` in ', github.ref_name) }} ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}"
 
 on:
   workflow_dispatch:
@@ -23,34 +23,13 @@ jobs:
       group: tests
       cancel-in-progress: true
 
-    # outputs:
-    #   RELEASE_NAME: ${{ steps.vars.outputs.RELEASE_NAME }}
-    #   DIST: ${{ steps.vars.outputs.DIST }}
-
     environment:
-      name: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
 
     env:
       DEPLOY_ENV: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
-      GH_TOKEN: ${{ github.token }}
 
     steps:
-      - name: 🏃 Create Check Run
-        id: checkrun
-        # https://www.kenmuse.com/blog/creating-github-checks/
-        run: |
-          CHECKID=$(gh api -X POST -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            -f name='Running Visual Regression 🪤' \
-            -f head_sha='${{ github.event.pull_request.head.sha }}' \
-            -f status='queued' \
-            -f 'output[title]=Starting Visual Regression' \
-            -f 'output[summary]=Heating up some ramen.' \
-            -f 'output[text]=More detailed Markdown **text**' \
-            --jq '.id' \
-            /repos/${{ github.repository }}/check-runs)
-          echo "checkId=$CHECKID" >> $GITHUB_OUTPUT
-
       - name: 𐂷 Checkout
         uses: actions/checkout@v3
         with:
@@ -64,46 +43,18 @@ jobs:
         with:
           node-version: "18.17.1"
           cache: "npm"
-          cache-dependency-path: _ci/backstop/package-lock.json
+          cache-dependency-path: |
+            _ci/backstop/package.json
+            _ci/backstop/package-lock.json
+            _ci/backstop/node_modules
 
       - name: ↧ Install & Patch
         run: cd _ci/backstop && npm ci
-
-      - name: Start Check
-        # https://www.kenmuse.com/blog/creating-github-checks/
-        run: |
-          gh api -X PATCH -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            -f name='Running Visual Regression 🪤' \
-            -f head_sha='${{ github.event.pull_request.head.sha }}' \
-            -f status='in_progress' \
-            -f 'output[title]=Starting Visual Regression' \
-            -f 'output[summary]=Running Visual Regression 🪤' \
-            -f 'output[text]=More detailed Markdown **text**' \
-            /repos/${{ github.repository }}/check-runs/${{ steps.checkrun.outputs.checkId }}
 
       - name: ⌛️ Running Visual Regression
         id: backstop
         run: cd _ci/backstop && ENV=$DEPLOY_ENV npm run test
 
-      - name: Complete Check
-        if: always()
-        env:
-          RESULT: "${{ steps.backstop.conclusion && '❌' || '✅' }}"
-        run: |
-          gh api -X PATCH -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            -f name='Running Visual Regression 🪤' \
-            -f head_sha='${{ github.event.pull_request.head.sha }}' \
-            -f status='complete' \
-            -f 'output[title]=Visual Regression Complete $RESULT' \
-            -f 'output[summary]=Here's where we'll list the failed tests.' \
-            -f 'output[text]=More detailed Markdown **text**' \
-            /repos/${{ github.repository }}/check-runs/${{ steps.checkrun.outputs.checkId }}
-
-      - name: "${{ steps.backstop.conclusion && '❌ Failure' || '✅ Success' }}"
+      - name: ${{ steps.backstop.conclusion == 'failure' && '❌ Failure' || '✅ Success' }}
         if: failure()
         run: echo 'oh noes! something went horribly wrong.'
-
-      # - name: ✅ Success
-      #   run: echo 'let us continue.'
