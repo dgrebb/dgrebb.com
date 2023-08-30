@@ -57,4 +57,16 @@ jobs:
 
       - name: ${{ steps.backstop.conclusion == 'failure' && '❌ Failure' || '✅ Success' }}
         if: failure()
-        run: echo 'oh noes! something went horribly wrong.'
+        uses: actions/upload-artifact@v3
+        with:
+          name: backstop-report
+          retention-days: 3
+          path: _ci/backstop/bd/
+
+      - name: Summary
+        if: always()
+        run: |
+          cd _ci/backstop
+          FAIL_TABLE=$(./parse-report.sh)
+          echo "#Backstop Summary" >> $GITHUB_STEP_SUMMARY
+          echo $FAIL_TABLE >> $GITHUB_STEP_SUMMARY
