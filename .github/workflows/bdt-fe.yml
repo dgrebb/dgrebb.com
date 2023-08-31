@@ -17,7 +17,7 @@ env:
 
 jobs:
   summary:
-    name: 📋 Summary & Setup
+    name: 📋 Workflow
     runs-on: ubuntu-latest
 
     concurrency:
