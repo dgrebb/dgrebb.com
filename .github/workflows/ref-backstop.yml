@@ -1,0 +1,18 @@
+name: Backstop Reference
+# TODO: Create a job to make reference bitmaps if things get out of sync
+    on: 
+      workflow_dispatch:
+
+jobs:
+  generate:
+    name: 🙈 BackstopJS
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: ${{ steps.backstop.conclusion == 'failure' && '❌ Failure' || '✅ Success' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: backstop-report
+          retention-days: 3
+          path: _ci/backstop/bd/
