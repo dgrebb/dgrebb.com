@@ -16,6 +16,7 @@
     "start": "ENVIRONMENT=\"$ENV\" pm2 start ecosystem.config.js && pm2 monit",
     "stop": "pm2 stop backstop && pm2 delete backstop && kill -9 $( lsof -i:3000 -t )",
     "test": "ENVIRONMENT=\"$ENV\" backstop test --config=backstop.config.js",
+    "test.gh": "ENVIRONMENT=gh-\"$ENV\" backstop test --config=backstop.config.js",
     "post-install": "patch-package"
   },
   "keywords": [],
@@ -26,8 +27,8 @@
     "cors": "^2.8.5",
     "http-server": "^14.1.1",
     "patch-package": "^8.0.0",
+    "playwright": "^1.37.1",
     "pm2": "^5.3.0",
-    "puppeteer": "^20.7.4",
     "super-simple-web-server": "^1.1.4"
   }
 }

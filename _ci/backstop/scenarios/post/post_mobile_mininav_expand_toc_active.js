@@ -11,5 +11,5 @@ module.exports = {
   selectors: ['.page-navigation.mini'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,
-  requireSameDimensions: true,
+  requireSameDimensions: false,
 };

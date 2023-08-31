@@ -35,16 +35,16 @@
 <style>
   .cc-link {
     display: inline-block;
-    height: 17px;
-    width: 17px;
+    vertical-align: top;
     opacity: 0.8;
     transition: opacity 0.5s !important;
-    vertical-align: top;
+    width: 17px;
+    height: 17px;
     &:hover,
     &:focus,
     &:focus-visible,
     &:active {
-      opacity: 1.0;
+      opacity: 1;
     }
   }
   .icon-cc {

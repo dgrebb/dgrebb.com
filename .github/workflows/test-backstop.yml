@@ -1,115 +1,105 @@
-name: 🧪 Test Front End
+name: 🙈 BackstopJS - Tests
+run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Test ${{ github.event_name == 'pull_request' && format('PR #{0}: {1} on ', github.event.pull_request.number, github.event.pull_request.title) || format('latest `{0}` in ', github.ref_name) }}"
 
 on:
+  workflow_call:
+    secrets:
+      REPORTS_AWS_S3_BUCKET:
+        required: true
+      AWS_ACCESS_KEY_ID:
+        required: true
+      AWS_SECRET_ACCESS_KEY:
+        required: true
+      AWS_REGION:
+        required: true
   workflow_dispatch:
-  pull_request:
-    paths:
-      - "front/**"
-    branches: [main, develop]
+  # pull_request:
+  #   paths:
+  #     - "front/**"
+  #   branches: [main, develop]
+
+permissions:
+  checks: write
+  contents: write
 
 env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
 jobs:
   visual_regression:
-    name: 🙈 BackstopJS
+    name: 𝌹 Visual Regression
     runs-on: ubuntu-latest
 
     concurrency:
       group: tests
       cancel-in-progress: true
 
-    # outputs:
-    #   RELEASE_NAME: ${{ steps.vars.outputs.RELEASE_NAME }}
-    #   DIST: ${{ steps.vars.outputs.DIST }}
-
     environment:
-      name: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
 
     env:
       DEPLOY_ENV: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
-      GH_TOKEN: ${{ github.token }}
 
     steps:
-      - name: Create Check Run
-        # https://www.kenmuse.com/blog/creating-github-checks/
-        run: |
-          gh api -X POST -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            /repos/${{ github.repository }}/check-runs
-            --input - <<- EOF
-              {
-                "name: "BackstopJS",
-                "head_sha": "${{ github.event.pull_request.head.sha }}",
-                "status": "queued",
-                "output": {
-                    "title": "Starting Visual Regression",
-                    "summary": "Here's where we'll list the failed tests."
-                }
-              }
-          EOF
-
       - name: 𐂷 Checkout
         uses: actions/checkout@v3
         with:
           repository: dgrebb/dgrebb.com
           ref: ${{ github.ref }}
           token: ${{ github.token }}
-          fetch-depth: 0
+          sparse-checkout: |
+            _ci
 
       - name: ⬢ Setup Node & Cache
         uses: actions/setup-node@v3
         with:
           node-version: "18.17.1"
           cache: "npm"
-          cache-dependency-path: _ci/backstop/package-lock.json
+          cache-dependency-path: |
+            _ci/backstop/package.json
+            _ci/backstop/package-lock.json
+            _ci/backstop/node_modules
 
       - name: ↧ Install & Patch
         run: cd _ci/backstop && npm ci
 
-      - name: Start Check
-        # https://www.kenmuse.com/blog/creating-github-checks/
-        run: |
-          gh api -X POST -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            /repos/${{ github.repository }}/check-runs
-            --input - <<- EOF
-              {
-                "head_sha": "${{ github.event.pull_request.head.sha }}",
-                "status": "in_progress",
-                "output": {
-                    "title": "Running Visual Regression 🪤",
-                    "summary": "Here's where we'll list the failed tests."
-                }
-              }
-          EOF
+      - name: 🗺️ Test Sitemap and Warm Cache 🔥
+        run: ./_ci/_utils/warmup.sh
 
-      - name: ⌛️ Running Visual Regression
+      - name: 👀 Running Visual Regression
         id: backstop
-        run: cd _ci/backstop && ENV=$DEPLOY_ENV npm run test
+        continue-on-error: true
+        run: cd _ci/backstop && ENV=$DEPLOY_ENV npm run test.gh
 
-      - name: Complete Check
+      - name: ⬆ Uploading Test Report
+        if: always()
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete --cache-control max-age=2853200,public
         env:
-          RESULT: "${{ steps.backstop.conclusion && '❌' || '✅' }}"
+          AWS_S3_BUCKET: ${{ vars.REPORTS_DOMAIN }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          SOURCE_DIR: "_ci/backstop/bd/"
+          DEST_DIR: "backstop"
+
+      - name: Summary
+        if: always()
+        env:
+          REPORT_PATH: ${{ github.ref_name == 'main' && 'prod' || 'stg' }}
         run: |
-          gh api -X POST -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            /repos/${{ github.repository }}/check-runs
-            --input - <<- EOF
-              {
-                "name: "BackstopJS",
-                "head_sha": "${{ github.event.pull_request.head.sha }}",
-                "status": "complete",
-                "output": {
-                    "title": "Visual Regression Complete $RESULT",
-                    "summary": "Here's where we'll list the failed tests."
-                }
-              }
-          EOF
+          cd _ci/backstop
+          FAIL_TABLE=$(./_utils/parse-report.sh)
+          echo "# Backstop Summary" >> $GITHUB_STEP_SUMMARY
+          echo "<a href=\"http://${{ vars.REPORTS_DOMAIN }}/backstop/html_report/gh-$REPORT_PATH\" target=\"_blank\">BackstopJS Report</a>" >> $GITHUB_STEP_SUMMARY
+          echo "<a href=\"http://${{ vars.REPORTS_DOMAIN }}/lighthouse\" target=\"_blank\">Lighthouse Report</a>" >> $GITHUB_STEP_SUMMARY
+          echo $FAIL_TABLE >> $GITHUB_STEP_SUMMARY
 
-      - name: ❌ Fail
-        if: failure()
-        run: echo 'oh noes! something went horribly wrong.'
-
-      - name: ✅ Success
-        run: echo 'let us continue.'
+      - name: 🔥 Bummer. Uploading Failed Artifacts!
+        # if: ${{ steps.backstop.conclusion == 'failure' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: backstop-report
+          retention-days: 3
+          path: _ci/backstop/bd/

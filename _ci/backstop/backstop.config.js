@@ -28,6 +28,14 @@ if (process.env.ENVIRONMENT === 'production') {
   ];
 }
 
+let captureLimit = 15;
+let compareLimit = 100;
+
+if (process.env.ENVIRONMENT.includes('gh-')) {
+  captureLimit = 5;
+  compareLimit = 100;
+}
+
 module.exports = {
   id: ID,
   viewports: allViewports,
@@ -46,8 +54,8 @@ module.exports = {
     args: [],
     headless: true,
   },
-  asyncCaptureLimit: 15,
-  asyncCompareLimit: 100,
+  asyncCaptureLimit: captureLimit,
+  asyncCompareLimit: compareLimit,
   debug: false,
   debugWindow: false,
   scenarioLogsInReports: true,

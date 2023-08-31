@@ -1,0 +1,57 @@
+name: 🙈 BackstopJS - Refs
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  generate:
+    name: ♺ Generate Reference Bitmaps
+    runs-on: ubuntu-latest
+
+    concurrency:
+      group: tests
+      cancel-in-progress: false
+
+    environment:
+      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+
+    env:
+      REF_ENV: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+
+    steps:
+      - name: 𐂷 Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: dgrebb/dgrebb.com
+          ref: ${{ github.ref }}
+          token: ${{ github.token }}
+          sparse-checkout: |
+            _ci
+
+      - name: ⬢ Setup Node & Cache
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.17.1"
+          cache: "npm"
+          cache-dependency-path: |
+            _ci/backstop/package.json
+            _ci/backstop/package-lock.json
+            _ci/backstop/node_modules
+
+      - name: ↧ Install & Patch
+        run: cd _ci/backstop && npm ci
+
+      - name: 🔥 Warm Cache
+        run: ./_ci/_utils/warmup.sh
+
+      - name: 📸 Capturing References
+        id: backstop
+        continue-on-error: true
+        run: cd _ci/backstop && ENV=$REF_ENV npm run ref.gh
+
+      - name: ↑ Uploading Refs
+        uses: actions/upload-artifact@v3
+        with:
+          name: backstop-refs
+          retention-days: 3
+          path: _ci/backstop/bd/bitmaps_reference

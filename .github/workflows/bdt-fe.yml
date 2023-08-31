@@ -1,5 +1,5 @@
-name: 🚜 B&D Front End
-run-name: "🚜 B&D ${{ github.event_name == 'pull_request' && format('{0}: {1} to ', github.event.pull_request.number, github.event.pull_request.title) || format('latest `{0}` to ', github.ref_name) }} ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}"
+name: 🚜 Build, Deploy, and Test
+run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest `{0}`', github.ref_name) }}"
 
 on:
   workflow_dispatch:
@@ -8,24 +8,40 @@ on:
       - "front/**"
     branches: [main, develop]
 
+permissions:
+  checks: write
+  contents: write
+
 env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
 jobs:
-  summary:
-    name: 📋 Summary & Setup
+  # summary:
+  #   name: 📋 Workflow
+  #   runs-on: ubuntu-latest
+
+  #   concurrency:
+  #     group: frontend
+  #     cancel-in-progress: true
+
+  #   outputs:
+  #     RELEASE_NAME: ${{ steps.vars.outputs.RELEASE_NAME }}
+  #     DIST: ${{ steps.vars.outputs.DIST }}
+
+  #   environment:
+  #     name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+
+  #   steps:
+
+  build_deploy:
+    name: 🚜 Build & Deploy to ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
     runs-on: ubuntu-latest
-
-    concurrency:
-      group: frontend
-      cancel-in-progress: true
-
-    outputs:
-      RELEASE_NAME: ${{ steps.vars.outputs.RELEASE_NAME }}
-      DIST: ${{ steps.vars.outputs.DIST }}
 
     environment:
       name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+
+    env:
+      DEPLOY_ENV: "${{ vars.ENV_NAME }}"
 
     steps:
       - name: 🤿 Set Vars
@@ -48,31 +64,20 @@ jobs:
           echo '- Branch: [${{ env.BRANCH_NAME }}](https://github.com/dgrebb/dgrebb.com/tree/${{ env.BRANCH_NAME }})' >> $GITHUB_STEP_SUMMARY
           if [ "${{ github.event_name }}" = "pull_request" ]; then 
             echo '- Pull Request: [#${{ github.event.number }}](https://github.com/dgrebb/dgrebb.com/pull/${{ github.event.number }}) ${{ github.event.pull_request.title }}' >> $GITHUB_STEP_SUMMARY
-            echo '- ${{ github.event.pull_request.changed_files }} Files Changed: [ ${{ github.event.pull_request.commits }} Commits](${{ github.event.pull_request.commits_url }}) | [Diff](${{ github.event.pull_request.diff_url }})' >> $GITHUB_STEP_SUMMARY
+            echo '- ${{ github.event.pull_request.changed_files }} Files Changed: [ ${{ github.event.pull_request.commits }} Commits](https://github.com/dgrebb/dgrebb.com/pull/${{ github.event.number }}/commits) | [Diff](https://github.com/dgrebb/dgrebb.com/pull/${{ github.event.number }}/files)' >> $GITHUB_STEP_SUMMARY
           fi
           echo '## Release Details' >> $GITHUB_STEP_SUMMARY
           echo '- Release: [${{ env.RELEASE_NAME }}](https://dgrebb.sentry.io/releases/${{ env.RELEASE_NAME }})' >> $GITHUB_STEP_SUMMARY
           echo '- Dist: ${{ env.DIST }}' >> $GITHUB_STEP_SUMMARY
 
-  build_deploy:
-    name: 🚜 Build & Deploy ${{ github.ref_name == 'PROD' && 'Production' || 'STG' }}
-    needs: summary
-    runs-on: ubuntu-latest
-
-    environment:
-      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
-
-    env:
-      DEPLOY_ENV: "${{ vars.ENV_NAME }}"
-
-    steps:
       - name: 𐂷 Checkout
         uses: actions/checkout@v3
         with:
           repository: dgrebb/dgrebb.com
           ref: ${{ github.ref }}
           token: ${{ github.token }}
-          fetch-depth: 0
+          sparse-checkout: |
+            front
 
       - name: 📐 Set Environment
         env:
@@ -109,13 +114,21 @@ jobs:
         run: cd front && npm ci
 
       - name: ↻ Build
-        run: >
-          cd front &&
-          SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} 
-          DEPLOY_ENV=$DEPLOY_ENV
-          RELEASE_NAME=${{ env.RELEASE_NAME }}
-          DIST=${{ env.DIST }}
-          npm run build
+        run: |
+          cd front
+          if [ ${{ github.ref_name }} == 'main' ]; then 
+            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} 
+            DEPLOY_ENV=$DEPLOY_ENV
+            RELEASE_NAME=${{ env.RELEASE_NAME }}
+            DIST=${{ env.DIST }}
+            npm run build
+          else
+            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} 
+            DEPLOY_ENV=$DEPLOY_ENV
+            RELEASE_NAME=${{ env.RELEASE_NAME }}
+            DIST=${{ env.DIST }}
+            npm run build.s
+          fi
 
       - name: 🤖 Robots
         if: ${{ github.ref_name == 'main' }}
@@ -141,3 +154,13 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+  test:
+    name: 🦠 Test ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
+    needs: build_deploy
+    uses: ./.github/workflows/test-backstop.yml
+    secrets:
+      REPORTS_AWS_S3_BUCKET: ${{ secrets.REPORTS_AWS_S3_BUCKET }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}

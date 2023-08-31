@@ -3,11 +3,16 @@ let URL;
 let envDir;
 
 switch (env) {
-
   case 'staging':
     ID = 'Staging';
     URL = 'https://stg.dgrebb.com';
     envDir = 'stg';
+    break;
+
+  case 'gh-staging':
+    ID = 'Github STG';
+    URL = 'https://stg.dgrebb.com';
+    envDir = 'gh-stg';
     break;
 
   case 'production':
@@ -16,8 +21,14 @@ switch (env) {
     envDir = 'prod';
     break;
 
+  case 'gh-production':
+    ID = 'Github PRD';
+    URL = 'https://www.dgrebb.com';
+    envDir = 'gh-prod';
+    break;
+
   default:
-    ID = 'Local'
+    ID = 'Local';
     URL = 'http://local.dgrebb.com:8080';
     envDir = 'local';
     break;
@@ -33,8 +44,8 @@ const xs = {
 const tallXS = {
   label: 'tall xs',
   width: 320,
-  height: 568
-}
+  height: 568,
+};
 
 const sm = {
   label: 'sm',

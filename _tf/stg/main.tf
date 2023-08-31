@@ -2,12 +2,14 @@
 # ------------------------------------------------------------------------------
 
 locals {
-  domain           = "stg.${var.domain}"
-  cmsdomain        = "stg.${var.cmsdomain}"
-  cdndomain        = "stg.${var.cdndomain}"
-  dashed_domain    = "stg-${var.dashed_domain}"
-  dashed_cmsdomain = "stg-${var.dashed_cmsdomain}"
-  dashed_cdndomain = "stg-${var.dashed_cdndomain}"
+  domain               = "stg.${var.domain}"
+  reportsdomain        = "stg.reports.${var.domain}"
+  cmsdomain            = "stg.${var.cmsdomain}"
+  cdndomain            = "stg.${var.cdndomain}"
+  dashed_domain        = "stg-${var.dashed_domain}"
+  dashed_reportsdomain = "stg-reports-${var.dashed_domain}"
+  dashed_cmsdomain     = "stg-${var.dashed_cmsdomain}"
+  dashed_cdndomain     = "stg-${var.dashed_cdndomain}"
 }
 
 module "www_cdn" {
@@ -37,7 +39,7 @@ module "containers" {
   strapi_instance_count = 1
   subnets               = module.network.subnets
   strapi_alb_tg         = module.scaling.strapi_alb_tg
-  db_sg            = module.security.db_sg
+  db_sg                 = module.security.db_sg
 }
 
 module "database" {
@@ -66,11 +68,13 @@ module "network" {
   domain               = local.domain
   cmsdomain            = local.cmsdomain
   cdndomain            = local.cdndomain
+  reportsdomain        = local.reportsdomain
   dashed_domain        = local.dashed_domain
   dashed_cmsdomain     = local.dashed_cmsdomain
   alb                  = module.scaling.alb
   www_cdn              = module.www_cdn.cf_distribution
   uploads_cdn          = module.uploads_cdn.cf_distribution
+  reports_bucket       = module.reports_bucket.reports_bucket
   www_record_overwrite = true
 }
 
@@ -117,4 +121,9 @@ module "uploads_cdn_bucket" {
 module "uploads_bucket_defaults" {
   source = "../modules/storage/defaults"
   bucket = module.uploads_cdn_bucket.bucket
+}
+
+module "reports_bucket" {
+  source        = "../modules/reports"
+  reportsdomain = local.reportsdomain
 }

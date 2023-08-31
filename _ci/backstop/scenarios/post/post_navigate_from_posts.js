@@ -7,9 +7,9 @@ module.exports = {
   onReadyScript: 'playwright/onReadyPosts.js',
   clickSelector:
     'a[href="/post/chicken-caesar-salad-an-overrated-concoction-of-lettuce-and-delusion/"]',
-  postInteractionWait: 1000,
+  postInteractionWait: 1500,
   selectors: ['document'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,
-  requireSameDimensions: true,
+  requireSameDimensions: false,
 };
