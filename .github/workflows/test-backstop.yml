@@ -63,12 +63,13 @@ jobs:
       - name: ↧ Install & Patch
         run: cd _ci/backstop && npm ci
 
-      - name: ⌛️ Running Visual Regression
+      - name: 🗺️ Test Sitemap and Warm Cache 🔥
+        run: ./_ci/_utils/warmup.sh
+
+      - name: 👀 Running Visual Regression
         id: backstop
         continue-on-error: true
-        run: |
-          ./_ci/_utils/warmup.sh
-          cd _ci/backstop && ENV=$DEPLOY_ENV npm run test.gh
+        run: cd _ci/backstop && ENV=$DEPLOY_ENV npm run test.gh
 
       - name: ⬆ Uploading Test Report
         if: always()
@@ -83,7 +84,7 @@ jobs:
           SOURCE_DIR: "_ci/backstop/bd/"
           DEST_DIR: "backstop"
 
-      - name: 🗺️ Summary
+      - name: Summary
         if: always()
         env:
           REPORT_PATH: ${{ github.ref_name == 'main' && 'prod' || 'stg' }}
