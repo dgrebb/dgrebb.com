@@ -1,4 +1,4 @@
-name: 🔬 Test Front End
+name: 🔬 Test Front End UI
 run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Test ${{ github.event_name == 'pull_request' && format('PR #{0}: {1} on ', github.event.pull_request.number, github.event.pull_request.title) || format('latest `{0}` in ', github.ref_name) }}"
 
 on:
@@ -94,3 +94,11 @@ jobs:
           echo "<a href=\"$BACKSTOP_URL\">BackstopJS Report</a>" >> $GITHUB_STEP_SUMMARY
           echo "<a href=\"$LIGHTHOUSE_URL\">Lighthouse Report</a>" >> $GITHUB_STEP_SUMMARY
           echo $FAIL_TABLE >> $GITHUB_STEP_SUMMARY
+
+      - name: 🔥 Bummer. Uploading Failed Artifacts!
+        # if: ${{ steps.backstop.conclusion == 'failure' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: backstop-report
+          retention-days: 3
+          path: _ci/backstop/bd/
