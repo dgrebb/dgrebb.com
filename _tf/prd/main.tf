@@ -1,6 +1,10 @@
 # Production Infrastructure
 # ------------------------------------------------------------------------------
 
+locals {
+  reportsdomain = "reports.${var.domain}"
+}
+
 module "www_cdn" {
   source        = "../modules/cdn"
   domain        = var.domain
@@ -57,11 +61,13 @@ module "network" {
   domain               = var.domain
   cmsdomain            = var.cmsdomain
   cdndomain            = var.cdndomain
+  reportsdomain        = local.reportsdomain
   dashed_domain        = var.dashed_domain
   dashed_cmsdomain     = var.dashed_cmsdomain
   alb                  = module.scaling.alb
   www_cdn              = module.www_cdn.cf_distribution
   uploads_cdn          = module.uploads_cdn.cf_distribution
+  reports_bucket       = module.reports_bucket.reports_bucket
   www_record_overwrite = true
 }
 
@@ -108,4 +114,9 @@ module "uploads_cdn_bucket" {
 module "uploads_bucket_defaults" {
   source = "../modules/storage/defaults"
   bucket = module.uploads_cdn_bucket.bucket
+}
+
+module "reports_bucket" {
+  source        = "../modules/reports"
+  reportsdomain = local.reportsdomain
 }

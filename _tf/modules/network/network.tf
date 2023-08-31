@@ -43,6 +43,23 @@ resource "aws_route53_record" "www" {
 }
 
 # ------------------------------------------------------------------------------
+# Reports Record
+# ------------------------------------------------------------------------------
+
+resource "aws_route53_record" "reports" {
+  zone_id = data.aws_route53_zone.main.zone_id
+  name    = var.reportsdomain
+  type    = "A"
+  alias {
+    name                   = var.reports_bucket.website_domain
+    zone_id                = var.reports_bucket.hosted_zone_id
+    evaluate_target_health = true
+  }
+
+  depends_on = [var.reports_bucket]
+}
+
+# ------------------------------------------------------------------------------
 # CMS Record, Cert, and Validation
 # ------------------------------------------------------------------------------
 

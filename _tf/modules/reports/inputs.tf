@@ -1,0 +1,3 @@
+variable "reportsdomain" {
+  type = string
+}

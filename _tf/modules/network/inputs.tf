@@ -3,6 +3,7 @@ variable "aws_secret_key" {}
 variable "region" {}
 variable "basedomain" {}
 variable "domain" {}
+variable "reportsdomain" {}
 variable "subnets" {}
 variable "cmsdomain" {}
 variable "cdndomain" {}
@@ -12,3 +13,4 @@ variable "www_cdn" {}
 variable "uploads_cdn" {}
 variable "alb" {}
 variable "www_record_overwrite" {}
+variable "reports_bucket" {}
