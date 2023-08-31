@@ -7,6 +7,10 @@ on:
     paths:
       - "front/**"
     branches: [main, develop]
+  push:
+    paths:
+      - "front/**"
+    branches: [main, develop]
 
 permissions:
   checks: write

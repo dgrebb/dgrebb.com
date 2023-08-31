@@ -1,0 +1,128 @@
+{
+  "config": {
+    "commit-prompt": {
+      "questions": [
+        {
+          "name": "type",
+          "placeHolder": "Select the type of change you are committing (type)",
+          "type": "oneOf",
+          "scopes": [
+            {
+              "description": "In-progress work, or changes that affect the build system or external dependencies (example scopes: pip, docker, npm).",
+              "name": "build"
+            },
+            {
+              "description": "A bug fix. Correlates with PATCH in SemVer.",
+              "name": "fix"
+            },
+            {
+              "description": "A new feature. Correlates with MINOR in SemVer.",
+              "name": "feat"
+            },
+            {
+              "description": "Other changes that don't modify src or test files",
+              "name": "chores"
+            },
+            {
+              "description": "A code change that improves performance.",
+              "name": "perf"
+            },
+            {
+              "description": "Adding missing tests or correcting existing tests.",
+              "name": "test"
+            },
+            {
+              "description": "Documentation only changes",
+              "name": "docs"
+            },
+            {
+              "description": "Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc.).",
+              "name": "style"
+            },
+            {
+              "description": "A code change that neither fixes a bug nor adds a feature.",
+              "name": "refactor"
+            },
+            {
+              "description": "Changes to the CI configuration or dev/build tools.",
+              "name": "ci"
+            },
+            {
+              "description": "Reverts a previous commit.",
+              "name": "reverts"
+            }
+          ]
+        },
+        {
+          "name": "scope",
+          "placeHolder": "Specify a scope (scope)",
+          "type": "oneOf",
+          "scopes": [
+            {
+              "name": "back",
+              "description": "Changes to the back end not directly related to Strapi."
+            },
+            {
+              "name": "backstop",
+              "description": "BackstopJS-specific changes to scenarios, configuration, etc."
+            },
+            {
+              "name": "ci",
+              "description": "CI/CD changes like GitHub Workflows, Docker build steps, etc."
+            },
+            {
+              "name": "front",
+              "description": "Changes to Svelte and the front end."
+            },
+            {
+              "name": "github",
+              "description": "GitHub-specific changes to CI/CD, secrets, etc."
+            },
+            {
+              "name": "perf",
+              "description": "Perf testing, configuration, and/or enhancements."
+            },
+            {
+              "name": "project",
+              "description": "Configuration, CI/CD, Developer Experience, etc."
+            },
+            {
+              "name": "strapi",
+              "description": "CMS changes, updates, etc."
+            },
+            {
+              "name": "terraform",
+              "description": "Changes to Terraform/Infrastructure."
+            },
+            {
+              "name": "testing",
+              "description": "Changes to testing utils/tests."
+            },
+            {
+              "name": "utils",
+              "description": "Changes to developer scripts and utils."
+            }
+          ],
+          "format": "({value}): "
+        },
+        {
+          "name": "subject",
+          "placeHolder": "Write a short description (subject)",
+          "type": "input"
+        },
+        {
+          "name": "body",
+          "placeHolder": "Maybe provide a longer description (body)",
+          "type": "input",
+          "format": "\n\n{value}"
+        },
+        {
+          "name": "issues",
+          "placeHolder": "List any issue closed (issues)",
+          "type": "input",
+          "format": "\n\nCloses: #{value}"
+        }
+      ]
+    }
+  }
+}
