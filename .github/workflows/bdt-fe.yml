@@ -16,20 +16,32 @@ env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
 jobs:
-  summary:
-    name: 📋 Workflow
+  # summary:
+  #   name: 📋 Workflow
+  #   runs-on: ubuntu-latest
+
+  #   concurrency:
+  #     group: frontend
+  #     cancel-in-progress: true
+
+  #   outputs:
+  #     RELEASE_NAME: ${{ steps.vars.outputs.RELEASE_NAME }}
+  #     DIST: ${{ steps.vars.outputs.DIST }}
+
+  #   environment:
+  #     name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+
+  #   steps:
+
+  build_deploy:
+    name: 🚜 Build & Deploy to ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
     runs-on: ubuntu-latest
-
-    concurrency:
-      group: frontend
-      cancel-in-progress: true
-
-    outputs:
-      RELEASE_NAME: ${{ steps.vars.outputs.RELEASE_NAME }}
-      DIST: ${{ steps.vars.outputs.DIST }}
 
     environment:
       name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+
+    env:
+      DEPLOY_ENV: "${{ vars.ENV_NAME }}"
 
     steps:
       - name: 🤿 Set Vars
@@ -58,17 +70,6 @@ jobs:
           echo '- Release: [${{ env.RELEASE_NAME }}](https://dgrebb.sentry.io/releases/${{ env.RELEASE_NAME }})' >> $GITHUB_STEP_SUMMARY
           echo '- Dist: ${{ env.DIST }}' >> $GITHUB_STEP_SUMMARY
 
-  build_deploy:
-    name: 🚜 Build & Deploy ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
-    runs-on: ubuntu-latest
-
-    environment:
-      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
-
-    env:
-      DEPLOY_ENV: "${{ vars.ENV_NAME }}"
-
-    steps:
       - name: 𐂷 Checkout
         uses: actions/checkout@v3
         with:
