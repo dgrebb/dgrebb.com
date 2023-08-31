@@ -1,4 +1,4 @@
-name: 🔬 Test Front End UI
+name: 🙈 BackstopJS - Tests
 run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Test ${{ github.event_name == 'pull_request' && format('PR #{0}: {1} on ', github.event.pull_request.number, github.event.pull_request.title) || format('latest `{0}` in ', github.ref_name) }}"
 
 on:
@@ -27,7 +27,7 @@ env:
 
 jobs:
   visual_regression:
-    name: 🙈 BackstopJS
+    name: 𝌹 Visual Regression
     runs-on: ubuntu-latest
 
     concurrency:
