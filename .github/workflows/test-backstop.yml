@@ -47,7 +47,8 @@ jobs:
           repository: dgrebb/dgrebb.com
           ref: ${{ github.ref }}
           token: ${{ github.token }}
-          fetch-depth: 0
+          sparse-checkout: |
+            _ci/backstop
 
       - name: ⬢ Setup Node & Cache
         uses: actions/setup-node@v3
@@ -88,8 +89,8 @@ jobs:
           cd _ci/backstop
           FAIL_TABLE=$(./_utils/parse-report.sh)
           echo "# Backstop Summary" >> $GITHUB_STEP_SUMMARY
-          echo "<a href=\"${{ vars.REPORTS_DOMAIN }}/backstop/html_report/gh-stg\">BackstopJS Report</a>" >> $GITHUB_STEP_SUMMARY
-          echo "<a href=\"${{ vars.REPORTS_DOMAIN }}/lighthouse\">Lighthouse Report</a>" >> $GITHUB_STEP_SUMMARY
+          echo "<a href=\"http://${{ vars.REPORTS_DOMAIN }}/backstop/html_report/gh-stg\" target=\"_blank\">BackstopJS Report</a>" >> $GITHUB_STEP_SUMMARY
+          echo "<a href=\"http://${{ vars.REPORTS_DOMAIN }}/lighthouse\" target=\"_blank\">Lighthouse Report</a>" >> $GITHUB_STEP_SUMMARY
           echo $FAIL_TABLE >> $GITHUB_STEP_SUMMARY
 
       - name: 🔥 Bummer. Uploading Failed Artifacts!

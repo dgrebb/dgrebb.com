@@ -38,7 +38,7 @@ warmUp() {
     # If there are particular subdirectories in your sitemap that you do not wish to parse
     # (i.e. because they cannot be cached), you can use the following regex:
     # grep -oP "https?://$1\/((?!subdirectory))[^<]*"
-    wget --user-agent="$USERAGENT" -q "https://$1/sitemap.xml" -O - | grep -oP "https?://$1\/[^<]*" | wget -nv --user-agent="$USERAGENT" -i - -O /dev/null -w 1
+    wget --user-agent="$USERAGENT" -q "https://$1/sitemap.xml" --output-document - | egrep -o "https?://[^<]+" | wget -i -
 }
 
 if [ $# -eq 0 ]; then
