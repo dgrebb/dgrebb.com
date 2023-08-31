@@ -69,13 +69,6 @@ jobs:
           ./_ci/_utils/warmup.sh
           cd _ci/backstop && ENV=$DEPLOY_ENV npm run test.gh
 
-      # - name: ${{ steps.backstop.conclusion == 'failure' && '❌ Failure' || '✅ Success' }}
-      # uses: actions/upload-artifact@v3
-      # with:
-      #   name: backstop-report
-      #   retention-days: 3
-      #   path: _ci/backstop/bd/
-
       - name: ⬆ Uploading ${{ steps.backstop.conclusion == 'failure' && '❌ Failed' || '✅ Successful' }} Test Report
         if: always()
         uses: jakejarvis/s3-sync-action@master
@@ -86,13 +79,13 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
-          SOURCE_DIR: "_ci/backstop/bd/html_report/*/"
+          SOURCE_DIR: "_ci/backstop/bd/"
           DEST_DIR: "backstop"
 
       - name: 🗺️ Summary
         if: always()
         env:
-          BACKSTOP_URL: ${{ github.ref_name == 'main' && 'http://reports.dgrebb.com/backstop' || 'http://stg.reports.dgrebb.com/backstop' }}
+          BACKSTOP_URL: ${{ github.ref_name == 'main' && 'http://reports.dgrebb.com/backstop/html_report/gh-prd' || 'http://stg.reports.dgrebb.com/backstop/html_report/gh-stg' }}
           LIGHTHOUSE_URL: ${{ github.ref_name == 'main' && 'http://reports.dgrebb.com/lighthouse' || 'http://stg.reports.dgrebb.com/lighthouse' }}
         run: |
           cd _ci/backstop
