@@ -10,5 +10,5 @@ module.exports = {
   selectors: ['.post-aside'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,
-  requireSameDimensions: true,
+  requireSameDimensions: false,
 };

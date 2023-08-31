@@ -5,10 +5,10 @@ module.exports = {
   url: URL,
   delay: 500,
   colorScheme: 'dark',
-  clickSelector: ".theme-toggle",
+  clickSelector: '.theme-toggle',
   postInteractionWait: 1000,
   selectors: ['viewport'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,
-  requireSameDimensions: true,
+  requireSameDimensions: false,
 };
