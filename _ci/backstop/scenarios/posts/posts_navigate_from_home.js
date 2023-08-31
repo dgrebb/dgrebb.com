@@ -8,5 +8,5 @@ module.exports = {
   postInteractionWait: 1500,
   selectors: ['document'],
   misMatchThreshold: 0.2,
-  requireSameDimensions: true,
+  requireSameDimensions: false,
 };

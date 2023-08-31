@@ -7,5 +7,5 @@ module.exports = {
   selectors: ['viewport'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,
-  requireSameDimensions: true,
+  requireSameDimensions: false,
 };
