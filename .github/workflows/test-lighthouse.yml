@@ -1,5 +1,5 @@
-name: 🔦 Lighthouse - Tests
-run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Lighthouse Run for ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest `{0}`', github.ref_name) }}"
+name: ⛵️ Lighthouse - Tests
+run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Lighthouse Run for ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest {0}', github.ref_name) }}"
 
 on:
   workflow_dispatch:
@@ -27,9 +27,26 @@ env:
 
 jobs:
   lighthouse:
+    name: ⛵️ Running Audit on ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
     runs-on: ubuntu-latest
+
+    environment:
+      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+
     steps:
-      - name: ⛵️ Audit URLs using Lighthouse
+      - name: 𐂷 Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: dgrebb/dgrebb.com
+          ref: ${{ github.ref }}
+          token: ${{ github.token }}
+          sparse-checkout: |
+            _ci
+
+      - name: 🌤️ Warmup Cache
+        run: _ci/_utils/warmup.sh
+
+      - name: 🔦
         id: lighthouse
         uses: treosh/lighthouse-ci-action@v10
         with:
@@ -37,12 +54,17 @@ jobs:
             https://stg.dgrebb.com/
             https://stg.dgrebb.com/posts
             https://stg.dgrebb.com/privacy
-          temporaryPublicStorage: true # upload lighthouse report to the temporary storage
+          temporaryPublicStorage: true
 
-          # budgetPath: ./budget.json # test performance budgets
-          # uploadArtifacts: true # save results as an action artifacts
-
-      - name: Upload Lighthouse Report
-        run: |
-          echo 'hello world'
-          echo ${{ steps.lighthouse.outputs.resultsPath }}
+      - name: ⬆ Uploading Test Report
+        if: always()
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete --cache-control max-age=2853200,public
+        env:
+          AWS_S3_BUCKET: ${{ vars.REPORTS_DOMAIN }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          SOURCE_DIR: ${{ steps.lighthouse.outputs.resultsPath }}
+          DEST_DIR: "lighthouse"
