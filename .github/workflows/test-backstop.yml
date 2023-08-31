@@ -48,7 +48,7 @@ jobs:
           ref: ${{ github.ref }}
           token: ${{ github.token }}
           sparse-checkout: |
-            _ci/backstop
+            _ci
 
       - name: ⬢ Setup Node & Cache
         uses: actions/setup-node@v3
@@ -70,7 +70,7 @@ jobs:
           ./_ci/_utils/warmup.sh
           cd _ci/backstop && ENV=$DEPLOY_ENV npm run test.gh
 
-      - name: ⬆ Uploading ${{ steps.backstop.conclusion == 'failure' && '❌ Failed' || '✅ Successful' }} Test Report
+      - name: ⬆ Uploading Test Report
         if: always()
         uses: jakejarvis/s3-sync-action@master
         with:
