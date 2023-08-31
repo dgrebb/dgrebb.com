@@ -149,3 +149,8 @@ jobs:
     name: 🦠 Test ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
     needs: build_deploy
     uses: ./.github/workflows/test-backstop.yml
+    secrets:
+      REPORTS_AWS_S3_BUCKET: ${{ secrets.REPORTS_AWS_S3_BUCKET }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
