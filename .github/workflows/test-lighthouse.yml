@@ -1,7 +1,8 @@
-name: 🔬 Test Front End Performance
-run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Test Performance of ${{ github.event_name == 'pull_request' && format('PR #{0}: {1} on ', github.event.pull_request.number, github.event.pull_request.title) || format('latest `{0}` in ', github.ref_name) }}"
+name: 🔦 Lighthouse - Tests
+run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Lighthouse Run for ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest `{0}`', github.ref_name) }}"
 
 on:
+  workflow_dispatch:
   workflow_call:
     secrets:
       REPORTS_AWS_S3_BUCKET:
@@ -12,7 +13,6 @@ on:
         required: true
       AWS_REGION:
         required: true
-  workflow_dispatch:
   # pull_request:
   #   paths:
   #     - "front/**"
@@ -35,9 +35,12 @@ jobs:
         with:
           urls: |
             https://stg.dgrebb.com/
+            https://stg.dgrebb.com/posts
+            https://stg.dgrebb.com/privacy
+          temporaryPublicStorage: true # upload lighthouse report to the temporary storage
+
           # budgetPath: ./budget.json # test performance budgets
           # uploadArtifacts: true # save results as an action artifacts
-          temporaryPublicStorage: true # upload lighthouse report to the temporary storage
 
       - name: Upload Lighthouse Report
         run: |
