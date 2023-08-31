@@ -1,5 +1,5 @@
 name: 🚜 Build, Deploy, and Test
-run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - BD&T ${{ github.event_name == 'pull_request' && format('PR #{0}: {1} to ', github.event.pull_request.number, github.event.pull_request.title) || format('latest `{0}`', github.ref_name) }}"
+run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest `{0}`', github.ref_name) }}"
 
 on:
   workflow_dispatch:
@@ -75,7 +75,8 @@ jobs:
           repository: dgrebb/dgrebb.com
           ref: ${{ github.ref }}
           token: ${{ github.token }}
-          fetch-depth: 0
+          sparse-checkout: |
+            front
 
       - name: 📐 Set Environment
         env:
@@ -112,13 +113,21 @@ jobs:
         run: cd front && npm ci
 
       - name: ↻ Build
-        run: >
-          cd front &&
-          SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} 
-          DEPLOY_ENV=$DEPLOY_ENV
-          RELEASE_NAME=${{ env.RELEASE_NAME }}
-          DIST=${{ env.DIST }}
-          npm run build
+        run: |
+          cd front
+          if [ ${{ github.ref_name }} == 'main' ]; then 
+            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} 
+            DEPLOY_ENV=$DEPLOY_ENV
+            RELEASE_NAME=${{ env.RELEASE_NAME }}
+            DIST=${{ env.DIST }}
+            npm run build
+          else
+            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} 
+            DEPLOY_ENV=$DEPLOY_ENV
+            RELEASE_NAME=${{ env.RELEASE_NAME }}
+            DIST=${{ env.DIST }}
+            npm run build.s
+          fi
 
       - name: 🤖 Robots
         if: ${{ github.ref_name == 'main' }}
