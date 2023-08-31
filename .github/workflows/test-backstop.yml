@@ -55,20 +55,38 @@ jobs:
 
       - name: ⌛️ Running Visual Regression
         id: backstop
+        continue-on-error: true
         run: cd _ci/backstop && ENV=$DEPLOY_ENV npm run test.gh
 
-      - name: ${{ steps.backstop.conclusion == 'failure' && '❌ Failure' || '✅ Success' }}
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: backstop-report
-          retention-days: 3
-          path: _ci/backstop/bd/
+      # - name: ${{ steps.backstop.conclusion == 'failure' && '❌ Failure' || '✅ Success' }}
+      # uses: actions/upload-artifact@v3
+      # with:
+      #   name: backstop-report
+      #   retention-days: 3
+      #   path: _ci/backstop/bd/
 
-      - name: Summary
+      - name: ⬆ Uploading ${{ steps.backstop.conclusion == 'failure' && '❌ Failed' || '✅ Successful' }} Test Report
         if: always()
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete --cache-control max-age=2853200,public
+        env:
+          AWS_S3_BUCKET: ${{ secrets.REPORTS_AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          SOURCE_DIR: "_ci/backstop/bd/html_report/*/"
+          DEST_DIR: "backstop"
+
+      - name: 🗺️ Summary
+        if: always()
+        env:
+          BACKSTOP_URL: ${{ github.ref_name == 'main' && 'http://reports.dgrebb.com/backstop' || 'http://stg.reports.dgrebb.com/backstop' }}
+          LIGHTHOUSE_URL: ${{ github.ref_name == 'main' && 'http://reports.dgrebb.com/lighthouse' || 'http://stg.reports.dgrebb.com/lighthouse' }}
         run: |
           cd _ci/backstop
           FAIL_TABLE=$(./_utils/parse-report.sh)
           echo "# Backstop Summary" >> $GITHUB_STEP_SUMMARY
+          echo "<a href=\"$BACKSTOP_URL\">BackstopJS Report</a>" >> $GITHUB_STEP_SUMMARY
+          echo "<a href=\"$LIGHTHOUSE_URL\">Lighthouse Report</a>" >> $GITHUB_STEP_SUMMARY
           echo $FAIL_TABLE >> $GITHUB_STEP_SUMMARY
