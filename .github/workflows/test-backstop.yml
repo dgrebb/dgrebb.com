@@ -65,7 +65,9 @@ jobs:
       - name: ⌛️ Running Visual Regression
         id: backstop
         continue-on-error: true
-        run: cd _ci/backstop && ENV=$DEPLOY_ENV npm run test.gh
+        run: |
+          ./_ci/_utils/warmup.sh
+          cd _ci/backstop && ENV=$DEPLOY_ENV npm run test.gh
 
       # - name: ${{ steps.backstop.conclusion == 'failure' && '❌ Failure' || '✅ Success' }}
       # uses: actions/upload-artifact@v3
