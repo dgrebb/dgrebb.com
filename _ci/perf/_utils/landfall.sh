@@ -2,6 +2,8 @@
 
 ROOT=$1
 OUTPUT="$1/index.html"
+DATE=$(date +%y.%m.%d)
+TIME=$(date +%H:%M:%S)
 pattern='[._]([^._-]+)-[0-9]{4}_[0-9]{2}_[0-9]{2}_[0-9]{2}_[0-9]{2}_[0-9]{2}\.report\.html'
 
 echo "
@@ -63,6 +65,22 @@ echo "
                 justify-content: center;
                 align-items: center;
             }
+            main h1 {
+                margin-bottom: 1rem;
+            }
+            main h2 {
+                font-weight: lighter;
+                margin: 0 0 0.5rem 0;
+            }
+            main ul {
+                display: flex;
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+            }
+            main li {
+                margin: 0 0.33rem;
+            }
             main a {
                 color: rgb(144, 229, 144);
                 text-decoration: none;
@@ -73,6 +91,7 @@ echo "
                 transition-property: background-color, color;
                 transition-duration: 333ms;
                 display: inline-block;
+                text-transform: capitalize;
             }
             main a:hover {
                 color: rgb(221, 255, 221);
@@ -97,22 +116,30 @@ echo "
       fill=\"#FFA385\"
     ></path> <path fill=\"#FF3\" d=\"M20.5 10h7v7h-7z\"></path>
   </svg>
-  <a href=\"/lighthouse\">Lighthouse Reports</a>
+  <a href=\"/\">Reports Home</a>
 </nav>
 " >$OUTPUT
 
 echo "Dropping anchor and stepping ashore with these files in tow."
 echo "<main>" >>$OUTPUT
-for filepath in $(find $ROOT -iname "*.html" -maxdepth 1 -mindepth 1 -type f | sort); do
+echo "<h1>Lighthouse Runs</h1>" >>$OUTPUT
+echo "<h2>$DATE - $TIME</h2>" >>$OUTPUT
+echo "<ul class=\"test-list\">" >>$OUTPUT
+for file in $(find $ROOT -iname "*.html" -maxdepth 1 -mindepth 1 -type f ! -name "index.html" -exec basename {} \; | sort); do
 
-    echo $filepath
-    title=$(echo "$filepath" | perl -nle "print \$1 if /$pattern/" | sed -E "s/^[_\.]+//")
+    echo $file
+    title=$(echo "$file" | perl -nle "print \$1 if /$pattern/" | sed -E "s/^[_\.]+//")
     if [ ${#title} -ge 1 ]; then
-        echo "<a href=\"$filepath\">${title}</a>" >>$OUTPUT
+        echo "<li>" >>$OUTPUT
+        echo "<a href=\"$file\">${title}</a>" >>$OUTPUT
+        echo "</li>" >>$OUTPUT
     else
-        echo "<a href=\"$filepath\">Home</a>" >>$OUTPUT
+        echo "<li>" >>$OUTPUT
+        echo "<a href=\"$file\">Homepage</a>" >>$OUTPUT
+        echo "</li>" >>$OUTPUT
     fi
 
 done
+echo "</ul>" >>$OUTPUT
 echo "</main>" >>$OUTPUT
 echo "</body></html>" >>$OUTPUT
