@@ -43,37 +43,53 @@ jobs:
           sparse-checkout: |
             _ci
 
+      - name: ⬢ Setup Node & Cache
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.17.1"
+          cache: "npm"
+          cache-dependency-path: |
+            _ci/perf/package.json
+            _ci/perf/package-lock.json
+            _ci/perf/node_modules
+
+      - name: ↧ Install & Patch
+        run: |
+          cd _ci/perf && npm ci --legacy-peer-deps
+
       - name: 🌤️ Warmup Cache
         run: |
           _ci/_utils/warmup.sh
-          echo "# Lighthouse Reports" >> $GITHUB_STEP_SUMMARY
-          echo "<a href=\"http://${{ vars.REPORTS_DOMAIN }}/lighthouse\" target=\"_blank\">Lighthouse Reports</a>" >> $GITHUB_STEP_SUMMARY
-          ls -la
 
       - name: 🔦 Run Lighthouse
         id: lighthouse
         uses: treosh/lighthouse-ci-action@v10
         with:
-          configPath: ".lighthouserc.json"
           urls: |
             https://${{ vars.WWW_DOMAIN }}/
             https://${{ vars.WWW_DOMAIN }}/posts
             https://${{ vars.WWW_DOMAIN }}/post/the-little-end-to-end-testing-engineer-who-could-a-tale-of-heroism-and-headaches/
             https://${{ vars.WWW_DOMAIN }}/posts/category/development/
             https://${{ vars.WWW_DOMAIN }}/privacy
+          configPath: "_ci/perf/.lighthouserc.json"
 
       - name: ⚓️ Drop Anchor
-        run: _ci/perf/_utils/landfall.sh ${{ steps.lighthouse.outputs.resultsPath }}
-
-      - name: ⬆ Upload Reports
         if: always()
-        uses: jakejarvis/s3-sync-action@master
-        with:
-          args: --acl public-read --follow-symlinks --delete --cache-control max-age=2853200,public
-        env:
-          AWS_S3_BUCKET: ${{ vars.REPORTS_DOMAIN }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          SOURCE_DIR: ${{ steps.lighthouse.outputs.resultsPath }}
-          DEST_DIR: "lighthouse"
+        run: |
+          sudo _ci/perf/_utils/landfall.sh ${{ steps.lighthouse.outputs.resultsPath }}
+          echo "# Lighthouse Results" >> $GITHUB_STEP_SUMMARY
+          echo "<a href=\"http://${{ vars.REPORTS_DOMAIN }}/lighthouse\" target=\"_blank\">Lighthouse Reports</a>" >> $GITHUB_STEP_SUMMARY
+          echo "${{ steps.lighthouse.outputs.manifest }}" >> $GITHUB_STEP_SUMMARY
+
+      # - name: ⬆ Upload Reports
+      #   if: always()
+      #   uses: jakejarvis/s3-sync-action@master
+      #   with:
+      #     args: --acl public-read --follow-symlinks --delete --cache-control max-age=2853200,public
+      #   env:
+      #     AWS_S3_BUCKET: ${{ vars.REPORTS_DOMAIN }}
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     AWS_REGION: ${{ secrets.AWS_REGION }}
+      #     SOURCE_DIR: ${{ steps.lighthouse.outputs.resultsPath }}
+      #     DEST_DIR: "lighthouse"
