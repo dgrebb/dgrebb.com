@@ -46,21 +46,25 @@ jobs:
       - name: 🌤️ Warmup Cache
         run: |
           _ci/_utils/warmup.sh
-          echo "# Lighthouse Report" >> $GITHUB_STEP_SUMMARY
+          echo "# Lighthouse Reports" >> $GITHUB_STEP_SUMMARY
           echo "<a href=\"http://${{ vars.REPORTS_DOMAIN }}/lighthouse\" target=\"_blank\">Lighthouse Reports</a>" >> $GITHUB_STEP_SUMMARY
 
-      - name: 🔦
+      - name: 🔦 Run Lighthouse
         id: lighthouse
         uses: treosh/lighthouse-ci-action@v10
         with:
           configPath: "_ci/lighthouse/.lighthouserc.json"
           urls: |
-            https://stg.dgrebb.com/
-            https://stg.dgrebb.com/posts
-            https://stg.dgrebb.com/privacy
-          temporaryPublicStorage: true
+            https://${{ vars.WWW_DOMAIN }}/
+            https://${{ vars.WWW_DOMAIN }}/posts
+            https://${{ vars.WWW_DOMAIN }}/post/the-little-end-to-end-testing-engineer-who-could-a-tale-of-heroism-and-headaches/
+            https://${{ vars.WWW_DOMAIN }}/posts/category/development/
+            https://${{ vars.WWW_DOMAIN }}/privacy
 
-      - name: ⬆ Uploading Test Report
+      - name: ⚓️ Drop Anchor
+        run: _ci/perf/_utils/landfall.sh ${{ steps.lighthouse.outputs.resultsPath }}
+
+      - name: ⬆ Upload Reports
         if: always()
         uses: jakejarvis/s3-sync-action@master
         with:
