@@ -48,12 +48,13 @@ jobs:
           _ci/_utils/warmup.sh
           echo "# Lighthouse Reports" >> $GITHUB_STEP_SUMMARY
           echo "<a href=\"http://${{ vars.REPORTS_DOMAIN }}/lighthouse\" target=\"_blank\">Lighthouse Reports</a>" >> $GITHUB_STEP_SUMMARY
+          ls -la
 
       - name: 🔦 Run Lighthouse
         id: lighthouse
         uses: treosh/lighthouse-ci-action@v10
         with:
-          configPath: "../_ci/perf/lighthouse/.lighthouserc.json"
+          configPath: ".lighthouserc.json"
           urls: |
             https://${{ vars.WWW_DOMAIN }}/
             https://${{ vars.WWW_DOMAIN }}/posts
