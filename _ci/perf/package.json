@@ -15,7 +15,6 @@
     "axe-core": "^4.7.2",
     "axe-html-reporter": "^2.2.3",
     "lighthouse": "^11.0.0",
-    "lighthouse-plugin-field-performance": "github:dgrebb/lighthouse-plugin-field-performance#develop",
-    "webpagetest": "^0.7.1"
+    "lighthouse-plugin-field-performance": "github:dgrebb/lighthouse-plugin-field-performance#develop"
   }
 }
