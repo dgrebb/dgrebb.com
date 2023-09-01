@@ -43,6 +43,19 @@ jobs:
           sparse-checkout: |
             _ci
 
+      - name: ⬢ Setup Node & Cache
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.17.1"
+          cache: "npm"
+          cache-dependency-path: |
+            _ci/perf/package.json
+            _ci/perf/package-lock.json
+            _ci/perf/node_modules
+
+      - name: ↧ Install & Patch
+        run: cd _ci/perf && npm ci
+
       - name: 🌤️ Warmup Cache
         run: |
           _ci/_utils/warmup.sh
@@ -54,13 +67,13 @@ jobs:
         id: lighthouse
         uses: treosh/lighthouse-ci-action@v10
         with:
-          configPath: "_ci/perf/lighthouse/.lighthouserc.json"
           urls: |
             https://${{ vars.WWW_DOMAIN }}/
             https://${{ vars.WWW_DOMAIN }}/posts
             https://${{ vars.WWW_DOMAIN }}/post/the-little-end-to-end-testing-engineer-who-could-a-tale-of-heroism-and-headaches/
             https://${{ vars.WWW_DOMAIN }}/posts/category/development/
             https://${{ vars.WWW_DOMAIN }}/privacy
+          configPath: "_ci/perf/lighthouse/.lighthouserc.json"
 
       - name: ⚓️ Drop Anchor
         run: |
