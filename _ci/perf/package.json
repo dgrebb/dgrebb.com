@@ -5,13 +5,17 @@
   "main": "index.js",
   "scripts": {
     "webpagetest": "webpagetest test process.env.URL",
-    "test": "lighthouse \"$URL\" --view --chrome-flags='--headless'"
+    "lighthouse": "lighthouse \"$URL\" --view --chrome-flags='--headless'",
+    "axe": "node axe/reporter.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "axe-core": "^4.7.2",
+    "axe-html-reporter": "^2.2.3",
     "lighthouse": "^11.0.0",
+    "lighthouse-plugin-field-performance": "github:dgrebb/lighthouse-plugin-field-performance#develop",
     "webpagetest": "^0.7.1"
   }
 }

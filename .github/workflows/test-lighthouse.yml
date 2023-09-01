@@ -53,6 +53,7 @@ jobs:
         id: lighthouse
         uses: treosh/lighthouse-ci-action@v10
         with:
+          configPath: "_ci/lighthouse/.lighthouserc.json"
           urls: |
             https://stg.dgrebb.com/
             https://stg.dgrebb.com/posts
