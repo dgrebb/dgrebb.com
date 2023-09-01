@@ -53,7 +53,7 @@ jobs:
         id: lighthouse
         uses: treosh/lighthouse-ci-action@v10
         with:
-          configPath: "_ci/lighthouse/.lighthouserc.json"
+          configPath: "../_ci/perf/lighthouse/.lighthouserc.json"
           urls: |
             https://${{ vars.WWW_DOMAIN }}/
             https://${{ vars.WWW_DOMAIN }}/posts
