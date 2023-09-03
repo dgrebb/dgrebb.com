@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 
 resource "aws_s3_bucket" "reports" {
-  bucket        = var.reportsdomain
+  bucket        = var.dashed_reportsdomain
   force_destroy = true
 }
 
@@ -21,7 +21,7 @@ resource "aws_s3_bucket_website_configuration" "reports" {
   }
 
   error_document {
-    key = "error.html"
+    key = "404/index.html"
   }
 
 }
@@ -69,7 +69,7 @@ data "aws_iam_policy_document" "reports" {
 
     principals {
       type        = "AWS"
-      identifiers = ["*"]
+      identifiers = [var.cf_access_identity.iam_arn]
     }
   }
 
@@ -79,7 +79,7 @@ data "aws_iam_policy_document" "reports" {
 
     principals {
       type        = "AWS"
-      identifiers = ["*"]
+      identifiers = [var.cf_access_identity.iam_arn]
     }
   }
 }
@@ -99,7 +99,7 @@ resource "aws_s3_bucket_cors_configuration" "reports" {
   cors_rule {
     allowed_headers = ["*"]
     allowed_methods = ["GET"]
-    allowed_origins = ["https://www.${var.reportsdomain}"]
+    allowed_origins = ["https://${var.reportsdomain}"]
     expose_headers  = []
     max_age_seconds = 3000
   }
@@ -119,8 +119,8 @@ resource "aws_s3_object" "index_html" {
 
 resource "aws_s3_object" "error_html" {
   bucket       = aws_s3_bucket.reports.id
-  key          = "error.html"
-  source       = "${path.module}/error.html"
+  key          = "404/index.html"
+  source       = "${path.module}/404/index.html"
   content_type = "text/html"
-  etag         = filemd5("${path.module}/error.html")
+  etag         = filemd5("${path.module}/404/index.html")
 }
