@@ -2,7 +2,8 @@
 # ------------------------------------------------------------------------------
 
 locals {
-  reportsdomain = "reports.${var.domain}"
+  reportsdomain        = "reports.${var.domain}"
+  dashed_reportsdomain = "reports-${var.dashed_domain}"
 }
 
 module "www_cdn" {
@@ -10,6 +11,7 @@ module "www_cdn" {
   domain        = var.domain
   dashed_domain = var.dashed_domain
   bucket        = module.www_cdn_bucket.bucket
+  log_enabled   = true
   log_bucket    = module.www_cdn_bucket.log_bucket
   cert          = module.network.wildcard_cert
 }
@@ -19,6 +21,7 @@ module "uploads_cdn" {
   domain        = var.cdndomain
   dashed_domain = var.dashed_cdndomain
   bucket        = module.uploads_cdn_bucket.bucket
+  log_enabled   = true
   log_bucket    = module.uploads_cdn_bucket.log_bucket
   cert          = module.network.uploads_cert
 }
@@ -63,11 +66,10 @@ module "network" {
   cdndomain            = var.cdndomain
   reportsdomain        = local.reportsdomain
   dashed_domain        = var.dashed_domain
-  dashed_cmsdomain     = var.dashed_cmsdomain
   alb                  = module.scaling.alb
   www_cdn              = module.www_cdn.cf_distribution
   uploads_cdn          = module.uploads_cdn.cf_distribution
-  reports_bucket       = module.reports_bucket.reports_bucket
+  reports_cdn          = module.reports_cdn.cf_distribution
   www_record_overwrite = true
 }
 
@@ -116,7 +118,19 @@ module "uploads_bucket_defaults" {
   bucket = module.uploads_cdn_bucket.bucket
 }
 
+module "reports_cdn" {
+  source        = "../modules/cdn"
+  domain        = local.reportsdomain
+  dashed_domain = local.dashed_reportsdomain
+  bucket        = module.reports_bucket.reports_bucket
+  log_enabled   = false
+  log_bucket    = false
+  cert          = module.network.reports_cert
+}
+
 module "reports_bucket" {
-  source        = "../modules/reports"
-  reportsdomain = local.reportsdomain
+  source               = "../modules/reports"
+  reportsdomain        = local.reportsdomain
+  dashed_reportsdomain = local.dashed_reportsdomain
+  cf_access_identity   = module.reports_cdn.cf_access_identity
 }
