@@ -19,12 +19,9 @@ output "wildcard_cert" {
 output "wildcard_validation" {
   value = module.www_dns.cert_validation
 }
-# output "www_cert" {
-#   value = module.www_dns.cert
-# }
 output "uploads_cert" {
   value = module.uploads_dns.cert
 }
-output "uploads_validation" {
-  value = module.uploads_dns.cert_validation
+output "reports_cert" {
+  value = module.reports_dns.cert
 }

@@ -42,10 +42,13 @@ resource "aws_cloudfront_distribution" "this" {
     }
   }
 
-  logging_config {
-    include_cookies = false
-    bucket          = var.log_bucket.bucket_domain_name
-    prefix          = ""
+  dynamic "logging_config" {
+    for_each = var.log_enabled ? [1] : []
+    content {
+      include_cookies = false
+      bucket          = var.log_bucket.bucket_domain_name
+      prefix          = ""
+    }
   }
 
   default_cache_behavior {

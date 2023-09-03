@@ -43,7 +43,7 @@ resource "aws_route53_record" "www" {
 }
 
 # ------------------------------------------------------------------------------
-# Reports Record
+# Reports Record, Cert, and Validation
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "reports" {
@@ -51,12 +51,48 @@ resource "aws_route53_record" "reports" {
   name    = var.reportsdomain
   type    = "A"
   alias {
-    name                   = var.reports_bucket.website_domain
-    zone_id                = var.reports_bucket.hosted_zone_id
+    name                   = var.reports_cdn.domain_name
+    zone_id                = var.reports_cdn.hosted_zone_id
     evaluate_target_health = true
   }
 
-  depends_on = [var.reports_bucket]
+  depends_on = [var.reports_cdn]
+}
+
+resource "aws_acm_certificate" "reports" {
+  domain_name       = var.reportsdomain
+  validation_method = "DNS"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
+  tags = {
+    Name = var.reportsdomain
+  }
+}
+
+resource "aws_route53_record" "reports_validation" {
+  for_each = {
+    for dvo in aws_acm_certificate.reports.domain_validation_options : dvo.domain_name => {
+      name   = dvo.resource_record_name
+      record = dvo.resource_record_value
+      type   = dvo.resource_record_type
+    }
+  }
+
+  allow_overwrite = true
+  name            = each.value.name
+  records         = [each.value.record]
+  ttl             = 60
+  type            = each.value.type
+  zone_id         = data.aws_route53_zone.main.zone_id
+}
+
+resource "aws_acm_certificate_validation" "reports" {
+  certificate_arn = aws_acm_certificate.reports.arn
+
+  validation_record_fqdns = [for record in aws_route53_record.reports_validation : record.fqdn]
 }
 
 # ------------------------------------------------------------------------------
@@ -111,7 +147,6 @@ resource "aws_acm_certificate_validation" "cms" {
   validation_record_fqdns = [for record in aws_route53_record.validation : record.fqdn]
 }
 
-
 # ------------------------------------------------------------------------------
 # CDN Records, Certs, and Validations
 # ------------------------------------------------------------------------------
@@ -123,6 +158,15 @@ module "www_dns" {
   domain         = var.domain
   zone           = data.aws_route53_zone.main
   distribution   = var.www_cdn
+}
+
+module "reports_dns" {
+  source         = "./cdn-dns"
+  aws_access_key = var.aws_access_key
+  aws_secret_key = var.aws_secret_key
+  domain         = var.reportsdomain
+  zone           = data.aws_route53_zone.main
+  distribution   = var.reports_cdn
 }
 
 module "uploads_dns" {
