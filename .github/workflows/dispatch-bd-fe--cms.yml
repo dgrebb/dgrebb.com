@@ -1,4 +1,4 @@
-name: 📡 CMS Publish
+name: 📡 CMS Publish 
 
 on:
   workflow_dispatch:
