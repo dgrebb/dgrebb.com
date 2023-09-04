@@ -18,22 +18,22 @@ while test "$1" != --; do
             exit 1
         fi
         setBackEnv ld
-        cdback && \
-        trap 'printf "\n"; printDgMsg "Done!" ; exit 0' SIGINT; \
+        cdback &&
+            trap 'printf "\n"; printDgMsg "Done!" ; exit 0' SIGINT
         npm run develop
         break
         ;;
     ad | admin-dev)
         setBackEnv ld
-        cdback && \
-        trap 'printf "\n"; printDgMsg "Done!" ; exit 0' SIGINT; \
+        cdback &&
+            trap 'printf "\n"; printDgMsg "Done!" ; exit 0' SIGINT
         npm run develop -- --watch-admin
         break
         ;;
     ds | dev-stage)
         setBackEnv ls
-        cdback && \
-        trap 'printf "\n"; printDgMsg "Done!" ; exit 0' SIGINT; \
+        cdback &&
+            trap 'printf "\n"; printDgMsg "Done!" ; exit 0' SIGINT
         npm run develop -- --watch-admin
         break
         ;;
@@ -75,6 +75,12 @@ while test "$1" != --; do
         npx patch-package @strapi/strapi
         npx patch-package @strapi/admin
         npm run build && dg c d
+        break
+        ;;
+    du | dump)
+        cdback
+        date=$(date +%y%m%d-%H%M%S)
+        pg_dump strapi >./.backups/cms-$date.sql
         break
         ;;
     ?)
