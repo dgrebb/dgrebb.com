@@ -1,23 +1,23 @@
 .post-navigation.mini {
+  -webkit-text-select: none;
   position: absolute;
   top: -2.67rem;
-  z-index: 10;
   right: -1.83%;
-  overflow: hidden;
+  z-index: 10;
   padding: 0.33rem;
-  text-align: right;
+  overflow: hidden;
   user-select: none;
   -moz-user-select: none;
-  -webkit-text-select: none;
   -webkit-user-select: none;
+  text-align: right;
   @screen sm {
     display: none;
   }
   .post-navigation-toggle {
     display: inline-block;
-    border-radius: 0.33rem;
     transition: background-color, color;
     cursor: pointer;
+    border-radius: 0.33rem;
     background-color: rgba(var(--background-saturated), 0.5);
     padding: 0.33rem;
     @apply dg--transition-effect;
@@ -31,10 +31,10 @@
     display: none;
     border-radius: 0.77rem;
     ~ label {
-      position: relative;
-      z-index: 1;
       display: inline-block;
+      position: relative;
       vertical-align: middle;
+      z-index: 1;
       .post-navigation-open {
         display: block;
       }
@@ -44,20 +44,20 @@
       & + .post-navigation-list {
         position: relative;
         top: -1.85rem;
-        margin-bottom: -1.85rem;
         right: -333px;
         opacity: 0;
         backdrop-filter: blur(0.5rem);
         transition: right, opacity;
+        margin-bottom: -1.85rem;
         border-radius: 0.33rem;
         background-color: rgba(var(--background-saturated), 0.9);
         padding: 2rem;
         overflow: hidden;
         @apply dg--transition-effect;
         label.bottom {
-          bottom: 0;
           position: absolute;
           right: 0;
+          bottom: 0;
           .post-navigation-open {
             display: block;
           }

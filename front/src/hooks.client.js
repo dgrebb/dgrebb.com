@@ -7,9 +7,12 @@ Sentry.init({
   environment: PUBLIC_ENV,
   integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
   tracePropagationTargets: ['localhost', /^https:\/\/\*\.dgrebb\.com\/api/],
-  tracesSampleRate: PUBLIC_ENV === 'production' ? 0.5 : PUBLIC_ENV === 'staging' ? 0.25 : 0,
-  replaysSessionSampleRate: PUBLIC_ENV === 'production' ? 0.5 :  PUBLIC_ENV === 'staging' ? 0.25 : 0,
-  replaysOnErrorSampleRate: PUBLIC_ENV === 'production' ? 1 :  PUBLIC_ENV === 'staging' ? 0.25 : 0,
+  tracesSampleRate:
+    PUBLIC_ENV === 'production' ? 0.5 : PUBLIC_ENV === 'staging' ? 0.25 : 0,
+  replaysSessionSampleRate:
+    PUBLIC_ENV === 'production' ? 0.5 : PUBLIC_ENV === 'staging' ? 0.25 : 0,
+  replaysOnErrorSampleRate:
+    PUBLIC_ENV === 'production' ? 1 : PUBLIC_ENV === 'staging' ? 0.25 : 0,
   normalizeDepth: 0,
   beforeSend(event) {
     if (event.user) {

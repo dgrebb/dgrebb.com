@@ -1,4 +1,4 @@
-name: 🙈 BackstopJS - Refs
+name: 🙈 BackstopJS - Refs 
 on:
   workflow_dispatch:
   workflow_call:
@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     concurrency:
-      group: tests
-      cancel-in-progress: false
+      group: backstop
+      cancel-in-progress: true
 
     environment:
       name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
