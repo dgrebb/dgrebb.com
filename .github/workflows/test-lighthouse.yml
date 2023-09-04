@@ -13,6 +13,8 @@ on:
         required: true
       AWS_REGION:
         required: true
+      REPORTS_DISTRIBUTION:
+        required: true
 
 env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
