@@ -47,4 +47,4 @@ jobs:
 
       - name: 👓 Check
         run: |
-          npm run lint
+          cd front && npm run lint
