@@ -53,7 +53,7 @@ resource "aws_route53_record" "reports" {
   alias {
     name                   = var.reports_cdn.domain_name
     zone_id                = var.reports_cdn.hosted_zone_id
-    evaluate_target_health = true
+    evaluate_target_health = false
   }
 
   depends_on = [var.reports_cdn]
