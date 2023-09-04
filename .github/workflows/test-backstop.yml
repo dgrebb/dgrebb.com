@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
 
     concurrency:
-      group: tests
+      group: backstop
       cancel-in-progress: true
 
     environment:
