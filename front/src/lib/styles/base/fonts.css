@@ -1,56 +1,56 @@
 @font-face {
+  src: url('/fonts/PublicSans-ExtraLight.woff2') format('woff2');
+  font-family: 'Public Sans Extra Light';
   font-display: swap;
-  font-family: "Public Sans Extra Light";
-  src: url("/fonts/PublicSans-ExtraLight.woff2") format("woff2");
 }
 
 @font-face {
+  src: url('/fonts/PublicSans-Regular.woff2') format('woff2');
+  font-family: 'Public Sans';
   font-display: swap;
-  font-family: "Public Sans";
-  src: url("/fonts/PublicSans-Regular.woff2") format("woff2");
 }
 
 @font-face {
+  src: url('/fonts/PublicSans-Bold.woff2') format('woff2');
+  font-family: 'Public Sans Bold';
   font-display: swap;
-  font-family: "Public Sans Bold";
-  src: url("/fonts/PublicSans-Bold.woff2") format("woff2");
 }
 
 @font-face {
+  src: url('/fonts/PublicSans-Black.woff2') format('woff2');
+  font-family: 'Public Sans Black';
   font-display: swap;
-  font-family: "Public Sans Black";
-  src: url("/fonts/PublicSans-Black.woff2") format("woff2");
 }
 
 @font-face {
+  src: url('/fonts/LibreBaskerville-Regular.woff2') format('woff2');
+  font-family: 'Libre Baskerville';
   font-display: swap;
-  font-family: "Libre Baskerville";
-  src: url("/fonts/LibreBaskerville-Regular.woff2") format("woff2");
 }
 
 @font-face {
+  src: url('/fonts/LibreBaskerville-Bold.woff2') format('woff2');
+  font-family: 'Libre Baskerville Bold';
   font-display: swap;
-  font-family: "Libre Baskerville Bold";
-  src: url("/fonts/LibreBaskerville-Bold.woff2") format("woff2");
 }
 
 @layer utilities {
   .dg--font-psxl {
-    font-family: "Public Sans Extra Light", sans-serif;
+    font-family: 'Public Sans Extra Light', sans-serif;
   }
   .dg--font-ps {
-    font-family: "Public Sans", sans-serif;
+    font-family: 'Public Sans', sans-serif;
   }
   .dg--font-psb {
-    font-family: "Public Sans Bold", sans-serif;
+    font-family: 'Public Sans Bold', sans-serif;
   }
   .dg--font-psbl {
-    font-family: "Public Sans Black", sans-serif;
+    font-family: 'Public Sans Black', sans-serif;
   }
   .dg--font-lb {
-    font-family: "Libre Baskerville", serif;
+    font-family: 'Libre Baskerville', serif;
   }
   .dg--font-lbb {
-    font-family: "Libre Baskerville Bold", serif;
+    font-family: 'Libre Baskerville Bold', serif;
   }
 }

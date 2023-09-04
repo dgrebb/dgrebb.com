@@ -1,12 +1,12 @@
 .posts-grid {
   display: grid;
-  margin: 0;
-  gap: 0.5rem;
-  list-style-type: none;
   grid-template-rows: repeat(6, minmax(0, 1fr));
   grid-template-columns: repeat(6, minmax(0, 1fr));
   align-self: center;
+  gap: 0.5rem;
+  margin: 0;
   padding-bottom: 0;
+  list-style-type: none;
   @screen sm {
     gap: 0.5rem;
   }
@@ -19,12 +19,13 @@
     grid-column: span 6;
     z-index: 1;
     cursor: pointer;
-    min-height: 7rem;
-    box-shadow: inset 0 0 1px rgb(var(--subdued-rgb)),
+    box-shadow:
+      inset 0 0 1px rgb(var(--subdued-rgb)),
       0 0 0.3rem rgba(var(--black), 0.8);
     background-position: center top;
     background-size: cover;
     background-repeat: no-repeat;
+    min-height: 7rem;
     @apply mb-0
       h-full
       list-none
@@ -60,8 +61,8 @@
         grid-row: span 12;
         grid-column: span 4;
         &:last-child {
-          height: 21rem;
           grid-column: span 6;
+          height: 21rem;
         }
       }
       &:nth-child(n + 2) {
