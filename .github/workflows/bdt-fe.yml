@@ -1,5 +1,5 @@
 name: 🚜 Build, Deploy, and Test
-run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest `{0}`', github.ref_name) }}"
+run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest {0}', github.ref_name) }}"
 
 on:
   workflow_dispatch:
