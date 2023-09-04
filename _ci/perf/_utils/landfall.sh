@@ -2,9 +2,8 @@
 
 ROOT=$1
 OUTPUT="$1/index.html"
-DATE=$(date +%y.%m.%d)
-TIME=$(date +%H:%M:%S)
-pattern='[._]([^._-]+)-[0-9]{4}_[0-9]{2}_[0-9]{2}_[0-9]{2}_[0-9]{2}_[0-9]{2}\.report\.html'
+DATE=$(TZ=America/New_York date +%y.%m.%d)
+TIME=$(TZ=America/New_York date +%H:%M:%S)
 
 echo "
 <!DOCTYPE html>
@@ -18,6 +17,10 @@ echo "
             Lighthouse Reports
         </title>
         <style>
+            html,
+            body {
+                height: 100%;
+            }
             body {
                 background-color: rgb(33	33	33);
                 color: rgb(216, 255, 224);
@@ -70,6 +73,9 @@ echo "
                 justify-content: center;
                 align-items: center;
             }
+            main .backhouse {
+                margin-bottom: 2rem;
+            }
             main h1 {
                 margin-bottom: 1rem;
             }
@@ -79,9 +85,12 @@ echo "
             }
             main ul {
                 display: flex;
+                width: 100%;
                 margin: 0;
                 padding: 0;
                 list-style-type: none;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             main li {
                 margin: 0 0.33rem;
@@ -97,10 +106,29 @@ echo "
                 transition-duration: 333ms;
                 display: inline-block;
                 text-transform: capitalize;
+                display: flex;
             }
-            main a:hover {
+            main a[href*='mobile'] {
+                background-color: darkblue;
+                border-color: blue;
+            }
+            main a[href*='mobile']:hover,
+            main a[href*='mobile']:focus {
+                background-color: blue;
+                border-color: cornflowerblue;
+            }
+            main a:hover,
+            main a:focus {
                 color: rgb(221, 255, 221);
-                background-color: rgb(10, 69, 10);
+                background-color: rgb(32, 135, 32);
+                border-color: rgb(133, 255, 133);
+            }
+            main a span {
+                max-width: 33ch;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: inline-block;
             }
         </style>
     </head>
@@ -127,22 +155,19 @@ echo "
 
 echo "Dropping anchor and stepping ashore with these files in tow."
 echo "<main>" >>$OUTPUT
+echo "<img src="/img/backhouse.jpg" height="333" width="333" class="backhouse" />" >>$OUTPUT
 echo "<h1>Lighthouse Runs</h1>" >>$OUTPUT
-echo "<h2>$DATE - $TIME</h2>" >>$OUTPUT
+echo "<h2>$DATE - $TIME ET</h2>" >>$OUTPUT
 echo "<ul class=\"test-list\">" >>$OUTPUT
-for file in $(find $ROOT -iname "*.html" -maxdepth 1 -mindepth 1 -type f ! -name "index.html" -exec basename {} \; | sort); do
+for file in $(find $ROOT -iname "*.html" -maxdepth 1 -mindepth 1 -type f ! -name "index.html" -exec basename {} \; | sort -n); do
 
     echo $file
-    title=$(echo "$file" | perl -nle "print \$1 if /$pattern/" | sed -E "s/^[_\.]+//")
-    if [ ${#title} -ge 1 ]; then
-        echo "<li>" >>$OUTPUT
-        echo "<a href=\"$file\">${title}</a>" >>$OUTPUT
-        echo "</li>" >>$OUTPUT
-    else
-        echo "<li>" >>$OUTPUT
-        echo "<a href=\"$file\">Homepage</a>" >>$OUTPUT
-        echo "</li>" >>$OUTPUT
-    fi
+    output="${file%report.html}"
+    title=$(echo "$output" | sed -E 's/_|-/ /g; s/\b\w/\U&/g; s/ / - /')
+    echo $title
+    echo "<li>" >>$OUTPUT
+    echo "<a href=\"/lighthouse/$file\"><span>${title}</span></a>" >>$OUTPUT
+    echo "</li>" >>$OUTPUT
 
 done
 echo "</ul>" >>$OUTPUT

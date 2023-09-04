@@ -1,4 +1,4 @@
-name: 🙈 BackstopJS - Tests
+name: 🙈 BackstopJS
 run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Test ${{ github.event_name == 'pull_request' && format('PR #{0}: {1} on ', github.event.pull_request.number, github.event.pull_request.title) || format('latest `{0}` in ', github.ref_name) }}"
 
 on:
@@ -77,7 +77,7 @@ jobs:
         with:
           args: --acl public-read --follow-symlinks --delete --cache-control max-age=2853200,public
         env:
-          AWS_S3_BUCKET: ${{ vars.REPORTS_DOMAIN }}
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_REPORTS }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}

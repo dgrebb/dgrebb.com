@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lighthouse Reports</title>
+    <title>dgrebb.com Reports</title>
     <style>
       html,
       body {
@@ -32,6 +32,9 @@
         justify-content: center;
         align-items: center;
       }
+      main img.backhouse {
+        margin-bottom: 2rem;
+      }
       main h1 {
         margin-bottom: 1rem;
       }
@@ -39,11 +42,21 @@
         font-weight: lighter;
         margin: 0 0 0.5rem 0;
       }
+      div.badges {
+        display: flex;
+        flex-wrap: wrap;
+        width: 999px;
+        justify-content: center;
+        img {
+          padding: 0.5rem;
+        }
+      }
       main ul {
         display: flex;
         margin: 0;
         padding: 0;
         list-style-type: none;
+        margin: 1.33rem 0;
       }
       main li {
         margin: 0 0.33rem;
@@ -62,16 +75,38 @@
       }
       main a:hover {
         color: rgb(221, 255, 221);
-        background-color: rgb(10, 69, 10);
+        background-color: rgb(32, 135, 32);
+        border-color: rgb(133, 255, 133);
       }
     </style>
   </head>
   <body>
     <main>
       <img
-        src="https://github.com/dgrebb/dgrebb.com/actions/workflows/bdt-fe.yml/badge.svg"
-        alt="Build, Deploy, and Test Badge"
+        src="/img/backhouse.jpg"
+        height="333"
+        width="333"
+        class="backhouse"
       />
+      <div class="badges">
+        <img
+          src="https://github.com/dgrebb/dgrebb.com/actions/workflows/bdt-fe.yml/badge.svg"
+          alt="Build, Deploy, and Test Badge"
+          loading="lazy"
+        />
+        <img
+          src="https://github.com/dgrebb/dgrebb.com/actions/workflows/test-backstop.yml/badge.svg"
+          alt="BackstopJS Test Badge"
+          loading="lazy"
+          height="20"
+        />
+        <img
+          src="https://github.com/dgrebb/dgrebb.com/actions/workflows/test-lighthouse.yml/badge.svg"
+          alt="Lighthouse Audit Badge"
+          loading="lazy"
+          height="20"
+        />
+      </div>
       <ul>
         <li><a href="/lighthouse">Lighthouse Report</a></li>
         <li><a href="/backstop">Backstop Report</a></li>

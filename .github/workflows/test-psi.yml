@@ -1,0 +1,74 @@
+name: 🔍 PageSpeed Insights
+run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Lighthouse Run for ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest {0}', github.ref_name) }}"
+
+on:
+  workflow_dispatch:
+  workflow_call:
+    secrets:
+      PSI_APIKEY:
+        required: true
+  # pull_request:
+  #   paths:
+  #     - "front/**"
+  #   branches: [main, develop]
+
+permissions:
+  checks: write
+  contents: write
+
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+
+jobs:
+  lighthouse:
+    name: 📊 Running PSI on ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
+    runs-on: ubuntu-latest
+
+    environment:
+      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+
+    steps:
+      - name: 🌤️ Warmup CloudFront Cache
+        run: |
+          _ci/_utils/warmup.sh
+
+      - name: PageSpeed Insights Mobile
+        id: psim
+        uses: stefafafan/psi-action@v1
+        with:
+          url: "https://stg.dgrebb.com/"
+          key: ${{ secrets.PSI_APIKEY }}
+          strategy: "mobile"
+
+      - name: PageSpeed Insights Desktop
+        id: psid
+        uses: stefafafan/psi-action@v1
+        with:
+          url: "https://stg.dgrebb.com/"
+          key: ${{ secrets.PSI_APIKEY }}
+          strategy: "desktop"
+
+      - name: Summarize PSI Mobile
+        run: |
+          echo "# PageSpeed Insights - Mobile" >> $GITHUB_STEP_SUMMARY
+          echo "## Mobile" >> $GITHUB_STEP_SUMMARY
+          echo "Score: ${{ steps.psim.outputs.score }}" >> $GITHUB_STEP_SUMMARY
+          echo "FCP: ${{ steps.psim.outputs.first-contentful-paint }}" >> $GITHUB_STEP_SUMMARY
+          echo "FID: ${{ steps.psim.outputs.first-input-delay }}" >> $GITHUB_STEP_SUMMARY
+          echo "CLS: ${{ steps.psim.outputs.cumulative-layout-shift }}" >> $GITHUB_STEP_SUMMARY
+          echo "LCP: ${{ steps.psim.outputs.largest-contentful-paint }}" >> $GITHUB_STEP_SUMMARY
+          echo "Speed Index: ${{ steps.psim.outputs.speed-index }}" >> $GITHUB_STEP_SUMMARY
+          echo "TTI: ${{ steps.psim.outputs.time-to-interactive }}" >> $GITHUB_STEP_SUMMARY
+          echo "Blocking Time: ${{ steps.psim.outputs.total-blocking-time }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Summarize PSI Desktop
+        run: |
+          echo "## Desktop" >> $GITHUB_STEP_SUMMARY
+          echo "Score: ${{ steps.psid.outputs.score }}" >> $GITHUB_STEP_SUMMARY
+          echo "FCP: ${{ steps.psid.outputs.first-contentful-paint }}" >> $GITHUB_STEP_SUMMARY
+          echo "FID: ${{ steps.psid.outputs.first-input-delay }}" >> $GITHUB_STEP_SUMMARY
+          echo "CLS: ${{ steps.psid.outputs.cumulative-layout-shift }}" >> $GITHUB_STEP_SUMMARY
+          echo "LCP: ${{ steps.psid.outputs.largest-contentful-paint }}" >> $GITHUB_STEP_SUMMARY
+          echo "Speed Index: ${{ steps.psid.outputs.speed-index }}" >> $GITHUB_STEP_SUMMARY
+          echo "TTI: ${{ steps.psid.outputs.time-to-interactive }}" >> $GITHUB_STEP_SUMMARY
+          echo "Blocking Time: ${{ steps.psid.outputs.total-blocking-time }}" >> $GITHUB_STEP_SUMMARY
