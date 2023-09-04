@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,17 +9,19 @@
     <style>
       html,
       body {
-        font-family: "Helvetica", sans-serif;
         height: 100%;
+        font-family: 'Helvetica', sans-serif;
       }
       body {
-        align-items: center;
-        background-color: rgb(127, 127, 127);
-        color: rgb(223, 224, 224);
         display: flex;
         flex-direction: column;
         justify-content: center;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5), 0 0 1em rgba(0, 0, 0, 0.5),
+        align-items: center;
+        background-color: rgb(127, 127, 127);
+        color: rgb(223, 224, 224);
+        text-shadow:
+          1px 1px 2px rgba(0, 0, 0, 0.5),
+          0 0 1em rgba(0, 0, 0, 0.5),
           0 0 0.2em rgba(0, 0, 0, 0.5);
       }
       .shingle {
@@ -28,20 +30,24 @@
         align-items: center;
       }
       h1 {
-        align-self: center;
-        font-size: 11rem;
         justify-content: center;
+        align-self: center;
         margin: 0;
+        font-size: 11rem;
         text-align: center;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5), 0 0 1em rgba(0, 0, 0, 0.5),
+        text-shadow:
+          1px 1px 2px rgba(0, 0, 0, 0.5),
+          0 0 1em rgba(0, 0, 0, 0.5),
           0 0 0.2em rgba(0, 0, 0, 0.5);
       }
       a {
+        transition:
+          color 0.5s ease-in-out,
+          border-color 0.5s ease-in-out;
         border-bottom: 1px solid rgba(223, 224, 224, 0.84);
-        color: rgba(223, 224, 224, 0.84);
         padding-bottom: 2px;
+        color: rgba(223, 224, 224, 0.84);
         text-decoration: none;
-        transition: color 0.5s ease-in-out, border-color 0.5s ease-in-out;
       }
       a:hover {
         border-color: yellow;
@@ -63,18 +69,17 @@
   <script>
     const { hostname: e } = document.location;
     let environment;
-    (environment = e.includes("local")
-      ? "development"
-      : e.includes("stg")
-      ? "staging"
-      : "production"),
+    (environment = e.includes('local')
+      ? 'development'
+      : e.includes('stg')
+      ? 'staging'
+      : 'production'),
       Sentry.init({
-        dsn:
-          "https://02b9c4dc55d14cf5bbdd30b7e592eb9a@o4505287560462336.ingest.sentry.io/4505312527187968",
+        dsn: 'https://02b9c4dc55d14cf5bbdd30b7e592eb9a@o4505287560462336.ingest.sentry.io/4505312527187968',
         tracesSampleRate: 1,
         environment,
       }),
-      Sentry.captureMessage("Page Not Found", {
+      Sentry.captureMessage('Page Not Found', {
         page: document.location.pathname,
       });
   </script>

@@ -1,13 +1,13 @@
-import { API_KEY } from "$env/static/private";
+import { API_KEY } from '$env/static/private';
 
 var headers = new Headers();
-headers.append("Authorization", `Bearer ${API_KEY}`);
-headers.append("Content-Type", "application/json");
+headers.append('Authorization', `Bearer ${API_KEY}`);
+headers.append('Content-Type', 'application/json');
 
 var requestOptions = {
-  method: "GET",
+  method: 'GET',
   headers,
-  redirect: "follow",
+  redirect: 'follow',
 };
 
 export default async function content(endpoint) {

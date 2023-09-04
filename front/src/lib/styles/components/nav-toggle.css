@@ -16,17 +16,17 @@
   }
 }
 
-label[for="nav-toggle"] {
+label[for='nav-toggle'] {
   cursor: pointer;
   &:hover,
   &:focus {
     color: rgb(var(--highlight-rgb));
   }
 }
-label[for="nav-toggle"] .nav-toggle-open {
+label[for='nav-toggle'] .nav-toggle-open {
   display: inline;
 }
-label[for="nav-toggle"] .nav-toggle-close {
+label[for='nav-toggle'] .nav-toggle-close {
   display: none;
 }
 

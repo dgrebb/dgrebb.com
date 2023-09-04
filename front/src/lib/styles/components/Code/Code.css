@@ -63,10 +63,10 @@
     position: absolute;
     right: 0;
     z-index: 5;
+    transition: color 333ms;
     padding: 0.75rem;
     color: rgba(var(--foreground-rgb), 0.33);
     line-height: 1.6;
-    transition: color 333ms;
     > * {
       pointer-events: none;
     }
@@ -93,8 +93,8 @@
       transition: opacity 333ms;
     }
     &.copying {
-      pointer-events: none;
       cursor: default;
+      pointer-events: none;
       color: rgba(var(--foreground-rgb), 1);
       .icon-code-copy {
         display: none;
