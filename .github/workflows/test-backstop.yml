@@ -4,7 +4,7 @@ run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Test ${{ github.
 on:
   workflow_call:
     secrets:
-      REPORTS_AWS_S3_BUCKET:
+      AWS_S3_BUCKET_REPORTS:
         required: true
       AWS_ACCESS_KEY_ID:
         required: true
@@ -13,10 +13,6 @@ on:
       AWS_REGION:
         required: true
   workflow_dispatch:
-  # pull_request:
-  #   paths:
-  #     - "front/**"
-  #   branches: [main, develop]
 
 permissions:
   checks: write

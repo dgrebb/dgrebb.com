@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   workflow_call:
     secrets:
-      REPORTS_AWS_S3_BUCKET:
+      AWS_S3_BUCKET_REPORTS:
         required: true
       AWS_ACCESS_KEY_ID:
         required: true
