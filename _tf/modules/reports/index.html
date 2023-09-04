@@ -114,9 +114,26 @@
         />
       </div>
       <ul>
-        <li><a href="/backstop">Backstop Report</a></li>
-        <li><a href="/lighthouse">Lighthouse Reports</a></li>
+        <li>
+          <a
+            href="/backstop/html_report/gh-prd/index.html"
+            class="test-link--backstop"
+            >Backstop Report</a
+          >
+        </li>
+        <li>
+          <a href="/lighthouse" class="test-link--lighthouse"
+            >Lighthouse Reports</a
+          >
+        </li>
       </ul>
     </main>
+    <script>
+      const env = location.hostname;
+      const path = env.includes("stg") ? "gh-stg" : "gh-prd";
+      document.querySelector(
+        ".test-link--backstop"
+      ).href = `/backstop/html_report/${env}/index.html`;
+    </script>
   </body>
 </html>
