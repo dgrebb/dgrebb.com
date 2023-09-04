@@ -17,6 +17,10 @@ echo "
             Lighthouse Reports
         </title>
         <style>
+            html,
+            body {
+                height: 100%;
+            }
             body {
                 background-color: rgb(33	33	33);
                 color: rgb(216, 255, 224);
@@ -69,6 +73,9 @@ echo "
                 justify-content: center;
                 align-items: center;
             }
+            main .backhouse {
+                margin-bottom: 2rem;
+            }
             main h1 {
                 margin-bottom: 1rem;
             }
@@ -113,7 +120,8 @@ echo "
             main a:hover,
             main a:focus {
                 color: rgb(221, 255, 221);
-                background-color: rgb(10, 69, 10);
+                background-color: rgb(32, 135, 32);
+                border-color: rgb(133, 255, 133);
             }
             main a span {
                 max-width: 33ch;
@@ -147,6 +155,7 @@ echo "
 
 echo "Dropping anchor and stepping ashore with these files in tow."
 echo "<main>" >>$OUTPUT
+echo "<img src="/img/backhouse.jpg" height="333" width="333" class="backhouse" />" >>$OUTPUT
 echo "<h1>Lighthouse Runs</h1>" >>$OUTPUT
 echo "<h2>$DATE - $TIME ET</h2>" >>$OUTPUT
 echo "<ul class=\"test-list\">" >>$OUTPUT

@@ -124,3 +124,11 @@ resource "aws_s3_object" "error_html" {
   content_type = "text/html"
   etag         = filemd5("${path.module}/404/index.html")
 }
+
+resource "aws_s3_object" "backhouse" {
+  bucket       = aws_s3_bucket.reports.id
+  key          = "img/backhouse.jpg"
+  source       = "${path.module}/img/backhouse.jpg"
+  content_type = "image/jpeg"
+  etag         = filemd5("${path.module}/img/backhouse.jpg")
+}
