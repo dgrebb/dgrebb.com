@@ -1,4 +1,4 @@
-name: 🙈 BackstopJS - Refs
+name: 🙈 BackstopJS - Refs 
 on:
   workflow_dispatch:
   workflow_call:
