@@ -7,10 +7,6 @@ on:
     secrets:
       PSI_APIKEY:
         required: true
-  # pull_request:
-  #   paths:
-  #     - "front/**"
-  #   branches: [main, develop]
 
 permissions:
   checks: write
@@ -28,6 +24,15 @@ jobs:
       name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
 
     steps:
+      - name: 𐂷 Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: dgrebb/dgrebb.com
+          ref: ${{ github.ref }}
+          token: ${{ github.token }}
+          sparse-checkout: |
+            _ci/_utils
+
       - name: 🌤️ Warmup CloudFront Cache
         run: |
           _ci/_utils/warmup.sh
