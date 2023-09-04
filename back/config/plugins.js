@@ -1,8 +1,11 @@
 module.exports = ({ env }) => {
   const upload =
     process.env.NODE_ENV === "development"
-      ? null
+      ? {
+          enabled: false,
+        }
       : {
+          enabled: true,
           config: {
             provider: "aws-s3",
             providerOptions: {
@@ -32,15 +35,15 @@ module.exports = ({ env }) => {
 
   return {
     upload,
-    "sentry": {
+    sentry: {
       enabled: true,
       config: {
         dsn: env("PUBLIC_SENTRY_DSN"),
         sendMetadata: true,
         init: {
           environment: env("PUBLIC_ENV"),
-        }
-      }
+        },
+      },
     },
     "strapi-blurhash": {
       enabled: true,
@@ -54,8 +57,8 @@ module.exports = ({ env }) => {
     "open-ai": {
       enabled: true,
       config: {
-        API_TOKEN: env("OPEN_AI_TOKEN")
-      }
-    }
+        API_TOKEN: env("OPEN_AI_TOKEN"),
+      },
+    },
   };
 };
