@@ -8,6 +8,5 @@
     "prettier-plugin-svelte",
     "prettier-plugin-css-order",
     "prettier-plugin-tailwindcss"
-  ],
-  "pluginSearchDirs": false
+  ]
 }
