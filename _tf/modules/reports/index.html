@@ -45,7 +45,7 @@
       div.badges {
         display: flex;
         flex-wrap: wrap;
-        width: 999px;
+        width: 477px;
         justify-content: center;
         img {
           padding: 0.5rem;
@@ -106,11 +106,34 @@
           loading="lazy"
           height="20"
         />
+        <img
+          src="https://github.com/dgrebb/dgrebb.com/actions/workflows/test-psi.yml/badge.svg"
+          alt="PageSpeed Insights Audit Badge"
+          loading="lazy"
+          height="20"
+        />
       </div>
       <ul>
-        <li><a href="/lighthouse">Lighthouse Report</a></li>
-        <li><a href="/backstop">Backstop Report</a></li>
+        <li>
+          <a
+            href="/backstop/html_report/gh-prd/index.html"
+            class="test-link--backstop"
+            >Backstop Report</a
+          >
+        </li>
+        <li>
+          <a href="/lighthouse" class="test-link--lighthouse"
+            >Lighthouse Reports</a
+          >
+        </li>
       </ul>
     </main>
+    <script>
+      const env = location.hostname;
+      const path = env.includes("stg") ? "gh-stg" : "gh-prd";
+      document.querySelector(
+        ".test-link--backstop"
+      ).href = `/backstop/html_report/${path}/index.html`;
+    </script>
   </body>
 </html>

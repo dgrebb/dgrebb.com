@@ -5,13 +5,15 @@ on:
   workflow_dispatch:
   workflow_call:
     secrets:
-      REPORTS_AWS_S3_BUCKET:
+      AWS_S3_BUCKET_REPORTS:
         required: true
       AWS_ACCESS_KEY_ID:
         required: true
       AWS_SECRET_ACCESS_KEY:
         required: true
       AWS_REGION:
+        required: true
+      REPORTS_DISTRIBUTION:
         required: true
 
 env:

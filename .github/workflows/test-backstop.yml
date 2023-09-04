@@ -4,7 +4,7 @@ run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Test ${{ github.
 on:
   workflow_call:
     secrets:
-      REPORTS_AWS_S3_BUCKET:
+      AWS_S3_BUCKET_REPORTS:
         required: true
       AWS_ACCESS_KEY_ID:
         required: true
@@ -12,11 +12,9 @@ on:
         required: true
       AWS_REGION:
         required: true
+      REPORTS_DISTRIBUTION:
+        required: true
   workflow_dispatch:
-  # pull_request:
-  #   paths:
-  #     - "front/**"
-  #   branches: [main, develop]
 
 permissions:
   checks: write
@@ -84,6 +82,15 @@ jobs:
           SOURCE_DIR: "_ci/backstop/bd/"
           DEST_DIR: "backstop"
 
+      - name: ∅ Invalidate CloudFront
+        uses: chetan/invalidate-cloudfront-action@v2
+        env:
+          DISTRIBUTION: ${{ secrets.REPORTS_DISTRIBUTION }}
+          PATHS: "/*"
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
       - name: Summary
         if: always()
         env:
@@ -92,8 +99,8 @@ jobs:
           cd _ci/backstop
           FAIL_TABLE=$(./_utils/parse-report.sh)
           echo "# Backstop Summary" >> $GITHUB_STEP_SUMMARY
-          echo "<a href=\"http://${{ vars.REPORTS_DOMAIN }}/backstop/html_report/gh-$REPORT_PATH\" target=\"_blank\">BackstopJS Report</a>" >> $GITHUB_STEP_SUMMARY
-          echo "<a href=\"http://${{ vars.REPORTS_DOMAIN }}/lighthouse\" target=\"_blank\">Lighthouse Report</a>" >> $GITHUB_STEP_SUMMARY
+          echo "<a href=\"http://${{ vars.REPORTS_DOMAIN }}/backstop/html_report/gh-$REPORT_PATH/\" target=\"_blank\">BackstopJS Report</a>" >> $GITHUB_STEP_SUMMARY
+          echo "<a href=\"http://${{ vars.REPORTS_DOMAIN }}/lighthouse/\" target=\"_blank\">Lighthouse Report</a>" >> $GITHUB_STEP_SUMMARY
           echo $FAIL_TABLE >> $GITHUB_STEP_SUMMARY
 
       - name: 🔥 Bummer. Uploading Failed Artifacts!
