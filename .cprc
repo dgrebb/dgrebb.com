@@ -68,7 +68,7 @@
             },
             {
               "name": "ci",
-              "description": "CI/CD changes like GitHub Workflows, Docker build steps, etc."
+              "description": "CI/CD changes like GitHub Workflows etc."
             },
             {
               "name": "front",
@@ -93,6 +93,10 @@
             {
               "name": "terraform",
               "description": "Changes to Terraform/Infrastructure."
+            },
+            {
+              "name": "docker",
+              "description": "Changes to Dockerfiles/build steps."
             },
             {
               "name": "testing",
