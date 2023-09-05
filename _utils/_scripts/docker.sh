@@ -1,7 +1,7 @@
 #!/bin/bash
 source $directory/_scripts/functions.sh
 
-region=$(pass aws/region)
+region=$(pass dg/aws/region)
 
 if [ $# -eq 0 ]; then
     printDgErr "Missing args!"
@@ -22,7 +22,7 @@ else
         ba | build-act)
             cd $directory/../_docker
             printDgMsg "Building act testing image..."
-            docker buildx build . -t github-actions-test  -f act.Dockerfile --platform linux/amd64
+            docker buildx build . -t github-actions-test -f act.Dockerfile --platform linux/amd64
             break 2
             ;;
         rb | rebuild)
