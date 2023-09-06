@@ -24,8 +24,8 @@ env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
 jobs:
-  visual_regression:
-    name: 𝌹 Visual Regression
+  backstop:
+    name: 🙈 Running Backstop on ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
     runs-on: ubuntu-latest
 
     concurrency:
