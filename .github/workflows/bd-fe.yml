@@ -59,6 +59,9 @@ jobs:
   build_deploy:
     name: 🚜 Build & Deploy to ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
     runs-on: ubuntu-latest
+    concurrency:
+      group: build-deploy
+      cancel-in-progress: true
 
     environment:
       name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
