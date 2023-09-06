@@ -29,7 +29,7 @@ env() {
 img() {
     if [ $# -eq 0 ] || [ $1 = p ]; then
         back_img=$(pass dg/cms/domain)
-        back_ecr_uri=$(pass dg/cms/ecr-uri)
+        back_ecr_uri=$(pass dg/cms/p/ecr-uri)
     elif [ $1 = s ]; then
         back_img=$(pass dg/cms/s/domain)
         back_ecr_uri=$(pass dg/cms/s/ecr-uri)
@@ -86,8 +86,8 @@ setTfEnv() {
 
 retag() {
     MANIFEST=$(aws ecr batch-get-image --region $(pass dg/aws/region) --repository-name ${1} --image-ids imageTag=latest --output json | jq --raw-output --join-output '.images[0].imageManifest')
-    aws ecr put-image --region $(pass dg/aws/region) --repository-name $1 --image-tag last --image-manifest "${MANIFEST}" > /dev/null
-    aws ecr batch-delete-image --region $(pass dg/aws/region) --repository-name $1 --image-ids --image-tag latest > /dev/null
+    aws ecr put-image --region $(pass dg/aws/region) --repository-name $1 --image-tag last --image-manifest "${MANIFEST}" >/dev/null
+    aws ecr batch-delete-image --region $(pass dg/aws/region) --repository-name $1 --image-ids --image-tag latest >/dev/null
 }
 
 archive() {
