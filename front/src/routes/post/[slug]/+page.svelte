@@ -21,6 +21,7 @@
     : false;
   $: heroImage = hero?.url ? hero.url : false;
   $: position = post.position || 'center center';
+  $: ({ publishedAt, updatedAt } = post);
   $: summary = post.summary || false;
   $: content = post?.content?.length ? post.content : false;
   $: footnotes = post.footnotes.length ? post.footnotes : false;
@@ -57,6 +58,8 @@
     {/if}
     <a id="main">Main Content</a>
     <Post
+      {publishedAt}
+      {updatedAt}
       {title}
       {summary}
       {content}
