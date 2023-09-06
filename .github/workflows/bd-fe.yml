@@ -141,18 +141,18 @@ jobs:
         run: |
           cd front
           if [ ${{ github.ref_name }} == 'main' ]; then 
-            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} 
-            DEPLOY_ENV=$DEPLOY_ENV
-            UPLOAD_SOURCEMAPS=true
-            RELEASE_NAME=${{ env.RELEASE_NAME }}
-            DIST=${{ env.DIST }}
+            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} \
+            DEPLOY_ENV=$DEPLOY_ENV \
+            UPLOAD_SOURCEMAPS=true \
+            RELEASE_NAME=${{ env.RELEASE_NAME }} \
+            DIST=${{ env.DIST }} \
             npm run build
           else
-            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} 
-            DEPLOY_ENV=$DEPLOY_ENV
-            UPLOAD_SOURCEMAPS=true
-            RELEASE_NAME=${{ env.RELEASE_NAME }}
-            DIST=${{ env.DIST }}
+            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} \
+            DEPLOY_ENV=$DEPLOY_ENV \
+            UPLOAD_SOURCEMAPS=true \
+            RELEASE_NAME=${{ env.RELEASE_NAME }} \
+            DIST=${{ env.DIST }} \
             npm run build.s
           fi
 
