@@ -5,7 +5,7 @@ on:
 
 jobs:
   generate:
-    name: ♺ Generate Reference Bitmaps
+    name:  🙈 Generating Backstop Refs for ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
     runs-on: ubuntu-latest
 
     concurrency:
