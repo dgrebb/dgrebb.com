@@ -33,7 +33,7 @@ while test "$1" != --; do
         break
         ;;
     f | front)
-        /bin/bash $directory/_scripts/front.sh $2 $3
+        /bin/bash $directory/_scripts/front.sh $2 $3 $4
         break
         ;;
     d | docker)
@@ -48,39 +48,39 @@ while test "$1" != --; do
         /bin/bash $directory/_scripts/bump.sh
         break
         ;;
-    g | github )
+    g | github)
         open https://github.com/dgrebb/dgrebb.com
         break
         ;;
-    gp | github-project )
+    gp | github-project)
         open https://github.com/users/dgrebb/projects/12
         break
         ;;
-    a | act )
+    a | act)
         /bin/bash $directory/_scripts/act.sh $2 $3
         break
         ;;
-    tp | test-performance | lighthouse )
+    tp | test-performance | lighthouse)
         /bin/bash $directory/_scripts/perf.sh $2
         break
         ;;
-    tv | test-visual | backstop )
+    tv | test-visual | backstop)
         /bin/bash $directory/_scripts/visual-regression.sh test $2
         break
         ;;
-    tvt | test-visual-skip-build | backstop-test )
+    tvt | test-visual-skip-build | backstop-test)
         /bin/bash $directory/_scripts/visual-regression.sh test-now $2
         break
         ;;
-    tvr | test-visual-remote-service | backstop-remote )
+    tvr | test-visual-remote-service | backstop-remote)
         /bin/bash $directory/_scripts/visual-regression.sh remote $2
         break
         ;;
-    tvref | test-visual-ref | backstop-reference )
+    tvref | test-visual-ref | backstop-reference)
         /bin/bash $directory/_scripts/visual-regression.sh ref $2
         break
         ;;
-    tva | test-visual-approve | backstop-approve )
+    tva | test-visual-approve | backstop-approve)
         /bin/bash $directory/_scripts/visual-regression.sh approve $2
         break
         ;;

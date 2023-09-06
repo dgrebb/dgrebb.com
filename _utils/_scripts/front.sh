@@ -39,19 +39,21 @@ while test "$1" != --; do
     bx | bx)
         setFrontEnv ${env}
         branch=$(git branch --show-current)
-        DIST=$(date +%y%m%d-%H%M%S)
-        RELEASE_NAME=dev-$(sed "s/\//-/g" <<< "$branch")
-        DEPLOY_ENV=development
-        cdfront && UPLOAD_SOURCEMAPS=true \
-        RELEASE_NAME=$RELEASE_NAME DIST=$DIST \
-        DEPLOY_ENV=$DEPLOY_ENV npm run build.${env}
+        cdfront &&
+            SENTRY_AUTH_TOKEN=$(pass dg/sentry/authtoken) \
+            DIST=$(date +%y%m%d-%H%M%S) \
+            RELEASE_NAME=dev-$(sed "s/\//-/g" <<<"$branch") \
+            DEPLOY_ENV=development \
+            UPLOAD_SOURCEMAPS=true \
+            RELEASE_NAME=$RELEASE_NAME DIST=$DIST \
+            DEPLOY_ENV=$DEPLOY_ENV npm run build.${env}
         break
         ;;
     s | http-server)
         pwd
         cdfront && sudo http-server -b -S -p 443 -a local.dgrebb.com \
-        -C local.dgrebb.com.crt -K local.dgrebb.com.key \
-        --cors='*' ./build
+            -C local.dgrebb.com.crt -K local.dgrebb.com.key \
+            --cors='*' ./build
         break
         ;;
     p | preview)

@@ -10,6 +10,7 @@ export default defineConfig({
   plugins: [
     sentrySvelteKit({
       sourceMapsUploadOptions: {
+        authToken: process.env.SENTRY_AUTH_TOKEN,
         uploadSourceMaps: process.env.UPLOAD_SOURCEMAPS || false,
         telemetry: false,
         debug: true,
