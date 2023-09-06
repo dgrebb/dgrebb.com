@@ -2,7 +2,6 @@ name: 📡 CMS Publish
 
 on:
   workflow_dispatch:
-    branches: [main, develop]
 
 jobs:
   approve:
