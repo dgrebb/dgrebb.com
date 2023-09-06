@@ -132,3 +132,11 @@ resource "aws_s3_object" "backhouse" {
   content_type = "image/jpeg"
   etag         = filemd5("${path.module}/img/backhouse.jpg")
 }
+
+resource "aws_s3_object" "favicon" {
+  bucket       = aws_s3_bucket.reports.id
+  key          = "favicon.ico"
+  source       = "${path.module}/img/favicon.ico"
+  content_type = "image/x-icon"
+  etag         = filemd5("${path.module}/img/favicon.ico")
+}
