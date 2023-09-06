@@ -8,6 +8,8 @@
   import slugger from 'slugger';
   import SvelteMarkdown from 'svelte-markdown';
 
+  export let publishedAt;
+  export let updatedAt;
   export let title;
   export let summary;
   export let content;
@@ -15,6 +17,21 @@
   export let categories;
   export let related;
   export let pathname;
+
+  const pub = new Date(publishedAt).toDateString('en-us', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+  const up = updatedAt
+    ? new Date(updatedAt).toDateString('en-us', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      })
+    : false;
 
   let toc, postNavCheckbox, miniPostNav;
   $: toc = [];
@@ -51,11 +68,18 @@
   };
 </script>
 
+<svelte:head>
+  <meta name="date" content={publishedAt} />
+  {#if updatedAt}<meta name="date_modified" content={updatedAt} />{/if}
+</svelte:head>
+
 {#if (contents && contents.length) || (categories && categories.length) || (related && related.length)}
   <PageNav {contents} {categories} {related} {pathname} mini {setActiveLink} />
 {/if}
 <h1 class="post-title">{title}</h1>
 <article class="post-article" class:full={!showAside}>
+  {#if updatedAt}<time datetime={updatedAt}>Updated: {up}</time>{/if}
+  <time datetime={publishedAt}>Published: {pub}</time>
   {#if summary}
     <p class="summary">{summary}</p>
   {/if}
