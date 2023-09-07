@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+    concurrency:
+      group: cms-publish
+      cancel-in-progress: true
 
     steps:
       - name: ✓ Approve CMS Dispatch
@@ -28,7 +31,8 @@ jobs:
     steps:
       - name: 🛰️ Dispatch B&D FE
         run: |
-          curl -X POST https://api.github.com/repos/dgrebb/dgrebb.com/actions/workflows/bd-fe.yml/dispatches \
+          curl --location 'https://api.github.com/repos/dgrebb/dgrebb.com/actions/workflows/bd-fe.yml/dispatches' \
+          -H 'Content-Type: application/json' \
           -H 'Accept: application/vnd.github+json' \
           -H 'Authorization: Bearer ${{ secrets.DISPATCH_TOKEN }}' \
           --data '{"ref": "${{ github.ref_name }}"}'

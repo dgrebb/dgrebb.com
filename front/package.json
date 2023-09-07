@@ -17,9 +17,9 @@
     "preview": "vite --config vite.config.js preview",
     "preview.local": "vite --config vite.local.config.js preview",
     "postinstall": "patch-package",
-    "postbuild.l": "npx svelte-sitemap -i '404' -i 'shingle' --domain https://local.dgrebb.com",
-    "postbuild.s": "npx svelte-sitemap -i '404' -i 'shingle' --domain https://stg.dgrebb.com",
-    "postbuild": "npx svelte-sitemap -i '404' -i 'shingle' --domain https://www.dgrebb.com"
+    "postbuild.l": "npx svelte-sitemap -i '404' -i 'shingle' -t --attribution=false --domain https://local.dgrebb.com",
+    "postbuild.s": "npx svelte-sitemap -i '404' -i 'shingle' -t --attribution=false --domain https://stg.dgrebb.com",
+    "postbuild": "npx svelte-sitemap -i '404' -i 'shingle' -t --attribution=false --domain https://www.dgrebb.com"
   },
   "devDependencies": {
     "@accuser/svelte-plausible-analytics": "github:dgrebb/svelte-plausible-analytics#release/v0.6.0",

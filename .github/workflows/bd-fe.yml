@@ -59,6 +59,9 @@ jobs:
   build_deploy:
     name: 🚜 Build & Deploy to ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
     runs-on: ubuntu-latest
+    concurrency:
+      group: build-deploy
+      cancel-in-progress: true
 
     environment:
       name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
@@ -99,8 +102,6 @@ jobs:
           repository: dgrebb/dgrebb.com
           ref: ${{ github.ref }}
           token: ${{ github.token }}
-          sparse-checkout: |
-            front
 
       - name: 📐 Set Environment
         env:
@@ -140,16 +141,18 @@ jobs:
         run: |
           cd front
           if [ ${{ github.ref_name }} == 'main' ]; then 
-            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} 
-            DEPLOY_ENV=$DEPLOY_ENV
-            RELEASE_NAME=${{ env.RELEASE_NAME }}
-            DIST=${{ env.DIST }}
+            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} \
+            DEPLOY_ENV=$DEPLOY_ENV \
+            UPLOAD_SOURCEMAPS=true \
+            RELEASE_NAME=${{ env.RELEASE_NAME }} \
+            DIST=${{ env.DIST }} \
             npm run build
           else
-            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} 
-            DEPLOY_ENV=$DEPLOY_ENV
-            RELEASE_NAME=${{ env.RELEASE_NAME }}
-            DIST=${{ env.DIST }}
+            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} \
+            DEPLOY_ENV=$DEPLOY_ENV \
+            UPLOAD_SOURCEMAPS=true \
+            RELEASE_NAME=${{ env.RELEASE_NAME }} \
+            DIST=${{ env.DIST }} \
             npm run build.s
           fi
 
