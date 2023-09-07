@@ -96,6 +96,10 @@
       line-height: 1.2;
     }
   }
+  .pubdate {
+    color: rgba(var(--text-accent-rgb), 0.77);
+    font-size: 1rem;
+  }
   .aside-toggle {
     display: inline;
     float: right;

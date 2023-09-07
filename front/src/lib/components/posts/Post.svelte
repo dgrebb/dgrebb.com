@@ -18,18 +18,16 @@
   export let related;
   export let pathname;
 
-  const pub = new Date(publishedAt).toDateString('en-us', {
-    weekday: 'long',
+  const pub = new Date(publishedAt).toLocaleDateString('en-us', {
     year: 'numeric',
     month: 'short',
-    day: 'numeric',
+    day: '2-digit',
   });
   const up = updatedAt
-    ? new Date(updatedAt).toDateString('en-us', {
-        weekday: 'long',
+    ? new Date(updatedAt).toLocaleDateString('en-us', {
         year: 'numeric',
         month: 'short',
-        day: 'numeric',
+        day: '2-digit',
       })
     : false;
 
@@ -78,8 +76,11 @@
 {/if}
 <h1 class="post-title">{title}</h1>
 <article class="post-article" class:full={!showAside}>
-  {#if updatedAt}<time datetime={updatedAt}>Updated: {up}</time>{/if}
-  <time datetime={publishedAt}>Published: {pub}</time>
+  <time
+    class="pubdate"
+    datetime={publishedAt}
+    title={updatedAt ? `Updated ${up}` : false}>{pub}</time
+  >
   {#if summary}
     <p class="summary">{summary}</p>
   {/if}
