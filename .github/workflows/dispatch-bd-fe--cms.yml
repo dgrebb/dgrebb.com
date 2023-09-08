@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: ✓ Approve CMS Dispatch
-        uses: dgrebb/manual-approval@develop
+        uses: dgrebb/manual-approval@0.1.0
         with:
           secret: ${{ github.TOKEN }}
           approvers: dgrebb
