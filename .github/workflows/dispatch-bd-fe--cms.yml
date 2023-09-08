@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: ✓ Approve CMS Dispatch
-        uses: trstringer/manual-approval@v1
+        uses: dgrebb/manual-approval@develop
         with:
           secret: ${{ github.TOKEN }}
           approvers: dgrebb
@@ -22,8 +22,8 @@ jobs:
           issue-title: "Deploying ${{ github.ref_name }} via CMS Dispatch Event"
           issue-body: "Please approve or deny the deployment of version ${{ github.ref_name }}."
           exclude-workflow-initiator-as-approver: false
-          additional-approved-words: ""
-          additional-denied-words: ""
+          additional-approved-words: "y, a"
+          labels: "content-publish"
 
   frontend:
     runs-on: ubuntu-latest
