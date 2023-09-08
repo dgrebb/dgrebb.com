@@ -23,7 +23,7 @@ jobs:
           issue-body: "Please approve or deny the deployment of version ${{ github.ref_name }}."
           exclude-workflow-initiator-as-approver: false
           additional-approved-words: "y, a"
-          labels: "content-publish"
+          labels: "zz content-publish"
 
   frontend:
     runs-on: ubuntu-latest
