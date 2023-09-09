@@ -1,9 +1,193 @@
 {
   "commitizen": {
-    "name": "cz_conventional_commits",
+    "name": "cz_customize",
     "version": "2.5.1",
     "tag_format": "$major.$minor.$patch$prerelease",
     "version_type": "semver",
-    "bump_message": "release $current_version \u2192 $new_version"
+    "bump_message": "release $current_version \u2192 $new_version",
+    "customize": {
+      "info": "This is customized info",
+      "message_template": "{{change_type}}({{scope}}): {{subject}}{% if body %}\n\n{{body}}{% endif %}{% if footer %}\n\n{% if is_breaking_change %}BREAKING CHANGE: {% endif %}{{footer}}{% endif %}",
+      "example": "feature(front): adds the header component",
+      "schema": "<type>(<scope>): <subject>\n \n<body>\n \n(BREAKING CHANGE: )<footer>",
+      "schema_pattern": "^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test){1}(\\([\\w\\-\\.]+\\))?(!)?: ([\\w \\-'])+([\\s\\S]*)",
+      "commit_parser": "^((?P<change_type>chore|build|ci|docs|feat|fix|perf|refactor|revert|style|test|BREAKING CHANGE)(?:\\((?P<scope>[^()\r\n]*)\\)|\\()?(?P<breaking>!)?|\\w+!):\\s(?P<message>.*)?",
+      "changelog_pattern": "^(.+!|BREAKING CHANGE|chore|build|ci|docs|feat|fix|perf|refactor|revert|style|test):",
+      "bump_pattern": "^(.+!|BREAKING CHANGE|chore|docs|feat|fix|perf|refactor|revert|style|test):",
+      "bump_map": {
+        ".+!": "MAJOR",
+        "BREAKING CHANGE": "MAJOR",
+        "feat": "MINOR",
+        "fix": "PATCH",
+        "chore": "PATCH",
+        "docs": "PATCH",
+        "perf": "PATCH",
+        "refactor": "PATCH",
+        "revert": "MINOR",
+        "style": "PATCH",
+        "test": "PATCH"
+      },
+      "change_type_order": [
+        "Breaking Changes",
+        "Features",
+        "Bug Fixes",
+        "Styling",
+        "Performance",
+        "Refactor",
+        "Reverted",
+        "Maintenance",
+        "Documentation",
+        "CI/CD"
+      ],
+      "change_type_map": {
+        "BREAKING CHANGE": "Breaking Changes",
+        "chore": "Maintenance",
+        "build": "CI/CD",
+        "ci": "CI/CD",
+        "docs": "Documentation",
+        "feat": "Features",
+        "fix": "Bug Fixes",
+        "perf": "Performance",
+        "refactor": "Refactor",
+        "revert": "Reverted",
+        "style": "Styling",
+        "test": "Maintenance"
+      },
+      "questions": [
+        {
+          "type": "list",
+          "name": "change_type",
+          "message": "Select the type of change you are committing",
+          "choices": [
+            {
+              "value": "chore",
+              "name": "chore: Maintenance or ongoing work. Correlates with PATCH in SemVer.",
+              "key": "w"
+            },
+            {
+              "value": "fix",
+              "name": "fix: A bug fix. Correlates with PATCH in SemVer.",
+              "key": "x"
+            },
+            {
+              "value": "feat",
+              "name": "feat: A new feature. Correlates with MINOR in SemVer.",
+              "key": "f"
+            },
+            {
+              "value": "docs",
+              "name": "docs: Documentation only changes.",
+              "key": "d"
+            },
+            {
+              "value": "style",
+              "name": "style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc.).",
+              "key": "s"
+            },
+            {
+              "value": "refactor",
+              "name": "refactor: A code change that neither fixes a bug nor adds a feature.",
+              "key": "r"
+            },
+            {
+              "value": "perf",
+              "name": "perf: A code change that improves performance.",
+              "key": "p"
+            },
+            {
+              "value": "test",
+              "name": "test: Adding missing or correcting existing tests.",
+              "key": "t"
+            },
+            {
+              "value": "build",
+              "name": "build: Changes that affect the build system or external dependencies (example scopes: pip, docker, npm).",
+              "key": "b"
+            },
+            {
+              "value": "ci",
+              "name": "ci: Changes to our CI configuration files and scripts (example scopes: GitHub).",
+              "key": "c"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "name": "scope",
+          "message": "What is the scope of this change? (class or file name): (press [enter] to skip) ",
+          "choices": [
+            {
+              "value": "front",
+              "name": "front: Changes to Svelte and the front end."
+            },
+            {
+              "value": "back",
+              "name": "back: Changes to the back end not directly related to Strapi."
+            },
+            {
+              "value": "ci",
+              "name": "ci: CI/CD changes like GitHub Workflows etc."
+            },
+            {
+              "value": "github",
+              "name": "github: GitHub-specific changes to CI/CD, secrets, etc."
+            },
+            {
+              "value": "backstop",
+              "name": "backstop: BackstopJS-specific changes to scenarios, configuration, etc."
+            },
+            {
+              "value": "perf",
+              "name": "perf: Perf testing, configuration, and/or enhancements."
+            },
+            {
+              "value": "project",
+              "name": "project: Configuration, CI/CD, Developer Experience, etc."
+            },
+            {
+              "value": "strapi",
+              "name": "strapi: CMS changes, updates, etc."
+            },
+            {
+              "value": "terraform",
+              "name": "terraform: Changes to Terraform/Infrastructure."
+            },
+            {
+              "value": "docker",
+              "name": "docker: Changes to Dockerfiles/build steps."
+            },
+            {
+              "value": "testing",
+              "name": "testing: Changes to testing utils/tests."
+            },
+            {
+              "value": "utils",
+              "name": "utils: Changes to developer scripts and utils."
+            }
+          ]
+        },
+        {
+          "type": "input",
+          "name": "subject",
+          "message": "Write a short and imperative summary of the code changes: (lower case and no period)\n"
+        },
+        {
+          "type": "input",
+          "name": "body",
+          "message": "Provide additional contextual information about the code changes: (press [enter] to skip)\n"
+        },
+        {
+          "type": "confirm",
+          "message": "Is this a BREAKING CHANGE? Correlates with MAJOR in SemVer",
+          "name": "is_breaking_change",
+          "default": false
+        },
+        {
+          "type": "input",
+          "name": "footer",
+          "message": "Footer. Information about Breaking Changes and reference issues that this commit closes: (press [enter] to skip)\n"
+        }
+      ]
+    }
   }
 }
