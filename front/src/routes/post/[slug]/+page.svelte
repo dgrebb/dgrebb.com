@@ -77,10 +77,10 @@
 
 {#if failed}
   <script>
-    Sentry.captureMessage("Image Not Found", {
+    Sentry.captureMessage('Image Not Found', {
       image: src,
       page: document.location.pathname,
-      { hostname }: document.location,
+      hostname: document.location.hostname,
     });
   </script>
 {/if}

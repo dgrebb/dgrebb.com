@@ -14,7 +14,7 @@
     error: $page.error.message,
     data: $page.data,
   });
-  console.log("🚀 ~ file: +error.svelte:11 ~ $page:", $page)
+  console.log('🚀 ~ file: +error.svelte:11 ~ $page:', $page);
   Sentry.captureMessage('Page Not Found', {
     tags: {
       status: 'NOT_FOUND',
