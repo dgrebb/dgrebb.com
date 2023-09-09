@@ -1,0 +1,41 @@
+@import './colors-dark.css';
+@import './colors-light.css';
+
+@layer utilities {
+  .dg--light-theme {
+    --foreground-rgb: 38, 10, 15;
+    --foreground-mark-rgb: 255, 48, 86;
+    --foreground-rgb-faded: 181, 179, 179;
+    --background-start-rgb: 255, 212, 218;
+    --background-end-rgb: 230, 211, 224;
+    --background-saturated: 246, 250, 245;
+    --background-pre-rgb: 254, 255, 245;
+    --background-pre-highlight-rgb: 243, 250, 157;
+    --btn--secondary-rgb: 170, 45, 64;
+    --btn-secondary-highlight-rgb: 233, 223, 212;
+    --highlight-rgb: 145, 15, 35;
+    --subdued-rgb: 232, 234, 205;
+    --transform-duration: 500ms;
+    --transform-timing-function: ease-in-out;
+    --text-accent-rgb: 82, 2, 15;
+    --link-rgb: 244, 67, 54;
+  }
+  .dg--dark-theme {
+    --foreground-rgb: 223, 224, 224;
+    --foreground-mark-rgb: 207, 207, 0;
+    --foreground-rgb-faded: 89, 90, 91;
+    --background-start-rgb: 33, 33, 33;
+    --background-end-rgb: 11, 11, 11;
+    --background-saturated: 19, 19, 20;
+    --background-pre-rgb: 3, 3, 3;
+    --background-pre-highlight-rgb: 87, 87, 0;
+    --highlight-rgb: 199, 184, 16;
+    --subdued-rgb: 69, 68, 61;
+    --btn--secondary-rgb: 23, 23, 23;
+    --btn-secondary-highlight-rgb: 82, 82, 82;
+    --transform-duration: 500ms;
+    --transform-timing-function: ease-in-out;
+    --text-accent-rgb: 245, 245, 230;
+    --link-rgb: 250, 250, 167;
+  }
+}
