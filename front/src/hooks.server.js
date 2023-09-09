@@ -6,9 +6,12 @@ import { dev, building } from '$app/environment';
 Sentry.init({
   dsn: PUBLIC_SENTRY_DSN,
   environment: PUBLIC_ENV,
-  tracesSampleRate: PUBLIC_ENV === 'production' ? 0.3 : 0,
-  replaysSessionSampleRate: PUBLIC_ENV === 'production' ? 0.3 : 0,
-  replaysOnErrorSampleRate: PUBLIC_ENV === 'production' ? 0.3 : 0,
+  tracesSampleRate:
+    PUBLIC_ENV === 'production' ? 0.5 : PUBLIC_ENV === 'staging' ? 0.25 : 0,
+  replaysSessionSampleRate:
+    PUBLIC_ENV === 'production' ? 0.5 : PUBLIC_ENV === 'staging' ? 0.25 : 0,
+  replaysOnErrorSampleRate:
+    PUBLIC_ENV === 'production' ? 0.5 : PUBLIC_ENV === 'staging' ? 0.25 : 0,
   integrations: [],
   beforeSend(event) {
     if (event.user) {
