@@ -1,3 +1,3 @@
 <svelte:head>
-  <slot></slot>
+  <slot />
 </svelte:head>

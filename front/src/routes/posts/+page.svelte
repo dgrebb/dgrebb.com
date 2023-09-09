@@ -1,12 +1,12 @@
 <script>
-  import Head from "@components/Head.svelte";
-  import PageTransition from "@components/PageTransition.svelte";
-  import Link from "@components/content/renderers/Link.svelte";
-  import PostsGrid from "@components/posts/PostsGrid.svelte";
-  import Flourish from "@layout/Flourish.svelte";
-  import Meta from "@components/Meta.svelte";
-  import { onMount } from "svelte";
-  import SvelteMarkdown from "svelte-markdown";
+  import Head from '@components/Head.svelte';
+  import PageTransition from '@components/PageTransition.svelte';
+  import Link from '@components/content/renderers/Link.svelte';
+  import PostsGrid from '@components/posts/PostsGrid.svelte';
+  import Flourish from '@layout/Flourish.svelte';
+  import Meta from '@components/Meta.svelte';
+  import { onMount } from 'svelte';
+  import SvelteMarkdown from 'svelte-markdown';
 
   export let data;
   let mounted = false;
