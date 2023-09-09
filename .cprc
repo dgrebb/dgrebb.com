@@ -8,8 +8,8 @@
           "type": "oneOf",
           "scopes": [
             {
-              "description": "In-progress work, or changes that affect the build system or external dependencies (example scopes: pip, docker, npm).",
-              "name": "build"
+              "description": "Other changes that don't modify src or test files",
+              "name": "chores"
             },
             {
               "description": "A bug fix. Correlates with PATCH in SemVer.",
@@ -18,10 +18,6 @@
             {
               "description": "A new feature. Correlates with MINOR in SemVer.",
               "name": "feat"
-            },
-            {
-              "description": "Other changes that don't modify src or test files",
-              "name": "chores"
             },
             {
               "description": "A code change that improves performance.",
@@ -46,6 +42,10 @@
             {
               "description": "Changes to the CI configuration or dev/build tools.",
               "name": "ci"
+            },
+            {
+              "description": "Changes that affect the build system or external dependencies (example scopes: docker, npm).",
+              "name": "build"
             },
             {
               "description": "Reverts a previous commit.",
