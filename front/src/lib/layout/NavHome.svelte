@@ -1,5 +1,5 @@
 <script>
-	export let navHeading;
+  export let navHeading;
 </script>
 
 <a class="nav-home" href="/" aria-label="Dan Grebb | Home">

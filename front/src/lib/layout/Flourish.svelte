@@ -1,1 +1,1 @@
-  <span class="flourish" />
+<span class="flourish" />

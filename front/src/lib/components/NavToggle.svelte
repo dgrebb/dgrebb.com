@@ -1,6 +1,6 @@
 <script>
-  import HamOpen from "~icons/mdi/hamburger-open";
-  import HamClose from "~icons/mdi/hamburger-close";
+  import HamOpen from '~icons/mdi/hamburger-open';
+  import HamClose from '~icons/mdi/hamburger-close';
 </script>
 
 <input type="checkbox" class="nav-toggle" id="nav-toggle" />
