@@ -1,0 +1,27 @@
+@import './colors-dark.css';
+@import './colors-light.css';
+
+:root {
+  --clr-neut-50: #f6f6f6;
+  --clr-neut-100: #ececec;
+  --clr-neut-200: #dedede;
+  --clr-neut-300: #cacaca;
+  --clr-neut-400: #a5a5a5;
+  --clr-neut-500: #838383;
+  --clr-neut-600: #5d5d5d;
+  --clr-neut-700: #4a4a4a;
+  --clr-neut-800: #2c2c2c;
+  --clr-neut-900: #0b0b0b;
+  --clr-neut: var(--clr-primary-900);
+  --clr-neut-50-rgb: 246, 246, 246;
+  --clr-neut-100-rgb: 236, 236, 236;
+  --clr-neut-200-rgb: 222, 222, 222;
+  --clr-neut-300-rgb: 202, 202, 202;
+  --clr-neut-400-rgb: 165, 165, 165;
+  --clr-neut-500-rgb: 131, 131, 131;
+  --clr-neut-600-rgb: 93, 93, 93;
+  --clr-neut-700-rgb: 74, 74, 74;
+  --clr-neut-800-rgb: 44, 44, 44;
+  --clr-neut-900-rgb: 11, 11, 11;
+  --clr-neut-rgb: var(--clr-primary-900-rgb);
+}
