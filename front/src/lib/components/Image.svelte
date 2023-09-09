@@ -40,7 +40,7 @@
     {width}
     {height}
     class={classes}
-    class:loaded={loaded}
+    class:loaded
     aria-hidden={ariaHidden}
   />
 {/await}

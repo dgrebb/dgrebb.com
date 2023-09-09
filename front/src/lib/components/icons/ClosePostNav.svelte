@@ -1,5 +1,5 @@
 <script>
-  export let classes = "post-navigation-close";
+  export let classes = 'post-navigation-close';
 </script>
 
 <svg

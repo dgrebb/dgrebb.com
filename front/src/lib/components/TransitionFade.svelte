@@ -6,7 +6,7 @@
 
   function doIt() {
     return {
-      duration
+      duration,
     };
   }
 
