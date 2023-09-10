@@ -1,18 +1,32 @@
-# dgrebb.com
+[![A circuit board with plants and flowers growing from its silicon.](https://user-images.githubusercontent.com/445891/266865099-66b83d03-7f59-4705-8a8b-3647f227d46a.jpg)](https://www.dgrebb.com)
+
+<!-- omit in toc -->
+# [dgrebb.com](https://www.dgrebb.com)
 
 Hark! Welcome to the repository for dgrebb.com, whereupon thou shalt find the source code and assets for mine own personal website. If thou art inclined to explore the inner workings of this fine establishment or dost seek to make contributions, thou hast come to the right place.
 
-## Table of Contents
+- [Wiki](#wiki)
+- [Thank Youse \& Supporting Products](#thank-youse--supporting-products)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Develop](#develop)
+  - [Production](#production)
+- [Contributing](#contributing)
+- [License](#license)
 
-- [dgrebb.com](#dgrebbcom)
-  - [Table of Contents](#table-of-contents)
-  - [Features](#features)
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [Develop](#develop)
-    - [Production](#production)
-  - [Contributing](#contributing)
-  - [License](#license)
+## Wiki
+
+Design, architecture, ALM, frontend, backend, testing, regression, utilities, and other various components of the site are ongoingly documented in [the wiki](https://github.com/dgrebb/dgrebb.com/wiki).
+
+## Thank Youse & Supporting Products
+
+The below components are a majority of the product stack. Thorough details may be found in the Technology Section of the wiki.
+
+- Strapi
+- Svelte/SvelteKit
+- Terraform/OpenTF
+- AWS
 
 ## Features
 
