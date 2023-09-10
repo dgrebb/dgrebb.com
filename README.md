@@ -21,7 +21,7 @@ Design, architecture, ALM, frontend, backend, testing, regression, utilities, an
 
 ## Thank Youse & Supporting Products
 
-The below components are a majority of the product stack. Thorough details may be found in the Technology Section of the wiki.
+The below components are a majority of the product stack. Thorough details may be found on the wiki [technology page](https://github.com/dgrebb/dgrebb.com/wiki/technology).
 
 - Strapi
 - Svelte/SvelteKit
