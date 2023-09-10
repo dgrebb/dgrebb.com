@@ -70,7 +70,6 @@ body.ready .header.scroll-transition {
   padding: 0.75rem;
   text-align: center;
   small {
-    transition: color 1.5s !important;
     padding: 1rem 0;
     color: rgb(var(--subdued-rgb));
     font-size: 0.7rem;
@@ -87,22 +86,14 @@ body.ready .header.scroll-transition {
         color: rgba(var(--text-accent-rgb), 1);
       }
     }
-    p,
-    img {
+    p {
       transform-style: preserve-3d;
-      opacity: 0.2;
-      transition-duration: 0.5s;
+      opacity: 0.3;
+      transition-delay: 1s;
+      transition-duration: 2s;
       transition-property: opacity, filter;
+      transition-timing-function: var(--transition-timing-function);
       color: rgb(var(--foreground-rgb));
-    }
-    img {
-      display: inline;
-      border: 0;
-      &:hover,
-      &:focus {
-        @apply brightness-200;
-        opacity: 1;
-      }
     }
     &:hover,
     &:focus,
@@ -110,9 +101,8 @@ body.ready .header.scroll-transition {
     &:active {
       p {
         opacity: 1;
-      }
-      img {
-        opacity: 0.8;
+        transition-delay: 0s;
+        transition-duration: var(--transition-duration);
       }
     }
   }

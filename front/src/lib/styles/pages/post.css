@@ -3,7 +3,7 @@
   display: block;
   position: relative;
   border-radius: 0.77rem;
-  background-color: rgba(var(--background-saturated), 0.77);
+  background-color: var(--content-bg-clr);
   @apply shadow-xl;
   @screen md {
     margin-top: 2.75rem;
@@ -191,7 +191,7 @@
     margin-bottom: -6rem;
   }
   a {
-    transition-duration: var(--transform-duration);
+    transition-duration: var(--transition-duration);
     transition-property: border, color;
     transition-timing-function: var(--transition-timing-function);
     border-bottom: 1px solid rgba(var(--text-accent-rgb), 0.67);

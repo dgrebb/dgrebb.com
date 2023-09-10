@@ -1,6 +1,31 @@
 @import './colors-dark.css';
 @import './colors-light.css';
 
+:root {
+  --clr-neut-50: #f6f6f6;
+  --clr-neut-100: #ececec;
+  --clr-neut-200: #dedede;
+  --clr-neut-300: #cacaca;
+  --clr-neut-400: #a5a5a5;
+  --clr-neut-500: #838383;
+  --clr-neut-600: #5d5d5d;
+  --clr-neut-700: #4a4a4a;
+  --clr-neut-800: #2c2c2c;
+  --clr-neut-900: #0b0b0b;
+  --clr-neut: var(--clr-primary-900);
+  --clr-neut-50-rgb: 246, 246, 246;
+  --clr-neut-100-rgb: 236, 236, 236;
+  --clr-neut-200-rgb: 222, 222, 222;
+  --clr-neut-300-rgb: 202, 202, 202;
+  --clr-neut-400-rgb: 165, 165, 165;
+  --clr-neut-500-rgb: 131, 131, 131;
+  --clr-neut-600-rgb: 93, 93, 93;
+  --clr-neut-700-rgb: 74, 74, 74;
+  --clr-neut-800-rgb: 44, 44, 44;
+  --clr-neut-900-rgb: 11, 11, 11;
+  --clr-neut-rgb: var(--clr-primary-900-rgb);
+}
+
 @layer utilities {
   .dg--light-theme {
     --foreground-rgb: 38, 10, 15;
@@ -15,13 +40,11 @@
     --btn-secondary-highlight-rgb: 233, 223, 212;
     --highlight-rgb: 145, 15, 35;
     --subdued-rgb: 232, 234, 205;
-    --transform-duration: 500ms;
-    --transform-timing-function: ease-in-out;
     --text-accent-rgb: 82, 2, 15;
     --link-rgb: 244, 67, 54;
   }
   .dg--dark-theme {
-    --foreground-rgb: 223, 224, 224;
+    /* --foreground-rgb: 223, 224, 224;
     --foreground-mark-rgb: 207, 207, 0;
     --foreground-rgb-faded: 89, 90, 91;
     --background-start-rgb: 33, 33, 33;
@@ -33,9 +56,28 @@
     --subdued-rgb: 69, 68, 61;
     --btn--secondary-rgb: 23, 23, 23;
     --btn-secondary-highlight-rgb: 82, 82, 82;
-    --transform-duration: 500ms;
-    --transform-timing-function: ease-in-out;
     --text-accent-rgb: 245, 245, 230;
-    --link-rgb: 250, 250, 167;
+    --link-rgb: 250, 250, 167; */
+    --foreground-rgb: var(--fg-clr-rgb);
+
+    --focus-outline-clr: var(--clr-green-500);
+    --flourish-clr: var(--clr-sand-100);
+    /* var(--clr-blistre-100) */
+    --fg-clr: rgba(var(--clr-blistre-100-rgb), 0.9);
+    --bg-clr: var(--clr-blistre-darkest);
+    /* var(--clr-sand-600) */
+    --bg-gradient-clr-start: rgba(var(--clr-sand-600-rgb), 0.11);
+    /* var(--clr-blistre-darker) */
+    --bg-gradient-clr-end: rgba(var(--clr-blistre-darker-rgb), 0.33);
+    --nav-fg-clr: rgba(var(--clr-sand-100-rgb), 0.7);
+    --nav-home-active-fg-clr: rgba(var(--clr-sand-100-rgb), 1);
+    --nav-home-hover-fg-clr: rgba(var(--clr-ygreen-500-rgb), 1);
+    --nav-fg-hover-clr: rgba(var(--clr-sand-100-rgb), 1);
+    --nav-fg-active-clr: var(--nav-fg-hover-clr);
+    --nav-link-border-clr-rgb: var(--clr-ygreen-400-rgb);
+    --home-h1-fg-clr: rgba(var(--clr-blistre-200-rgb), 0.95);
+    --soc-links-fg-clr: rgba(var(--clr-blistre-200-rgb), 0.8);
+    --soc-links-fg-hover-clr: rgba(var(--clr-ygreen-500-rgb), 1);
+    --content-bg-clr: var(--clr-blistre-darker);
   }
 }

@@ -66,6 +66,9 @@
   --clr-blistre-800: #3c2b1a;
   --clr-blistre-900: #2e1e0f;
   --clr-blistre: var(--clr-blistre-900);
+  --clr-blistre-dark: #1c1002;
+  --clr-blistre-darker: #130b03;
+  --clr-blistre-darkest: #070300;
 
   --clr-blist-comp-50: #e4ecf9;
   --clr-blist-comp-100: #c1d0df;
@@ -169,6 +172,9 @@
   --clr-blistre-800-rgb: 60, 43, 26;
   --clr-blistre-900-rgb: 46, 30, 15;
   --clr-blistre-rgb: var(--clr-blistre-900-rgb);
+  --clr-blistre-dark-rgb: 28, 16, 2;
+  --clr-blistre-darker-rgb: 20, 11, 1;
+  --clr-blistre-darkest-rgb: 10, 5, 0;
   --clr-blist-comp-50-rgb: 228, 236, 249;
   --clr-blist-comp-100-rgb: 193, 208, 223;
   --clr-blist-comp-200-rgb: 159, 176, 195;

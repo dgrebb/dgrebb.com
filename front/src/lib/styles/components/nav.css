@@ -27,14 +27,15 @@
     sm:text-2xl;
   transition: unset;
   transition: font-size, color;
-  transition-duration: 0.33s;
-  color: rgb(var(--foreground-color));
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  color: var(--nav-fg-clr);
   line-height: 1;
   letter-spacing: -0.025em;
   &:hover,
   &:focus,
   &:active {
-    color: rgb(var(--highlight-rgb));
+    color: var(--nav-home-hover-fg-clr);
   }
 }
 
@@ -56,30 +57,32 @@
 }
 
 .nav-link {
-  @apply border-b
-    py-1
-    align-text-top
-    text-sm;
-  transition:
-    color var(--transform-duration),
-    border-color 333ms;
-  border-bottom-color: rgab(var(--foreground-rgb), 0.5);
-  color: rgba(var(--text-accent-rgb), 0.5);
+  vertical-align: text-top;
+  transition: color, border;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  border-bottom-width: thin;
+  border-bottom-color: rgba(var(--nav-link-border-clr-rgb), 0.7);
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  color: var(--nav-fg-clr);
+  font-size: 1rem;
+  line-height: 1.25rem;
   &:hover,
   &:focus {
-    border-bottom-color: rgba(var(--highlight-rgb), 1);
-    color: rgba(var(--text-accent-rgb), 1);
+    border-bottom-color: rgba(var(--nav-link-border-clr-rgb), 1);
+    color: var(--nav-fg-hover-clr);
   }
   &.active {
     opacity: 1;
     cursor: default;
-    border-bottom-color: rgb(var(--highlight-rgb));
-    color: rgb(var(--text-accent-rgb));
+    border-bottom-color: rgba(var(--nav-link-border-clr-rgb), 1);
+    color: var(--nav-fg-active-clr);
     &.subactive {
       cursor: pointer;
       &:hover,
       &:focus {
-        color: rgb(var(--foreground-rgb));
+        color: var(--nav-fg-clr);
       }
     }
   }

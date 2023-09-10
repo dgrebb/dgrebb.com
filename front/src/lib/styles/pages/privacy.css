@@ -27,7 +27,7 @@
     display: inline-block;
   }
   a {
-    transition-duration: var(--transform-duration);
+    transition-duration: var(--transition-duration);
     transition-property: border, color;
     transition-timing-function: var(--transition-timing-function);
     border-bottom: 1px solid rgba(var(--text-accent-rgb), 0.67);

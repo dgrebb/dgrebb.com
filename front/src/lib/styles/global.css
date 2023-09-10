@@ -32,7 +32,7 @@
   --black: 19, 19, 20;
   text-rendering: optimizeLegibility !important;
   :focus-visible {
-    outline: thin dotted rgb(var(--highlight-rgb));
+    outline: thin dashed var(--focus-outline-clr);
     outline-offset: 0.25rem;
   }
 }
@@ -70,7 +70,7 @@ html.dark-theme {
 html {
   transition: background-color 0.5s;
   background-repeat: no-repeat;
-  background-color: rgb(var(--background-end-rgb));
+  background-color: var(--bg-clr);
   min-height: 100%;
   overflow: clip;
   scroll-behavior: smooth;
@@ -96,7 +96,7 @@ body {
   overflow: auto;
   scroll-behavior: smooth;
   scrollbar-gutter: stable both-edges;
-  color: rgb(var(--foreground-rgb));
+  color: var(--fg-clr);
   @media (hover: none),
     (hover: on-demand),
     (-moz-touch-enabled: 1),
@@ -111,8 +111,8 @@ body {
     z-index: -1;
     background: radial-gradient(
       187% 77vh at top,
-      rgb(var(--subdued-rgb)),
-      rgb(var(--background-start-rgb)),
+      var(--bg-gradient-clr-start),
+      var(--bg-gradient-clr-end),
       transparent 83%
     );
     background-position: top center;
@@ -132,7 +132,7 @@ body {
   left: 0;
   z-index: 1;
   transition: background-color;
-  background-color: rgb(var(--foreground-rgb));
+  background-color: var(--flourish-clr);
   @apply dg--transition-effect;
 }
 
