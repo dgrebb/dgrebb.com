@@ -65,7 +65,7 @@ while test "$1" != --; do
         cdback
         current=$(npm list | grep @strapi/strapi | cut -d'@' -f3)
         latest=$(npm info @strapi/strapi version)
-        echo "The current Strapi version is $current. Have you updated package.json with $latest?"
+        echo "The current Strapi version is $current. Have you updated $directory/../back/package.json with $latest?"
         read -p $'\e[44m\n y/n \n  > ' -r
         if [[ ! $REPLY =~ ^[Yy]$ ]]; then
             exit 1
