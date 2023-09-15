@@ -58,14 +58,13 @@
 
 .nav-link {
   vertical-align: text-top;
-  transition: color, border;
+  transition: opacity, border;
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
   border-bottom-width: thin;
-  border-bottom-color: rgba(var(--nav-link-border-clr-rgb), 0.7);
+  border-bottom-color: transparent;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-  color: var(--nav-fg-clr);
   font-size: 1rem;
   line-height: 1.25rem;
   &:hover,

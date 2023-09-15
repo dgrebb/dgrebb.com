@@ -3,8 +3,6 @@
   display: block;
   position: relative;
   border-radius: 0.77rem;
-  background-color: var(--content-bg-clr);
-  @apply shadow-xl;
   @screen md {
     margin-top: 2.75rem;
     padding: 2.33rem;

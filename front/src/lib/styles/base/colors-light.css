@@ -1,6 +1,7 @@
 :root {
   --sun: #fadd82ff;
   --sunshine: #fadd821f;
+  --sunshine-shadow-clr: 65deg 12% 58%;
   --sun-a35: #fadd8259;
   --lemon: #f1f0ccff;
   --lemon-50: #fdfdeeff;
@@ -10,6 +11,6 @@
   --green: #5aff15ff;
   --blue: #4062bbff;
   --violet: #0b0033ff;
+  --violet-a30: #0b00334c;
   --blacktop: #18020cff;
-  --shadow-clr: 0deg, 79%, 0%;
 }

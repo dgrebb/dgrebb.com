@@ -44,8 +44,6 @@
       width: 77%;
     }
     .transition-elastic-fly-container {
-      @apply shadow-xl;
-      background-color: rgba(var(--background-saturated), 0.77);
       overflow: visible;
       ul,
       p.summary {

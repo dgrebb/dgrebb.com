@@ -1,12 +1,14 @@
 :root {
   --moon: #d4cdc5ff;
   --moonshine: #d4cdc51f;
+  --moonshine-shadow-clr: 235deg 24% 5%;
   --light: #fce2b2ff;
   --light-5: #fce2b20c;
   --light-10: #fce2b219;
   --turkey-red: #a60800ff;
   --blistre: #2e1e0fff;
   --celestial: #e3f6ffff;
+  --celestial-a30: #e3f6ff4c;
   --grape: #5a34bdff;
   --eerie-black: #1a2018ff;
   --oxford-blue: #0e0f24ff;

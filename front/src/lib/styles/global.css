@@ -68,7 +68,8 @@ html.dark-theme {
 }
 
 html {
-  transition: background-color 0.5s;
+  transition: background-color;
+  transition-duration: 500ms;
   background-repeat: no-repeat;
   background-color: var(--bg-clr);
   min-height: 100%;
@@ -91,6 +92,7 @@ body {
     text-base
     md:text-lg;
   position: relative;
+  transition: scrollbar-color 1s;
   height: 100vh;
   min-height: 100vh;
   overflow: auto;
@@ -105,21 +107,20 @@ body {
     overflow: visible;
     scrollbar-gutter: auto;
   }
-  &::before {
-    position: fixed;
-    opacity: 0.77;
-    z-index: -1;
-    background: radial-gradient(
-      187% 77vh at top,
-      var(--bg-gradient-clr-start),
-      var(--bg-gradient-clr-end),
-      transparent 83%
-    );
-    background-position: top center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100vh;
-    content: '';
+}
+
+@keyframes twilight {
+  0% {
+    opacity: 0%;
+  }
+  33% {
+    opacity: 1;
+  }
+  66% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
@@ -132,7 +133,6 @@ body {
   left: 0;
   z-index: 1;
   transition: background-color;
-  background-color: var(--flourish-clr);
   @apply dg--transition-effect;
 }
 
