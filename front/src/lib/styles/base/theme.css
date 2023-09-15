@@ -2,6 +2,23 @@
 @import './colors-light.css';
 
 :root {
+  /* https://www.joshwcomeau.com/shadow-palette/ */
+  --shadow-elevation-low: -0.8px 0.8px 1.3px hsl(var(--shadow-color) / 0.34),
+    -1.3px 1.4px 2.1px -1.2px hsl(var(--shadow-color) / 0.34),
+    -3.2px 3.3px 5.2px -2.5px hsl(var(--shadow-color) / 0.34);
+  --shadow-elevation-medium: -0.8px 0.8px 1.3px hsl(var(--shadow-color) / 0.36),
+    -2.7px 2.7px 4.3px -0.8px hsl(var(--shadow-color) / 0.36),
+    -6.6px 6.8px 10.7px -1.7px hsl(var(--shadow-color) / 0.36),
+    -16.2px 16.6px 26.1px -2.5px hsl(var(--shadow-color) / 0.36);
+  --shadow-elevation-high: -0.8px 0.8px 1.3px hsl(var(--shadow-color) / 0.34),
+    -4.7px 4.8px 7.6px -0.4px hsl(var(--shadow-color) / 0.34),
+    -8.8px 9px 14.2px -0.7px hsl(var(--shadow-color) / 0.34),
+    -14.5px 14.9px 23.4px -1.1px hsl(var(--shadow-color) / 0.34),
+    -23.1px 23.7px 37.2px -1.4px hsl(var(--shadow-color) / 0.34),
+    -36.1px 37.1px 58.2px -1.8px hsl(var(--shadow-color) / 0.34),
+    -54.9px 56.4px 88.5px -2.1px hsl(var(--shadow-color) / 0.34),
+    -80.8px 83.1px 130.4px -2.5px hsl(var(--shadow-color) / 0.34);
+
   --clr-neut-50: #f6f6f6;
   --clr-neut-100: #ececec;
   --clr-neut-200: #dedede;

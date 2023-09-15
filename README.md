@@ -23,10 +23,16 @@ Design, architecture, ALM, frontend, backend, testing, regression, utilities, an
 
 The below components are a majority of the product stack. Thorough details may be found on the wiki [technology page](https://github.com/dgrebb/dgrebb.com/wiki/technology).
 
+- AWS
 - Strapi
 - Svelte/SvelteKit
+- GitHub
 - Terraform/OpenTF
-- AWS
+- Docker
+- Plausible Analytics
+- Sentry.io
+- StackOverflow
+- Discord (Svelte, Strapi, NextJS)
 
 ## Features
 
