@@ -11,6 +11,41 @@ index bbe0ef2..2c60534 100644
      };
      this.appPlugins = appPlugins || {};
      this.library = library;
+diff --git a/node_modules/@strapi/admin/admin/src/components/AuthenticatedApp/index.js b/node_modules/@strapi/admin/admin/src/components/AuthenticatedApp/index.js
+index 10c5073..fab4892 100644
+--- a/node_modules/@strapi/admin/admin/src/components/AuthenticatedApp/index.js
++++ b/node_modules/@strapi/admin/admin/src/components/AuthenticatedApp/index.js
+@@ -14,7 +14,7 @@ import { useQueries } from 'react-query';
+ import packageJSON from '../../../../package.json';
+ import { useConfigurations } from '../../hooks';
+ import { getFullName, hashAdminUserEmail } from '../../utils';
+-import NpsSurvey from '../NpsSurvey';
++// import NpsSurvey from '../NpsSurvey';
+ import PluginsInitializer from '../PluginsInitializer';
+ import RBACProvider from '../RBACProvider';
+ 
+@@ -110,7 +110,7 @@ const AuthenticatedApp = () => {
+       userDisplayName={userDisplayName}
+     >
+       <RBACProvider permissions={permissions} refetchPermissions={refetch}>
+-        <NpsSurvey />
++        {/* <NpsSurvey /> */}
+         <PluginsInitializer />
+       </RBACProvider>
+     </AppInfoProvider>
+diff --git a/node_modules/@strapi/admin/admin/src/components/NpsSurvey/hooks/useNpsSurveySettings.js b/node_modules/@strapi/admin/admin/src/components/NpsSurvey/hooks/useNpsSurveySettings.js
+index eafe5c6..dc7efec 100644
+--- a/node_modules/@strapi/admin/admin/src/components/NpsSurvey/hooks/useNpsSurveySettings.js
++++ b/node_modules/@strapi/admin/admin/src/components/NpsSurvey/hooks/useNpsSurveySettings.js
+@@ -6,7 +6,7 @@ export function useNpsSurveySettings() {
+   const [npsSurveySettings, setNpsSurveySettings] = usePersistentState(
+     'STRAPI_NPS_SURVEY_SETTINGS',
+     {
+-      enabled: true,
++      enabled: false,
+       lastResponseDate: null,
+       firstDismissalDate: null,
+       lastDismissalDate: null,
 diff --git a/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js b/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js
 index 84ec0ac..545162b 100644
 --- a/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js
