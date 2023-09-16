@@ -49,6 +49,27 @@
     --fg-clr: var(--violet);
     --shadow-color: var(--sunshine-shadow-clr);
 
+    .nav-home {
+      &:hover {
+        color: var(--jasper);
+      }
+    }
+
+    .nav-link {
+      opacity: 0.5;
+      &:hover {
+        opacity: 1;
+        border-bottom-color: var(--jasper);
+      }
+      &.active {
+        opacity: 1;
+        border-bottom-color: var(--jasper);
+        &.subactive:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+
     body {
       background: linear-gradient(
         3deg,
@@ -65,7 +86,6 @@
 
     .bio-picture {
       filter: sepia(100%) saturate(100%) brightness(87%) hue-rotate(61deg);
-      border: thin solid var(--blue);
     }
 
     .bio .headline {
@@ -74,7 +94,35 @@
 
     .links {
       .link {
-        color: var(--orange);
+        a:hover {
+          color: var(--jasper);
+        }
+      }
+    }
+
+    .hero-wrap {
+      background-color: linear-gradient(
+        3deg,
+        var(--bg-clr) 0%,
+        var(--bg-clr) 33%,
+        var(--sunshine) 100%
+      );
+      &::before {
+        background: linear-gradient(3deg, transparent, var(--sunshine));
+      }
+      .hero {
+        filter: brightness(100%);
+      }
+    }
+
+    .posts-grid {
+      .post-link {
+        background-color: linear-gradient(
+          3deg,
+          var(--bg-clr) 0%,
+          var(--bg-clr) 33%,
+          var(--sunshine) 100%
+        );
       }
     }
 
@@ -88,6 +136,15 @@
         var(--sunshine) 100%
       );
       background-color: var(--bg-clr);
+      &::before {
+        background: linear-gradient(3deg, transparent, var(--sunshine));
+      }
+    }
+
+    .post {
+      .summary::first-letter {
+        color: var(--jasper);
+      }
     }
   }
 
@@ -101,7 +158,7 @@
 
     .nav-home {
       &:hover {
-        color: var(--turkey-red);
+        color: var(--orange);
       }
     }
 
@@ -109,11 +166,11 @@
       opacity: 0.5;
       &:hover {
         opacity: 1;
-        border-bottom-color: var(--turkey-red);
+        border-bottom-color: var(--orange);
       }
       &.active {
         opacity: 1;
-        border-bottom-color: var(--turkey-red);
+        border-bottom-color: var(--orange);
         &.subactive:hover {
           opacity: 0.5;
         }
@@ -136,20 +193,52 @@
 
     .bio-picture {
       filter: sepia(100%) saturate(43%) brightness(77%) hue-rotate(133deg);
-      border: thin solid var(--celestial);
     }
 
     .links {
       .link {
         a:hover {
-          color: var(--turkey-red);
+          color: var(--orange);
+        }
+      }
+
+    .hero-wrap {
+      background-color: linear-gradient(
+        3deg,
+        var(--bg-clr) 0%,
+        var(--bg-clr) 33%,
+        var(--moonshine) 100%
+      );
+      &::before {
+        background: linear-gradient(3deg, transparent, var(--moonshine));
+      }
+      .hero {
+        filter: brightness(77%);
+      }
+    }
+
+    .posts-grid {
+      .post-item {
+        filter: brightness(77%);
+      }
+      .post-link {
+        background-color: linear-gradient(
+          3deg,
+          var(--bg-clr) 0%,
+          var(--bg-clr) 33%,
+          var(--moonhine) 100%
+        );
+        &::before {
+          background: linear-gradient(3deg, transparent, var(--moonshine));
+        }
+        span {
+          color: white;
         }
       }
     }
 
     .post,
     .transition-elastic-fly-container {
-      box-shadow: var(--shadow-elevation-high);
       background: linear-gradient(
         3deg,
         var(--bg-clr) 0%,
@@ -157,6 +246,15 @@
         var(--moonshine) 100%
       );
       background-color: var(--bg-clr);
+      &::before {
+        background: linear-gradient(3deg, transparent, var(--moonshine));
+      }
+    }
+
+    .post {
+      .summary::first-letter {
+        color: var(--orange);
+      }
     }
 
     .syntax-highlighter {

@@ -44,10 +44,22 @@
       width: 77%;
     }
     .transition-elastic-fly-container {
+      border-radius: 0.77rem;
       overflow: visible;
       ul,
       p.summary {
         padding: 2rem;
+      }
+      &::before {
+        position: absolute;
+        mask:
+          linear-gradient(3deg, #fff 0 0) content-box,
+          linear-gradient(3deg, #fff 0 0);
+        mask-composite: exclude;
+        inset: 0;
+        border-radius: 0.77rem;
+        padding: 1px 1px 0 0;
+        content: '';
       }
     }
     .post-item {

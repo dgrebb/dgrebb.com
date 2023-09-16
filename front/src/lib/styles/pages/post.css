@@ -7,12 +7,21 @@
     margin-top: 2.75rem;
     padding: 2.33rem;
   }
+  &::before {
+    position: absolute;
+    mask:
+      linear-gradient(3deg, #fff 0 0) content-box,
+      linear-gradient(3deg, #fff 0 0);
+    mask-composite: exclude;
+    inset: 0;
+    border-radius: 0.77rem;
+    padding: 1px 1px 0 0;
+    content: '';
+  }
   .hero-wrap {
     display: block;
     position: relative;
     z-index: 1;
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-      var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
     width: 100%;
     height: 277px;
     @screen sm {
@@ -25,19 +34,33 @@
     &.hide {
       height: 0;
     }
+    &::before {
+      position: absolute;
+      z-index: 6;
+      mask:
+        linear-gradient(3deg, #fff 0 0) content-box,
+        linear-gradient(3deg, #fff 0 0);
+      mask-composite: exclude;
+      inset: 0;
+      border-radius: 0.25rem;
+      padding: 1px 1px 0 0;
+      content: '';
+    }
     .hero {
-      @apply rounded
-        shadow-md;
       position: absolute;
       left: -2%;
       opacity: 1;
       z-index: 4;
-      transition: opacity 0.5s ease-in;
+      transition: opacity, filter;
+      transition-duration: 1s;
+      transition-timing-function: var(--transform-timing-function);
+      box-shadow: var(--shadow-elevation-medium);
+      border-radius: 0.25rem;
       background-position: center bottom;
       background-size: cover;
       background-repeat: no-repeat;
       background-color: rgba(var(--background-saturated), 0.77);
-      padding: initial 2rem;
+      padding: initial 0.25rem;
       width: 104%;
       height: 277px;
       max-height: 100%;
