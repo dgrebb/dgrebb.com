@@ -144,12 +144,6 @@
         padding: 0.5rem 2rem;
         width: auto;
       }
-      &:hover,
-      &:focus {
-        .link-bg {
-          background-color: rgba(var(--clr-blistre-dark-rgb), 0.5);
-        }
-      }
     }
   }
 }

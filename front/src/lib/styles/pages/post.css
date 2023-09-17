@@ -59,7 +59,6 @@
       background-position: center bottom;
       background-size: cover;
       background-repeat: no-repeat;
-      background-color: rgba(var(--background-saturated), 0.77);
       padding: initial 0.25rem;
       width: 104%;
       height: 277px;
@@ -112,13 +111,11 @@
     margin-bottom: 0;
     padding: 0 1rem;
     line-height: 1;
-    text-shadow: 0 -0.11rem 1.5rem rgba(var(--background-saturated), 0.77);
     @screen sm {
       line-height: 1.2;
     }
   }
   .pubdate {
-    color: rgba(var(--text-accent-rgb), 0.77);
     font-size: 1rem;
   }
   .aside-toggle {
@@ -127,7 +124,7 @@
   }
   .post-aside {
     display: none;
-    opacity: 0.8;
+    opacity: 0.85;
     width: 0;
     text-align: right;
     h2 {
@@ -215,13 +212,6 @@
     transition-duration: var(--transition-duration);
     transition-property: border, color;
     transition-timing-function: var(--transition-timing-function);
-    border-bottom: 1px solid rgba(var(--text-accent-rgb), 0.67);
-    color: rgba(var(--link-rgb), 0.77);
-    &:hover,
-    &:focus {
-      border-bottom: 1px solid rgba(var(--highlight-rgb), 1);
-      color: rgba(var(--foreground-rgb), 1);
-    }
   }
   .post-heading {
     position: relative;

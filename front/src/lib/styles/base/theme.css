@@ -41,6 +41,18 @@
   --clr-neut-800-rgb: 44, 44, 44;
   --clr-neut-900-rgb: 11, 11, 11;
   --clr-neut-rgb: var(--clr-primary-900-rgb);
+
+  --rim-light-bg: linear-gradient(
+    3deg,
+    var(--bg-clr) 33%,
+    var(--bg-clr) 77%,
+    var(--rim-clr) 100%
+  );
+  --rim-light-mask-bg: linear-gradient(3deg, transparent, var(--rim-clr));
+
+  :focus-visible {
+    outline: thin dashed var(--highlight-clr);
+  }
 }
 
 @layer utilities {
@@ -48,6 +60,8 @@
     --bg-clr: var(--lemon-50);
     --fg-clr: var(--violet);
     --shadow-color: var(--sunshine-shadow-clr);
+    --rim-clr: var(--sunshine);
+    --highlight-clr: var(--jasper);
 
     .nav-home {
       &:hover {
@@ -146,15 +160,26 @@
         color: var(--jasper);
       }
     }
+
+    .syntax-highlighter {
+      box-shadow: var(--shadow-elevation-medium);
+    }
   }
 
   /* -----------------------
   ---------- Dark Theme ----
   ----------------------- */
   .dg--dark-theme {
-    --fg-clr: var(--celestial);
+    --fg-clr: var(--moon);
     --bg-clr: var(--rich-black);
     --shadow-color: var(--moonshine-shadow-clr);
+    --rim-clr: var(--moonshine);
+    --highlight-clr: var(--orange);
+
+    .nav-home,
+    .nav-link {
+      color: var(--celestial-a75);
+    }
 
     .nav-home {
       &:hover {
@@ -191,6 +216,19 @@
       background-color: var(--fg-clr);
     }
 
+    .bio,
+    .footer {
+      a {
+        border-bottom-color: var(--celestial-a75);
+        color: var(--celestial-a75);
+        &:hover,
+        &:focus {
+          border-bottom-color: var(--highlight-clr);
+          color: var(--celestial);
+        }
+      }
+    }
+
     .bio-picture {
       filter: sepia(100%) saturate(43%) brightness(77%) hue-rotate(133deg);
     }
@@ -203,69 +241,153 @@
       }
     }
 
+    .posts-grid {
+      .post-item {
+        filter: brightness(77%);
+        &:hover,
+        &:focus,
+        &:focus-visible,
+        &:active {
+          filter: brightness(100%);
+        }
+      }
+      .post-link {
+        background-color: var(--rim-light-bg);
+        &::before {
+          background: var(--rim-light-mask-bg);
+        }
+        .link-bg {
+          color: white;
+        }
+        &:hover,
+        &:focus,
+        &:focus,
+        &:focus-visible,
+        &:active {
+          .link-bg {
+            background-color: rgba(var(--clr-neut-900-rgb), 0.6);
+          }
+        }
+      }
+    }
+
     .hero-wrap {
-      background-color: linear-gradient(
-        3deg,
-        var(--bg-clr) 0%,
-        var(--bg-clr) 33%,
-        var(--moonshine) 100%
-      );
+      background-color: var(--rim-light-bg);
       &::before {
-        background: linear-gradient(3deg, transparent, var(--moonshine));
+        background: var(--rim-light-mask-bg);
       }
       .hero {
         filter: brightness(77%);
       }
     }
 
-    .posts-grid {
-      .post-item {
-        filter: brightness(77%);
+    .privacy,
+    .post,
+    .category-posts-transition-container {
+      box-shadow: var(--shadow-elevation-high);
+      background: var(--rim-light-bg), var(--bg-clr);
+      &::before {
+        background: var(--rim-light-mask-bg);
       }
-      .post-link {
-        background-color: linear-gradient(
-          3deg,
-          var(--bg-clr) 0%,
-          var(--bg-clr) 33%,
-          var(--moonhine) 100%
-        );
-        &::before {
-          background: linear-gradient(3deg, transparent, var(--moonshine));
-        }
-        span {
-          color: white;
-        }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      h7 {
+        color: var(--celestial-a90);
       }
     }
 
-    .post,
-    .transition-elastic-fly-container {
-      background: linear-gradient(
-        3deg,
-        var(--bg-clr) 0%,
-        var(--oxford-blue) 33%,
-        var(--moonshine) 100%
-      );
-      background-color: var(--bg-clr);
-      &::before {
-        background: linear-gradient(3deg, transparent, var(--moonshine));
-      }
+    .privacy .date mark {
+      background-color: var(--highlight-clr);
     }
 
     .post {
       .summary::first-letter {
         color: var(--orange);
       }
+      .pubdate {
+        color: var(--celestial-a75);
+      }
+      .post-title {
+        text-shadow: 0 -0.11rem 1.5rem hsl(var(--shadow-color) / 5);
+      }
+      .post-article {
+        a:not(.heading-anchor-link) {
+          border-bottom: 1px solid var(--celestial-a75);
+          color: var(--celestial-a75);
+          &:hover,
+          &:focus {
+            border-bottom: 1px solid var(--orange);
+            color: var(--celestial);
+          }
+        }
+        .heading-anchor-link {
+          &:hover,
+          &:focus,
+          &:focus-visible,
+          &:active {
+            color: var(--orange);
+          }
+        }
+      }
+      code {
+        color: var(--celestial-a90);
+      }
+      blockquote {
+        ::before,
+        ::after {
+          color: var(--celestial-a75);
+        }
+      }
+    }
+
+    .page-navigation-list {
+      a {
+        color: var(--celestial-a75);
+        &:hover,
+        &:focus,
+        &:focus,
+        &:focus-visible,
+        &:active,
+        &.active {
+          color: var(--celestial);
+        }
+        &.active::after {
+          color: var(--orange);
+        }
+      }
     }
 
     .syntax-highlighter {
-      background-color: var(--clr-neut-900);
-    }
-
-    .syntax-highlighter .title,
-    .syntax-highlighter .title {
-      background-color: var(--blistre);
-      color: var(--light);
+      box-shadow: var(--shadow-elevation-medium);
+      background-color: var(--oxford-blue);
+      &::before {
+        background: var(--rim-light-mask-bg);
+      }
+      .title,
+      .language,
+      .code-copy-btn {
+        color: var(--celestial-a30);
+      }
+      .title,
+      .language {
+        background-color: var(--grape);
+      }
+      &:hover,
+      &:focus {
+        .title,
+        .language,
+        .code-copy-btn {
+          color: var(--celestial-a75);
+          &:hover,
+          &:focus-visible {
+            color: var(--light);
+          }
+        }
+      }
     }
 
     .icon-code-copied {

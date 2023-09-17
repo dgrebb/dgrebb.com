@@ -44,12 +44,12 @@
   .dg--photo-vignette-dark {
     transition-property: background, color, text-shadow, border-color,
       box-shadow;
-    box-shadow: inset 0 0 5rem rgba(var(--black), 0.88);
+    box-shadow: inset 0 0 9rem 3rem rgba(var(--black), 0.77);
     border: 1px solid rgba(var(--foreground-rgb-faded), 0.23);
     overflow: hidden;
     &:hover,
     &:focus {
-      box-shadow: inset 0 0 0.5rem rgba(var(--black), 0.18);
+      box-shadow: inset 0 0 9rem 3rem rgba(var(--black), 0.33);
       border-color: rgb(var(--background-saturated));
     }
   }

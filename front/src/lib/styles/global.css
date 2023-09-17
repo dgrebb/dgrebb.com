@@ -32,7 +32,6 @@
   --black: 19, 19, 20;
   text-rendering: optimizeLegibility !important;
   :focus-visible {
-    outline: thin dashed var(--focus-outline-clr);
     outline-offset: 0.25rem;
   }
 }

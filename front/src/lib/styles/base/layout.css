@@ -154,11 +154,9 @@ body.ready .header.scroll-transition {
         transition:
           border 0.5s,
           color 0.5s;
-        color: rgba(var(--text-accent-rgb), 0.77);
-        &:hover,
-        &:focus {
-          border-bottom-color: rgb(var(--highlight-rgb));
-          color: rgba(var(--text-accent-rgb), 1);
+        border-bottom: thin solid;
+        &.cc-link {
+          border: none;
         }
       }
       img {
