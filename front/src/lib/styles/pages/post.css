@@ -252,12 +252,10 @@
     position: relative;
     margin: 1.5rem 0.5rem 0 0.5rem;
     border-radius: 0.5rem;
-    background-color: rgb(var(--background-start-rgb));
     padding: 0.5rem 1.5rem;
     overflow: visible;
-    color: rgba(var(--foreground-rgb), 0.8);
     font-style: italic;
-    &::before,
+    p:first-child::before,
     &::after {
       position: absolute;
       font-size: 4rem;
@@ -266,22 +264,48 @@
       }
     }
     &::before {
-      top: -1.5rem;
-      left: -1.5rem;
-      content: '“';
-      color: rgb(var(--foreground-rgb-faded));
-      @screen md {
-        top: -2rem;
-      }
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 6;
+      mask:
+        linear-gradient(3deg, #fff 0 0) content-box,
+        linear-gradient(3deg, #fff 0 0);
+      mask-composite: exclude;
+      inset: 0;
+      border-radius: 0.25rem;
+      padding: 1px 1px 0 0;
+      content: '';
     }
     &::after {
       right: 0;
-      bottom: 0;
-      height: 2rem;
+      bottom: -3rem;
       content: '”';
-      color: rgb(var(--foreground-rgb-faded));
-      @screen md {
-        bottom: 0.5rem;
+      @media screen and (min-width: 640px) {
+        bottom: -3.5rem;
+      }
+      @media screen and (min-width: 768px) {
+        bottom: -4rem;
+      }
+    }
+    p {
+      padding: 0;
+      @media screen and (min-width: 640px) {
+        padding: 0 1rem;
+      }
+      &:first-child {
+        &::before {
+          position: absolute;
+          top: 0;
+          left: -1rem;
+          content: '“';
+          @media screen and (min-width: 768px) {
+            top: -0.5rem;
+            left: -1.25rem;
+          }
+        }
       }
     }
   }

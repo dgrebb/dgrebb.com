@@ -337,9 +337,17 @@
         color: var(--celestial-a90);
       }
       blockquote {
-        ::before,
-        ::after {
-          color: var(--celestial-a75);
+        box-shadow: var(--shadow-elevation-medium);
+        border-top: 0.5rem solid var(--grape);
+        border-left: 0.5rem solid var(--grape);
+        background: var(--oxford-blue);
+        color: var(--celestial-a75);
+        &::before {
+          background: var(--rim-light-mask-bg);
+        }
+        p:first-child::before,
+        &::after {
+          color: var(--orange-100-a75);
         }
       }
     }
