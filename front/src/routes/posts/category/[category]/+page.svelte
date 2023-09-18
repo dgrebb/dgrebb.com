@@ -81,7 +81,7 @@
       </TransitionElasticFly>
     </div>
 
-    <aside class="category-aside">
+    <aside class="aside">
       <PageNav {categories} {pathname} {setActiveLink} />
     </aside>
   </section>

@@ -128,7 +128,7 @@
 <!-- <button on:click={asideToggle} class="aside-toggle"
   >{asideLabel} Sidebar</button
 > -->
-<aside class="post-aside" class:show={showAside}>
+<aside class="aside" class:show={showAside}>
   {#if (contents && contents.length) || (categories && categories.length) || (related && related.length)}
     <PageNav {contents} {categories} {related} {pathname} {setActiveLink} />
   {/if}

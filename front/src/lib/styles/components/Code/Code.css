@@ -12,16 +12,22 @@
   width: 100%;
   &::before {
     position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 6;
     mask:
       linear-gradient(3deg, #fff 0 0) content-box,
       linear-gradient(3deg, #fff 0 0);
     mask-composite: exclude;
-    inset: 0;
-    border-radius: 0.77rem;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
     padding: 1px 1px 0 0;
     content: '';
   }
-  &.copying {
+  &.copying,
+  &.copying::before {
     transform: scale(101%);
   }
   .title,
@@ -32,7 +38,6 @@
   .title,
   .language {
     position: absolute;
-    z-index: 4;
     padding: 0.75rem;
     width: 50%;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
@@ -60,7 +65,7 @@
   .code-copy-btn {
     position: absolute;
     right: 0;
-    z-index: 5;
+    z-index: 7;
     transition: color 333ms;
     padding: 0.75rem;
     line-height: 1.6;
@@ -114,6 +119,7 @@
   }
   > pre {
     position: relative;
+    z-index: 7;
     transition: scrollbar-color 0.5s;
     margin-bottom: -0.5rem;
     padding-top: 5rem;
@@ -122,31 +128,30 @@
     scrollbar-color: transparent transparent;
     scrollbar-gutter: stable both-edges;
     scrollbar-width: thin;
-    color: rgb(var(--foreground-rgb));
     &::-webkit-scrollbar {
       background-color: transparent;
       width: 8px;
       height: 8px;
     }
     &::-webkit-scrollbar-thumb {
+      border-radius: 100%;
       background: transparent;
-      @apply rounded-full;
     }
     &:hover,
     &:focus {
-      scrollbar-color: rgb(var(--subdued-rgb)) transparent;
       &::-webkit-scrollbar {
         background-color: transparent;
         width: 8px;
         height: 8px;
       }
       &::-webkit-scrollbar-thumb {
-        background: rgb(var(--foreground-rgb));
-        @apply rounded-full;
+        border-radius: 100%;
       }
     }
   }
   > div[style] > .line-number-wrap {
+    position: relative;
+    z-index: 7;
     transition: scrollbar-color 0.5s;
     margin-bottom: -0.5rem;
     overflow-x: auto;
@@ -161,20 +166,18 @@
     }
     &::-webkit-scrollbar-thumb {
       transition: background-color 0.5s;
+      border-radius: 100%;
       background: transparent;
-      @apply rounded-full;
     }
     &:hover,
     &:focus {
-      scrollbar-color: rgb(var(--subdued-rgb)) transparent;
       &::-webkit-scrollbar {
         background-color: transparent;
         width: 8px;
         height: 8px;
       }
       &::-webkit-scrollbar-thumb {
-        background: rgba(var(--foreground-rgb), 1);
-        @apply rounded-full;
+        border-radius: 100%;
       }
     }
     & > table {
@@ -183,22 +186,8 @@
         display: inline-block;
         height: 100%;
       }
-      tr:hover,
-      tr:focus {
-        td:first-child {
-          color: rgba(var(--foreground-rgb), 0.5);
-        }
-      }
       td:first-child {
         transition: color 0.3s;
-        background: rgb(var(--background-pre-rgb));
-        background: linear-gradient(
-          90deg,
-          rgba(var(--background-pre-rgb), 1) 65%,
-          rgba(var(--background-pre-rgb), 0.5452380781414128) 81%,
-          rgba(255, 255, 255, 0) 100%
-        );
-        color: rgba(var(--foreground-rgb), 0.15);
       }
       td:last-child code {
         padding: 0 0.5rem;
@@ -211,20 +200,8 @@
           padding-bottom: 0;
         }
         tr.highlight {
-          td:last-child code {
-            border: 1px solid rgba(var(--background-pre-highlight-rgb));
-            background-color: rgba(var(--background-pre-highlight-rgb));
-          }
-          &.first {
-            td:last-child code {
-              /* border-top-right-radius: 0.5rem; */
-              /* border-top-left-radius: 0.5rem; */
-            }
-          }
           &.last {
             td:last-child code {
-              /* border-bottom-right-radius: 0.5rem; */
-              /* border-bottom-left-radius: 0.5rem; */
               margin-bottom: 1rem;
             }
           }

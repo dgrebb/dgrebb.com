@@ -289,6 +289,10 @@
       &::before {
         background: var(--rim-light-mask-bg);
       }
+      > *:not(.masthead) {
+        position: relative;
+        z-index: 7;
+      }
       h1,
       h2,
       h3,
@@ -300,8 +304,24 @@
       }
     }
 
+    .privacy,
+    .post-article,
+    .category-list {
+      a:not(.heading-anchor-link) {
+        border-bottom: 1px solid var(--celestial-a75);
+        color: var(--celestial-a75);
+        &:hover,
+        &:focus,
+        &:focus-visible {
+          border-bottom: 1px solid var(--orange);
+          color: var(--celestial);
+        }
+      }
+    }
+
     .privacy .date mark {
-      background-color: var(--highlight-clr);
+      background-color: var(--burnt-orange);
+      color: var(--celestial-a90);
     }
 
     .post {
@@ -315,15 +335,6 @@
         text-shadow: 0 -0.11rem 1.5rem hsl(var(--shadow-color) / 5);
       }
       .post-article {
-        a:not(.heading-anchor-link) {
-          border-bottom: 1px solid var(--celestial-a75);
-          color: var(--celestial-a75);
-          &:hover,
-          &:focus {
-            border-bottom: 1px solid var(--orange);
-            color: var(--celestial);
-          }
-        }
         .heading-anchor-link {
           &:hover,
           &:focus,
@@ -338,7 +349,7 @@
       }
       blockquote {
         box-shadow: var(--shadow-elevation-medium);
-        border-top: 0.5rem solid var(--grape);
+        /* border-top: 0.5rem solid var(--grape); */
         border-left: 0.5rem solid var(--grape);
         background: var(--oxford-blue);
         color: var(--celestial-a75);
@@ -348,23 +359,6 @@
         p:first-child::before,
         &::after {
           color: var(--orange-100-a75);
-        }
-      }
-    }
-
-    .page-navigation-list {
-      a {
-        color: var(--celestial-a75);
-        &:hover,
-        &:focus,
-        &:focus,
-        &:focus-visible,
-        &:active,
-        &.active {
-          color: var(--celestial);
-        }
-        &.active::after {
-          color: var(--orange);
         }
       }
     }
@@ -396,10 +390,97 @@
           }
         }
       }
+
+      > pre {
+        color: var(--fg-clr);
+        &:hover,
+        &:focus,
+        &:focus-visible {
+          scrollbar-color: var(--celestial-a30) transparent;
+
+          &::-webkit-scrollbar-thumb {
+            background: var(--celestial-a30);
+          }
+        }
+      }
+
+      > div[style] > .line-number-wrap {
+        &:hover,
+        &:focus,
+        &:focus-visible {
+          scrollbar-color: var(--celestial-a30) transparent;
+          &::-webkit-scrollbar-thumb {
+            background: var(--celestial-a30);
+          }
+        }
+
+        & > table {
+          tr:hover,
+          tr:focus {
+            td:first-child {
+              color: var(--orange);
+            }
+          }
+          td:first-child {
+            background: var(--oxford-blue);
+            background: linear-gradient(
+              90deg,
+              var(--oxford-blue) 65%,
+              var(--oxford-blue) 81%,
+              transparent 100%
+            );
+            color: var(--celestial-a30);
+          }
+          tbody {
+            tr:first-child td {
+              padding-top: 0;
+            }
+            tr:last-child td {
+              padding-bottom: 0;
+            }
+            tr.highlight {
+              td:last-child code {
+                border: 1px solid var(--burnt-orange);
+                background-color: var(--burnt-orange);
+              }
+            }
+          }
+        }
+      }
     }
 
     .icon-code-copied {
       color: var(--green);
+    }
+
+    .post,
+    .category {
+      .aside {
+        border-image: linear-gradient(
+            to bottom,
+            transparent,
+            var(--celestial-a30),
+            transparent
+          )
+          1;
+      }
+    }
+
+    .page-navigation-list {
+      a {
+        color: var(--celestial-a75);
+        &:hover,
+        &:focus,
+        &:focus,
+        &:focus-visible,
+        &:active,
+        &.active {
+          color: var(--celestial);
+        }
+        &.active::after {
+          color: var(--orange);
+        }
+      }
     }
   }
 }

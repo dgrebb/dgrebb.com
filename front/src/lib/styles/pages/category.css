@@ -28,7 +28,7 @@
     }
   }
   .category-posts-list,
-  .category-aside {
+  .aside {
     position: relative;
     @screen md {
       padding-top: 0;
@@ -115,7 +115,7 @@
       }
     }
   }
-  .category-aside {
+  .aside {
     display: none;
     position: relative;
     right: 0;
