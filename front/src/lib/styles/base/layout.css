@@ -67,19 +67,13 @@ body.ready .header.scroll-transition {
   text-align: center;
   small {
     padding: 1rem 0;
-    color: rgb(var(--subdued-rgb));
     font-size: 0.7rem;
     line-height: 1.75;
     a {
       display: inline-block;
-      border-bottom: 1px solid rgba(var(--foreground-rgb), 0.5);
-      color: rgba(var(--text-accent-rgb), 0.77);
+      border-bottom: 1px solid;
       &.cc-link {
         border: none;
-      }
-      &:hover,
-      &:focus {
-        color: rgba(var(--text-accent-rgb), 1);
       }
     }
     p {
@@ -89,7 +83,6 @@ body.ready .header.scroll-transition {
       transition-duration: 2s;
       transition-property: opacity, filter;
       transition-timing-function: var(--transition-timing-function);
-      color: rgb(var(--foreground-rgb));
     }
     &:hover,
     &:focus,

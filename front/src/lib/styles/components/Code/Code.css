@@ -44,19 +44,19 @@
       'Liberation Mono', 'Courier New', monospace; /* 1 */
 
     &.full {
-      border-top-right-radius: 0.375rem;
-      border-top-left-radius: 0.375rem;
+      border-top-right-radius: 0.5rem;
+      border-top-left-radius: 0.5rem;
       width: 100%;
     }
   }
   .title {
     left: 0;
-    border-top-left-radius: 0.375rem;
+    border-top-left-radius: 0.5rem;
   }
   .language {
     right: 0;
     transition: color 0.5s;
-    border-top-right-radius: 0.375rem;
+    border-top-right-radius: 0.5rem;
     text-align: right;
     &.copy {
       padding-right: 2.77rem;

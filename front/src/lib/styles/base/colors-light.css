@@ -1,15 +1,22 @@
 :root {
   --sun: #fadd82ff;
+  --sun-50: #ffe9a1ff;
+  --sun-50-a30: #ffe9a14c;
   --sunshine: #fadd821f;
   --sunshine-shadow-clr: 65deg 12% 58%;
   --sun-a35: #fadd8259;
   --lemon: #f1f0ccff;
+  --lemon-25: #fffee3ff;
   --lemon-50: #fdfdeeff;
   --jasper: #cd533bff;
+  --darkred: #8c1c13ff;
   --sand: #fc9f5bff;
   --green: #5aff15ff;
+  --darkgreen: #5e6319ff;
   --blue: #4062bbff;
   --violet: #0b0033ff;
+  --violet-a90: #0b0033e5;
+  --violet-a75: #0b0033bf;
   --violet-a30: #0b00334c;
   --blacktop: #18020cff;
 }
