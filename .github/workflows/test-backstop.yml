@@ -73,7 +73,7 @@ jobs:
       - name: continue-on-error Comment
         uses: mainmatter/continue-on-error-comment@v1
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
           outcome: ${{ steps.backstop.outcome }}
           test-id: '🙈 BaclstpJS'
 
