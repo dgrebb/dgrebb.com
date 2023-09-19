@@ -38,10 +38,6 @@ jobs:
     env:
       DEPLOY_ENV: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
 
-    strategy:
-      matrix:
-        code: [0]
-
     steps:
       - name: 𐂷 Checkout
         uses: actions/checkout@v3
