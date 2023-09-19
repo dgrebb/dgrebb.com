@@ -4,6 +4,8 @@ run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Running Backstop
 on:
   workflow_call:
     secrets:
+      GH_WORKFLOW_TOKEN:
+        required: true
       AWS_S3_BUCKET_REPORTS:
         required: true
       AWS_ACCESS_KEY_ID:
