@@ -74,7 +74,7 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           outcome: ${{ steps.backstop.outcome }}
-          test-id: 'BaclstpJS Regression Failed!'
+          test-id: BaclstpJS Regression Failed!
 
       - name: ⬆ Uploading Test Report
         if: always()
