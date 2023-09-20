@@ -78,8 +78,6 @@ jobs:
         run: |
           echo "RELEASE_NAME=stg-${name/\//-}" >> $GITHUB_ENV
           echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
-          echo "RELEASE_NAME=stg-${name/\//-}" >> "$GITHUB_OUTPUT"
-          echo "DIST=$(date +%y%m%d-%H%M%S)" >> "$GITHUB_OUTPUT"
 
       - name: ✍ Summarize
         run: |
