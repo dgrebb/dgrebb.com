@@ -310,11 +310,11 @@
             }
           }
           td:first-child {
-            background: var(--lemon);
+            background: var(--lemon-25);
             background: linear-gradient(
               90deg,
-              var(--lemon) 65%,
-              var(--lemon) 81%,
+              var(--lemon-25) 65%,
+              var(--lemon-25) 81%,
               transparent 100%
             );
             color: var(--violet-a30);
