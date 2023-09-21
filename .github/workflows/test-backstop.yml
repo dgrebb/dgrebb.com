@@ -1,5 +1,5 @@
 name: 🙈 BackstopJS
-run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Running BackstopJS ${{ github.event_name == 'pull_request' && format('PR #{0}: {1} on ', github.event.pull_request.number, github.event.pull_request.title) || format('on latest {0}', github.ref_name) }}"
+run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - BackstopJS ${{ github.event_name == 'pull_request' && format('PR #{0}: {1} on ', github.event.pull_request.number, github.event.pull_request.title) || format('on latest {0}', github.ref_name) }}"
 
 on:
   workflow_call:
@@ -28,7 +28,7 @@ env:
 
 jobs:
   backstop:
-    name: 🙈 Running Backstop on ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
+    name: 🙈 BackstopJS
     runs-on: ubuntu-latest
 
     concurrency:
@@ -67,7 +67,7 @@ jobs:
       - name: 🗺️ Test Sitemap and Warm Cache 🔥
         run: ./_ci/_utils/warmup.sh
 
-      - name: 👀 Running Visual Regression
+      - name: 👀 Testing Bitmaps
         id: backstop
         continue-on-error: true
         env:
@@ -86,7 +86,7 @@ jobs:
         with:
           repo-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
           outcome: ${{ steps.backstop.outcome }}
-          test-id: "## 🙈 BaclstpJS\n\n### Failing Tests\n${{ env.ERROR_COMMENT_BODY }}"
+          test-id: ${{ env.ERROR_COMMENT_BODY }}
 
       - name: ⬆ Uploading Test Report
         if: always()
@@ -116,7 +116,7 @@ jobs:
           REPORT_PATH: ${{ github.ref_name == 'main' && 'prod' || 'stg' }}
         run: |
           cd _ci/backstop
-          FAIL_TABLE=$(./_utils/parse-report.sh)
+          FAIL_TABLE=$(./_utils/parse-report.sh ${{ vars.REPORTS_DOMAIN }} $REPORT_PATH)
           echo "# Backstop Summary" >> $GITHUB_STEP_SUMMARY
           echo "<a href=\"http://${{ vars.REPORTS_DOMAIN }}/backstop/html_report/gh-$REPORT_PATH/\" target=\"_blank\">BackstopJS Report</a>" >> $GITHUB_STEP_SUMMARY
           echo "<a href=\"http://${{ vars.REPORTS_DOMAIN }}/lighthouse/\" target=\"_blank\">Lighthouse Report</a>" >> $GITHUB_STEP_SUMMARY

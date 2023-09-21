@@ -17,7 +17,7 @@ env:
 
 jobs:
   lighthouse:
-    name: 📊 Running PSI on ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
+    name: 📊 PSI on ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
     runs-on: ubuntu-latest
 
     environment:
