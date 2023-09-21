@@ -75,18 +75,14 @@ jobs:
         run: |
           cd _ci/backstop && ENV=$DEPLOY_ENV npm run test.gh
           FAIL_TABLE=$(./_utils/parse-report.sh ${{ vars.REPORTS_DOMAIN }} $REPORT_PATH)
-          echo ''
-          echo $FAIL_TABLE
-          echo ''
-          echo "ERROR_COMMENT_BODY=$FAIL_TABLE" >> $GITHUB_ENV
-          echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
+          echo ERROR_COMMENT_BODY=$FAIL_TABLE >> $GITHUB_OUTPUT
 
       - name: continue-on-error Comment
         uses: dgrebb/continue-on-error-comment@feature/change-signature
         with:
           repo-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
           outcome: ${{ steps.backstop.outcome }}
-          test-id: "${{ env.ERROR_COMMENT_BODY }}"
+          test-id: ${{ steps.backstop.outputs.ERROR_COMMENT_BODY }}
 
       - name: ⬆ Uploading Test Report
         if: always()
