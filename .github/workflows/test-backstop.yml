@@ -86,7 +86,7 @@ jobs:
         with:
           repo-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
           outcome: ${{ steps.backstop.outcome }}
-          test-id: ${{ env.ERROR_COMMENT_BODY }}
+          test-id: "${{ env.ERROR_COMMENT_BODY }}"
 
       - name: ⬆ Uploading Test Report
         if: always()
