@@ -77,12 +77,24 @@ jobs:
           FAIL_TABLE=$(./_utils/parse-report.sh ${{ vars.REPORTS_DOMAIN }} $REPORT_PATH)
           echo ERROR_COMMENT_BODY=$FAIL_TABLE >> $GITHUB_OUTPUT
 
-      - name: continue-on-error Comment
-        uses: dgrebb/continue-on-error-comment@feature/change-signature
+      - uses: actions/github-script@v6
+        if: failure()
         with:
-          repo-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
-          outcome: ${{ steps.backstop.outcome }}
-          test-id: ${{ steps.backstop.outputs.ERROR_COMMENT_BODY }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `# 🙈 BackstopJS found some visual changes:
+                ${{ steps.backstop.outputs.ERROR_COMMENT_BODY }}`
+            })
+
+      # - name: continue-on-error Comment
+      #   uses: dgrebb/continue-on-error-comment@feature/change-signature
+      #   with:
+      #     repo-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
+      #     outcome: ${{ steps.backstop.outcome }}
+      #     test-id: ${{ steps.backstop.outputs.ERROR_COMMENT_BODY }}
 
       - name: ⬆ Uploading Test Report
         if: always()
