@@ -21,7 +21,7 @@ env:
 
 jobs:
   lighthouse:
-    name: ⛵️ Running Audit on ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
+    name: ⛵️ Auditing ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
     runs-on: ubuntu-latest
 
     environment:
@@ -55,7 +55,7 @@ jobs:
         run: |
           _ci/_utils/warmup.sh
 
-      - name: 🔦 Run Lighthouse
+      - name: 🔦 Lighthouse
         id: lighthouse
         run: |
           cd _ci/perf/lighthouse

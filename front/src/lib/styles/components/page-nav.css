@@ -4,7 +4,6 @@
     text-align: right;
   }
   h2 {
-    color: rgba(var(--text-accent-rgb), 0.77);
     font-size: 1.33rem;
   }
   li {
@@ -17,13 +16,8 @@
   }
   a {
     transition: color, border-color;
-    color: rgba(var(--foreground-rgb), 0.77);
     @apply dg--transition-effect
       dg--font-lb;
-    &:hover,
-    &:focus {
-      color: rgba(var(--link-rgb), 1);
-    }
   }
   a:after {
     display: inline-block;
@@ -35,7 +29,6 @@
   }
   a.active {
     padding-right: 1rem;
-    color: rgba(var(--link-rgb), 1);
     &:after {
       top: calc(50% - 0.75rem);
       right: 0;
@@ -63,14 +56,8 @@
       transition: background-color, color;
       cursor: pointer;
       border-radius: 0.33rem;
-      background-color: rgba(var(--background-saturated), 0.5);
       padding: 0.33rem;
       @apply dg--transition-effect;
-      &:hover,
-      &:focus {
-        background-color: rgba(var(--background-saturated), 0.9);
-        color: rgb(var(--highlight-rgb));
-      }
     }
     input#page-navigation-checkbox {
       display: none;
@@ -98,7 +85,6 @@
             max-height 0;
           margin-bottom: -1.85rem;
           border-radius: 0.77rem;
-          background-color: rgba(var(--background-saturated), 0.8);
           padding: 2rem;
           max-height: 0;
           overflow: hidden;
@@ -119,7 +105,6 @@
       &:checked {
         ~ label,
         label.bottom {
-          background-color: rgba(var(--background-saturated), 0);
           .page-navigation-open {
             display: none;
           }
@@ -135,7 +120,6 @@
               max-height;
             max-height: 100%;
             & label.bottom {
-              background-color: rgba(var(--background-saturated), 0);
               .page-navigation-open {
                 display: none;
               }
@@ -172,7 +156,7 @@
 
 .post,
 .category {
-  aside,
+  .aside,
   .page-navigation-list {
     a {
       display: inline-block;

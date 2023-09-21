@@ -61,6 +61,14 @@ body.ready .header.scroll-transition {
     }
   }
 }
+.privacy,
+.post,
+.category-posts-transition-container {
+  > *:not(.masthead):not(.page-navigation.mini) {
+    position: relative;
+    z-index: 7;
+  }
+}
 
 .footer {
   padding: 0.75rem;
