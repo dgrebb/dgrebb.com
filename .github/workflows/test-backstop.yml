@@ -70,10 +70,16 @@ jobs:
       - name: 👀 Running Visual Regression
         id: backstop
         continue-on-error: true
+        env:
+          REPORT_PATH: ${{ github.ref_name == 'main' && 'prod' || 'stg' }}
         run: |
           cd _ci/backstop && ENV=$DEPLOY_ENV npm run test.gh
-          FAIL_TABLE=$(./_utils/parse-report.sh)
+          FAIL_TABLE=$(./_utils/parse-report.sh ${{ vars.REPORTS_DOMAIN }} $REPORT_PATH)
+          echo ''
+          echo $FAIL_TABLE
+          echo ''
           echo "ERROR_COMMENT_BODY=$FAIL_TABLE" >> $GITHUB_ENV
+          echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
 
       - name: continue-on-error Comment
         uses: dgrebb/continue-on-error-comment@feature/change-signature

@@ -74,7 +74,7 @@ jobs:
           ls -la _ci/perf/lighthouse
           sudo _ci/perf/_utils/landfall.sh _ci/perf/lighthouse
           echo "# Lighthouse Results" >> $GITHUB_STEP_SUMMARY
-          echo "<a href=\"http://${{ vars.REPORTS_DOMAIN }}/lighthouse\" target=\"_blank\">Lighthouse Reports</a>" >> $GITHUB_STEP_SUMMARY
+          echo "<a href=\"https://${{ vars.REPORTS_DOMAIN }}/lighthouse\" target=\"_blank\">Lighthouse Reports</a>" >> $GITHUB_STEP_SUMMARY
 
       - name: ⬆ Upload Reports
         if: always()
