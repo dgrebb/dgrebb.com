@@ -80,16 +80,17 @@ jobs:
           echo $FAIL_TABLE >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-      - name: continue-on-error Comment
+      - name: 📣 Leave a Comment
         uses: dgrebb/continue-on-error-comment@feature/change-signature
         env:
           BODY: ${{ steps.backstop.outputs.ERROR_COMMENT_BODY }}
         with:
           repo-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
           outcome: ${{ steps.backstop.outcome }}
-          test-id: "${{ env.COMMENT_BODY }}"
+          test-id: env.COMMENT_BODY
 
-      - uses: actions/github-script@v6
+      - name: 📣 Leave a Comment
+        uses: actions/github-script@v6
         if: steps.backstop.outcome != 'success'
         with:
           github-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
