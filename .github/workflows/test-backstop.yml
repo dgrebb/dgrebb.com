@@ -64,7 +64,7 @@ jobs:
       - name: ↧ Install & Patch
         run: cd _ci/backstop && npm ci
 
-      - name: 🗺️ Test Sitemap and Warm Cache 🔥
+      - name: 🔥 Warmup Cache
         run: ./_ci/_utils/warmup.sh
 
       - name: 👀 Testing Bitmaps
@@ -75,8 +75,10 @@ jobs:
         run: |
           cd _ci/backstop && ENV=$DEPLOY_ENV npm run test.gh
           FAIL_TABLE=$(./_utils/parse-report.sh ${{ vars.REPORTS_DOMAIN }} $REPORT_PATH)
-          echo ERROR_COMMENT_BODY=$FAIL_TABLE >> "$GITHUB_OUTPUT"
-          echo ERROR_COMMENT_BODY=$FAIL_TABLE >> "$GITHUB_ENV"
+          echo "COMMENT_BODY<<EOF" >> $GITHUB_ENV
+          # 🙈 BackstopJS Regressions Detected
+          echo $FAIL_TABLE >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
       - name: continue-on-error Comment
         uses: dgrebb/continue-on-error-comment@feature/change-signature
@@ -85,12 +87,10 @@ jobs:
         with:
           repo-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
           outcome: ${{ steps.backstop.outcome }}
-          test-id: "Errors $BODY"
+          test-id: "${{ env.COMMENT_BODY }}"
 
       - uses: actions/github-script@v6
         if: steps.backstop.outcome != 'success'
-        env:
-          BODY: ${{ steps.backstop.outputs.ERROR_COMMENT_BODY }}
         with:
           github-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
           script: |
@@ -98,12 +98,7 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: |
-                # 🙈 BackstopJS found some visual changes:
-                directly accessed outputs 
-                ${{ steps.backstop.outputs.ERROR_COMMENT_BODY }}
-                via env
-                process.env.BODY
+              body: env.COMMENT_BODY
             })
 
       - name: ⬆ Uploading Test Report
