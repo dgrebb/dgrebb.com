@@ -80,30 +80,6 @@ jobs:
           echo $FAIL_TABLE >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-      - name: 📣 Leave a Comment
-        uses: dgrebb/continue-on-error-comment@feature/change-signature
-        env:
-          BODY: ${{ steps.backstop.outputs.ERROR_COMMENT_BODY }}
-        with:
-          repo-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
-          outcome: ${{ steps.backstop.outcome }}
-          test-id: 🤖 ${{ env.COMMENT_BODY }}
-
-      - name: 📣 Comment
-        uses: actions/github-script@v6
-        if: steps.backstop.outcome != 'success'
-        env: 
-          BODY: ${{ env.COMMENT_BODY }}
-        with:
-          github-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: process.env.BODY
-            })
-
       - name: ⬆ Uploading Test Report
         if: always()
         uses: jakejarvis/s3-sync-action@master

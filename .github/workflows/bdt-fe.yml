@@ -49,7 +49,7 @@ jobs:
       DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
 
   backstop:
-    name: 🧐 BackstopJS ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
+    name: 🧐 Visual Regression
     needs: build_deploy
     uses: ./.github/workflows/test-backstop.yml
     secrets:
@@ -61,7 +61,7 @@ jobs:
       REPORTS_DISTRIBUTION: ${{ secrets.REPORTS_DISTRIBUTION }}
 
   lighthouse:
-    name: 🧐 Lighthouse ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
+    name: 🧐 Performance
     needs: build_deploy
     uses: ./.github/workflows/test-lighthouse.yml
     secrets:
@@ -72,7 +72,7 @@ jobs:
       REPORTS_DISTRIBUTION: ${{ secrets.REPORTS_DISTRIBUTION }}
 
   pagespeed:
-    name: 🧐 PageSpeed Insights ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
+    name: 🧐 PageSpeed Insights
     needs: build_deploy
     uses: ./.github/workflows/test-psi.yml
     secrets:
