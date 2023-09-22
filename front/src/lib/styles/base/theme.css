@@ -270,7 +270,7 @@
           &:hover,
           &:active,
           &:focus-visible {
-            color: var(--light);
+            color: var(--violet);
           }
         }
       }
