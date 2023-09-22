@@ -89,19 +89,21 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `# 🙈 BackstopJS found some visual changes:
+              body: "# 🙈 BackstopJS found some visual changes:
                 directly accessed outputs 
                 ${{ steps.backstop.outputs.ERROR_COMMENT_BODY }}
                 via env
-                $BODY`
+                $BODY"
             })
 
       - name: continue-on-error Comment
         uses: dgrebb/continue-on-error-comment@feature/change-signature
+        env:
+          BODY: ${{ steps.backstop.outputs.ERROR_COMMENT_BODY }}
         with:
           repo-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
           outcome: ${{ steps.backstop.outcome }}
-          test-id: Errors ${{ steps.backstop.outputs.ERROR_COMMENT_BODY }}
+          test-id: "Errors $BODY"
 
       - name: ⬆ Uploading Test Report
         if: always()
