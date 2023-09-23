@@ -79,7 +79,7 @@ html {
     (-moz-touch-enabled: 1),
     (pointer: coarse) {
     overflow: auto;
-    scrollbar-gutter: stable both-edges;
+    scrollbar-gutter: stable;
   }
 }
 
@@ -92,11 +92,12 @@ body {
     md:text-lg;
   position: relative;
   transition: scrollbar-color 1s;
+  padding-left: 14px;
   height: 100vh;
   min-height: 100vh;
   overflow: auto;
   scroll-behavior: smooth;
-  scrollbar-gutter: stable both-edges;
+  scrollbar-gutter: stable;
   color: var(--fg-clr);
   @media (hover: none),
     (hover: on-demand),

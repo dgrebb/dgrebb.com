@@ -215,7 +215,15 @@
         color: var(--violet-a75);
       }
       .post-title {
-        color: var(--fg-clr);
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow:
+          0 0 0 var(--violet),
+          0.019em -0.011em 0 var(--sunshine),
+          0.015em -0.011em 2px rgba(255, 255, 255, 0.5),
+          -1px 1px 2px rgba(0, 0, 0, 0.33);
       }
       .post-article {
         .heading-anchor-link {
@@ -264,9 +272,11 @@
       &:hover,
       &:focus {
         .title,
-        .language,
-        .code-copy-btn {
+        .language {
           color: var(--violet-a75);
+        }
+        .code-copy-btn {
+          color: var(--violet-a50);
           &:hover,
           &:active,
           &:focus-visible {
@@ -587,7 +597,7 @@
         color: var(--celestial-a75);
       }
       .post-title {
-        text-shadow: 0 -0.11rem 1.5rem hsl(var(--shadow-color) / 5);
+        /* text-shadow: 0 -0.11rem 1.5rem hsl(var(--shadow-color) / 5); */
       }
       .post-article {
         .heading-anchor-link {
@@ -636,10 +646,17 @@
       &:hover,
       &:focus {
         .title,
-        .language,
-        .code-copy-btn {
+        .language {
           color: var(--celestial-a75);
           &:hover,
+          &:focus-visible {
+            color: var(--light);
+          }
+        }
+        .code-copy-btn {
+          color: var(--celestial-a50);
+          &:hover,
+          &:active,
           &:focus-visible {
             color: var(--light);
           }

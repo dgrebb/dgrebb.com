@@ -19,7 +19,7 @@
     grid-column: span 6;
     z-index: 1;
     cursor: pointer;
-    box-shadow: var(--shadow-elevation-low);
+    box-shadow: var(--shadow-elevation-medium);
     background-position: center top;
     background-size: cover;
     background-repeat: no-repeat;
