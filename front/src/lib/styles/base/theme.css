@@ -130,17 +130,18 @@
 
     .posts-grid {
       .post-item {
-        filter: brightness(83%);
+        filter: brightness(100%);
         &:hover,
         &:focus,
         &:focus-visible,
         &:active {
-          filter: brightness(100%);
+          filter: brightness(120%);
         }
       }
       .post-link {
-        background-color: var(--rim-light-bg);
+        background-color: rgba(255, 255, 255, 0.43);
         &::before {
+          opacity: 0.5;
           background: var(--rim-light-mask-bg);
         }
         .link-bg {

@@ -64,7 +64,7 @@ body.ready .header.scroll-transition {
 .privacy,
 .post,
 .category-posts-transition-container {
-  > *:not(.masthead):not(.page-navigation.mini) {
+  > *:not(.masthead):not(.page-navigation.mini):not(.flourish) {
     position: relative;
     z-index: 7;
   }
