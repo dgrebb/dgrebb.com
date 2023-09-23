@@ -72,7 +72,7 @@ jobs:
       REPORTS_DISTRIBUTION: ${{ secrets.REPORTS_DISTRIBUTION }}
 
   pagespeed:
-    name: 🧐 PageSpeed Insights
+    name: 🧐 PageSpeed
     needs: build_deploy
     uses: ./.github/workflows/test-psi.yml
     secrets:

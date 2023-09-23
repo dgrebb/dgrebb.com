@@ -21,7 +21,7 @@ env:
 
 jobs:
   lighthouse:
-    name: ⛵️ Auditing ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
+    name: ⛵️ Auditing
     runs-on: ubuntu-latest
 
     environment:
