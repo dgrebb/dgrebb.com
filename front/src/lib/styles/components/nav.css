@@ -56,7 +56,8 @@
 }
 
 .nav-item {
-  @apply inline
+  @apply dg--font-psxl
+    inline
     px-3;
 }
 
