@@ -79,7 +79,9 @@ html {
     (-moz-touch-enabled: 1),
     (pointer: coarse) {
     overflow: auto;
-    scrollbar-gutter: stable;
+    @media screen and (min-width: 640px) {
+      scrollbar-gutter: stable;
+    }
   }
 }
 
@@ -92,17 +94,22 @@ body {
     md:text-lg;
   position: relative;
   transition: scrollbar-color 1s;
-  padding-left: 14px;
+  padding-left: 7px;
   height: 100vh;
   min-height: 100vh;
-  overflow: auto;
+  overflow: overlay;
   scroll-behavior: smooth;
   scrollbar-gutter: stable;
+  scrollbar-width: thin;
   color: var(--fg-clr);
+  @media screen and (min-width: 640px) {
+    padding-left: 14px;
+  }
   @media (hover: none),
     (hover: on-demand),
     (-moz-touch-enabled: 1),
     (pointer: coarse) {
+    padding-left: 0;
     height: 100%;
     overflow: visible;
     scrollbar-gutter: auto;

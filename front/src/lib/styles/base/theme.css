@@ -42,6 +42,8 @@
   --clr-neut-900-rgb: 11, 11, 11;
   --clr-neut-rgb: var(--clr-primary-900-rgb);
 
+  --bg-grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+
   :focus-visible {
     outline: thin dashed var(--highlight-clr);
   }
@@ -139,12 +141,13 @@
         }
       }
       .post-link {
-        background-color: rgba(255, 255, 255, 0.43);
+        background-color: var(--sunshine);
         &::before {
           opacity: 0.5;
           background: var(--rim-light-mask-bg);
         }
         .link-bg {
+          background-color: rgba(var(--clr-neut-900-rgb), 0);
           color: white;
         }
         &:hover,
@@ -153,6 +156,7 @@
         &:focus-visible,
         &:active {
           .link-bg {
+            transition-delay: 133ms;
             background-color: rgba(var(--clr-neut-900-rgb), 0.6);
           }
         }
@@ -172,10 +176,12 @@
     .privacy,
     .post,
     .category-posts-transition-container {
-      box-shadow: var(--shadow-elevation-high);
-      background: var(--rim-light-bg);
-      &::before {
-        background: var(--rim-light-mask-bg);
+      @media screen and (min-width: 640px) {
+        box-shadow: var(--shadow-elevation-high);
+        background: var(--rim-light-bg);
+        &::before {
+          background: var(--rim-light-mask-bg);
+        }
       }
       h1,
       h2,
@@ -209,6 +215,9 @@
     }
 
     .post {
+      @media screen and (max-width: 639px) {
+        background-color: var(--bg-clr);
+      }
       .summary::first-letter {
         color: var(--highlight-clr);
       }
@@ -274,7 +283,12 @@
       &:focus {
         .title,
         .language {
-          color: var(--violet-a75);
+          color: var(--violet);
+          &:hover,
+          &:focus,
+          &:focus-visible {
+            color: var(--violet);
+          }
         }
         .code-copy-btn {
           color: var(--violet-a50);
@@ -380,33 +394,29 @@
     .page-navigation.mini {
       input#page-navigation-checkbox {
         ~ label {
+          background-color: var(--lemon-50-a75);
+          color: var(--violet-a50);
+          &:hover,
+          &:focus {
+            background-color: var(--sun-50);
+            color: var(--violet);
+          }
           & + .page-navigation-list {
             background-color: var(--lemon-50-a75);
           }
-          &:checked {
-            ~ label,
-            label.bottom {
-              background-color: transparent;
-            }
-            & + .page-navigation-list {
-              background-color: var(--lemon-50-a75);
-              & label.bottom {
-                background-color: transparent;
-              }
-            }
-          }
-          + .page-navigation-toggle {
+        }
+        &:checked {
+          ~ label,
+          label.bottom {
             background-color: transparent;
           }
+          & + .page-navigation-list {
+            background-color: var(--lemon-50-a75);
+            & label.bottom {
+              background-color: transparent;
+            }
+          }
         }
-      }
-    }
-
-    .page-navigation-toggle {
-      &:hover,
-      &:focus {
-        background-color: transparent;
-        color: var(--violet);
       }
     }
 
@@ -554,10 +564,12 @@
     .privacy,
     .post,
     .category-posts-transition-container {
-      box-shadow: var(--shadow-elevation-high);
-      background: var(--rim-light-bg);
-      &::before {
-        background: var(--rim-light-mask-bg);
+      @media screen and (min-width: 640px) {
+        box-shadow: var(--shadow-elevation-high);
+        background: var(--rim-light-bg);
+        &::before {
+          background: var(--rim-light-mask-bg);
+        }
       }
       h1,
       h2,
@@ -591,6 +603,9 @@
     }
 
     .post {
+      @media screen and (max-width: 639px) {
+        background-color: var(--bg-clr);
+      }
       .summary::first-letter {
         color: var(--orange);
       }
@@ -757,7 +772,14 @@
 
     .page-navigation.mini {
       input#page-navigation-checkbox {
+        background-color: var(--rich-black-a75);
         ~ label {
+          background-color: var(--oxford-blue-a50);
+          &:hover,
+          &:focus {
+            background-color: var(--grape);
+            color: var(--celestial);
+          }
           & + .page-navigation-list {
             background-color: var(--rich-black-a75);
           }
@@ -774,15 +796,6 @@
             }
           }
         }
-      }
-    }
-
-    .page-navigation-toggle {
-      background-color: var(--rich-black-a75);
-      &:hover,
-      &:focus {
-        background-color: var(--rich-black-a75);
-        color: var(--celestial);
       }
     }
 

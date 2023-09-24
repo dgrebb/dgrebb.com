@@ -5,14 +5,16 @@
   }
   h2 {
     font-size: 1.33rem;
+    line-height: 1;
   }
   li {
     position: relative;
     overflow: hidden;
     font-size: 0.875rem;
     list-style-type: none;
-    @screen sm {
-    }
+  }
+  ul li {
+    margin-bottom: 0.5rem;
   }
   a {
     transition: color, border-color;
@@ -43,6 +45,7 @@
     right: -1.83%;
     z-index: 10;
     padding: 0.33rem;
+    width: 100%;
     overflow: hidden;
     user-select: none;
     -moz-user-select: none;

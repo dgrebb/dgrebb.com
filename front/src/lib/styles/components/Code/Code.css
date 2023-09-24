@@ -7,8 +7,7 @@
   margin-top: 2.25rem;
   margin-bottom: 2.25rem;
   border-radius: 0.5rem;
-  padding: 0 1.75rem 0 1.5rem;
-  padding-bottom: 1.5rem;
+  padding: 0 0.75rem 1rem 0.5rem;
   width: 100%;
   &::before {
     position: absolute;
@@ -25,6 +24,9 @@
     border-radius: 0.5rem;
     padding: 1px 1px 0 0;
     content: '';
+  }
+  @media screen and (min-width: 480px) {
+    padding: 0 1.75rem 1.75rem 1.5rem;
   }
   &.copying,
   &.copying::before {
@@ -193,7 +195,11 @@
         height: 100%;
       }
       td:first-child {
+        display: none;
         transition: color 0.3s;
+        @media screen and (min-width: 480px) {
+          display: table-cell;
+        }
       }
       td:last-child code {
         padding: 0 0.5rem;

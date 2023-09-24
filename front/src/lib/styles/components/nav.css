@@ -1,3 +1,7 @@
+.header {
+  z-index: 1;
+}
+
 .site-title {
   @apply flex
     flex-grow;
