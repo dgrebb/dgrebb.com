@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'UI http-server :8080',
+      name: 'UI http-server :443',
       namespace: 'backstop',
       script: 'npm',
       args: 'run serve',

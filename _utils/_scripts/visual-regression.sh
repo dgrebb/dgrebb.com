@@ -3,9 +3,9 @@ source $directory/_scripts/functions.sh
 
 backstopURL='http://localhost:3000/bd/html_report?remote'
 
-if [ $2 == "s" ]; then
+if [ "$2" == "s" ]; then
     ENV=staging
-elif [ $2 == "p" ]; then
+elif [ "$2" == "p" ]; then
     ENV=production
 else
     ENV=local
@@ -16,6 +16,11 @@ echo "${ENV} is the environment"
 cd $directory/../_ci/backstop
 if [[ $1 == 'ref' ]]; then
     echo "Generating reference bitmaps for ${ENV}"
+    if [[ $ENV == 'local' ]]; then
+        # build the static frontend with STG
+        dg f b s
+        dg f s
+    fi
     ENV=$ENV npm run ref
 elif [[ $1 == 'remote' ]]; then
     ENV=$ENV npm run remote
@@ -29,7 +34,8 @@ elif [[ $1 == 'test' ]]; then
     echo ''
     echo "Starting test for ${ENV}"
     echo ''
-    ENV=$ENV npm run boot
+    pm2 kill
+    ENV=$ENV sudo npm run boot
     echo ''
     read -p 'Pausing for backstop remote startup...' -t 5
     echo ''

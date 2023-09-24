@@ -110,7 +110,6 @@ body {
     (hover: on-demand),
     (-moz-touch-enabled: 1),
     (pointer: coarse) {
-    padding-left: 0;
     height: 100%;
     overflow: visible;
     scrollbar-gutter: auto;
