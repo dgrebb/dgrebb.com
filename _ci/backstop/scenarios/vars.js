@@ -10,7 +10,7 @@ switch (env) {
     break;
 
   case 'gh-staging':
-    ID = 'GitHub STG';
+    ID = 'Github STG';
     URL = 'https://stg.dgrebb.com';
     envDir = 'gh-stg';
     break;
@@ -22,7 +22,7 @@ switch (env) {
     break;
 
   case 'gh-production':
-    ID = 'GitHub PRD';
+    ID = 'Github PRD';
     URL = 'https://www.dgrebb.com';
     envDir = 'gh-prod';
     break;
