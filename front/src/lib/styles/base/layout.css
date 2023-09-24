@@ -1,17 +1,31 @@
 .main {
-  /* height: 100%; */
-  @apply flex
-    w-full
-    max-w-5xl
-    flex-col
-    items-center
-    justify-center
-    justify-items-center
-    px-3
-    pt-3
-    xs:px-4
-    sm:pt-5;
+  display: flex;
   flex-grow: 1;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  padding-right: 1rem /* 16px */;
+  padding-left: 1rem /* 16px */;
+  width: 100%;
+  max-width: 64rem /* 1024px */;
+  &.l-post {
+    padding-right: 0;
+    padding-left: 0;
+    @media screen and (min-width: 480px) {
+      padding-right: 0.75rem /* 12px */;
+      padding-left: 0.75rem /* 12px */;
+    }
+  }
+  @media screen and (min-width: 333px) {
+    padding-top: 1.25rem /* 20px */;
+  }
+  @media screen and (min-width: 640px) {
+    padding-top: 0.75rem /* 12px */;
+    padding-right: 0.75rem /* 12px */;
+    padding-left: 0.75rem /* 12px */;
+  }
 }
 
 .header,
