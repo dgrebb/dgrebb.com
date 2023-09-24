@@ -11,6 +11,7 @@
     "mon": "pm2 monit",
     "pm2": "node ./node_modules/pm2/bin/pm2",
     "ref": "ENVIRONMENT=\"$ENV\" backstop reference --config=backstop.config.js",
+    "ref.gh": "ENVIRONMENT=gh-\"$ENV\" backstop reference --config=backstop.config.js",
     "remote": "ENVIRONMENT=\"$ENV\" backstop remote --config=backstop.config.js",
     "serve": "http-server -b -S -p 443 -a local.dgrebb.com -C ../../front/local.dgrebb.com.crt -K ../../front/local.dgrebb.com.key --cors='*' ../../front/build",
     "start": "ENVIRONMENT=\"$ENV\" pm2 start ecosystem.config.js && pm2 monit",
