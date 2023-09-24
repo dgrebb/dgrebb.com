@@ -157,7 +157,7 @@
   @apply dg--font-lb;
   text-wrap: pretty;
   margin: 0;
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 1rem 1rem 1rem;
   font-size: 1.2rem;
   font-size: 1rem;
   text-indent: 0;
@@ -202,8 +202,8 @@
   top: -1rem;
   float: none;
   margin-bottom: 0;
-  padding-right: 0.75rem;
-  padding-left: 0.75rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
   width: 100%;
   @media screen and (min-width: 333px) {
     margin-bottom: -0.5rem;

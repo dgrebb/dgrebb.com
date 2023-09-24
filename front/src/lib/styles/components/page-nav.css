@@ -42,7 +42,7 @@
     -webkit-text-select: none;
     position: absolute;
     top: 0;
-    right: -1.83%;
+    right: 0;
     z-index: 10;
     padding: 0.33rem;
     width: 100%;
@@ -59,7 +59,7 @@
       transition: background-color, color;
       cursor: pointer;
       border-radius: 0.33rem;
-      padding: 0.33rem;
+      padding: 0.33rem 0.33rem 0.36rem 0.36rem;
       @apply dg--transition-effect;
     }
     input#page-navigation-checkbox {
