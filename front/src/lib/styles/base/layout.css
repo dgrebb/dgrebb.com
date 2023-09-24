@@ -32,9 +32,10 @@
   display: flex;
   position: relative;
   align-items: center;
-  padding: 1.25rem 1.5rem 0rem 1.5rem;
+  padding: 1.25rem 1rem 0rem 1rem;
   @screen sm {
-    padding: 2rem 1.5rem 0.75rem 1.5rem;
+    padding-top: 2rem;
+    padding-bottom: 0.75rem;
   }
 }
 body.ready .header {

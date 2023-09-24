@@ -25,40 +25,43 @@
 }
 
 .nav-home {
-  @apply dg--font-psbl
-    text-xl
-    sm:ml-[2px]
-    sm:text-2xl;
   transition: unset;
   transition: font-size, color;
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
   color: var(--nav-fg-clr);
+  font-size: 1.25rem;
   line-height: 1;
+  font-family: var(--font-psbl);
   letter-spacing: -0.025em;
   &:hover,
   &:focus,
   &:active {
     color: var(--nav-home-hover-fg-clr);
   }
+  @media screen and (min-width: 640px) {
+    margin-left: 2px;
+    font-size: 1.5rem;
+  }
 }
 
 .nav-bar {
-  @apply dg--font-ps
-    flex 
-    flex-shrink
-    items-center
-    justify-center;
+  display: flex;
+  flex-shrink: 1;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-ps);
 }
 
 .nav-list {
-  @apply justify-end;
+  justify-content: flex-end;
 }
 
 .nav-item {
-  @apply dg--font-psxl
-    inline
-    px-3;
+  display: inline;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+  font-family: var(--font-psxl);
 }
 
 .nav-link {
@@ -72,8 +75,10 @@
   padding-bottom: 0.25rem;
   font-size: 1rem;
   line-height: 1.25rem;
+  letter-spacing: -0.025em;
   &:hover,
-  &:focus {
+  &:focus,
+  &:focus-visible {
     border-bottom-color: rgba(var(--nav-link-border-clr-rgb), 1);
     color: var(--nav-fg-hover-clr);
   }
@@ -85,7 +90,8 @@
     &.subactive {
       cursor: pointer;
       &:hover,
-      &:focus {
+      &:focus,
+      &:focus-visible {
         color: var(--nav-fg-clr);
       }
     }

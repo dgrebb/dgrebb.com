@@ -94,14 +94,18 @@ body {
     md:text-lg;
   position: relative;
   transition: scrollbar-color 1s;
+  padding-right: 7px;
   padding-left: 7px;
   height: 100vh;
   min-height: 100vh;
   overflow: overlay;
   scroll-behavior: smooth;
-  scrollbar-gutter: stable;
+  scrollbar-gutter: stable both-edges;
   scrollbar-width: thin;
   color: var(--fg-clr);
+  @media screen and (min-width: 640px) {
+    scrollbar-gutter: stable;
+  }
   @media (hover: none),
     (hover: on-demand),
     (-moz-touch-enabled: 1),

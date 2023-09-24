@@ -41,35 +41,36 @@
   &.mini {
     -webkit-text-select: none;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: -1rem;
+    right: 1rem;
     z-index: 10;
-    padding: 0.33rem;
+    padding: 0.33rem 0.33rem 0.33rem 2.33rem;
     width: 100%;
     overflow: hidden;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
     text-align: right;
-    @screen sm {
+    @media screen and (min-width: 640px) {
       display: none;
     }
-    .page-navigation-toggle {
+    label {
       display: inline-block;
-      transition: background-color, color;
+      position: relative;
+      vertical-align: middle;
+      z-index: 1;
+      transition-duration: var(--transition-duration);
+      transition-property: background-color, color;
+      transition-timing-function: var(--transition-timing-function);
       cursor: pointer;
+      box-shadow: var(--shadow-elevation-low);
       border-radius: 0.33rem;
       padding: 0.33rem 0.33rem 0.36rem 0.36rem;
-      @apply dg--transition-effect;
     }
     input#page-navigation-checkbox {
       display: none;
       border-radius: 0.77rem;
       ~ label {
-        display: inline-block;
-        position: relative;
-        vertical-align: middle;
-        z-index: 1;
         .page-navigation-open {
           display: block;
         }
@@ -82,10 +83,11 @@
           right: -333px;
           opacity: 0;
           backdrop-filter: blur(0.5rem);
-          transition:
-            right,
-            opacity,
+          transition-property:
+            right var(--transition-duration),
+            opacity var(--transition-duration),
             max-height 0;
+          transition-timing-function: var(--transition-timing-function);
           margin-bottom: -1.85rem;
           border-radius: 0.77rem;
           padding: 2rem;
@@ -106,8 +108,8 @@
         }
       }
       &:checked {
-        ~ label,
-        label.bottom {
+        ~ label {
+          box-shadow: none;
           .page-navigation-open {
             display: none;
           }
@@ -123,6 +125,7 @@
               max-height;
             max-height: 100%;
             & label.bottom {
+              box-shadow: none;
               .page-navigation-open {
                 display: none;
               }

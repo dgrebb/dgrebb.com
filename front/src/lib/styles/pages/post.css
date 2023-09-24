@@ -2,8 +2,12 @@
 .post {
   display: block;
   position: relative;
+  margin-top: 0.75rem;
   border-radius: 0.77rem;
-  @screen md {
+  @media screen and (min-width: 640px) {
+    margin-top: 1.5rem;
+  }
+  @media screen and (min-width: 768px) {
     margin-top: 2.75rem;
     padding: 2.33rem;
   }
@@ -21,14 +25,16 @@
   .hero-wrap {
     display: block;
     position: relative;
+    top: -1rem;
     z-index: 1;
+    margin-right: 1rem;
+    margin-left: 1rem;
     border-radius: 0.75rem;
-    width: 100%;
     height: 277px;
-    @screen sm {
+    @media screen and (min-width: 640px) {
       height: 400px;
     }
-    @screen md {
+    @media screen and (min-width: 768px) {
       top: -5rem;
       left: 0;
     }
@@ -54,7 +60,7 @@
       transition: opacity, filter;
       transition-duration: 1s;
       transition-timing-function: var(--transform-timing-function);
-      box-shadow: var(--shadow-elevation-medium);
+      box-shadow: var(--shadow-elevation-low);
       border-radius: 0.75rem;
       background-position: center bottom;
       background-size: cover;
@@ -63,11 +69,13 @@
       width: 100%;
       height: 277px;
       max-height: 100%;
-      @screen sm {
-        width: 102%;
+      @media screen and (min-width: 480px) {
+        box-shadow: var(--shadow-elevation-medium);
+      }
+      @media screen and (min-width: 640px) {
         height: 400px;
       }
-      @screen md {
+      @media screen and (min-width: 768px) {
         left: 0;
         width: 100%;
       }
@@ -109,19 +117,14 @@
   h1.post-title {
     z-index: 5;
     margin-bottom: 0;
-    padding: 0 0.5rem;
+    padding: 0 1rem;
     line-height: 1.2;
     @media screen and (min-width: 480px) {
       padding: 0 1rem;
     }
   }
   .pubdate {
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
     font-size: 1rem;
-    @media screen and (min-width: 480px) {
-      padding: 0;
-    }
   }
   .aside-toggle {
     display: inline;
