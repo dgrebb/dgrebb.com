@@ -13,7 +13,7 @@ jobs:
       cancel-in-progress: true
 
     steps:
-      - name: ✓ Approve CMS Dispatch
+      - name: ✓ Approve
         uses: dgrebb/manual-approval@0.2.0
         with:
           secret: ${{ github.TOKEN }}
@@ -23,7 +23,7 @@ jobs:
           issue-body: "Please approve or deny the deployment of version ${{ github.ref_name }}."
           exclude-workflow-initiator-as-approver: false
           additional-approved-words: y,a
-          labels: 'publish'
+          labels: 'content'
 
   frontend:
     runs-on: ubuntu-latest

@@ -13,10 +13,10 @@
   .bio-picture {
     position: relative;
     z-index: 5;
-    transition-property: border-color, opacity;
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-      var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-    border: 1px solid rgba(var(--foreground-rgb), 0.5);
+    transition-duration: var(--transition-duration);
+    transition-property: border-color, opacity, filter;
+    transition-timing-function: var(--transition-timing-function);
+    box-shadow: var(--shadow-elevation-low);
     border-radius: 50%;
     width: 120px;
     height: 120px;
@@ -24,6 +24,7 @@
   }
   h1.headline {
     transition: color, font-size;
+    color: var(--home-h1-fg-clr);
     @apply dg--transition-effect
       dg--font-psb
       pt-7
@@ -41,13 +42,7 @@
   a {
     transition: color, border-color;
     transition-duration: 0.33s;
-    border-bottom: 1px solid rgba(var(--foreground-rgb), 0.77);
-    color: rgba(var(--text-accent-rgb), 0.7);
-    &:hover,
-    &:focus {
-      border-color: rgb(var(--highlight-rgb));
-      color: rgba(var(--text-accent-rgb), 1);
-    }
+    border-bottom: 1px solid;
   }
 }
 
@@ -69,17 +64,22 @@
     padding: 0.5rem;
     line-height: 1;
     a {
-      transition-property: color;
-      color: rgb(var(--foreground-rgb-faded));
-      @apply dg--transition-effect;
+      opacity: 0.3;
+      transition:
+        color 333ms,
+        opacity 200ms;
+      transition-timing-function: var(--transition-timing-function);
       @apply inline-block
         h-full
         self-center
         p-1;
       &:hover,
-      &:focus,
       &:focus {
-        color: rgb(var(--highlight-rgb));
+        opacity: 1;
+        transition:
+          color 200ms,
+          opacity 333ms;
+        transition-timing-function: var(--transition-timing-function);
       }
     }
     svg {

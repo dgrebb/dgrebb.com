@@ -17,6 +17,7 @@
     $page.route.id === '/posts/category/[category]' ||
     $page.route.id === '/post/[slug]' ||
     $page.route.id === '/posts';
+  $: post = $page.route.id === '/post/[slug]';
 
   const domain =
       {
@@ -36,7 +37,7 @@
 
 <Flourish />
 <Header {navHeading} {navItems} />
-<main class="main" class:main-secondary={secondary} data-sveltekit-noscroll>
+<main class="main" class:secondary class:l-post={post} data-sveltekit-noscroll>
   <slot />
 </main>
 <!-- <slot name="scroll-top" /> -->

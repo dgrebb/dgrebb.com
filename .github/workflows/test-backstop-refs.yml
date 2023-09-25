@@ -1,4 +1,4 @@
-name: 🙈 BackstopJS - Refs 
+name: 🙊 Generate Refs
 on:
   workflow_dispatch:
   workflow_call:

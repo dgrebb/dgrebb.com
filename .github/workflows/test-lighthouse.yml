@@ -21,7 +21,7 @@ env:
 
 jobs:
   lighthouse:
-    name: ⛵️ Running Audit on ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
+    name: ⛵️ Auditing
     runs-on: ubuntu-latest
 
     environment:
@@ -55,7 +55,7 @@ jobs:
         run: |
           _ci/_utils/warmup.sh
 
-      - name: 🔦 Run Lighthouse
+      - name: 🔦 Lighthouse
         id: lighthouse
         run: |
           cd _ci/perf/lighthouse
@@ -74,7 +74,7 @@ jobs:
           ls -la _ci/perf/lighthouse
           sudo _ci/perf/_utils/landfall.sh _ci/perf/lighthouse
           echo "# Lighthouse Results" >> $GITHUB_STEP_SUMMARY
-          echo "<a href=\"http://${{ vars.REPORTS_DOMAIN }}/lighthouse\" target=\"_blank\">Lighthouse Reports</a>" >> $GITHUB_STEP_SUMMARY
+          echo "<a href=\"https://${{ vars.REPORTS_DOMAIN }}/lighthouse\" target=\"_blank\">Lighthouse Reports</a>" >> $GITHUB_STEP_SUMMARY
 
       - name: ⬆ Upload Reports
         if: always()

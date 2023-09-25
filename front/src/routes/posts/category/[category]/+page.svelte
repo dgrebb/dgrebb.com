@@ -43,7 +43,11 @@
     </header>
     <div class="category-posts-list">
       <Flourish />
-      <TransitionElasticFly transitionKey={name} delay={500}>
+      <TransitionElasticFly
+        transitionKey={name}
+        delay={500}
+        classList="category-posts-transition-container"
+      >
         {#if posts && posts.length}
           <ul>
             {#each posts as { attributes: { title, publishedAt, slug, summary, position, hero: { data: { attributes: { formats: { thumbnail } } } } } }, i}
@@ -77,7 +81,7 @@
       </TransitionElasticFly>
     </div>
 
-    <aside class="category-aside">
+    <aside class="aside">
       <PageNav {categories} {pathname} {setActiveLink} />
     </aside>
   </section>

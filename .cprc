@@ -9,7 +9,7 @@
           "scopes": [
             {
               "description": "Other changes that don't modify src or test files",
-              "name": "chores"
+              "name": "chore"
             },
             {
               "description": "A bug fix. Correlates with PATCH in SemVer.",

@@ -8,11 +8,11 @@ Sentry.init({
   integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
   tracePropagationTargets: ['localhost', /^https:\/\/\*\.dgrebb\.com\/api/],
   tracesSampleRate:
-    PUBLIC_ENV === 'production' ? 0.5 : PUBLIC_ENV === 'staging' ? 0.25 : 0,
+    PUBLIC_ENV === 'production' ? 0.5 : PUBLIC_ENV === 'staging' ? 0.25 : 0.0,
   replaysSessionSampleRate:
-    PUBLIC_ENV === 'production' ? 0.5 : PUBLIC_ENV === 'staging' ? 0.25 : 0,
+    PUBLIC_ENV === 'production' ? 0.5 : PUBLIC_ENV === 'staging' ? 0.25 : 0.0,
   replaysOnErrorSampleRate:
-    PUBLIC_ENV === 'production' ? 1 : PUBLIC_ENV === 'staging' ? 0.25 : 0,
+    PUBLIC_ENV === 'production' ? 1.0 : PUBLIC_ENV === 'staging' ? 0.25 : 0.0,
   normalizeDepth: 0,
   beforeSend(event) {
     if (event.user) {

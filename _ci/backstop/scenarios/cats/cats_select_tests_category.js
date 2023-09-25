@@ -5,7 +5,7 @@ module.exports = {
   label: 'Cats - Select "Tests" Category',
   url: CATS_URL,
   viewports: aboveSmallViewports,
-  clickSelector: '.category-aside a[href="/posts/category/tests/"]',
+  clickSelector: '.category .aside a[href="/posts/category/tests/"]',
   postInteractionWait: 1000,
   selectors: ['viewport'],
   selectorExpansion: false,

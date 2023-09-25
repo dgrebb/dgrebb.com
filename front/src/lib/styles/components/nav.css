@@ -1,3 +1,7 @@
+.header {
+  z-index: 1;
+}
+
 .site-title {
   @apply flex
     flex-grow;
@@ -21,65 +25,74 @@
 }
 
 .nav-home {
-  @apply dg--font-psbl
-    text-xl
-    sm:ml-[2px]
-    sm:text-2xl;
   transition: unset;
   transition: font-size, color;
-  transition-duration: 0.33s;
-  color: rgb(var(--foreground-color));
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  color: var(--nav-fg-clr);
+  font-size: 1.25rem;
   line-height: 1;
+  font-family: var(--font-psbl);
   letter-spacing: -0.025em;
   &:hover,
   &:focus,
   &:active {
-    color: rgb(var(--highlight-rgb));
+    color: var(--nav-home-hover-fg-clr);
+  }
+  @media screen and (min-width: 640px) {
+    margin-left: 2px;
+    font-size: 1.5rem;
   }
 }
 
 .nav-bar {
-  @apply dg--font-ps
-    flex 
-    flex-shrink
-    items-center
-    justify-center;
+  display: flex;
+  flex-shrink: 1;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-ps);
 }
 
 .nav-list {
-  @apply justify-end;
+  justify-content: flex-end;
 }
 
 .nav-item {
-  @apply inline
-    px-3;
+  display: inline;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+  font-family: var(--font-psxl);
 }
 
 .nav-link {
-  @apply border-b
-    py-1
-    align-text-top
-    text-sm;
-  transition:
-    color var(--transform-duration),
-    border-color 333ms;
-  border-bottom-color: rgab(var(--foreground-rgb), 0.5);
-  color: rgba(var(--text-accent-rgb), 0.5);
+  vertical-align: text-top;
+  transition: opacity, border;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  border-bottom-width: thin;
+  border-bottom-color: transparent;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  letter-spacing: -0.025em;
   &:hover,
-  &:focus {
-    border-bottom-color: rgba(var(--highlight-rgb), 1);
-    color: rgba(var(--text-accent-rgb), 1);
+  &:focus,
+  &:focus-visible {
+    border-bottom-color: rgba(var(--nav-link-border-clr-rgb), 1);
+    color: var(--nav-fg-hover-clr);
   }
   &.active {
     opacity: 1;
     cursor: default;
-    border-bottom-color: rgb(var(--highlight-rgb));
-    color: rgb(var(--text-accent-rgb));
+    border-bottom-color: rgba(var(--nav-link-border-clr-rgb), 1);
+    color: var(--nav-fg-active-clr);
     &.subactive {
       cursor: pointer;
       &:hover,
-      &:focus {
-        color: rgb(var(--foreground-rgb));
+      &:focus,
+      &:focus-visible {
+        color: var(--nav-fg-clr);
       }
     }
   }
