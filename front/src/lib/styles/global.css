@@ -32,7 +32,6 @@
   --black: 19, 19, 20;
   text-rendering: optimizeLegibility !important;
   :focus-visible {
-    outline: thin dotted rgb(var(--highlight-rgb));
     outline-offset: 0.25rem;
   }
 }
@@ -68,9 +67,10 @@ html.dark-theme {
 }
 
 html {
-  transition: background-color 0.5s;
+  transition: background-color;
+  transition-duration: 500ms;
   background-repeat: no-repeat;
-  background-color: rgb(var(--background-end-rgb));
+  background-color: var(--bg-clr);
   min-height: 100%;
   overflow: clip;
   scroll-behavior: smooth;
@@ -79,7 +79,9 @@ html {
     (-moz-touch-enabled: 1),
     (pointer: coarse) {
     overflow: auto;
-    scrollbar-gutter: stable both-edges;
+    @media screen and (min-width: 640px) {
+      scrollbar-gutter: stable;
+    }
   }
 }
 
@@ -91,12 +93,19 @@ body {
     text-base
     md:text-lg;
   position: relative;
+  transition: scrollbar-color 1s;
+  padding-right: 7px;
+  padding-left: 7px;
   height: 100vh;
   min-height: 100vh;
-  overflow: auto;
+  overflow: overlay;
   scroll-behavior: smooth;
   scrollbar-gutter: stable both-edges;
-  color: rgb(var(--foreground-rgb));
+  scrollbar-width: thin;
+  color: var(--fg-clr);
+  @media screen and (min-width: 640px) {
+    scrollbar-gutter: stable;
+  }
   @media (hover: none),
     (hover: on-demand),
     (-moz-touch-enabled: 1),
@@ -105,21 +114,20 @@ body {
     overflow: visible;
     scrollbar-gutter: auto;
   }
-  &::before {
-    position: fixed;
-    opacity: 0.77;
-    z-index: -1;
-    background: radial-gradient(
-      187% 77vh at top,
-      rgb(var(--subdued-rgb)),
-      rgb(var(--background-start-rgb)),
-      transparent 83%
-    );
-    background-position: top center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100vh;
-    content: '';
+}
+
+@keyframes twilight {
+  0% {
+    opacity: 0%;
+  }
+  33% {
+    opacity: 1;
+  }
+  66% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
@@ -132,7 +140,6 @@ body {
   left: 0;
   z-index: 1;
   transition: background-color;
-  background-color: rgb(var(--foreground-rgb));
   @apply dg--transition-effect;
 }
 

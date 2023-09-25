@@ -7,7 +7,7 @@ module.exports = {
   url: POST_URL,
   viewports: aboveSmallViewports,
   delay: 500,
-  selectors: ['.post-aside'],
+  selectors: ['.post .aside'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,
   requireSameDimensions: false,

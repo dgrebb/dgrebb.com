@@ -4,26 +4,22 @@
     text-align: right;
   }
   h2 {
-    color: rgba(var(--text-accent-rgb), 0.77);
     font-size: 1.33rem;
+    line-height: 1;
   }
   li {
     position: relative;
     overflow: hidden;
     font-size: 0.875rem;
     list-style-type: none;
-    @screen sm {
-    }
+  }
+  ul li {
+    margin-bottom: 0.5rem;
   }
   a {
     transition: color, border-color;
-    color: rgba(var(--foreground-rgb), 0.77);
     @apply dg--transition-effect
       dg--font-lb;
-    &:hover,
-    &:focus {
-      color: rgba(var(--link-rgb), 1);
-    }
   }
   a:after {
     display: inline-block;
@@ -35,7 +31,6 @@
   }
   a.active {
     padding-right: 1rem;
-    color: rgba(var(--link-rgb), 1);
     &:after {
       top: calc(50% - 0.75rem);
       right: 0;
@@ -46,40 +41,36 @@
   &.mini {
     -webkit-text-select: none;
     position: absolute;
-    top: 0;
-    right: -1.83%;
+    top: -1rem;
+    right: 1rem;
     z-index: 10;
-    padding: 0.33rem;
+    padding: 0.33rem 0.33rem 0.33rem 2.33rem;
+    width: 100%;
     overflow: hidden;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
     text-align: right;
-    @screen sm {
+    @media screen and (min-width: 640px) {
       display: none;
     }
-    .page-navigation-toggle {
+    label {
       display: inline-block;
-      transition: background-color, color;
+      position: relative;
+      vertical-align: middle;
+      z-index: 1;
+      transition-duration: var(--transition-duration);
+      transition-property: background-color, color;
+      transition-timing-function: var(--transition-timing-function);
       cursor: pointer;
+      box-shadow: var(--shadow-elevation-low);
       border-radius: 0.33rem;
-      background-color: rgba(var(--background-saturated), 0.5);
-      padding: 0.33rem;
-      @apply dg--transition-effect;
-      &:hover,
-      &:focus {
-        background-color: rgba(var(--background-saturated), 0.9);
-        color: rgb(var(--highlight-rgb));
-      }
+      padding: 0.33rem 0.33rem 0.36rem 0.36rem;
     }
     input#page-navigation-checkbox {
       display: none;
       border-radius: 0.77rem;
       ~ label {
-        display: inline-block;
-        position: relative;
-        vertical-align: middle;
-        z-index: 1;
         .page-navigation-open {
           display: block;
         }
@@ -92,13 +83,13 @@
           right: -333px;
           opacity: 0;
           backdrop-filter: blur(0.5rem);
-          transition:
-            right,
-            opacity,
+          transition-property:
+            right var(--transition-duration),
+            opacity var(--transition-duration),
             max-height 0;
+          transition-timing-function: var(--transition-timing-function);
           margin-bottom: -1.85rem;
           border-radius: 0.77rem;
-          background-color: rgba(var(--background-saturated), 0.8);
           padding: 2rem;
           max-height: 0;
           overflow: hidden;
@@ -117,9 +108,8 @@
         }
       }
       &:checked {
-        ~ label,
-        label.bottom {
-          background-color: rgba(var(--background-saturated), 0);
+        ~ label {
+          box-shadow: none;
           .page-navigation-open {
             display: none;
           }
@@ -135,7 +125,7 @@
               max-height;
             max-height: 100%;
             & label.bottom {
-              background-color: rgba(var(--background-saturated), 0);
+              box-shadow: none;
               .page-navigation-open {
                 display: none;
               }
@@ -172,7 +162,7 @@
 
 .post,
 .category {
-  aside,
+  .aside,
   .page-navigation-list {
     a {
       display: inline-block;

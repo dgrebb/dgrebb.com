@@ -6,7 +6,7 @@ module.exports = {
   url: POST_URL,
   viewports: aboveSmallViewports,
   clickSelector:
-    '.post-aside .page-navigation-list a[href="#step-2-caesar-dressing-the-holy-grail-of-salad-sauces"]',
+    '.post .aside .page-navigation-list a[href="#step-2-caesar-dressing-the-holy-grail-of-salad-sauces"]',
   postInteractionWait: 800,
   selectors: ['viewport'],
   selectorExpansion: false,

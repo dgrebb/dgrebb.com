@@ -1,4 +1,4 @@
-name: ➡ 🚀 B&D FE Release 
+name: 🚀 Build & Deploy Release
 
 on:
   push:

@@ -3,7 +3,7 @@ body {
   .footer,
   .flourish,
   .main section,
-  .main.main-secondary {
+  .main.secondary {
     opacity: 0;
     transition: opacity;
     @apply dg--transition-effect;
@@ -25,7 +25,7 @@ body {
     .footer,
     .flourish,
     .main section,
-    .main.main-secondary {
+    .main.secondary {
       opacity: 1;
     }
     .flourish {
@@ -40,6 +40,7 @@ body {
     }
     &.animating {
       overflow: hidden;
+      scrollbar-color: transparent transparent;
       > div > .flourish {
         transition: max-height 1s ease-in-out 1s;
         box-shadow: none !important;

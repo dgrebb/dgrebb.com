@@ -12,8 +12,8 @@
   }
   a {
     @apply transition;
-    transition-duration: var(--transform-duration);
-    transition-timing-function: var(--transform-timing-function);
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--transition-timing-function);
     color: rgb(var(--foreground-rgb));
     &:hover,
     &:focus {

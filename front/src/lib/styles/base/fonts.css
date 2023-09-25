@@ -54,3 +54,12 @@
     font-family: 'Libre Baskerville Bold', serif;
   }
 }
+
+:root {
+  --font-psxl: 'Public Sans Extra Light', sans-serif;
+  --font-ps: 'Public Sans', sans-serif;
+  --font-psb: 'Public Sans Bold', sans-serif;
+  --font-psbl: 'Public Sans Black', sans-serif;
+  --font-lb: 'Libre Baskerville', serif;
+  --font-lbb: 'Libre Baskerville Bold', serif;
+}

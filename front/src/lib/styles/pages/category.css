@@ -22,13 +22,10 @@
       top: 4rem;
       right: 0;
       padding: 0;
-      label {
-        background-color: rgba(var(--background-saturated), 0.77);
-      }
     }
   }
   .category-posts-list,
-  .category-aside {
+  .aside {
     position: relative;
     @screen md {
       padding-top: 0;
@@ -44,12 +41,22 @@
       width: 77%;
     }
     .transition-elastic-fly-container {
-      @apply shadow-xl;
-      background-color: rgba(var(--background-saturated), 0.77);
+      border-radius: 0.77rem;
       overflow: visible;
       ul,
       p.summary {
         padding: 2rem;
+      }
+      &::before {
+        position: absolute;
+        mask:
+          linear-gradient(3deg, #fff 0 0) content-box,
+          linear-gradient(3deg, #fff 0 0);
+        mask-composite: exclude;
+        inset: 0;
+        border-radius: 0.77rem;
+        padding: 1px 1px 0 0;
+        content: '';
       }
     }
     .post-item {
@@ -105,7 +112,7 @@
       }
     }
   }
-  .category-aside {
+  .aside {
     display: none;
     position: relative;
     right: 0;
