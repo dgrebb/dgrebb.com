@@ -146,3 +146,5 @@ _ci/backstop/bd/html_report/*
 ############################
 _ci/perf/**/*.html
 _ci/perf/**/*.report.json
+back/types/generated/components.d.ts
+back/types/generated/contentTypes.d.ts
