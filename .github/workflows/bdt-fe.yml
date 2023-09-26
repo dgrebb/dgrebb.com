@@ -70,6 +70,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
       REPORTS_DISTRIBUTION: ${{ secrets.REPORTS_DISTRIBUTION }}
+      GH_WORKFLOW_TOKEN: ${{ secrets.GH_WORKFLOW_TOKEN }}
 
   pagespeed:
     name: 📈 Metrics
@@ -77,6 +78,7 @@ jobs:
     uses: ./.github/workflows/test-psi.yml
     secrets:
       PSI_APIKEY: ${{ secrets.PSI_APIKEY }}
+      GH_WORKFLOW_TOKEN: ${{ secrets.GH_WORKFLOW_TOKEN }}
 
   cleanup:
     name: 🧹 Cleanup
