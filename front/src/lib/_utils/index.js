@@ -31,3 +31,11 @@ export const isElementOutsideViewport = (element) => {
     rect.top > window.innerHeight
   );
 };
+
+/**
+ * Determine if a browser/system setting prefers reduced motion
+ * @returns boolean
+ */
+export const motionless = () => {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+};

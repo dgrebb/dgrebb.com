@@ -1,4 +1,5 @@
 <script>
+  import { motionless } from '@utils';
   export let transitionKey;
   export let duration = 500;
   export let delay = 600;
@@ -6,15 +7,17 @@
 
   function doIt() {
     return {
-      duration,
+      duration: motionless() === true ? 0 : duration,
     };
   }
 
   function animateOut(node) {
+    if (motionless() === true) return false;
     document.body.classList.toggle('animating-page', true);
   }
 
   function animateIn(node) {
+    if (motionless() === true) return false;
     setTimeout(() => {
       document.body.classList.toggle('animating', false);
       document.body.classList.toggle('animating-page', false);
