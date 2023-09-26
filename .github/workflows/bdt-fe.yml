@@ -79,7 +79,7 @@ jobs:
 
   cleanup:
     name: 🧹 Cleanup
-    needs: backstop
+    needs: [build_deploy, backstop, lighthouse, pagespeed]
     runs-on: ubuntu-latest
     concurrency:
       group: build-deploy
