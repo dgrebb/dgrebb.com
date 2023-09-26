@@ -1,4 +1,4 @@
-name: 🚜 Build, Deploy, and Test 
+name: 🚜 Build, Deploy, and Test
 run-name: "🚜 ${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Build, Deploy, and Test - ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest {0}', github.ref_name) }}"
 
 on:
@@ -21,7 +21,6 @@ env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
 jobs:
-  
   build_deploy:
     name: 🚀 Build & Deploy
     uses: ./.github/workflows/bd-fe.yml
@@ -77,3 +76,39 @@ jobs:
     uses: ./.github/workflows/test-psi.yml
     secrets:
       PSI_APIKEY: ${{ secrets.PSI_APIKEY }}
+
+  cleanup:
+    name: 🧹 Cleanup
+    needs: backstop
+    runs-on: ubuntu-latest
+    concurrency:
+      group: build-deploy
+      cancel-in-progress: true
+    steps:
+      - name: Delete Previous deployments
+        uses: actions/github-script@v6
+        env:
+          GITHUB_SHA_HEAD: ${{ github.event.pull_request.head.sha }}
+        with:
+          script: |
+            const { GITHUB_SHA_HEAD } = process.env
+            const deployments = await github.rest.repos.listDeployments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: GITHUB_SHA_HEAD
+            });
+            await Promise.all(
+              deployments.data.map(async (deployment) => {
+                await github.rest.repos.createDeploymentStatus({ 
+                  owner: context.repo.owner, 
+                  repo: context.repo.repo, 
+                  deployment_id: deployment.id, 
+                  state: 'inactive' 
+                });
+                return github.rest.repos.deleteDeployment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  deployment_id: deployment.id
+                });
+              })
+            );
