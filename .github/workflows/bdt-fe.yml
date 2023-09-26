@@ -46,6 +46,7 @@ jobs:
       PUBLIC_ENV: ${{ secrets.PUBLIC_ENV }}
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
+      GH_WORKFLOW_TOKEN: ${{ secrets.GH_WORKFLOW_TOKEN }}
 
   backstop:
     name: 🧐 Visual Regression
@@ -78,7 +79,7 @@ jobs:
       PSI_APIKEY: ${{ secrets.PSI_APIKEY }}
 
   cleanup:
-    name: 🧹 Clean Up
+    name: 🧹 Cleanup
     needs: [build_deploy, backstop, lighthouse, pagespeed]
     runs-on: ubuntu-latest
     concurrency:
@@ -87,6 +88,8 @@ jobs:
     steps:
       - name: Delete Previous deployments
         uses: actions/github-script@v6
+        env:
+          GITHUB_SHA_HEAD: ${{ github.event.pull_request.head.sha }}
         with:
           github-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
           script: |
@@ -94,7 +97,7 @@ jobs:
             const deployments = await github.rest.repos.listDeployments({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              sha: context.sha
+              sha: GITHUB_SHA_HEAD
             });
             await Promise.all(
               deployments.data.map(async (deployment) => {

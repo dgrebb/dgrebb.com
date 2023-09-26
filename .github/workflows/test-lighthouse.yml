@@ -15,6 +15,8 @@ on:
         required: true
       REPORTS_DISTRIBUTION:
         required: true
+      GH_WORKFLOW_TOKEN:
+        required: true
 
 env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
@@ -97,3 +99,32 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          
+      - name: Delete Previous deployments
+        uses: actions/github-script@v6
+        env:
+          GITHUB_SHA_HEAD: ${{ github.event.pull_request.head.sha }}
+        with:
+          github-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
+          script: |
+            const { GITHUB_SHA_HEAD } = process.env
+            const deployments = await github.rest.repos.listDeployments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: GITHUB_SHA_HEAD
+            });
+            await Promise.all(
+              deployments.data.map(async (deployment) => {
+                await github.rest.repos.createDeploymentStatus({ 
+                  owner: context.repo.owner, 
+                  repo: context.repo.repo, 
+                  deployment_id: deployment.id, 
+                  state: 'inactive' 
+                });
+                return github.rest.repos.deleteDeployment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  deployment_id: deployment.id
+                });
+              })
+            );
