@@ -78,7 +78,7 @@ jobs:
       PSI_APIKEY: ${{ secrets.PSI_APIKEY }}
 
   cleanup:
-    name: 🧹 Cleanup
+    name: 🧹 Clean Up
     needs: [build_deploy, backstop, lighthouse, pagespeed]
     runs-on: ubuntu-latest
     concurrency:
