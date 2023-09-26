@@ -5,13 +5,18 @@
   export let transitionKey;
   let to;
 
+  function motionless() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
   function doIt() {
     return {
-      duration: 500,
+      duration: motionless() === true ? 0 : 500,
     };
   }
 
   async function animateOutroStart() {
+    if (motionless() === true) return false;
     const header = document.querySelector('.header');
     to = $navigating?.to.route.id;
     document.body.classList.toggle('animating', true);
@@ -21,13 +26,17 @@
   }
 
   function animateOutroEnd() {
+    if (motionless() === true) return false;
     if (to === '/') return;
     scrollTop();
   }
 
-  function animateIntroStart() {}
+  function animateIntroStart() {
+    if (motionless() === true) return false;
+  }
 
   function animateIntroEnd() {
+    if (motionless() === true) return false;
     setTimeout(() => {
       header.classList.toggle('scroll-transition', false);
       document.body.classList.toggle('animating', false);

@@ -87,15 +87,14 @@ jobs:
     steps:
       - name: Delete Previous deployments
         uses: actions/github-script@v6
-        env:
-          GITHUB_SHA_HEAD: ${{ github.event.pull_request.head.sha }}
         with:
+          github-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
           script: |
             const { GITHUB_SHA_HEAD } = process.env
             const deployments = await github.rest.repos.listDeployments({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              sha: GITHUB_SHA_HEAD
+              sha: context.sha
             });
             await Promise.all(
               deployments.data.map(async (deployment) => {
