@@ -1,13 +1,9 @@
 <script>
   import { navigating } from '$app/stores';
-  import { isElementOutsideViewport, scrollTop } from '@utils';
+  import { isElementOutsideViewport, motionless, scrollTop } from '@utils';
 
   export let transitionKey;
   let to;
-
-  function motionless() {
-    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  }
 
   function doIt() {
     return {
