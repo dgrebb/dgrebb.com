@@ -1,0 +1,24 @@
+{
+  "name": "spell",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "text": "html-to-text",
+    "gramma": "gramma",
+    "grammar": "gramma check ",
+    "spell": "cspell -c ./cspell.json --color",
+    "spell.web.list": "cspell -c ./cspell.json --words-only --unique --no-progress --color",
+    "spell.code.list": "cspell -c ./cspell.json --gitignore -e ../../CHANGELOG.md \"../../**/*.md\" \"../../_tf/**/*.tf\" \"../../back/src/**/*.js\" \"../../front/src/**/*.css\" \"../../front/src/**/*.js\" \"../../front/src/**/*.html\" \"../../front/src/**/*.md\" --words-only --unique --no-progress",
+    "spell.code": "cspell -c ./cspell.json --gitignore -e ../../CHANGELOG.md \"../../**/*.md\" \"../../_tf/**/*.tf\" \"../../back/src/**/*.js\" \"../../front/src/**/*.css\" \"../../front/src/**/*.js\" \"../../front/src/**/*.html\" \"../../front/src/**/*.md\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@html-to/text-cli": "^0.5.4",
+    "cspell-cli": "github:streetsidesoftware/cspell-cli",
+    "gramma": "^1.6.0"
+  }
+}
