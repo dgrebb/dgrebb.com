@@ -9,7 +9,9 @@
   flex-direction: column;
   align-items: center;
   transition-property: max-width;
-  @apply dg--transition-effect;
+  transition-duration: var(--transition-duration);
+  padding-left: 1rem;
+  padding-right: 1rem;
   .bio-picture {
     position: relative;
     z-index: 5;
@@ -20,7 +22,14 @@
     border-radius: 50%;
     width: 120px;
     height: 120px;
-    @apply dg--transition-effect;
+    margin-top: 1rem;
+  }
+  @media screen and (min-width: 480px){
+    padding-left: 0;
+    padding-right: 0;
+    .bio-picture {
+      margin-top: auto;
+    }
   }
   h1.headline {
     transition: color, font-size;
