@@ -19,5 +19,12 @@
       style={heroThumb &&
         `background-image: url('${heroThumb}'); background-position: ${position};`}
     />
+    <noscript>
+      <div
+        class="hero noscript"
+        style={heroImage &&
+          `background-image: url('${heroImage}'); background-position: ${position};`}
+      />
+    </noscript>
   </div>
 {/if}
