@@ -98,6 +98,9 @@
       &.loaded {
         z-index: 18;
       }
+      noscript .noscript {
+        display: none;
+      }
     }
   }
   h1.post-title,
