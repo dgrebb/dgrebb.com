@@ -1,16 +1,18 @@
 .privacy {
+  margin-top: 1rem;
   font-size: 1rem;
-  @apply max-w-4xl
-    p-5
-    shadow-xl
-    sm:p-9;
-  @screen sm {
-    margin-top: 3rem;
-    padding-top: 7.77rem;
-  }
+  max-width: 56rem;
+  padding: 1.25rem;
   position: relative;
   border-radius: 0.77rem;
   background-color: rgba(var(--background-saturated), 0.77);
+  @media screen and (min-width: 640px) {
+    margin-top: 1rem;
+    padding-top: 7.77rem;
+  }
+  @media screen and (min-width: 768px) {
+    margin-top: 2.75rem;
+  }
   &::before {
     position: absolute;
     mask:
