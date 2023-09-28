@@ -176,12 +176,12 @@
     .privacy,
     .post,
     .category-posts-transition-container {
+      background: var(--rim-light-bg), var(--bg-clr);
+      &::before {
+        background: var(--rim-light-mask-bg);
+      }
       @media screen and (min-width: 640px) {
         box-shadow: var(--shadow-elevation-high);
-        background: var(--rim-light-bg);
-        &::before {
-          background: var(--rim-light-mask-bg);
-        }
       }
       h1,
       h2,
@@ -215,9 +215,6 @@
     }
 
     .post {
-      @media screen and (max-width: 639px) {
-        background-color: var(--bg-clr);
-      }
       .summary::first-letter {
         color: var(--highlight-clr);
       }
@@ -564,12 +561,12 @@
     .privacy,
     .post,
     .category-posts-transition-container {
+      background: var(--rim-light-bg), var(--bg-clr);
+      &::before {
+        background: var(--rim-light-mask-bg);
+      }
       @media screen and (min-width: 640px) {
         box-shadow: var(--shadow-elevation-high);
-        background: var(--rim-light-bg);
-        &::before {
-          background: var(--rim-light-mask-bg);
-        }
       }
       h1,
       h2,
@@ -611,9 +608,6 @@
       }
       .pubdate {
         color: var(--celestial-a75);
-      }
-      .post-title {
-        /* text-shadow: 0 -0.11rem 1.5rem hsl(var(--shadow-color) / 5); */
       }
       .post-article {
         .heading-anchor-link {
