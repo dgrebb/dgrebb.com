@@ -26,12 +26,14 @@
     transition-property: filter;
     transition-timing-function: var(--transition-timing-function);
     cursor: pointer;
-    box-shadow: var(--shadow-elevation-medium);
     border-radius: 0.75rem;
     background-position: center top;
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 7rem;
+    @media screen and (min-width: 480px) {
+      box-shadow: var(--shadow-elevation-medium);
+    }
     .post-link {
       display: block;
       backdrop-filter: blur(0.5rem);

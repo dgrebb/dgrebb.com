@@ -8,19 +8,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition-duration: var(--transition-duration);
   transition-property: max-width;
-  @apply dg--transition-effect;
+  padding-right: 1rem;
+  padding-left: 1rem;
   .bio-picture {
     position: relative;
     z-index: 5;
     transition-duration: var(--transition-duration);
     transition-property: border-color, opacity, filter;
     transition-timing-function: var(--transition-timing-function);
+    margin-top: 1rem;
     box-shadow: var(--shadow-elevation-low);
     border-radius: 50%;
     width: 120px;
     height: 120px;
-    @apply dg--transition-effect;
+  }
+  @media screen and (min-width: 480px) {
+    padding-right: 0;
+    padding-left: 0;
+    .bio-picture {
+      margin-top: auto;
+    }
   }
   h1.headline {
     transition: color, font-size;
