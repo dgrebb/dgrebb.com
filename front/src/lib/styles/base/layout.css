@@ -37,6 +37,7 @@
   display: flex;
   position: relative;
   align-items: center;
+  padding-bottom: 0;
   @screen sm {
     padding-top: 2rem;
     padding-bottom: 0.75rem;
