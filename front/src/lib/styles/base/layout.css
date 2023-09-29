@@ -22,17 +22,21 @@
 
 .header,
 .footer {
-  @apply w-full
-    max-w-6xl
-    px-3
-    lg:p-14;
+  padding: 1.5rem 1rem;
+  width: 100%;
+  max-width: 72rem /* 1152px */;
+  @media screen and (min-width: 480px) {
+    padding: 1.25rem 1.75rem 0 1.75rem;
+  }
+  @media screen and (min-width: 1024px) {
+    padding-top: 3.5rem;
+  }
 }
 
 .header {
   display: flex;
   position: relative;
   align-items: center;
-  padding: 1.25rem 1rem 0rem 1rem;
   @screen sm {
     padding-top: 2rem;
     padding-bottom: 0.75rem;

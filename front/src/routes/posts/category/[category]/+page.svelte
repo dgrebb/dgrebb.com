@@ -33,12 +33,12 @@
   <section class="category">
     <header class="category-head">
       <a id="main">Main Content</a>
-      <h1 class="page-heading">{headline} /</h1>
-      <TransitionFade transitionKey={name} delay={500} duration={333}>
+      <h1 class="page-heading">{headline}</h1>
+      <!-- <TransitionFade transitionKey={name} delay={500} duration={333}>
         <h2 class="category-name">
           {name}
         </h2>
-      </TransitionFade>
+      </TransitionFade> -->
       <PageNav {categories} mini top {pathname} {setActiveLink} />
     </header>
     <div class="category-posts-list">

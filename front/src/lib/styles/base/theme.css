@@ -49,12 +49,43 @@
   }
 }
 
+.privacy,
+.post {
+  background: var(--rim-light-bg), var(--bg-clr);
+  @media screen and (min-width: 640px) {
+    box-shadow: var(--shadow-elevation-high);
+  }
+  &::before {
+    background: var(--rim-light-mask-bg);
+  }
+}
+
+.category-posts-transition-container {
+  background: var(--rim-light-bg), var(--bg-clr);
+  @media screen and (min-width: 640px) {
+    box-shadow: var(--shadow-elevation-high);
+  }
+  &::before {
+    background: var(--rim-light-mask-bg);
+  }
+  @media screen and (min-width: 640px) {
+    background: var(--category-rim-light-bg), var(--bg-clr);
+    @media screen and (min-width: 640px) {
+      box-shadow: var(--shadow-elevation-high);
+    }
+    &::before {
+      background: var(--category-rim-light-mask-bg);
+    }
+  }
+}
+
 @layer utilities {
   .dg--light-theme {
     --bg-clr: var(--lemon-50);
     --fg-clr: var(--violet);
     --shadow-color: var(--sunshine-shadow-clr);
     --rim-clr: var(--sun);
+    --link-clr: var(--violet-a75);
     --highlight-clr: var(--jasper);
 
     --rim-light-bg: linear-gradient(
@@ -63,7 +94,18 @@
       var(--bg-clr) 77%,
       var(--sunshine) 100%
     );
+    --category-rim-light-bg: linear-gradient(
+      35deg,
+      var(--bg-clr) 33%,
+      var(--bg-clr) 77%,
+      var(--rim-clr) 100%
+    );
     --rim-light-mask-bg: linear-gradient(3deg, transparent, var(--rim-clr));
+    --category-rim-light-mask-bg: linear-gradient(
+      33deg,
+      transparent,
+      var(--rim-clr)
+    );
 
     .nav-home,
     .nav-link {
@@ -93,7 +135,7 @@
 
     body {
       background: linear-gradient(
-        3deg,
+        10deg,
         transparent 0%,
         var(--sunshine) 77%,
         var(--sun) 123%
@@ -108,12 +150,12 @@
     .bio,
     .footer {
       a {
-        border-bottom-color: var(--violet-a75);
-        color: var(--violet-a75);
+        border-bottom-color: var(--link-clr);
+        color: var(--link-clr);
         &:hover,
         &:focus {
           border-bottom-color: var(--highlight-clr);
-          color: var(--violet);
+          color: var(--highlight-clr);
         }
       }
     }
@@ -198,13 +240,13 @@
     .post-article,
     .category-list {
       a:not(.heading-anchor-link) {
-        border-bottom: 1px solid var(--violet-a75);
-        color: var(--violet-a75);
+        border-bottom: 1px solid var(--link-clr);
+        color: var(--link-clr);
         &:hover,
         &:focus,
         &:focus-visible {
           border-bottom: 1px solid var(--highlight-clr);
-          color: var(--violet);
+          color: var(--highlight-clr);
         }
       }
     }
@@ -388,6 +430,27 @@
       }
     }
 
+    .category-posts-list {
+      .post-item {
+        .post-item-summary,
+        h3,
+        a,
+        p {
+          color: var(--violet-a75);
+        }
+        &:hover,
+        &:focus,
+        &:focus-within {
+          .post-item-image {
+            opacity: 1;
+          }
+          a h3 {
+            color: var(--jasper);
+          }
+        }
+      }
+    }
+
     .page-navigation.mini {
       input#page-navigation-checkbox {
         ~ label {
@@ -419,39 +482,52 @@
 
     .page-navigation-list {
       a {
-        color: var(--violet-a75);
+        transition-duration: var(--transition-duration);
+        transition-property: color;
+        transition-timing-function: var(--transition-timing-function);
+        color: var(--fg-clr);
         &:hover,
         &:focus,
         &:focus,
-        &:focus-visible,
-        &:active,
-        &.active {
-          color: var(--violet);
+        &:focus-visible {
+          color: var(--highlight-clr);
         }
         &.active::after {
-          color: var(--orange);
+          color: var(--highlight-clr);
         }
       }
     }
   }
 
-  /* -----------------------
-  ---------- Dark Theme ----
-  ----------------------- */
+  /* -------------------------------------------------------------------------------------
+  ---------- Dark Theme ------------------------------------------------------------------
+  -------------------------------------------------------------------------------------- */
   .dg--dark-theme {
     --fg-clr: var(--moon);
     --bg-clr: var(--rich-black);
     --shadow-color: var(--moonshine-shadow-clr);
     --rim-clr: var(--moonshine);
-    --highlight-clr: var(--highlight-clr);
+    --link-clr: var(--celestial-a75);
+    --highlight-clr: var(--orange);
 
     --rim-light-bg: linear-gradient(
-      5deg,
+      10deg,
+      var(--bg-clr) 33%,
+      var(--bg-clr) 90%,
+      var(--rim-clr) 100%
+    );
+    --category-rim-light-bg: linear-gradient(
+      35deg,
       var(--bg-clr) 33%,
       var(--bg-clr) 77%,
       var(--rim-clr) 100%
     );
     --rim-light-mask-bg: linear-gradient(3deg, transparent, var(--rim-clr));
+    --category-rim-light-mask-bg: linear-gradient(
+      33deg,
+      transparent,
+      var(--rim-clr)
+    );
 
     .nav-home,
     .nav-link {
@@ -460,7 +536,7 @@
 
     .nav-home {
       &:hover {
-        color: var(--orange);
+        color: var(--highlight-clr);
       }
     }
 
@@ -468,11 +544,11 @@
       opacity: 0.5;
       &:hover {
         opacity: 1;
-        border-bottom-color: var(--orange);
+        border-bottom-color: var(--highlight-clr);
       }
       &.active {
         opacity: 1;
-        border-bottom-color: var(--orange);
+        border-bottom-color: var(--highlight-clr);
         &.subactive:hover {
           opacity: 0.5;
         }
@@ -481,7 +557,7 @@
 
     body {
       background: linear-gradient(
-        5deg,
+        10deg,
         transparent 0%,
         var(--bg-clr) 35%,
         var(--moonshine) 100%
@@ -513,7 +589,7 @@
     .links {
       .link {
         a:hover {
-          color: var(--orange);
+          color: var(--highlight-clr);
         }
       }
     }
@@ -561,13 +637,6 @@
     .privacy,
     .post,
     .category-posts-transition-container {
-      background: var(--rim-light-bg), var(--bg-clr);
-      &::before {
-        background: var(--rim-light-mask-bg);
-      }
-      @media screen and (min-width: 640px) {
-        box-shadow: var(--shadow-elevation-high);
-      }
       h1,
       h2,
       h3,
@@ -588,7 +657,7 @@
         &:hover,
         &:focus,
         &:focus-visible {
-          border-bottom: 1px solid var(--orange);
+          border-bottom: 1px solid var(--highlight-clr);
           color: var(--celestial);
         }
       }
@@ -604,7 +673,7 @@
         background-color: var(--bg-clr);
       }
       .summary::first-letter {
-        color: var(--orange);
+        color: var(--highlight-clr);
       }
       .pubdate {
         color: var(--celestial-a75);
@@ -615,7 +684,7 @@
           &:focus,
           &:focus-visible,
           &:active {
-            color: var(--orange);
+            color: var(--highlight-clr);
           }
         }
       }
@@ -748,6 +817,27 @@
       }
     }
 
+    .category-posts-list {
+      .post-item {
+        .post-item-summary,
+        h3,
+        a,
+        p {
+          color: var(--fg-clr);
+        }
+        &:hover,
+        &:focus,
+        &:focus-within {
+          .post-item-image {
+            opacity: 1;
+          }
+          a h3 {
+            color: var(--orange);
+          }
+        }
+      }
+    }
+
     .page-navigation {
       h2 {
         color: var(--fg-clr);
@@ -795,14 +885,15 @@
 
     .page-navigation-list {
       a {
+        transition-duration: var(--transition-duration);
+        transition-property: color;
+        transition-timing-function: var(--transition-timing-function);
         color: var(--celestial-a75);
         &:hover,
         &:focus,
         &:focus,
-        &:focus-visible,
-        &:active,
-        &.active {
-          color: var(--celestial);
+        &:focus-visible {
+          color: var(--orange);
         }
         &.active::after {
           color: var(--orange);

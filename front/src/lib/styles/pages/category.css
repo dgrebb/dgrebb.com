@@ -11,7 +11,7 @@
     flex-direction: column;
     align-items: center;
     h1.page-heading {
-      margin-bottom: 0.5rem;
+      padding-bottom: 0.5rem;
     }
     .category-name {
       max-width: 77%;
@@ -19,7 +19,7 @@
     }
     .page-navigation.mini.top {
       position: absolute;
-      top: 4rem;
+      top: 2rem;
       right: 0;
       padding: 0;
     }
@@ -36,9 +36,12 @@
   }
   .category-posts-list {
     width: 100%;
-    @screen sm {
+    @media screen and (min-width: 640px) {
       float: left;
       width: 77%;
+    }
+    @media screen and (min-width: 900px) {
+      width: 80%;
     }
     .transition-elastic-fly-container {
       border-radius: 0.77rem;
@@ -61,29 +64,11 @@
     }
     .post-item {
       list-style-type: none;
-      &:first-of-type {
-      }
       .post-item-summary,
       a {
         display: flex;
         flex-direction: row;
-        opacity: 0.67;
-        transition: opacity 0.5s;
-        &:hover,
-        &:focus {
-          opacity: 1;
-        }
-      }
-      &:hover,
-      &:focus {
-        .post-item-summary,
-        a {
-          opacity: 0.8;
-        }
-        a:hover,
-        a:focus {
-          opacity: 1;
-        }
+        transition: color 0.5s;
       }
       .post-item-heading {
         display: flex;
@@ -101,7 +86,11 @@
         flex-shrink: 0;
         flex-direction: column;
         align-self: start;
+        opacity: 0.77;
         z-index: 3;
+        transition-duration: var(--transition-duration);
+        transition-property: opacity;
+        transition-timing-function: var(--transition-timing-function);
         margin-left: 1.75rem;
         border-radius: 100%;
         width: 77px;
@@ -118,9 +107,11 @@
     right: 0;
     float: right;
     opacity: 0.8;
-    width: 20%;
-    @screen sm {
+    padding: 0 0 0 1rem;
+    @media screen and (min-width: 640px) {
       display: block;
+    }
+    @media screen and (min-width: 1024px) {
       padding-right: 1.5rem;
     }
   }
