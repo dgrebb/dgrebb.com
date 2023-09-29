@@ -464,7 +464,7 @@ index a22f746..7457d68 100644
            </Grid>
          </Box>
 diff --git a/node_modules/@strapi/admin/admin/src/translations/en.json b/node_modules/@strapi/admin/admin/src/translations/en.json
-index 43e204c..7b80b88 100644
+index b63fbaf..854369d 100644
 --- a/node_modules/@strapi/admin/admin/src/translations/en.json
 +++ b/node_modules/@strapi/admin/admin/src/translations/en.json
 @@ -432,14 +432,20 @@
