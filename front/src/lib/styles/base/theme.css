@@ -86,6 +86,7 @@
     --shadow-color: var(--sunshine-shadow-clr);
     --rim-clr: var(--sun);
     --link-clr: var(--violet-a75);
+    --link-clr--hover: var(--jasper);
     --highlight-clr: var(--jasper);
 
     --rim-light-bg: linear-gradient(
@@ -488,12 +489,18 @@
         color: var(--fg-clr);
         &:hover,
         &:focus,
-        &:focus,
         &:focus-visible {
-          color: var(--highlight-clr);
+          color: var(--link-clr--hover);
         }
-        &.active::after {
-          color: var(--highlight-clr);
+        &.active {
+          &:hover,
+          &:focus,
+          &:focus-visible {
+            color: var(--fg-clr);
+          }
+          &::after {
+            color: var(--highlight-clr);
+          }
         }
       }
     }
@@ -508,6 +515,7 @@
     --shadow-color: var(--moonshine-shadow-clr);
     --rim-clr: var(--moonshine);
     --link-clr: var(--celestial-a75);
+    --link-clr--hover: var(--celestial);
     --highlight-clr: var(--orange);
 
     --rim-light-bg: linear-gradient(
@@ -891,12 +899,18 @@
         color: var(--celestial-a75);
         &:hover,
         &:focus,
-        &:focus,
         &:focus-visible {
-          color: var(--orange);
+          color: var(--link-clr--hover);
         }
-        &.active::after {
-          color: var(--orange);
+        &.active {
+          &:hover,
+          &:focus,
+          &:focus-visible {
+            color: var(--fg-clr);
+          }
+          &::after {
+            color: var(--highlight-clr);
+          }
         }
       }
     }

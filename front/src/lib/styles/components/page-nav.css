@@ -30,6 +30,7 @@
     content: '';
   }
   a.active {
+    cursor: default;
     padding-right: 1rem;
     &:after {
       top: calc(50% - 0.75rem);

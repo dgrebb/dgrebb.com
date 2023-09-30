@@ -22,25 +22,22 @@
 
 .header,
 .footer {
-  padding: 1.5rem 1rem;
   width: 100%;
   max-width: 72rem /* 1152px */;
-  @media screen and (min-width: 480px) {
-    padding: 1.25rem 1.75rem 0 1.75rem;
-  }
-  @media screen and (min-width: 1024px) {
-    padding-top: 3.5rem;
-  }
 }
 
 .header {
   display: flex;
   position: relative;
   align-items: center;
+  z-index: 1;
+  padding: 1rem;
   padding-bottom: 0;
-  @screen sm {
-    padding-top: 2rem;
-    padding-bottom: 0.75rem;
+  @media screen and (min-width: 480px) {
+    padding-top: 1.25rem;
+  }
+  @media screen and (min-width: 640px) {
+    padding: 2.5rem 2.25rem 0 2.25rem;
   }
 }
 body.ready .header {
