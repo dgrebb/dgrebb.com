@@ -19,9 +19,9 @@
     }
     .page-navigation.mini.top {
       position: absolute;
-      top: 2rem;
+      top: 2.5rem;
       right: 0;
-      padding: 0;
+      padding: 0 0.5rem;
     }
   }
   .category-posts-list,
