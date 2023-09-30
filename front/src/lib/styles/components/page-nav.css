@@ -9,7 +9,6 @@
   }
   li {
     position: relative;
-    overflow: hidden;
     font-size: 0.875rem;
     list-style-type: none;
   }
