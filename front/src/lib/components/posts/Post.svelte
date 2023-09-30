@@ -31,7 +31,7 @@
       })
     : false;
 
-  let toc, postNavCheckbox, miniPostNav;
+  let toc;
   $: toc = [];
   function filterTokens(event) {
     const tokens = event.detail.tokens;
