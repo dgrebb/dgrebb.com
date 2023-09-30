@@ -174,7 +174,7 @@ body {
   &:focus,
   &:focus-visible,
   &:active {
-    color: rgba(var(--link-rgb), 1);
+    color: var(--highlight-clr);
   }
   svg {
     margin-top: 1.25rem;
