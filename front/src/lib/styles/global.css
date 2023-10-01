@@ -39,9 +39,6 @@
 html.light-theme {
   @apply dg--light-theme;
   @apply github-light;
-  :focus-visible {
-    outline-width: 2px;
-  }
 }
 
 html.dark-theme {
@@ -53,9 +50,6 @@ html.dark-theme {
   :root {
     @apply dg--light-theme;
     @apply github-light;
-    :focus-visible {
-      outline-width: 2px;
-    }
   }
 }
 
