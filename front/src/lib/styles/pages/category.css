@@ -14,7 +14,7 @@
       padding-bottom: 0.5rem;
     }
     .category-name {
-      max-width: 76%;
+      max-width: 77%;
       text-align: center;
     }
     .page-navigation.mini.top {
@@ -41,7 +41,7 @@
     width: 100%;
     @media screen and (min-width: 640px) {
       float: left;
-      width: 76%;
+      width: 77%;
     }
     @media screen and (min-width: 900px) {
       width: 80%;
@@ -113,6 +113,7 @@
     padding: 0 0 0 1rem;
     @media screen and (min-width: 640px) {
       display: block;
+      width: 20%;
     }
     @media screen and (min-width: 1024px) {
       padding-right: 1.5rem;

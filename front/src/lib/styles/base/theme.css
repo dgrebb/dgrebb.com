@@ -402,8 +402,7 @@
       color: var(--darkgreen);
     }
 
-    .post,
-    .category {
+    .post {
       .aside {
         border-image: linear-gradient(
             to bottom,
@@ -819,8 +818,7 @@
       color: var(--green);
     }
 
-    .post,
-    .category {
+    .post {
       .aside {
         border-image: linear-gradient(
             to bottom,
