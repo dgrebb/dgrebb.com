@@ -61,6 +61,7 @@
 }
 
 .category-posts-transition-container {
+  box-shadow: var(--shadow-elevation-low);
   background: var(--rim-light-bg), var(--bg-clr);
   @media screen and (min-width: 640px) {
     box-shadow: var(--shadow-elevation-high);
@@ -90,16 +91,16 @@
     --highlight-clr: var(--jasper);
 
     --rim-light-bg: linear-gradient(
-      5deg,
+      10deg,
       var(--bg-clr) 33%,
       var(--bg-clr) 77%,
-      var(--sunshine) 100%
+      var(--sun) 133%
     );
     --category-rim-light-bg: linear-gradient(
       35deg,
       var(--bg-clr) 33%,
       var(--bg-clr) 77%,
-      var(--rim-clr) 100%
+      var(--sun) 150%
     );
     --rim-light-mask-bg: linear-gradient(3deg, transparent, var(--rim-clr));
     --category-rim-light-mask-bg: linear-gradient(
@@ -217,8 +218,8 @@
     }
 
     .privacy,
-    .post,
-    .category-posts-transition-container {
+    .post {
+      box-shadow: var(--shadow-elevation-low);
       background: var(--rim-light-bg), var(--bg-clr);
       &::before {
         background: var(--rim-light-mask-bg);
@@ -238,8 +239,7 @@
     }
 
     .privacy,
-    .post-article,
-    .category-list {
+    .post-article {
       a:not(.heading-anchor-link) {
         border-bottom: 1px solid var(--link-clr);
         color: var(--link-clr);
@@ -454,11 +454,19 @@
 
     .page-navigation.mini {
       input#page-navigation-checkbox {
+        &:focus,
+        &:focus-visible {
+          ~ label {
+            background-color: var(--sun-50);
+            color: var(--violet);
+          }
+        }
         ~ label {
           background-color: var(--lemon-50-a75);
           color: var(--violet-a50);
           &:hover,
-          &:focus {
+          &:focus,
+          &:focus-visible {
             background-color: var(--sun-50);
             color: var(--violet);
           }
@@ -657,8 +665,7 @@
     }
 
     .privacy,
-    .post-article,
-    .category-list {
+    .post-article {
       a:not(.heading-anchor-link) {
         border-bottom: 1px solid var(--celestial-a75);
         color: var(--celestial-a75);
@@ -864,11 +871,18 @@
 
     .page-navigation.mini {
       input#page-navigation-checkbox {
-        background-color: var(--rich-black-a75);
+        &:focus,
+        &:focus-visible {
+          ~ label {
+            background-color: var(--grape);
+            color: var(--celestial);
+          }
+        }
         ~ label {
           background-color: var(--oxford-blue-a50);
           &:hover,
-          &:focus {
+          &:focus,
+          &:focus-visible {
             background-color: var(--grape);
             color: var(--celestial);
           }
