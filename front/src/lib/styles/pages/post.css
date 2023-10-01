@@ -116,10 +116,24 @@
       top: -4rem;
     }
   }
+  h1.post-title,
+  .post-article {
+    @media screen and (min-width: 480px) {
+      top: -1rem;
+    }
+    @media screen and (min-width: 768px) {
+      top: -5rem;
+    }
+  }
   h1.post-title {
+    left: -1px;
     z-index: 5;
     margin-bottom: 0;
+    padding: 0 1rem;
     line-height: 1.2;
+    @media screen and (min-width: 480px) {
+      padding: 0 1.5rem;
+    }
   }
   .pubdate {
     font-size: 1rem;
@@ -169,7 +183,6 @@
     padding-left: 1.75rem;
   }
   @media screen and (min-width: 640px) {
-    padding: 1.75rem 0.75rem;
     font-size: 1.2rem;
   }
 }
@@ -203,23 +216,21 @@
 .post-article {
   display: block;
   float: none;
-  margin-bottom: 0;
+  margin-bottom: 3rem;
   padding-right: 1rem;
   padding-left: 1rem;
   width: 100%;
-  @media screen and (min-width: 333px) {
-    margin-bottom: -0.5rem;
-  }
   @media screen and (min-width: 480px) {
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
   }
   @media screen and (min-width: 640px) {
     float: left;
-    margin-bottom: -6rem;
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
+    margin-bottom: 1rem;
     width: 75%;
+  }
+  @media screen and (min-width: 768px) {
+    margin-bottom: -2rem;
   }
   a {
     transition-duration: var(--transition-duration);

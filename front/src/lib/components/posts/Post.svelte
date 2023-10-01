@@ -74,8 +74,8 @@
 {#if (contents && contents.length) || (categories && categories.length) || (related && related.length)}
   <PageNav {contents} {categories} {related} {pathname} mini {setActiveLink} />
 {/if}
+<h1 class="post-title">{title}</h1>
 <article class="post-article" class:full={!showAside}>
-  <h1 class="post-title">{title}</h1>
   <time
     class="pubdate"
     datetime={publishedAt}
