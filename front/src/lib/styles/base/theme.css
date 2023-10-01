@@ -433,7 +433,7 @@
     .category-posts-list {
       .post-item {
         .post-item-summary,
-        h3,
+        .post-title,
         a,
         p {
           color: var(--violet-a75);
@@ -444,7 +444,7 @@
           .post-item-image {
             opacity: 1;
           }
-          a h3 {
+          a .post-title {
             color: var(--jasper);
           }
         }
@@ -833,7 +833,7 @@
     .category-posts-list {
       .post-item {
         .post-item-summary,
-        h3,
+        .post-title,
         a,
         p {
           color: var(--fg-clr);
@@ -844,7 +844,7 @@
           .post-item-image {
             opacity: 1;
           }
-          a h3 {
+          a .post-title {
             color: var(--orange);
           }
         }

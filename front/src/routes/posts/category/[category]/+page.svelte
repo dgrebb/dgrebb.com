@@ -55,7 +55,7 @@
               <li class="post-item">
                 <a href="/post/{slug}">
                   <div class="post-item-heading">
-                    <h3 class="post-title">{title}</h3>
+                    <h2 class="post-title">{title}</h2>
                     <time datetime={date} class="post-date">{date}</time>
                   </div>
                   <div

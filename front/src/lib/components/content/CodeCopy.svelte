@@ -47,6 +47,7 @@
   on:mousedown={handleCopying}
   on:click={handleCopy}
   on:keyup={handleCopy}
+  aria-label="Copy this code snippet"
 >
   <svg
     class="icon-code-copy"
