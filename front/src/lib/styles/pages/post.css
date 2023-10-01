@@ -239,10 +239,9 @@
         opacity 500ms ease-in-out,
         color 500ms;
       border: none;
-      padding: 0 0.5rem;
       font-size: 1rem;
       @media screen and (min-width: 480px) {
-        left: -1.5rem;
+        left: -1rem;
       }
       @screen md {
         left: -2.5rem;
