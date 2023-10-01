@@ -1,11 +1,11 @@
 .privacy {
-  margin-top: 1rem;
-  font-size: 1rem;
-  max-width: 56rem;
-  padding: 1.25rem;
   position: relative;
   border-radius: 0.77rem;
   background-color: rgba(var(--background-saturated), 0.77);
+  padding: 1.25rem;
+  padding-bottom: 0;
+  max-width: 56rem;
+  font-size: 1rem;
   @media screen and (min-width: 640px) {
     margin-top: 1rem;
     padding-top: 7.77rem;
