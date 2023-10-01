@@ -10,17 +10,21 @@
     top 0.3s ease,
     opacity 0.3s ease,
     color 0.3s ease;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
-  background-color: rgb(var(--background-end-rgb));
-  padding: 0.75rem 1.25rem;
+  box-shadow: var(--shadow-elevation-low);
+  background-color: var(--bg-clr);
+  padding: 0.5rem 1rem;
   &:focus,
   &:focus-visible {
     top: 2rem;
     opacity: 1;
   }
+  @media screen and (min-width: 640px) {
+    padding: 0.75rem 1.25rem;
+  }
 }
 
 .nav-home {
+  vertical-align: bottom;
   transition: unset;
   transition: font-size, color;
   transition-duration: var(--transition-duration);
@@ -61,7 +65,7 @@
 }
 
 .nav-link {
-  vertical-align: text-top;
+  vertical-align: bottom;
   transition: opacity, border;
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
