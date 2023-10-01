@@ -105,28 +105,21 @@
       }
     }
   }
-  h1.post-title,
   .post-article,
   .aside,
   .aside-toggle {
     position: relative;
-    top: -1rem;
     z-index: 8;
     @screen sm {
-      top: -1.6rem;
     }
     @screen md {
-      top: -6.3rem;
+      top: -4rem;
     }
   }
   h1.post-title {
     z-index: 5;
     margin-bottom: 0;
-    padding: 0 1rem;
     line-height: 1.2;
-    @media screen and (min-width: 480px) {
-      padding: 0 1rem;
-    }
   }
   .pubdate {
     font-size: 1rem;
@@ -259,10 +252,6 @@
       &:focus,
       &:focus-visible {
         opacity: 1;
-        outline-color: var(--highlight-clr);
-        outline-style: dashed;
-        outline-width: 2px;
-        outline-offset: 0.25rem;
       }
     }
     &:hover,
