@@ -6,11 +6,13 @@ By accessing or using this website, you're happily agreeing to the terms laid ou
 
 1. **Personal Information**: Rest assured, we don't collect personal details apart from browser and system information. We've gone to great lengths to remove any personally identifiable information from our Analytics and Error Logging tools (more on those below). This includes visitors' IP addresses and even the fancy-sounding `server_name`, which refers to your computer's network name.
 
-   1. **[Plausible Analytics](https://plausible.io)** is our trusty sidekick for keeping track of pageviews and counting visitors. You might enjoy checking out the company's [delightful post about privacy policies](https://plausible.io/blog/privacy-policy-page#privacy-policy-examples), which inspired most of this document. For more specific details about Plausible's privacy practices, please see the [Third-Party Services](#third-party-services) section below.
+   1. **[Plausible Analytics](https://plausible.io)** is our trusty sidekick for keeping track of pageviews and counting visitors. You might enjoy checking out the company's [delightful post about privacy policies](https://plausible.io/blog/privacy-policy-page#privacy-policy-examples), which inspired most of this document. We [publicly share analytics data](https://p.dgrebb.com/) for all to view :) 
+   
+    For more specific details about Plausible's privacy practices, please see the [Third-Party Services](#third-party-services) section below. 
 
    2. **[Sentry.io](https://www.sentry.io)** comes to our rescue when it comes to capturing errors on both the client (browser) and server (500s, 400s, and 300s). Sentry helps diagnose problems with this site by capturing browser and system information. It even allows us to "playback" user interactions on the site, which is quite handy for figuring out broken code or user experience blunders.
 
-    Now, here's the thing: Sentry, by default, logs IP addresses. But fear not! We scrub this data before it reaches the sentry.io services and servers. The JavaScript responsible for this scrubbing is cleverly hidden away from evident view on main dgrebb.com pages. However, you can [view the source](https://www.wikihow.com/View-Source-Code) of our static [404 page](/404.html). In in the `<head>` (look for the `<script>` tag with `id="four-ohhhhh-four"`). Go ahead, take a peek:
+    Now, here's the thing: Sentry, by default, logs IP addresses. But fear not! We scrub this data before it reaches the sentry.io services and servers. The JavaScript responsible for this scrubbing is cleverly hidden away from evident view on main dgrebb.com pages. However, you can [view the source](https://www.wikihow.com/View-Source-Code) of our static, unminified [404 page](/404.html). In in the `<head>` (look for the `<script>` tag with `id="four-ohhhhh-four"`). Go ahead, take a peek:
 
     ```javascript
     beforeSend(event) {
@@ -69,4 +71,4 @@ We reserve the right to update or modify this Privacy Policy at any time. The mo
 
 If you have any questions, concerns, or requests regarding this Privacy Policy, don't hesitate to reach out to us at privacy [at] dgrebb.com. We're here to listen, assist, and make you smile.
 
-By using this website, you acknowledge that you've read and understood this Privacy Policy, and you wholeheartedly consent to the collection, use, and disclosure of your information as described herein. Now go forth and explore the wonders of dgrebb.com!
+By using this website, you acknowledge that you've read and understood this Privacy Policy, and you wholeheartedly consent to the collection, use, and disclosure of your information as described herein. Now go forth and explore the wonders of [dgrebb.com](https://www.dgrebb.com)!
