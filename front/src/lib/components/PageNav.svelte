@@ -37,7 +37,7 @@
     <label
       for="page-navigation-checkbox"
       class="page-navigation-toggle"
-      aria-label="Toggle Page Navigation"
+      aria-label="Show Page Navigation"
     >
       <ListIcon class="page-navigation-open" />
       <ClosePageNav classList="page-navigation-close" />
