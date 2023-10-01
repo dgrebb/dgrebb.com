@@ -33,9 +33,12 @@
       type="checkbox"
       name="page-navigation-checkbox"
       id="page-navigation-checkbox"
-      tabindex="-1"
     />
-    <label for="page-navigation-checkbox" class="page-navigation-toggle">
+    <label
+      for="page-navigation-checkbox"
+      class="page-navigation-toggle"
+      aria-label="Toggle Page Navigation"
+    >
       <ListIcon class="page-navigation-open" />
       <ClosePageNav classList="page-navigation-close" />
     </label>

@@ -68,8 +68,29 @@
       padding: 0.33rem 0.33rem 0.36rem 0.36rem;
     }
     input#page-navigation-checkbox {
-      display: none;
-      border-radius: 0.77rem;
+      position: absolute;
+      opacity: 0;
+      outline: none;
+      border-radius: 0.33rem;
+      width: 0;
+      height: 0;
+      &:focus,
+      &:focus-visible {
+        ~ label {
+          mix-blend-mode: difference;
+          outline-style: dotted;
+          outline-width: thin;
+          outline-offset: 1px;
+        }
+      }
+      &:checked {
+        &:focus,
+        &:focus-visible {
+          ~ label {
+            mix-blend-mode: normal;
+          }
+        }
+      }
       ~ label {
         .page-navigation-open {
           display: block;
@@ -81,9 +102,10 @@
           position: relative;
           top: -1.85rem;
           right: -333px;
+          visibility: hidden;
           opacity: 0;
           backdrop-filter: blur(0.5rem);
-          transition-property:
+          transition:
             right var(--transition-duration),
             opacity var(--transition-duration),
             max-height 0;
@@ -118,11 +140,8 @@
           }
           & + .page-navigation-list {
             right: 0;
+            visibility: visible;
             opacity: 1;
-            transition:
-              max-height 0 0,
-              opacity,
-              max-height;
             max-height: 100%;
             & label.bottom {
               box-shadow: none;
