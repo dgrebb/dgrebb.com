@@ -278,6 +278,15 @@
   h2.footnotes-title {
     margin-top: 3rem;
   }
+  ul {
+    li {
+      margin-left: 1rem;
+      list-style-type: disc;
+      li {
+        margin-left: 0.5rem;
+      }
+    }
+  }
   blockquote {
     @apply dg--font-lb;
     position: relative;
