@@ -77,8 +77,9 @@ jobs:
         id: vars
         env:
           name: "${{ env.BRANCH_NAME }}"
+          environment: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
         run: |
-          echo "RELEASE_NAME=stg-${name/\//-}" >> $GITHUB_ENV
+          echo "RELEASE_NAME=${environment}-${name/\//-}" >> $GITHUB_ENV
           echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
 
       - name: 𐂷 Checkout
