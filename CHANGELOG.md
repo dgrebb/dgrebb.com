@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.1] - 2023-10-04
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Content padding/margin adjustments (#732/#721)
+
 ## [3.0.0] - 2023-10-01
 
 ### 💡 Features
