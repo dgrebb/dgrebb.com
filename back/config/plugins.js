@@ -45,12 +45,6 @@ module.exports = ({ env }) => {
         },
       },
     },
-    "strapi-blurhash": {
-      enabled: true,
-      config: {
-        regenerateOnUpdate: true,
-      },
-    },
     seo: {
       enabled: true,
     },
