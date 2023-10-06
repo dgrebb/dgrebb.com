@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.2] - 2023-10-06
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(back)*** Backend dependency refresh
+- ***(backstop)*** Updates gh-stg backstop refs
+- ***(ci)*** Updates all github workflows' node-version to 18.18.0
+- ***(front)*** Updates frontend deps
+- ***(release)*** Downmerge main to develop
+
 ## [3.0.1] - 2023-10-04
 
 ### 🐛 Bug Fixes
