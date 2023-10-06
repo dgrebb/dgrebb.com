@@ -4,6 +4,7 @@
     "version": "3.0.2",
     "tag_format": "$major.$minor.$patch$prerelease",
     "version_type": "semver",
+    "version_files": ["back/package.json", "front/package.json"],
     "bump_message": "release $current_version \u2192 $new_version",
     "customize": {
       "info": "This is customized info",
