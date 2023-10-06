@@ -18,13 +18,13 @@ switch (env) {
   case 'production':
     ID = 'Production';
     URL = 'https://www.dgrebb.com';
-    envDir = 'prod';
+    envDir = 'prd';
     break;
 
   case 'gh-production':
     ID = 'Github PRD';
     URL = 'https://www.dgrebb.com';
-    envDir = 'gh-prod';
+    envDir = 'gh-prd';
     break;
 
   default:
