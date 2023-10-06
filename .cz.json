@@ -13,8 +13,8 @@
       "schema": "<type>(<scope>): <subject>\n \n<body>\n \n(BREAKING CHANGE: )<footer>",
       "schema_pattern": "^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test){1}(\\([\\w\\-\\.]+\\))?(!)?: ([\\w \\-'])+([\\s\\S]*)",
       "commit_parser": "^((?P<change_type>chore|build|ci|docs|feat|fix|perf|refactor|revert|style|test|BREAKING CHANGE)(?:\\((?P<scope>[^()\r\n]*)\\)|\\()?(?P<breaking>!)?|\\w+!):\\s(?P<message>.*)?",
-      "changelog_pattern": "^(.+!|BREAKING CHANGE|chore|build|ci|docs|feat|fix|perf|refactor|revert|style|test):",
-      "bump_pattern": "^(.+!|BREAKING CHANGE|chore|docs|feat|fix|perf|refactor|revert|style|test):",
+      "changelog_pattern": "^(BREAKING CHANGE|chore|build|ci|docs|feat|fix|perf|refactor|revert|style|test)",
+      "bump_pattern": "^(BREAKING CHANGE|chore|docs|feat|fix|perf|refactor|revert|style|test)",
       "bump_map": {
         ".+!": "MAJOR",
         "BREAKING CHANGE": "MAJOR",
