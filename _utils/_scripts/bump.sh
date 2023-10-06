@@ -37,13 +37,13 @@ echo # newline
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     exit 1
 fi
-cdfront
-npm version $ver
-cdback
-npm version $ver
+# cdfront
+# npm version $ver
+# cdback
+# npm version $ver
 cd $directory/../
 git add .
-cz bump
+cz bump --files-only
 echo "${branch} created!"
 echo
 read -p $'\e[31mWould you like to push to origin now?\e[0m: ' -n 1 -r
