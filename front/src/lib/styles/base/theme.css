@@ -89,6 +89,8 @@
     --link-clr: var(--violet-a75);
     --link-clr--hover: var(--jasper);
     --highlight-clr: var(--jasper);
+    --tag-clr: var(--sand-a50);
+    --tag-border-clr: var(--jasper-a50);
 
     --rim-light-bg: linear-gradient(
       10deg,
@@ -438,13 +440,13 @@
         p {
           color: var(--violet-a75);
         }
-        &:hover,
-        &:focus,
-        &:focus-within {
+        a:hover,
+        a:focus,
+        a:focus-within {
           .post-item-image {
             opacity: 1;
           }
-          a .post-title {
+          .post-title {
             color: var(--jasper);
           }
         }
@@ -524,6 +526,8 @@
     --link-clr: var(--celestial-a75);
     --link-clr--hover: var(--celestial);
     --highlight-clr: var(--orange);
+    --tag-clr: var(--grape);
+    --tag-border-clr: var(--celestial-a30);
 
     --rim-light-bg: linear-gradient(
       10deg,
@@ -838,13 +842,13 @@
         p {
           color: var(--fg-clr);
         }
-        &:hover,
-        &:focus,
-        &:focus-within {
+        a:hover,
+        a:focus,
+        a:focus-within {
           .post-item-image {
             opacity: 1;
           }
-          a .post-title {
+          .post-title {
             color: var(--orange);
           }
         }

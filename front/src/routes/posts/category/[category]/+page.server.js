@@ -3,17 +3,20 @@ import api, { categoryAPI } from '@api';
 import {
   PUBLIC_API_URL as URL,
   PUBLIC_API_PATH_POSTS as POSTS,
+  PUBLIC_POSTS_PREVIEW_PARAMS as POSTS_PARAMS,
   PUBLIC_API_PATH_CATEGORY as CAT,
-  PUBLIC_CATEGORY_PAGE_PARAMS as PARAMS,
+  PUBLIC_CATEGORY_PAGE_PARAMS as CAT_PARAMS,
 } from '$env/static/public';
 
 export async function load({ params }) {
   const { category } = params;
   const categoriesSingletonEndpoint =
     URL + '/categories-page?populate[0]=seo.metaImage';
-  const categoryCollectionEndpoint = URL + '/categories';
+  const categoryCollectionEndpoint =
+    URL + '/categories?sort[0]=name&filters[slug][$not]=all';
   const categoryEndpoint = URL + CAT + category + '?populate[0]=seo.metaImage';
-  const postsEndpoint = URL + POSTS + PARAMS + category;
+  const postsEndpoint =
+    URL + POSTS + (category !== 'all' ? CAT_PARAMS + category : POSTS_PARAMS);
   const [
     categoriesSingletonContent,
     categoryCollectionContent,
@@ -65,6 +68,7 @@ export async function load({ params }) {
   };
 
   return {
+    category,
     categoriesSingletonContent,
     categoryCollectionContent,
     categoryContent,
