@@ -2,7 +2,7 @@
   import { navigating } from '$app/stores';
   import { circInOut } from 'svelte/easing';
   import { fly } from 'svelte/transition';
-  import { motionless } from '@utils';
+  import { motionless, scrollTop } from '@utils';
   export let transitionKey;
   export let classList = false;
   export let duration = 333;
@@ -49,6 +49,7 @@
           ],
           { duration, fill: 'both', easing: 'ease-in-out' }
         );
+        scrollTop();
       }
     }
   }
