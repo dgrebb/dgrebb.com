@@ -21,9 +21,9 @@
       position: absolute;
       top: 2.5rem;
       right: 0;
-      padding: 0 0.5rem;
-      label:not(.bottom) {
-        top: 3px;
+      padding: 0.5rem;
+      .page-navigation-toggle {
+        padding: 0.25rem;
       }
     }
   }
@@ -77,6 +77,16 @@
         display: flex;
         flex-direction: row;
         transition: color 0.5s;
+        &:hover,
+        &:focus,
+        &:focus-within {
+          .post-title {
+            color: var(--highlight-clr);
+          }
+          .post-item-image {
+            filter: brightness(100%);
+          }
+        }
       }
       .post-item-heading {
         display: flex;
@@ -104,10 +114,10 @@
         flex-shrink: 0;
         flex-direction: column;
         align-self: start;
-        opacity: 0.77;
         z-index: 3;
+        filter: brightness(80%);
         transition-duration: var(--transition-duration);
-        transition-property: opacity;
+        transition-property: filter;
         transition-timing-function: var(--transition-timing-function);
         margin-left: 0.75rem;
         border-radius: 100%;
