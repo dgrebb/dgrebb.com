@@ -54,7 +54,7 @@
     @media screen and (min-width: 640px) {
       display: none;
     }
-    label {
+    .page-navigation-toggle {
       display: inline-block;
       position: relative;
       vertical-align: middle;
@@ -65,7 +65,6 @@
       cursor: pointer;
       box-shadow: var(--shadow-elevation-low);
       border-radius: 0.33rem;
-      padding: 0.33rem 0.33rem 0.36rem 0.36rem;
     }
     input#page-navigation-checkbox {
       position: absolute;
@@ -83,15 +82,7 @@
           outline-offset: 1px;
         }
       }
-      &:checked {
-        &:focus,
-        &:focus-visible {
-          ~ label {
-            mix-blend-mode: normal;
-          }
-        }
-      }
-      ~ label {
+      ~ .page-navigation-toggle {
         .page-navigation-open {
           display: block;
         }
@@ -130,8 +121,20 @@
         }
       }
       &:checked {
-        ~ label {
+        &:focus,
+        &:focus-visible {
+          ~ .page-navigation-toggle {
+            mix-blend-mode: normal;
+          }
+        }
+        ~ .page-navigation-toggle {
           box-shadow: none;
+          background-color: transparent;
+          &:hover,
+          &:focus,
+          &:focus-visible {
+            background-color: transparent;
+          }
           .page-navigation-open {
             display: none;
           }
@@ -143,8 +146,14 @@
             visibility: visible;
             opacity: 1;
             max-height: 100%;
-            & label.bottom {
+            label.bottom {
               box-shadow: none;
+              background-color: transparent;
+              &:hover,
+              &:focus,
+              &:focus-visible {
+                background-color: transparent;
+              }
               .page-navigation-open {
                 display: none;
               }

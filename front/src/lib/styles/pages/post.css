@@ -153,9 +153,6 @@
       list-style-type: none;
       @apply dg--font-lb;
     }
-    .page-navigation-category-all {
-      display: none;
-    }
     /* &.show {
       display: block;
       width: 25%;
@@ -166,6 +163,16 @@
       width: 25%;
       h2 {
         font-size: 1.33rem;
+      }
+    }
+  }
+  .page-navigation {
+    .page-navigation-category-all {
+      display: none;
+    }
+    &.mini {
+      .page-navigation-toggle {
+        padding: 0.25rem 0.33rem;
       }
     }
   }
