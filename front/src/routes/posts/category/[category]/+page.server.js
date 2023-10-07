@@ -9,7 +9,7 @@ import {
 } from '$env/static/public';
 
 export async function load({ params }) {
-  const { category } = params || 'all';
+  const category = params.category || 'all';
   const categoryPageEndpoint =
     URL + '/categories-page?populate[0]=seo.metaImage';
   const categoriesListEndpoint =
