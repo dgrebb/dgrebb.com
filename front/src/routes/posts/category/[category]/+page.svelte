@@ -41,7 +41,7 @@
           {name}
         </h2>
       </TransitionFade> -->
-      <PageNav {categories} mini top {pathname} {setActiveLink} />
+      <PageNav {categories} mini top {pathname} {setActiveLink} {category} />
     </header>
     <div class="category-posts-list">
       <Flourish />
