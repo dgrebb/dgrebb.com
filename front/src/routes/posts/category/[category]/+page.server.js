@@ -9,38 +9,39 @@ import {
 } from '$env/static/public';
 
 export async function load({ params }) {
-  const { category } = params;
-  const categoriesSingletonEndpoint =
+  const { category } = params || 'all';
+  const categoryPageEndpoint =
     URL + '/categories-page?populate[0]=seo.metaImage';
-  const categoryCollectionEndpoint =
+  const categoriesListEndpoint =
     URL + '/categories?sort[0]=name&filters[slug][$not]=all';
-  const categoryEndpoint = URL + CAT + category + '?populate[0]=seo.metaImage';
+  const individualCategoryEndpoint =
+    URL + CAT + category + '?populate[0]=seo.metaImage';
   const postsEndpoint =
     URL + POSTS + (category !== 'all' ? CAT_PARAMS + category : POSTS_PARAMS);
   const [
-    categoriesSingletonContent,
-    categoryCollectionContent,
-    categoryContent,
+    categoryPageContent,
+    categoriesListContent,
+    individualCategoryContent,
     posts,
   ] = await Promise.all([
-    api(categoriesSingletonEndpoint),
-    api(categoryCollectionEndpoint),
-    categoryAPI(categoryEndpoint),
+    api(categoryPageEndpoint),
+    api(categoriesListEndpoint),
+    categoryAPI(individualCategoryEndpoint),
     api(postsEndpoint),
   ]);
 
-  if (!categoryContent) {
+  if (!individualCategoryContent) {
     console.info({
       params,
       postsEndpoint,
-      categoryEndpoint,
+      individualCategoryEndpoint,
     });
     throw error(404, {
       message: 'Category not found!',
     });
   }
 
-  const { name, seo } = categoryContent;
+  const { name, seo } = individualCategoryContent;
 
   const pageMeta = {
     ...seo,
@@ -49,7 +50,7 @@ export async function load({ params }) {
     titleTemplate: '%s | Categories | Dan Grebb',
     metaDescription:
       seo?.metaDescription ||
-      categoryContent?.description ||
+      individualCategoryContent?.description ||
       `Here's a collection of posts about ${name}`,
   };
 
@@ -59,19 +60,19 @@ export async function load({ params }) {
   pageMeta.metaImage = {
     url:
       pageMeta?.metaImage?.formats?.large?.url ||
-      categoriesSingletonContent?.seo?.metaImage?.formats?.large?.url ||
+      categoryPageContent?.seo?.metaImage?.formats?.large?.url ||
       'https://s.dgrebb.com/img/default_categories_34209a13ff.png',
     alternativeText:
       pageMeta?.metaImage?.alternativeText ||
-      categoriesSingletonContent?.seo?.metaImage?.alternativeText ||
+      categoryPageContent?.seo?.metaImage?.alternativeText ||
       'A tree with various objects floating around it, signifying many different categories of information.',
   };
 
   return {
     category,
-    categoriesSingletonContent,
-    categoryCollectionContent,
-    categoryContent,
+    categoryPageContent,
+    categoriesListContent,
+    individualCategoryContent,
     posts: posts || [],
     pageMeta,
   };
