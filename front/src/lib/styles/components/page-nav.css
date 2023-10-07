@@ -32,7 +32,7 @@
     cursor: default;
     padding-right: 1rem;
     &:after {
-      top: calc(50% - 0.75rem);
+      top: calc(50% - 0.7rem);
       right: 0;
       padding-left: 0.5rem;
       content: '•';

@@ -110,8 +110,6 @@
   .aside-toggle {
     position: relative;
     z-index: 8;
-    @screen sm {
-    }
     @screen md {
       top: -4rem;
     }
@@ -154,6 +152,9 @@
       font-size: 0.875rem;
       list-style-type: none;
       @apply dg--font-lb;
+    }
+    .page-navigation-category-all {
+      display: none;
     }
     /* &.show {
       display: block;
