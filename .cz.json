@@ -4,12 +4,6 @@
     "version": "3.0.2",
     "tag_format": "$major.$minor.$patch$prerelease",
     "version_type": "semver",
-    "version_files": [
-      "back/package.json",
-      "back/package-lock.json",
-      "front/package.json",
-      "front/package-lock.json"
-    ],
     "bump_message": "release $current_version \u2192 $new_version",
     "customize": {
       "info": "This is customized info",
