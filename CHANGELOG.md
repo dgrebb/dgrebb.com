@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.1.0] - 2023-10-07
+
+### 💡 Features
+
+- ***(front)*** Introduces the all categories page, tags, api, and interaction
+
+### 🐛 Bug Fixes
+
+- ***(ci)*** Adjusts bump prompt and command order for restoring and cutting release
+- ***(front)*** Adjusts category tag breakpoints/margins when multiple rows
+- ***(front)*** Adjusts category page redirect and updates sitemap configuration
+
+### ♻️  Refactor
+
+- ***(front)*** Refactors mini-nav toggle padding; post preview image hover effect
+- ***(front)*** Moves tag styling to anchor
+
+### ✅ Testing
+
+- ***(backstop)*** Update naming and add production backstop refs (#761)
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(ci)*** Removes node package files from commitizen bump
+- ***(ci)*** Includes lockfiles in bump
+- ***(ci)*** Adjusts bump.sh and .cz.json `bump` and `changelog` patterns
+- ***(ci)*** Adjusts bump.sh to only apply file changes, not tag
+- ***(front)*** Adjusts server api response naming for category pages
+
 ## [3.0.2] - 2023-10-06
 
 ### ⚙️  Miscellaneous Tasks
