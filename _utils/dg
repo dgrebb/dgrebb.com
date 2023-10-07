@@ -46,6 +46,10 @@ while test "$1" != --; do
         /bin/bash $directory/_scripts/bump.sh
         break
         ;;
+    ch | changelog)
+        /bin/bash $directory/_scripts/changelog.sh
+        break
+        ;;
     g | github)
         open https://github.com/dgrebb/dgrebb.com
         break
