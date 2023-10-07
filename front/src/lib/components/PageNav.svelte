@@ -66,6 +66,7 @@
             }}
             href="/posts/category/all/"
             class="transition-link"
+            class:active={category === 'all'}
             use:activeLink
           >
             All

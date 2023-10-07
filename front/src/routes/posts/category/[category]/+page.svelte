@@ -14,9 +14,9 @@
   const route = $page.route.id;
   $: ({
     category,
-    categoriesSingletonContent: { headline },
-    categoryCollectionContent: categories,
-    categoryContent: { name },
+    categoryPageContent: { headline },
+    categoriesListContent: categories,
+    individualCategoryContent: { name },
     posts,
     pageMeta,
     pathname,
