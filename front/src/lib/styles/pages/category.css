@@ -121,37 +121,37 @@
       }
       li.category-tag {
         display: inline-block;
-        opacity: 0.7;
-        transition-duration: var(--transition-duration);
-        transition-property: opacity, background-color, color;
         margin: 0 0.5rem 0 0;
-        color: var(--fg-clr);
-        font-size: 0.75rem;
-        font-family: var(--font-ps);
-        @media screen and (min-width: 480px) {
-          margin-bottom: 0.33rem;
-          box-shadow: var(--shadow-elevation-low);
-          border: thin solid var(--tag-border-clr);
-          border-radius: 1.5rem;
-          background-color: var(--tag-clr);
-          padding: 0.175rem 0.75rem 0.175rem 0.5rem;
-        }
-        &:hover,
-        &:focus,
-        &:focus-visible {
-          opacity: 1;
-        }
         &:last-of-type {
           margin-right: 0;
         }
         &.active {
-          opacity: 1;
           a {
+            opacity: 1;
             cursor: default;
           }
         }
         a {
           align-items: center;
+          opacity: 0.7;
+          transition-duration: var(--transition-duration);
+          transition-property: opacity, background-color, color;
+          color: var(--fg-clr);
+          font-size: 0.75rem;
+          font-family: var(--font-ps);
+          @media screen and (min-width: 480px) {
+            margin-bottom: 0.33rem;
+            box-shadow: var(--shadow-elevation-low);
+            border: thin solid var(--tag-border-clr);
+            border-radius: 1.5rem;
+            background-color: var(--tag-clr);
+            padding: 0.175rem 0.75rem 0.175rem 0.5rem;
+          }
+          &:hover,
+          &:focus,
+          &:focus-visible {
+            opacity: 1;
+          }
         }
         .category-tag-icon {
           display: inline;
