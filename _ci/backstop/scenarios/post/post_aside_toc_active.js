@@ -1,5 +1,5 @@
 const { URL } = require('../vars');
-const POST_URL = `${URL}/post/chicken-caesar-salad-an-overrated-concoction-of-lettuce-and-delusion#step-2-caesar-dressing-the-holy-grail-of-salad-sauces`;
+const POST_URL = `${URL}/post/hello-world/#what`;
 const { aboveSmallViewports } = require('../vars.js');
 
 module.exports = {

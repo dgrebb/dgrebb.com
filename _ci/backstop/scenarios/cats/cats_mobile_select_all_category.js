@@ -1,12 +1,16 @@
 const { URL, upToMediumViewports } = require('../vars');
-const POST_URL = `${URL}/post/hello-world/`;
+const CATS_URL = `${URL}/posts/category/thoughts/`;
 
 module.exports = {
-  label: 'Post - Mobile Expand Mininav',
-  url: POST_URL,
+  label: 'Cats - Mobile - Select "All" Category',
+  url: CATS_URL,
   viewports: upToMediumViewports,
+  delay: 2000,
   onReadyScript: 'playwright/onReadyPosts.js',
-  clickSelector: '.page-navigation.mini .page-navigation-toggle',
+  clickSelectors: [
+    '.page-navigation.mini .page-navigation-toggle',
+    '.mini .page-navigation-category-all a',
+  ],
   postInteractionWait: 1000,
   selectors: ['viewport'],
   selectorExpansion: false,

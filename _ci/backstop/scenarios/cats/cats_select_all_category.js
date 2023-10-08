@@ -1,11 +1,14 @@
 const { URL, aboveSmallViewports } = require('../vars');
-const CATS_URL = `${URL}/posts/category/development/`;
+const CATS_URL = `${URL}/posts/category/thoughts/`;
 
 module.exports = {
-  label: 'Cats - Select "Tests" Category',
+  label: 'Cats - Select "All" Category',
   url: CATS_URL,
   viewports: aboveSmallViewports,
-  clickSelector: '.category .aside a[href="/posts/category/tests/"]',
+  delay: 1000,
+  onReadyScript: 'playwright/onReadyCats.js',
+  clickSelector:
+    '.aside .page-navigation ul.page-navigation-list .page-navigation-category-all a',
   postInteractionWait: 1000,
   selectors: ['viewport'],
   selectorExpansion: false,

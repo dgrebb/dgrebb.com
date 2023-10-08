@@ -5,8 +5,7 @@ module.exports = {
   label: 'Post - Navigate From Posts',
   url: POSTS_URL,
   onReadyScript: 'playwright/onReadyPosts.js',
-  clickSelector:
-    'a[href="/post/chicken-caesar-salad-an-overrated-concoction-of-lettuce-and-delusion/"]',
+  clickSelector: 'a[href="/post/hello-world/"]',
   postInteractionWait: 1500,
   selectors: ['document'],
   selectorExpansion: false,

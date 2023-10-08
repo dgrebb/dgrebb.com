@@ -1,6 +1,9 @@
 const { ID, envDir, allViewports } = require('./scenarios/vars.js');
 const { homepage, privacy, posts, post, cats } = require('./scenarios');
 
+/**TODO: fix me: 
+  cats.cats_mobile_select_all_category, */
+
 let scenarios = [
   homepage.homepage_default,
   homepage.theme_switch,
@@ -15,20 +18,12 @@ let scenarios = [
   post.post_mobile_mininav_expand_toc_active,
   cats.cats_mobile,
   cats.cats_navigate_from_post,
-  cats.cats_mobile_select_tests_category,
   cats.cats_mobile_mini_nav_active,
-  cats.cats_select_tests_category,
+  cats.cats_mobile_select_all_category,
+  cats.cats_select_all_category,
 ];
 
-if (process.env.ENVIRONMENT === 'production') {
-  scenarios = [
-    homepage.homepage_default,
-    homepage.theme_switch,
-    privacy.privacy_default,
-  ];
-}
-
-let captureLimit = 15;
+let captureLimit = 5;
 let compareLimit = 100;
 
 if (process.env.ENVIRONMENT.includes('gh-')) {
