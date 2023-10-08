@@ -2,6 +2,11 @@ name: 🙈 Run BackstopJS
 run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - BackstopJS ${{ github.event_name == 'pull_request' && format('PR #{0}: {1} on ', github.event.pull_request.number, github.event.pull_request.title) || format('on latest {0}', github.ref_name) }}"
 
 on:
+  pull_request:
+    paths:
+      - "_ci/backstop/**"
+      - "!_ci/backstop/bd/bitmaps_reference/**"
+    branches: [develop]
   workflow_call:
     secrets:
       GH_WORKFLOW_TOKEN:
