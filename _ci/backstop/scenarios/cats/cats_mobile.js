@@ -1,5 +1,5 @@
 const { URL, upToMediumViewports } = require('../vars');
-const POST_URL = `${URL}/posts/category/development/`;
+const POST_URL = `${URL}/posts/category/thoughts/`;
 
 module.exports = {
   label: 'Cats - Mobile',

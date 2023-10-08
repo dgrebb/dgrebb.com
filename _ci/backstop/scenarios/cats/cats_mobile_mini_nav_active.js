@@ -1,12 +1,12 @@
 const { URL, upToMediumViewports } = require('../vars');
-const CATS_URL = `${URL}/posts/category/development/`;
+const CATS_URL = `${URL}/posts/category/thoughts/`;
 
 module.exports = {
-  label: 'Cats - Active "Tests" Category',
+  label: 'Cats - Active "Thoughts" Category',
   url: CATS_URL,
   viewports: upToMediumViewports,
+  delay: 2000,
   onReadyScript: 'playwright/onReadyCatsMiniNav.js',
-  clickSelector: '.page-navigation.mini.top a[href="/posts/category/tests/"]',
   postInteractionWait: 2000,
   selectors: ['viewport'],
   selectorExpansion: false,
