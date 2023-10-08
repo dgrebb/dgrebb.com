@@ -48,7 +48,7 @@ export async function load({ route }) {
    * Isolates the `metaImage` object properties we care about
    */
   pageMeta.metaImage = pageMeta?.metaImage?.data?.attributes || {
-    url: 'https://s.dgrebb.com/img/default_posts_meta_Image_02548488e7.jpg',
+    url: 'https://s.dgrebb.com/img/default_posts_f88d8a16f5.png',
     alternativeText: 'A writing desk surrounded by house plants',
   };
 
