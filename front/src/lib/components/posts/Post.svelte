@@ -82,7 +82,13 @@
     title={updatedAt ? `Updated ${up}` : false}>{pub}</time
   >
   {#if summary}
-    <p class="summary">{summary}</p>
+    <div class="summary">
+      <SvelteMarkdown
+        source={summary}
+        renderers={{ link: Link, heading: PostHeading }}
+        on:parsed={handleParsed}
+      />
+    </div>
   {/if}
   {#if content}
     {#each content as c, i}

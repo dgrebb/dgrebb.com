@@ -260,7 +260,7 @@
     }
 
     .post {
-      .summary::first-letter {
+      .summary p::first-letter {
         color: var(--highlight-clr);
       }
       .pubdate {
@@ -688,7 +688,7 @@
       @media screen and (max-width: 639px) {
         background-color: var(--bg-clr);
       }
-      .summary::first-letter {
+      .summary p::first-letter {
         color: var(--highlight-clr);
       }
       .pubdate {
