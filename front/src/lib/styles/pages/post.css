@@ -273,6 +273,7 @@
       font-size: 1.2rem;
     }
     p {
+      margin: 0;
       em {
         font-family: var(--font-lb);
       }
