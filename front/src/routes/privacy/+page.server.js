@@ -21,7 +21,8 @@ export async function load({ params }) {
     ...seo,
     type: 'website',
     metaTitle: seo?.metaTitle || title,
-    titleTemplate: '%s | Dan Grebb',
+    socialTitle: `${seo?.metaTitle || title} « Dan Grebb`,
+    titleTemplate: '%s « Dan Grebb',
     metaDescription: seo?.metaDescription || 'Privacy Practices at dgrebb.com',
   };
 
@@ -29,7 +30,7 @@ export async function load({ params }) {
    * Isolates the `metaImage` object properties we care about
    */
   pageMeta.metaImage = pageMeta?.metaImage?.data?.attributes || {
-    url: 'https://s.dgrebb.com/img/default_privacy_meta_Image_c5581a5569.jpg',
+    url: 'https://s.dgrebb.com/img/default_privacy_963504effe.webp',
     alternativeText: 'The Circuit of Life',
   };
   return {

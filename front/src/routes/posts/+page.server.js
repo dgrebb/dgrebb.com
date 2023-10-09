@@ -39,17 +39,16 @@ export async function load({ route }) {
   var pageMeta = {
     ...page.seo,
     type: 'website',
-    metaTitle: page?.seo?.metaTitle || page.headline,
+    metaTitle: 'Writing « Dan Grebb',
   };
-
-  pageMeta.titleTemplate = '%s | Dan Grebb';
 
   /**
    * Isolates the `metaImage` object properties we care about
    */
   pageMeta.metaImage = pageMeta?.metaImage?.data?.attributes || {
-    url: 'https://s.dgrebb.com/img/default_posts_f88d8a16f5.png',
-    alternativeText: 'A writing desk surrounded by house plants',
+    url: 'https://s.dgrebb.com/img/default_posts_0d52ddf1f2.webp',
+    alternativeText:
+      'A desk with various electronics, music instruments, audio equipment, and books laid out in an organized fashion.',
   };
 
   return {

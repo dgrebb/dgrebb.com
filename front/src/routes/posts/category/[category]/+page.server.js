@@ -41,19 +41,28 @@ export async function load({ params }) {
     });
   }
 
-  const { name, seo } = individualCategoryContent;
+  const {
+    name,
+    seo,
+    description: categoryDescription,
+  } = individualCategoryContent;
 
   const pageMeta = {
     ...seo,
     type: 'website',
     metaTitle: seo?.metaTitle || name,
-    titleTemplate: '%s | Categories | Dan Grebb',
+    socialTitle: `${seo?.metaTitle || name} « Writing by Category « Dan Grebb`,
+    titleTemplate: `%s « Writing by Category « Dan Grebb`,
     metaDescription:
-      seo?.metaDescription ||
-      individualCategoryContent?.description ||
-      `Here's a collection of posts about ${name}`,
+      categoryDescription !== null
+        ? categoryDescription
+        : `Posts about "${name}"`,
   };
 
+  console.log(
+    '🚀 ~ file: +page.server.js:51 ~ load ~ pageMeta:',
+    pageMeta.metaDescription
+  );
   /**
    * Isolates the `metaImage` object properties we care about
    */
@@ -61,7 +70,7 @@ export async function load({ params }) {
     url:
       pageMeta?.metaImage?.formats?.large?.url ||
       categoryPageContent?.seo?.metaImage?.formats?.large?.url ||
-      'https://s.dgrebb.com/img/default_categories_34209a13ff.png',
+      'https://s.dgrebb.com/img/default_categories_ad8e01e054.webp',
     alternativeText:
       pageMeta?.metaImage?.alternativeText ||
       categoryPageContent?.seo?.metaImage?.alternativeText ||
