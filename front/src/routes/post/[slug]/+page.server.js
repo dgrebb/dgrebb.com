@@ -32,7 +32,8 @@ export async function load({ params: { slug }, route }) {
     publishedAt,
     type: 'article',
     metaTitle: seo?.metaTitle || title,
-    titleTemplate: '%s | Writing | Dan Grebb',
+    socialTitle: `${seo?.metaTitle || title} « Writing « Dan Grebb`,
+    titleTemplate: '%s « Writing « Dan Grebb',
     metaDescription:
       seo?.metaDescription ||
       summary ||
@@ -44,8 +45,9 @@ export async function load({ params: { slug }, route }) {
    */
   pageMeta.metaImage = pageMeta?.metaImage?.data?.attributes ||
     hero?.data?.attributes || {
-      url: 'https://s.dgrebb.com/img/default_banner_2a50e43220.png',
-      alternativeText: 'The Circuit of Life',
+      url: 'https://s.dgrebb.com/img/default_posts_0d52ddf1f2.webp',
+      alternativeText:
+        'A desk with various electronics, music instruments, audio equipment, and books laid out in an organized fashion.',
     };
 
   return {

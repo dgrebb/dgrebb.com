@@ -6,6 +6,7 @@
 
   const {
     metaTitle,
+    socialTitle,
     metaImage,
     metaDescription,
     metaRobots,
@@ -65,7 +66,7 @@
     },
   ]}
   openGraph={{
-    title: metaTitle,
+    title: socialTitle || metaTitle,
     description: metaDescription,
     url: canonicalURL || false,
     type: type,
@@ -80,8 +81,8 @@
     site: '@dgrebb',
     creator: '@dgrebb',
     cardType: 'summary_large_image',
-    title: twitter?.title || pageMeta.title,
-    description: twitter?.description || pageMeta.description,
+    title: twitter?.title || socialTitle || pageMeta.title,
+    description: twitter?.description || pageMeta.metaDescription,
     image: twitter?.image?.data?.attributes?.url || metaImage.url,
     imageAlt:
       twitter?.image?.data?.attributes?.alternativeText || metaImage.alt,

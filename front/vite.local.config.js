@@ -10,7 +10,7 @@ const sourceMapsUploadOptions = {
   authToken: process.env.SENTRY_AUTH_TOKEN,
   uploadSourceMaps: true,
   telemetry: false,
-  debug: true,
+  debug: false,
   org: 'dgrebb',
   project: 'dgrebb',
   include: ['build'],

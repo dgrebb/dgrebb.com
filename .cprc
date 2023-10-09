@@ -44,7 +44,7 @@
               "name": "ci"
             },
             {
-              "description": "Changes that affect the build system or external dependencies (example scopes: docker, npm).",
+              "description": "build: Use this for ongoing work that should be tracked in the changelog.",
               "name": "build"
             },
             {
