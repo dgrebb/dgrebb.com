@@ -14,7 +14,6 @@
     error: $page.error.message,
     data: $page.data,
   });
-  console.log('🚀 ~ file: +error.svelte:11 ~ $page:', $page);
   Sentry.captureMessage('Page Not Found', {
     tags: {
       status: 'NOT_FOUND',
@@ -22,6 +21,10 @@
     status: 'NOT_FOUND',
   });
 </script>
+
+<svelte:head>
+  <title>404!</title>
+</svelte:head>
 
 <PageTransition transitionKey={pathname}>
   <section class="not-found">

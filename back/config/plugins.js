@@ -22,6 +22,8 @@ module.exports = ({ env }) => {
                     60 * 60 * 24 * 7
                   ),
                   Bucket: env("AWS_S3_BUCKET"),
+                  CacheControl:
+                    "max-age=2853213,public,s-maxage=31536000,immutable",
                 },
               },
             },

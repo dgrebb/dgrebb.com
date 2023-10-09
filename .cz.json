@@ -101,7 +101,7 @@
             },
             {
               "value": "build",
-              "name": "build: Changes that affect the build system or external dependencies (example scopes: pip, docker, npm).",
+              "name": "build: Use this for ongoing work that should be tracked in the changelog.",
               "key": "b"
             },
             {
