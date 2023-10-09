@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.2.0] - 2023-10-09
+
+### 💡 Features
+
+- ***(front/back)*** Enhances SEO hydration and sets media upload `CacheControl`
+- ***(utils)*** Adds standalone changelog utility script
+
+### 🐛 Bug Fixes
+
+- ***(github)*** Manually installs playwright prior to running backstop
+
+### ♻️  Refactor
+
+- ***(backstop)*** Refactors backstop tests using available selectors from prod
+
+### 💚 Continuous Integration
+
+- ***(backstop)*** Adds paths and PR event to backstop test workflow
+
+### ✅ Testing
+
+- ***(backstop)*** Updates gh-stg refs
+- ***(backstop)*** Updates local backstop refs
+- ***(backstop)*** Updates gh-stg refs
+
 ## [3.1.0] - 2023-10-07
 
 ### 💡 Features
