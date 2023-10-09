@@ -56,13 +56,9 @@ export async function load({ params }) {
     metaDescription:
       categoryDescription !== null
         ? categoryDescription
-        : `Posts about "${name}"`,
+        : `"Read what I have to say about ${name}"`,
   };
 
-  console.log(
-    '🚀 ~ file: +page.server.js:51 ~ load ~ pageMeta:',
-    pageMeta.metaDescription
-  );
   /**
    * Isolates the `metaImage` object properties we care about
    */
