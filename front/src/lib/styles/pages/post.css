@@ -177,25 +177,8 @@
     }
   }
 }
-
-.post .summary {
-  @apply dg--font-lb;
-  text-wrap: pretty;
-  margin: 0;
-  padding: 1.5rem 1rem 1rem 1rem;
-  font-size: 1.2rem;
-  font-size: 1rem;
-  text-indent: 0;
-  @media screen and (min-width: 480px) {
-    padding-right: 1.75rem;
-    padding-left: 1.75rem;
-  }
-  @media screen and (min-width: 640px) {
-    font-size: 1.2rem;
-  }
-}
 @supports (initial-letter: 2) {
-  .post .summary::first-letter {
+  .post .summary p::first-letter {
     @apply dg--font-lbb;
     -webkit-initial-letter: 2;
     initial-letter: 2;
@@ -205,7 +188,7 @@
   }
 }
 @supports not (initial-letter: 2) {
-  .post .summary::first-letter {
+  .post .summary p::first-letter {
     @apply dg--font-lbb;
     vertical-align: middle;
     float: left;
@@ -240,11 +223,6 @@
   @media screen and (min-width: 768px) {
     margin-bottom: -2rem;
   }
-  a {
-    transition-duration: var(--transition-duration);
-    transition-property: border, color;
-    transition-timing-function: var(--transition-timing-function);
-  }
   .post-heading {
     position: relative;
     .heading-anchor-link {
@@ -278,6 +256,50 @@
         opacity: 1;
       }
     }
+  }
+  .summary {
+    @apply dg--font-lb;
+    text-wrap: pretty;
+    margin: 0;
+    padding: 1.5rem 1rem 1rem 1rem;
+    font-size: 1.2rem;
+    font-size: 1rem;
+    text-indent: 0;
+    @media screen and (min-width: 480px) {
+      padding-right: 1.75rem;
+      padding-left: 1.75rem;
+    }
+    @media screen and (min-width: 640px) {
+      font-size: 1.2rem;
+    }
+    p {
+      em {
+        font-family: var(--font-lb);
+      }
+      strong,
+      em strong,
+      strong em {
+        font-weight: 700;
+        font-family: var(--font-lbb);
+      }
+    }
+  }
+  p {
+    em {
+      font-family: var(--font-psxl);
+    }
+    strong {
+      font-family: var(--font-psb);
+    }
+    strong em,
+    em strong {
+      font-family: var(--font-psb);
+    }
+  }
+  a {
+    transition-duration: var(--transition-duration);
+    transition-property: border, color;
+    transition-timing-function: var(--transition-timing-function);
   }
   h2:first-of-type {
     margin-top: 0;
