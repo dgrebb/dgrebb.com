@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.3.0] - 2023-10-10
+
+### 💡 Features
+
+- ***(front)*** Enhances post summary with markdown and typefaces for em/strong
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Adjusts margin on post summary p tag now wrapped in parent div
+
+### ✅ Testing
+
+- ***(backstop)*** Updates gh-stg ref for cats select all
+
 ## [3.2.0] - 2023-10-09
 
 ### 💡 Features
