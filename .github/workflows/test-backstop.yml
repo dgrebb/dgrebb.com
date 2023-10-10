@@ -110,7 +110,7 @@ jobs:
       - name: Summary
         if: always()
         env:
-          REPORT_PATH: ${{ github.ref_name == 'main' && 'prod' || 'stg' }}
+          REPORT_PATH: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
         run: |
           cd _ci/backstop
           FAIL_TABLE=$(./_utils/parse-report.sh ${{ vars.REPORTS_DOMAIN }} $REPORT_PATH)
