@@ -2,11 +2,6 @@ name: 🙈 BackstopJS
 run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - BackstopJS ${{ github.event_name == 'pull_request' && format('PR #{0}: {1} on ', github.event.pull_request.number, github.event.pull_request.title) || format('on latest {0}', github.ref_name) }}"
 
 on:
-  pull_request:
-    paths:
-      - "_ci/backstop/**"
-      - "!_ci/backstop/bd/bitmaps_reference/**"
-    branches: [develop]
   workflow_call:
     secrets:
       GH_WORKFLOW_TOKEN:
@@ -79,28 +74,32 @@ jobs:
           REPORT_PATH: ${{ github.ref_name == 'main' && 'prod' || 'stg' }}
         run: |
           cd _ci/backstop && ENV=$DEPLOY_ENV npm run test.gh
+          cd _ci/backstop && ENV=$DEPLOY_ENV npm run test.gh
+          FAIL_TABLE=$(./_utils/parse-report.sh ${{ vars.REPORTS_DOMAIN }} $REPORT_PATH)
+          echo $FAIL_TABLE >> $GITHUB_ENV
 
       - name: Summarize Failures
-        if: failure()
+        if: ${{ failure() }}
         env:
           REPORT_PATH: ${{ github.ref_name == 'main' && 'prod' || 'stg' }}
         run: |
           cd _ci/backstop
-          FAIL_TABLE=$(./_utils/parse-report.sh ${{ vars.REPORTS_DOMAIN }} $REPORT_PATH)
           echo "# Backstop Summary" >> $GITHUB_STEP_SUMMARY
           echo "## 📋 <a href=\"http://${{ vars.REPORTS_DOMAIN }}/backstop/html_report/gh-$REPORT_PATH/\" target=\"_blank\">View Report</a>" >> $GITHUB_STEP_SUMMARY
-          echo $FAIL_TABLE >> $GITHUB_STEP_SUMMARY
+          echo ${{ env.FAIL_TABLE }} >> $GITHUB_STEP_SUMMARY
 
       - name: Summarize Success
-        if: success()
+        if: ${{ success() }}
+        env:
+          REPORT_PATH: ${{ github.ref_name == 'main' && 'prod' || 'stg' }}
         run: |
-          FAIL_TABLE=$(./_utils/parse-report.sh ${{ vars.REPORTS_DOMAIN }} $REPORT_PATH)
           echo "# Backstop Summary" >> $GITHUB_STEP_SUMMARY
           echo "## 📋 <a href=\"http://${{ vars.REPORTS_DOMAIN }}/backstop/html_report/gh-$REPORT_PATH/\" target=\"_blank\">View Report</a>" >> $GITHUB_STEP_SUMMARY
           echo "## 100% Passing Visual Regresstion!" >> $GITHUB_STEP_SUMMARY
           echo "### 🥳 Congratulations!" >> $GITHUB_STEP_SUMMARY
 
       - name: ⬆ Uploading Test Report
+        id: upload
         if: always()
         uses: jakejarvis/s3-sync-action@master
         with:
@@ -122,7 +121,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      - name: ⬆ Uploading Report
+      - name: 🛟 Saving Artifact
         # if: ${{ steps.backstop.conclusion == 'failure' }}
         uses: actions/upload-artifact@v3
         with:
