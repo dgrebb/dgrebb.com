@@ -5,10 +5,24 @@
   export let pageFenceClickHandler = null;
   export let activeLink = null;
   export let setActiveLink = null;
+
+  const TOCAnchorFocus = (e) => {
+    if (e.key === 'Enter' || e.keyCode === 13) {
+      const anchor = e.target.getAttribute('href');
+      const focusTarget = document.querySelector(
+        `.post-article a[href="${anchor}"]`
+      );
+      e.preventDefault();
+      pageFenceClickHandler(e);
+      focusTarget.focus();
+    } else {
+      return;
+    }
+  };
 </script>
 
 <ul class="toc">
-  {#each Object.values(contents) as { text, link }, i}
+  {#each contents as { text, link }, i}
     <li>
       <a
         on:click={(e) => {
@@ -20,6 +34,9 @@
         data-sveltekit-replacestate
         data-sveltekit-noscroll="false"
         use:activeLink
+        on:keydown={(e) => {
+          TOCAnchorFocus(e);
+        }}
       >
         <SvelteMarkdown source={text} isInline />
       </a>
