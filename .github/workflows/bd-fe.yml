@@ -60,7 +60,7 @@ env:
 
 jobs:
   build_deploy:
-    name: 🎁 Pushing to ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
+    name: Deploying to ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
     runs-on: ubuntu-latest
     concurrency:
       group: build-deploy
