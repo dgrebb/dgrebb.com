@@ -3,14 +3,7 @@ run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - 🧼 Linting ${{
 
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - "front/**"
-    branches: [main, develop]
-  push:
-    paths:
-      - "front/**"
-    branches: [main, develop]
+  workflow_call:
 
 env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
