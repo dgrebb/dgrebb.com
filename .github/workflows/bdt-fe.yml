@@ -21,8 +21,13 @@ env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
 jobs:
+  lint:
+    name: 💨
+    uses: ./.github/workflows/lint.yml
+    
   build_deploy:
     name: 🚀 
+    needs: lint
     uses: ./.github/workflows/bd-fe.yml
     secrets:
       AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}

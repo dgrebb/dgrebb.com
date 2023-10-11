@@ -74,12 +74,11 @@ jobs:
           REPORT_PATH: ${{ github.ref_name == 'main' && 'prod' || 'stg' }}
         run: |
           cd _ci/backstop && ENV=$DEPLOY_ENV npm run test.gh
-          cd _ci/backstop && ENV=$DEPLOY_ENV npm run test.gh
           FAIL_TABLE=$(./_utils/parse-report.sh ${{ vars.REPORTS_DOMAIN }} $REPORT_PATH)
           echo $FAIL_TABLE >> $GITHUB_ENV
 
       - name: Summarize Failures
-        if: ${{ failure() }}
+        if: steps.backstop.outcome != 'success'
         env:
           REPORT_PATH: ${{ github.ref_name == 'main' && 'prod' || 'stg' }}
         run: |
@@ -89,7 +88,7 @@ jobs:
           echo ${{ env.FAIL_TABLE }} >> $GITHUB_STEP_SUMMARY
 
       - name: Summarize Success
-        if: ${{ success() }}
+        if: steps.backstop.outcome == 'success'
         env:
           REPORT_PATH: ${{ github.ref_name == 'main' && 'prod' || 'stg' }}
         run: |
