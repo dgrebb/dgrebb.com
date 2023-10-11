@@ -65,7 +65,7 @@
 }
 
 .nav-link {
-  vertical-align: bottom;
+  vertical-align: middle;
   transition: opacity, border;
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
