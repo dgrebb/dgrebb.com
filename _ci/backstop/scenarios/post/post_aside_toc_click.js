@@ -6,7 +6,7 @@ module.exports = {
   url: POST_URL,
   viewports: aboveSmallViewports,
   clickSelector: '.post .aside .page-navigation-list a[href="#what"]',
-  postInteractionWait: 800,
+  postInteractionWait: 2000,
   selectors: ['viewport'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,
