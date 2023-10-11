@@ -9,7 +9,7 @@ module.exports = {
   onReadyScript: 'playwright/onReadyCats.js',
   clickSelector:
     '.aside .page-navigation ul.page-navigation-list .page-navigation-category-all a',
-  postInteractionWait: 1000,
+  postInteractionWait: 2000,
   selectors: ['viewport'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,
