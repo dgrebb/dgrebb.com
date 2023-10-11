@@ -23,7 +23,7 @@ env:
 
 jobs:
   lighthouse:
-    name: ⛵️ Auditing
+    name: ⛵️ Lighthouse
     runs-on: ubuntu-latest
 
     environment:
