@@ -19,7 +19,7 @@ env:
 
 jobs:
   psi:
-    name: 📊 PSI
+    name: 📊 Page Speed Insights
     runs-on: ubuntu-latest
 
     environment:
