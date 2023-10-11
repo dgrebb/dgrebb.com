@@ -79,11 +79,26 @@ jobs:
           REPORT_PATH: ${{ github.ref_name == 'main' && 'prod' || 'stg' }}
         run: |
           cd _ci/backstop && ENV=$DEPLOY_ENV npm run test.gh
+
+      - name: Summarize Failures
+        if: failure()
+        env:
+          REPORT_PATH: ${{ github.ref_name == 'main' && 'prod' || 'stg' }}
+        run: |
+          cd _ci/backstop
           FAIL_TABLE=$(./_utils/parse-report.sh ${{ vars.REPORTS_DOMAIN }} $REPORT_PATH)
-          echo "COMMENT_BODY<<EOF" >> $GITHUB_ENV
-          # 🙈 BackstopJS Regressions Detected
-          echo $FAIL_TABLE >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+          echo "# Backstop Summary" >> $GITHUB_STEP_SUMMARY
+          echo "## 📋 <a href=\"http://${{ vars.REPORTS_DOMAIN }}/backstop/html_report/gh-$REPORT_PATH/\" target=\"_blank\">View Report</a>" >> $GITHUB_STEP_SUMMARY
+          echo $FAIL_TABLE >> $GITHUB_STEP_SUMMARY
+
+      - name: Summarize Success
+        if: success()
+        run: |
+          FAIL_TABLE=$(./_utils/parse-report.sh ${{ vars.REPORTS_DOMAIN }} $REPORT_PATH)
+          echo "# Backstop Summary" >> $GITHUB_STEP_SUMMARY
+          echo "## 📋 <a href=\"http://${{ vars.REPORTS_DOMAIN }}/backstop/html_report/gh-$REPORT_PATH/\" target=\"_blank\">View Report</a>" >> $GITHUB_STEP_SUMMARY
+          echo "## 100% Passing Visual Regresstion!" >> $GITHUB_STEP_SUMMARY
+          echo "### 🥳 Congratulations!" >> $GITHUB_STEP_SUMMARY
 
       - name: ⬆ Uploading Test Report
         if: always()
@@ -107,25 +122,14 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      - name: Summary
-        if: always()
-        env:
-          REPORT_PATH: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
-        run: |
-          cd _ci/backstop
-          FAIL_TABLE=$(./_utils/parse-report.sh ${{ vars.REPORTS_DOMAIN }} $REPORT_PATH)
-          echo "# Backstop Summary" >> $GITHUB_STEP_SUMMARY
-          echo "## 📋 <a href=\"http://${{ vars.REPORTS_DOMAIN }}/backstop/html_report/gh-$REPORT_PATH/\" target=\"_blank\">View Report</a>" >> $GITHUB_STEP_SUMMARY
-          echo $FAIL_TABLE >> $GITHUB_STEP_SUMMARY
-
-      - name: 🔥 Bummer. Uploading Failed Artifacts!
+      - name: ⬆ Uploading Report
         # if: ${{ steps.backstop.conclusion == 'failure' }}
         uses: actions/upload-artifact@v3
         with:
           name: backstop-report
           retention-days: 3
           path: _ci/backstop/bd/
-          
+
       - name: Delete Previous deployments
         uses: actions/github-script@v6
         with:
