@@ -27,6 +27,8 @@ export const focusTrap = (node, enabled) => {
       const miniNavToggle = document.getElementById('page-navigation-checkbox');
       miniNavToggle.checked = false;
       miniNavToggle.focus();
+    } else {
+      return;
     }
   });
 };

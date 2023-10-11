@@ -8,4 +8,7 @@
     transition-duration: var(--transition-duration);
     transition-timing-function: var(--transition-timing-function);
   }
+  .hidden {
+    display: none;
+  }
 }
