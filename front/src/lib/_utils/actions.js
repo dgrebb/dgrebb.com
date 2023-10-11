@@ -7,13 +7,13 @@
  */
 export const focusTrap = (node, enabled) => {
   if (!enabled) return false;
-  var focusableEls = node.querySelectorAll(
-    'a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])'
-  );
-  var firstFocusableEl = focusableEls[0];
-  var lastFocusableEl = focusableEls[focusableEls.length - 1];
 
   node.addEventListener('keydown', function (e) {
+    var focusableEls = node.querySelectorAll(
+      'a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])'
+    );
+    var firstFocusableEl = focusableEls[0];
+    var lastFocusableEl = focusableEls[focusableEls.length - 1];
     var isTab = e.key === 'Tab' || e.keyCode === 9;
     var isEsc = e.key === 'Escape' || e.keyCode === 27;
     if (isTab) {

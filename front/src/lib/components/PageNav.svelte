@@ -57,21 +57,23 @@
     {#if categories && categories.length}
       <h2>Categories</h2>
       <ul class="page-navigation-list">
-        <li class="page-navigation-category-all">
-          <a
-            on:click={(e) => {
-              categoryClick(pathname, name);
-              setActiveLink(e);
-              if (mini) pageFenceClickHandler();
-            }}
-            href="/posts/category/all/"
-            class="transition-link"
-            class:active={category === 'all'}
-            use:activeLink
-          >
-            All
-          </a>
-        </li>
+        {#if !contents}
+          <li class="page-navigation-category-all">
+            <a
+              on:click={(e) => {
+                categoryClick(pathname, name);
+                setActiveLink(e);
+                if (mini) pageFenceClickHandler();
+              }}
+              href="/posts/category/all/"
+              class="transition-link"
+              class:active={category === 'all'}
+              use:activeLink
+            >
+              All
+            </a>
+          </li>
+        {/if}
         {#each categories as { attributes: { name, slug } }, i}
           <li>
             <a
