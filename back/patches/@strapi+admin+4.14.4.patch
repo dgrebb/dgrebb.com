@@ -12,7 +12,7 @@ index bbe0ef2..2c60534 100644
      this.appPlugins = appPlugins || {};
      this.library = library;
 diff --git a/node_modules/@strapi/admin/admin/src/components/AuthenticatedApp/index.js b/node_modules/@strapi/admin/admin/src/components/AuthenticatedApp/index.js
-index 10c5073..fab4892 100644
+index 6ac2f59..3559049 100644
 --- a/node_modules/@strapi/admin/admin/src/components/AuthenticatedApp/index.js
 +++ b/node_modules/@strapi/admin/admin/src/components/AuthenticatedApp/index.js
 @@ -14,7 +14,7 @@ import { useQueries } from 'react-query';
@@ -24,7 +24,7 @@ index 10c5073..fab4892 100644
  import PluginsInitializer from '../PluginsInitializer';
  import RBACProvider from '../RBACProvider';
  
-@@ -110,7 +110,7 @@ const AuthenticatedApp = () => {
+@@ -106,7 +106,7 @@ const AuthenticatedApp = () => {
        userDisplayName={userDisplayName}
      >
        <RBACProvider permissions={permissions} refetchPermissions={refetch}>
@@ -464,7 +464,7 @@ index a22f746..7457d68 100644
            </Grid>
          </Box>
 diff --git a/node_modules/@strapi/admin/admin/src/translations/en.json b/node_modules/@strapi/admin/admin/src/translations/en.json
-index b63fbaf..854369d 100644
+index 86764be..9835a94 100644
 --- a/node_modules/@strapi/admin/admin/src/translations/en.json
 +++ b/node_modules/@strapi/admin/admin/src/translations/en.json
 @@ -432,14 +432,20 @@
