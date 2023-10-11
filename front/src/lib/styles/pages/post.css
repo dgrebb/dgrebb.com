@@ -129,6 +129,7 @@
     margin-bottom: 0;
     padding: 0 1rem;
     line-height: 1.2;
+    text-wrap: balance;
     @media screen and (min-width: 480px) {
       padding: 0 1.5rem;
     }
