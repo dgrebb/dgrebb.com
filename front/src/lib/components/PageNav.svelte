@@ -1,8 +1,8 @@
 <script>
-  import { onMount } from 'svelte';
   import TableOfContents from '@components/content/TableOfContents.svelte';
   import ClosePageNav from '@components/icons/ClosePageNav.svelte';
   import { categoryClick, relatedClick } from '@utils/uiHelpers.js';
+  import { focusTrap } from '@utils/actions.js';
   import ListIcon from '~icons/gg/list';
 
   export let contents = false;
@@ -44,7 +44,7 @@
       <ClosePageNav classList="page-navigation-close" />
     </label>
   {/if}
-  <div class="page-navigation-list">
+  <div class="page-navigation-list" use:focusTrap={mini}>
     {#if contents && contents.length}
       <h2>Table of Contents</h2>
       <TableOfContents
