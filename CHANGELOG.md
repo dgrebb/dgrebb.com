@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.5.0] - 2023-10-11
+
+### 💡 Features
+
+- ***(ci)*** Adds linting as a prerequiste for deployments
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Renames creative commons svg and import
+- ***(front)*** Fixes focusTrap loop index (#804)
+
+### ✅ Testing
+
+- ***(backstop)*** Updates backstop gh-stg refs post-footer content fix
+- ***(backstop)*** Updates backstop workflow summary outputs
+- ***(backstop)*** Adds success summary to backstop workflow
+- ***(backstop)*** Updates gh-prd refs with latest changes
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(back)*** Updates to and patches strapi@4.14.4
+- ***(backstop)*** Adjusts failure summary output vars
+
 ## [3.4.0] - 2023-10-11
 
 ### 💡 Features
