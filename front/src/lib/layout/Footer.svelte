@@ -1,5 +1,5 @@
 <script>
-  import CC from '@components/icons/CC.svelte';
+  import CreativeCommons from '@components/icons/CreativeCommons.svelte';
   export let copyleft;
   export let copyright;
   const year = new Date().getFullYear();
@@ -10,8 +10,8 @@
     {#if copyleft}{@html copyleft}{/if}
   </p>
   <p>
-    <CC />
-    {#if copyright}{@html copyright}{/if}{year} A.D. | Some Rights Reserved |
+    <CreativeCommons />
+    {#if copyright}{copyright}{/if}{year} A.D. | Some Rights Reserved |
     <a href="/privacy">Privacy Policy</a>
   </p>
 </small>
