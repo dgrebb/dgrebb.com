@@ -33,6 +33,7 @@
   text-rendering: optimizeLegibility !important;
   :focus-visible {
     outline-offset: 0.25rem;
+    border-bottom: 0 !important;
   }
 }
 
