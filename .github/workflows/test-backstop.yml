@@ -33,7 +33,7 @@ env:
 
 jobs:
   backstop:
-    name: 🧐 Test
+    name: 🙈 BackstopJS
     runs-on: ubuntu-latest
 
     concurrency:
