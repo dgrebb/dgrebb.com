@@ -110,8 +110,6 @@ jobs:
           echo PUBLIC_SENTRY_DSN=${{ secrets.PUBLIC_SENTRY_DSN }} >> front/.env
           echo PUBLIC_ENV=${{ secrets.PUBLIC_ENV }} >> front/.env
           cat front/.env
-          echo "RELEASE_NAME=stg-${name/\//-}" >> $GITHUB_ENV
-          echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
 
       - name: ⬢ Setup Node & Cache
         uses: actions/setup-node@v3
