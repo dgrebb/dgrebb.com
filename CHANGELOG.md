@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.4.0] - 2023-10-11
+
+### 💡 Features
+
+- ***(front)*** Enhances mini PageNav TOC keyboard navigation focus (#712)
+- ***(front)*** Adds focusTrap action and implementation on PageNav (#711)
+
+### 🐛 Bug Fixes
+
+- ***(ci)*** Removes second set of gh env exports
+- ***(front)*** Adds  to post headline
+- ***(github)*** Updates reports path in summary
+
+### ♻️  Refactor
+
+- ***(ci)*** Reduces cli prompt lengths and adds back bump commit message
+
+### 🪮  Styling
+
+- ***(front)*** Adjusts gradient lengths
+- ***(github)*** Adjusts naming of workflow steps and jobs
+
+### ✅ Testing
+
+- ***(backstop)*** Updates gh-stg refs post-gradient updates
+- ***(backstop)*** Updates test wait times for pagescroll
+- ***(backstop)*** Updates gh-prd backstop refs
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(github)*** Improves on workflow naming conventions
+
 ## [3.3.0] - 2023-10-10
 
 ### 💡 Features

@@ -9,31 +9,39 @@ curr=$(cz version -p)
 ver=${str//tag to create: /}
 git cliff -c $config --unreleased --tag $ver --prepend ${file}
 git ls-files --modified
-read -p $'\e[31mCut the release branch now?\e[0m: ' -n 1 -r
 echo # newline
+read -p $'\e[31mCut the release branch now?\e[0m: ' -n 1 -r
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-    git status
-    read -p $'\e[31mKeep the CHANGELOG.md updates?\e[0m: ' -n 1 -r
     echo # newline
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        git restore CHANGELOG.md
-        exit 1
-    else
-        git add .
-        git commit -m "chore(release): prepare for ${ver}"
-    fi
-    exit 1
+    echo 'OK. Changes have been removed from the log.'
+    git status
+    exit 0
 else
+echo # newline
     branch=$(git branch --show-current)
     [[ $branch != release* ]] && git checkout -b release/$ver
     branch=$(git branch --show-current)
     echo "${branch} created!"
+    echo # newline
+    git status
+    echo # newline
+    read -p $'\e[31mCommit the CHANGELOG.md updates?\e[0m: ' -n 1 -r
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo # newline
+        git restore CHANGELOG.md
+        exit 0
+    else
+        echo # newline
+        git add .
+        git commit -m "chore(release): prepare for ${ver}"
+    fi
 fi
-read -p $'\e[31mBump the version now?\e[0m: ' -n 1 -r
 echo # newline
+read -p $'\e[31mBump the version now?\e[0m: ' -n 1 -r
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-    exit 1
+    exit 0
 else
+    echo # newline
     cdfront
     npm version $ver -s
     cdback
@@ -42,27 +50,30 @@ else
     cz bump --files-only
     git status
 fi
-read -p $'\e[31mStage file bump changes?\e[0m: ' -n 1 -r
 echo # newline
+read -p $'\e[31mStage file bump changes?\e[0m: ' -n 1 -r
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo # newline
     git status
     read -p $'\e[31mUndo these updates?\e[0m: ' -n 1 -r
     echo # newline
     if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        exit 1
+        exit 0
+    else
+        git restore .
+        exit 0
     fi
-    git restore .
-    exit 1
 else
+    echo # newline
     git add .
     git commit -m "release ${curr} → ${ver}"
 fi
-echo
-read -p $'\e[31mPush to origin now?\e[0m: ' -n 1 -r
 echo # newline
+read -p $'\e[31mPush to origin now?\e[0m: ' -n 1 -r
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-    exit 1
+    exit 0
 else
+    echo # newline
     git push --set-upstream origin $branch
     printDgBnr "Congratulations! ${branch} is queuing up for deployment!"
 fi
