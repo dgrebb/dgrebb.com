@@ -12,7 +12,7 @@
   }
 
   async function animateOutroStart() {
-    if (motionless() === true) return false;
+    if (motionless() === true) return;
     const header = document.querySelector('.header');
     to = $navigating?.to.route.id;
     document.body.classList.toggle('animating', true);
@@ -22,17 +22,16 @@
   }
 
   function animateOutroEnd() {
-    if (motionless() === true) return false;
     if (to === '/') return;
     scrollTop();
   }
 
   function animateIntroStart() {
-    if (motionless() === true) return false;
+    if (motionless() === true) return;
   }
 
   function animateIntroEnd() {
-    if (motionless() === true) return false;
+    if (motionless() === true) return;
     setTimeout(() => {
       header.classList.toggle('scroll-transition', false);
       document.body.classList.toggle('animating', false);
