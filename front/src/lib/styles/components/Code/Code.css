@@ -1,5 +1,14 @@
 @import 'syntax.css';
 
+@media (prefers-reduced-motion: reduce) {
+  .syntax-highlighter {
+    &.copying,
+    &.copying::before {
+      transform: none !important;
+    }
+  }
+}
+
 .syntax-highlighter {
   position: relative;
   z-index: 3;
