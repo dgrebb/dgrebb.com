@@ -1,0 +1,45 @@
+name: 🐞 Bug
+description: Items to fix
+title: "🐞 [BUG]: "
+labels: ["bug"]
+projects: ["dgrebb.com"]
+assignees:
+  - dgrebb
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Tell us what you see!
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How soon should this be addressed?
+      options:
+        - ⦿
+        - ⦿ ⦿
+        - ⦿ ⦿ ⦿
+        - ⦿ ⦿ ⦿ ⦿
+        - ⦿ ⦿ ⦿ ⦿ ⦿
+      default: 2
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: Tasks
+      value: "- [ ] "
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell
+    validations:
+      required: false
