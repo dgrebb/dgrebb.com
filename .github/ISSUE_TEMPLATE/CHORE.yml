@@ -1,0 +1,47 @@
+name: "🧹 Chore"
+description: What are we building?
+title: "🧹 [CHORE] - <title>"
+labels:
+  [
+    "chore",
+    "enhancement",
+    "dependencies",
+    "CMS",
+    "frontend",
+    "ci",
+    "testing",
+    "refactor",
+  ]
+projects: ["dgrebb.com"]
+assignees:
+  - dgrebb
+body:
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How urgent is this?
+      multiple: false
+      options:
+        - ⦿
+        - ⦿ ⦿
+        - ⦿ ⦿ ⦿
+        - ⦿ ⦿ ⦿ ⦿
+        - ⦿ ⦿ ⦿ ⦿ ⦿
+      default: 2
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: "Summary"
+      description: Provide a brief explanation of the chore
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: Tasks
+      value: "- [ ] "
+    validations:
+      required: false
