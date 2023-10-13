@@ -1,6 +1,6 @@
-name: Bug Report
-description: File a bug report
-title: "[BUG]: "
+name: 🐞 Bug
+description: Items to fix
+title: "🐞 [BUG]: "
 labels: ["bug"]
 projects: ["dgrebb.com"]
 assignees:
@@ -18,14 +18,21 @@ body:
     id: priority
     attributes:
       label: Priority
-      description: How important is this?
+      description: How soon should this be addressed?
       options:
-        - ⏺
-        - ⏺ ⏺
-        - ⏺ ⏺ ⏺
-        - ⏺ ⏺ ⏺ ⏺
-        - ⏺ ⏺ ⏺ ⏺ ⏺
-      default: 0
+        - ⦿
+        - ⦿ ⦿
+        - ⦿ ⦿ ⦿
+        - ⦿ ⦿ ⦿ ⦿
+        - ⦿ ⦿ ⦿ ⦿ ⦿
+      default: 2
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: Tasks
+      value: "- [ ] "
     validations:
       required: true
   - type: textarea
@@ -34,11 +41,5 @@ body:
       label: Relevant log output
       description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
       render: shell
-  - type: checkboxes
-    id: terms
-    attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
-      options:
-        - label: I agree to follow this project's Code of Conduct
-          required: true
+    validations:
+      required: false

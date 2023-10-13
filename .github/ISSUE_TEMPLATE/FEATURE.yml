@@ -1,6 +1,6 @@
-name: "💡 Feature"
+name: "✨ Feature"
 description: What are we building?
-title: "💡 [FEAT] - <title>"
+title: "✨ [FEAT] - <title>"
 labels:
   [
     "feature",
@@ -13,6 +13,9 @@ labels:
     "refactor",
     "SEO",
   ]
+projects: ["dgrebb.com"]
+assignees:
+  - dgrebb
 body:
   - type: dropdown
     id: priority
@@ -21,14 +24,14 @@ body:
       description: How urgent is this?
       multiple: false
       options:
-        - ⏺
-        - ⏺⏺
-        - ⏺⏺⏺
-        - ⏺⏺⏺⏺
-        - ⏺⏺⏺⏺⏺
+        - ⦿
+        - ⦿ ⦿
+        - ⦿ ⦿ ⦿
+        - ⦿ ⦿ ⦿ ⦿
+        - ⦿ ⦿ ⦿ ⦿ ⦿
       default: 2
-      validations:
-        required: true
+    validations:
+      required: true
   - type: textarea
     id: summary
     attributes:
@@ -39,17 +42,16 @@ body:
       required: true
   - type: textarea
     id: tasks
-    label: "Tasks"
     attributes:
-      label: "Basic Example"
+      label: Tasks
       description: A few specific words about your feature request.
-      placeholder: 
+      value: "- [ ] "
     validations:
       required: false
   - type: input
     id: reprod-url
     attributes:
-      label: "Reproduction URL"
+      label: "URL"
       description: Please enter your GitHub URL to provide a reproduction of the issue
       placeholder: ex. https://github.com/USERNAME/REPO-NAME
     validations:

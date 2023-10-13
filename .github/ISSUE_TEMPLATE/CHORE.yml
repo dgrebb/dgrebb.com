@@ -12,6 +12,9 @@ labels:
     "testing",
     "refactor",
   ]
+projects: ["dgrebb.com"]
+assignees:
+  - dgrebb
 body:
   - type: dropdown
     id: priority
@@ -20,14 +23,14 @@ body:
       description: How urgent is this?
       multiple: false
       options:
-        - ⏺
-        - ⏺⏺
-        - ⏺⏺⏺
-        - ⏺⏺⏺⏺
-        - ⏺⏺⏺⏺⏺
+        - ⦿
+        - ⦿ ⦿
+        - ⦿ ⦿ ⦿
+        - ⦿ ⦿ ⦿ ⦿
+        - ⦿ ⦿ ⦿ ⦿ ⦿
       default: 2
-      validations:
-        required: true
+    validations:
+      required: true
   - type: textarea
     id: summary
     attributes:
@@ -35,3 +38,10 @@ body:
       description: Provide a brief explanation of the chore
     validations:
       required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: Tasks
+      value: "- [ ] "
+    validations:
+      required: false
