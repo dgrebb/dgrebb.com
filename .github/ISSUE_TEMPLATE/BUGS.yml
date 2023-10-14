@@ -14,20 +14,6 @@ body:
       placeholder: Tell us what you see!
     validations:
       required: true
-  - type: dropdown
-    id: priority
-    attributes:
-      label: Priority
-      description: How soon should this be addressed?
-      options:
-        - ⦿
-        - ⦿ ⦿
-        - ⦿ ⦿ ⦿
-        - ⦿ ⦿ ⦿ ⦿
-        - ⦿ ⦿ ⦿ ⦿ ⦿
-      default: 2
-    validations:
-      required: true
   - type: textarea
     id: tasks
     attributes:

@@ -1,37 +1,11 @@
 name: "✨ Feature"
 description: What are we building?
-title: "✨ [FEAT] - <title>"
-labels:
-  [
-    "feature",
-    "enhancement",
-    "frontend",
-    "a11y",
-    "CMS",
-    "ci",
-    "testing",
-    "refactor",
-    "SEO",
-  ]
-projects: ["dgrebb.com"]
+title: "✨ [FEAT] - "
+labels: "feature"
+projects: "dgrebb.com"
 assignees:
   - dgrebb
 body:
-  - type: dropdown
-    id: priority
-    attributes:
-      label: Priority
-      description: How urgent is this?
-      multiple: false
-      options:
-        - ⦿
-        - ⦿ ⦿
-        - ⦿ ⦿ ⦿
-        - ⦿ ⦿ ⦿ ⦿
-        - ⦿ ⦿ ⦿ ⦿ ⦿
-      default: 2
-    validations:
-      required: true
   - type: textarea
     id: summary
     attributes:
@@ -53,6 +27,6 @@ body:
     attributes:
       label: "URL"
       description: Please enter your GitHub URL to provide a reproduction of the issue
-      placeholder: ex. https://github.com/USERNAME/REPO-NAME
+      value: "https://www.dgrebb.com/"
     validations:
       required: false
