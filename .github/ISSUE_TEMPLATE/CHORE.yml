@@ -16,21 +16,6 @@ projects: ["dgrebb.com"]
 assignees:
   - dgrebb
 body:
-  - type: dropdown
-    id: priority
-    attributes:
-      label: Priority
-      description: How urgent is this?
-      multiple: false
-      options:
-        - ⦿
-        - ⦿ ⦿
-        - ⦿ ⦿ ⦿
-        - ⦿ ⦿ ⦿ ⦿
-        - ⦿ ⦿ ⦿ ⦿ ⦿
-      default: 2
-    validations:
-      required: true
   - type: textarea
     id: summary
     attributes:
