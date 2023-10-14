@@ -4,9 +4,11 @@
 
 <h2 class="footnotes-title">Footnotes</h2>
 <ul class="footnotes">
-  {#each footnotes as { link, title }, i}
+  {#each footnotes as { link, title, linkTitle }, i}
     <li class="note">
-      <a href={link} rel="noopener noreferrer" target="_blank">{title}</a>
+      <a href={link} rel="noopener noreferrer" target="_blank" title={linkTitle}
+        >{title}</a
+      >
     </li>
   {/each}
 </ul>
