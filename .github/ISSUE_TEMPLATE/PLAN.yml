@@ -1,0 +1,32 @@
+name: "🎬 Plan"
+description: What are we planning?
+title: "🎬 [PLAN] - "
+labels: "feature"
+projects: "dgrebb.com"
+assignees:
+  - dgrebb
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: "Summary"
+      description: Provide a brief explanation of the feature
+      placeholder: Describe in a few lines your feature request
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: Tasks
+      description: A few specific words about your feature request.
+      value: "- [ ] "
+    validations:
+      required: false
+  - type: input
+    id: reprod-url
+    attributes:
+      label: "URL"
+      description: Please enter your GitHub URL to provide a reproduction of the issue
+      value: "https://www.dgrebb.com/"
+    validations:
+      required: false
