@@ -62,7 +62,7 @@ jobs:
       - name: ⬢ Setup Node & Cache
         uses: actions/setup-node@v3
         with:
-          node-version: "18.18.0"
+          node-version: "18.18.2"
           cache: "npm"
           cache-dependency-path: _ci/backstop/package-lock.json
 
