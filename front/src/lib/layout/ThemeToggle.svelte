@@ -46,6 +46,11 @@
   }
 </script>
 
-<button type="button" class="theme-toggle" on:click={toggleTheme}>
+<button
+  type="button"
+  class="theme-toggle"
+  on:click={toggleTheme}
+  title="Switch to {dark ? 'light' : 'dark'} theme"
+>
   <ThemeToggleIcon />
 </button>
