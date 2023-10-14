@@ -54,7 +54,7 @@ jobs:
       - name: ⬢ Setup Node & Cache
         uses: actions/setup-node@v3
         with:
-          node-version: "18.18.0"
+          node-version: "18.18.2"
           cache: "npm"
           cache-dependency-path: |
             _ci/backstop/package.json
@@ -70,15 +70,12 @@ jobs:
       - name: 👀 Testing Bitmaps
         id: backstop
         continue-on-error: true
-        env:
-          REPORT_PATH: ${{ github.ref_name == 'main' && 'prod' || 'stg' }}
-        run: |
-          cd _ci/backstop && ENV=$DEPLOY_ENV npm run test.gh
+        run: cd _ci/backstop && ENV=$DEPLOY_ENV npm run test.gh
 
       - name: Summarize Failures
         if: steps.backstop.outcome != 'success'
         env:
-          REPORT_PATH: ${{ github.ref_name == 'main' && 'prod' || 'stg' }}
+          REPORT_PATH: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
         run: |
           cd _ci/backstop
           echo "# Backstop Summary" >> $GITHUB_STEP_SUMMARY
@@ -89,7 +86,7 @@ jobs:
       - name: Summarize Success
         if: steps.backstop.outcome == 'success'
         env:
-          REPORT_PATH: ${{ github.ref_name == 'main' && 'prod' || 'stg' }}
+          REPORT_PATH: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
         run: |
           echo "# Backstop Summary" >> $GITHUB_STEP_SUMMARY
           echo "## 📋 <a href=\"http://${{ vars.REPORTS_DOMAIN }}/backstop/html_report/gh-$REPORT_PATH/\" target=\"_blank\">View Report</a>" >> $GITHUB_STEP_SUMMARY
