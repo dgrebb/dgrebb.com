@@ -12,7 +12,12 @@
       "required": true
     },
     "link": {
-      "type": "string"
+      "type": "string",
+      "required": true
+    },
+    "linkTitle": {
+      "type": "string",
+      "required": true
     }
   }
 }
