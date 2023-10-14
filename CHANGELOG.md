@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.6.0] - 2023-10-14
+
+### 💡 Features
+
+- ***(front)*** Adds theme toggle button title (#824)
+
+### 👷 Build
+
+- ***(front)*** Enhances prefers-reduced-motion exceptions
+
+### 💚 Continuous Integration
+
+- ***(github)*** Adds sitemap.xml submit action and workflow
+
+### ✅ Testing
+
+- ***(backstop)*** Updates gh-prd refs
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(ci)*** Updates cz config to use gpg signed commits
+- ***(github)*** Adds "Plan" issue type
+- ***(github)*** Updates issues forms removing unnecessary labels, fields, and title placeholders
+- ***(github)*** Adds idea issue template (#823)
+- ***(github)*** Adds issues forms (#818)
+- ***(project)*** Updates cspell dictionary with svelte transition event names
+
 ## [3.5.0] - 2023-10-11
 
 ### 💡 Features
