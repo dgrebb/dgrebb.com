@@ -10,7 +10,7 @@ env:
 
 jobs:
   lint:
-    name: 💅 Prettier
+    name: ≅ Lint
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}

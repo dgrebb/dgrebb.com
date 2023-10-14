@@ -6,7 +6,7 @@ module.exports = {
   url: POSTS_URL,
   onReadyScript: 'playwright/onReadyPosts.js',
   clickSelector: 'a[href="/post/hello-world/"]',
-  postInteractionWait: 1500,
+  postInteractionWait: 3000,
   selectors: ['document'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,
