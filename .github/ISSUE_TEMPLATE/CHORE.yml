@@ -1,17 +1,7 @@
 name: "🧹 Chore"
 description: What are we building?
-title: "🧹 [CHORE] - <title>"
-labels:
-  [
-    "chore",
-    "enhancement",
-    "dependencies",
-    "CMS",
-    "frontend",
-    "ci",
-    "testing",
-    "refactor",
-  ]
+title: "🧹 [CHORE] - "
+labels: "chore"
 projects: ["dgrebb.com"]
 assignees:
   - dgrebb
