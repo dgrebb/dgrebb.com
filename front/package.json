@@ -6,6 +6,7 @@
   "scripts": {
     "check": "svelte-check",
     "dev.l": "vite --config vite.local.config.js dev",
+    "dev.s": "vite --config vite.local.config.js dev",
     "dev.p": "vite --config vite.config.js dev",
     "dev": "vite --config vite.config.js dev",
     "build.l": "WARN_ONLY=true vite --config vite.local.config.js build",

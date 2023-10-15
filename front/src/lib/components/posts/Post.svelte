@@ -1,10 +1,10 @@
 <script>
-  import { onMount } from 'svelte';
+  import PageNav from '@components/PageNav.svelte';
+  import AnimatedImage from '@components/content/AnimatedImage.svelte';
   import Code from '@components/content/Code.svelte';
   import Footnotes from '@components/content/renderers/Footnotes.svelte';
   import Link from '@components/content/renderers/Link.svelte';
   import PostHeading from '@components/content/renderers/PostHeading.svelte';
-  import PageNav from '@components/PageNav.svelte';
   import slugger from 'slugger';
   import SvelteMarkdown from 'svelte-markdown';
 
@@ -106,7 +106,7 @@
         <Code
           key={i}
           text={c.code}
-          lang={c.language}
+          lang={c.syntax}
           title={c?.title}
           lineNumbers={c.showLineNumbers === true || lines.length > 0}
           copyButton={c?.showCopyButton === true}
@@ -116,6 +116,22 @@
               })
             : false}
         />
+      {/if}
+      {#if c.__component === 'posts.animated-image'}
+        {@const {
+          animation: {
+            data: {
+              attributes: { url: animation, alternativeText: aAlt },
+            },
+          },
+          still: {
+            data: {
+              attributes: { url: still, alternativeText: sAlt },
+            },
+          },
+          figcaption,
+        } = c}
+        <AnimatedImage {animation} {aAlt} {still} {sAlt} {figcaption} />
       {/if}
       {#if c.__component === 'posts.html'}
         <div class="inline-html">
