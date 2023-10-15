@@ -1,21 +1,46 @@
 <script>
+  import '@styles/components/animated-image.css';
   export let animation, aAlt, still, sAlt, figcaption;
 </script>
 
 <div class="media-box">
-  <figure>
-    <div class="gif-player">
+  <figure class="animated-image">
+    <div class="animation-player">
       <img
         src={still}
-        alt="Still frame{sAlt === null ? false : `: ${sAlt}`}"
+        alt="Still frame{sAlt === null ? '' : `: ${sAlt}`}"
         loading="lazy"
       />
       <details>
-        <summary aria-label="static image"></summary>
-        <div class="gif-player-animation">
+        <summary aria-label="Click to play the animation">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="19.2"
+            height="19.2"
+            viewBox="0 0 24 24"
+            class="play-icon"
+          >
+            <path
+              fill="currentColor"
+              d="M19.266 13.516a1.917 1.917 0 0 0 0-3.032A35.762 35.762 0 0 0 9.35 5.068l-.653-.232c-1.248-.443-2.567.401-2.736 1.69a42.49 42.49 0 0 0 0 10.948c.17 1.289 1.488 2.133 2.736 1.69l.653-.232a35.762 35.762 0 0 0 9.916-5.416Z"
+            />
+          </svg><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="19.2"
+            height="19.2"
+            viewBox="0 0 24 24"
+            class="pause-icon"
+          >
+            <path
+              fill="currentColor"
+              d="M17.276 5.47c.435.16.724.575.724 1.039V17.49c0 .464-.29.879-.724 1.039a3.69 3.69 0 0 1-2.552 0A1.107 1.107 0 0 1 14 17.491V6.51c0-.464.29-.879.724-1.04a3.69 3.69 0 0 1 2.552 0Zm-8 0c.435.16.724.575.724 1.039V17.49c0 .464-.29.879-.724 1.039a3.69 3.69 0 0 1-2.552 0A1.107 1.107 0 0 1 6 17.491V6.51c0-.464.29-.879.724-1.04a3.69 3.69 0 0 1 2.552 0Z"
+            />
+          </svg>
+        </summary>
+        <div class="animation">
           <img
             src={animation}
-            alt="Animated{aAlt === null ? false : `: ${aAlt}`}"
+            alt="Animated{aAlt === null ? '' : `: ${aAlt}`}"
             loading="lazy"
           />
         </div>
@@ -24,76 +49,3 @@
     <figcaption>{figcaption}</figcaption>
   </figure>
 </div>
-
-<style>
-  .media-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 0;
-  }
-
-  .gif-player {
-    display: inline-block;
-    position: relative;
-  }
-
-  summary {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    z-index: 2;
-    border-radius: 50%;
-    background: #000;
-    background-image: url('https://assets.codepen.io/128034/play_circle_filled-24px.svg');
-    background-position: center;
-    background-size: 90% auto;
-    background-repeat: no-repeat;
-    background-color: white;
-    width: 2rem;
-    height: 2rem;
-    color: #fff;
-  }
-
-  [open] summary {
-    box-shadow: 0 0 0 2px #fff;
-    background-image: url('https://assets.codepen.io/128034/pause_circle_filled-24px.svg');
-    background-color: white;
-  }
-
-  /* for blink/webkit */
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-  /* for firefox */
-  details > summary:first-of-type {
-    list-style: none;
-  }
-
-  summary + * {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: #000;
-    color: #fff;
-  }
-
-  summary:focus {
-    outline: transparent;
-    box-shadow: 0 0 0 0.25rem #aade87;
-  }
-
-  .gif-player-animation {
-    padding-top: 0;
-  }
-
-  .gif-player-animation img {
-    display: inline-block;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    overflow: visible;
-  }
-</style>

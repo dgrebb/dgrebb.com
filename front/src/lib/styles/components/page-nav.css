@@ -78,7 +78,7 @@
         ~ label {
           mix-blend-mode: difference;
           outline-style: dotted;
-          outline-width: thin;
+          outline-width: 2px;
           outline-offset: 1px;
         }
       }

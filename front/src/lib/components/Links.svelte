@@ -1,5 +1,5 @@
 <script>
-  import IconCatchafire from './icons/Catchafire.svelte';
+  import IconCatchafire from '@components/icons/Catchafire.svelte';
   import IconGitHub from '~icons/mdi/github';
   import IconFacebook from '~icons/mdi/facebook';
   import IconInstagram from '~icons/mdi/instagram';
