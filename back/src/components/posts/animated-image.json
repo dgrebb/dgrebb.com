@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_posts_animated_images",
+  "info": {
+    "displayName": "Animated Image",
+    "icon": "picture",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "animation": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "videos",
+        "images"
+      ]
+    },
+    "still": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "figcaption": {
+      "type": "text"
+    }
+  }
+}
