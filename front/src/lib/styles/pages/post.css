@@ -173,7 +173,8 @@
     }
     &.mini {
       .page-navigation-toggle {
-        padding: 0.25rem 0.33rem;
+        box-shadow: none;
+        padding: 0.33rem;
       }
     }
   }
@@ -382,6 +383,12 @@
         }
       }
     }
+  }
+  .media-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
   }
   .footnotes {
     li {
