@@ -1,0 +1,141 @@
+.animated-image {
+  .animation-player {
+    display: inline-block;
+    position: relative;
+  }
+  &:hover {
+    summary {
+      background-color: rgba(var(--clr-neut-800-rgb), 0.83);
+      color: var(--clr-neut-100);
+      &::before {
+        opacity: 0.5;
+      }
+      &:hover,
+      &:focus {
+        &::before {
+          opacity: 0.77;
+        }
+      }
+    }
+    [open] summary::before {
+      opacity: 0.33;
+    }
+    figcaption {
+      opacity: 1;
+    }
+  }
+
+  summary,
+  summary::before {
+    border-radius: 0.33rem;
+  }
+  summary {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 2;
+    transition-duration: var(--transition-duration);
+    transition-property: background-color, opacity, color;
+    transition-timing-function: var(--transition-timing-function);
+    cursor: pointer;
+    border-radius: 0.33rem;
+    background-color: rgba(var(--clr-neut-900-rgb), 0.77);
+    padding: 0.33rem;
+    color: var(--clr-neut-200);
+    line-height: 1;
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 0.33;
+      mix-blend-mode: difference;
+      transition-duration: var(--transition-duration);
+      transition-property: opacity;
+      transition-timing-function: var(--transition-timing-function);
+      border: 1px solid white;
+      content: '';
+    }
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      background-color: rgba(var(--clr-neut-800-rgb), 0.95);
+      color: white;
+    }
+    &:focus-visible {
+      border: 1px solid transparent !important;
+    }
+    &:active {
+      top: 0.85rem;
+    }
+    .play-icon,
+    .pause-icon {
+      vertical-align: middle;
+    }
+    .pause-icon {
+      display: none;
+    }
+    .play-icon {
+      display: inline;
+    }
+  }
+
+  [open] summary,
+  [open] summary::before {
+    opacity: 0.33;
+  }
+
+  [open] summary {
+    &:hover {
+      opacity: 0.77;
+    }
+    .play-icon {
+      display: none;
+    }
+    .pause-icon {
+      display: inline;
+    }
+  }
+
+  /* for blink/webkit */
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+  /* for firefox */
+  details > summary:first-of-type {
+    list-style: none;
+  }
+
+  summary + * {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .animation {
+    padding-top: 0;
+  }
+
+  .animation img {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: visible;
+  }
+
+  figcaption {
+    opacity: 0.77;
+    transition-duration: var(--transition-duration);
+    transition-property: opacity;
+    transition-timing-function: var(--transition-timing-function);
+    padding: 0 2rem;
+    font-style: italic;
+    font-size: 0.75rem;
+    font-family: var(--font-lb);
+    text-align: center;
+  }
+}

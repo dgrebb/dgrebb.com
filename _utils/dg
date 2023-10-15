@@ -34,6 +34,14 @@ while test "$1" != --; do
         /bin/bash $directory/_scripts/front.sh $2 $3 $4
         break
         ;;
+    l | lint)
+        cd $directory/../front && npm run lint
+        break
+        ;;
+    ck | check)
+        cd $directory/../front && npm run check
+        break
+        ;;
     d | docker)
         /bin/bash $directory/_scripts/docker.sh $2 $3
         break
