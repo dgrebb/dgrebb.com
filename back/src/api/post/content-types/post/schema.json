@@ -26,9 +26,7 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "summary": {
       "type": "text"
@@ -57,8 +55,9 @@
       "type": "dynamiczone",
       "components": [
         "posts.text",
-        "posts.image-carousel",
         "posts.code",
+        "posts.animated-image",
+        "posts.image-carousel",
         "posts.html"
       ]
     },
