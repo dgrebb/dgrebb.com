@@ -60,7 +60,7 @@ env:
 
 jobs:
   build_deploy:
-    name: Deploying to ${{ github.ref_name == 'main' && 'PRD' || 'STG' }}
+    name: ${{ github.ref_name == 'main' && 'PRD' || 'STG' }} Deployment
     runs-on: ubuntu-latest
     concurrency:
       group: build-deploy
@@ -180,29 +180,3 @@ jobs:
           echo '## Release Details' >> $GITHUB_STEP_SUMMARY
           echo '- Release: [${{ env.RELEASE_NAME }}](https://dgrebb.sentry.io/releases/${{ env.RELEASE_NAME }})' >> $GITHUB_STEP_SUMMARY
           echo '- Dist: ${{ env.DIST }}' >> $GITHUB_STEP_SUMMARY
-
-      - name: Delete Previous deployments
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
-          script: |
-            const deployments = await github.rest.repos.listDeployments({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              sha: context.sha
-            });
-            await Promise.all(
-              deployments.data.map(async (deployment) => {
-                await github.rest.repos.createDeploymentStatus({ 
-                  owner: context.repo.owner, 
-                  repo: context.repo.repo, 
-                  deployment_id: deployment.id, 
-                  state: 'inactive' 
-                });
-                return github.rest.repos.deleteDeployment({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  deployment_id: deployment.id
-                });
-              })
-            );
