@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.7.0] - 2023-10-16
+
+### 💡 Features
+
+- ***(back)*** Adds animated-image component to post content type (#822)
+- ***(front)*** Styles AnimatedImage component (#847)
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Uses absolute path for favicon assets (#839)
+- ***(front)*** Adds transition-delay to prefers-reduced-motion css overrides
+
+### 👷 Build
+
+- ***(back)*** Converts code text language field to enum
+- ***(front)*** Adds AnimatedImage component and refactors Post
+- ***(project)*** Adds linkTitle to footnotes (#840)
+
+### ✅ Testing
+
+- ***(backstop)*** Updates gh-stg refs with latest changes
+- ***(backstop)*** Updates gh-prd backstop refs with 3.6.0 results
+- ***(backstop)*** Increases wait time on navigate from posts test
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(github)*** Updates chore issue template
+- ***(github)*** Uses node v18.18.2 in all workflows
+
 ## [3.6.0] - 2023-10-14
 
 ### 💡 Features
