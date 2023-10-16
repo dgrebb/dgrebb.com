@@ -17,8 +17,9 @@
         }
       }
     }
+    [open] summary,
     [open] summary::before {
-      opacity: 0.33;
+      opacity: 0.77;
     }
     figcaption {
       opacity: 1;
