@@ -79,29 +79,3 @@ jobs:
           echo "Speed Index: ${{ steps.psid.outputs.speed-index }}" >> $GITHUB_STEP_SUMMARY
           echo "TTI: ${{ steps.psid.outputs.time-to-interactive }}" >> $GITHUB_STEP_SUMMARY
           echo "Blocking Time: ${{ steps.psid.outputs.total-blocking-time }}" >> $GITHUB_STEP_SUMMARY
-
-      - name: Delete Previous deployments
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
-          script: |
-            const deployments = await github.rest.repos.listDeployments({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              sha: context.sha
-            });
-            await Promise.all(
-              deployments.data.map(async (deployment) => {
-                await github.rest.repos.createDeploymentStatus({ 
-                  owner: context.repo.owner, 
-                  repo: context.repo.repo, 
-                  deployment_id: deployment.id, 
-                  state: 'inactive' 
-                });
-                return github.rest.repos.deleteDeployment({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  deployment_id: deployment.id
-                });
-              })
-            );

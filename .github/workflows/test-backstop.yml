@@ -117,35 +117,9 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
       - name: 🛟 Saving Artifact
-        # if: ${{ steps.backstop.conclusion == 'failure' }}
+        if: steps.backstop.outcome != 'success'
         uses: actions/upload-artifact@v3
         with:
           name: backstop-report
           retention-days: 3
           path: _ci/backstop/bd/
-
-      - name: Delete Previous deployments
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
-          script: |
-            const deployments = await github.rest.repos.listDeployments({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              sha: context.sha
-            });
-            await Promise.all(
-              deployments.data.map(async (deployment) => {
-                await github.rest.repos.createDeploymentStatus({ 
-                  owner: context.repo.owner, 
-                  repo: context.repo.repo, 
-                  deployment_id: deployment.id, 
-                  state: 'inactive' 
-                });
-                return github.rest.repos.deleteDeployment({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  deployment_id: deployment.id
-                });
-              })
-            );
