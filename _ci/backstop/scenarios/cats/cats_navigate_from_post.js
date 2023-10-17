@@ -6,7 +6,7 @@ module.exports = {
   url: POST_URL,
   viewports: aboveSmallViewports,
   onReadyScript: 'playwright/onReadyCats.js',
-  clickSelector: '.post .aside a[href="/posts/category/thoughts/?roboto"]',
+  clickSelector: '.post .aside a[href*="/posts/category/thoughts"]',
   postInteractionWait: 3000,
   selectors: ['document'],
   selectorExpansion: false,

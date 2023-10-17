@@ -29,7 +29,7 @@ switch (env) {
 
   default:
     ID = 'Local';
-    URL = 'https://local.dgrebb.com:443';
+    URL = 'https://local.dgrebb.com';
     envDir = 'local';
     break;
 }
