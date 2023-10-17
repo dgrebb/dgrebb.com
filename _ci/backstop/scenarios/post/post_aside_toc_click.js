@@ -5,7 +5,7 @@ module.exports = {
   label: 'Post - Aside TOC Click',
   url: POST_URL,
   viewports: aboveSmallViewports,
-  clickSelector: '.post .aside .page-navigation-list a[href="#what"]',
+  clickSelector: '.post .aside .page-navigation-list a[href="#what?roboto"]',
   postInteractionWait: 2000,
   selectors: ['viewport'],
   selectorExpansion: false,
