@@ -1,5 +1,5 @@
 const { URL, aboveSmallViewports } = require('../vars');
-const POST_URL = `${URL}/post/hello-world/`;
+const POST_URL = `${URL}/post/hello-world/?roboto`;
 
 module.exports = {
   label: 'Post - Aside TOC Click',
