@@ -16,7 +16,10 @@
   margin-top: 2.25rem;
   margin-bottom: 2.25rem;
   border-radius: 0.5rem;
-  padding: 0 0.75rem 1rem 0.5rem;
+  padding: 0 0.75rem 1.5rem 1rem;
+  @media screen and (min-width: 480px) {
+    padding: 0 0.75rem 1rem 0.5rem;
+  }
   width: 100%;
   &::before {
     position: absolute;
@@ -216,17 +219,10 @@
         padding: 0 0.5rem;
       }
       tbody {
-        tr:first-child td {
-          padding-top: 0;
-        }
-        tr:last-child td {
-          padding-bottom: 0;
-        }
-        tr.highlight {
-          &.last {
-            td:last-child code {
-              margin-bottom: 1rem;
-            }
+        tr:last-of-type {
+          margin-bottom: 1rem;
+          td {
+            padding-bottom: 0;
           }
         }
       }
