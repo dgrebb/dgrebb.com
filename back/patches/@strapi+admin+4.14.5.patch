@@ -1,5 +1,5 @@
 diff --git a/node_modules/@strapi/admin/admin/src/StrapiApp.js b/node_modules/@strapi/admin/admin/src/StrapiApp.js
-index bbe0ef2..2c60534 100644
+index 7b533ea..780630d 100644
 --- a/node_modules/@strapi/admin/admin/src/StrapiApp.js
 +++ b/node_modules/@strapi/admin/admin/src/StrapiApp.js
 @@ -37,7 +37,7 @@ class StrapiApp {
@@ -12,16 +12,16 @@ index bbe0ef2..2c60534 100644
      this.appPlugins = appPlugins || {};
      this.library = library;
 diff --git a/node_modules/@strapi/admin/admin/src/components/AuthenticatedApp/index.js b/node_modules/@strapi/admin/admin/src/components/AuthenticatedApp/index.js
-index 6ac2f59..3559049 100644
+index bf9d59a..cdef19f 100644
 --- a/node_modules/@strapi/admin/admin/src/components/AuthenticatedApp/index.js
 +++ b/node_modules/@strapi/admin/admin/src/components/AuthenticatedApp/index.js
 @@ -14,7 +14,7 @@ import { useQueries } from 'react-query';
  import packageJSON from '../../../../package.json';
- import { useConfigurations } from '../../hooks';
+ import { useConfiguration } from '../../hooks/useConfiguration';
  import { getFullName, hashAdminUserEmail } from '../../utils';
--import NpsSurvey from '../NpsSurvey';
-+// import NpsSurvey from '../NpsSurvey';
- import PluginsInitializer from '../PluginsInitializer';
+-import { NpsSurvey } from '../NpsSurvey';
++// import { NpsSurvey } from '../NpsSurvey';
+ import { PluginsInitializer } from '../PluginsInitializer';
  import RBACProvider from '../RBACProvider';
  
 @@ -106,7 +106,7 @@ const AuthenticatedApp = () => {
@@ -33,12 +33,12 @@ index 6ac2f59..3559049 100644
          <PluginsInitializer />
        </RBACProvider>
      </AppInfoProvider>
-diff --git a/node_modules/@strapi/admin/admin/src/components/NpsSurvey/hooks/useNpsSurveySettings.js b/node_modules/@strapi/admin/admin/src/components/NpsSurvey/hooks/useNpsSurveySettings.js
-index eafe5c6..dc7efec 100644
---- a/node_modules/@strapi/admin/admin/src/components/NpsSurvey/hooks/useNpsSurveySettings.js
-+++ b/node_modules/@strapi/admin/admin/src/components/NpsSurvey/hooks/useNpsSurveySettings.js
-@@ -6,7 +6,7 @@ export function useNpsSurveySettings() {
-   const [npsSurveySettings, setNpsSurveySettings] = usePersistentState(
+diff --git a/node_modules/@strapi/admin/admin/src/components/NpsSurvey.tsx b/node_modules/@strapi/admin/admin/src/components/NpsSurvey.tsx
+index 9ca0ef1..2ee47ce 100644
+--- a/node_modules/@strapi/admin/admin/src/components/NpsSurvey.tsx
++++ b/node_modules/@strapi/admin/admin/src/components/NpsSurvey.tsx
+@@ -399,7 +399,7 @@ function useNpsSurveySettings() {
+   const [npsSurveySettings, setNpsSurveySettings] = usePersistentState<NpsSurveySettings>(
      'STRAPI_NPS_SURVEY_SETTINGS',
      {
 -      enabled: true,
@@ -47,7 +47,7 @@ index eafe5c6..dc7efec 100644
        firstDismissalDate: null,
        lastDismissalDate: null,
 diff --git a/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js b/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js
-index 84ec0ac..545162b 100644
+index 84ec0ac..829477d 100644
 --- a/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js
 +++ b/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js
 @@ -1,17 +1,37 @@
@@ -73,7 +73,7 @@ index 84ec0ac..545162b 100644
  const BlockLink = styled.a`
    text-decoration: none;
  `;
- 
+  
 +const StyledChartBubble = styled(ChartBubble)`
 +  path {
 +    fill: #7289da !important;
@@ -289,7 +289,7 @@ index 8fb94c5..5ee061b 100644
                {formatMessage({
                  id: 'app.components.HomePage.create',
 diff --git a/node_modules/@strapi/admin/admin/src/pages/HomePage/SocialLinks.js b/node_modules/@strapi/admin/admin/src/pages/HomePage/SocialLinks.js
-index e290ab2..13b36c6 100644
+index e290ab2..993e194 100644
 --- a/node_modules/@strapi/admin/admin/src/pages/HomePage/SocialLinks.js
 +++ b/node_modules/@strapi/admin/admin/src/pages/HomePage/SocialLinks.js
 @@ -8,17 +8,17 @@ import React from 'react';
@@ -351,28 +351,28 @@ index e290ab2..13b36c6 100644
 -    link: 'https://github.com/strapi/strapi/',
 -    icon: <Github fill="#7289DA" />,
 -    alt: 'github',
+-  },
+-  {
+-    name: { id: 'app.components.HomePage.community.links.discord', defaultMessage: 'Discord' },
+-    link: 'https://discord.strapi.io/',
+-    icon: <StyledDiscord />,
+-    alt: 'discord',
 +    name: { id: 'app.components.HomePage.github.repo', defaultMessage: 'Github' },
 +    link: 'https://github.com/dgrebb/dgrebb.com',
 +    icon: <StyledGithub fill="#7289DA" />,
 +    alt: 'github repository',
    },
    {
--    name: { id: 'app.components.HomePage.community.links.discord', defaultMessage: 'Discord' },
--    link: 'https://discord.strapi.io/',
--    icon: <StyledDiscord />,
--    alt: 'discord',
+-    name: { id: 'app.components.HomePage.community.links.reddit', defaultMessage: 'Reddit' },
+-    link: 'https://www.reddit.com/r/Strapi/',
+-    icon: <StyledReddit />,
+-    alt: 'reddit',
 +    name: { id: 'app.components.HomePage.github.project', defaultMessage: 'Project' },
 +    link: 'https://github.com/users/dgrebb/projects/12/views/1',
 +    icon: <StyledCheck />,
 +    alt: 'github project',
    },
    {
--    name: { id: 'app.components.HomePage.community.links.reddit', defaultMessage: 'Reddit' },
--    link: 'https://www.reddit.com/r/Strapi/',
--    icon: <StyledReddit />,
--    alt: 'reddit',
--  },
--  {
 -    name: { id: 'app.components.HomePage.community.links.twitter', defaultMessage: 'Twitter' },
 -    link: 'https://twitter.com/strapijs',
 -    icon: <StyledTwitter />,
@@ -398,11 +398,12 @@ index e290ab2..13b36c6 100644
 -    link: 'https://strapi.io/careers?utm_source=referral&utm_medium=admin&utm_campaign=blog',
 -    icon: <StyledStrapi />,
 -    alt: 'career',
+-  },
 +    name: { id: 'app.components.HomePage.aws.link', defaultMessage: 'AWS Console' },
 +    link: 'https://dgrebb.signin.aws.amazon.com/console',
 +    icon: <StyledCloud />,
 +    alt: 'aws console',
-   },
++  }
  ];
  
 -const LinkCustom = styled(LinkButton)`
