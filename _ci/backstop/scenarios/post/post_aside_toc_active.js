@@ -1,5 +1,5 @@
 const { URL } = require('../vars');
-const POST_URL = `${URL}/post/hello-world/#what`;
+const POST_URL = `${URL}/post/hello-world/?roboto#what`;
 const { aboveSmallViewports } = require('../vars.js');
 
 module.exports = {

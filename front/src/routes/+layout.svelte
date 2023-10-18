@@ -7,16 +7,16 @@
   import Header from '@layout/Header.svelte';
   import '@styles/global.css';
   import { onMount } from 'svelte';
-  // import { themeName } from '@utils';
 
   export let data;
   const { navHeading, navItems, copyright, copyleft } = data;
-  const route = $page.route.id;
-  let theme = null;
+  $: route = $page.route.id;
+  let mounted = false;
+  let isAutomation;
   $: secondary =
-    $page.route.id === '/posts/category/[category]' ||
-    $page.route.id === '/post/[slug]' ||
-    $page.route.id === '/posts';
+    route === '/posts/category/[category]' ||
+    route === '/post/[slug]' ||
+    route === '/posts';
   $: post = $page.route.id === '/post/[slug]';
 
   const domain =
@@ -27,10 +27,10 @@
       }[ENV] || 'local.dgrebb.com',
     apiHost = 'https://p.dgrebb.com';
 
-  let mounted = false;
-
   onMount(async () => {
-    // theme = await themeName(JSON.parse(window.localStorage.getItem("dgd")));
+    var qs = window.location.search || '';
+    qs = qs.substring(1);
+    isAutomation = qs === 'roboto' ? true : false;
     mounted = true;
   });
 </script>
@@ -40,7 +40,6 @@
 <main class="main" class:secondary class:l-post={post} data-sveltekit-noscroll>
   <slot />
 </main>
-<!-- <slot name="scroll-top" /> -->
 
 <footer
   class="footer"
@@ -50,6 +49,6 @@
   <Footer {copyleft} {copyright} />
 </footer>
 
-{#if mounted}
+{#if mounted && !isAutomation}
   <PlausibleAnalytics {domain} {apiHost} enabled outboundLinks />
 {/if}
