@@ -1,6 +1,6 @@
 .site-title {
-  @apply flex
-    flex-grow;
+  display: flex;
+  flex-grow: 1;
 }
 .skip-to-content {
   position: absolute;
@@ -27,8 +27,9 @@
   vertical-align: bottom;
   transition: unset;
   transition: font-size, color;
-  transition-duration: var(--transition-duration);
+  transition-duration: var(--transition-duration-md);
   transition-timing-function: var(--transition-timing-function);
+  will-change: color;
   color: var(--nav-fg-clr);
   font-size: 1.25rem;
   line-height: 1;

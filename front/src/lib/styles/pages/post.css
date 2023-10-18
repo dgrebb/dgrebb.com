@@ -235,8 +235,8 @@
       left: auto;
       opacity: 0;
       transition:
-        opacity 500ms ease-in-out,
-        color 500ms;
+        opacity var(--transition-duration-md) ease-in-out,
+        color var(--transition-duration-md);
       border: none;
       font-size: 1rem;
       @media screen and (min-width: 480px) {

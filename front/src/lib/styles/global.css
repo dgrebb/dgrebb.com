@@ -4,7 +4,6 @@
 @import 'base/layout.css';
 @import 'base/typography.css';
 @import 'base/utilities.css';
-@import 'base/tw-components.css';
 @import 'components/Code/Code.css';
 @import 'components/nav.css';
 @import 'components/theme-toggle.css';
@@ -63,7 +62,7 @@ html.dark-theme {
 
 html {
   transition: background-color;
-  transition-duration: 500ms;
+  transition-duration: var(--transition-duration-md);
   background-repeat: no-repeat;
   background-color: var(--bg-clr);
   min-height: 100%;
@@ -115,21 +114,6 @@ body {
   }
 }
 
-@keyframes twilight {
-  0% {
-    opacity: 0%;
-  }
-  33% {
-    opacity: 1;
-  }
-  66% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
 .flourish {
   @apply h-2
     shadow-sm;
@@ -159,17 +143,19 @@ body {
 
 .scroll-top {
   display: flex;
-  @apply text-xs;
   flex-direction: column;
   align-items: center;
-  opacity: 0.57;
-  transition: color 333ms ease-in-out;
-  color: rgba(var(--text-accent-rgb), 0.77);
+  transition: color var(--transition-duration-md)
+    var(--transition-timing-function);
+  will-change: color;
+  color: var(--fg-clr);
+  font-size: 0.75rem;
+  line-height: 1rem;
   &:hover,
   &:focus,
   &:focus-visible,
   &:active {
-    color: var(--highlight-clr);
+    color: white;
   }
   svg {
     margin-top: 1.25rem;

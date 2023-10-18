@@ -13,46 +13,57 @@
   @screen md {
     gap: 1rem;
   }
-  @apply md:pb-16;
+  @media screen and (min-width: 768px) {
+    padding-bottom: 4rem;
+  }
   .post-item {
-    @apply mb-0
-      h-full
-      list-none
-      text-center;
     position: relative;
     grid-column: span 6;
     z-index: 1;
     transition-duration: var(--transition-duration);
     transition-property: filter;
-    transition-timing-function: var(--transition-timing-function);
+    transition-timing-function: ease-out;
+    will-change: opacity;
     cursor: pointer;
+    margin-bottom: 0;
     box-shadow: var(--shadow-elevation-low);
     border-radius: 0.75rem;
     background-position: center top;
     background-size: cover;
     background-repeat: no-repeat;
+    height: 100%;
     min-height: 7rem;
+    list-style-type: none;
+    text-align: center;
     @media screen and (min-width: 480px) {
       box-shadow: var(--shadow-elevation-medium);
     }
     .post-link {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       backdrop-filter: blur(0.5rem);
+      transition-duration: var(--transition-duration);
+      transition-property: background-color, color, text-shadow, border-color,
+        box-shadow;
+      transition-timing-function: var(--transition-timing-function);
+      will-change: background-color;
       box-sizing: border-box;
       border: unset;
+      border-radius: 0.75rem;
+      padding: 1.5rem 2.25rem;
       width: 100%;
       height: 100%;
       overflow: hidden;
-      @apply dg--photo-link-dark
-        dg--font-psb
-        flex
-        flex-col
-        justify-center
-        rounded-xl
-        px-9
-        py-3
-        sm:py-6
-        md:py-9;
+      font-family: var(--font-psb);
+      @media screen and (min-width: 333px) {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+      }
+      @media screen and (min-width: 768px) {
+        padding-top: 2.25rem;
+        padding-bottom: 2.25rem;
+      }
       &::before {
         position: absolute;
         z-index: 6;
@@ -68,9 +79,9 @@
       .link-bg {
         align-self: center;
         transition-delay: 0;
-        transition-duration: 133ms;
-        transition-property: background-color;
-        transition-timing-function: var(--transition-timing-function);
+        transition-duration: var(--transition-duration-md);
+        transition-property: background-color, color;
+        transition-timing-function: ease-out;
         border-radius: 0.5rem;
         background-color: transparent;
         padding: 0.5rem 2rem;
@@ -148,18 +159,5 @@
         grid-column: span 3;
       }
     }
-  }
-}
-
-/* Theme Overrides */
-html.light-theme .posts-grid {
-  .post-link {
-    @apply dg--photo-link-light;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  .posts-grid .post-link {
-    @apply dg--photo-link-light;
   }
 }

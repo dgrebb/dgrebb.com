@@ -43,12 +43,9 @@
     transition-duration: var(--transition-duration);
     transition-property: border, color;
     transition-timing-function: var(--transition-timing-function);
-    border-bottom: 1px solid rgba(var(--text-accent-rgb), 0.67);
-    color: rgba(var(--link-rgb), 0.77);
     &:hover,
     &:focus {
       border-bottom: 1px solid rgba(var(--highlight-rgb), 1);
-      color: rgba(var(--foreground-rgb), 1);
     }
   }
   ol {
