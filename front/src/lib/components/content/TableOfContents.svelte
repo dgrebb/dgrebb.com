@@ -25,6 +25,7 @@
   {#each contents as { text, link }, i}
     <li>
       <a
+        class="toc-link"
         on:click={(e) => {
           tocClick(text);
           setActiveLink(e);

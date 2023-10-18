@@ -2,7 +2,7 @@ const { URL } = require('../vars');
 
 module.exports = {
   label: 'Homepage',
-  url: URL,
+  url: URL + '?roboto',
   colorScheme: 'dark',
   delay: 1000,
   selectors: ['viewport'],

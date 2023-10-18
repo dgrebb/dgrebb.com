@@ -11,7 +11,7 @@ module.exports = async (
   await require('./overridePostsCSS')(page, scenario);
   /** map all links to with automation querystring*/
   await page.evaluate((scenario) => {
-    document.querySelectorAll('a').forEach((a) => {
+    document.querySelectorAll('a:not(.toc-link)').forEach((a) => {
       a.href += '?roboto';
     });
   }, scenario);

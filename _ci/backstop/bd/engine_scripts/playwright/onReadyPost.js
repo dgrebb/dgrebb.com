@@ -8,7 +8,7 @@ module.exports = async (
   console.log('SCENARIO > ' + scenario.label);
   await require('./clickAndHoverHelper')(page, scenario);
   await require('./colorScheme')(page, scenario);
-  await require('./overrideCatsCSS')(page, scenario);
+  await require('./overridePostCSS')(page, scenario);
   /** map all links to with automation querystring*/
   await page.evaluate((scenario) => {
     document.querySelectorAll('a:not(.toc-link)').forEach((a) => {
