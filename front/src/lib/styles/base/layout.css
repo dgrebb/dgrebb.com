@@ -61,7 +61,8 @@
   }
 }
 body.ready .header {
-  transition: opacity 333ms;
+  transition-duration: var(--transition-duration);
+  transition-property: opacity;
 }
 body.ready .header.scroll-transition {
   opacity: 0;
@@ -110,6 +111,10 @@ body.ready .header.scroll-transition {
 .footer {
   padding: 0.75rem;
   text-align: center;
+  * {
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+  }
   small {
     padding: 1rem 0;
     font-size: 0.7rem;
@@ -157,11 +162,9 @@ body.ready .header.scroll-transition {
       transition:
         border 0.5s,
         color 0.5s;
-      color: rgba(var(--text-accent-rgb), 0.77);
       &:hover,
       &:focus {
         border-bottom-color: rgb(var(--highlight-rgb));
-        color: rgba(var(--text-accent-rgb), 1);
       }
     }
     img {

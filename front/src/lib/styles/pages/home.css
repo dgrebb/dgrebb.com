@@ -75,7 +75,7 @@
     a {
       opacity: 0.3;
       transition:
-        color 333ms,
+        color var(--transition-duration),
         opacity 200ms;
       transition-timing-function: var(--transition-timing-function);
       @apply inline-block
@@ -87,7 +87,7 @@
         opacity: 1;
         transition:
           color 200ms,
-          opacity 333ms;
+          opacity var(--transition-duration);
         transition-timing-function: var(--transition-timing-function);
       }
     }

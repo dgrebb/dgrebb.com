@@ -83,7 +83,8 @@
   .code-copy-btn {
     position: absolute;
     right: 0;
-    transition: color 333ms;
+    transition-duration: var(--transition-duration);
+    transition-property: color;
     padding: 0.75rem;
     line-height: 1.6;
     > * {
@@ -105,7 +106,8 @@
     .icon-code-copied {
       display: none;
       opacity: 0;
-      transition: opacity 333ms;
+      transition-duration: var(--transition-duration);
+      transition-property: opacity;
     }
     &.copying {
       cursor: default;
