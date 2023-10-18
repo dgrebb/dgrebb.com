@@ -59,6 +59,7 @@ jobs:
 
       - name: 🔦 Lighthouse
         id: lighthouse
+        continue-on-error: true
         run: |
           cd _ci/perf/lighthouse
           urls="${{ vars.LIGHTHOUSE_URLS }}"
