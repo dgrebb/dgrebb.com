@@ -65,7 +65,7 @@ jobs:
         run: cd _ci/backstop && npm ci && npx playwright install --with-deps
 
       - name: 🔥 Warmup Cache
-        run: ./_ci/_utils/warmup.sh
+        run: ./_ci/_utils/warmup.sh ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
 
       - name: 👀 Testing Bitmaps
         id: backstop
