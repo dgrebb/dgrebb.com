@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.7.1] - 2023-10-18
+
+### 👷 Build
+
+- ***(backstop)*** Disables plausible analytics for automation (#852) (#855)
+
+### ✅ Testing
+
+- ***(backstop)*** Updates gh-prd refs with 3.7.0 changes
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(ci)*** Adjusts workflow name and removes deployment deletion step
+- ***(front)*** Updates frontend dependencies (#850)
+
 ## [3.7.0] - 2023-10-16
 
 ### 💡 Features
