@@ -124,4 +124,4 @@ jobs:
         with:
           name: backstop-report
           retention-days: 3
-          path: "_ci/backstop/bd/bitmaps_test/gh-$REPORT_PATH"
+          path: _ci/backstop/bd/bitmaps_test/gh-${{ env.REPORT_PATH }}
