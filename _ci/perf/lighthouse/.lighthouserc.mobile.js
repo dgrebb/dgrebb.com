@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   extends: "lighthouse:default",
   settings: {
     maxWaitForFcp: 15 * 1000,
@@ -11,3 +11,5 @@ module.exports = {
     ],
   },
 };
+
+export default config;
