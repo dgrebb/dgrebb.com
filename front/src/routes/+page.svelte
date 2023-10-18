@@ -21,7 +21,7 @@
         title="Hi!"
         width={120}
         height={120}
-        classes="m-auto rounded-full"
+        classes="bio-picture"
       />
     {/if}
     <a id="main">Main Content</a>
