@@ -17,8 +17,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "axe-core": "^4.7.2",
+    "axe-core": "^4.8.2",
     "axe-html-reporter": "^2.2.3",
-    "lighthouse": "^11.0.0"
+    "lighthouse": "^11.2.0"
   }
 }

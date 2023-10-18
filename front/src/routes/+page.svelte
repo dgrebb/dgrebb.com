@@ -3,7 +3,7 @@
   import Meta from '@components/Meta.svelte';
   import PageTransition from '@components/PageTransition.svelte';
   import Link from '@components/content/renderers/Link.svelte';
-  import BioBitmap from '@components/static/BioBitmap.svelte';
+  import Image from '@components/Image.svelte';
   import Flourish from '@layout/Flourish.svelte';
   import SvelteMarkdown from 'svelte-markdown';
 
@@ -14,7 +14,16 @@
 <PageTransition transitionKey={pathname}>
   <section class="bio text-center">
     <Flourish />
-    <BioBitmap alt={image.alternativeText} />
+    {#if image}
+      <Image
+        src={image.url}
+        alt={image.alternativeText}
+        title="Hi!"
+        width={120}
+        height={120}
+        classes="m-auto rounded-full"
+      />
+    {/if}
     <a id="main">Main Content</a>
     <h1 class="headline">{headline}</h1>
     <SvelteMarkdown renderers={{ link: Link }} source={intro} />
