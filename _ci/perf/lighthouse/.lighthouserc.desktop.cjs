@@ -18,6 +18,12 @@ module.exports = {
       deviceScaleFactor: 1,
       disabled: false,
     },
+    skipAudits: [
+      // Skip the h2 audit so it doesn't lie to us. See https://github.com/GoogleChrome/lighthouse/issues/6539
+      "uses-http2",
+      // There are always bf-cache failures when testing in headless. Reenable when headless can give us realistic bf-cache insights.
+      "bf-cache",
+    ],
     emulatedUserAgent:
       "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
   },
