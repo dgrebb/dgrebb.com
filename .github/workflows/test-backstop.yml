@@ -118,8 +118,10 @@ jobs:
 
       - name: 🛟 Saving Artifact
         if: steps.backstop.outcome != 'success'
+        env:
+          REPORT_PATH: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
         uses: actions/upload-artifact@v3
         with:
           name: backstop-report
           retention-days: 3
-          path: _ci/backstop/bd/
+          path: _ci/backstop/bd/bitmaps_test/gh-$REPORT_PATH
