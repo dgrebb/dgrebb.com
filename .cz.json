@@ -8,7 +8,7 @@
     "bump_message": "release $current_version \u2192 $new_version",
     "customize": {
       "info": "This is customized info",
-      "message_template": "{{change_type}}({{scope}}): {{subject}}{% if body %}\n\n{{body}}{% endif %}{% if footer %}\n\n{% if is_breaking_change %}BREAKING CHANGE: {% endif %}{{footer}}{% endif %}",
+      "message_template": "{{change_type}}({{scope}}): {{subject}}{% if body %}\n\n{{body}}{% endif %}{% if footer %}\n\n{% if is_breaking_change %}BREAKING CHANGE: {% endif %}Closes: {{footer}}{% endif %}",
       "example": "feature(front): adds the header component",
       "schema": "<type>(<scope>): <subject>\n \n<body>\n \n(BREAKING CHANGE: )<footer>",
       "schema_pattern": "^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test){1}(\\([\\w\\-\\.]+\\))?(!)?: ([\\w \\-'])+([\\s\\S]*)",
