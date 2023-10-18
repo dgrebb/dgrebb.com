@@ -37,7 +37,7 @@ jobs:
 
       - name: 🌤️ Warmup CloudFront Cache
         run: |
-          _ci/_utils/warmup.sh
+          _ci/_utils/warmup.sh ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
 
       - name: PageSpeed Insights Mobile
         id: psim

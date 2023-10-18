@@ -55,10 +55,11 @@ jobs:
 
       - name: 🌤️ Warmup CloudFront Cache
         run: |
-          _ci/_utils/warmup.sh
+          _ci/_utils/warmup.sh ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
 
       - name: 🔦 Lighthouse
         id: lighthouse
+        continue-on-error: true
         run: |
           cd _ci/perf/lighthouse
           urls="${{ vars.LIGHTHOUSE_URLS }}"

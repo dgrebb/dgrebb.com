@@ -42,7 +42,7 @@ jobs:
         run: cd _ci/backstop && npm ci
 
       - name: 🔥 Warm Cache
-        run: ./_ci/_utils/warmup.sh
+        run: ./_ci/_utils/warmup.sh ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
 
       - name: 📸 Capturing References
         id: backstop
