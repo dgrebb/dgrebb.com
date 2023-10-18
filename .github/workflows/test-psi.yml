@@ -1,4 +1,4 @@
-name: 🔍 PageSpeed Insights 
+name: 🔍 PageSpeed Insights
 run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - PSI Run for ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest {0}', github.ref_name) }}"
 
 on:
@@ -43,7 +43,7 @@ jobs:
         id: psim
         uses: stefafafan/psi-action@v1
         with:
-          url: "https://stg.dgrebb.com/"
+          url: ${{ github.ref_name == 'main' && 'https://www.dgrebb.com/?roboto' || 'https://stg.dgrebb.com/?roboto' }}
           key: ${{ secrets.PSI_APIKEY }}
           strategy: "mobile"
 
@@ -51,7 +51,7 @@ jobs:
         id: psid
         uses: stefafafan/psi-action@v1
         with:
-          url: "https://stg.dgrebb.com/"
+          url: ${{ github.ref_name == 'main' && 'https://www.dgrebb.com/?roboto' || 'https://stg.dgrebb.com/?roboto' }}
           key: ${{ secrets.PSI_APIKEY }}
           strategy: "desktop"
 
@@ -79,29 +79,3 @@ jobs:
           echo "Speed Index: ${{ steps.psid.outputs.speed-index }}" >> $GITHUB_STEP_SUMMARY
           echo "TTI: ${{ steps.psid.outputs.time-to-interactive }}" >> $GITHUB_STEP_SUMMARY
           echo "Blocking Time: ${{ steps.psid.outputs.total-blocking-time }}" >> $GITHUB_STEP_SUMMARY
-          
-      - name: Delete Previous deployments
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
-          script: |
-            const deployments = await github.rest.repos.listDeployments({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              sha: context.sha
-            });
-            await Promise.all(
-              deployments.data.map(async (deployment) => {
-                await github.rest.repos.createDeploymentStatus({ 
-                  owner: context.repo.owner, 
-                  repo: context.repo.repo, 
-                  deployment_id: deployment.id, 
-                  state: 'inactive' 
-                });
-                return github.rest.repos.deleteDeployment({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  deployment_id: deployment.id
-                });
-              })
-            );

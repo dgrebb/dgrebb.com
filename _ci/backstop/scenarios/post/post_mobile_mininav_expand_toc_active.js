@@ -1,5 +1,5 @@
 const { URL, upToMediumViewports } = require('../vars');
-const POST_URL = `${URL}/post/hello-world/#what`;
+const POST_URL = `${URL}/post/hello-world/#what/?roboto`;
 
 module.exports = {
   label: 'Post - Mobile Mininav TOC Active Onload',

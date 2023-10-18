@@ -1,5 +1,5 @@
 const { URL, aboveSmallViewports } = require('../vars');
-const CATS_URL = `${URL}/posts/category/thoughts/`;
+const CATS_URL = `${URL}/posts/category/thoughts/?roboto`;
 
 module.exports = {
   label: 'Cats - Select "All" Category',

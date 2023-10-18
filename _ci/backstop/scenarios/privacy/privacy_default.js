@@ -1,5 +1,5 @@
 const { URL } = require('../vars');
-const PRIVACY_URL = URL + '/privacy';
+const PRIVACY_URL = `${URL}/privacy/?roboto`;
 
 module.exports = {
   label: 'Privacy Policy',
