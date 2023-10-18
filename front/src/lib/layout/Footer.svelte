@@ -6,9 +6,9 @@
 </script>
 
 <small>
-  <p>
-    {#if copyleft}{@html copyleft}{/if}
-  </p>
+  {#if copyleft}
+    <p>{@html copyleft}</p>
+  {/if}
   <p>
     <CreativeCommons />
     {#if copyright}{copyright}{/if}{year} A.D. | Some Rights Reserved |

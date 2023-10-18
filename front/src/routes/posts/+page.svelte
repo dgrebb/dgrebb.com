@@ -51,7 +51,7 @@
   </section>
 </PageTransition>
 
-<Head>
+<!-- <Head>
   {#if mounted}
     {#each gridItems as { image }}
       {#if image}
@@ -65,6 +65,6 @@
       {/if}
     {/each}
   {/if}
-</Head>
+</Head> -->
 
 <Meta {pageMeta} />

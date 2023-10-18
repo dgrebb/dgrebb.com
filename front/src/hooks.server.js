@@ -38,7 +38,7 @@ export function handleError({ error, event }) {
 
 const minification_options = {
   collapseWhitespace: true,
-  collapseInlineTagWhitespace: true,
+  collapseInlineTagWhitespace: false,
   removeComments: false,
   minifyCSS: true,
   minifyJS: true,
