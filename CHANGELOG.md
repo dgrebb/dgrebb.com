@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.7.2] - 2023-10-19
+
+### ♻️  Refactor
+
+- ***(front)*** Improves animation performance via 'will-change' properties (#813)
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(back)*** Updates to and patches strapi@4.14.5 (#862)
+- ***(backstop)*** Switches backstopjs package source (#859)
+- ***(backstop)*** Corrects patching for super-simple-web-server
+- ***(ci)*** Updates lighthouse and configuration thereof
+- ***(front)*** Updates to and patches @sveltejs/ket@1.26.0 (#856)
+- ***(terraform)*** Upgrades terraform/aws to 1.6.2/5.21.0 (#866)
+
 ## [3.7.1] - 2023-10-18
 
 ### 👷 Build
