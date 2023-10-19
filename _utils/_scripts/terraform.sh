@@ -2,6 +2,8 @@
 source $directory/_scripts/functions.sh
 
 environment=$1
+state_bucket=$(pass dg/aws/$environment/state-bucket)
+key="terraform.tfstate"
 
 if [ $# -eq 0 ]; then
     printDgErr "Missing args for Terraform commands!"
@@ -24,19 +26,25 @@ else
         i | init)
             setTfEnv
             printDgMsg "Initializing..."
-            terraform init
+            terraform init -backend-config="key=$key" -backend-config="bucket=$state_bucket" -backend-config="region=us-east-2"
             break 2
             ;;
         iu | init-upgrade)
             setTfEnv
             printDgMsg "Upgrading Terraform..."
-            terraform init -upgrade
+            terraform init -backend-config="key=$key" -backend-config="bucket=$state_bucket" -backend-config="region=us-east-2" -upgrade
+            break 2
+            ;;
+        ir | init-reconfigure)
+            setTfEnv
+            printDgMsg "Upgrading Terraform..."
+            terraform init -backend-config="key=$key" -backend-config="bucket=$state_bucket" -backend-config="region=us-east-2" -reconfigure
             break 2
             ;;
         im | import)
             setTfEnv
             printDgMsg "Initializing..."
-            terraform import $3 $4
+            terraform import -backend-config="key=$key" -backend-config="bucket=$state_bucket" -backend-config="region=us-east-2" $3 $4
             break 2
             ;;
         p | plan)
