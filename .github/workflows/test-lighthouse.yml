@@ -37,7 +37,8 @@ jobs:
           ref: ${{ github.ref }}
           token: ${{ github.token }}
           sparse-checkout: |
-            _ci
+            _ci/_utils
+            _ci/perf
 
       - name: ⬢ Setup Node & Cache
         uses: actions/setup-node@v3
@@ -66,9 +67,10 @@ jobs:
           while IFS="" read -r url || [ -n "$url" ]; do
             u="$(echo "$url" | tr -d '\r')"
             undurl=$(echo "$u" | sed -E 's|https?://([^/]+)(/[^?#]*)?([?#]?.*)?|\2|;s|/+$||;s|/|_|g')
+            automation_url="${u}?roboto"
             echo "Running Lighthouse on $u and writing report to ./$undurl"
-            npm run lhgh $u -- --output-path ./mobile_"$undurl"report.html
-            npm run lhgh-d $u -- --output-path ./desktop_"$undurl"report.html
+            npm run lhgh $automation_url -- --output-path ./mobile_"$undurl"report.html
+            npm run lhgh-d $automation_url -- --output-path ./desktop_"$undurl"report.html
           done <<<"$urls"
 
       - name: ⚓️ Drop Anchor
