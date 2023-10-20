@@ -135,9 +135,6 @@
       : 'production';
     Sentry.init({
       dsn: 'https://02b9c4dc55d14cf5bbdd30b7e592eb9a@o4505287560462336.ingest.sentry.io/4505312527187968',
-      tracesSampleRate: 1.0,
-      replaysSessionSampleRate: 0.1,
-      replaysOnErrorSampleRate: 1.0,
       environment,
       beforeSend(event) {
         if (event.user) {
