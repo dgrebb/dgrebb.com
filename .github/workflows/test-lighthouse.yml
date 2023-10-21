@@ -43,12 +43,7 @@ jobs:
       - name: ⬢ Setup Node & Cache
         uses: actions/setup-node@v3
         with:
-          node-version: "18.18.2"
-          cache: "npm"
-          cache-dependency-path: |
-            _ci/perf/package.json
-            _ci/perf/package-lock.json
-            _ci/perf/node_modules
+          node-version: "18.18.0"
 
       - name: ↧ Install & Patch
         run: |
@@ -85,7 +80,7 @@ jobs:
         if: always()
         uses: jakejarvis/s3-sync-action@master
         with:
-          args: --acl public-read --follow-symlinks --delete --exclude '*.cjs' --cache-control max-age=2853200,public
+          args: --acl public-read --follow-symlinks --delete --exclude '*.js' --cache-control max-age=2853200,public
         env:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_REPORTS }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
