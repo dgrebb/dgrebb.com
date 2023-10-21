@@ -156,7 +156,7 @@
       height: 8px;
     }
     &::-webkit-scrollbar-thumb {
-      border-radius: 100%;
+      border-radius: 3rem;
       background: transparent;
     }
     &:hover,
@@ -167,7 +167,7 @@
         height: 8px;
       }
       &::-webkit-scrollbar-thumb {
-        border-radius: 100%;
+        border-radius: 3rem;
       }
     }
   }
@@ -188,7 +188,7 @@
     }
     &::-webkit-scrollbar-thumb {
       transition: background-color 0.5s;
-      border-radius: 100%;
+      border-radius: 3rem;
       background: transparent;
     }
     &:hover,
@@ -199,7 +199,7 @@
         height: 8px;
       }
       &::-webkit-scrollbar-thumb {
-        border-radius: 100%;
+        border-radius: 3rem;
       }
     }
     & > table {
