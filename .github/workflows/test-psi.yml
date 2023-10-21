@@ -34,48 +34,48 @@ jobs:
           token: ${{ github.token }}
           sparse-checkout: |
             _ci/_utils
+            _ci/perf
+
+      - name: ⬢ Setup Node & Cache
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.18.2"
+          cache: "npm"
+          cache-dependency-path: |
+            _ci/perf/package.json
+            _ci/perf/package-lock.json
+            _ci/perf/node_modules
+
+      - name: ↧ Install & Patch
+        run: |
+          cd _ci/perf && npm ci
 
       - name: 🌤️ Warmup CloudFront Cache
         run: |
           _ci/_utils/warmup.sh ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
 
-      - name: PageSpeed Insights Mobile
-        id: psim
-        uses: stefafafan/psi-action@v1
-        with:
-          url: ${{ github.ref_name == 'main' && 'https://www.dgrebb.com/?roboto' || 'https://stg.dgrebb.com/?roboto' }}
-          key: ${{ secrets.PSI_APIKEY }}
-          strategy: "mobile"
-
-      - name: PageSpeed Insights Desktop
-        id: psid
-        uses: stefafafan/psi-action@v1
-        with:
-          url: ${{ github.ref_name == 'main' && 'https://www.dgrebb.com/?roboto' || 'https://stg.dgrebb.com/?roboto' }}
-          key: ${{ secrets.PSI_APIKEY }}
-          strategy: "desktop"
-
-      - name: Summarize PSI Mobile
+      - name: PSI Mobile
         run: |
-          echo "# PageSpeed Insights - Mobile" >> $GITHUB_STEP_SUMMARY
-          echo "## Mobile" >> $GITHUB_STEP_SUMMARY
-          echo "Score: ${{ steps.psim.outputs.score }}" >> $GITHUB_STEP_SUMMARY
-          echo "FCP: ${{ steps.psim.outputs.first-contentful-paint }}" >> $GITHUB_STEP_SUMMARY
-          echo "FID: ${{ steps.psim.outputs.first-input-delay }}" >> $GITHUB_STEP_SUMMARY
-          echo "CLS: ${{ steps.psim.outputs.cumulative-layout-shift }}" >> $GITHUB_STEP_SUMMARY
-          echo "LCP: ${{ steps.psim.outputs.largest-contentful-paint }}" >> $GITHUB_STEP_SUMMARY
-          echo "Speed Index: ${{ steps.psim.outputs.speed-index }}" >> $GITHUB_STEP_SUMMARY
-          echo "TTI: ${{ steps.psim.outputs.time-to-interactive }}" >> $GITHUB_STEP_SUMMARY
-          echo "Blocking Time: ${{ steps.psim.outputs.total-blocking-time }}" >> $GITHUB_STEP_SUMMARY
+          cd _ci/perf
+          npm run psi -- ${{ github.ref_name == 'main' && 'https://www.dgrebb.com/?roboto' || 'https://stg.dgrebb.com/?roboto' }} --key=${{ secrets.PSI_APIKEY }} --prettyprint=true --strategy=mobile >> $GITHUB_STEP_SUMMARY
 
-      - name: Summarize PSI Desktop
+      - name: PSI Desktop
         run: |
-          echo "## Desktop" >> $GITHUB_STEP_SUMMARY
-          echo "Score: ${{ steps.psid.outputs.score }}" >> $GITHUB_STEP_SUMMARY
-          echo "FCP: ${{ steps.psid.outputs.first-contentful-paint }}" >> $GITHUB_STEP_SUMMARY
-          echo "FID: ${{ steps.psid.outputs.first-input-delay }}" >> $GITHUB_STEP_SUMMARY
-          echo "CLS: ${{ steps.psid.outputs.cumulative-layout-shift }}" >> $GITHUB_STEP_SUMMARY
-          echo "LCP: ${{ steps.psid.outputs.largest-contentful-paint }}" >> $GITHUB_STEP_SUMMARY
-          echo "Speed Index: ${{ steps.psid.outputs.speed-index }}" >> $GITHUB_STEP_SUMMARY
-          echo "TTI: ${{ steps.psid.outputs.time-to-interactive }}" >> $GITHUB_STEP_SUMMARY
-          echo "Blocking Time: ${{ steps.psid.outputs.total-blocking-time }}" >> $GITHUB_STEP_SUMMARY
+          cd _ci/perf
+          npm run psi -- ${{ github.ref_name == 'main' && 'https://www.dgrebb.com/?roboto' || 'https://stg.dgrebb.com/?roboto' }} --key=${{ secrets.PSI_APIKEY }} --prettyprint=true --strategy=desktop >> $GITHUB_STEP_SUMMARY
+
+      # - name: PageSpeed Insights Mobile
+      #   id: psim
+      #   uses: stefafafan/psi-action@v1
+      #   with:
+      #     url: ${{ github.ref_name == 'main' && 'https://www.dgrebb.com/?roboto' || 'https://stg.dgrebb.com/?roboto' }}
+      #     key: ${{ secrets.PSI_APIKEY }}
+      #     strategy: "mobile"
+
+      # - name: PageSpeed Insights Desktop
+      #   id: psid
+      #   uses: stefafafan/psi-action@v1
+      #   with:
+      #     url: ${{ github.ref_name == 'main' && 'https://www.dgrebb.com/?roboto' || 'https://stg.dgrebb.com/?roboto' }}
+      #     key: ${{ secrets.PSI_APIKEY }}
+      #     strategy: "desktop"
