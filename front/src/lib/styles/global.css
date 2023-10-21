@@ -112,6 +112,17 @@ body {
     overflow: visible;
     scrollbar-gutter: auto;
   }
+  &::-webkit-scrollbar {
+    appearance: none;
+    padding: 3px;
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3rem;
+  }
 }
 
 .flourish {

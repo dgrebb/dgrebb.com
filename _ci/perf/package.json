@@ -8,11 +8,11 @@
     "axe": "node axe/reporter.js",
     "lh": "PSI_APIKEY=$PSI_APIKEY lighthouse --config-path=./lighthouse/.lighthouserc.mobile.js \"$URL\" --view --chrome-flags='--headless'",
     "lh-d": "PSI_APIKEY=$PSI_APIKEY lighthouse --config-path=./lighthouse/.lighthouserc.desktop.js \"$URL\" --view --chrome-flags='--headless'",
-    "lhgh": "cd lighthouse && lighthouse --config-path=./.lighthouserc.mobile.js --chrome-flags='--headless'",
-    "lhgh-d": "cd lighthouse && lighthouse --config-path=./.lighthouserc.desktop.js --chrome-flags='--headless'",
+    "lhgh": "cd lighthouse && lighthouse --config-path=./.lighthouserc.mobile.js --chrome-flags='--headless' --chrome-flags='--no-sandbox'",
+    "lhgh-d": "cd lighthouse && lighthouse --config-path=./.lighthouserc.desktop.js --chrome-flags='--headless' --chrome-flags='--no-sandbox'",
     "psi": "psi",
-    "psim": "psi http://stg.dgrebb.com --key=$(pass dg/keys/page-speed-insights) --prettyprint=true --strategy=mobile",
-    "psid": "psi http://stg.dgrebb.com --key=$(pass dg/keys/page-speed-insights) --prettyprint=true --strategy=desktop"
+    "psim": "psi http://stg.dgrebb.com/?roboto --key=$(pass dg/keys/page-speed-insights) --prettyprint=true --strategy=mobile",
+    "psid": "psi http://stg.dgrebb.com/?roboto --key=$(pass dg/keys/page-speed-insights) --prettyprint=true --strategy=desktop"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,7 @@
   "devDependencies": {
     "axe-core": "^4.8.2",
     "axe-html-reporter": "^2.2.3",
-    "lighthouse": "^11.2.0"
+    "lighthouse": "11.2.0",
+    "psi": "^4.1.0"
   }
 }
