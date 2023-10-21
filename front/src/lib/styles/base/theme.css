@@ -149,6 +149,9 @@
         var(--sun) 153%
       );
       scrollbar-color: var(--violet-a30) transparent;
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--violet-a30);
+      }
     }
 
     .flourish {
@@ -594,6 +597,9 @@
         var(--moonshine) 100%
       );
       scrollbar-color: var(--celestial-a30) transparent;
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--celestial-a30);
+      }
     }
 
     .flourish {
