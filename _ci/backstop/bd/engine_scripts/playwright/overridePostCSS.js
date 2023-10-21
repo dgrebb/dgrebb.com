@@ -4,6 +4,9 @@ const BACKSTOP_TEST_CSS_OVERRIDE = `
     transition-duration: 0 !important; 
     transition-delay: 0 !important;
   }
+  .animated-image {
+    min-height: 500px !important;
+  }
 `;
 
 module.exports = async (page, scenario) => {
