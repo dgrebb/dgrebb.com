@@ -12,6 +12,8 @@ let scenarios = [
   posts.posts_hover_post_1,
   posts.posts_hover_post_7,
   post.post_navigate_from_posts,
+  post.post_syntax_highlighter,
+  post.post_animated_image,
   post.post_aside_toc_click,
   post.post_aside_toc_active,
   post.post_mobile_mininav_expand,
