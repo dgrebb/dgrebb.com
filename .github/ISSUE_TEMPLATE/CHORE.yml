@@ -1,6 +1,6 @@
 name: "🧹 Chore"
 description: What are we building?
-title: "🧹 [CHORE] - "
+title: "🧹 [CHORE]: "
 labels: "chore"
 projects: ["dgrebb.com"]
 assignees:
