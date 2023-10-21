@@ -63,19 +63,3 @@ jobs:
         run: |
           cd _ci/perf
           npm run -s psi -- ${{ github.ref_name == 'main' && 'https://www.dgrebb.com/?roboto' || 'https://stg.dgrebb.com/?roboto' }} --key=${{ secrets.PSI_APIKEY }} --prettyprint=true --strategy=desktop >> $GITHUB_STEP_SUMMARY
-
-      # - name: PageSpeed Insights Mobile
-      #   id: psim
-      #   uses: stefafafan/psi-action@v1
-      #   with:
-      #     url: ${{ github.ref_name == 'main' && 'https://www.dgrebb.com/?roboto' || 'https://stg.dgrebb.com/?roboto' }}
-      #     key: ${{ secrets.PSI_APIKEY }}
-      #     strategy: "mobile"
-
-      # - name: PageSpeed Insights Desktop
-      #   id: psid
-      #   uses: stefafafan/psi-action@v1
-      #   with:
-      #     url: ${{ github.ref_name == 'main' && 'https://www.dgrebb.com/?roboto' || 'https://stg.dgrebb.com/?roboto' }}
-      #     key: ${{ secrets.PSI_APIKEY }}
-      #     strategy: "desktop"
