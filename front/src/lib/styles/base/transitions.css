@@ -1,7 +1,9 @@
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,
-  ::after {
+  ::after,
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
     animation-duration: 0.001s !important;
     animation-iteration-count: 1 !important;
     transition-delay: 0.001s !important;
