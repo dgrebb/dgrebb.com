@@ -26,7 +26,9 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "summary": {
       "type": "text"
@@ -56,6 +58,7 @@
       "components": [
         "posts.text",
         "posts.code",
+        "posts.quote",
         "posts.animated-image",
         "posts.image-carousel",
         "posts.html"
