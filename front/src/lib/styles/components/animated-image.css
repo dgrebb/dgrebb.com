@@ -5,6 +5,12 @@
   .animation-player {
     display: block;
     position: relative;
+    box-shadow: var(--shadow-elevation-low);
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
   }
   &:hover {
     summary {

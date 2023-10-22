@@ -1,7 +1,16 @@
-.posts,
 .post,
-.privacy,
-.category {
+.posts .summary,
+.category,
+.privacy {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+.post,
+.posts,
+.category,
+.privacy {
   line-height: 1.6;
   p {
     @apply my-3;
