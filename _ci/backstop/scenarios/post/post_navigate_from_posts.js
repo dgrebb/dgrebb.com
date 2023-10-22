@@ -5,7 +5,8 @@ module.exports = {
   label: 'Post - Navigate From Posts',
   url: POSTS_URL,
   onReadyScript: 'playwright/onReadyPosts.js',
-  clickSelector: 'a[href*="/post/hello-world"]',
+  clickSelector:
+    'a[href*="/post/animating-page-and-view-transitions-with-accessibility-in-mind"]',
   postInteractionWait: 3000,
   selectors: ['document'],
   selectorExpansion: false,
