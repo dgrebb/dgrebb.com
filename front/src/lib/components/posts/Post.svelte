@@ -99,6 +99,27 @@
           on:parsed={handleParsed}
         />
       {/if}
+      {#if c.__component === 'posts.quote'}
+        <blockquote>
+          <p>{c.text}</p>
+          {#if c.citation}
+            <footer>
+              <cite>
+                {#if c.citationLink}
+                  &mdash;<a
+                    href={c.citationLink}
+                    title={c.citationLinkTitle}
+                    target="_blank"
+                    rel="nofollow noopener noreferrer">{c.citation}</a
+                  >
+                {:else}
+                  &mdash;{c.citation}
+                {/if}
+              </cite>
+            </footer>
+          {/if}
+        </blockquote>
+      {/if}
       {#if c.__component === 'posts.code'}
         {@const lines =
           c?.highlightedLines?.split(',').map((item) => Number(item - 1)) ||

@@ -52,7 +52,7 @@
   .title,
   .language {
     position: absolute;
-    padding: 0.75rem;
+    padding: 0.75rem 33px 0.75rem 0.75rem;
     width: 50%;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
       'Liberation Mono', 'Courier New', monospace; /* 1 */
