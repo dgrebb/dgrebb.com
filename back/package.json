@@ -1,7 +1,7 @@
 {
   "name": "cms.dgrebb.com",
   "private": true,
-  "version": "3.7.2",
+  "version": "3.8.0",
   "description": "cms.dgrebb.com",
   "scripts": {
     "develop": "strapi develop",
