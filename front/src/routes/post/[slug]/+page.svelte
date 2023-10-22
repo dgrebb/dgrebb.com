@@ -12,7 +12,7 @@
   $: ({
     pathname,
     post,
-    post: { title },
+    post: { title, slug },
     pageMeta,
   } = data);
   $: hero = post.hero?.data?.attributes || false;
@@ -60,6 +60,7 @@
     <Post
       {publishedAt}
       {updatedAt}
+      {slug}
       {title}
       {summary}
       {content}

@@ -8,15 +8,16 @@
   import slugger from 'slugger';
   import SvelteMarkdown from 'svelte-markdown';
 
-  export let publishedAt;
-  export let updatedAt;
-  export let title;
-  export let summary;
-  export let content;
-  export let footnotes;
-  export let categories;
-  export let related;
-  export let pathname;
+  export let publishedAt,
+    updatedAt,
+    slug,
+    title,
+    summary,
+    content,
+    footnotes,
+    categories,
+    related,
+    pathname;
 
   const pub = new Date(publishedAt).toLocaleDateString('en-us', {
     year: 'numeric',
@@ -126,6 +127,8 @@
           false}
         <Code
           key={i}
+          pageTitle={title}
+          pageSlug={slug}
           text={c.code}
           lang={c.syntax}
           title={c?.title}
