@@ -1,5 +1,5 @@
 <script>
-  import Highlight, { LineNumbers } from 'svelte-highlight';
+  import Highlight, { LineNumbers, HighlightSvelte } from 'svelte-highlight';
   import plaintext from 'svelte-highlight/languages/plaintext';
   import JavaScript from 'svelte-highlight/languages/javascript';
   import XML from 'svelte-highlight/languages/xml';
@@ -39,15 +39,27 @@
     {/if} -->
     {#if copyButton === true}<CodeCopy {text} {key} />{/if}
     {#if lineNumbers === true}
-      <Highlight code={text} {language} let:highlighted>
-        <LineNumbers
-          {highlighted}
-          {highlightedLines}
-          --highlighted-background="transparent"
-          --padding-left="0"
-          hideBorder
-        />
-      </Highlight>
+      {#if lang === 'Svelte'}
+        <HighlightSvelte code={text} {language} let:highlighted>
+          <LineNumbers
+            {highlighted}
+            {highlightedLines}
+            --highlighted-background="transparent"
+            --padding-left="0"
+            hideBorder
+          />
+        </HighlightSvelte>
+      {:else}
+        <Highlight code={text} {language} let:highlighted>
+          <LineNumbers
+            {highlighted}
+            {highlightedLines}
+            --highlighted-background="transparent"
+            --padding-left="0"
+            hideBorder
+          />
+        </Highlight>
+      {/if}
     {:else}
       <Highlight code={text} {language} />
     {/if}
@@ -63,6 +75,10 @@
       >
     {/if} -->
     {#if copyButton === true}<CodeCopy {text} {key} />{/if}
-    <Highlight code={text} {language} />
+    {#if lang === 'Svelte'}
+      <HighlightSvelte code={text} {language} />
+    {:else}
+      <Highlight code={text} {language} />
+    {/if}
   {/if}
 </div>
