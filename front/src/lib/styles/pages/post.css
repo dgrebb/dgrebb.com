@@ -384,12 +384,6 @@
       }
     }
   }
-  .media-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 0;
-  }
   .footnotes {
     li {
       margin-left: 1.2rem;
