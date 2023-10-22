@@ -29,7 +29,6 @@
 :root {
   --white: 223, 224, 224;
   --black: 19, 19, 20;
-  text-rendering: optimizeLegibility !important;
   :focus-visible {
     outline-offset: 0.25rem;
     border-bottom: 0 !important;
@@ -166,7 +165,7 @@ body {
   &:focus,
   &:focus-visible,
   &:active {
-    color: white;
+    color: var(--highlight-clr);
   }
   svg {
     margin-top: 1.25rem;
