@@ -1,5 +1,6 @@
 <script>
   import '@styles/components/animated-image.css';
+  import SvelteMarkdown from 'svelte-markdown';
   export let animation, aAlt, still, sAlt, figcaption;
 </script>
 
@@ -46,6 +47,6 @@
         </div>
       </details>
     </div>
-    <figcaption>{figcaption}</figcaption>
+    <figcaption><SvelteMarkdown source={figcaption} /></figcaption>
   </figure>
 </div>

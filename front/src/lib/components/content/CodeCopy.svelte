@@ -4,13 +4,6 @@
   $: copied = false;
   let animations;
   let resets;
-  console.log(
-    '🚀 ~ file: CodeCopy.svelte:4 ~ pageTitle, pageSlug, title, text, key:',
-    pageTitle,
-    pageSlug,
-    title,
-    key
-  );
 
   async function handleCopying(e) {
     const button = e.target;
