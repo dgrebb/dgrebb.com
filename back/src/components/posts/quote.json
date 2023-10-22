@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_posts_quotes",
+  "info": {
+    "displayName": "Quote",
+    "icon": "quote",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text",
+      "required": true
+    },
+    "citation": {
+      "type": "string"
+    },
+    "citationLink": {
+      "type": "string"
+    },
+    "citationLinkTitle": {
+      "type": "string"
+    }
+  }
+}
