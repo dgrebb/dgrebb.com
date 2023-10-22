@@ -1,9 +1,16 @@
 <script>
-  export let text;
-  export let key;
+  import { codeCopyClick } from '@utils/uiHelpers';
+  export let pageTitle, pageSlug, title, text, key;
   $: copied = false;
   let animations;
   let resets;
+  console.log(
+    '🚀 ~ file: CodeCopy.svelte:4 ~ pageTitle, pageSlug, title, text, key:',
+    pageTitle,
+    pageSlug,
+    title,
+    key
+  );
 
   async function handleCopying(e) {
     const button = e.target;
@@ -18,6 +25,7 @@
     button.closest('.syntax-highlighter').classList.toggle('copying', false);
 
     if (e.type === 'click' || e.code === 'Enter' || e.code === 'Space') {
+      codeCopyClick(pageTitle, pageSlug, title, key);
       await navigator.clipboard.writeText(text);
       button.classList.toggle('copying', true);
       setTimeout(() => {
