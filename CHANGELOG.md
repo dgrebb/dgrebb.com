@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.8.0] - 2023-10-22
+
+### 💡 Features
+
+- ***(back)*** Adds quote component schema and posts schema association (#886)
+- ***(front)*** Adds Code copy event and data (#885)
+- ***(front)*** Adds quote Svelte component and styles (#886)
+- ***(front)*** Adds svelte syntax support to Code component (#884)
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Adjusts webkit scrollbar styles
+- ***(front)*** Adds view-transition properties to prefers-reduced (#876)
+
+### 👷 Build
+
+- ***(front)*** Uses markdown for AnimatedImage figcaption
+- ***(front)*** Adjusts typography and post styles
+
+### ✅ Testing
+
+- ***(backstop)*** Updates gh-stg refs with font rendering adjustments
+- ***(backstop)*** Updates navigate from posts test
+- ***(backstop)*** Adds tests for syntax highlighter and animated image components (#882)
+- ***(backstop)*** Updates gh-prd refs
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(ci)*** Removes sandbox mode for gh workflow lighthouse runs (#879) (#880)
+- ***(front)*** Updates to svelte@4.2.2 and unplugin-icons/iconify 0.17.1/1.1.6
+- ***(front)*** Removes sentry bloat preferring core error tracing only (#872)
+- ***(github)*** Updates issue templates
+- ***(testing)*** Adjusts how lighthouse applies automation querystring
+
 ## [3.7.2] - 2023-10-19
 
 ### ♻️  Refactor
