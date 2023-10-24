@@ -34,7 +34,7 @@
     "@iconify-json/typcn": "^1.1.6",
     "@sentry/sveltekit": "^7.74.1",
     "@sveltejs/adapter-static": "^2.0.3",
-    "@sveltejs/kit": "^1.26.0",
+    "@sveltejs/kit": "^1.27.0",
     "autoprefixer": "^10.4.16",
     "html-minifier-terser": "^7.2.0",
     "patch-package": "^8.0.0",

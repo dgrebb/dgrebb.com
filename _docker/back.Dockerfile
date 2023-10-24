@@ -1,5 +1,5 @@
 # -------- Base Node -------- #
-FROM node:18-alpine AS base
+FROM node:20-alpine AS base
 # Installing libvips-dev for sharp Compatibility
 RUN apk update && apk add --no-cache build-base \
     gcc autoconf automake zlib-dev libpng-dev \
