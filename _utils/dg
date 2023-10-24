@@ -94,6 +94,10 @@ while test "$1" != --; do
         /bin/bash $directory/_scripts/visual-regression.sh approve $2
         break
         ;;
+    sp | spelling | cspell)
+        /bin/bash $directory/../_ci/spell/content.sh $2
+        break
+        ;;
     -h | --help)
         showHelp
         break
