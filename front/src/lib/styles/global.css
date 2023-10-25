@@ -62,8 +62,6 @@ html.dark-theme {
 html {
   transition: background-color;
   transition-duration: var(--transition-duration-md);
-  background-repeat: no-repeat;
-  background-color: var(--bg-clr);
   min-height: 100%;
   overflow: clip;
   scroll-behavior: smooth;
