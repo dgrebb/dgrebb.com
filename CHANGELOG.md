@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.8.1] - 2023-10-25
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Fixes margin and padding on categories and posts pages (#894)
+
+### ♻️  Refactor
+
+- ***(front)*** Refactors font sizing and content spacing (#894)
+
+### ✅ Testing
+
+- ***(backstop)*** Updates gh-stg refs
+- ***(backstop)*** Updates gh-prd refs
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(project)*** Updates to node 20 (#860)
+
 ## [3.8.0] - 2023-10-22
 
 ### 💡 Features
