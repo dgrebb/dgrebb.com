@@ -1,19 +1,39 @@
 .posts {
   h1.title {
+    margin-bottom: 1.25rem;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-family: var(--font-psbl);
     text-align: center;
+    @media (min-width: 768px) {
+      font-size: 3rem;
+      line-height: 1;
+    }
   }
   .summary {
-    @apply dg--font-lb;
     margin: auto auto 2rem;
+    line-height: 1.6;
+    font-family: var(--font-lb);
     @screen md {
       max-width: 77%;
     }
     p {
       margin: 0 auto;
     }
+    strong {
+      font-weight: 400;
+      font-family: var(--font-psb);
+    }
     @screen md {
       column-gap: 2rem;
       column-count: 2;
+    }
+  }
+  p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    code {
+      font-size: 1rem;
     }
   }
 }

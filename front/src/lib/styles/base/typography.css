@@ -8,7 +8,6 @@
   -webkit-text-size-adjust: 100%;
 }
 .post,
-.posts,
 .category,
 .privacy {
   line-height: 1.6;
@@ -116,4 +115,15 @@ h1.page-heading {
     mb-5
     text-4xl
     md:text-5xl;
+}
+.category {
+  ul {
+    margin: 0;
+    li:last-of-type {
+      margin-bottom: 0;
+      p:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
