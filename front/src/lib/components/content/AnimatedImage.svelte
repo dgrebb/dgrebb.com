@@ -1,7 +1,7 @@
 <script>
   import '@styles/components/animated-image.css';
   import SvelteMarkdown from 'svelte-markdown';
-  export let animation, aAlt, still, sAlt, figcaption;
+  export let animation, width, height, aAlt, still, sAlt, figcaption;
 </script>
 
 <div class="media-box">
@@ -9,6 +9,8 @@
     <div class="animation-player">
       <img
         src={still}
+        {width}
+        {height}
         alt="Still frame{sAlt === null ? '' : `: ${sAlt}`}"
         loading="lazy"
       />
@@ -41,6 +43,8 @@
         <div class="animation">
           <img
             src={animation}
+            {width}
+            {height}
             alt="Animated{aAlt === null ? '' : `: ${aAlt}`}"
             loading="lazy"
           />

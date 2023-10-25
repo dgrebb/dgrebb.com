@@ -13,21 +13,34 @@
 .privacy {
   line-height: 1.6;
   p {
-    @apply my-3;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    code {
+      font-size: 1rem;
+    }
   }
   strong {
-    @apply dg--font-psb
-    font-normal;
+    font-weight: 400;
+    font-family: var(--font-psb);
   }
   ol,
   ul {
-    @apply list-decimal;
+    margin: 1rem 0 1rem 0.25rem;
+    @media screen and (min-width: 480px) {
+      margin: 1.5rem 0 1.5rem 1.5rem;
+    }
     li {
-      @apply mb-3;
+      margin-bottom: 0.75rem;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
     }
     ol,
     ul {
-      @apply ml-3 mt-3;
+      margin: 0.75rem 0 0.75rem 0.25rem;
+      @media screen and (min-width: 480px) {
+        margin: 0.75rem 0 0.75rem 0.75rem;
+      }
     }
   }
   mark {
@@ -40,10 +53,12 @@
   h4,
   h5,
   h6 {
-    @apply mb-5
-      pt-3
-      md:mb-7
-      md:pt-3;
+    margin-bottom: 1.25rem;
+    padding-top: 1rem;
+    @media screen and (min-width: 768px) {
+      margin-bottom: 1.75rem;
+      padding-top: 1.25rem;
+    }
     transition: color;
     @apply dg--transition-effect;
     letter-spacing: -0.6px;
@@ -57,40 +72,40 @@
   }
   h1 {
     @apply dg--font-psbl
-      mb-5
       text-4xl
       md:text-5xl;
+    margin-bottom: 1.25rem;
   }
   h2 {
     @apply dg--font-psbl
-      mb-4
       text-3xl
       md:text-4xl;
+    margin-bottom: 1rem;
   }
   h3 {
     @apply dg--font-psbl
-      mb-4
       text-2xl
       md:text-3xl;
+    margin-bottom: 1rem;
   }
   h4 {
     @apply dg--font-psb
-      mb-4
       text-xl
       md:text-2xl;
+    margin-bottom: 1rem;
   }
   h5 {
     @apply dg--font-psb
-      mb-4
       text-base
       md:text-lg;
+    margin-bottom: 1rem;
   }
   h6 {
     @apply dg--font-psb
-      mb-4
       text-base
       italic
       md:text-lg;
+    margin-bottom: 1rem;
   }
 }
 h1.page-heading {

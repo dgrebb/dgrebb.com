@@ -7,7 +7,7 @@
 
   function doIt() {
     return {
-      duration: motionless() === true ? 0 : 500,
+      duration: motionless() === true ? 0 : 300,
     };
   }
 

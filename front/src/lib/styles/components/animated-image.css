@@ -151,8 +151,11 @@
     transition-timing-function: var(--transition-timing-function);
     margin-top: 0.5rem;
     padding: 0 2rem;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     font-family: var(--font-lb);
     text-align: center;
+    p code {
+      font-size: 0.875rem;
+    }
   }
 }
