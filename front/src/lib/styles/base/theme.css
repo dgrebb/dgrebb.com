@@ -42,8 +42,6 @@
   --clr-neut-900-rgb: 11, 11, 11;
   --clr-neut-rgb: var(--clr-primary-900-rgb);
 
-  --bg-grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-
   :focus-visible {
     outline: 2px dashed var(--highlight-clr);
   }
@@ -51,7 +49,7 @@
 
 .privacy,
 .post {
-  background: var(--rim-light-bg), var(--bg-clr);
+  background: var(--rim-light-bg), var(--content-bg-clr);
   @media screen and (min-width: 640px) {
     box-shadow: var(--shadow-elevation-high);
   }
@@ -83,6 +81,7 @@
 @layer utilities {
   .dg--light-theme {
     --bg-clr: var(--lemon-50);
+    --content-bg-clr: var(--dirty-sidewalk);
     --fg-clr: var(--violet);
     --shadow-color: var(--sunshine-shadow-clr);
     --rim-clr: var(--sun);
@@ -94,9 +93,9 @@
 
     --rim-light-bg: linear-gradient(
       10deg,
-      var(--bg-clr) 33%,
-      var(--bg-clr) 77%,
-      var(--sun) 133%
+      var(--content-bg-clr) 33%,
+      var(--content-bg-clr) 77%,
+      var(--sun) 233%
     );
     --category-rim-light-bg: linear-gradient(
       35deg,
@@ -114,6 +113,19 @@
       transparent,
       var(--rim-clr)
     );
+
+    background: linear-gradient(190deg, var(--sunshine), var(--bg-clr) 333px);
+    background-repeat: no-repeat;
+    background-color: var(--bg-clr);
+
+    /* background: linear-gradient(
+      190deg,
+      var(--sun) 153%,
+      var(--sunshine) 77%,
+      transparent 0%
+    );
+    background-repeat: no-repeat;
+    background-color: var(--bg-clr); */
 
     .nav-home,
     .nav-link {
@@ -142,12 +154,6 @@
     }
 
     body {
-      background: linear-gradient(
-        10deg,
-        transparent 0%,
-        var(--sunshine) 77%,
-        var(--sun) 153%
-      );
       scrollbar-color: var(--violet-a30) transparent;
       &::-webkit-scrollbar-thumb {
         background-color: var(--violet-a30);
@@ -536,6 +542,7 @@
   .dg--dark-theme {
     --fg-clr: var(--moon);
     --bg-clr: var(--rich-black);
+    --content-bg-clr: var(--blue-rock);
     --shadow-color: var(--moonshine-shadow-clr);
     --rim-clr: var(--moonshine);
     --link-clr: var(--celestial-a75);
@@ -545,10 +552,10 @@
     --tag-border-clr: var(--celestial-a30);
 
     --rim-light-bg: linear-gradient(
-      10deg,
+      7deg,
       var(--bg-clr) 33%,
-      var(--bg-clr) 90%,
-      var(--rim-clr) 100%
+      var(--content-bg-clr) 90%,
+      var(--rim-clr) 101%
     );
     --category-rim-light-bg: linear-gradient(
       35deg,
@@ -562,6 +569,10 @@
       transparent,
       var(--rim-clr)
     );
+
+    background: linear-gradient(190deg, var(--moonshine), var(--bg-clr) 333px);
+    background-repeat: no-repeat;
+    background-color: var(--bg-clr);
 
     .nav-home,
     .nav-link {
@@ -590,12 +601,6 @@
     }
 
     body {
-      background: linear-gradient(
-        10deg,
-        transparent 0%,
-        var(--bg-clr) 35%,
-        var(--moonshine) 100%
-      );
       scrollbar-color: var(--celestial-a30) transparent;
       &::-webkit-scrollbar-thumb {
         background-color: var(--celestial-a30);
