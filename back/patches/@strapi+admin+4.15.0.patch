@@ -1,8 +1,8 @@
 diff --git a/node_modules/@strapi/admin/admin/src/StrapiApp.js b/node_modules/@strapi/admin/admin/src/StrapiApp.js
-index 7b533ea..780630d 100644
+index 9778c12..0c9e947 100644
 --- a/node_modules/@strapi/admin/admin/src/StrapiApp.js
 +++ b/node_modules/@strapi/admin/admin/src/StrapiApp.js
-@@ -37,7 +37,7 @@ class StrapiApp {
+@@ -38,7 +38,7 @@ class StrapiApp {
        notifications: { releases: true },
        themes: { light: lightTheme, dark: darkTheme },
        translations: {},
@@ -11,23 +11,23 @@ index 7b533ea..780630d 100644
      };
      this.appPlugins = appPlugins || {};
      this.library = library;
-diff --git a/node_modules/@strapi/admin/admin/src/components/AuthenticatedApp/index.js b/node_modules/@strapi/admin/admin/src/components/AuthenticatedApp/index.js
-index bf9d59a..cdef19f 100644
---- a/node_modules/@strapi/admin/admin/src/components/AuthenticatedApp/index.js
-+++ b/node_modules/@strapi/admin/admin/src/components/AuthenticatedApp/index.js
-@@ -14,7 +14,7 @@ import { useQueries } from 'react-query';
- import packageJSON from '../../../../package.json';
- import { useConfiguration } from '../../hooks/useConfiguration';
- import { getFullName, hashAdminUserEmail } from '../../utils';
--import { NpsSurvey } from '../NpsSurvey';
-+// import { NpsSurvey } from '../NpsSurvey';
- import { PluginsInitializer } from '../PluginsInitializer';
- import RBACProvider from '../RBACProvider';
+diff --git a/node_modules/@strapi/admin/admin/src/components/AuthenticatedApp.tsx b/node_modules/@strapi/admin/admin/src/components/AuthenticatedApp.tsx
+index cc24961..9e909fd 100644
+--- a/node_modules/@strapi/admin/admin/src/components/AuthenticatedApp.tsx
++++ b/node_modules/@strapi/admin/admin/src/components/AuthenticatedApp.tsx
+@@ -20,7 +20,7 @@ import { APIResponse, APIResponseUsersLegacy } from '../types/adminAPI';
+ import { getFullName } from '../utils/getFullName';
+ import { hashAdminUserEmail } from '../utils/hashAdminUserEmail';
  
-@@ -106,7 +106,7 @@ const AuthenticatedApp = () => {
+-import { NpsSurvey } from './NpsSurvey';
++// import { NpsSurvey } from './NpsSurvey';
+ import { PluginsInitializer } from './PluginsInitializer';
+ import { RBACProvider, Permission } from './RBACProvider';
+ 
+@@ -166,7 +166,7 @@ const AuthenticatedApp = () => {
        userDisplayName={userDisplayName}
      >
-       <RBACProvider permissions={permissions} refetchPermissions={refetch}>
+       <RBACProvider permissions={permissions ?? []} refetchPermissions={refetch}>
 -        <NpsSurvey />
 +        {/* <NpsSurvey /> */}
          <PluginsInitializer />
@@ -47,11 +47,12 @@ index 9ca0ef1..2ee47ce 100644
        firstDismissalDate: null,
        lastDismissalDate: null,
 diff --git a/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js b/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js
-index 84ec0ac..829477d 100644
+index 84ec0ac..fd18725 100644
 --- a/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js
 +++ b/node_modules/@strapi/admin/admin/src/pages/HomePage/ContentBlocks.js
-@@ -1,17 +1,37 @@
+@@ -1,17 +1,39 @@
  import React from 'react';
++import { NavLink as RouterNavLink } from 'react-router-dom';
  
 -import { Flex } from '@strapi/design-system';
 -import { ContentBox, useTracking } from '@strapi/helper-plugin';
@@ -60,6 +61,7 @@ index 84ec0ac..829477d 100644
 -import styled from 'styled-components';
 -
 -import CloudBox from './CloudBox';
++import { NavLink } from '@strapi/design-system/v2';
 +import { Box, Flex, Grid, GridItem } from "@strapi/design-system";
 +import { ContentBox, useTracking } from "@strapi/helper-plugin";
 +import {
@@ -73,7 +75,7 @@ index 84ec0ac..829477d 100644
  const BlockLink = styled.a`
    text-decoration: none;
  `;
-  
+   
 +const StyledChartBubble = styled(ChartBubble)`
 +  path {
 +    fill: #7289da !important;
@@ -95,7 +97,7 @@ index 84ec0ac..829477d 100644
  const ContentBlocks = () => {
    const { formatMessage } = useIntl();
    const { trackUsage } = useTracking();
-@@ -22,83 +42,76 @@ const ContentBlocks = () => {
+@@ -22,83 +44,76 @@ const ContentBlocks = () => {
  
    return (
      <Flex direction="column" alignItems="stretch" gap={5}>
@@ -179,7 +181,7 @@ index 84ec0ac..829477d 100644
 +      <Grid gap={5}>
 +        <GridItem col={4}>
 +          <BlockLink
-+            href="/admin/content-manager/collectionType/api::post.post"
++            href="/admin/content-manager/collectionType/api::post.post?page=1&pageSize=10&sort=updatedAt:DESC"
 +          >
 +            <ContentBox
 +              title={formatMessage({
@@ -289,10 +291,10 @@ index 8fb94c5..5ee061b 100644
                {formatMessage({
                  id: 'app.components.HomePage.create',
 diff --git a/node_modules/@strapi/admin/admin/src/pages/HomePage/SocialLinks.js b/node_modules/@strapi/admin/admin/src/pages/HomePage/SocialLinks.js
-index e290ab2..993e194 100644
+index e290ab2..f5de476 100644
 --- a/node_modules/@strapi/admin/admin/src/pages/HomePage/SocialLinks.js
 +++ b/node_modules/@strapi/admin/admin/src/pages/HomePage/SocialLinks.js
-@@ -8,17 +8,17 @@ import React from 'react';
+@@ -8,21 +8,22 @@ import React from 'react';
  import { Box, Flex, Grid, GridItem, Typography } from '@strapi/design-system';
  import { Link, LinkButton } from '@strapi/design-system/v2';
  import { useAppInfo } from '@strapi/helper-plugin';
@@ -313,7 +315,12 @@ index e290ab2..993e194 100644
    > path:first-child {
      fill: #ff4500;
    }
-@@ -35,82 +35,34 @@ const StyledStrapi = styled(Strapi)`
+ `;
++
+ const StyledStrapi = styled(Strapi)`
+   > path:first-child {
+     fill: #4945ff;
+@@ -35,82 +36,34 @@ const StyledStrapi = styled(Strapi)`
    }
  `;
  
@@ -357,22 +364,14 @@ index e290ab2..993e194 100644
 -    link: 'https://discord.strapi.io/',
 -    icon: <StyledDiscord />,
 -    alt: 'discord',
-+    name: { id: 'app.components.HomePage.github.repo', defaultMessage: 'Github' },
-+    link: 'https://github.com/dgrebb/dgrebb.com',
-+    icon: <StyledGithub fill="#7289DA" />,
-+    alt: 'github repository',
-   },
-   {
+-  },
+-  {
 -    name: { id: 'app.components.HomePage.community.links.reddit', defaultMessage: 'Reddit' },
 -    link: 'https://www.reddit.com/r/Strapi/',
 -    icon: <StyledReddit />,
 -    alt: 'reddit',
-+    name: { id: 'app.components.HomePage.github.project', defaultMessage: 'Project' },
-+    link: 'https://github.com/users/dgrebb/projects/12/views/1',
-+    icon: <StyledCheck />,
-+    alt: 'github project',
-   },
-   {
+-  },
+-  {
 -    name: { id: 'app.components.HomePage.community.links.twitter', defaultMessage: 'Twitter' },
 -    link: 'https://twitter.com/strapijs',
 -    icon: <StyledTwitter />,
@@ -383,14 +382,22 @@ index e290ab2..993e194 100644
 -    link: 'https://forum.strapi.io',
 -    icon: <StyledDiscourse />,
 -    alt: 'forum',
--  },
--  {
++    name: { id: 'app.components.HomePage.github.repo', defaultMessage: 'Github' },
++    link: 'https://github.com/dgrebb/dgrebb.com',
++    icon: <StyledGithub fill="#7289DA" />,
++    alt: 'github repository',
+   },
+   {
 -    name: { id: 'app.components.HomePage.community.links.blog', defaultMessage: 'Blog' },
 -    link: 'https://strapi.io/blog?utm_source=referral&utm_medium=admin&utm_campaign=career%20page',
 -    icon: <StyledStrapi />,
 -    alt: 'blog',
--  },
--  {
++    name: { id: 'app.components.HomePage.github.project', defaultMessage: 'Project' },
++    link: 'https://github.com/users/dgrebb/projects/12/views/1',
++    icon: <StyledCheck />,
++    alt: 'github project',
+   },
+   {
 -    name: {
 -      id: 'app.components.HomePage.community.links.career',
 -      defaultMessage: 'We are hiring!',
@@ -411,7 +418,7 @@ index e290ab2..993e194 100644
    display: flex;
    align-items: center;
    border: none;
-@@ -166,23 +118,10 @@ const SocialLinks = () => {
+@@ -166,23 +119,10 @@ const SocialLinks = () => {
              <Typography variant="delta" as="h2" id="join-the-community">
                {formatMessage({
                  id: 'app.components.HomePage.community',
@@ -437,10 +444,10 @@ index e290ab2..993e194 100644
        </Box>
        <GridGap>
 diff --git a/node_modules/@strapi/admin/admin/src/pages/HomePage/index.js b/node_modules/@strapi/admin/admin/src/pages/HomePage/index.js
-index a22f746..7457d68 100644
+index 21ab701..9994545 100644
 --- a/node_modules/@strapi/admin/admin/src/pages/HomePage/index.js
 +++ b/node_modules/@strapi/admin/admin/src/pages/HomePage/index.js
-@@ -68,19 +68,16 @@ export const HomePageCE = () => {
+@@ -71,19 +71,16 @@ export const HomePageCE = () => {
          </LogoContainer>
          <Box padding={10}>
            <Grid>
@@ -465,10 +472,10 @@ index a22f746..7457d68 100644
            </Grid>
          </Box>
 diff --git a/node_modules/@strapi/admin/admin/src/translations/en.json b/node_modules/@strapi/admin/admin/src/translations/en.json
-index 86764be..9835a94 100644
+index 93ce5bf..d482e10 100644
 --- a/node_modules/@strapi/admin/admin/src/translations/en.json
 +++ b/node_modules/@strapi/admin/admin/src/translations/en.json
-@@ -432,14 +432,20 @@
+@@ -436,14 +436,20 @@
    "app.components.GuidedTour.skip": "Skip the tour",
    "app.components.GuidedTour.title": "3 steps to get started",
    "app.components.HomePage.button.blog": "See more on the blog",
