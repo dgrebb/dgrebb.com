@@ -4,8 +4,12 @@
     text-align: right;
   }
   h2 {
+    margin-top: 0.5rem;
     font-size: 1.33rem;
     line-height: 1;
+  }
+  ul {
+    margin-bottom: 0.5rem;
   }
   li {
     position: relative;
@@ -13,7 +17,10 @@
     list-style-type: none;
   }
   ul li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
   a {
     transition: color, border-color;

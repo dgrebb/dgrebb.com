@@ -36,7 +36,7 @@
   $: toc = [];
   function filterTokens(event) {
     const tokens = event.detail.tokens;
-    const headings = tokens.filter((t) => t.type === 'heading');
+    const headings = tokens.filter((t) => t.type === 'heading' && t.depth <= 2);
     toc = [
       ...toc,
       ...headings.map((h) => ({
@@ -145,7 +145,12 @@
         {@const {
           animation: {
             data: {
-              attributes: { url: animation, alternativeText: aAlt },
+              attributes: {
+                url: animation,
+                width,
+                height,
+                alternativeText: aAlt,
+              },
             },
           },
           still: {
@@ -155,7 +160,15 @@
           },
           figcaption,
         } = c}
-        <AnimatedImage {animation} {aAlt} {still} {sAlt} {figcaption} />
+        <AnimatedImage
+          {animation}
+          {width}
+          {height}
+          {aAlt}
+          {still}
+          {sAlt}
+          {figcaption}
+        />
       {/if}
       {#if c.__component === 'posts.html'}
         <div class="inline-html">
