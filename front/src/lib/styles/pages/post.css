@@ -221,6 +221,17 @@
     float: left;
     margin-bottom: 1rem;
     width: 75%;
+    blockquote {
+      & + h1,
+      & + h2,
+      & + h3,
+      & + h4,
+      & + h5,
+      & + h6,
+      & + h7 {
+        padding-top: 0;
+      }
+    }
   }
   @media screen and (min-width: 768px) {
     margin-bottom: -2rem;
@@ -321,13 +332,14 @@
     }
   }
   blockquote {
-    @apply dg--font-lb;
     position: relative;
-    margin: 2rem 0 1.5rem 0;
+    margin: 3rem auto;
     border-radius: 0.5rem;
     padding: 0.5rem 1.5rem;
+    width: 83%;
     overflow: visible;
     font-style: italic;
+    font-family: var(--font-lb);
     p:first-child::before,
     &::after {
       position: absolute;
