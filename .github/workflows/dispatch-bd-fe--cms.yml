@@ -1,4 +1,4 @@
-name: 📡 CMS Publish 
+name: 📡 CMS Publish
 
 on:
   workflow_dispatch:
@@ -23,12 +23,7 @@ jobs:
           issue-body: "Please approve or deny the deployment of version ${{ github.ref_name }}."
           exclude-workflow-initiator-as-approver: false
           additional-approved-words: y,a
-          labels: 'content'
-
-  frontend:
-    runs-on: ubuntu-latest
-
-    steps:
+          labels: "content"
       - name: 🛰️ Dispatch B&D FE
         run: |
           curl --location 'https://api.github.com/repos/dgrebb/dgrebb.com/actions/workflows/bd-fe.yml/dispatches' \
