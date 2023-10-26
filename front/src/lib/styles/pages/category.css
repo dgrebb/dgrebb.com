@@ -2,7 +2,7 @@
   border-top-right-radius: 0;
   padding: 0 0 1.5rem 0;
   @screen md {
-    padding: 0 2.33rem 2rem;
+    padding: 0 2.33rem 5rem 2rem;
   }
   .category-head {
     @apply dg--font-lb;

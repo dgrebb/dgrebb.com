@@ -3,14 +3,15 @@ const BACKSTOP_TEST_CSS_OVERRIDE = `
     transition: none !important; 
     transition-duration: 0 !important; 
     transition-delay: 0 !important;
-  } 
-  html {
-    overflow: auto;
-  } 
+  }
   body {
-    overflow: visible !important;
-    height: 100%;
-    min-height: 100%;
+    height: 100% !important;
+    min-height: 100% !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
   }
 `;
 
