@@ -123,6 +123,29 @@ body.ready .header.scroll-transition {
         transition-duration: var(--transition-duration);
       }
     }
+    .cc-link {
+      display: inline-block;
+      vertical-align: top;
+      opacity: 0.5;
+      transition: opacity 0.5s !important;
+      border: none;
+      width: 17px;
+      height: 17px;
+      &:hover,
+      &:focus,
+      &:focus-visible,
+      &:active {
+        opacity: 1;
+      }
+      .icon-cc {
+        width: 17px;
+        height: 17px;
+        color: darkred;
+      }
+      .fil0 {
+        fill: red;
+      }
+    }
   }
 }
 
@@ -172,27 +195,8 @@ body.ready .header.scroll-transition {
           color 0.5s;
         border-bottom: thin solid;
         &.cc-link {
-          display: inline-block;
-          vertical-align: top;
           opacity: 0.8;
-          transition: opacity 0.5s !important;
           border: none;
-          width: 17px;
-          height: 17px;
-          &:hover,
-          &:focus,
-          &:focus-visible,
-          &:active {
-            opacity: 1;
-          }
-          .icon-cc {
-            width: 17px;
-            height: 17px;
-            color: darkred;
-          }
-          .fil0 {
-            fill: red;
-          }
         }
       }
       img {
@@ -202,11 +206,11 @@ body.ready .header.scroll-transition {
         &:hover,
         &:focus,
         &:active {
-          img {
-            opacity: 0.8;
+          .cc-link {
+            opacity: 0.7;
             &:hover,
-            &:focus {
-              @apply brightness-200;
+            &:focus,
+            &:focus-visible {
               opacity: 1;
             }
           }
