@@ -3,10 +3,10 @@ const { URL } = require('../vars');
 module.exports = {
   label: 'Homepage - Switch Theme',
   url: URL + '?roboto',
-  delay: 500,
+  delay: 333,
   colorScheme: 'dark',
   clickSelector: '.theme-toggle',
-  postInteractionWait: 1000,
+  postInteractionWait: 100,
   selectors: ['viewport'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,

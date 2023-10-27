@@ -8,7 +8,7 @@ module.exports = {
   onReadyScript: 'playwright/onReadyPost.js',
   delay: 333,
   clickSelector: '.post .aside .page-navigation-list a[href*="#what"]',
-  postInteractionWait: 2000,
+  postInteractionWait: 100,
   selectors: ['viewport'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,

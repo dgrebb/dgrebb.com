@@ -6,7 +6,7 @@ module.exports = {
   label: 'Post - Syntax Highlighter',
   url: POST_URL,
   viewports: allViewports,
-  delay: 500,
+  delay: 333,
   selectors: ['.post :nth-child(1 of .syntax-highlighter)'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,

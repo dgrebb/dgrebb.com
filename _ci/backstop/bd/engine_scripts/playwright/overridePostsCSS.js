@@ -5,10 +5,12 @@ const BACKSTOP_TEST_CSS_OVERRIDE = `
     transition-delay: 0 !important;
   } 
   html {
-    overflow: auto;
+    height: 100% !important;
   } 
+  .flourish {
+    display: none;
+  }
   body {
-    overflow: visible !important;
     position: absolute !important;
     top: 0 !important;
     bottom: 0 !important;
