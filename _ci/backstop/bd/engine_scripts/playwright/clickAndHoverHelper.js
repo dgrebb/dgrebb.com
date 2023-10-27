@@ -6,6 +6,8 @@ module.exports = async (page, scenario) => {
   const scrollToSelector = scenario.scrollToSelector;
   const postInteractionWait = scenario.postInteractionWait; // selector [str] | ms [int]
 
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+
   if (keyPressSelector) {
     for (const keyPressSelectorItem of [].concat(keyPressSelector)) {
       await page.waitForSelector(keyPressSelectorItem.selector);
