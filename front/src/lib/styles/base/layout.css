@@ -9,21 +9,21 @@
   padding-right: 0.25rem;
   padding-left: 0.25rem;
   width: 100%;
-  max-width: 64rem /* 1024px */;
+  max-width: 64rem;
   @media screen and (min-width: 333px) {
-    padding-top: 1.25rem /* 20px */;
+    padding-top: 1.25rem;
   }
   @media screen and (min-width: 640px) {
-    padding-top: 0.75rem /* 12px */;
-    padding-right: 0.75rem /* 12px */;
-    padding-left: 0.75rem /* 12px */;
+    padding-top: 0.75rem;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
   }
 }
 
 .header,
 .footer {
   width: 100%;
-  max-width: 72rem /* 1152px */;
+  max-width: 72rem;
 }
 
 .header {
@@ -32,7 +32,7 @@
   align-items: center;
   z-index: 1;
   padding: 1rem 1.5rem 0 1.5rem;
-  @media screen and (min-width: 480px){
+  @media screen and (min-width: 480px) {
     padding: 1rem 1rem 0;
   }
   @media screen and (min-width: 640px) {
