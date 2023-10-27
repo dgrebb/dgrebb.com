@@ -1,9 +1,6 @@
 const { ID, envDir, allViewports } = require('./scenarios/vars.js');
 const { homepage, privacy, posts, post, cats } = require('./scenarios');
 
-/**TODO: fix me: 
-  cats.cats_mobile_select_all_category, */
-
 let scenarios = [
   homepage.homepage_default,
   homepage.theme_switch,
@@ -26,11 +23,11 @@ let scenarios = [
   cats.cats_select_all_category,
 ];
 
-let captureLimit = 5;
+let captureLimit = 15;
 let compareLimit = 100;
 
 if (process.env.ENVIRONMENT.includes('gh-')) {
-  captureLimit = 5;
+  captureLimit = 10;
   compareLimit = 100;
 }
 
