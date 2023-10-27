@@ -7,8 +7,8 @@ module.exports = {
   onReadyScript: 'playwright/onReadyPosts.js',
   clickSelector:
     'a[href*="/post/animating-page-and-view-transitions-with-accessibility-in-mind"]',
-  postInteractionWait: 3000,
-  selectors: ['document'],
+  postInteractionWait: 2000,
+  selectors: ['viewport'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,
   requireSameDimensions: false,

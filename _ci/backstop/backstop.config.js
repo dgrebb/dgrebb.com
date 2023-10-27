@@ -12,6 +12,7 @@ let scenarios = [
   posts.posts_hover_post_1,
   posts.posts_hover_post_7,
   post.post_navigate_from_posts,
+  post.post_components,
   post.post_syntax_highlighter,
   post.post_animated_image,
   post.post_aside_toc_click,
@@ -48,7 +49,7 @@ module.exports = {
   report: [],
   engine: 'playwright',
   engineOptions: {
-    args: [],
+    args: ['--reducedMotion=reduce'],
     headless: true,
   },
   asyncCaptureLimit: captureLimit,
