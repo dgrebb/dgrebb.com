@@ -49,7 +49,7 @@ module.exports = {
   report: [],
   engine: 'playwright',
   engineOptions: {
-    args: ['--reducedMotion=reduce'],
+    args: [],
     headless: true,
   },
   asyncCaptureLimit: captureLimit,
