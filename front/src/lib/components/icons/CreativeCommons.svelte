@@ -31,28 +31,3 @@
     </g>
   </svg>
 </a>
-
-<style>
-  .cc-link {
-    display: inline-block;
-    vertical-align: top;
-    opacity: 0.8;
-    transition: opacity 0.5s !important;
-    width: 17px;
-    height: 17px;
-    &:hover,
-    &:focus,
-    &:focus-visible,
-    &:active {
-      opacity: 1;
-    }
-  }
-  .icon-cc {
-    width: 17px;
-    height: 17px;
-    color: darkred;
-  }
-  .fil0 {
-    fill: red;
-  }
-</style>
