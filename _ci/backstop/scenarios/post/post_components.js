@@ -4,7 +4,7 @@ const POSTS_URL = `${URL}/post/animating-page-and-view-transitions-with-accessib
 module.exports = {
   label: 'Post - Content Components',
   url: POSTS_URL,
-  delay: 300,
+  delay: 333,
   onReadyScript: 'playwright/onReadyPostComponents.js',
   selectors: ['document'],
   selectorExpansion: false,

@@ -4,7 +4,7 @@ module.exports = {
   label: 'Homepage',
   url: URL + '?roboto',
   colorScheme: 'dark',
-  delay: 1000,
+  delay: 333,
   selectors: ['viewport'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,

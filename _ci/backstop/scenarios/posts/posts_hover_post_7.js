@@ -7,7 +7,7 @@ module.exports = {
   viewports: [md, xl, xxl],
   onReadyScript: 'playwright/onReadyPosts.js',
   hoverSelector: '.posts-grid li:nth-child(7) .post-link',
-  postInteractionWait: 800,
+  postInteractionWait: 1500,
   selectors: ['document'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,

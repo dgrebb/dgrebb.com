@@ -7,7 +7,7 @@ module.exports = {
   viewports: aboveSmallViewports,
   onReadyScript: 'playwright/onReadyCats.js',
   clickSelector: '.post .aside a[href*="/posts/category/thoughts"]',
-  postInteractionWait: 3000,
+  postInteractionWait: 400,
   selectors: ['document'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,
