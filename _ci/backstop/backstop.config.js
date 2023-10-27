@@ -27,8 +27,8 @@ let captureLimit = 15;
 let compareLimit = 100;
 
 if (process.env.ENVIRONMENT.includes('gh-')) {
-  captureLimit = 10;
-  compareLimit = 100;
+  captureLimit = 6;
+  compareLimit = 50;
 }
 
 module.exports = {
