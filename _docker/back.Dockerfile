@@ -26,7 +26,7 @@ COPY . .
 RUN npm run build
 
 # -------- Release -------- #
-FROM node:18-alpine
+FROM node:20-alpine
 RUN apk add --no-cache vips-dev
 WORKDIR /opt/
 COPY --from=build /opt/node_modules ./node_modules
