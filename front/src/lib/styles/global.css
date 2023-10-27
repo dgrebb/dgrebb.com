@@ -63,17 +63,6 @@ html {
   transition: background-color;
   transition-duration: var(--transition-duration-md);
   min-height: 100%;
-  overflow: clip;
-  scroll-behavior: smooth;
-  @media (hover: none),
-    (hover: on-demand),
-    (-moz-touch-enabled: 1),
-    (pointer: coarse) {
-    overflow: auto;
-    @media screen and (min-width: 640px) {
-      scrollbar-gutter: stable;
-    }
-  }
 }
 
 body {
@@ -100,14 +89,6 @@ body {
     scrollbar-gutter: stable;
     font-size: 1.125rem;
     line-height: 1.75rem;
-  }
-  @media (hover: none),
-    (hover: on-demand),
-    (-moz-touch-enabled: 1),
-    (pointer: coarse) {
-    height: 100%;
-    overflow: visible;
-    scrollbar-gutter: auto;
   }
   &::-webkit-scrollbar {
     appearance: none;
