@@ -20,6 +20,7 @@
     ? hero.formats.thumbnail.url
     : false;
   $: heroImage = hero?.url ? hero.url : false;
+  $: heroMime = hero?.mime;
   $: position = post.position || 'center center';
   $: ({ publishedAt, updatedAt } = post);
   $: summary = post.summary || false;
@@ -54,7 +55,7 @@
   <section class="post">
     <Flourish />
     {#if heroImage}
-      <PostHero {heroImage} {loaded} {position} {heroThumb} />
+      <PostHero {heroImage} {heroMime} {loaded} {position} {heroThumb} />
     {/if}
     <a id="main">Main Content</a>
     <Post

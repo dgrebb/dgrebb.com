@@ -1,9 +1,27 @@
 <script>
   export let heroImage;
+  export let heroMime;
+  export let heroThumb;
   export let loaded;
   export let position;
-  export let heroThumb;
 </script>
+
+<svelte:head>
+  <link
+    rel="preload"
+    fetchpriority="high"
+    as="image"
+    href={heroThumb}
+    type={heroMime}
+  />
+  <link
+    rel="preload"
+    fetchpriority="high"
+    as="image"
+    href={heroImage}
+    type={heroMime}
+  />
+</svelte:head>
 
 {#if heroImage}
   <div class="hero-wrap {heroImage ? 'show' : 'hide'}">
