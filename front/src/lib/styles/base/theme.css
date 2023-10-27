@@ -50,6 +50,8 @@
 .privacy,
 .post {
   background: var(--rim-light-bg), var(--content-bg-clr);
+  background-size: auto 333px;
+  background-repeat: no-repeat;
   @media screen and (min-width: 640px) {
     box-shadow: var(--shadow-elevation-high);
   }
@@ -93,8 +95,8 @@
 
     --rim-light-bg: linear-gradient(
       10deg,
-      var(--content-bg-clr) 33%,
-      var(--content-bg-clr) 77%,
+      transparent 33%,
+      var(--content-bg-clr) 67%,
       var(--sun) 233%
     );
     --category-rim-light-bg: linear-gradient(
@@ -243,9 +245,6 @@
     .privacy,
     .post {
       box-shadow: var(--shadow-elevation-low);
-      background:
-        var(--rim-light-bg) 13%,
-        var(--bg-clr) 59%;
       &::before {
         background: var(--rim-light-mask-bg);
       }
@@ -553,8 +552,8 @@
 
     --rim-light-bg: linear-gradient(
       7deg,
-      var(--bg-clr) 33%,
-      var(--content-bg-clr) 90%,
+      transparent 33%,
+      var(--content-bg-clr) 80%,
       var(--rim-clr) 101%
     );
     --category-rim-light-bg: linear-gradient(
