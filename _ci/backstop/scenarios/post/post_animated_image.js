@@ -7,7 +7,7 @@ module.exports = {
   url: POST_URL,
   viewports: aboveSmallViewports,
   onReadyScript: 'playwright/onReadyPost.js',
-  delay: 500,
+  delay: 333,
   selectors: ['.post :nth-child(1 of .animated-image)'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,

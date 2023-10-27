@@ -4,6 +4,10 @@ const BACKSTOP_TEST_CSS_OVERRIDE = `
     transition-duration: 0 !important; 
     transition-delay: 0 !important;
   }
+  html {
+    height: 100%;
+    min-height: 100%;
+  }
   body {
     height: 100% !important;
     min-height: 100% !important;

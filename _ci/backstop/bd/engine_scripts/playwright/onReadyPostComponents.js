@@ -8,7 +8,7 @@ module.exports = async (
   console.log('SCENARIO > ' + scenario.label);
   await require('./clickAndHoverHelper')(page, scenario);
   await require('./colorScheme')(page, scenario);
-  await require('./overridePostsCSS')(page, scenario);
+  await require('./overridePostCSS')(page, scenario);
   await page.evaluate((scenario) => {
     /** force load lazy images */
     const lazyImages = document.querySelectorAll('img[loading="lazy"');
