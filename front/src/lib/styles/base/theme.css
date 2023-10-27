@@ -551,10 +551,10 @@
     --tag-border-clr: var(--celestial-a30);
 
     --rim-light-bg: linear-gradient(
-      7deg,
+      10deg,
       transparent 33%,
-      var(--content-bg-clr) 80%,
-      var(--rim-clr) 101%
+      var(--content-bg-clr) 77%,
+      var(--rim-clr) 111%
     );
     --category-rim-light-bg: linear-gradient(
       35deg,
