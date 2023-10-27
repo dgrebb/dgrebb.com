@@ -25,13 +25,12 @@
 
 {#if heroImage}
   <div class="hero-wrap {heroImage ? 'show' : 'hide'}">
-    {#if loaded}
-      <div
-        class="hero loaded"
-        style={heroImage &&
-          `background-image: url('${heroImage}'); background-position: ${position};`}
-      />
-    {/if}
+    <div
+      class="hero"
+      class:loaded
+      style={heroImage &&
+        `background-image: url('${heroImage}'); background-position: ${position};`}
+    />
     <div
       class="hero hero-thumbnail {loaded ? 'loaded' : null}"
       style={heroThumb &&
