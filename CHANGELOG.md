@@ -2,6 +2,51 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.8.2] - 2023-10-27
+
+### 🐛 Bug Fixes
+
+- ***(back)*** Uses node:20-alpine in final CMS image
+- ***(ci)*** Refactors dispatch of build-deploy FE as step instead of job (#909)
+- ***(front)*** Moves CC icon styles into layout.css
+- ***(front)*** Corrects header breakpoint padding
+- ***(front)*** Removes touch-specific height and overflow styles
+- ***(front)*** Adjusts posts-grid n+2/3 items (#901)
+- ***(front)*** Updates category page padding and backstop test (#901)
+
+### ⚡️ Performance
+
+- ***(github)*** Disables browser extensions for lighthouse runs
+
+### ♻️  Refactor
+
+- ***(front)*** Updates background gradient for mobile/desktop (#901)
+
+### 👷 Build
+
+- ***(backstop)*** Extend wait time select all categories
+- ***(backstop)*** Adjusts capture and compare concurrency
+- ***(backstop)*** Updates test wait times and style overrides (#893)
+- ***(backstop)*** Adds reducedMotion emulation to playwright
+- ***(front)*** Adjusts loading of full heroImage via class (#899)
+- ***(front)*** Improve FCP via preloaded heroImage (#899)
+
+### ✅ Testing
+
+- ***(backstop)*** Updates gh-stg refs
+- ***(backstop)*** Updates gh-stg refs
+- ***(backstop)*** Increase capture limits
+- ***(backstop)*** Updates all refs
+- ***(backstop)*** Updates nav from posts; adds full page and forces lazy image loading (#906)
+- ***(backstop)*** Updates gh-stg refs (#901)
+- ***(backstop)*** Updates local refs (#901)
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(back)*** Updates to and patches strapi@4.15.0 (#907)
+- ***(backstop)*** Removes unused puppet scripts
+- ***(front)*** Adjusts dark/light cc link
+
 ## [3.8.1] - 2023-10-25
 
 ### 🐛 Bug Fixes
