@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_layouts_columns",
+  "info": {
+    "displayName": "Columns",
+    "icon": "arrowDown",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "text": {
+      "type": "richtext"
+    }
+  }
+}

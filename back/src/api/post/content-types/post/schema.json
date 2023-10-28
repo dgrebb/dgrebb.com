@@ -60,6 +60,7 @@
         "posts.code",
         "posts.quote",
         "posts.animated-image",
+        "posts.columns",
         "posts.image-carousel",
         "posts.html"
       ]

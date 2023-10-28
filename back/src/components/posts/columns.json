@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_posts_columns",
+  "info": {
+    "displayName": "Columns",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "columns": {
+      "displayName": "Columns",
+      "type": "component",
+      "repeatable": true,
+      "component": "layouts.columns"
+    }
+  }
+}
