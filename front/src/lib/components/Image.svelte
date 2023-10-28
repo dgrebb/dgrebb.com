@@ -30,27 +30,31 @@
   });
 </script>
 
-{#if loaded}
-  <img
-    {src}
-    {alt}
-    {title}
-    {width}
-    {height}
-    class={classes}
-    aria-hidden={ariaHidden}
-  />
-{:else if failed}
-  <p>That image was lost. Poor thing.</p>
-  <script>
-    Sentry.captureMessage('Image Not Found', {
-      image: src,
-      page: document.location.pathname,
-      hostname: document.location.hostname,
-    });
-  </script>
-{:else if loading}
-  <div class="image-loader" style={`height: ${height}px; width: ${width}px`}>
+<div
+  class="image-loader"
+  class:loaded
+  style={`height: ${height}px; width: ${width}px`}
+>
+  {#if loaded}
+    <img
+      {src}
+      {alt}
+      {title}
+      {width}
+      {height}
+      class={classes}
+      aria-hidden={ariaHidden}
+    />
+  {:else if failed}
+    <p>That image was lost. Poor thing.</p>
+    <script>
+      Sentry.captureMessage('Image Not Found', {
+        image: src,
+        page: document.location.pathname,
+        hostname: document.location.hostname,
+      });
+    </script>
+  {:else if loading}
     <Loading />
-  </div>
-{/if}
+  {/if}
+</div>
