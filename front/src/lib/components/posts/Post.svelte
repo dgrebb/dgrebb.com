@@ -170,6 +170,19 @@
           {figcaption}
         />
       {/if}
+      {#if c.__component === 'posts.columns'}
+        {@const cols = c.columns}
+        {@const count = cols.length}
+        <h2>{count}</h2>
+        <section class="text-columns">
+          {#each cols as { heading, text }}
+            <div class="text-column" class:headless={!heading}>
+              {#if heading !== null}<header>{heading}</header>{/if}
+              <SvelteMarkdown source={text} />
+            </div>
+          {/each}
+        </section>
+      {/if}
       {#if c.__component === 'posts.html'}
         <div class="inline-html">
           {@html c.html}
