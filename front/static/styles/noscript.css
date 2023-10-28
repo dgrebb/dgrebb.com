@@ -13,6 +13,7 @@ body .footer {
 }
 .image-loader {
   display: none;
+  opacity: 1;
 }
 .syntax-highlighter {
   .language {

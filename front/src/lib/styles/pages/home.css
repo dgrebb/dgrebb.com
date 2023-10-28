@@ -12,6 +12,14 @@
   transition-property: max-width;
   padding-right: 1rem;
   padding-left: 1rem;
+  .image-loader {
+    margin: 0.5rem 0;
+  }
+  @media screen and (min-width: 480px) {
+    .image-loader {
+      margin: 0;
+    }
+  }
   .bio-picture {
     position: relative;
     z-index: 5;
