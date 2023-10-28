@@ -19,7 +19,7 @@
       max-width: 77%;
     }
     p {
-      margin: 0 auto;
+      margin: 0 auto 1rem auto;
     }
     strong {
       font-weight: 400;
