@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.8.3] - 2023-10-28
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Adds margin to posts summary paragraphs
+
+### 👷 Build
+
+- ***(front)*** Adds margin to posts summary paragraphs
+
 ## [3.8.2] - 2023-10-27
 
 ### 🐛 Bug Fixes
