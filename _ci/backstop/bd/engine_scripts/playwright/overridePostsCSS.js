@@ -6,11 +6,10 @@ const BACKSTOP_TEST_CSS_OVERRIDE = `
   } 
   html {
     height: 100% !important;
-  } 
-  .flourish {
-    display: none;
   }
   body {
+    overflow: visible !important;
+    margin-right: 1rem;
     position: absolute !important;
     top: 0 !important;
     bottom: 0 !important;
