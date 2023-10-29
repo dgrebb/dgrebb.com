@@ -46,8 +46,9 @@
   }
   .title,
   > pre {
-    @apply dg--transition-effect
-      transition-colors;
+    transition-duration: var(--transition-duration);
+    transition-property: color, background-color, opacity;
+    transition-timing-function: var(--transition-timing-function);
   }
   .title,
   .language {

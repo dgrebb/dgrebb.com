@@ -4,7 +4,6 @@
 @import 'base/layout.css';
 @import 'base/typography.css';
 @import 'base/utilities.css';
-@import 'components/Code/Code.css';
 @import 'components/nav.css';
 @import 'components/theme-toggle.css';
 @import 'components/posts-grid.css';
@@ -37,25 +36,21 @@
 
 html.light-theme {
   @apply dg--light-theme;
-  @apply github-light;
 }
 
 html.dark-theme {
   @apply dg--dark-theme;
-  @apply github-dark;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     @apply dg--light-theme;
-    @apply github-light;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     @apply dg--dark-theme;
-    @apply github-dark;
   }
 }
 
