@@ -47,13 +47,6 @@
     />
   {:else if failed}
     <p>That image was lost. Poor thing.</p>
-    <script>
-      Sentry.captureMessage('Image Not Found', {
-        image: src,
-        page: document.location.pathname,
-        hostname: document.location.hostname,
-      });
-    </script>
   {:else if loading}
     <Loading />
   {/if}

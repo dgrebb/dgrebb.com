@@ -3,6 +3,7 @@ awsvpc
 basedomain
 beareth
 blistre
+blockquotes
 cdndomain
 cmsdomain
 Commeth
@@ -19,6 +20,7 @@ filemd
 fqdns
 fullname
 Grebb
+headshot
 hljs
 introend
 introstart
