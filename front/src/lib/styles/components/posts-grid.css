@@ -86,6 +86,7 @@
         background-color: transparent;
         padding: 0.75rem 2rem;
         width: auto;
+        text-wrap: balance;
       }
     }
     &:first-child {

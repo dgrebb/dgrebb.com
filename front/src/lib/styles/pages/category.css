@@ -1,7 +1,13 @@
 .category {
   border-top-right-radius: 0;
-  padding: 0 0 1.5rem 0;
-  @screen md {
+  padding: 0 0 1.5rem 1rem;
+  @media (hover: none),
+    (hover: on-demand),
+    (-moz-touch-enabled: 1),
+    (pointer: coarse) {
+    padding-right: 1rem;
+  }
+  @media screen and (min-width: 768px) {
     padding: 0 2.33rem 5rem 2rem;
   }
   .category-head {

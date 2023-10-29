@@ -162,6 +162,7 @@
     }
     &:hover,
     &:focus {
+      scrollbar-color: var(--code-scrollbar-clr) transparent;
       &::-webkit-scrollbar {
         background-color: transparent;
         width: 8px;
@@ -170,6 +171,12 @@
       &::-webkit-scrollbar-thumb {
         border-radius: 3rem;
       }
+    }
+    @media (hover: none),
+      (hover: on-demand),
+      (-moz-touch-enabled: 1),
+      (pointer: coarse) {
+      scrollbar-color: var(--code-scrollbar-clr) transparent;
     }
   }
   > div[style] > .line-number-wrap {

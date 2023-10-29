@@ -1,7 +1,6 @@
 .main {
   display: flex;
   flex-grow: 1;
-  flex-grow: 1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -31,14 +30,29 @@
   position: relative;
   align-items: center;
   z-index: 1;
-  padding: 1rem 1.5rem 0 1.5rem;
-  @media screen and (min-width: 480px) {
-    padding: 1rem 1rem 0;
-  }
+  padding: 1rem 0 0 1rem;
   @media screen and (min-width: 640px) {
-    padding: 2rem 1.5rem 0 1.5rem;
+    padding: 2rem 1rem 0 2rem;
   }
 }
+
+@media (hover: none),
+  (hover: on-demand),
+  (-moz-touch-enabled: 1),
+  (pointer: coarse) {
+  .header {
+    padding: 1.5rem 1.5rem 0 1.5rem;
+  }
+}
+@media (min-width: 640px) and (hover: none),
+  (min-width: 640px) and (hover: on-demand),
+  (min-width: 640px) and (-moz-touch-enabled: 1),
+  (min-width: 640px) and (pointer: coarse) {
+  .header {
+    padding: 1.5rem 1.5rem 0 1.5rem;
+  }
+}
+
 body.ready .header {
   transition-duration: var(--transition-duration);
   transition-property: opacity;

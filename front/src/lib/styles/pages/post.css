@@ -2,7 +2,14 @@
   display: block;
   position: relative;
   margin-top: 1.75rem;
+  margin-left: 1rem;
   border-radius: 0.77rem;
+  @media (hover: none),
+    (hover: on-demand),
+    (-moz-touch-enabled: 1),
+    (pointer: coarse) {
+    margin-left: 0;
+  }
   @media screen and (min-width: 333px) {
     margin-top: 0.75rem;
   }
@@ -12,6 +19,12 @@
   @media screen and (min-width: 768px) {
     margin-top: 3.5rem;
     padding: 2.33rem;
+  }
+  @media (hover: none),
+    (hover: on-demand),
+    (-moz-touch-enabled: 1),
+    (pointer: coarse) {
+    padding-left: 0;
   }
   &::before {
     position: absolute;
@@ -336,10 +349,12 @@
     margin: 3rem auto;
     border-radius: 0.5rem;
     padding: 0.5rem 1.5rem;
-    width: 83%;
     overflow: visible;
     font-style: italic;
     font-family: var(--font-lb);
+    @media screen and (min-width: 480px) {
+      width: 83%;
+    }
     p:first-child::before,
     &::after {
       position: absolute;
