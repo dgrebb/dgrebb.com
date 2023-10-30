@@ -61,6 +61,7 @@ body.ready .header.scroll-transition {
   opacity: 0;
   transition: opacity 0s;
 }
+
 .posts,
 .post,
 .privacy,
@@ -114,7 +115,8 @@ body.ready .header.scroll-transition {
     line-height: 1.75;
     a {
       display: inline-block;
-      border-bottom: 1px solid;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
       &.cc-link {
         border: none;
       }
@@ -126,6 +128,11 @@ body.ready .header.scroll-transition {
       transition-duration: 2s;
       transition-property: opacity, filter;
       transition-timing-function: var(--transition-timing-function);
+      padding-bottom: 0.0875rem;
+      line-height: 1.25;
+      &:last-of-type {
+        padding-bottom: 0;
+      }
     }
     &:hover,
     &:focus,
@@ -207,7 +214,8 @@ body.ready .header.scroll-transition {
         transition:
           border 0.5s,
           color 0.5s;
-        border-bottom: thin solid;
+        border-bottom-width: thin;
+        border-bottom-style: solid;
         &.cc-link {
           opacity: 0.8;
           border: none;

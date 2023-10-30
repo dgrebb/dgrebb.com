@@ -79,6 +79,12 @@
     .post-item {
       list-style-type: none;
       .post-item-summary,
+      .post-title,
+      a,
+      p {
+        color: var(--fg-clr-oo);
+      }
+      .post-item-summary,
       a {
         display: flex;
         flex-direction: row;
@@ -217,6 +223,26 @@
       & + .transition-fade-container {
         max-height: 0;
       }
+    }
+  }
+}
+
+.category-posts-transition-container {
+  box-shadow: var(--shadow-elevation-low);
+  background: var(--rim-light-bg), var(--bg-clr);
+  @media screen and (min-width: 640px) {
+    box-shadow: var(--shadow-elevation-high);
+  }
+  &::before {
+    background: var(--rim-light-mask-bg);
+  }
+  @media screen and (min-width: 640px) {
+    background: var(--category-rim-light-bg), var(--bg-clr);
+    @media screen and (min-width: 640px) {
+      box-shadow: var(--shadow-elevation-high);
+    }
+    &::before {
+      background: var(--category-rim-light-mask-bg);
     }
   }
 }
