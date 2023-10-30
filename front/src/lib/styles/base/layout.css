@@ -126,6 +126,11 @@ body.ready .header.scroll-transition {
       transition-duration: 2s;
       transition-property: opacity, filter;
       transition-timing-function: var(--transition-timing-function);
+      padding-bottom: 0.0875rem;
+      line-height: 1.25;
+      &:last-of-type {
+        padding-bottom: 0;
+      }
     }
     &:hover,
     &:focus,

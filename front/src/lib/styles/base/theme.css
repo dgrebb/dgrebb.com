@@ -53,6 +53,19 @@ html {
   background-color: var(--bg-clr);
 }
 
+.bio,
+.footer {
+  a {
+    border-bottom-color: var(--link-clr);
+    color: var(--link-clr);
+    &:hover,
+    &:focus {
+      border-bottom-color: var(--highlight-clr);
+      color: var(--highlight-clr);
+    }
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     /* TODO: copy colors here */
@@ -71,6 +84,7 @@ html.light-theme {
   --hardlight-clr: var(--sun);
   --link-clr: var(--fg-clr-oo);
   --link-clr--hover: var(--highlight-clr);
+  --mark-bg-clr: var(--green);
   --content-bg-clr: var(--dirty-sidewalk);
   --headshot-filter: sepia(100%) saturate(70%) brightness(85%) hue-rotate(61deg);
   --shadow-color: var(--sunshine-shadow-clr);
@@ -78,17 +92,22 @@ html.light-theme {
   --tag-border-clr: var(--jasper-a50);
   --posts-item-filter: brightness(100%);
   --posts-item-hover-filter: brightness(120%);
+  --posts-item-link-bg-clr: rgba(var(--bg-clr), 1);
+  --posts-item-link-filter: none;
+  --posts-item-link-hover-filter: none;
   --posts-item-link-box-shadow: inset 0 0 9rem 3rem rgba(var(--black), 0.77);
   --posts-item-link-hover-box-shadow: inset 0 0 9rem 3rem
     rgba(var(--black), 0.33);
-  --posts-item-link-bg-clr: rgba(var(--bg-clr), 1);
-  --posts-item-link-bg-hover-clr: rgba(var(--bg-clr), 0);
+  --post-hero-filter: none;
   --post-title-text-shadow: 0 0 0 var(--fg-clr),
     0.019em -0.011em 0 var(--sunshine),
     0.015em -0.011em 2px rgba(255, 255, 255, 0.5),
     -1px 1px 2px rgba(0, 0, 0, 0.33);
+  --post-blockquote-bg-clr: var(--bg-light-clr);
   --code-copied-clr: var(--darkgreen);
   --code-highlight-bg-clr: var(--green);
+  --code-hover-header-clr: var(--fg-clr-oo);
+  --code-header-hover-clr: var(--highlight-clr);
   --page-nav-toggle-bg-clr: var(--sun-50);
   --page-nav-toggle-focus-bg-clr: var(--sun-50);
   --page-nav-toggle-clr: var(--lemon-50-a75);
@@ -135,38 +154,33 @@ html.dark-theme {
   --fg-clr: var(--moon);
   --fg-clr-o: var(--celestial-a90);
   --fg-clr-oo: var(--celestial-a75);
+  --fg-clr-ooo: var(--celestial-a50);
+  --fg-clr-oooo: var(--celestial-a30);
   --hardlight-clr: var(--grape);
   --bg-clr: var(--rich-black);
+  --bg-light-clr: var(--oxford-blue);
   --bg-gradient: linear-gradient(190deg, var(--moonshine), var(--bg-clr) 333px);
   --content-bg-clr: var(--blue-rock);
-  --fg-clr-oooo: var(--celestial-a30);
-  --nav-link-clr: var(--celestial-a75);
   --shadow-color: var(--moonshine-shadow-clr);
   --rim-clr: var(--moonshine);
-  --link-clr: var(--celestial-a75);
+  --link-clr: var(--fg-clr-oo);
   --link-clr--hover: var(--celestial);
   --highlight-clr: var(--orange);
   --tag-clr: var(--hardlight-clr);
-  --tag-border-clr: var(--celestial-a30);
+  --tag-border-clr: var(--fg-clr-oooo);
   --headshot-filter: sepia(100%) saturate(43%) brightness(77%)
     hue-rotate(133deg);
   --posts-item-filter: brightness(77%);
   --posts-item-hover-filter: brightness(99%);
-  --posts-item-link-box-shadow: inset 0 0 9rem 3rem rgba(var(--black), 0.77);
-  --post-heading-clr: var(--celestial-a90);
+  --posts-item-link-bg-clr: var(--rim-light-bg);
+  --posts-item-link-filter: brightness(100%);
+  --posts-item-link-hover-filter: brightness(120%);
+  --posts-item-link-box-shadow: inset 0 0 7rem 0.5rem rgba(0, 0, 0, 0.77);
+  --post-hero-filter: brightness(77%);
   --mark-bg-clr: var(--burnt-orange);
-  --post-inline-code-clr: var(--celestial-a90);
-  --post-blockquote-border-clr: var(--hardlight-clr);
-  --post-blockquote-bg-clr: var(--oxford-blue);
-  --post-blockquote-clr: var(--celestial-a75);
-  --post-blockquotes-clr: var(--orange-100-a75);
-  --code-bg-clr: var(--oxford-blue);
-  --fg-clr-oooo: var(--celestial-a30);
-  --code-header-bg-clr: var(--hardlight-clr);
-  --code-header-hover-clr: var(--celestial-a75);
-  --code-copy-clr: var(--celestial-a50);
+  --code-hover-header-clr: var(--fg-clr-oo);
+  --code-header-hover-clr: var(--light);
   --code-copied-clr: var(--green);
-  --code-line-num-bg-clr: var(--oxford-blue);
   --code-highlight-bg-clr: var(--burnt-orange);
   --page-nav-toggle-bg-clr: var(--oxford-blue-a50);
   --page-nav-toggle-focus-bg-clr: var(--hardlight-clr);
@@ -203,7 +217,7 @@ html.dark-theme {
   h5,
   h6,
   h7 {
-    color: var(--post-heading-clr);
+    color: var(--fg-clr-o);
   }
 }
 
@@ -218,6 +232,19 @@ html.dark-theme {
   &::before {
     @media screen and (min-width: 640px) {
       background: var(--rim-light-mask-bg);
+    }
+  }
+}
+.privacy,
+.post-article {
+  a:not(.heading-anchor-link) {
+    border-bottom: 1px solid var(--link-clr);
+    color: var(--link-clr);
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      border-bottom: 1px solid var(--highlight-clr);
+      color: var(--link-clr--hover);
     }
   }
 }
@@ -244,177 +271,6 @@ html.dark-theme {
 
 @layer utilities {
   .dg--light-theme {
-    background: var(--bg-gradient);
-    background-repeat: no-repeat;
-    background-color: var(--bg-clr);
-
-    .nav-home,
-    .nav-link {
-      color: var(--fg-clr-oo);
-    }
-
-    .nav-home {
-      &:hover {
-        color: var(--highlight-clr);
-      }
-    }
-
-    .nav-link {
-      opacity: 0.5;
-      &:hover {
-        opacity: 1;
-        border-bottom-color: var(--highlight-clr);
-      }
-      &.active {
-        opacity: 1;
-        border-bottom-color: var(--highlight-clr);
-        &.subactive:hover {
-          opacity: 0.5;
-        }
-      }
-    }
-
-    .flourish {
-      background-color: var(--fg-clr);
-    }
-
-    .bio,
-    .footer {
-      a {
-        border-bottom-color: var(--link-clr);
-        color: var(--link-clr);
-        &:hover,
-        &:focus {
-          border-bottom-color: var(--highlight-clr);
-          color: var(--highlight-clr);
-        }
-      }
-    }
-
-    .bio-picture {
-      filter: var(--headshot-filter);
-    }
-
-    .links {
-      .link {
-        a:hover {
-          color: var(--highlight-clr);
-        }
-      }
-    }
-
-    .posts-grid {
-      .post-item {
-        filter: var(--posts-item-filter);
-        &:hover,
-        &:focus,
-        &:focus-visible,
-        &:active {
-          filter: var(--posts-item-hover-filter);
-        }
-      }
-      .post-link {
-        transition-duration: var(--transition-duration);
-        transition-timing-function: var(--transition-timing-function);
-        box-shadow: var(--posts-item-link-box-shadow);
-        background-color: var(--posts-item-link-bg-clr);
-        &:hover,
-        &:focus {
-          box-shadow: var(--posts-item-link-hover-box-shadow);
-          background-color: var(--posts-item-link-bg-hover-clr);
-        }
-        &::before {
-          opacity: 0.5;
-          background: var(--rim-light-mask-bg);
-        }
-        .link-bg {
-          background-color: rgba(var(--clr-neut-900-rgb), 0);
-          color: white;
-        }
-        &:hover,
-        &:focus,
-        &:focus,
-        &:focus-visible,
-        &:active {
-          .link-bg {
-            transition-delay: 133ms;
-            background-color: rgba(var(--clr-neut-900-rgb), 0.6);
-          }
-        }
-      }
-    }
-
-    .hero-wrap {
-      background-color: var(--rim-light-bg);
-      &::before {
-        background: var(--rim-light-mask-bg);
-      }
-      .hero {
-        filter: none;
-      }
-    }
-
-    .privacy,
-    .post-article {
-      a:not(.heading-anchor-link) {
-        border-bottom: 1px solid var(--link-clr);
-        color: var(--link-clr);
-        &:hover,
-        &:focus,
-        &:focus-visible {
-          border-bottom: 1px solid var(--highlight-clr);
-          color: var(--highlight-clr);
-        }
-      }
-    }
-
-    .privacy .date mark {
-      background-color: var(--hardlight-clr);
-      color: var(--fg-clr-o);
-    }
-
-    .post {
-      .summary p::first-letter {
-        color: var(--highlight-clr);
-      }
-      .pubdate {
-        color: var(--fg-clr-oo);
-      }
-      .post-title {
-        -webkit-background-clip: text;
-        -moz-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        text-shadow: var(--post-title-text-shadow);
-      }
-      .post-article {
-        .heading-anchor-link {
-          &:hover,
-          &:focus,
-          &:focus-visible,
-          &:active {
-            color: var(--highlight-clr);
-          }
-        }
-      }
-      code {
-        color: var(--fg-clr-oo);
-      }
-      blockquote {
-        box-shadow: var(--shadow-elevation-medium);
-        border-left: 0.5rem solid var(--hardlight-clr);
-        background: var(--bg-light-clr);
-        color: var(--fg-clr-oo);
-        &::before {
-          background: var(--rim-light-mask-bg);
-        }
-        p:first-child::before,
-        &::after {
-          color: var(--post-blockquotes-clr);
-        }
-      }
-    }
-
     .syntax-highlighter {
       box-shadow: var(--shadow-elevation-medium);
       background-color: var(--bg-light-clr);
@@ -434,19 +290,19 @@ html.dark-theme {
       &:focus {
         .title,
         .language {
-          color: var(--fg-clr);
+          color: var(--code-hover-header-clr);
           &:hover,
           &:focus,
           &:focus-visible {
-            color: var(--fg-clr);
+            color: var(--code-header-hover-clr);
           }
         }
         .code-copy-btn {
-          color: var(--fg-clr-ooo);
+          color: var(--code-hover-header-clr);
           &:hover,
           &:active,
           &:focus-visible {
-            color: var(--fg-clr);
+            color: var(--code-header-hover-clr);
           }
         }
       }
@@ -602,7 +458,7 @@ html.dark-theme {
         transition-duration: var(--transition-duration);
         transition-property: color;
         transition-timing-function: var(--transition-timing-function);
-        color: var(--link-clr--hover);
+        color: var(--link-clr);
         &:hover,
         &:focus,
         &:focus-visible {
@@ -626,193 +482,9 @@ html.dark-theme {
   ---------- Dark Theme ------------------------------------------------------------------
   -------------------------------------------------------------------------------------- */
   .dg--dark-theme {
-    background: var(--bg-gradient);
-    background-repeat: no-repeat;
-    background-color: var(--bg-clr);
-
-    .nav-home,
-    .nav-link {
-      color: var(--nav-link-clr);
-    }
-
-    .nav-home {
-      &:hover {
-        color: var(--highlight-clr);
-      }
-    }
-
-    .nav-link {
-      opacity: 0.5;
-      &:hover {
-        opacity: 1;
-        border-bottom-color: var(--highlight-clr);
-      }
-      &.active {
-        opacity: 1;
-        border-bottom-color: var(--highlight-clr);
-        &.subactive:hover {
-          opacity: 0.5;
-        }
-      }
-    }
-
-    body {
-      scrollbar-color: var(--fg-clr-oooo) transparent;
-      &::-webkit-scrollbar-thumb {
-        background-color: var(--fg-clr-oooo);
-      }
-    }
-
-    .flourish {
-      background-color: var(--fg-clr);
-    }
-
-    .bio,
-    .footer {
-      a {
-        border-bottom-color: var(--link-clr);
-        color: var(--link-clr);
-        &:hover,
-        &:focus {
-          border-bottom-color: var(--highlight-clr);
-          color: var(--link-clr--hover);
-        }
-      }
-    }
-
-    .bio-picture {
-      filter: var(--headshot-filter);
-    }
-
-    .links {
-      .link {
-        a:hover {
-          color: var(--highlight-clr);
-        }
-      }
-    }
-
-    .posts-grid {
-      .post-item {
-        filter: var(--posts-item-filter);
-        &:hover,
-        &:focus,
-        &:focus-visible,
-        &:active {
-          filter: var(--posts-item-hover-filter);
-        }
-      }
-      .post-link {
-        filter: brightness(100%);
-        box-shadow: var(--posts-item-link-box-shadow);
-        background-color: var(--rim-light-bg);
-        &::before {
-          background: var(--rim-light-mask-bg);
-        }
-        .link-bg {
-          background-color: rgba(var(--clr-neut-900-rgb), 0);
-          color: white;
-        }
-        &:hover,
-        &:focus,
-        &:focus,
-        &:focus-visible,
-        &:active {
-          /* the below is unique to dark theme */
-          box-shadow: inset 0 0 7rem 0.5rem rgba(0, 0, 0, 0.77);
-          background-color: rgba(0, 0, 0, 0);
-          .link-bg {
-            background-color: rgba(var(--clr-neut-900-rgb), 0.7);
-          }
-        }
-      }
-    }
-
-    .hero-wrap {
-      background-color: var(--rim-light-bg);
-      &::before {
-        background: var(--rim-light-mask-bg);
-      }
-      .hero {
-        /* unique to dark */
-        filter: brightness(77%);
-      }
-    }
-
-    .privacy,
-    .post,
-    .category-posts-transition-container {
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      h7 {
-        color: var(--fg-clr-o);
-      }
-    }
-
-    .privacy,
-    .post-article {
-      a:not(.heading-anchor-link) {
-        border-bottom: 1px solid var(--link-clr);
-        color: var(--link-clr);
-        &:hover,
-        &:focus,
-        &:focus-visible {
-          border-bottom: 1px solid var(--highlight-clr);
-          color: var(--link-clr--hover);
-        }
-      }
-    }
-
-    .privacy .date mark {
-      background-color: var(--mark-bg-clr);
-      color: var(--fg-clr-o);
-    }
-
-    .post {
-      @media screen and (min-width: 640px) {
-        background-color: var(--bg-clr);
-      }
-      .summary p::first-letter {
-        color: var(--highlight-clr);
-      }
-      .pubdate {
-        color: var(--link-clr);
-      }
-      .post-article {
-        .heading-anchor-link {
-          &:hover,
-          &:focus,
-          &:focus-visible,
-          &:active {
-            color: var(--highlight-clr);
-          }
-        }
-      }
-      code {
-        color: var(--fg-clr-oo);
-      }
-      blockquote {
-        box-shadow: var(--shadow-elevation-medium);
-        border-left: 0.5rem solid var(--post-blockquote-border-clr);
-        background: var(--post-blockquote-bg-clr);
-        color: var(--post-blockquote-clr);
-        &::before {
-          background: var(--rim-light-mask-bg);
-        }
-        p:first-child::before,
-        &::after {
-          color: var(--post-blockquotes-clr);
-        }
-      }
-    }
-
     .syntax-highlighter {
       box-shadow: var(--shadow-elevation-medium);
-      background-color: var(--code-bg-clr);
+      background-color: var(--bg-light-clr);
       &::before {
         background: var(--rim-light-mask-bg);
       }
@@ -829,14 +501,14 @@ html.dark-theme {
       &:focus {
         .title,
         .language {
-          color: var(--code-header-hover-clr);
+          color: var(--code-hover-header-clr);
           &:hover,
           &:focus-visible {
-            color: var(--light);
+            color: var(--code-header-hover-clr);
           }
         }
         .code-copy-btn {
-          color: var(--code-copy-clr);
+          color: var(--code-hover-header-clr);
           &:hover,
           &:active,
           &:focus-visible {
@@ -876,14 +548,14 @@ html.dark-theme {
             }
           }
           td:first-child {
-            background: var(--code-line-num-bg-clr);
+            background: var(--bg-light-clr);
             background: linear-gradient(
               90deg,
-              var(--code-line-num-bg-clr) 65%,
-              var(--code-line-num-bg-clr) 81%,
+              var(--bg-light-clr) 65%,
+              var(--bg-light-clr) 81%,
               transparent 100%
             );
-            color: var(--celestial-a30);
+            color: var(--fg-clr-oooo);
           }
           tbody {
             tr:first-child td {
