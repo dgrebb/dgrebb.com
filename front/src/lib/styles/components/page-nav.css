@@ -5,6 +5,7 @@
   }
   h2 {
     margin-top: 0.5rem;
+    color: var(--fg-clr);
     font-size: 1.33rem;
     line-height: 1;
   }
@@ -26,6 +27,11 @@
     transition: color, border-color;
     @apply dg--transition-effect
       dg--font-lb;
+    color: var(--fg-clr);
+    &:hover,
+    &:focus {
+      color: var(--fg-clr-oo);
+    }
   }
   a:after {
     display: inline-block;
@@ -82,14 +88,22 @@
       height: 0;
       &:focus,
       &:focus-visible {
-        ~ label {
+        ~ .page-navigation-toggle {
           mix-blend-mode: difference;
           outline-style: dotted;
           outline-width: 2px;
           outline-offset: 1px;
+          background-color: var(--page-nav-toggle-focus-bg-clr);
+          color: var(--link-clr--hover);
         }
       }
       ~ .page-navigation-toggle {
+        &:hover,
+        &:focus,
+        &:focus-visible {
+          background-color: var(--page-nav-toggle-focus-bg-clr);
+          color: var(--link-clr--hover);
+        }
         .page-navigation-open {
           display: block;
         }
@@ -132,6 +146,14 @@
         &:focus-visible {
           ~ .page-navigation-toggle {
             mix-blend-mode: normal;
+            background-color: transparent;
+            color: var(--fg-clr-ooo);
+            &:hover,
+            &:focus,
+            &:focus-visible {
+              background-color: transparent;
+              color: var(--link-clr--hover);
+            }
           }
         }
         ~ .page-navigation-toggle {
@@ -152,14 +174,17 @@
             right: 0;
             visibility: visible;
             opacity: 1;
+            background-color: var(--page-nav-list-bg-clr);
             max-height: 100%;
             label.bottom {
               box-shadow: none;
               background-color: transparent;
+              color: var(--fg-clr-ooo);
               &:hover,
               &:focus,
               &:focus-visible {
                 background-color: transparent;
+                color: var(--link-clr--hover);
               }
               .page-navigation-open {
                 display: none;
@@ -201,6 +226,25 @@
   .page-navigation-list {
     a {
       display: inline-block;
+      transition-duration: var(--transition-duration);
+      transition-property: color;
+      transition-timing-function: var(--transition-timing-function);
+      color: var(--link-clr);
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        color: var(--link-clr--hover);
+      }
+      &.active {
+        &:hover,
+        &:focus,
+        &:focus-visible {
+          color: var(--fg-clr);
+        }
+        &::after {
+          color: var(--highlight-clr);
+        }
+      }
     }
   }
 }

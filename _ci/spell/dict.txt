@@ -20,6 +20,7 @@ filemd
 fqdns
 fullname
 Grebb
+hardlight
 headshot
 hljs
 introend
@@ -45,6 +46,7 @@ replacestate
 reportsdomain
 runneth
 shineth
+softlight
 Speaketh
 Strapi
 subactive

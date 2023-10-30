@@ -15,12 +15,14 @@
   transition: transform 0s;
   margin-top: 2.25rem;
   margin-bottom: 2.25rem;
+  box-shadow: var(--shadow-elevation-medium);
   border-radius: 0.5rem;
+  background-color: var(--bg-light-clr);
   padding: 0 0.75rem 1.5rem 1rem;
-  @media screen and (min-width: 480px) {
-    padding: 0 0.75rem 1rem 0.5rem;
-  }
   width: 100%;
+  @media screen and (min-width: 480px) {
+    padding: 0 1.75rem 1.75rem 1.5rem;
+  }
   &::before {
     position: absolute;
     top: 0;
@@ -34,11 +36,29 @@
     mask-composite: exclude;
     box-sizing: border-box;
     border-radius: 0.5rem;
+    background: var(--rim-light-mask-bg);
     padding: 1px 1px 0 0;
     content: '';
   }
-  @media screen and (min-width: 480px) {
-    padding: 0 1.75rem 1.75rem 1.5rem;
+  &:hover,
+  &:focus {
+    .title,
+    .language {
+      color: var(--code-hover-header-clr);
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        color: var(--code-header-hover-clr);
+      }
+    }
+    .code-copy-btn {
+      color: var(--code-hover-header-clr);
+      &:hover,
+      &:active,
+      &:focus-visible {
+        color: var(--code-header-hover-clr);
+      }
+    }
   }
   &.copying,
   &.copying::before {
@@ -53,6 +73,7 @@
   .title,
   .language {
     position: absolute;
+    background-color: var(--hardlight-clr);
     padding: 0.75rem 33px 0.75rem 0.75rem;
     width: 50%;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
@@ -83,6 +104,7 @@
   .language,
   .code-copy-btn {
     z-index: 9;
+    color: var(--fg-clr-oooo);
   }
   .code-copy-btn {
     position: absolute;
@@ -112,6 +134,7 @@
       opacity: 0;
       transition-duration: var(--transition-duration);
       transition-property: opacity;
+      color: var(--code-copied-clr);
     }
     &.copying {
       cursor: default;
@@ -151,6 +174,7 @@
     scrollbar-color: transparent transparent;
     scrollbar-gutter: stable both-edges;
     scrollbar-width: thin;
+    color: var(--fg-clr);
     &::-webkit-scrollbar {
       background-color: transparent;
       width: 8px;
@@ -161,8 +185,9 @@
       background: transparent;
     }
     &:hover,
-    &:focus {
-      scrollbar-color: var(--code-scrollbar-clr) transparent;
+    &:focus,
+    &:focus-visible {
+      scrollbar-color: var(--fg-clr-oooo) transparent;
       &::-webkit-scrollbar {
         background-color: transparent;
         width: 8px;
@@ -170,6 +195,7 @@
       }
       &::-webkit-scrollbar-thumb {
         border-radius: 3rem;
+        background: var(--fg-clr-oooo);
       }
     }
     @media (hover: none),
@@ -200,7 +226,9 @@
       background: transparent;
     }
     &:hover,
-    &:focus {
+    &:focus,
+    &:focus-visible {
+      scrollbar-color: var(--fg-clr-oooo) transparent;
       &::-webkit-scrollbar {
         background-color: transparent;
         width: 8px;
@@ -208,6 +236,7 @@
       }
       &::-webkit-scrollbar-thumb {
         border-radius: 3rem;
+        background: var(--fg-clr-oooo);
       }
     }
     & > table {
@@ -216,9 +245,26 @@
         display: inline-block;
         height: 100%;
       }
+      tr {
+        &:hover,
+        &:focus,
+        &:focus-visible {
+          td:first-child {
+            color: var(--highlight-clr);
+          }
+        }
+      }
       td:first-child {
         display: none;
         transition: color 0.3s;
+        background: var(--bg-light-clr);
+        background: linear-gradient(
+          90deg,
+          var(--bg-light-clr) 65%,
+          var(--bg-light-clr) 81%,
+          transparent 100%
+        );
+        color: var(--fg-clr-oooo);
         @media screen and (min-width: 480px) {
           display: table-cell;
         }
@@ -227,10 +273,22 @@
         padding: 0 0.5rem;
       }
       tbody {
+        tr:first-child td {
+          padding-top: 0;
+        }
+        tr:last-child td {
+          padding-bottom: 0;
+        }
         tr:last-of-type {
           margin-bottom: 1rem;
           td {
             padding-bottom: 0;
+          }
+        }
+        tr.highlight {
+          td:last-child code {
+            border: 1px solid var(--code-highlight-bg-clr);
+            background-color: var(--code-highlight-bg-clr);
           }
         }
       }
