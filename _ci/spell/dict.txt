@@ -3,6 +3,7 @@ awsvpc
 basedomain
 beareth
 blistre
+blockquotes
 cdndomain
 cmsdomain
 Commeth
@@ -19,6 +20,8 @@ filemd
 fqdns
 fullname
 Grebb
+hardlight
+headshot
 hljs
 introend
 introstart
@@ -43,6 +46,7 @@ replacestate
 reportsdomain
 runneth
 shineth
+softlight
 Speaketh
 Strapi
 subactive

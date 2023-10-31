@@ -1,8 +1,154 @@
-@layer utilities {
-    .github-light {
-        .hljs{color:#24292e}.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language_{color:#d73a49}.hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_{color:#6f42c1}.hljs-attr,.hljs-attribute,.hljs-literal,.hljs-meta,.hljs-number,.hljs-operator,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-variable{color:#005cc5}.hljs-meta .hljs-string,.hljs-regexp,.hljs-string{color:#032f62}.hljs-built_in,.hljs-symbol{color:#e36209}.hljs-code,.hljs-comment,.hljs-formula{color:#6a737d}.hljs-name,.hljs-quote,.hljs-selector-pseudo,.hljs-selector-tag{color:#22863a}.hljs-subst{color:#24292e}.hljs-section{color:#005cc5;font-weight:700}.hljs-bullet{color:#735c0f}.hljs-emphasis{color:#24292e;font-style:italic}.hljs-strong{color:#24292e;font-weight:700}.hljs-addition{color:#22863a;background-color:#f0fff4}.hljs-deletion{color:#b31d28;background-color:#ffeef0}
-    }
-    .github-dark {
-        .hljs{color:#c9d1d9}.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language_{color:#ff7b72}.hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_{color:#d2a8ff}.hljs-attr,.hljs-attribute,.hljs-literal,.hljs-meta,.hljs-number,.hljs-operator,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-variable{color:#79c0ff}.hljs-meta .hljs-string,.hljs-regexp,.hljs-string{color:#a5d6ff}.hljs-built_in,.hljs-symbol{color:#ffa657}.hljs-code,.hljs-comment,.hljs-formula{color:#8b949e}.hljs-name,.hljs-quote,.hljs-selector-pseudo,.hljs-selector-tag{color:#7ee787}.hljs-subst{color:#c9d1d9}.hljs-section{color:#1f6feb;font-weight:700}.hljs-bullet{color:#f2cc60}.hljs-emphasis{color:#c9d1d9;font-style:italic}.hljs-strong{color:#c9d1d9;font-weight:700}.hljs-addition{color:#aff5b4;background-color:#033a16}.hljs-deletion{color:#ffdcd7;background-color:#67060c}
-    }
+:root {
+  --code-dark-text: #c9d1d9;
+  --code-dark-accent: #ff7b72;
+  --code-dark-primary: #d2a8ff;
+  --code-dark-secondary: #79c0ff;
+  --code-dark-tertiary: #a5d6ff;
+  --code-dark-quaternary: #ffa657;
+  --code-dark-muted: #8b949e;
+  --code-dark-success: #7ee787;
+  --code-dark-info: #1f6feb;
+  --code-dark-warning: #f2cc60;
+  --code-dark-danger: #67060c;
+  --code-dark-bg-addition: #033a16;
+  --code-dark-bg-deletion: #67060c;
+  --code-light-text: #24292e;
+  --code-light-accent: #d73a49;
+  --code-light-primary: #6f42c1;
+  --code-light-secondary: #005cc5;
+  --code-light-tertiary: #032f62;
+  --code-light-quaternary: #e36209;
+  --code-light-muted: #6a737d;
+  --code-light-success: #22863a;
+  --code-light-info: #005cc5;
+  --code-light-warning: #735c0f;
+  --code-light-danger: #b31d28;
+  --code-light-bg-addition: #f0fff4;
+  --code-light-bg-deletion: #ffeef0;
+
+  /* default */
+  --code-text: var(--code-dark-text);
+  --code-accent: var(--code-dark-accent);
+  --code-primary: var(--code-dark-primary);
+  --code-secondary: var(--code-dark-secondary);
+  --code-tertiary: var(--code-dark-tertiary);
+  --code-quaternary: var(--code-dark-quaternary);
+  --code-muted: var(--code-dark-muted);
+  --code-success: var(--code-dark-success);
+  --code-info: var(--code-dark-info);
+  --code-warning: var(--code-dark-warning);
+  --code-danger: var(--code-dark-danger);
+  --code-bg-addition: var(--code-dark-bg-addition);
+  --code-bg-deletion: var(--code-bg-deletion);
+}
+
+/* light theme overrides */
+@media (prefers-color-scheme: light) {
+  :root {
+    --code-text: var(--code-light-text);
+    --code-accent: var(--code-light-accent);
+    --code-primary: var(--code-light-primary);
+    --code-secondary: var(--code-light-secondary);
+    --code-tertiary: var(--code-light-tertiary);
+    --code-quaternary: var(--code-light-quaternary);
+    --code-muted: var(--code-light-muted);
+    --code-success: var(--code-light-success);
+    --code-info: var(--code-light-info);
+    --code-warning: var(--code-light-warning);
+    --code-danger: var(--code-light-danger);
+    --code-bg-addition: var(--code-light-bg-addition);
+    --code-bg-deletion: var(--code-light-deletion);
+  }
+}
+html.light-theme {
+  --code-text: var(--code-light-text);
+  --code-accent: var(--code-light-accent);
+  --code-primary: var(--code-light-primary);
+  --code-secondary: var(--code-light-secondary);
+  --code-tertiary: var(--code-light-tertiary);
+  --code-quaternary: var(--code-light-quaternary);
+  --code-muted: var(--code-light-muted);
+  --code-success: var(--code-light-success);
+  --code-info: var(--code-light-info);
+  --code-warning: var(--code-light-warning);
+  --code-danger: var(--code-light-danger);
+  --code-bg-addition: var(--code-light-bg-addition);
+  --code-bg-deletion: var(--code-light-deletion);
+}
+
+.hljs {
+  color: var(--code-text);
+}
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  color: var(--code-accent);
+}
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  color: var(--code-primary);
+}
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id,
+.hljs-variable {
+  color: var(--code-secondary);
+}
+.hljs-meta .hljs-string,
+.hljs-regexp,
+.hljs-string {
+  color: var(--code-tertiary);
+}
+.hljs-built_in,
+.hljs-symbol {
+  color: var(--code-quaternary);
+}
+.hljs-code,
+.hljs-comment,
+.hljs-formula {
+  color: var(--code-muted);
+}
+.hljs-name,
+.hljs-quote,
+.hljs-selector-pseudo,
+.hljs-selector-tag {
+  color: var(--code-success);
+}
+.hljs-subst {
+  color: var(--code-text);
+}
+.hljs-section {
+  color: var(--code-info);
+  font-weight: 700;
+}
+.hljs-bullet {
+  color: var(--code-warning);
+}
+.hljs-emphasis {
+  color: var(--code-text);
+  font-style: italic;
+}
+.hljs-strong {
+  color: var(--code-text);
+  font-weight: 700;
+}
+.hljs-addition {
+  background-color: var(--code-bg-addition);
+  color: var(--code-success);
+}
+.hljs-deletion {
+  background-color: var(--code-bg-deletion);
+  color: var(--code-danger);
 }

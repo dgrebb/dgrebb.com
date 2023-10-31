@@ -23,6 +23,7 @@
   .bio-picture {
     position: relative;
     z-index: 5;
+    filter: var(--headshot-filter);
     transition-duration: var(--transition-duration);
     transition-property: border-color, opacity, filter;
     transition-timing-function: var(--transition-timing-function);
@@ -97,6 +98,7 @@
           color 200ms,
           opacity var(--transition-duration);
         transition-timing-function: var(--transition-timing-function);
+        color: var(--highlight-clr);
       }
     }
     svg {

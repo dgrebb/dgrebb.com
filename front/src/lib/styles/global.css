@@ -4,7 +4,6 @@
 @import 'base/layout.css';
 @import 'base/typography.css';
 @import 'base/utilities.css';
-@import 'components/Code/Code.css';
 @import 'components/nav.css';
 @import 'components/theme-toggle.css';
 @import 'components/posts-grid.css';
@@ -19,50 +18,26 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (prefers-reduced-motion: reduce) {
-  html,
-  body {
-    scroll-behavior: auto;
-  }
-}
-
 :root {
   --white: 223, 224, 224;
   --black: 19, 19, 20;
+  background: var(--bg-gradient);
+  background-repeat: no-repeat;
+  background-color: var(--bg-clr);
   :focus-visible {
+    outline: 2px dashed var(--highlight-clr);
     outline-offset: 0.25rem;
     border-bottom: 0 !important;
-  }
-}
-
-html.light-theme {
-  @apply dg--light-theme;
-  @apply github-light;
-}
-
-html.dark-theme {
-  @apply dg--dark-theme;
-  @apply github-dark;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    @apply dg--light-theme;
-    @apply github-light;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    @apply dg--dark-theme;
-    @apply github-dark;
   }
 }
 
 html {
   transition: background-color;
   transition-duration: var(--transition-duration-md);
+  background-color: var(--bg-clr);
   min-height: 100%;
+  overflow: clip;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -71,22 +46,22 @@ body {
   flex-direction: column;
   align-items: center;
   transition: scrollbar-color 1s;
+  padding-right: 7px;
+  padding-left: 7px;
   height: 100vh;
   min-height: 100vh;
   overflow: overlay;
   scroll-behavior: smooth;
-  scrollbar-gutter: stable both-edges;
-  scrollbar-width: thin;
+  scrollbar-color: var(--fg-clr-oooo) transparent;
+  scrollbar-gutter: stable;
   color: var(--fg-clr);
   font-size: 1rem;
   line-height: 1.5rem;
   font-family: var(--font-psxl);
-  @media screen and (min-width: 480px) {
-    padding-right: 7px;
-    padding-left: 7px;
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--fg-clr-oooo);
   }
   @media screen and (min-width: 640px) {
-    scrollbar-gutter: stable;
     font-size: 1.125rem;
     line-height: 1.75rem;
   }
@@ -113,6 +88,7 @@ body {
   z-index: 1;
   transition: background-color;
   @apply dg--transition-effect;
+  background-color: var(--fg-clr);
 }
 
 #main {
@@ -137,6 +113,19 @@ body {
   }
 }
 
+.bio,
+.footer {
+  a {
+    border-bottom-color: var(--link-clr);
+    color: var(--link-clr);
+    &:hover,
+    &:focus {
+      border-bottom-color: var(--highlight-clr);
+      color: var(--fg-clr);
+    }
+  }
+}
+
 .scroll-top {
   display: flex;
   flex-direction: column;
@@ -156,5 +145,47 @@ body {
   svg {
     margin-top: 1.25rem;
     margin-bottom: 0.3rem;
+  }
+}
+
+.privacy,
+.post,
+.category-posts-transition-container {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  h7 {
+    color: var(--fg-clr-o);
+  }
+}
+
+.privacy,
+.post {
+  @media screen and (min-width: 640px) {
+    box-shadow: var(--shadow-elevation-high);
+    background: var(--rim-light-bg), var(--content-bg-clr);
+    background-size: auto 333px;
+    background-repeat: no-repeat;
+  }
+  &::before {
+    @media screen and (min-width: 640px) {
+      background: var(--rim-light-mask-bg);
+    }
+  }
+}
+.privacy,
+.post-article {
+  a:not(.heading-anchor-link) {
+    border-bottom: 1px solid var(--link-clr);
+    color: var(--link-clr);
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      border-bottom: 1px solid var(--highlight-clr);
+      color: var(--link-clr--hover);
+    }
   }
 }

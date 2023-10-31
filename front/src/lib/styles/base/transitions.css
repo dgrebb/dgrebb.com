@@ -8,6 +8,7 @@
     animation-iteration-count: 1 !important;
     transition-delay: 0.001s !important;
     transition-duration: 0.001s !important;
+    scroll-behavior: auto !important;
   }
 }
 

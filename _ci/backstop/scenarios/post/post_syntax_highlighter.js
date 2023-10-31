@@ -7,6 +7,7 @@ module.exports = {
   url: POST_URL,
   viewports: allViewports,
   delay: 333,
+  onReadyScript: 'playwright/onReadyPost.js',
   selectors: ['.post :nth-child(1 of .syntax-highlighter)'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,
