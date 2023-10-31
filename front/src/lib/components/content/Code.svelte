@@ -5,6 +5,7 @@
   import XML from 'svelte-highlight/languages/xml';
   import CSS from 'svelte-highlight/languages/css';
   import CodeCopy from './CodeCopy.svelte';
+  import '@styles/components/Code/Code.css';
 
   export let pageTitle, pageSlug, lang, text;
   export let key = false;

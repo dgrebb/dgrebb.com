@@ -1,7 +1,6 @@
 .main {
   display: flex;
   flex-grow: 1;
-  flex-grow: 1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -31,14 +30,29 @@
   position: relative;
   align-items: center;
   z-index: 1;
-  padding: 1rem 1.5rem 0 1.5rem;
-  @media screen and (min-width: 480px) {
-    padding: 1rem 1rem 0;
-  }
+  padding: 1rem 0 0 1rem;
   @media screen and (min-width: 640px) {
-    padding: 2rem 1.5rem 0 1.5rem;
+    padding: 2rem 1rem 0 2rem;
   }
 }
+
+@media (hover: none),
+  (hover: on-demand),
+  (-moz-touch-enabled: 1),
+  (pointer: coarse) {
+  .header {
+    padding: 1.5rem 1.5rem 0 1.5rem;
+  }
+}
+@media (min-width: 640px) and (hover: none),
+  (min-width: 640px) and (hover: on-demand),
+  (min-width: 640px) and (-moz-touch-enabled: 1),
+  (min-width: 640px) and (pointer: coarse) {
+  .header {
+    padding: 1.5rem 1.5rem 0 1.5rem;
+  }
+}
+
 body.ready .header {
   transition-duration: var(--transition-duration);
   transition-property: opacity;
@@ -47,6 +61,7 @@ body.ready .header.scroll-transition {
   opacity: 0;
   transition: opacity 0s;
 }
+
 .posts,
 .post,
 .privacy,
@@ -100,7 +115,8 @@ body.ready .header.scroll-transition {
     line-height: 1.75;
     a {
       display: inline-block;
-      border-bottom: 1px solid;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
       &.cc-link {
         border: none;
       }
@@ -112,6 +128,11 @@ body.ready .header.scroll-transition {
       transition-duration: 2s;
       transition-property: opacity, filter;
       transition-timing-function: var(--transition-timing-function);
+      padding-bottom: 0.0875rem;
+      line-height: 1.25;
+      &:last-of-type {
+        padding-bottom: 0;
+      }
     }
     &:hover,
     &:focus,
@@ -193,7 +214,8 @@ body.ready .header.scroll-transition {
         transition:
           border 0.5s,
           color 0.5s;
-        border-bottom: thin solid;
+        border-bottom-width: thin;
+        border-bottom-style: solid;
         &.cc-link {
           opacity: 0.8;
           border: none;

@@ -38,6 +38,8 @@
   }
   h2.date mark {
     display: inline-block;
+    background-color: var(--mark-bg-clr);
+    color: var(--fg-clr-o);
   }
   a {
     transition-duration: var(--transition-duration);

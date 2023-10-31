@@ -6,6 +6,7 @@ module.exports = {
   url: POST_URL,
   viewports: upToMediumViewports,
   delay: 333,
+  onReadyScript: 'playwright/onReadyCats.js',
   selectors: ['document'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,

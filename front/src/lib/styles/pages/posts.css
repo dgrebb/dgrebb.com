@@ -1,33 +1,53 @@
 .posts {
-  padding-top: 1rem;
+  padding: 1rem 0 0 1rem;
   h1.title {
-    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
     font-size: 2.25rem;
     line-height: 2.5rem;
     font-family: var(--font-psbl);
     text-align: center;
-    @media (min-width: 768px) {
+  }
+  @media (hover: none),
+    (hover: on-demand),
+    (-moz-touch-enabled: 1),
+    (pointer: coarse) {
+    padding-left: 0;
+  }
+  @media screen and (min-width: 768px) {
+    h1.title {
+      padding-bottom: 1rem;
       font-size: 3rem;
       line-height: 1;
     }
   }
   .summary {
-    margin: auto auto 2rem;
+    margin: auto;
+    padding: 0 1rem 1rem 1rem;
     line-height: 1.6;
     font-family: var(--font-lb);
-    @screen md {
-      max-width: 77%;
-    }
     p {
-      margin: 0 auto 1rem auto;
+      margin: auto;
+      padding: 0 0 1rem 0;
+      &:last-of-type {
+        padding-bottom: 0;
+      }
     }
     strong {
       font-weight: 400;
       font-family: var(--font-psb);
     }
-    @screen md {
+    @media screen and (min-width: 768px) {
       column-gap: 2rem;
       column-count: 2;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .summary {
+      padding: 0.5rem 0 1rem 0;
+      max-width: 78%;
+      p {
+        padding: 0 0 1rem 0;
+      }
     }
   }
   p {
