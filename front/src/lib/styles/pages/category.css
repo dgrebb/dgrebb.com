@@ -82,7 +82,7 @@
       .post-title,
       a,
       p {
-        color: var(--fg-clr-oo);
+        color: var(--fg-clr);
       }
       .post-item-summary,
       a {

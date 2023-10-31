@@ -204,6 +204,9 @@
       (pointer: coarse) {
       scrollbar-color: var(--code-scrollbar-clr) transparent;
     }
+    code {
+      color: var(--code-text);
+    }
   }
   > div[style] > .line-number-wrap {
     position: relative;

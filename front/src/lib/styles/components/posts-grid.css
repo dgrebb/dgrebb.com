@@ -52,10 +52,8 @@
       backdrop-filter: blur(0.5rem);
       filter: var(--posts-item-link-filter);
       transition-duration: var(--transition-duration);
-      transition-duration: var(--transition-duration);
       transition-property: background-color, color, text-shadow, border-color,
         box-shadow;
-      transition-timing-function: var(--transition-timing-function);
       transition-timing-function: var(--transition-timing-function);
       will-change: background-color;
       box-sizing: border-box;
@@ -86,7 +84,7 @@
         mask-composite: exclude;
         inset: 0;
         border-radius: 0.75rem;
-        background: var(--rim-light-mask-bg);
+        background: var(--grid-rim-light-bg);
         padding: 1px 1px 0 0;
         content: '';
       }
@@ -100,6 +98,7 @@
         .link-bg {
           transition-delay: 133ms;
           background-color: rgba(var(--clr-neut-900-rgb), 0.6);
+          color: rgba(255, 255, 255, 1);
         }
       }
       .link-bg {
@@ -113,7 +112,7 @@
         background-color: transparent;
         padding: 0.75rem 2rem;
         width: auto;
-        color: white;
+        color: rgba(255, 255, 255, 0.9);
         text-wrap: balance;
       }
     }

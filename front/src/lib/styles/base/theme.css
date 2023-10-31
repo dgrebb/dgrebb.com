@@ -107,6 +107,12 @@
       var(--content-bg-clr) 67%,
       var(--hardlight-clr) 233%
     );
+    --grid-rim-light-bg: linear-gradient(
+      10deg,
+      transparent 33%,
+      var(--content-bg-clr) 77%,
+      var(--moonlight) 100%
+    );
     --category-rim-light-bg: linear-gradient(
       35deg,
       var(--bg-clr) 33%,
@@ -304,6 +310,12 @@ html.dark-theme {
     transparent 33%,
     var(--content-bg-clr) 77%,
     var(--rim-clr) 111%
+  );
+  --grid-rim-light-bg: linear-gradient(
+    10deg,
+    transparent 33%,
+    var(--content-bg-clr) 77%,
+    var(--moonlight) 100%
   );
   --category-rim-light-bg: linear-gradient(
     35deg,

@@ -36,7 +36,6 @@
   transition-duration: var(--transition-duration-md);
   transition-timing-function: var(--transition-timing-function);
   will-change: color;
-  color: var(--nav-fg-clr);
   font-size: 1.25rem;
   line-height: 1;
   font-family: var(--font-psbl);
@@ -72,35 +71,50 @@
 }
 
 .nav-link {
+  display: inline-block;
   vertical-align: middle;
   opacity: 0.5;
-  transition: opacity, border;
+  transition: opacity;
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
-  border-bottom-width: thin;
-  border-bottom-color: transparent;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+  padding-top: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   letter-spacing: -0.025em;
+  &:after {
+    display: block;
+    transform: scaleX(0);
+    transition: transform var(--transition-duration)
+      var(--transition-timing-function);
+    border-bottom: solid thin var(--highlight-clr);
+    padding: 0.25rem;
+    padding-bottom: 0;
+    content: '';
+  }
   &:hover,
   &:focus,
   &:focus-visible {
     opacity: 1;
-    border-bottom-color: var(--highlight-clr);
+    &:after {
+      transform: scaleX(1);
+    }
   }
   &.active {
     opacity: 1;
     cursor: default;
-    border-bottom-color: var(--highlight-clr);
     color: var(--nav-fg-active-clr);
+    &:after {
+      transform: scaleX(1);
+    }
     &.subactive {
       cursor: pointer;
       &:hover,
       &:focus,
       &:focus-visible {
         opacity: 0.5;
+      }
+      &:after {
+        transform: scaleX(1);
       }
     }
   }

@@ -1,7 +1,9 @@
+.header,
 .post,
 .posts .summary,
 .category,
-.privacy {
+.privacy,
+.footer {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
