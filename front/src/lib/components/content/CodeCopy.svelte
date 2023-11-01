@@ -95,21 +95,25 @@
           dur="0.5s"
           values="60;0"
           restart="whenNotActive"
-          id={`circle${key}`}
+          id="circle{key}"
         />
         <set id="reset-check" attributeName="stroke-dashoffset" to="60" />
       </path>
       <path stroke-dasharray="14" stroke-dashoffset="14" d="M8 12L11 15L16 10">
         <animate
           fill="freeze"
-          id={`${key}`}
+          id={key}
           attributeName="stroke-dashoffset"
-          begin={`circle${key}.begin+0.33s`}
+          begin="circle{key}.begin+0.33s"
           dur="0.2s"
           values="14;0"
           restart="whenNotActive"
         />
-        <set id="reset-circle" attributeName="stroke-dashoffset" to="14" />
+        <set
+          id="reset-circle-{key}"
+          attributeName="stroke-dashoffset"
+          to="14"
+        />
       </path>
     </g>
   </svg>

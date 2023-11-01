@@ -12,7 +12,9 @@
     "lhgh-d": "cd lighthouse && lighthouse --config-path=./.lighthouserc.desktop.js --chrome-flags='--headless' --chrome-flags='--no-sandbox'",
     "psi": "psi",
     "psim": "psi http://stg.dgrebb.com/?roboto --key=$(pass dg/keys/page-speed-insights) --prettyprint=true --strategy=mobile",
-    "psid": "psi http://stg.dgrebb.com/?roboto --key=$(pass dg/keys/page-speed-insights) --prettyprint=true --strategy=desktop"
+    "psid": "psi http://stg.dgrebb.com/?roboto --key=$(pass dg/keys/page-speed-insights) --prettyprint=true --strategy=desktop",
+    "wlg": "wallace ../../front/src/lib/styles/global.css",
+    "wlb": "wallace ../../front/build/s/immutable/assets/b214f03d.css"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +23,7 @@
     "axe-core": "^4.8.2",
     "axe-html-reporter": "^2.2.3",
     "lighthouse": "11.2.0",
-    "psi": "^4.1.0"
+    "psi": "^4.1.0",
+    "wallace-cli": "^3.0.0"
   }
 }

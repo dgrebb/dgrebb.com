@@ -24,10 +24,11 @@
     }
   }
   a {
-    transition: color, border-color;
-    @apply dg--transition-effect
-      dg--font-lb;
+    transition-duration: var(--transition-duration);
+    transition-property: color, border-color;
+    transition-timing-function: var(--transition-timing-function);
     color: var(--fg-clr);
+    font-family: var(--font-lb);
     &:hover,
     &:focus {
       color: var(--fg-clr-oo);
@@ -121,13 +122,13 @@
             right var(--transition-duration),
             opacity var(--transition-duration),
             max-height 0;
+          transition-duration: var(--transition-duration);
           transition-timing-function: var(--transition-timing-function);
           margin-bottom: -1.85rem;
           border-radius: 0.77rem;
           padding: 2rem;
           max-height: 0;
           overflow: hidden;
-          @apply dg--transition-effect;
           label.bottom {
             position: absolute;
             right: 0;

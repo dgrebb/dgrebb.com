@@ -1,18 +1,18 @@
 @tailwind components;
 
 .not-found {
-  @apply flex
-    flex-col
-    items-center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding-bottom: 3rem;
   height: auto;
   line-height: 1.5;
   img {
-    @apply mb-11;
+    margin-bottom: 2.75rem;
   }
   a {
-    @apply transition;
     transition-duration: var(--transition-duration);
+    transition-property: color;
     transition-timing-function: var(--transition-timing-function);
     color: rgb(var(--foreground-rgb));
     &:hover,
@@ -25,6 +25,6 @@
     font-family: 'Public Sans Black', sans-serif;
   }
   p {
-    @apply pb-7;
+    padding-bottom: 1.75rem;
   }
 }

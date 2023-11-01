@@ -1,10 +1,7 @@
 .nav-toggle {
-  @apply hidden
-    p-2;
+  display: none;
+  padding: 0.5rem;
   &:checked {
-    ~ label + .nav-list {
-      /* add some styles */
-    }
     ~ label {
       .nav-toggle-open {
         display: none;
@@ -31,5 +28,13 @@ label[for='nav-toggle'] .nav-toggle-close {
 }
 
 .nav-toggle-label {
-  @apply sr-only;
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border-width: 0;
+  white-space: nowrap;
 }

@@ -166,7 +166,9 @@
   > pre {
     position: relative;
     z-index: 7;
-    transition: scrollbar-color 0.5s;
+    transition-duration: var(--transition-duration);
+    transition-property: scrollbar-color;
+    transition-timing-function: var(--transition-timing-function);
     margin-bottom: -0.5rem;
     padding-top: 5rem;
     padding-bottom: 0.5rem;
@@ -181,6 +183,9 @@
       height: 8px;
     }
     &::-webkit-scrollbar-thumb {
+      transition-duration: var(--transition-duration);
+      transition-property: background;
+      transition-timing-function: var(--transition-timing-function);
       border-radius: 3rem;
       background: transparent;
     }

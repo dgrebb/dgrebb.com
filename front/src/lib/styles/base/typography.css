@@ -1,7 +1,7 @@
+.category,
 .header,
 .post,
 .posts .summary,
-.category,
 .privacy,
 .footer {
   text-rendering: optimizeLegibility;
@@ -9,8 +9,8 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-.post,
 .category,
+.post,
 .privacy {
   line-height: 1.6;
   p {
@@ -45,8 +45,9 @@
     }
   }
   mark {
-    @apply px-3;
     background-color: rgb(var(--foreground-mark-rgb));
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
   }
   h1,
   h2,
@@ -60,63 +61,88 @@
       margin-bottom: 1.75rem;
       padding-top: 1.25rem;
     }
-    transition: color;
-    @apply dg--transition-effect;
+    transition-duration: var(--transition-duration);
+    transition-property: color;
+    transition-timing-function: var(--transition-timing-function);
     letter-spacing: -0.6px;
     &:first-child {
-      @apply pt-0;
-    }
-    span.highlight {
-      @apply text-blue-600 
-        dark:text-blue-500;
+      padding-top: 0;
     }
   }
   h1 {
-    @apply dg--font-psbl
-      text-4xl
-      md:text-5xl;
     margin-bottom: 1.25rem;
+    font-size: 2.25rem;
+    line-height: 2.25rem;
+    font-family: var(--font-psbl);
+    @media screen and (min-width: 768px) {
+      font-size: 3rem;
+      line-height: 1rem;
+    }
   }
   h2 {
-    @apply dg--font-psbl
-      text-3xl
-      md:text-4xl;
     margin-bottom: 1rem;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-family: var(--font-psbl);
+    @media screen and (min-width: 768px) {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+    }
   }
   h3 {
-    @apply dg--font-psbl
-      text-2xl
-      md:text-3xl;
     margin-bottom: 1rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-family: var(--font-psbl);
+    @media screen and (min-width: 768px) {
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+    }
   }
   h4 {
-    @apply dg--font-psb
-      text-xl
-      md:text-2xl;
     margin-bottom: 1rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-family: var(--font-psb);
+    @media screen and (min-width: 768px) {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
   }
   h5 {
-    @apply dg--font-psb
-      text-base
-      md:text-lg;
     margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-family: var(--font-psb);
+    @media screen and (min-width: 768px) {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
   }
   h6 {
-    @apply dg--font-psb
-      text-base
-      italic
-      md:text-lg;
     margin-bottom: 1rem;
+    font-style: italic;
+    font-size: 1rem;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    line-height: 1.75rem;
+    font-family: var(--font-psb);
   }
 }
 h1.page-heading {
-  transition: color;
-  @apply dg--transition-effect;
+  transition-duration: var(--transition-duration);
+  transition-property: color;
+  transition-timing-function: var(--transition-timing-function);
+  margin-bottom: 1.25rem;
+
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-family: var(--font-psbl);
   letter-spacing: -0.6px;
-  @apply dg--font-psbl
-    mb-5
-    text-4xl
-    md:text-5xl;
+  @media screen and (min-width: 768px) {
+    font-size: 3rem;
+    line-height: 1;
+  }
 }
 .category {
   ul {
