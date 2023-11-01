@@ -24,27 +24,39 @@
     padding: 1px 1px 0 0;
     content: '';
   }
+  .masthead,
+  .privacy-main {
+    @media screen and (min-width: 640px) {
+      top: -1.5rem;
+    }
+  }
   .masthead {
     display: block;
     @media screen and (min-width: 640px) {
       position: absolute;
-      top: -2rem;
-      left: 1.33rem;
     }
   }
   h1.title {
     margin-top: 0;
+    margin-bottom: 0;
     line-height: 1;
     font-family: var(--font-psbl);
   }
   h2 {
-    padding-top: 1.25rem;
-    line-height: 2.5rem;
+    @media screen and (min-width: 480px) {
+      margin-bottom: 0;
+      padding-top: 1.25rem;
+    }
   }
   h2.date mark {
     display: inline-block;
     background-color: var(--mark-bg-clr);
     color: var(--fg-clr-o);
+  }
+  .privacy-main {
+    p:first-child {
+      margin-top: 0;
+    }
   }
   a {
     transition-duration: var(--transition-duration);
