@@ -186,9 +186,8 @@ body.ready .header.scroll-transition {
 @media (prefers-color-scheme: dark) {
   .footer {
     a {
-      transition:
-        border 0.5s,
-        color 0.5s;
+      transition-duration: var(--transition-duration-md);
+      transition-property: border color;
       &:hover,
       &:focus {
         border-bottom-color: rgb(var(--highlight-rgb));
@@ -215,9 +214,8 @@ body.ready .header.scroll-transition {
   html.dark-theme {
     .footer {
       a {
-        transition:
-          border 0.5s,
-          color 0.5s;
+        transition-duration: var(--transition-duration-md);
+        transition-property: border color;
         border-bottom-width: thin;
         border-bottom-style: solid;
         &.cc-link {

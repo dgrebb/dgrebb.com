@@ -264,7 +264,7 @@
       }
       td:first-child {
         display: none;
-        transition: color 0.3s;
+        transition-property: color var(--transition-duration);
         background: var(--bg-light-clr);
         background: linear-gradient(
           90deg,

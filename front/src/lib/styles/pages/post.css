@@ -75,7 +75,7 @@
       opacity: 1;
       z-index: 4;
       filter: var(--post-hero-filter);
-      transition: opacity, filter;
+      transition-property: opacity, filter;
       transition-duration: 1s;
       transition-timing-function: var(--transform-timing-function);
       box-shadow: var(--shadow-elevation-low);
