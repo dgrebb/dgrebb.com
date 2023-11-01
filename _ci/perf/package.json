@@ -13,8 +13,9 @@
     "psi": "psi",
     "psim": "psi http://stg.dgrebb.com/?roboto --key=$(pass dg/keys/page-speed-insights) --prettyprint=true --strategy=mobile",
     "psid": "psi http://stg.dgrebb.com/?roboto --key=$(pass dg/keys/page-speed-insights) --prettyprint=true --strategy=desktop",
-    "wlg": "wallace ../../front/src/lib/styles/global.css",
-    "wlb": "wallace ../../front/build/s/immutable/assets/b214f03d.css"
+    "walp": "curl https://www.dgrebb.com | wallace",
+    "wals": "curl https://stg.dgrebb.com | wallace",
+    "wall": "curl https://local.dgrebb.com | wallace"
   },
   "keywords": [],
   "author": "",
