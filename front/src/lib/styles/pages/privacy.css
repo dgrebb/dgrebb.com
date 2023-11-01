@@ -34,7 +34,12 @@
   }
   h1.title {
     margin-top: 0;
+    line-height: 1;
     font-family: var(--font-psbl);
+  }
+  h2 {
+    padding-top: 1.25rem;
+    line-height: 2.5rem;
   }
   h2.date mark {
     display: inline-block;

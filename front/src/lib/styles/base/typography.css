@@ -1,7 +1,7 @@
+.category,
 .header,
 .post,
 .posts .summary,
-.category,
 .privacy,
 .footer {
   text-rendering: optimizeLegibility;
@@ -9,8 +9,8 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-.post,
 .category,
+.post,
 .privacy {
   line-height: 1.6;
   p {
