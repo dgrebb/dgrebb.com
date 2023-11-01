@@ -66,11 +66,15 @@ body.ready .header.scroll-transition {
 .post,
 .privacy,
 .category {
-  @apply dg--transition-effect
-    w-full
-    opacity-95
-    transition-colors
-    sm:max-w-5xl;
+  opacity: 0.95;
+  transition-duration: var(--transition-duration);
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
+  transition-timing-function: var(--transition-timing-function);
+  width: 100%;
+  @media screen and (min-width: 640px) {
+    max-width: 64rem;
+  }
 }
 
 .posts,
@@ -201,8 +205,8 @@ body.ready .header.scroll-transition {
           opacity: 0.8;
           &:hover,
           &:focus {
-            @apply brightness-200;
             opacity: 1;
+            filter: brightness(2);
           }
         }
       }

@@ -79,24 +79,33 @@ body {
 }
 
 .flourish {
-  @apply h-2
-    shadow-sm;
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   z-index: 1;
-  transition: background-color;
-  @apply dg--transition-effect;
+  transition-duration: var(--transition-duration);
+  transition-property: background-color;
+  transition-timing-function: var(--transition-timing-function);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   background-color: var(--fg-clr);
+  height: 0.5rem;
 }
 
 #main {
-  @apply sr-only;
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
   margin: 0;
+  border-width: 0;
   padding: 0;
   width: 0;
   height: 0;
+  white-space: nowrap;
 }
 
 .image-loader {

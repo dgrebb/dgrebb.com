@@ -14,15 +14,17 @@
 </script>
 
 <PageTransition transitionKey={pathname}>
-  <section class="privacy">
+  <article class="privacy">
     <Flourish />
-    <div class="masthead">
+    <section class="masthead">
       <a id="main">Main Content</a>
       <h1 class="title">{title}</h1>
       <h2 class="date">Effective Date: <mark>{date}</mark></h2>
-    </div>
-    <SvelteMarkdown renderers={{ link: Link, code: Code }} source={details} />
-  </section>
+    </section>
+    <section class="privacy-main">
+      <SvelteMarkdown renderers={{ link: Link, code: Code }} source={details} />
+    </section>
+  </article>
 
   <slot name="scroll-top">
     <ScrollTop />

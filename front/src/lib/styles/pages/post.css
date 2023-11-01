@@ -127,7 +127,7 @@
   .aside-toggle {
     position: relative;
     z-index: 8;
-    @screen md {
+    @media screen and (min-width: 768px) {
       top: -4rem;
     }
   }
@@ -181,14 +181,14 @@
     }
     li {
       font-size: 0.875rem;
+      font-family: var(--font-lb);
       list-style-type: none;
-      @apply dg--font-lb;
     }
     /* &.show {
       display: block;
       width: 25%;
     } */
-    @screen sm {
+    @media screen and (min-width: 640px) {
       display: block;
       float: right;
       width: 25%;
@@ -214,7 +214,7 @@
 
 @supports (initial-letter: 2) {
   .post .summary p::first-letter {
-    @apply dg--font-lbb;
+    font-family: var(--font-lbb);
     -webkit-initial-letter: 2;
     initial-letter: 2;
     margin-right: 0.5rem;
@@ -225,7 +225,6 @@
 
 @supports not (initial-letter: 2) {
   .post .summary p::first-letter {
-    @apply dg--font-lbb;
     vertical-align: middle;
     float: left;
     padding-top: 0.4rem;
@@ -233,7 +232,8 @@
     color: rgb(var(--highlight-rgb));
     font-size: 3rem;
     line-height: 0.8;
-    @screen md {
+    font-family: var(--font-lbb);
+    @media screen and (min-width: 768px) {
       padding-top: 0.55rem;
       font-size: 3.5rem;
     }
@@ -273,7 +273,6 @@
   .post-heading {
     position: relative;
     .heading-anchor-link {
-      @apply dg--font-lb;
       display: inline;
       position: absolute;
       right: 0;
@@ -284,6 +283,7 @@
         color var(--transition-duration-md);
       border: none;
       font-size: 1rem;
+      font-family: var(--font-lb);
       &:hover,
       &:focus,
       &:focus-visible,
@@ -293,7 +293,7 @@
       @media screen and (min-width: 480px) {
         left: -1rem;
       }
-      @screen md {
+      @media screen and (min-width: 768px) {
         left: -2.5rem;
         vertical-align: middle;
         font-size: unset;
@@ -311,7 +311,7 @@
     }
   }
   .summary {
-    @apply dg--font-lb;
+    font-family: var(--font-lb);
     text-wrap: pretty;
     margin: 0;
     padding: 1.5rem 1rem 1rem 1rem;
@@ -398,7 +398,7 @@
       z-index: 9;
       color: var(--blockquotes-clr);
       font-size: 4rem;
-      @screen md {
+      @media screen and (min-width: 768px) {
         font-size: 5rem;
       }
     }
