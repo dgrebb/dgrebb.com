@@ -66,8 +66,8 @@
     padding-top: 1.75rem;
   }
   a {
-    transition: color, border-color;
-    transition-duration: 0.33s;
+    transition-property: color, border-color;
+    transition-duration: var(--transition-duration);
     border-bottom: 1px solid;
   }
 }
