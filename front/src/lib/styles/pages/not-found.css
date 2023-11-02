@@ -1,5 +1,3 @@
-@tailwind components;
-
 .not-found {
   display: flex;
   flex-direction: column;
