@@ -5,15 +5,6 @@
 @import 'base/layout.css';
 @import 'base/typography.css';
 @import 'base/utilities.css';
-@import 'components/nav.css';
-@import 'components/theme-toggle.css';
-@import 'components/posts-grid.css';
-@import 'components/page-nav.css';
-@import 'pages/home.css';
-@import 'pages/category.css';
-@import 'pages/post.css';
-@import 'pages/posts.css';
-@import 'pages/privacy.css';
 
 :root {
   --white: 223, 224, 224;

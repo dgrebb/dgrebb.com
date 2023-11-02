@@ -4,6 +4,7 @@
   import { categoryClick, relatedClick } from '@utils/uiHelpers.js';
   import { focusTrap } from '@utils/actions.js';
   import ListIcon from '~icons/gg/list';
+  import '@styles/components/page-nav.css';
 
   export let contents = false;
   export let categories = false;

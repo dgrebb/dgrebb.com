@@ -5,6 +5,7 @@
   import Post from '@components/posts/Post.svelte';
   import PostHero from '@components/posts/PostHero.svelte';
   import Flourish from '@layout/Flourish.svelte';
+  import '@styles/pages/post.css';
   import { onMount } from 'svelte';
 
   export let data;
