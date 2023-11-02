@@ -2,13 +2,13 @@
   import { page } from '$app/stores';
   import Meta from '@components/Meta.svelte';
   import PageTransition from '@components/PageTransition.svelte';
-  import TransitionFade from '@components/TransitionFade.svelte';
   import TransitionElasticFly from '@components/TransitionElasticFly.svelte';
   import Link from '@components/content/renderers/Link.svelte';
-  import Flourish from '@layout/Flourish.svelte';
   import Tag from '@components/icons/Tag.svelte';
+  import Flourish from '@layout/Flourish.svelte';
   import SvelteMarkdown from 'svelte-markdown';
   import PageNav from '../../../../lib/components/PageNav.svelte';
+  import '@styles/pages/category.css';
 
   export let data;
   const route = $page.route.id;

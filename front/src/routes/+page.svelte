@@ -1,11 +1,12 @@
 <script>
+  import Image from '@components/Image.svelte';
   import Links from '@components/Links.svelte';
   import Meta from '@components/Meta.svelte';
   import PageTransition from '@components/PageTransition.svelte';
   import Link from '@components/content/renderers/Link.svelte';
-  import Image from '@components/Image.svelte';
   import Flourish from '@layout/Flourish.svelte';
   import SvelteMarkdown from 'svelte-markdown';
+  import '@styles/pages/home.css';
 
   export let data;
   const { headline, image, intro, links, pageMeta, pathname } = data;

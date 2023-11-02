@@ -1,6 +1,18 @@
 #!/bin/bash
 source $directory/_scripts/functions.sh
 
+if [[ $2 == "s" ]]; then
+  URL="https://stg.dgrebb.com"
+elif [[ $2 == "p" ]]; then
+  URL="https://www.dgrebb.com"
+else
+  URL="https://local.dgrebb.com"
+fi
+urls="${URL}/index.html?roboto
+${URL}/posts/index.html?roboto
+${URL}/post/hello-world/index.html?roboto
+${URL}/posts/category/all/index.html?roboto
+${URL}/privacy/index.html?roboto"
 # exec 3>&1 &>/dev/null
 if [ $# -eq 0 ]; then
   printf "\n${red}Argument for perf command [dev] is required.\n"
@@ -10,18 +22,6 @@ cdperf
 while test "$1" != --; do
   case $1 in
   lh | lighthouse)
-    if [[ $2 == "s" ]]; then
-      URL="https://stg.dgrebb.com"
-    elif [[ $2 == "p" ]]; then
-      URL="https://www.dgrebb.com"
-    else
-      URL="https://local.dgrebb.com"
-    fi
-    urls="${URL}/index.html?roboto
-      ${URL}/posts/index.html?roboto
-      ${URL}/post/hello-world/index.html?roboto
-      ${URL}/posts/category/all/index.html?roboto
-      ${URL}/privacy/index.html?roboto"
     trap exit 0 INT
     while IFS="" read -r url || [ -n "$url" ]; do
       u="$(echo "$url" | tr -d '\r')"

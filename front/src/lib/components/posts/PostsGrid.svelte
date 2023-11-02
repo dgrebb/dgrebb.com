@@ -1,4 +1,5 @@
 <script>
+  import '@styles/components/posts-grid.css';
   export let gridItems;
 </script>
 

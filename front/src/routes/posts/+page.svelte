@@ -1,10 +1,10 @@
 <script>
-  import Head from '@components/Head.svelte';
+  import Meta from '@components/Meta.svelte';
   import PageTransition from '@components/PageTransition.svelte';
   import Link from '@components/content/renderers/Link.svelte';
   import PostsGrid from '@components/posts/PostsGrid.svelte';
   import Flourish from '@layout/Flourish.svelte';
-  import Meta from '@components/Meta.svelte';
+  import '@styles/pages/posts.css';
   import { onMount } from 'svelte';
   import SvelteMarkdown from 'svelte-markdown';
 
