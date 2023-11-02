@@ -1,3 +1,4 @@
+@import 'base/reset.css';
 @import 'base/theme.css';
 @import 'base/transitions.css';
 @import 'base/fonts.css';
@@ -14,10 +15,6 @@
 @import 'pages/posts.css';
 @import 'pages/privacy.css';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
   --white: 223, 224, 224;
   --black: 19, 19, 20;
@@ -28,6 +25,9 @@
     outline: 2px dashed var(--highlight-clr);
     outline-offset: 0.25rem;
     border-bottom: 0 !important;
+  }
+  a {
+    text-decoration: none;
   }
 }
 

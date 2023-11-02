@@ -4,6 +4,7 @@ basedomain
 beareth
 blistre
 blockquotes
+Catchafire
 cdndomain
 cmsdomain
 Commeth
@@ -13,12 +14,15 @@ developeth
 dgrebb
 doctag
 Ensureth
+entypo
 etag
 extralight
 FARGATE
 filemd
+Flickr
 fqdns
 fullname
+Goodreads
 Grebb
 hardlight
 headshot
@@ -47,10 +51,13 @@ reportsdomain
 runneth
 shineth
 softlight
+soundcloud
 Speaketh
+stackoverflow
 Strapi
 subactive
 subdir
 themeset
+typcn
 unminified
 wonka

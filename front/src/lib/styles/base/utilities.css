@@ -4,12 +4,18 @@
   --transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
-@layer utilities {
-  .dg--transition-effect {
-    transition-duration: var(--transition-duration);
-    transition-timing-function: var(--transition-timing-function);
-  }
-  .hidden {
-    display: none;
-  }
+.hidden {
+  display: none;
+}
+
+.sr-only {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border-width: 0;
+  white-space: nowrap;
 }

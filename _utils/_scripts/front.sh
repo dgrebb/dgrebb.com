@@ -60,6 +60,10 @@ while test "$1" != --; do
         cdfront && npm run preview.local -- --host
         break
         ;;
+    l | lint)
+        cdfront && npm run lint
+        break
+        ;;
     ?)
         echo "script usage: $(basename \$0) [dev]" >&2
         break
