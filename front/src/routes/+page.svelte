@@ -12,7 +12,7 @@
 </script>
 
 <PageTransition transitionKey={pathname}>
-  <section class="bio text-center">
+  <section class="bio">
     <Flourish />
     {#if image}
       <Image

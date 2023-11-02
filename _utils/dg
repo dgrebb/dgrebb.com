@@ -70,8 +70,8 @@ while test "$1" != --; do
         /bin/bash $directory/_scripts/act.sh $2 $3
         break
         ;;
-    tp | test-performance | lighthouse)
-        /bin/bash $directory/_scripts/perf.sh $2
+    tp | test-performance)
+        /bin/bash $directory/_scripts/perf.sh $2 $3 $4
         break
         ;;
     tv | test-visual | backstop)
