@@ -5,6 +5,7 @@
   import Link from '@components/content/renderers/Link.svelte';
   import Flourish from '@layout/Flourish.svelte';
   import ScrollTop from '@layout/ScrollTop.svelte';
+  import '@styles/pages/privacy.css';
   import SvelteMarkdown from 'svelte-markdown';
 
   export let data;

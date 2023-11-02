@@ -2,6 +2,8 @@
   import NavBar from './NavBar.svelte';
   import NavHome from './NavHome.svelte';
   import ThemeToggle from './ThemeToggle.svelte';
+  import '@styles/components/nav.css';
+  import '@styles/components/theme-toggle.css';
 
   export let navHeading;
   export let navItems;

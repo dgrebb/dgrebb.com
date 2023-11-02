@@ -1,6 +1,5 @@
 <script>
   import { onMount } from 'svelte';
-  import Loading from './Loading.svelte';
 
   export let src;
   export let alt;
@@ -48,6 +47,6 @@
   {:else if failed}
     <p>That image was lost. Poor thing.</p>
   {:else if loading}
-    <Loading />
+    <p class="sr-only">Loading...</p>
   {/if}
 </div>
