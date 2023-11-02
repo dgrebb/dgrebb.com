@@ -34,27 +34,6 @@
   font-display: swap;
 }
 
-@layer utilities {
-  .dg--font-psxl {
-    font-family: 'Public Sans Extra Light', sans-serif;
-  }
-  .dg--font-ps {
-    font-family: 'Public Sans', sans-serif;
-  }
-  .dg--font-psb {
-    font-family: 'Public Sans Bold', sans-serif;
-  }
-  .dg--font-psbl {
-    font-family: 'Public Sans Black', sans-serif;
-  }
-  .dg--font-lb {
-    font-family: 'Libre Baskerville', serif;
-  }
-  .dg--font-lbb {
-    font-family: 'Libre Baskerville Bold', serif;
-  }
-}
-
 :root {
   --font-psxl: 'Public Sans Extra Light', sans-serif;
   --font-ps: 'Public Sans', sans-serif;
