@@ -4,9 +4,5 @@
   "trailingComma": "es5",
   "semi": true,
   "singleQuote": true,
-  "plugins": [
-    "prettier-plugin-svelte",
-    "prettier-plugin-css-order",
-    "prettier-plugin-tailwindcss"
-  ]
+  "plugins": ["prettier-plugin-svelte", "prettier-plugin-css-order"]
 }
