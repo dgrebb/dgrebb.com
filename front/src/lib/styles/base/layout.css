@@ -61,7 +61,7 @@ body.ready .header.scroll-transition {
 
 .post .aside,
 .category .aside {
-  padding: 0 1.5rem 0 1rem;
+  padding: 0 0 0 1rem;
 }
 
 .privacy,

@@ -52,10 +52,6 @@ body {
   &::-webkit-scrollbar-thumb {
     background-color: var(--fg-clr-oooo);
   }
-  @media screen and (min-width: 640px) {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
   &::-webkit-scrollbar {
     appearance: none;
     padding: 3px;
@@ -113,16 +109,14 @@ body {
   }
 }
 
-.bio,
-.footer {
-  a {
-    border-bottom-color: var(--link-clr);
-    color: var(--link-clr);
-    &:hover,
-    &:focus {
-      border-bottom-color: var(--highlight-clr);
-      color: var(--fg-clr);
-    }
+.bio a,
+.footer a {
+  border-bottom-color: var(--link-clr);
+  color: var(--link-clr);
+  &:hover,
+  &:focus {
+    border-bottom-color: var(--highlight-clr);
+    color: var(--fg-clr);
   }
 }
 
@@ -142,50 +136,39 @@ body {
   &:active {
     color: var(--highlight-clr);
   }
-  svg {
-    margin-top: 1.25rem;
-    margin-bottom: 0.3rem;
+}
+
+.scroll-top svg {
+  margin-top: 1.25rem;
+  margin-bottom: 0.3rem;
+}
+
+.privacy a:not(.heading-anchor-link),
+.post-article a:not(.heading-anchor-link) {
+  border-bottom: 1px solid var(--link-clr);
+  color: var(--link-clr);
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    border-bottom: 1px solid var(--highlight-clr);
+    color: var(--link-clr--hover);
   }
 }
 
-.privacy,
-.post,
-.category-posts-transition-container {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  h7 {
-    color: var(--fg-clr-o);
+@media screen and (min-width: 640px) {
+  body {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
-}
-
-.privacy,
-.post {
-  @media screen and (min-width: 640px) {
+  .privacy,
+  .post {
     box-shadow: var(--shadow-elevation-high);
     background: var(--rim-light-bg), var(--content-bg-clr);
     background-size: auto 333px;
     background-repeat: no-repeat;
   }
-  &::before {
-    @media screen and (min-width: 640px) {
-      background: var(--rim-light-mask-bg);
-    }
-  }
-}
-.privacy,
-.post-article {
-  a:not(.heading-anchor-link) {
-    border-bottom: 1px solid var(--link-clr);
-    color: var(--link-clr);
-    &:hover,
-    &:focus,
-    &:focus-visible {
-      border-bottom: 1px solid var(--highlight-clr);
-      color: var(--link-clr--hover);
-    }
+  .privacy::before,
+  .post::before {
+    background: var(--rim-light-mask-bg);
   }
 }
