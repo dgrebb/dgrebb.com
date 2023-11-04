@@ -9,14 +9,6 @@
   padding-left: 0.25rem;
   width: 100%;
   max-width: 64rem;
-  @media screen and (min-width: 333px) {
-    padding-top: 1.25rem;
-  }
-  @media screen and (min-width: 640px) {
-    padding-top: 0.75rem;
-    padding-right: 0.75rem;
-    padding-left: 0.75rem;
-  }
 }
 
 .header,
@@ -31,32 +23,13 @@
   align-items: center;
   z-index: 1;
   padding: 1rem 0 0 1rem;
-  @media screen and (min-width: 640px) {
-    padding: 2rem 1rem 0 2rem;
-  }
-}
-
-@media (hover: none),
-  (hover: on-demand),
-  (-moz-touch-enabled: 1),
-  (pointer: coarse) {
-  .header {
-    padding: 1.5rem 1.5rem 0 1.5rem;
-  }
-}
-@media (min-width: 640px) and (hover: none),
-  (min-width: 640px) and (hover: on-demand),
-  (min-width: 640px) and (-moz-touch-enabled: 1),
-  (min-width: 640px) and (pointer: coarse) {
-  .header {
-    padding: 1.5rem 1.5rem 0 1.5rem;
-  }
 }
 
 body.ready .header {
   transition-duration: var(--transition-duration);
   transition-property: opacity;
 }
+
 body.ready .header.scroll-transition {
   opacity: 0;
   transition: opacity 0s;
@@ -72,9 +45,6 @@ body.ready .header.scroll-transition {
     text-decoration-color, fill, stroke;
   transition-timing-function: var(--transition-timing-function);
   width: 100%;
-  @media screen and (min-width: 640px) {
-    max-width: 64rem;
-  }
 }
 
 .posts,
@@ -83,20 +53,17 @@ body.ready .header.scroll-transition {
   padding-left: 1rem;
 }
 
-.post {
-  .aside {
-    border: 0;
-    border-left-width: 1px;
-    border-left-style: solid;
-  }
+.post .aside {
+  border: 0;
+  border-left-width: 1px;
+  border-left-style: solid;
 }
 
-.post,
-.category {
-  .aside {
-    padding: 0 1.5rem 0 1rem;
-  }
+.post .aside,
+.category .aside {
+  padding: 0 1.5rem 0 1rem;
 }
+
 .privacy,
 .post,
 .category-posts-transition-container {
@@ -117,60 +84,70 @@ body.ready .header.scroll-transition {
     padding: 1rem 0;
     font-size: 0.7rem;
     line-height: 1.75;
-    a {
-      display: inline-block;
-      border-bottom-width: 1px;
-      border-bottom-style: solid;
-      &.cc-link {
-        border: none;
-      }
-    }
-    p {
-      transform-style: preserve-3d;
-      opacity: 0.3;
-      transition-delay: 1s;
-      transition-duration: 2s;
-      transition-property: opacity, filter;
-      transition-timing-function: var(--transition-timing-function);
-      padding-bottom: 0.0875rem;
-      line-height: 1.25;
-      &:last-of-type {
-        padding-bottom: 0;
-      }
-    }
     &:hover,
     &:focus,
-    &:focus-within,
-    &:active {
+    &:focus-within {
       p {
         opacity: 1;
         transition-delay: 0s;
         transition-duration: var(--transition-duration);
       }
-    }
-    .cc-link {
-      display: inline-block;
-      vertical-align: top;
-      opacity: 0.5;
-      transition: opacity 0.5s !important;
-      border: none;
-      width: 17px;
-      height: 17px;
-      &:hover,
-      &:focus,
-      &:focus-visible,
-      &:active {
-        opacity: 1;
-      }
-      .icon-cc {
-        width: 17px;
-        height: 17px;
-        color: darkred;
-      }
-      .fil0 {
-        fill: red;
+      .cc-link {
+        display: inline-block;
+        vertical-align: top;
+        opacity: 0.5;
+        &:hover,
+        &:focus,
+        &:focus-visible,
+        &:active {
+          opacity: 1;
+        }
       }
     }
+  }
+
+  a {
+    display: inline-block;
+    transition-duration: var(--transition-duration-md);
+    transition-property: border color;
+    border-bottom-width: thin;
+    border-bottom-style: solid;
+    &:hover,
+    &:focus {
+      border-bottom-color: rgb(var(--highlight-rgb));
+    }
+  }
+
+  p {
+    transform-style: preserve-3d;
+    opacity: 0.3;
+    transition-delay: 1s;
+    transition-duration: 2s;
+    transition-property: opacity, filter;
+    transition-timing-function: var(--transition-timing-function);
+    padding-bottom: 0.0875rem;
+    line-height: 1.25;
+    &:last-of-type {
+      padding-bottom: 0;
+    }
+  }
+
+  .cc-link {
+    display: inline-block;
+    vertical-align: top;
+    opacity: 0.5;
+    transition: opacity 0.5s !important;
+    border: none;
+    width: 17px;
+    height: 17px;
+  }
+  .icon-cc {
+    width: 17px;
+    height: 17px;
+    color: darkred;
+  }
+  .fil0 {
+    fill: red;
   }
 }
 
@@ -183,63 +160,43 @@ body.ready .header.scroll-transition {
   width: 100%;
 }
 
-@media (prefers-color-scheme: dark) {
-  .footer {
-    a {
-      transition-duration: var(--transition-duration-md);
-      transition-property: border color;
-      &:hover,
-      &:focus {
-        border-bottom-color: rgb(var(--highlight-rgb));
-      }
-    }
-    img {
-      opacity: 0.5;
-    }
-    small {
-      &:hover,
-      &:focus,
-      &:active {
-        img {
-          opacity: 0.8;
-          &:hover,
-          &:focus {
-            opacity: 1;
-            filter: brightness(2);
-          }
-        }
-      }
-    }
+@media (hover: none),
+  (hover: on-demand),
+  (-moz-touch-enabled: 1),
+  (pointer: coarse) {
+  .header {
+    padding: 1.5rem 1.5rem 0 1.5rem;
   }
-  html.dark-theme {
-    .footer {
-      a {
-        transition-duration: var(--transition-duration-md);
-        transition-property: border color;
-        border-bottom-width: thin;
-        border-bottom-style: solid;
-        &.cc-link {
-          opacity: 0.8;
-          border: none;
-        }
-      }
-      img {
-        opacity: 0.5;
-      }
-      small {
-        &:hover,
-        &:focus,
-        &:active {
-          .cc-link {
-            opacity: 0.7;
-            &:hover,
-            &:focus,
-            &:focus-visible {
-              opacity: 1;
-            }
-          }
-        }
-      }
-    }
+}
+
+@media screen and (min-width: 333px) {
+  .main {
+    padding-top: 1.25rem;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .main {
+    padding-top: 0.75rem;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+  }
+  .header {
+    padding: 2rem 1rem 0 2rem;
+  }
+  .posts,
+  .post,
+  .privacy,
+  .category {
+    max-width: 64rem;
+  }
+}
+
+@media (min-width: 640px) and (hover: none),
+  (min-width: 640px) and (hover: on-demand),
+  (min-width: 640px) and (-moz-touch-enabled: 1),
+  (min-width: 640px) and (pointer: coarse) {
+  .header {
+    padding: 1.5rem 1.5rem 0 1.5rem;
   }
 }

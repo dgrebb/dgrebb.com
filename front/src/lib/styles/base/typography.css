@@ -9,9 +9,20 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-.category,
+.privacy,
 .post,
-.privacy {
+.category-list {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  h7 {
+    color: var(--fg-clr-o);
+  }
+}
+.meat {
   line-height: 1.6;
   p {
     margin-top: 1rem;
@@ -27,9 +38,6 @@
   ol,
   ul {
     margin: 1rem 0 1rem 0.25rem;
-    @media screen and (min-width: 480px) {
-      margin: 1.5rem 0 1.5rem 1.5rem;
-    }
     li {
       margin-bottom: 0.75rem;
       &:last-of-type {
@@ -39,9 +47,6 @@
     ol,
     ul {
       margin: 0.75rem 0 0.75rem 0.25rem;
-      @media screen and (min-width: 480px) {
-        margin: 0.75rem 0 0.75rem 0.75rem;
-      }
     }
   }
   mark {
@@ -55,15 +60,11 @@
   h4,
   h5,
   h6 {
-    margin-bottom: 1.25rem;
-    padding-top: 1rem;
-    @media screen and (min-width: 768px) {
-      margin-bottom: 1.75rem;
-      padding-top: 1.25rem;
-    }
     transition-duration: var(--transition-duration);
     transition-property: color;
     transition-timing-function: var(--transition-timing-function);
+    margin-bottom: 1.25rem;
+    padding-top: 1rem;
     letter-spacing: -0.6px;
     &:first-child {
       padding-top: 0;
@@ -74,50 +75,30 @@
     font-size: 2.25rem;
     line-height: 2.25rem;
     font-family: var(--font-psbl);
-    @media screen and (min-width: 768px) {
-      font-size: 3rem;
-      line-height: 1rem;
-    }
   }
   h2 {
     margin-bottom: 1rem;
     font-size: 1.875rem;
     line-height: 2.25rem;
     font-family: var(--font-psbl);
-    @media screen and (min-width: 768px) {
-      font-size: 2.25rem;
-      line-height: 2.5rem;
-    }
   }
   h3 {
     margin-bottom: 1rem;
     font-size: 1.5rem;
     line-height: 2rem;
     font-family: var(--font-psbl);
-    @media screen and (min-width: 768px) {
-      font-size: 1.875rem;
-      line-height: 2.25rem;
-    }
   }
   h4 {
     margin-bottom: 1rem;
     font-size: 1.25rem;
     line-height: 1.75rem;
     font-family: var(--font-psb);
-    @media screen and (min-width: 768px) {
-      font-size: 1.5rem;
-      line-height: 2rem;
-    }
   }
   h5 {
     margin-bottom: 1rem;
     font-size: 1rem;
     line-height: 1.5rem;
     font-family: var(--font-psb);
-    @media screen and (min-width: 768px) {
-      font-size: 1.125rem;
-      line-height: 1.75rem;
-    }
   }
   h6 {
     margin-bottom: 1rem;
@@ -134,15 +115,10 @@ h1.page-heading {
   transition-property: color;
   transition-timing-function: var(--transition-timing-function);
   margin-bottom: 1.25rem;
-
   font-size: 2.25rem;
   line-height: 2.5rem;
   font-family: var(--font-psbl);
   letter-spacing: -0.6px;
-  @media screen and (min-width: 768px) {
-    font-size: 3rem;
-    line-height: 1;
-  }
 }
 .category {
   ul {
@@ -153,5 +129,56 @@ h1.page-heading {
         margin-bottom: 0;
       }
     }
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .meat {
+    ol,
+    ul {
+      margin: 1.5rem 0 1.5rem 1.5rem;
+      ol,
+      ul {
+        margin: 0.75rem 0 0.75rem 0.75rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .meat {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-bottom: 1.75rem;
+      padding-top: 1.25rem;
+    }
+    h1 {
+      font-size: 3rem;
+      line-height: 1rem;
+    }
+    h2 {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+    }
+    h3 {
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+    }
+    h4 {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+    h5 {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+  }
+  h1.page-heading {
+    font-size: 3rem;
+    line-height: 1;
   }
 }

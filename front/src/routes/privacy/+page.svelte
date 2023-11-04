@@ -15,7 +15,7 @@
 </script>
 
 <PageTransition transitionKey={pathname}>
-  <article class="privacy">
+  <article class="privacy meat">
     <Flourish />
     <section class="masthead">
       <a id="main">Main Content</a>
