@@ -6,8 +6,8 @@
   h2 {
     margin-top: 0.5rem;
     margin-bottom: 0.75rem;
-    color: var(--fg-clr);
-    font-size: 1.5rem;
+    color: var(--pagenav-heading);
+    font-size: 1.25rem;
     line-height: 1;
   }
   ul {

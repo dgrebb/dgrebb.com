@@ -110,8 +110,12 @@ body {
 }
 
 .bio a,
-.footer a {
+.footer a,
+.not-found a {
+  transition-duration: var(--transition-duration);
+  transition-property: color, border-color;
   border-bottom-color: var(--link-clr);
+  border-bottom: 1px solid;
   color: var(--link-clr);
   &:hover,
   &:focus {

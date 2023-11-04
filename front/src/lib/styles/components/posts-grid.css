@@ -131,9 +131,6 @@
 }
 
 @media screen and (min-width: 640px) {
-  .posts-grid {
-    gap: 0.5rem;
-  }
   .posts-grid-item {
     &:first-child {
       grid-row: span 12;
@@ -189,6 +186,7 @@
 
 @media screen and (min-width: 768px) {
   .posts-grid {
+    gap: 1rem;
     padding-bottom: 4rem;
   }
   .posts-grid-link {

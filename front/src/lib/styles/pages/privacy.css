@@ -6,13 +6,6 @@
   padding-bottom: 0;
   max-width: 56rem;
   font-size: 1rem;
-  @media screen and (min-width: 640px) {
-    margin-top: 1rem;
-    padding: 7.77rem 3.75rem 1rem 3.75rem;
-  }
-  @media screen and (min-width: 768px) {
-    margin-top: 2.75rem;
-  }
   &::before {
     position: absolute;
     mask:
@@ -24,17 +17,8 @@
     padding: 1px 1px 0 0;
     content: '';
   }
-  .masthead,
-  .privacy-main {
-    @media screen and (min-width: 640px) {
-      top: -1.5rem;
-    }
-  }
   .masthead {
     display: block;
-    @media screen and (min-width: 640px) {
-      position: absolute;
-    }
   }
   h1.title {
     margin-top: 0;
@@ -42,21 +26,10 @@
     line-height: 1;
     font-family: var(--font-psbl);
   }
-  h2 {
-    @media screen and (min-width: 480px) {
-      margin-bottom: 0;
-      padding-top: 1.25rem;
-    }
-  }
   h2.date mark {
     display: inline-block;
     background-color: var(--mark-bg-clr);
     color: var(--fg-clr-o);
-  }
-  .privacy-main {
-    p:first-child {
-      margin-top: 0;
-    }
   }
   a {
     transition-duration: var(--transition-duration);
@@ -77,10 +50,47 @@
   ol {
     margin-bottom: 1.25rem;
   }
+  ol ol {
+    margin-left: 2.5rem;
+  }
   ol > li {
     counter-increment: item;
   }
   ol > li::before {
+    position: absolute;
+    left: 0;
     content: counters(item, '.') '. ';
+  }
+  ol > li li::before {
+    left: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .privacy {
+    h2 {
+      margin-bottom: 0;
+      padding-top: 1.25rem;
+    }
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .privacy {
+    margin-top: 1rem;
+    padding: 7.77rem 3.75rem 1rem 3.75rem;
+    .masthead,
+    .privacy-main {
+      top: -1.5rem;
+    }
+    .masthead {
+      position: absolute;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .privacy {
+    margin-top: 2.75rem;
   }
 }
