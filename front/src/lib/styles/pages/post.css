@@ -188,10 +188,12 @@
   width: 100%;
   .post-heading {
     position: relative;
+    padding: 0.25rem 0;
   }
   .heading-anchor-link {
     display: inline;
     position: absolute;
+    top: 0;
     right: 0;
     left: auto;
     opacity: 0;
