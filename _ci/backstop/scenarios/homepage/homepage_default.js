@@ -4,6 +4,7 @@ module.exports = {
   label: 'Homepage',
   url: URL + '?roboto',
   colorScheme: 'dark',
+  onReadyScript: 'playwright/onReadyHome.js',
   delay: 333,
   selectors: ['viewport'],
   selectorExpansion: false,

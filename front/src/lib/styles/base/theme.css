@@ -97,8 +97,10 @@
     --code-highlight-bg-clr: var(--green);
     --code-hover-header-clr: var(--fg-clr-oo);
     --code-header-hover-clr: var(--highlight-clr);
+    --page-nav-heading: var(--fg-clr-oo);
     --page-nav-toggle-bg-clr: var(--sun-50);
     --page-nav-toggle-focus-bg-clr: var(--sun-50);
+    --page-nav-toggle-focus-clr: var(--jasper);
     --page-nav-toggle-clr: var(--lemon-50-a75);
     --page-nav-list-bg-clr: var(--lemon-50-a75);
     --rim-light-bg: linear-gradient(
@@ -165,12 +167,14 @@ html.light-theme {
     0.015em -0.011em 2px rgba(255, 255, 255, 0.5),
     -1px 1px 2px rgba(0, 0, 0, 0.33);
   --post-blockquote-bg-clr: var(--bg-light-clr);
-  --code-copied-clr: var(--darkgreen);
+  --code-copied-clr: var(--jasper);
   --code-highlight-bg-clr: var(--green);
   --code-hover-header-clr: var(--fg-clr-oo);
   --code-header-hover-clr: var(--highlight-clr);
+  --page-nav-heading: var(--fg-clr-oo);
   --page-nav-toggle-bg-clr: var(--sun-50);
   --page-nav-toggle-focus-bg-clr: var(--sun-50);
+  --page-nav-toggle-focus-clr: var(--jasper);
   --page-nav-toggle-clr: var(--lemon-50-a75);
   --page-nav-list-bg-clr: var(--lemon-50-a75);
   --rim-light-bg: linear-gradient(
@@ -242,8 +246,10 @@ html.light-theme {
     --code-header-hover-clr: var(--light);
     --code-copied-clr: var(--green);
     --code-highlight-bg-clr: var(--burnt-orange);
+    --page-nav-heading: var(--moon);
     --page-nav-toggle-bg-clr: var(--oxford-blue-a50);
     --page-nav-toggle-focus-bg-clr: var(--hardlight-clr);
+    --page-nav-toggle-focus-clr: var(--celestial);
     --page-nav-toggle-active-clr: var(--orange-100-a75);
     --page-nav-list-bg-clr: var(--rich-black-a75);
 
@@ -300,8 +306,10 @@ html.dark-theme {
   --code-header-hover-clr: var(--light);
   --code-copied-clr: var(--green);
   --code-highlight-bg-clr: var(--burnt-orange);
+  --page-nav-heading: var(--moon);
   --page-nav-toggle-bg-clr: var(--oxford-blue-a50);
   --page-nav-toggle-focus-bg-clr: var(--hardlight-clr);
+  --page-nav-toggle-focus-clr: var(--celestial);
   --page-nav-toggle-active-clr: var(--orange-100-a75);
   --page-nav-list-bg-clr: var(--rich-black-a75);
 

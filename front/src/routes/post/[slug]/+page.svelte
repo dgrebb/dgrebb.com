@@ -53,7 +53,7 @@
 </script>
 
 <PageTransition transitionKey={pathname}>
-  <section class="post">
+  <section class="post meat">
     <Flourish />
     {#if heroImage}
       <PostHero {heroImage} {heroMime} {loaded} {position} {heroThumb} />

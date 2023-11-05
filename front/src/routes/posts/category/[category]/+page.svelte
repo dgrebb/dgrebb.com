@@ -32,7 +32,7 @@
 </script>
 
 <PageTransition transitionKey={route}>
-  <section class="category">
+  <section class="category meat">
     <header class="category-head">
       <a id="main">Main Content</a>
       <h1 class="page-heading">{headline}</h1>

@@ -1,11 +1,11 @@
-import { PUBLIC_ENV, PUBLIC_SENTRY_DSN } from '$env/static/public';
+import { PUBLIC_ENV as env, PUBLIC_SENTRY_DSN } from '$env/static/public';
 import * as Sentry from '@sentry/sveltekit';
 import { minify } from 'html-minifier-terser';
 import { dev, building } from '$app/environment';
 
 Sentry.init({
   dsn: PUBLIC_SENTRY_DSN,
-  environment: PUBLIC_ENV,
+  environment: env,
   integrations: [],
   beforeSend(event) {
     if (event.user) {
@@ -19,7 +19,8 @@ Sentry.init({
 });
 
 export function handleError({ error, event }) {
-  Sentry.captureException(error, { extra: { event } });
+  if (env === 'production')
+    Sentry.captureException(error, { extra: { event } });
 
   console.log('Error:');
   console.log(error);
