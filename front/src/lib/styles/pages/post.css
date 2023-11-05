@@ -157,7 +157,7 @@
     -webkit-initial-letter: 2;
     initial-letter: 2;
     margin-right: 0.5rem;
-    color: rgb(var(--highlight-rgb));
+    color: var(--highlight-clr);
     font-weight: bold;
   }
 }
@@ -168,7 +168,7 @@
     float: left;
     padding-top: 0.4rem;
     padding-right: 0.42rem;
-    color: rgb(var(--highlight-rgb));
+    color: var(--highlight-clr);
     font-size: 3rem;
     line-height: 0.8;
     font-family: var(--font-lbb);
