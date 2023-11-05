@@ -17,7 +17,7 @@ label[for='nav-toggle'] {
   cursor: pointer;
   &:hover,
   &:focus {
-    color: rgb(var(--highlight-rgb));
+    color: rgb(var(--highlight-clr));
   }
 }
 label[for='nav-toggle'] .nav-toggle-open {

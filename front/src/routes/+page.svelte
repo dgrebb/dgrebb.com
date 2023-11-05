@@ -25,6 +25,16 @@
         classes="bio-picture"
       />
     {/if}
+    <noscript>
+      <img
+        src={image.url}
+        alt={image.alternativeText}
+        title="Hi!"
+        width={120}
+        height={120}
+        class="bio-picture"
+      />
+    </noscript>
     <a id="main">Main Content</a>
     <h1 class="headline">{headline}</h1>
     <SvelteMarkdown renderers={{ link: Link }} source={intro} />

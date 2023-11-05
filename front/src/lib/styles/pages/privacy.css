@@ -52,15 +52,6 @@
     & > p:not(:first-of-type) {
       padding-top: 0;
     }
-    a {
-      transition-duration: var(--transition-duration);
-      transition-property: border, color;
-      transition-timing-function: var(--transition-timing-function);
-      &:hover,
-      &:focus {
-        border-bottom: 1px solid rgba(var(--highlight-rgb), 1);
-      }
-    }
     ol {
       counter-reset: item;
       list-style-type: none;
@@ -134,10 +125,6 @@
   .privacy {
     margin-top: 2.75rem;
     padding: 0 3.75rem 1rem 3.75rem;
-    .masthead,
-    & > section.privacy-main {
-      /* top: -2rem; */
-    }
   }
 }
 
