@@ -124,25 +124,25 @@ body {
   }
 }
 
-.scroll-top {
+a.scroll-top {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: color var(--transition-duration-md)
-    var(--transition-timing-function);
-  will-change: color;
-  color: var(--fg-clr);
+  color: var(--fg-clr-oo);
   font-size: 0.75rem;
   line-height: 1rem;
   &:hover,
   &:focus,
-  &:focus-visible,
-  &:active {
+  &:focus-visible {
+    opacity: 1;
     color: var(--highlight-clr);
   }
 }
 
 .scroll-top svg {
+  transition-duration: var(--transition-duration);
+  transition-property: color;
+  transition-timing-function: var(--transition-timing-function);
   margin-top: 1.25rem;
   margin-bottom: 0.3rem;
 }

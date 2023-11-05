@@ -23,54 +23,85 @@
   h1.title {
     margin-top: 0;
     margin-bottom: 0;
+    font-size: 2rem;
     line-height: 1;
     font-family: var(--font-psbl);
   }
+  h2.date {
+    padding-top: 0;
+    font-size: 1.5rem;
+  }
   h2.date mark {
     display: inline-block;
+    margin-top: 0.25rem;
     background-color: var(--mark-bg-clr);
     color: var(--fg-clr-o);
   }
-  a {
-    transition-duration: var(--transition-duration);
-    transition-property: border, color;
-    transition-timing-function: var(--transition-timing-function);
-    &:hover,
-    &:focus {
-      border-bottom: 1px solid rgba(var(--highlight-rgb), 1);
+  .privacy-main {
+    h2:not(:first-of-type) {
+      padding-top: 1rem;
     }
-  }
-  ol {
-    counter-reset: item;
-    list-style-type: none;
-  }
-  li:first-of-type {
-    margin-bottom: 1.25rem;
-  }
-  ol {
-    margin-bottom: 1.25rem;
-  }
-  ol ol {
-    margin-left: 2.5rem;
-  }
-  ol > li {
-    counter-increment: item;
-  }
-  ol > li::before {
-    position: absolute;
-    left: 0;
-    content: counters(item, '.') '. ';
-  }
-  ol > li li::before {
-    left: 1.5rem;
+    p + h2:not(:first-of-type) {
+      padding-top: 0;
+    }
+    & > p:not(:first-of-type) {
+      padding-top: 0;
+    }
+    a {
+      transition-duration: var(--transition-duration);
+      transition-property: border, color;
+      transition-timing-function: var(--transition-timing-function);
+      &:hover,
+      &:focus {
+        border-bottom: 1px solid rgba(var(--highlight-rgb), 1);
+      }
+    }
+    ol {
+      counter-reset: item;
+      list-style-type: none;
+    }
+    li:first-of-type {
+      margin-bottom: 1.25rem;
+    }
+    ol {
+      margin-bottom: 1.25rem;
+      margin-left: 1rem;
+    }
+    ol ol {
+      margin: 1.5rem 1.75rem;
+    }
+    ol > li {
+      counter-increment: item;
+    }
+    ol > li::before {
+      position: absolute;
+      left: 0;
+      content: counters(item, '.') '. ';
+    }
+    ol > li li::before {
+      left: 1rem;
+    }
+    ol + p {
+      padding-top: 0;
+    }
   }
 }
 
 @media screen and (min-width: 480px) {
-  .privacy {
-    h2 {
-      margin-bottom: 0;
-      padding-top: 1.25rem;
+  .privacy-main {
+    ol ol {
+      margin-left: 2.5rem;
+    }
+    ol > li {
+      counter-increment: item;
+    }
+    ol > li::before {
+      position: absolute;
+      left: 0;
+      content: counters(item, '.') '. ';
+    }
+    ol > li li::before {
+      left: 1.5rem;
     }
   }
 }
@@ -78,13 +109,10 @@
 @media screen and (min-width: 640px) {
   .privacy {
     margin-top: 1rem;
-    padding: 7.77rem 3.75rem 1rem 3.75rem;
+    padding: 0 3.75rem 1rem 3.75rem;
     .masthead,
-    .privacy-main {
-      top: -1.5rem;
-    }
-    .masthead {
-      position: absolute;
+    & > section.privacy-main {
+      top: -1rem;
     }
   }
 }

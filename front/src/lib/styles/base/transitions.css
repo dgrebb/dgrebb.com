@@ -13,6 +13,7 @@
 }
 
 .header,
+.scroll-top,
 .footer,
 .flourish,
 .main section,
@@ -34,6 +35,9 @@ body.ready {
     box-shadow: none !important;
     border-top: 8px solid transparent;
     background-color: transparent;
+  }
+  .scroll-top {
+    opacity: 0.6;
   }
   .header,
   .footer,
