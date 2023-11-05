@@ -12,73 +12,80 @@
   }
 }
 
-body {
+.header,
+.scroll-top,
+.footer,
+.flourish,
+.main section,
+.main .privacy,
+.main.secondary {
+  opacity: 0;
+  transition: opacity;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+}
+.flourish {
+  transition-property: background-color, opacity;
+}
+
+body.ready {
+  > div > .flourish {
+    z-index: 0;
+    transition: border 0.5s;
+    transition-delay: 2s;
+    box-shadow: none !important;
+    border-top: 8px solid transparent;
+    background-color: transparent;
+  }
+  .scroll-top {
+    opacity: 0.6;
+  }
   .header,
   .footer,
   .flourish,
   .main section,
+  .main .privacy,
   .main.secondary {
-    opacity: 0;
-    transition: opacity;
-    transition-duration: var(--transition-duration);
-    transition-timing-function: var(--transition-timing-function);
+    opacity: 1;
   }
   .flourish {
     transition-property: background-color, opacity;
   }
-  &.ready {
-    > div > .flourish {
-      z-index: 0;
-      transition: border 0.5s;
-      transition-delay: 2s;
-      box-shadow: none !important;
-      border-top: 8px solid transparent;
-      background-color: transparent;
-    }
-    .header,
-    .footer,
-    .flourish,
-    .main section,
-    .main.secondary {
-      opacity: 1;
-    }
-    .flourish {
-      transition-property: background-color, opacity;
-    }
-    .main section {
-      transition-duration: var(--transition-duration);
-      transition-property: opacity, background-color;
-      transition-timing-function: var(--transition-timing-function);
-    }
-    .footer {
-      transition: opacity 0.3s;
-    }
-    &.animating {
-      overflow: hidden;
-      scrollbar-color: transparent transparent;
-      > div > .flourish {
-        transition: max-height 1s ease-in-out 1s;
-        box-shadow: none !important;
-        border-color: rgb(var(--foreground-rgb));
-      }
-      .main section {
-        opacity: 0;
-        transition-duration: var(--transition-duration);
-        transition-property: opacity;
-        transition-timing-function: var(--transition-timing-function);
-      }
-      .scroll-top,
-      .footer {
-        opacity: 0;
-      }
-      .main .transition-container:first-of-type:last-of-type {
-        height: auto;
-        max-height: auto;
-      }
-      .main .transition-container:last-of-type {
-        height: 0;
-        max-height: 0;
-      }
-    }
+  .main section {
+    transition-duration: var(--transition-duration);
+    transition-property: opacity, background-color;
+    transition-timing-function: var(--transition-timing-function);
+  }
+  .footer {
+    transition: opacity 0.3s;
+  }
+}
+
+body.ready.animating {
+  overflow: hidden;
+  scrollbar-color: transparent transparent;
+  > div > .flourish {
+    transition: max-height 1s ease-in-out 1s;
+    box-shadow: none !important;
+    border-color: rgb(var(--foreground-rgb));
+  }
+  .main section,
+  .main .privacy {
+    opacity: 0;
+    transition-duration: var(--transition-duration);
+    transition-property: opacity;
+    transition-timing-function: var(--transition-timing-function);
+  }
+  .scroll-top,
+  .footer {
+    opacity: 0;
+  }
+  .main .transition-container:first-of-type:last-of-type {
+    height: auto;
+    max-height: auto;
+  }
+  .main .transition-container:last-of-type {
+    height: 0;
+    max-height: 0;
   }
 }

@@ -6,10 +6,10 @@
 <ul class="posts-grid">
   {#each gridItems as { lazyImage, slug, title }, i (slug)}
     <li
-      class="post-item"
+      class="posts-grid-item"
       style={lazyImage && `background-image: url('${lazyImage}');`}
     >
-      <a href="/post/{slug}/" class="post-link">
+      <a href="/post/{slug}/" class="posts-grid-link">
         <span class="link-bg">{title}</span>
       </a>
     </li>

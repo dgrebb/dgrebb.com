@@ -24,21 +24,21 @@
 </svelte:head>
 
 {#if heroImage}
-  <div class="hero-wrap {heroImage ? 'show' : 'hide'}">
+  <div class="post-hero-wrap {heroImage ? 'show' : 'hide'}">
     <div
-      class="hero"
+      class="post-hero"
       class:loaded
       style={heroImage &&
         `background-image: url('${heroImage}'); background-position: ${position};`}
     />
     <div
-      class="hero hero-thumbnail {loaded ? 'loaded' : null}"
+      class="post-hero post-hero-thumbnail {loaded ? 'loaded' : null}"
       style={heroThumb &&
         `background-image: url('${heroThumb}'); background-position: ${position};`}
     />
     <noscript>
       <div
-        class="hero noscript"
+        class="post-hero noscript"
         style={heroImage &&
           `background-image: url('${heroImage}'); background-position: ${position};`}
       />

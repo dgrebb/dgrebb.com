@@ -2,17 +2,10 @@
   position: relative;
   border-radius: 0.77rem;
   background-color: rgba(var(--background-saturated), 0.77);
-  padding: 1.25rem;
+  padding: 2rem 0.75rem 0;
   padding-bottom: 0;
   max-width: 56rem;
   font-size: 1rem;
-  @media screen and (min-width: 640px) {
-    margin-top: 1rem;
-    padding: 7.77rem 3.75rem 1rem 3.75rem;
-  }
-  @media screen and (min-width: 768px) {
-    margin-top: 2.75rem;
-  }
   &::before {
     position: absolute;
     mask:
@@ -25,62 +18,128 @@
     content: '';
   }
   .masthead,
-  .privacy-main {
-    @media screen and (min-width: 640px) {
-      top: -1.5rem;
-    }
+  & > section.privacy-main {
+    position: relative;
+    top: -1.5rem;
   }
   .masthead {
     display: block;
-    @media screen and (min-width: 640px) {
-      position: absolute;
-    }
   }
   h1.title {
     margin-top: 0;
     margin-bottom: 0;
+    font-size: 2rem;
     line-height: 1;
     font-family: var(--font-psbl);
   }
-  h2 {
-    @media screen and (min-width: 480px) {
-      margin-bottom: 0;
-      padding-top: 1.25rem;
-    }
+  h2.date {
+    padding-top: 0;
+    font-size: 1.5rem;
   }
   h2.date mark {
     display: inline-block;
+    margin-top: 0.25rem;
     background-color: var(--mark-bg-clr);
     color: var(--fg-clr-o);
   }
   .privacy-main {
-    p:first-child {
-      margin-top: 0;
+    h2:not(:first-of-type) {
+      padding-top: 1rem;
+    }
+    p + h2:not(:first-of-type) {
+      padding-top: 0;
+    }
+    & > p:not(:first-of-type) {
+      padding-top: 0;
+    }
+    a {
+      transition-duration: var(--transition-duration);
+      transition-property: border, color;
+      transition-timing-function: var(--transition-timing-function);
+      &:hover,
+      &:focus {
+        border-bottom: 1px solid rgba(var(--highlight-rgb), 1);
+      }
+    }
+    ol {
+      counter-reset: item;
+      list-style-type: none;
+    }
+    li:first-of-type {
+      margin-bottom: 1.25rem;
+    }
+    ol {
+      margin-bottom: 1.25rem;
+      margin-left: 1rem;
+    }
+    ol ol {
+      margin: 1.5rem 1.75rem;
+    }
+    ol > li {
+      counter-increment: item;
+    }
+    ol > li::before {
+      position: absolute;
+      left: 0;
+      content: counters(item, '.') '. ';
+    }
+    ol > li li::before {
+      left: 1rem;
+    }
+    ol + p {
+      padding-top: 0;
     }
   }
-  a {
-    transition-duration: var(--transition-duration);
-    transition-property: border, color;
-    transition-timing-function: var(--transition-timing-function);
-    &:hover,
-    &:focus {
-      border-bottom: 1px solid rgba(var(--highlight-rgb), 1);
+}
+
+@media screen and (min-width: 480px) {
+  .privacy {
+    margin-top: 1rem;
+  }
+  .masthead {
+    h1.title {
+      font-size: 2.5rem;
+    }
+    h2.date {
+      font-size: 2rem;
     }
   }
-  ol {
-    counter-reset: item;
-    list-style-type: none;
+  .privacy-main {
+    ol ol {
+      margin-left: 2.5rem;
+    }
+    ol > li {
+      counter-increment: item;
+    }
+    ol > li::before {
+      position: absolute;
+      left: 0;
+      content: counters(item, '.') '. ';
+    }
+    ol > li li::before {
+      left: 1.5rem;
+    }
   }
-  li:first-of-type {
-    margin-bottom: 1.25rem;
+}
+
+@media screen and (min-width: 640px) {
+  .masthead {
+    h1.title {
+      font-size: 3rem;
+    }
+    h2.date {
+      font-size: 2.5rem;
+    }
   }
-  ol {
-    margin-bottom: 1.25rem;
+  .privacy {
+    margin-top: 2.75rem;
+    padding: 0 3.75rem 1rem 3.75rem;
+    .masthead,
+    & > section.privacy-main {
+      /* top: -2rem; */
+    }
   }
-  ol > li {
-    counter-increment: item;
-  }
-  ol > li::before {
-    content: counters(item, '.') '. ';
-  }
+}
+
+@media screen and (min-width: 768px) {
 }

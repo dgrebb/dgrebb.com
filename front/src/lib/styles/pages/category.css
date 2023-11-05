@@ -1,83 +1,46 @@
 .category {
   border-top-right-radius: 0;
   padding: 0 0 1.5rem 1rem;
-  @media (hover: none),
-    (hover: on-demand),
-    (-moz-touch-enabled: 1),
-    (pointer: coarse) {
-    padding-right: 1rem;
-  }
-  @media screen and (min-width: 768px) {
-    padding: 0 2.33rem 5rem 2rem;
-  }
   .category-head {
     display: flex;
     position: relative;
     flex-direction: column;
     align-items: center;
     font-family: var(--font-lb);
-    h1.page-heading {
-      padding-bottom: 0.5rem;
-    }
-    .category-name {
-      max-width: 77%;
-      text-align: center;
-    }
-    .page-navigation.mini.top {
-      position: absolute;
-      top: 2.5rem;
-      right: 0;
-      padding: 0.5rem;
-      .page-navigation-toggle {
-        padding: 0.25rem;
-      }
+  }
+  h1.page-heading {
+    padding-bottom: 1rem;
+  }
+  .category-name {
+    max-width: 77%;
+    text-align: center;
+  }
+  .page-navigation.mini.top {
+    display: block;
+    position: absolute;
+    top: 2.5rem;
+    right: 0;
+    padding: 0.5rem;
+    .page-navigation-toggle {
+      padding: 0.25rem;
     }
   }
   .category-posts-list,
   .aside {
     position: relative;
-    @media screen and (min-width: 768px) {
-      padding-top: 0;
-    }
   }
   .category-posts-list {
     width: 100%;
-    @media screen and (min-width: 640px) {
-      float: left;
-      width: 77%;
-    }
-    @media screen and (min-width: 900px) {
-      width: 80%;
-    }
-    .transition-elastic-fly-container {
-      border-radius: 0.75rem;
-      overflow: visible;
-      ul {
-        padding: 1.5rem;
-        @media screen and (min-width: 480px) {
-          padding: 1.5rem;
-        }
-        @media screen and (min-width: 640px) {
-          padding: 2rem;
-        }
-      }
-      p.summary {
-        padding: 2rem 0;
-      }
-      &::before {
-        position: absolute;
-        mask:
-          linear-gradient(3deg, #fff 0 0) content-box,
-          linear-gradient(3deg, #fff 0 0);
-        mask-composite: exclude;
-        inset: 0;
-        border-radius: 0.75rem;
-        padding: 1px 1px 0 0;
-        content: '';
-      }
+    ul {
+      margin: 0;
     }
     .post-item {
       list-style-type: none;
+      &:last-of-type {
+        p {
+          padding-bottom: 0;
+        }
+      }
       .post-item-summary,
       .post-title,
       a,
@@ -141,7 +104,7 @@
         margin: 0;
         padding: 0;
       }
-      li.category-tag {
+      .category-tag {
         display: inline-block;
         margin: 0 0.5rem 0 0;
         &:last-of-type {
@@ -161,14 +124,6 @@
           color: var(--fg-clr);
           font-size: 0.75rem;
           font-family: var(--font-ps);
-          @media screen and (min-width: 480px) {
-            margin-bottom: 0.33rem;
-            box-shadow: var(--shadow-elevation-low);
-            border: thin solid var(--tag-border-clr);
-            border-radius: 1.5rem;
-            background-color: var(--tag-clr);
-            padding: 0.175rem 0.75rem 0.175rem 0.5rem;
-          }
           &:hover,
           &:focus,
           &:focus-visible {
@@ -181,9 +136,6 @@
           margin-right: 3px;
           height: 100%;
           color: var(--highlight-clr);
-          @media screen and (min-width: 480px) {
-            margin-right: 0.5rem;
-          }
         }
       }
       .post-item-summary {
@@ -198,13 +150,6 @@
     float: right;
     opacity: 0.8;
     padding: 0 0 0 1rem;
-    @media screen and (min-width: 640px) {
-      display: block;
-      width: 20%;
-    }
-    @media screen and (min-width: 1024px) {
-      padding-right: 1.5rem;
-    }
   }
 }
 
@@ -227,22 +172,104 @@
   }
 }
 
+.transition-elastic-fly-container {
+  border-radius: 0.75rem;
+  overflow: visible;
+  ul {
+    padding: 1.5rem;
+  }
+  p.summary {
+    padding: 2rem 0;
+  }
+  &::before {
+    position: absolute;
+    mask:
+      linear-gradient(3deg, #fff 0 0) content-box,
+      linear-gradient(3deg, #fff 0 0);
+    mask-composite: exclude;
+    inset: 0;
+    border-radius: 0.75rem;
+    padding: 1px 1px 0 0;
+    content: '';
+  }
+}
+
 .category-posts-transition-container {
   box-shadow: var(--shadow-elevation-low);
   background: var(--rim-light-bg), var(--bg-clr);
-  @media screen and (min-width: 640px) {
-    box-shadow: var(--shadow-elevation-high);
-  }
   &::before {
     background: var(--rim-light-mask-bg);
   }
-  @media screen and (min-width: 640px) {
-    background: var(--category-rim-light-bg), var(--bg-clr);
-    @media screen and (min-width: 640px) {
+}
+
+@media screen and (min-width: 480px) {
+  .transition-elastic-fly-container ul {
+    padding: 1.5rem;
+  }
+  .category .category-posts-list .post-item .category-tag a {
+    margin-bottom: 0.33rem;
+    box-shadow: var(--shadow-elevation-low);
+    border: thin solid var(--tag-border-clr);
+    border-radius: 1.5rem;
+    background-color: var(--tag-clr);
+    padding: 0.175rem 0.75rem 0.175rem 0.5rem;
+  }
+  .category .category-posts-list .post-item .category-tag .category-tag-icon {
+    margin-right: 0.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .category {
+    padding: 0 2.33rem 5rem 2rem;
+  }
+  .transition-elastic-fly-container ul {
+    padding: 2rem;
+  }
+  .category .aside {
+    display: block;
+    padding-right: 0;
+    width: 20%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .category {
+    .page-navigation.mini.top {
+      display: none;
+    }
+    .category-posts-list,
+    .aside {
+      padding-top: 0;
+    }
+    .category-posts-list {
+      float: left;
+      width: 77%;
+    }
+    .category-posts-transition-container {
       box-shadow: var(--shadow-elevation-high);
+      background: var(--category-rim-light-bg), var(--bg-clr);
+      &::before {
+        background: var(--category-rim-light-mask-bg);
+      }
     }
-    &::before {
-      background: var(--category-rim-light-mask-bg);
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .category {
+    .category-posts-list {
+      width: 80%;
     }
+  }
+}
+
+@media (hover: none),
+  (hover: on-demand),
+  (-moz-touch-enabled: 1),
+  (pointer: coarse) {
+  .category {
+    padding-right: 1rem;
+    padding-left: 1rem;
   }
 }

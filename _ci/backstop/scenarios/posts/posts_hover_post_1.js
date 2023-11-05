@@ -6,7 +6,7 @@ module.exports = {
   url: POSTS_URL,
   viewports: [sm, ...aboveSmallViewports],
   onReadyScript: 'playwright/onReadyPosts.js',
-  hoverSelector: '.posts-grid li:first-of-type .post-link',
+  hoverSelector: '.posts-grid li:first-of-type .posts-grid-link',
   postInteractionWait: 100,
   selectors: ['document'],
   misMatchThreshold: 0.2,

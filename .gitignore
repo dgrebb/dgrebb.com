@@ -78,7 +78,6 @@ nbproject
 public/uploads/*
 !public/uploads/.gitkeep
 .vscode
-*.code-workspace
 
 ############################
 # Node.js

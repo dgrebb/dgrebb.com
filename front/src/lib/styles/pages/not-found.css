@@ -8,16 +8,6 @@
   img {
     margin-bottom: 2.75rem;
   }
-  a {
-    transition-duration: var(--transition-duration);
-    transition-property: color;
-    transition-timing-function: var(--transition-timing-function);
-    color: rgb(var(--foreground-rgb));
-    &:hover,
-    &:focus {
-      color: rgb(var(--highlight-rgb));
-    }
-  }
   h1 {
     font-size: 11rem;
     font-family: 'Public Sans Black', sans-serif;

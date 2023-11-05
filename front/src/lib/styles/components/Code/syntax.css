@@ -42,6 +42,22 @@
   --code-bg-deletion: var(--code-bg-deletion);
 }
 
+html.dark-theme {
+  --code-text: var(--code-dark-text);
+  --code-accent: var(--code-dark-accent);
+  --code-primary: var(--code-dark-primary);
+  --code-secondary: var(--code-dark-secondary);
+  --code-tertiary: var(--code-dark-tertiary);
+  --code-quaternary: var(--code-dark-quaternary);
+  --code-muted: var(--code-dark-muted);
+  --code-success: var(--code-dark-success);
+  --code-info: var(--code-dark-info);
+  --code-warning: var(--code-dark-warning);
+  --code-danger: var(--code-dark-danger);
+  --code-bg-addition: var(--code-dark-bg-addition);
+  --code-bg-deletion: var(--code-bg-deletion);
+}
+
 /* light theme overrides */
 @media (prefers-color-scheme: light) {
   :root {
