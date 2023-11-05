@@ -2,7 +2,7 @@
   position: relative;
   border-radius: 0.77rem;
   background-color: rgba(var(--background-saturated), 0.77);
-  padding: 1.25rem;
+  padding: 1rem;
   padding-bottom: 0;
   max-width: 56rem;
   font-size: 1rem;
@@ -16,6 +16,11 @@
     border-radius: 0.77rem;
     padding: 1px 1px 0 0;
     content: '';
+  }
+  .masthead,
+  & > section.privacy-main {
+    position: relative;
+    top: -1rem;
   }
   .masthead {
     display: block;
@@ -88,6 +93,22 @@
 }
 
 @media screen and (min-width: 480px) {
+  .privacy {
+    margin-top: 1rem;
+    .masthead,
+    & > section.privacy-main {
+      position: relative;
+      top: -1.5rem;
+    }
+  }
+  .masthead {
+    h1.title {
+      font-size: 2.5rem;
+    }
+    h2.date {
+      font-size: 2rem;
+    }
+  }
   .privacy-main {
     ol ol {
       margin-left: 2.5rem;
@@ -107,18 +128,23 @@
 }
 
 @media screen and (min-width: 640px) {
+  .masthead {
+    h1.title {
+      font-size: 3rem;
+    }
+    h2.date {
+      font-size: 2.5rem;
+    }
+  }
   .privacy {
-    margin-top: 1rem;
+    margin-top: 2.75rem;
     padding: 0 3.75rem 1rem 3.75rem;
     .masthead,
     & > section.privacy-main {
-      top: -1rem;
+      /* top: -2rem; */
     }
   }
 }
 
 @media screen and (min-width: 768px) {
-  .privacy {
-    margin-top: 2.75rem;
-  }
 }

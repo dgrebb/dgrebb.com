@@ -17,6 +17,7 @@
 .footer,
 .flourish,
 .main section,
+.main .privacy,
 .main.secondary {
   opacity: 0;
   transition: opacity;
@@ -43,6 +44,7 @@ body.ready {
   .footer,
   .flourish,
   .main section,
+  .main .privacy,
   .main.secondary {
     opacity: 1;
   }
@@ -67,7 +69,8 @@ body.ready.animating {
     box-shadow: none !important;
     border-color: rgb(var(--foreground-rgb));
   }
-  .main section {
+  .main section,
+  .main .privacy {
     opacity: 0;
     transition-duration: var(--transition-duration);
     transition-property: opacity;
