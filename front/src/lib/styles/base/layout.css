@@ -114,7 +114,7 @@ body.ready .header.scroll-transition {
     border-bottom-style: solid;
     &:hover,
     &:focus {
-      border-bottom-color: rgb(var(--highlight-rgb));
+      border-bottom-color: var(--highlight-clr);
     }
   }
 

@@ -5,8 +5,13 @@ body .bio,
 body .main,
 body .main .flourish,
 body .main section,
+body .main .privacy,
+body .main.secondary,
 body .footer {
   opacity: 1 !important;
+}
+.scroll-top {
+  opacity: 0.6;
 }
 .theme-toggle {
   display: none !important;
@@ -16,9 +21,6 @@ body .footer {
   opacity: 1;
 }
 .syntax-highlighter {
-  .language {
-    padding-right: 0.75rem;
-  }
   .code-copy-btn {
     display: none;
   }
