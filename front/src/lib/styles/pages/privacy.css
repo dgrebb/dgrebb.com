@@ -2,7 +2,7 @@
   position: relative;
   border-radius: 0.77rem;
   background-color: rgba(var(--background-saturated), 0.77);
-  padding: 1rem;
+  padding: 2rem 0.75rem 0;
   padding-bottom: 0;
   max-width: 56rem;
   font-size: 1rem;

@@ -70,7 +70,7 @@
   transition: opacity;
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
-  padding-top: 0.5rem;
+  padding-top: 0.25rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   letter-spacing: -0.025em;

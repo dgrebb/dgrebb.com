@@ -37,6 +37,7 @@ body {
   flex-direction: column;
   align-items: center;
   transition: scrollbar-color 1s;
+  margin-top: 0.5rem;
   padding-right: 7px;
   padding-left: 7px;
   height: 100vh;
