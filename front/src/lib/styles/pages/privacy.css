@@ -20,7 +20,7 @@
   .masthead,
   & > section.privacy-main {
     position: relative;
-    top: -1rem;
+    top: -1.5rem;
   }
   .masthead {
     display: block;
@@ -95,11 +95,6 @@
 @media screen and (min-width: 480px) {
   .privacy {
     margin-top: 1rem;
-    .masthead,
-    & > section.privacy-main {
-      position: relative;
-      top: -1.5rem;
-    }
   }
   .masthead {
     h1.title {
