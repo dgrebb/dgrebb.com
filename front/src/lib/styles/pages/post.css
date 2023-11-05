@@ -28,6 +28,7 @@
   .post-title {
     left: -1px;
     z-index: 5;
+    margin-top: 0;
     margin-bottom: 0;
     padding: 0 1rem;
     line-height: 1.2;
@@ -198,23 +199,15 @@
       opacity var(--transition-duration-md) ease-in-out,
       color var(--transition-duration-md);
     border: none;
+    height: 100%;
     font-size: 1rem;
     font-family: var(--font-lb);
     &:hover,
     &:focus,
     &:focus-visible,
     &:active {
+      opacity: 1;
       color: var(--highlight-clr);
-    }
-    &:focus,
-    &:focus-visible {
-      opacity: 1;
-    }
-  }
-  &:hover,
-  &:focus {
-    .heading-anchor-link {
-      opacity: 1;
     }
   }
   .summary {
@@ -259,8 +252,7 @@
     transition-timing-function: var(--transition-timing-function);
   }
   h2:first-of-type {
-    margin-top: 0;
-    padding-top: 1rem;
+    margin-top: 1rem;
   }
   h2.footnotes-title {
     margin-top: 3rem;
@@ -321,7 +313,7 @@
     p {
       position: relative;
       z-index: 7;
-      padding: 0;
+      padding: 1rem 0 0 0;
       &:first-child {
         &::before {
           position: absolute;
@@ -335,7 +327,7 @@
       position: relative;
       z-index: 6;
       margin-top: 1rem;
-      margin-bottom: 1rem;
+      padding-bottom: 1.5rem;
       text-align: right;
     }
   }
@@ -375,11 +367,11 @@
   .post-hero {
     box-shadow: var(--shadow-elevation-medium);
   }
-  .post-title {
+  .post .post-title {
     padding: 0 1.5rem;
   }
-  .post-title,
-  .post-article {
+  .post .post-title,
+  .post .post-article {
     top: -1rem;
   }
   .post-article {
@@ -435,6 +427,12 @@
     display: block;
     float: right;
     width: 25%;
+    .page-navigation {
+      padding-left: 1rem;
+      h2 {
+        padding: 0.5rem 0;
+      }
+    }
   }
   .post-article {
     float: left;
@@ -460,7 +458,7 @@
       bottom: -3.5rem;
     }
     p {
-      padding: 0;
+      padding: 1rem 0 0 0;
     }
   }
 }
@@ -479,12 +477,12 @@
     width: 100%;
   }
   .post-article,
-  .aside,
+  .post .aside,
   .aside-toggle {
     top: -4rem;
   }
-  .post-title,
-  .post-article {
+  .post .post-title,
+  .post .post-article {
     top: -5rem;
   }
   .post-article {

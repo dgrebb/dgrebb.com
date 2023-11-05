@@ -3,6 +3,7 @@ const { URL } = require('../vars');
 module.exports = {
   label: 'Homepage - Switch Theme',
   url: URL + '?roboto',
+  onReadyScript: 'playwright/onReadyHome.js',
   delay: 333,
   colorScheme: 'dark',
   clickSelector: '.theme-toggle',

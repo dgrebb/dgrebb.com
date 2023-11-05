@@ -97,9 +97,10 @@
     --code-highlight-bg-clr: var(--green);
     --code-hover-header-clr: var(--fg-clr-oo);
     --code-header-hover-clr: var(--highlight-clr);
-    --pagenav-heading: var(--fg-clr-oo);
+    --page-nav-heading: var(--fg-clr-oo);
     --page-nav-toggle-bg-clr: var(--sun-50);
     --page-nav-toggle-focus-bg-clr: var(--sun-50);
+    --page-nav-toggle-focus-clr: var(--jasper);
     --page-nav-toggle-clr: var(--lemon-50-a75);
     --page-nav-list-bg-clr: var(--lemon-50-a75);
     --rim-light-bg: linear-gradient(
@@ -170,9 +171,10 @@ html.light-theme {
   --code-highlight-bg-clr: var(--green);
   --code-hover-header-clr: var(--fg-clr-oo);
   --code-header-hover-clr: var(--highlight-clr);
-  --pagenav-heading: var(--fg-clr-oo);
+  --page-nav-heading: var(--fg-clr-oo);
   --page-nav-toggle-bg-clr: var(--sun-50);
   --page-nav-toggle-focus-bg-clr: var(--sun-50);
+  --page-nav-toggle-focus-clr: var(--jasper);
   --page-nav-toggle-clr: var(--lemon-50-a75);
   --page-nav-list-bg-clr: var(--lemon-50-a75);
   --rim-light-bg: linear-gradient(
@@ -244,9 +246,10 @@ html.light-theme {
     --code-header-hover-clr: var(--light);
     --code-copied-clr: var(--green);
     --code-highlight-bg-clr: var(--burnt-orange);
-    --pagenav-heading: var(--moon);
+    --page-nav-heading: var(--moon);
     --page-nav-toggle-bg-clr: var(--oxford-blue-a50);
     --page-nav-toggle-focus-bg-clr: var(--hardlight-clr);
+    --page-nav-toggle-focus-clr: var(--celestial);
     --page-nav-toggle-active-clr: var(--orange-100-a75);
     --page-nav-list-bg-clr: var(--rich-black-a75);
 
@@ -303,9 +306,10 @@ html.dark-theme {
   --code-header-hover-clr: var(--light);
   --code-copied-clr: var(--green);
   --code-highlight-bg-clr: var(--burnt-orange);
-  --pagenav-heading: var(--moon);
+  --page-nav-heading: var(--moon);
   --page-nav-toggle-bg-clr: var(--oxford-blue-a50);
   --page-nav-toggle-focus-bg-clr: var(--hardlight-clr);
+  --page-nav-toggle-focus-clr: var(--celestial);
   --page-nav-toggle-active-clr: var(--orange-100-a75);
   --page-nav-list-bg-clr: var(--rich-black-a75);
 
