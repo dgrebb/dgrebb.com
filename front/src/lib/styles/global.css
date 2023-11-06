@@ -36,11 +36,9 @@ html {
 body {
   display: flex;
   position: relative;
-  flex-grow: 0;
   flex-direction: column;
   align-items: center;
   transition: scrollbar-color 1s;
-  border-top: 0.5rem solid transparent;
   padding-right: 7px;
   padding-left: 7px;
   height: 100vh;
