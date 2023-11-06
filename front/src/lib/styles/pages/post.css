@@ -247,6 +247,10 @@
     em strong {
       font-family: var(--font-psb);
     }
+    &:has(+ ul),
+    &:has(+ ol) {
+      padding-bottom: 0;
+    }
   }
   a {
     transition-duration: var(--transition-duration);
