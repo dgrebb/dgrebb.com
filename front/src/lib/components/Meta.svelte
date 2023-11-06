@@ -1,6 +1,6 @@
 <script>
   import { PUBLIC_ENV as env } from '$env/static/public';
-  import { MetaTags } from 'svelte-meta-tags';
+  import MetaTags from 'svelte-meta-tags/MetaTags.svelte';
 
   export let pageMeta;
 

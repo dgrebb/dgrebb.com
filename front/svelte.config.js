@@ -11,6 +11,10 @@ const config = {
       assets: 'build',
       precompress: true,
       strict: true,
+      hooks: {
+        client: '$lib/_hooks/hooks.client.js',
+        server: '$lib/_hooks/hooks.server.js',
+      },
     }),
     alias: {
       '@api': path.resolve('./src/lib/api'),
