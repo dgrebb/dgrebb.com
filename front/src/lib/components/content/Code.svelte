@@ -1,5 +1,5 @@
 <script>
-  import Highlight, { LineNumbers, HighlightSvelte } from 'svelte-highlight';
+  import { Highlight, LineNumbers, HighlightSvelte } from 'svelte-highlight';
   import plaintext from 'svelte-highlight/languages/plaintext';
   import JavaScript from 'svelte-highlight/languages/javascript';
   import XML from 'svelte-highlight/languages/xml';
