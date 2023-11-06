@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.9.0] - 2023-11-06
+
+### 💡 Features
+
+- ***(back)*** Creates schema and components for text columns (#934)
+- ***(front)*** Removes 88.9KiB from production bundle (#661)
+- ***(front)*** Refactors css nesting (#944)
+- ***(front)*** Moves css imports into components where possible (#929)
+- ***(front)*** Removes tailwind from project (#622)
+- ***(front)*** Feat(front): removes tailwind imports and layers (#926)
+- ***(front)*** Reduces css transition complexity (#299)
+- ***(front)*** Removes all tailwind @ helpers (#925) 
+- ***(front)*** Styles text columns component (#934)
+
+### ⚡️ Performance
+
+- ***(utils)*** Updates wallace perf scripts for local, prd, stg
+
+### 👷 Build
+
+- ***(front)*** Updates noscript styles and components (#927)
+
+### ✅ Testing
+
+- ***(backstop)*** Updates gh-stg and local refs
+- ***(backstop)*** Updates gh-stg and local refs
+- ***(backstop)*** Updates gh-prd refs
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(front)*** Updates and patches dependencies
+- ***(github)*** Allows blank issue creation
+
 ## [3.8.3] - 2023-10-28
 
 ### 🐛 Bug Fixes
