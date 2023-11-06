@@ -132,6 +132,10 @@ a.scroll-top {
   flex-direction: column;
   align-items: center;
   z-index: 0;
+  transition: unset;
+  transition-duration: var(--transition-duration);
+  transition-property: color, opacity;
+  transition-timing-function: var(--transition-timing-function);
   color: var(--fg-clr-oo);
   font-size: 0.75rem;
   line-height: 1rem;

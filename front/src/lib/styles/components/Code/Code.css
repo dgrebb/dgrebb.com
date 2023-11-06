@@ -112,8 +112,7 @@
     transition-property: scrollbar-color;
     transition-timing-function: var(--transition-timing-function);
     margin-bottom: -0.5rem;
-    padding-top: 4.5rem;
-    padding-bottom: 1rem;
+    padding: 4rem 0 0.5rem 0;
     overflow-x: auto;
     scrollbar-color: transparent transparent;
     scrollbar-gutter: stable both-edges;
@@ -154,7 +153,7 @@
     z-index: 7;
     transition: scrollbar-color 0.5s;
     margin-bottom: -0.5rem;
-    padding-top: 3rem;
+    padding: 3.25rem 0 0.5rem 0;
     overflow-x: auto;
     scrollbar-color: transparent transparent;
     scrollbar-gutter: stable both-edges;
@@ -218,7 +217,7 @@
     tr:last-child td {
       padding-bottom: 0;
     }
-    tr:last-of-type {
+    table tbody tr:last-child {
       margin-bottom: 1rem;
       td {
         padding-bottom: 0;
@@ -293,9 +292,8 @@
 
 @media screen and (min-width: 480px) {
   .syntax-highlighter {
-    padding: 0 1rem 1.75rem 0.75rem;
+    padding: 0 0.75rem 0.5rem 0.75rem;
     .line-number-wrap {
-      padding-top: 4rem;
       td:first-child {
         display: table-cell;
       }
@@ -308,7 +306,7 @@
     padding: 0 1.75rem 1.75rem 1.5rem;
     width: auto;
     > pre {
-      padding: 5rem 0 0 0;
+      padding: 4.75rem 0 0 0;
     }
     .line-number-wrap {
       padding: 4rem 0 0 0;
@@ -323,11 +321,11 @@
   .syntax-highlighter {
     padding: 0 1rem;
     > pre {
-      padding: 4rem 0.5rem 1.5rem 0.5rem;
+      padding: 4.5rem 0 1rem 0;
       scrollbar-color: var(--code-scrollbar-clr) transparent;
     }
     .line-number-wrap {
-      padding: 3rem 0.5rem 0.5rem 0.5rem;
+      padding: 3rem 0 0.75rem 0;
       scrollbar-color: var(--code-scrollbar-clr) transparent;
     }
   }
@@ -338,11 +336,13 @@
   (-moz-touch-enabled: 1) and (min-width: 640px),
   (pointer: coarse) and (min-width: 640px) {
   .syntax-highlighter {
+    padding: 0 2rem;
     > pre {
       padding-top: 4.5rem;
     }
     .line-number-wrap {
       padding-top: 4rem;
+      padding-bottom: 1.5rem;
     }
   }
 }
