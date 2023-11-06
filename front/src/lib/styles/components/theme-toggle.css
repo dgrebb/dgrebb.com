@@ -3,7 +3,7 @@
   transition-duration: var(--transition-duration);
   transition-property: opacity;
   transition-timing-function: var(--transition-timing-function);
-  padding: 0.5rem 0.5rem 0.75rem 0.75rem;
+  padding: 0.75rem 0.5rem 0.75rem 0.75rem;
   &:hover,
   &:focus,
   &:focus-visible,

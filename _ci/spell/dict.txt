@@ -60,4 +60,5 @@ subdir
 themeset
 typcn
 unminified
+unplugin
 wonka
