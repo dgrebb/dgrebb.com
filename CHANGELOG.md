@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.9.1] - 2023-11-07
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Adjusts Code padding across touch/mouse breakpoints (#952)
+
+### 👷 Build
+
+- ***(front)*** Removes content background/shadow at higher breakpoint
+
 ## [3.9.0] - 2023-11-06
 
 ### 💡 Features
