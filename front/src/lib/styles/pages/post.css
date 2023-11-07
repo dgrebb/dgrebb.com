@@ -247,10 +247,6 @@
     em strong {
       font-family: var(--font-psb);
     }
-    &:has(+ ul),
-    &:has(+ ol) {
-      padding-bottom: 0;
-    }
   }
   a {
     transition-duration: var(--transition-duration);
@@ -270,6 +266,15 @@
       li {
         margin-left: 0.5rem;
       }
+    }
+    & + h1.post-heading,
+    & + h2.post-heading,
+    & + h3.post-heading,
+    & + h4.post-heading,
+    & + h5.post-heading,
+    & + h6.post-heading,
+    & + h7.post-heading {
+      padding-top: 1rem;
     }
   }
   code {
@@ -472,6 +477,7 @@
 @media screen and (min-width: 768px) {
   .post {
     margin-top: 3.5rem;
+    background: var(--content-bg-gradient);
     padding: 2.33rem;
   }
   .post-hero-wrap {

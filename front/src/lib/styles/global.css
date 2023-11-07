@@ -171,6 +171,9 @@ a.scroll-top {
     font-size: 1.125rem;
     line-height: 1.75rem;
   }
+}
+
+@media screen and (min-width: 768px) {
   .privacy,
   .post {
     box-shadow: var(--shadow-elevation-high);

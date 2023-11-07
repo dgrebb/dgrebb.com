@@ -6,7 +6,7 @@ module.exports = {
   label: 'Post - Aside TOC Active Item Onload',
   url: POST_URL,
   viewports: aboveSmallViewports,
-  delay: 333,
+  delay: 533,
   selectors: ['.post .aside'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,
