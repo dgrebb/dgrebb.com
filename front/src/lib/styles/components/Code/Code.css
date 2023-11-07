@@ -13,8 +13,8 @@
   position: relative;
   z-index: 3;
   transition: transform 0s;
-  margin-top: 2.25rem;
-  margin-bottom: 2.25rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   box-shadow: var(--shadow-elevation-medium);
   border-radius: 0.5rem;
   background-color: var(--bg-light-clr);
@@ -112,8 +112,8 @@
     transition-property: scrollbar-color;
     transition-timing-function: var(--transition-timing-function);
     margin-bottom: -0.5rem;
-    padding: 4rem 0 0.5rem 0;
-    overflow-x: auto;
+    padding: 4.25rem 0 0.5rem 0;
+    overflow-x: scroll;
     scrollbar-color: transparent transparent;
     scrollbar-gutter: stable both-edges;
     scrollbar-width: thin;
@@ -154,7 +154,7 @@
     transition: scrollbar-color 0.5s;
     margin-bottom: -0.5rem;
     padding: 3.25rem 0 0.5rem 0;
-    overflow-x: auto;
+    overflow-x: scroll;
     scrollbar-color: transparent transparent;
     scrollbar-gutter: stable both-edges;
     scrollbar-width: thin;
@@ -292,7 +292,7 @@
 
 @media screen and (min-width: 480px) {
   .syntax-highlighter {
-    padding: 0 0.75rem 0.5rem 0.75rem;
+    padding: 0 0.75rem 0.75rem 0.75rem;
     .line-number-wrap {
       td:first-child {
         display: table-cell;
@@ -339,6 +339,7 @@
     padding: 0 2rem;
     > pre {
       padding-top: 4.5rem;
+      padding-bottom: 1.5rem;
     }
     .line-number-wrap {
       padding-top: 4rem;

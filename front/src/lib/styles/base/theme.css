@@ -57,10 +57,16 @@
   :root {
     --bg-clr: var(--lemon-50);
     --bg-light-clr: var(--lemon-25);
+    --content-bg-clr: var(--dirty-sidewalk);
     --bg-gradient: linear-gradient(
       190deg,
       var(--sunshine),
       var(--bg-clr) 333px
+    );
+    --content-bg-gradient: linear-gradient(
+      190deg,
+      var(--sunshine),
+      var(--content-bg-clr) 333px
     );
     --fg-clr: var(--violet);
     --fg-clr-o: var(--violet-a90);
@@ -72,7 +78,6 @@
     --link-clr: var(--fg-clr-oo);
     --link-clr--hover: var(--highlight-clr);
     --mark-bg-clr: var(--green);
-    --content-bg-clr: var(--dirty-sidewalk);
     --headshot-filter: sepia(100%) saturate(70%) brightness(85%)
       hue-rotate(61deg);
     --shadow-color: var(--sunshine-shadow-clr);
@@ -137,6 +142,12 @@ html.light-theme {
   --bg-clr: var(--lemon-50);
   --bg-light-clr: var(--lemon-25);
   --bg-gradient: linear-gradient(190deg, var(--sunshine), var(--bg-clr) 333px);
+  --content-bg-clr: var(--dirty-sidewalk);
+  --content-bg-gradient: linear-gradient(
+    190deg,
+    var(--sunshine),
+    var(--content-bg-clr) 333px
+  );
   --fg-clr: var(--violet);
   --fg-clr-o: var(--violet-a90);
   --fg-clr-oo: var(--violet-a75);
@@ -147,7 +158,6 @@ html.light-theme {
   --link-clr: var(--fg-clr-oo);
   --link-clr--hover: var(--highlight-clr);
   --mark-bg-clr: var(--green);
-  --content-bg-clr: var(--dirty-sidewalk);
   --headshot-filter: sepia(100%) saturate(70%) brightness(85%) hue-rotate(61deg);
   --shadow-color: var(--sunshine-shadow-clr);
   --tag-clr: var(--sand-a50);
@@ -218,12 +228,17 @@ html.light-theme {
     --hardlight-clr: var(--grape);
     --bg-clr: var(--rich-black);
     --bg-light-clr: var(--oxford-blue);
+    --content-bg-clr: var(--blue-rock);
     --bg-gradient: linear-gradient(
       190deg,
       var(--moonshine),
       var(--bg-clr) 333px
     );
-    --content-bg-clr: var(--blue-rock);
+    --content-bg-gradient: linear-gradient(
+      190deg,
+      var(--moonshine),
+      var(--content-bg-clr) 333px
+    );
     --shadow-color: var(--moonshine-shadow-clr);
     --rim-clr: var(--moonshine);
     --link-clr: var(--fg-clr-oo);
@@ -281,9 +296,14 @@ html.dark-theme {
   --fg-clr-oooo: var(--celestial-a30);
   --hardlight-clr: var(--grape);
   --bg-clr: var(--rich-black);
+  --content-bg-clr: var(--blue-rock);
   --bg-light-clr: var(--oxford-blue);
   --bg-gradient: linear-gradient(190deg, var(--moonshine), var(--bg-clr) 333px);
-  --content-bg-clr: var(--blue-rock);
+  --content-bg-gradient: linear-gradient(
+    190deg,
+    var(--moonshine),
+    var(--content-bg-clr) 333px
+  );
   --shadow-color: var(--moonshine-shadow-clr);
   --rim-clr: var(--moonshine);
   --link-clr: var(--fg-clr-oo);
