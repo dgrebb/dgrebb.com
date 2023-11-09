@@ -87,7 +87,7 @@
     color: var(--fg-clr);
   }
   input#page-navigation-checkbox {
-    position: absolute;
+    position: relative;
     opacity: 0;
     outline: none;
     border-radius: 0.33rem;
