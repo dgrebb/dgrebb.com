@@ -1,4 +1,8 @@
 const config = {
+  notifications: {
+    releases: false,
+  },
+  tutorials: false,
   locales: [
     // 'ar',
     // 'fr',
