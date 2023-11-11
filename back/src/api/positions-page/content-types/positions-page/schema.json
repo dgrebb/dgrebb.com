@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "positions_pages",
+  "info": {
+    "singularName": "positions-page",
+    "pluralName": "positions-pages",
+    "displayName": "Positions Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Introduction": {
+      "type": "richtext"
+    }
+  }
+}

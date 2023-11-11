@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_projects_websites",
+  "info": {
+    "displayName": "Websites",
+    "icon": "link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "details": {
+      "type": "component",
+      "repeatable": true,
+      "component": "artifacts.artifact-details"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_cv_wisdoms",
+  "info": {
+    "displayName": "Wisdom",
+    "icon": "lightbulb"
+  },
+  "options": {},
+  "attributes": {
+    "Lesson": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "richtext"
+    }
+  }
+}

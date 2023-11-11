@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_projects_open_sources",
+  "info": {
+    "displayName": "Open Source",
+    "icon": "handHeart",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "details": {
+      "type": "component",
+      "repeatable": true,
+      "component": "artifacts.artifact-details"
+    }
+  }
+}
