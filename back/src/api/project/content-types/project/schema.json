@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "CV - Projects",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "start": {
+      "type": "date"
+    },
+    "end": {
+      "type": "date"
+    },
+    "URL": {
+      "type": "string"
+    },
+    "awards": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::award.award",
+      "mappedBy": "projects"
+    },
+    "positions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::position.position",
+      "inversedBy": "projects"
+    },
+    "industries": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::industry.industry",
+      "inversedBy": "projects"
+    },
+    "skills": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::skill.skill",
+      "inversedBy": "projects"
+    },
+    "organizations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::organization.organization",
+      "inversedBy": "projects"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "artifacts": {
+      "type": "dynamiczone",
+      "components": [
+        "artifacts.websites",
+        "artifacts.open-source",
+        "artifacts.videos",
+        "artifacts.audio",
+        "artifacts.images"
+      ]
+    }
+  }
+}

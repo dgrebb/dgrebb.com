@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_cv_responsibilities",
+  "info": {
+    "displayName": "Responsibilities",
+    "icon": "clock"
+  },
+  "options": {},
+  "attributes": {
+    "Responsibility": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

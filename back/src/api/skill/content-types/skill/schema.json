@@ -4,7 +4,8 @@
   "info": {
     "singularName": "skill",
     "pluralName": "skills",
-    "displayName": "Skills"
+    "displayName": "CV - Skills",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -42,6 +43,18 @@
         "management",
         "production"
       ]
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "mappedBy": "skills"
+    },
+    "positions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::position.position",
+      "mappedBy": "skills"
     }
   }
 }

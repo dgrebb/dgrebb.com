@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "awards",
+  "collectionName": "industries",
   "info": {
-    "singularName": "award",
-    "pluralName": "awards",
-    "displayName": "CV - Awards",
+    "singularName": "industry",
+    "pluralName": "industries",
+    "displayName": "CV - Industries",
     "description": ""
   },
   "options": {
@@ -12,30 +12,20 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "award": {
+    "industry": {
       "type": "string"
-    },
-    "URL": {
-      "type": "string",
-      "regex": "\\b(?:https?|ftp):\\/\\/[-A-Za-z0-9+&@#\\/%?=~_|!:,.;]*[-A-Za-z0-9+&@#\\/%=~_|]"
-    },
-    "summary": {
-      "type": "richtext"
-    },
-    "date": {
-      "type": "date"
     },
     "positions": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::position.position",
-      "inversedBy": "awards"
+      "mappedBy": "industries"
     },
     "projects": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::project.project",
-      "inversedBy": "awards"
+      "mappedBy": "industries"
     }
   }
 }

@@ -4,7 +4,7 @@
   "info": {
     "singularName": "organization",
     "pluralName": "organizations",
-    "displayName": "Organizations",
+    "displayName": "CV - Organizations",
     "description": ""
   },
   "options": {
@@ -26,6 +26,18 @@
     },
     "URL": {
       "type": "string"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "mappedBy": "organizations"
+    },
+    "positions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::position.position",
+      "mappedBy": "organizations"
     }
   }
 }
