@@ -1,11 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "positions_pages",
+  "collectionName": "projects_pages",
   "info": {
-    "singularName": "positions-page",
-    "pluralName": "positions-pages",
-    "displayName": "Landing - Positions",
-    "description": ""
+    "singularName": "projects-page",
+    "pluralName": "projects-pages",
+    "displayName": "Landing - Projects"
   },
   "options": {
     "draftAndPublish": true

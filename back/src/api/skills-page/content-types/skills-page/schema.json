@@ -1,11 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "positions_pages",
+  "collectionName": "skills_pages",
   "info": {
-    "singularName": "positions-page",
-    "pluralName": "positions-pages",
-    "displayName": "Landing - Positions",
-    "description": ""
+    "singularName": "skills-page",
+    "pluralName": "skills-pages",
+    "displayName": "Landing - Skills"
   },
   "options": {
     "draftAndPublish": true

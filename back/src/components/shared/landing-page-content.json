@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_shared_landing_page_contents",
+  "info": {
+    "displayName": "Landing Page Content",
+    "icon": "information"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "hero": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "introduction": {
+      "type": "richtext"
+    }
+  }
+}

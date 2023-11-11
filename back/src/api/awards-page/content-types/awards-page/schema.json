@@ -1,11 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "positions_pages",
+  "collectionName": "awards_pages",
   "info": {
-    "singularName": "positions-page",
-    "pluralName": "positions-pages",
-    "displayName": "Landing - Positions",
-    "description": ""
+    "singularName": "awards-page",
+    "pluralName": "awards-pages",
+    "displayName": "Landing - Awards"
   },
   "options": {
     "draftAndPublish": true

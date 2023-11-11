@@ -4,7 +4,8 @@
   "info": {
     "singularName": "categories-page",
     "pluralName": "categories-pages",
-    "displayName": "Categories Page"
+    "displayName": "Landing - Categories",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
