@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "skills",
+  "info": {
+    "singularName": "skill",
+    "pluralName": "skills",
+    "displayName": "Skills"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "skill": {
+      "type": "string"
+    },
+    "proficiency": {
+      "type": "integer",
+      "max": 10,
+      "required": true
+    },
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "vscode",
+        "html",
+        "css",
+        "etc"
+      ]
+    },
+    "description": {
+      "type": "text"
+    },
+    "classification": {
+      "type": "enumeration",
+      "enum": [
+        "software",
+        "hardware",
+        "planning",
+        "language",
+        "people",
+        "management",
+        "production"
+      ]
+    }
+  }
+}
