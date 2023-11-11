@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_projects_videos",
+  "info": {
+    "displayName": "Videos",
+    "icon": "play",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "details": {
+      "type": "component",
+      "repeatable": true,
+      "component": "artifacts.artifact-details"
+    }
+  }
+}

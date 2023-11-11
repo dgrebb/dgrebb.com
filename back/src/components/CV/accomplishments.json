@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_cv_accomplishments",
+  "info": {
+    "displayName": "Accomplishments",
+    "icon": "check",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Accomplishment": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "richtext"
+    }
+  }
+}

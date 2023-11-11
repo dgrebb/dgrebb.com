@@ -1,0 +1,84 @@
+{
+  "kind": "collectionType",
+  "collectionName": "positions",
+  "info": {
+    "singularName": "position",
+    "pluralName": "positions",
+    "displayName": "CV - Positions",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "start": {
+      "type": "date"
+    },
+    "end": {
+      "type": "date"
+    },
+    "description": {
+      "type": "text"
+    },
+    "hero": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Accomplishments": {
+      "displayName": "Accomplishments",
+      "type": "component",
+      "repeatable": true,
+      "component": "cv.accomplishments"
+    },
+    "Responsibilities": {
+      "displayName": "Responsibilities",
+      "type": "component",
+      "repeatable": true,
+      "component": "cv.responsibilities"
+    },
+    "Wisdom": {
+      "displayName": "Wisdom",
+      "type": "component",
+      "repeatable": true,
+      "component": "cv.wisdom"
+    },
+    "industries": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::industry.industry",
+      "inversedBy": "positions"
+    },
+    "awards": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::award.award",
+      "mappedBy": "positions"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "mappedBy": "positions"
+    },
+    "skills": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::skill.skill",
+      "inversedBy": "positions"
+    },
+    "organizations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::organization.organization",
+      "inversedBy": "positions"
+    }
+  }
+}

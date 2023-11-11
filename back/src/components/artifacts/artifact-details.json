@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_artifacts_artifact_details",
+  "info": {
+    "displayName": "Artifact Details",
+    "icon": "information",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "files": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "URL": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "credits": {
+      "type": "text"
+    }
+  }
+}
