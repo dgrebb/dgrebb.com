@@ -1,11 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "positions_pages",
+  "collectionName": "industries_pages",
   "info": {
-    "singularName": "positions-page",
-    "pluralName": "positions-pages",
-    "displayName": "Landing - Positions",
-    "description": ""
+    "singularName": "industries-page",
+    "pluralName": "industries-pages",
+    "displayName": "Landing - Industries"
   },
   "options": {
     "draftAndPublish": true
