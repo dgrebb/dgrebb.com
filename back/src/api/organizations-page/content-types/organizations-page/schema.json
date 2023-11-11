@@ -1,11 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "positions_pages",
+  "collectionName": "organizations_pages",
   "info": {
-    "singularName": "positions-page",
-    "pluralName": "positions-pages",
-    "displayName": "Landing - Positions",
-    "description": ""
+    "singularName": "organizations-page",
+    "pluralName": "organizations-pages",
+    "displayName": "Landing - Organizations"
   },
   "options": {
     "draftAndPublish": true
