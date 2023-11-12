@@ -76,8 +76,7 @@ body.ready.animating {
     transition-property: opacity;
     transition-timing-function: var(--transition-timing-function);
   }
-  .scroll-top,
-  .footer {
+  .scroll-top {
     opacity: 0;
   }
   .main .transition-container:first-of-type:last-of-type {
