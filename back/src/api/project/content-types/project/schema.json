@@ -28,6 +28,9 @@
     "URL": {
       "type": "string"
     },
+    "summary": {
+      "type": "text"
+    },
     "positions": {
       "type": "relation",
       "relation": "manyToMany",
@@ -58,7 +61,7 @@
       "target": "api::award.award",
       "mappedBy": "projects"
     },
-    "description": {
+    "body": {
       "type": "richtext"
     },
     "artifacts": {
