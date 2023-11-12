@@ -1,6 +1,7 @@
 .category,
 .post,
 .posts .summary,
+.cv,
 .privacy,
 .footer {
   text-rendering: optimizeLegibility;
@@ -10,6 +11,7 @@
 }
 .privacy,
 .post,
+.cv,
 .category-list {
   h1,
   h2,

@@ -10,7 +10,7 @@
 </script>
 
 <PageTransition transitionKey={pathname}>
-  <section class="cv">
+  <section class="cv meat">
     <Flourish />
     <a id="main">Main Content</a>
     <h1>{title}</h1>
@@ -22,6 +22,15 @@
     </div>
     {#each positions as { title, slug, description, organizations, industries, projects, skills }, i}
       <h1><a href="/cv/position/{slug}">{title}</a></h1>
+      {#each organizations as { attributes: { name, slug: orgSlug, URL }, i }}
+        <a href="/cv/organization/{orgSlug}">
+          <h3>{name}</h3>
+        </a>
+      {/each}
+      {#each projects as { attributes: { name, slug: projectSlug, URL, description }, i }}
+        <a href="/cv/project/{projectSlug}"> <h3>{name}</h3></a>
+        <a href={URL}>Check it out</a>
+      {/each}
       {#each skills as { attributes: { skill, slug: skillSlug, proficiency, description }, i }}
         <a href="/cv/skill/{skillSlug}">
           <h3>{skill}</h3>
@@ -32,16 +41,6 @@
         <a href="/cv/skill/{industrySlug}">
           <h3>{industry}</h3>
         </a>
-      {/each}
-      {#each organizations as { attributes: { name, slug: orgSlug, URL }, i }}
-        <a href="/cv/organization/{orgSlug}">
-          <h3>{name}</h3>
-        </a>
-      {/each}
-      {#each projects as { attributes: { name, slug: projectSlug, URL, description }, i }}
-        <a href="/cv/project/{projectSlug}"> <h3>{name}</h3></a>
-        <a href={URL}>Check it out</a>
-        <p>{description}</p>
       {/each}
     {/each}
   </section>
