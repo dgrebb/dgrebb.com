@@ -26,6 +26,11 @@
       "relation": "manyToMany",
       "target": "api::project.project",
       "mappedBy": "industries"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }
