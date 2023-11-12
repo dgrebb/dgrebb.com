@@ -1,14 +1,13 @@
 import {
   PUBLIC_API_PATH_CV_PAGE as CV,
+  PUBLIC_API_PATH_POSITIONS as POSITIONS,
   PUBLIC_API_URL as URL,
 } from '$env/static/public';
 import { cvAPI, posAPI } from '@api';
 import { error } from '@sveltejs/kit';
 
 const endpoint = URL + CV;
-const positionsEndpoint =
-  URL +
-  '/positions?populate[hero]=*&populate[seo]=*&sort[0]=end:desc&sort[1]=start:desc&populate[skills]=*&populate[organizations]=*&populate[projects]=*&populate[industries]=*&populate[awards]=*';
+const positionsEndpoint = URL + POSITIONS;
 
 function structurePositions(data) {
   var reducedPositions = [];
