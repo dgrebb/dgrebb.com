@@ -1,0 +1,25 @@
+import { OPTIONS } from './CONSTANTS';
+
+export async function posAPI(endpoint) {
+  try {
+    const parseJSON = (resp) => (resp.json ? resp.json() : resp);
+    const checkStatus = (resp) => {
+      if (resp.status >= 200 && resp.status < 300) {
+        return resp;
+      }
+
+      return parseJSON(resp).then((resp) => {
+        throw resp;
+      });
+    };
+
+    const content = await fetch(endpoint, OPTIONS)
+      .then(checkStatus)
+      .then(parseJSON);
+    console.log('🚀 ~ file: positions.js:17 ~ posAPI ~ content:', content);
+
+    return content.data;
+  } catch (error) {
+    return { error };
+  }
+}
