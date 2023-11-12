@@ -51,7 +51,7 @@
         "javascript"
       ]
     },
-    "description": {
+    "summary": {
       "type": "text"
     },
     "classification": {
@@ -85,6 +85,9 @@
       "relation": "manyToMany",
       "target": "api::organization.organization",
       "mappedBy": "skills"
+    },
+    "body": {
+      "type": "richtext"
     },
     "seo": {
       "type": "component",
