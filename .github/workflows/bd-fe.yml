@@ -105,6 +105,7 @@ jobs:
           echo PUBLIC_API_PATH_POST='${{ secrets.PUBLIC_API_PATH_POST }}' >> front/.env
           echo PUBLIC_POST_PARAMS='${{ secrets.PUBLIC_POST_PARAMS }}' >> front/.env
           echo PUBLIC_API_PATH_CATEGORY='${{ secrets.PUBLIC_API_PATH_CATEGORY }}' >> front/.env
+          echo PUBLIC_API_PATH_CV_PAGE='${{ secrets.PUBLIC_API_PATH_CV_PAGE }}' >> front/.env
           echo PUBLIC_CATEGORY_PAGE_PARAMS='${{ secrets.PUBLIC_CATEGORY_PAGE_PARAMS }}' >> front/.env
           echo API_KEY=${{ secrets.API_KEY }} >> front/.env
           echo PUBLIC_SENTRY_DSN=${{ secrets.PUBLIC_SENTRY_DSN }} >> front/.env

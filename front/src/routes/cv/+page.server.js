@@ -1,5 +1,5 @@
 import {
-  PUBLIC_CV_PAGE as CV,
+  PUBLIC_API_PATH_CV_PAGE as CV,
   PUBLIC_API_URL as URL,
 } from '$env/static/public';
 import { cvAPI } from '@api';
