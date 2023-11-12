@@ -15,12 +15,13 @@
     "award": {
       "type": "string"
     },
+    "slug": {
+      "type": "uid",
+      "targetField": "award"
+    },
     "URL": {
       "type": "string",
       "regex": "\\b(?:https?|ftp):\\/\\/[-A-Za-z0-9+&@#\\/%?=~_|!:,.;]*[-A-Za-z0-9+&@#\\/%=~_|]"
-    },
-    "summary": {
-      "type": "richtext"
     },
     "date": {
       "type": "date"
@@ -36,6 +37,9 @@
       "relation": "manyToMany",
       "target": "api::project.project",
       "inversedBy": "awards"
+    },
+    "summary": {
+      "type": "richtext"
     },
     "seo": {
       "type": "component",

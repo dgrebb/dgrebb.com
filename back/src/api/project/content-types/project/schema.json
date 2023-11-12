@@ -12,8 +12,12 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
     },
     "start": {
       "type": "date"
@@ -23,12 +27,6 @@
     },
     "URL": {
       "type": "string"
-    },
-    "awards": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::award.award",
-      "mappedBy": "projects"
     },
     "positions": {
       "type": "relation",
@@ -53,6 +51,12 @@
       "relation": "manyToMany",
       "target": "api::organization.organization",
       "inversedBy": "projects"
+    },
+    "awards": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::award.award",
+      "mappedBy": "projects"
     },
     "description": {
       "type": "richtext"
