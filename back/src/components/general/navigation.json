@@ -11,6 +11,10 @@
     },
     "href": {
       "type": "string"
+    },
+    "childRoutes": {
+      "type": "string",
+      "regex": "^([^,]+(?:,[^,]+)*)$"
     }
   }
 }

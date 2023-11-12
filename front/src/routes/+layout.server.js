@@ -24,8 +24,20 @@ export async function load({ url: { pathname } }) {
     });
   }
 
+  let navItems = [];
+  navigationContent.navItems.forEach(function (item) {
+    let routeArray = item.childRoutes.split(',').map(function (child) {
+      return child.trim();
+    });
+    navItems.push({
+      ...item,
+      childRoutes: routeArray,
+    });
+  });
+
   return {
     ...navigationContent,
+    navItems,
     ...footerContent,
     pathname,
   };
