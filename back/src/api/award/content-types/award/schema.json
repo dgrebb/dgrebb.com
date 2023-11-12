@@ -26,6 +26,9 @@
     "date": {
       "type": "date"
     },
+    "summary": {
+      "type": "text"
+    },
     "positions": {
       "type": "relation",
       "relation": "manyToMany",
@@ -38,7 +41,7 @@
       "target": "api::project.project",
       "inversedBy": "awards"
     },
-    "summary": {
+    "body": {
       "type": "richtext"
     },
     "seo": {

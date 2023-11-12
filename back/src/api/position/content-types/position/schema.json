@@ -25,7 +25,7 @@
     "end": {
       "type": "date"
     },
-    "description": {
+    "summary": {
       "type": "text"
     },
     "hero": {
@@ -83,6 +83,9 @@
       "type": "component",
       "repeatable": true,
       "component": "cv.wisdom"
+    },
+    "body": {
+      "type": "richtext"
     },
     "seo": {
       "type": "component",

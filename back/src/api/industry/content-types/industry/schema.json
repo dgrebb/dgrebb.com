@@ -19,6 +19,9 @@
       "type": "uid",
       "targetField": "industry"
     },
+    "summary": {
+      "type": "text"
+    },
     "positions": {
       "type": "relation",
       "relation": "manyToMany",
@@ -30,6 +33,9 @@
       "relation": "manyToMany",
       "target": "api::project.project",
       "mappedBy": "industries"
+    },
+    "body": {
+      "type": "richtext"
     },
     "seo": {
       "type": "component",
