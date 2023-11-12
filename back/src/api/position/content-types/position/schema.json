@@ -32,19 +32,19 @@
         "images"
       ]
     },
-    "Accomplishments": {
+    "accomplishments": {
       "displayName": "Accomplishments",
       "type": "component",
       "repeatable": true,
       "component": "cv.accomplishments"
     },
-    "Responsibilities": {
+    "responsibilities": {
       "displayName": "Responsibilities",
       "type": "component",
       "repeatable": true,
       "component": "cv.responsibilities"
     },
-    "Wisdom": {
+    "wisdom": {
       "displayName": "Wisdom",
       "type": "component",
       "repeatable": true,
@@ -79,6 +79,11 @@
       "relation": "manyToMany",
       "target": "api::organization.organization",
       "inversedBy": "positions"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }
