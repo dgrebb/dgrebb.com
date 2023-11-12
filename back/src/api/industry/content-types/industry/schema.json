@@ -15,6 +15,10 @@
     "industry": {
       "type": "string"
     },
+    "slug": {
+      "type": "uid",
+      "targetField": "industry"
+    },
     "positions": {
       "type": "relation",
       "relation": "manyToMany",

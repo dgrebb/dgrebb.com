@@ -16,6 +16,10 @@
       "type": "string",
       "required": true
     },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
     "images": {
       "type": "media",
       "multiple": true,
@@ -43,6 +47,12 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
+    },
+    "skills": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::skill.skill",
+      "inversedBy": "organizations"
     }
   }
 }

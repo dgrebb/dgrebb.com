@@ -15,6 +15,10 @@
     "skill": {
       "type": "string"
     },
+    "slug": {
+      "type": "uid",
+      "targetField": "skill"
+    },
     "proficiency": {
       "type": "integer",
       "max": 10,
@@ -22,12 +26,7 @@
     },
     "icon": {
       "type": "enumeration",
-      "enum": [
-        "vscode",
-        "html",
-        "css",
-        "etc"
-      ]
+      "enum": ["vscode", "html", "css", "etc"]
     },
     "description": {
       "type": "text"
@@ -54,6 +53,12 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::position.position",
+      "mappedBy": "skills"
+    },
+    "organizations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::organization.organization",
       "mappedBy": "skills"
     },
     "seo": {
