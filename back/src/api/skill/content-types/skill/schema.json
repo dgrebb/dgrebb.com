@@ -26,7 +26,30 @@
     },
     "icon": {
       "type": "enumeration",
-      "enum": ["vscode", "html", "css", "etc"]
+      "enum": [
+        "vscode",
+        "html",
+        "css",
+        "magento",
+        "php",
+        "drupal",
+        "craftcms",
+        "json",
+        "api",
+        "wordpress",
+        "charts",
+        "vagrant",
+        "gulp",
+        "sass",
+        "less",
+        "postcss",
+        "wpengine",
+        "pantheon",
+        "codeship",
+        "aws",
+        "terraform",
+        "javascript"
+      ]
     },
     "description": {
       "type": "text"
@@ -40,7 +63,9 @@
         "language",
         "people",
         "management",
-        "production"
+        "production",
+        "framework",
+        "devops tools"
       ]
     },
     "projects": {
