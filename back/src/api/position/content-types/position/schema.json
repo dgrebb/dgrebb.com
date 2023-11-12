@@ -15,6 +15,10 @@
     "title": {
       "type": "string"
     },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
     "start": {
       "type": "date"
     },
@@ -31,24 +35,6 @@
       "allowedTypes": [
         "images"
       ]
-    },
-    "accomplishments": {
-      "displayName": "Accomplishments",
-      "type": "component",
-      "repeatable": true,
-      "component": "cv.accomplishments"
-    },
-    "responsibilities": {
-      "displayName": "Responsibilities",
-      "type": "component",
-      "repeatable": true,
-      "component": "cv.responsibilities"
-    },
-    "wisdom": {
-      "displayName": "Wisdom",
-      "type": "component",
-      "repeatable": true,
-      "component": "cv.wisdom"
     },
     "industries": {
       "type": "relation",
@@ -79,6 +65,24 @@
       "relation": "manyToMany",
       "target": "api::organization.organization",
       "inversedBy": "positions"
+    },
+    "accomplishments": {
+      "displayName": "Accomplishments",
+      "type": "component",
+      "repeatable": true,
+      "component": "cv.accomplishments"
+    },
+    "responsibilities": {
+      "displayName": "Responsibilities",
+      "type": "component",
+      "repeatable": true,
+      "component": "cv.responsibilities"
+    },
+    "wisdom": {
+      "displayName": "Wisdom",
+      "type": "component",
+      "repeatable": true,
+      "component": "cv.wisdom"
     },
     "seo": {
       "type": "component",
