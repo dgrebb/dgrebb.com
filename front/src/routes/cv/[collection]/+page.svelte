@@ -4,7 +4,9 @@
   import Flourish from '@layout/Flourish.svelte';
 
   export let data;
-  let positionsContent;
+
+  // TODO: Import content mappers from a helpers library
+  // then use the collection slug to select the api and map content appropriately
 
   const { pathname, page, pageMeta } = data;
   const { title, hero, intro } = page;
@@ -15,9 +17,7 @@
     <Flourish />
     <a id="main">Main Content</a>
     <h1>{title}</h1>
-    {#if hero}
-      <img src={hero.url} alt={hero.alternativeText} />
-    {/if}
+    <img src={hero.url} alt={hero.alternativeText} />
     <div class="summary">
       {intro}
     </div>
