@@ -30,7 +30,7 @@ export async function load({ params: { pathname } }) {
   const page = {
     title,
     intro,
-    hero: hero.data.attributes,
+    hero: hero?.data?.attributes,
   };
 
   var pageMeta = {
