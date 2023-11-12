@@ -18,7 +18,9 @@
     <Flourish />
     <a id="main">Main Content</a>
     <h1>{title}</h1>
-    <img src={hero.url} alt={hero.alternativeText} />
+    {#if hero}
+      <img src={hero.url} alt={hero.alternativeText} />
+    {/if}
     <div class="summary">
       {intro}
     </div>
