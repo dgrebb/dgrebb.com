@@ -37,6 +37,8 @@ on:
         required: true
       PUBLIC_CATEGORY_PAGE_PARAMS:
         required: true
+      PUBLIC_API_PATH_CV_PAGE:
+        required: true
       API_KEY:
         required: true
       PUBLIC_SENTRY_DSN:
