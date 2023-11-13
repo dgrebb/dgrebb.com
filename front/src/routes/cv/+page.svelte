@@ -2,6 +2,7 @@
   import Meta from '@components/Meta.svelte';
   import PageTransition from '@components/PageTransition.svelte';
   import Flourish from '@layout/Flourish.svelte';
+  import '@styles/pages/cv.css';
 
   export let data;
 
@@ -20,28 +21,33 @@
     <div class="summary">
       {intro}
     </div>
-    {#each positions as { title, slug, description, organizations, industries, projects, skills }, i}
-      <h1><a href="/cv/position/{slug}">{title}</a></h1>
-      {#each organizations as { attributes: { name, slug: orgSlug, URL }, i }}
-        <a href="/cv/organization/{orgSlug}">
-          <h3>{name}</h3>
-        </a>
-      {/each}
-      {#each projects as { attributes: { name, slug: projectSlug, URL, description }, i }}
-        <a href="/cv/project/{projectSlug}"> <h3>{name}</h3></a>
-        <a href={URL}>Check it out</a>
-      {/each}
-      {#each skills as { attributes: { skill, slug: skillSlug, proficiency, description }, i }}
-        <a href="/cv/skill/{skillSlug}">
-          <h3>{skill}</h3>
-        </a>
-        <h4>{proficiency}</h4>
-      {/each}
-      {#each industries as { attributes: { industry, slug: industrySlug }, i }}
-        <a href="/cv/skill/{industrySlug}">
-          <h3>{industry}</h3>
-        </a>
-      {/each}
+    {#each positions as { title, slug, startDate, endDate, summary, organizations, industries, projects, skills }, i}
+      <div class="position-timeline-item">
+        <h1><a href="/cv/position/{slug}">{title}</a></h1>
+        <date class="position-timeline-date"
+          >{#if endDate}{startDate}{:else}Current{/if}</date
+        >
+        {#each organizations as { attributes: { name, slug: orgSlug, URL }, i }}
+          <a href="/cv/organization/{orgSlug}">
+            <h3>{name}</h3>
+          </a>
+        {/each}
+        {#each projects as { attributes: { name, slug: projectSlug, URL, summary }, i }}
+          <a href="/cv/project/{projectSlug}"> <h3>{name}</h3></a>
+          <a href={URL}>Check it out</a>
+        {/each}
+        {#each skills as { attributes: { skill, slug: skillSlug, proficiency, summary }, i }}
+          <a href="/cv/skill/{skillSlug}">
+            <h3>{skill}</h3>
+          </a>
+          <h4>{proficiency}</h4>
+        {/each}
+        {#each industries as { attributes: { industry, slug: industrySlug }, i }}
+          <a href="/cv/skill/{industrySlug}">
+            <h3>{industry}</h3>
+          </a>
+        {/each}
+      </div>
     {/each}
   </section>
 </PageTransition>
