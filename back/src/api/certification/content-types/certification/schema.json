@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "certifications",
+  "info": {
+    "singularName": "certification",
+    "pluralName": "certifications",
+    "displayName": "CV - Certifications",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "skills": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::skill.skill",
+      "inversedBy": "certifications"
+    },
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "dates": {
+      "displayName": "Certification Dates",
+      "type": "component",
+      "repeatable": true,
+      "component": "cv.certification-dates"
+    },
+    "documentation": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["files"]
+    },
+    "positions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::position.position",
+      "mappedBy": "certifications"
+    }
+  }
+}

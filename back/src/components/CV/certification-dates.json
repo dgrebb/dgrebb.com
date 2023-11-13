@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_cv_certification_dates",
+  "info": {
+    "displayName": "Certification Dates",
+    "icon": "calendar"
+  },
+  "options": {},
+  "attributes": {
+    "date": {
+      "type": "date"
+    }
+  }
+}
