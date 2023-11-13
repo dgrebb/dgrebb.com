@@ -51,22 +51,14 @@
         "javascript"
       ]
     },
+    "classification": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::cv-skill-type.cv-skill-type",
+      "inversedBy": "skills"
+    },
     "summary": {
       "type": "text"
-    },
-    "classification": {
-      "type": "enumeration",
-      "enum": [
-        "software",
-        "hardware",
-        "planning",
-        "language",
-        "people",
-        "management",
-        "production",
-        "framework",
-        "devops tools"
-      ]
     },
     "projects": {
       "type": "relation",
