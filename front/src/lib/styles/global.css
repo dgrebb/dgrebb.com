@@ -114,6 +114,7 @@ body {
 .bio a,
 .footer a,
 .privacy a,
+.cv a,
 .not-found a {
   transition-duration: var(--transition-duration);
   transition-property: color, border-color;
