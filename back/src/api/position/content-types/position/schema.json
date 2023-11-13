@@ -19,10 +19,10 @@
       "type": "uid",
       "targetField": "title"
     },
-    "start": {
+    "startDate": {
       "type": "date"
     },
-    "end": {
+    "endDate": {
       "type": "date"
     },
     "summary": {
