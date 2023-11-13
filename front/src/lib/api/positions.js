@@ -16,7 +16,6 @@ export async function posAPI(endpoint) {
     const content = await fetch(endpoint, OPTIONS)
       .then(checkStatus)
       .then(parseJSON);
-    console.log('🚀 ~ file: positions.js:17 ~ posAPI ~ content:', content);
 
     return content.data;
   } catch (error) {
