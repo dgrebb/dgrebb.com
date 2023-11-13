@@ -1,0 +1,34 @@
+.position-timeline-item {
+  margin: 0;
+  border-left: 2px solid var(--highlight-clr);
+  padding: 2rem;
+  &:hover {
+    .position-timeline-date {
+      &::before {
+        transform: scale(1.33);
+      }
+    }
+  }
+}
+
+.position-timeline-date {
+  display: flex;
+  position: relative;
+  align-items: center;
+  &::before {
+    display: inline;
+    position: absolute;
+    left: -2.5rem;
+    vertical-align: middle;
+    transition-duration: 215ms;
+    transition-property: transform;
+    transition-timing-function: var(--transition-timing-function);
+    box-sizing: border-box;
+    border: 2px solid var(--highlight-clr);
+    border-radius: 50%;
+    background-color: var(--bg-clr);
+    width: 1rem;
+    height: 1rem;
+    content: '';
+  }
+}
