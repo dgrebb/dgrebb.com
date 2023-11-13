@@ -1,9 +1,9 @@
 import {
   PUBLIC_API_PATH_CV_PAGE as CV,
-  PUBLIC_API_PATH_POSITIONS as POSITIONS,
+  PUBLIC_API_CV_PATH_LANDING_POSITION_LISTING as POSITIONS,
   PUBLIC_API_URL as URL,
 } from '$env/static/public';
-import { cvAPI, posAPI } from '@api';
+import api from '@api';
 import { error } from '@sveltejs/kit';
 
 const endpoint = URL + CV;
@@ -30,8 +30,8 @@ export async function load({ params: { pathname } }) {
   let seo, hero, title, intro;
 
   try {
-    cv = await cvAPI(endpoint);
-    positionsData = await posAPI(positionsEndpoint);
+    cv = await api(endpoint);
+    positionsData = await api(positionsEndpoint);
   } catch (error) {
     console.warn('CV page API error.');
     console.error(error);
