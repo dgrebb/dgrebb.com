@@ -36,17 +36,11 @@
         "images"
       ]
     },
-    "industries": {
+    "organizations": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::industry.industry",
+      "target": "api::organization.organization",
       "inversedBy": "positions"
-    },
-    "awards": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::award.award",
-      "mappedBy": "positions"
     },
     "projects": {
       "type": "relation",
@@ -60,10 +54,22 @@
       "target": "api::skill.skill",
       "inversedBy": "positions"
     },
-    "organizations": {
+    "industries": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::organization.organization",
+      "target": "api::industry.industry",
+      "inversedBy": "positions"
+    },
+    "awards": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::award.award",
+      "mappedBy": "positions"
+    },
+    "certifications": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::certification.certification",
       "inversedBy": "positions"
     },
     "accomplishments": {
