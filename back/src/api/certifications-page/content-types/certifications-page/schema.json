@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "certifications_pages",
+  "info": {
+    "singularName": "certifications-page",
+    "pluralName": "certifications-pages",
+    "displayName": "Landing - Certifications"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "content": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.landing-page-content"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}
