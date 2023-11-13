@@ -45,6 +45,7 @@ export default defineConfig({
       '@store': path.resolve('./src/lib/store'),
       '@styles': path.resolve('./src/lib/styles'),
       '@utils': path.resolve('./src/lib/_utils'),
+      '@shape-shifters': path.resolve('./src/lib/_utils/shape-shifters'),
     },
   },
   css: {

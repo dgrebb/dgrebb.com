@@ -11,6 +11,7 @@
       "@store": ["./src/lib/store"],
       "@styles": ["./src/lib/styles"],
       "@utils": ["./src/lib/_utils"],
+      "@shape-shifters": ["./src/lib/_utils/shape-shifters"],
       "$lib": ["./src/lib"],
       "$lib/*": ["./src/lib/*"]
     }
