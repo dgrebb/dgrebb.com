@@ -32,3 +32,7 @@
     content: '';
   }
 }
+
+.main h1.collection-title {
+  font-size: 12rem;
+}
