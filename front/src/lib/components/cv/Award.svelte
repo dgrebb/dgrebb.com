@@ -1,22 +1,23 @@
 <script>
   export let content;
   let {
-    title,
+    award,
     slug,
+    URL,
+    date,
     summary,
     body,
-    startDate,
-    endDate,
-    hero,
     seo,
-    skills: { data: skills },
+    positions: { data: positions },
     projects: { data: projects },
-  } = content.position;
+  } = content.award;
 </script>
 
-<h1>{title}</h1>
-{#each skills as { attributes: { skill, slug: skillSlug } }}
-  <h2><a href="/cv/skill/{skillSlug}">{skill}</a></h2>
+<h1 class="collection-title">Awards</h1>
+
+<h1>{award}</h1>
+{#each positions as { attributes: { title, slug: positionSlug } }}
+  <h2><a href="/cv/position/{positionSlug}">{title}</a></h2>
 {/each}
 
 {#each projects as { attributes: { name, slug: projectSlug } }}

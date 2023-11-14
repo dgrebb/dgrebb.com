@@ -1,6 +1,7 @@
 <script>
   import PageTransition from '@components/PageTransition.svelte';
   import Flourish from '@layout/Flourish.svelte';
+  import '@styles/pages/cv.css';
 
   export let data;
 
@@ -21,7 +22,7 @@
     {#if hero}
       <img src={hero.url} alt={hero.alternativeText} />
     {/if}
-    <h1>{title}</h1>
+    <h1 class="collection-title">{title}</h1>
     {#if introduction}
       <article class="position-longform">
         {introduction}

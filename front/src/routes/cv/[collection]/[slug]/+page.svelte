@@ -1,10 +1,16 @@
 <script>
   import Meta from '@components/Meta.svelte';
   import PageTransition from '@components/PageTransition.svelte';
+  import Award from '@components/cv/Award.svelte';
+  import Certification from '@components/cv/Certification.svelte';
+  import Classification from '@components/cv/Classification.svelte';
+  import Industry from '@components/cv/Industry.svelte';
+  import Organization from '@components/cv/Organization.svelte';
   import Position from '@components/cv/Position.svelte';
   import Project from '@components/cv/Project.svelte';
   import Skill from '@components/cv/Skill.svelte';
   import Flourish from '@layout/Flourish.svelte';
+  import '@styles/pages/cv.css';
 
   export let data;
 
@@ -16,6 +22,11 @@
   } = data);
 
   const components = {
+    award: Award,
+    certification: Certification,
+    classification: Classification,
+    industry: Industry,
+    organization: Organization,
     position: Position,
     project: Project,
     skill: Skill,

@@ -17,7 +17,7 @@ export async function load({ params: { pathname, collection } }) {
       api(collectionEndpoint),
     ]);
   } catch (error) {
-    console.warn('Position page API error.');
+    console.warn(`${collection} Collection API Error`);
     console.error(error);
   }
 

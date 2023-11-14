@@ -10,15 +10,12 @@
     hero,
     seo,
     skills: { data: skills },
-    projects: { data: projects },
-  } = content.position;
+  } = content.certification;
 </script>
+
+<h1 class="collection-title">Certifcations</h1>
 
 <h1>{title}</h1>
 {#each skills as { attributes: { skill, slug: skillSlug } }}
   <h2><a href="/cv/skill/{skillSlug}">{skill}</a></h2>
-{/each}
-
-{#each projects as { attributes: { name, slug: projectSlug } }}
-  <h2><a href="/cv/project/{projectSlug}">{name}</a></h2>
 {/each}
