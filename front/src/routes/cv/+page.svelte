@@ -21,12 +21,18 @@
     <div class="summary">
       {intro}
     </div>
-    {#each positions as { title, slug, startDate, endDate, summary, organizations, industries, projects, skills }, i}
+    {#each positions as { title, slug, startDate, endDate, summary, awards, industries, organizations, projects, skills }, i}
       <div class="position-timeline-item">
         <h1><a href="/cv/position/{slug}">{title}</a></h1>
         <date class="position-timeline-date"
           >{#if endDate}{startDate}{:else}Current{/if}</date
         >
+        <p>{summary}</p>
+        {#each awards as { attributes: { award, slug: awardSlug, URL }, i }}
+          <a href="/cv/award/{awardSlug}">
+            <h3>{award}</h3>
+          </a>
+        {/each}
         {#each organizations as { attributes: { name, slug: orgSlug, URL }, i }}
           <a href="/cv/organization/{orgSlug}">
             <h3>{name}</h3>
@@ -38,9 +44,8 @@
         {/each}
         {#each skills as { attributes: { skill, slug: skillSlug, proficiency, summary }, i }}
           <a href="/cv/skill/{skillSlug}">
-            <h3>{skill}</h3>
+            <h3>{skill} ➔ {proficiency}</h3>
           </a>
-          <h4>{proficiency}</h4>
         {/each}
         {#each industries as { attributes: { industry, slug: industrySlug }, i }}
           <a href="/cv/skill/{industrySlug}">
