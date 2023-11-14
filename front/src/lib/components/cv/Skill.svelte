@@ -8,7 +8,8 @@
     summary,
     proficiency,
     icon,
-    classification: { data: classification },
+    classifications: { data: classifications },
+    certifications: { data: certifications },
     projects: { data: projects },
     positions: { data: positions },
     organizations: { data: organizations },
@@ -16,18 +17,29 @@
   } = content.skill;
 </script>
 
-<h1>{skill}</h1>
+<h1 class="collection-title">{skill}</h1>
 {#if summary}
   <p>{summary}</p>
 {/if}
 
 <!-- TODO: each of these should be placed in a single component and passed the data, or just the collection name -->
-{#if classification.length}
-  <h2>Classification</h2>
+{#if certifications.length}
+  <h2>certifications</h2>
   <ul class="collection-attributes">
-    {#each classification as { attributes: { classification, slug: classificationSlug } }}
+    {#each certifications as { attributes: { title, slug: certificationSlug } }}
       <li class="attribute">
-        <a href="/cv/classification/{classificationSlug}">{classification}</a>
+        <a href="/cv/certification/{certificationSlug}">{title}</a>
+      </li>
+    {/each}
+  </ul>
+{/if}
+
+{#if classifications.length}
+  <h2>Classifications</h2>
+  <ul class="collection-attributes">
+    {#each classifications as { attributes: { name, slug: classificationSlug } }}
+      <li class="attribute">
+        <a href="/cv/classification/{classificationSlug}">{name}</a>
       </li>
     {/each}
   </ul>

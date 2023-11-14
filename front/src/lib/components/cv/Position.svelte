@@ -14,6 +14,8 @@
   } = content.position;
 </script>
 
+<h1 class="collection-title">Roles</h1>
+
 <h1>{title}</h1>
 {#each skills as { attributes: { skill, slug: skillSlug } }}
   <h2><a href="/cv/skill/{skillSlug}">{skill}</a></h2>
