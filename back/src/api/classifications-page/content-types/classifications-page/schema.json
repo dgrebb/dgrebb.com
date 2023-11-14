@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "classification_pages",
+  "info": {
+    "singularName": "classifications-page",
+    "pluralName": "classification-pages",
+    "displayName": "Landing - Classifications"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "content": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.landing-page-content"
+    }
+  }
+}

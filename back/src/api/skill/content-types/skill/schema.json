@@ -24,6 +24,12 @@
       "max": 10,
       "required": true
     },
+    "classifications": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::classification.classification",
+      "mappedBy": "skills"
+    },
     "icon": {
       "type": "enumeration",
       "enum": [
@@ -50,12 +56,6 @@
         "terraform",
         "javascript"
       ]
-    },
-    "classification": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::cv-skill-type.cv-skill-type",
-      "inversedBy": "skills"
     },
     "summary": {
       "type": "text"
@@ -90,6 +90,12 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::certification.certification",
+      "mappedBy": "skills"
+    },
+    "industries": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::industry.industry",
       "mappedBy": "skills"
     }
   }

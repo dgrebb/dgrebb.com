@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "classifications",
+  "info": {
+    "singularName": "classification",
+    "pluralName": "classifications",
+    "displayName": "CV - Classifications",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "summary": {
+      "type": "richtext"
+    },
+    "skills": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::skill.skill",
+      "inversedBy": "classifications"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}

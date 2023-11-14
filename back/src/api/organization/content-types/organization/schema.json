@@ -34,6 +34,12 @@
     "summary": {
       "type": "text"
     },
+    "industries": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::industry.industry",
+      "inversedBy": "organizations"
+    },
     "projects": {
       "type": "relation",
       "relation": "manyToMany",
