@@ -33,6 +33,18 @@
   }
 }
 
-.main h1.collection-title {
-  font-size: 12rem;
+.main .meat h1.collection-title {
+  position: relative;
+  height: auto;
+  font-size: 9rem;
+  line-height: 1;
+  .skill-icon {
+    display: inline-block;
+    padding-right: 1rem;
+    width: 3rem;
+    height: 3rem;
+    svg {
+      height: 100%;
+    }
+  }
 }
