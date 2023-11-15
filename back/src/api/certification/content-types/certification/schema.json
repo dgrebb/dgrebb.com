@@ -38,7 +38,9 @@
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": ["files"]
+      "allowedTypes": [
+        "files"
+      ]
     },
     "positions": {
       "type": "relation",
