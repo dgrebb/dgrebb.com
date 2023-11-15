@@ -18,16 +18,20 @@
     {#if hero}
       <img src={hero.url} alt={hero.alternativeText} />
     {/if}
-    <div class="summary">
-      {intro}
-    </div>
+    {#if intro}
+      <div class="summary">
+        {intro}
+      </div>
+    {/if}
     {#each positions as { title, slug, startDate, endDate, summary, awards, industries, organizations, projects, skills }, i}
       <div class="position-timeline-item">
         <h1><a href="/cv/position/{slug}">{title}</a></h1>
         <date class="position-timeline-date"
           >{#if endDate}{startDate}{:else}Current{/if}</date
         >
-        <p>{summary}</p>
+        {#if summary}
+          <p>{summary}</p>
+        {/if}
         {#each awards as { attributes: { award, slug: awardSlug, URL }, i }}
           <a href="/cv/award/{awardSlug}">
             <h3>{award}</h3>
@@ -42,9 +46,12 @@
           <a href="/cv/project/{projectSlug}"> <h3>{name}</h3></a>
           <a href={URL}>Check it out</a>
         {/each}
-        {#each skills as { attributes: { skill, slug: skillSlug, proficiency, summary }, i }}
+        {#each skills as { attributes: { skill, slug: skillSlug, svg, proficiency, summary }, i }}
           <a href="/cv/skill/{skillSlug}">
-            <h3>{skill} ➔ {proficiency}</h3>
+            <h3>
+              {#if svg}<span class="skill-icon">{@html svg}</span>{/if}{skill} ➔
+              {proficiency}
+            </h3>
           </a>
         {/each}
         {#each industries as { attributes: { industry, slug: industrySlug }, i }}
