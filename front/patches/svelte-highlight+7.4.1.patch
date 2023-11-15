@@ -1,3 +1,45 @@
+diff --git a/node_modules/svelte-highlight/Highlight.svelte b/node_modules/svelte-highlight/Highlight.svelte
+index 258101d..07e019d 100644
+--- a/node_modules/svelte-highlight/Highlight.svelte
++++ b/node_modules/svelte-highlight/Highlight.svelte
+@@ -1,21 +1,21 @@
+ <script context="module"></script>
+ 
+-<script>export let language;
+-export let code;
+-export let langtag = false;
+-import hljs from "highlight.js/lib/core";
+-import { createEventDispatcher, afterUpdate } from "svelte";
+-import LangTag from "./LangTag.svelte";
+-const dispatch = createEventDispatcher();
+-let highlighted = "";
+-afterUpdate(() => {
+-  if (highlighted)
+-    dispatch("highlight", { highlighted });
+-});
+-$: {
+-  hljs.registerLanguage(language.name, language.register);
+-  highlighted = hljs.highlight(code, { language: language.name }).value;
+-}
++<script>
++  export let language;
++  export let code;
++  export let langtag = false;
++  import hljs from 'highlight.js/lib/core';
++  import { createEventDispatcher, afterUpdate } from 'svelte';
++  import LangTag from './LangTag.svelte';
++  const dispatch = createEventDispatcher();
++  let highlighted = '';
++  afterUpdate(() => {
++    if (highlighted) dispatch('highlight', { highlighted });
++  });
++  $: {
++    hljs.registerLanguage(language.name, language.register);
++    highlighted = hljs.highlight(code, { language: language.name }).value;
++  }
+ </script>
+ 
+ <slot {highlighted}>
 diff --git a/node_modules/svelte-highlight/LineNumbers.svelte b/node_modules/svelte-highlight/LineNumbers.svelte
 index 4312cb3..d9380da 100644
 --- a/node_modules/svelte-highlight/LineNumbers.svelte
