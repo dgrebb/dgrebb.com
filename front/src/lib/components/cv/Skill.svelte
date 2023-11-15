@@ -5,9 +5,9 @@
     skill,
     hero,
     slug: skillSlug,
+    svg,
     summary,
     proficiency,
-    icon,
     classifications: { data: classifications },
     certifications: { data: certifications },
     projects: { data: projects },
@@ -17,7 +17,10 @@
   } = content.skill;
 </script>
 
-<h1 class="collection-title">{skill}</h1>
+<h1 class="collection-title">
+  {#if svg}<span class="skill-icon">{@html svg}</span>{/if}
+  {skill}
+</h1>
 {#if summary}
   <p>{summary}</p>
 {/if}
