@@ -48,7 +48,7 @@
           </a>
         {/each}
         {#each industries as { attributes: { industry, slug: industrySlug }, i }}
-          <a href="/cv/skill/{industrySlug}">
+          <a href="/cv/industry/{industrySlug}">
             <h3>{industry}</h3>
           </a>
         {/each}
