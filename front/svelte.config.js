@@ -27,6 +27,19 @@ const config = {
     },
     inlineStyleThreshold: Infinity,
     prerender: {
+      entries: [
+        '/cv/awards',
+        '/cv/certifications',
+        '/cv/classifications',
+        '/cv/industries',
+        '/cv/organizations',
+        '/cv/positions',
+        '/cv/projects',
+        '/cv/skills',
+        '/posts/category',
+        '/privacy',
+        '/404',
+      ],
       handleHttpError: ({ path, referrer, message }) => {
         if (path === '/404' && referrer === '/privacy/') {
           return;

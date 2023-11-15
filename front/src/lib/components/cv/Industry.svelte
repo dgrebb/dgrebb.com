@@ -15,10 +15,12 @@
 
 <h1 class="collection-title">Industries</h1>
 
+<h1>{industry}</h1>
+
 {#if organizations}
   <h2>Organizations</h2>
-  {#each organizations as { attributes: { organization, slug: organizationSlug } }}
-    <h2><a href="/cv/organization/{organizationSlug}">{organization}</a></h2>
+  {#each organizations as { attributes: { name, slug: organizationSlug } }}
+    <h2><a href="/cv/organization/{organizationSlug}">{name}</a></h2>
   {/each}
 {/if}
 
