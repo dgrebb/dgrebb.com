@@ -19,6 +19,9 @@
       "type": "uid",
       "targetField": "skill"
     },
+    "svg": {
+      "type": "text"
+    },
     "proficiency": {
       "type": "integer",
       "max": 10,
@@ -29,33 +32,6 @@
       "relation": "manyToMany",
       "target": "api::classification.classification",
       "mappedBy": "skills"
-    },
-    "icon": {
-      "type": "enumeration",
-      "enum": [
-        "vscode",
-        "html",
-        "css",
-        "magento",
-        "php",
-        "drupal",
-        "craftcms",
-        "json",
-        "api",
-        "wordpress",
-        "charts",
-        "vagrant",
-        "gulp",
-        "sass",
-        "less",
-        "postcss",
-        "wpengine",
-        "pantheon",
-        "codeship",
-        "aws",
-        "terraform",
-        "javascript"
-      ]
     },
     "summary": {
       "type": "text"
