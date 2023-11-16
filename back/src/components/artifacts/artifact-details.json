@@ -24,6 +24,9 @@
     "URL": {
       "type": "string"
     },
+    "URLTitle": {
+      "type": "string"
+    },
     "description": {
       "type": "richtext"
     },

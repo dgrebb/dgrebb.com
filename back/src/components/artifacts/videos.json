@@ -7,9 +7,15 @@
   },
   "options": {},
   "attributes": {
+    "videoFileURL": {
+      "type": "string"
+    },
+    "videoCaptionURL": {
+      "type": "string"
+    },
     "details": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "artifacts.artifact-details"
     }
   }
