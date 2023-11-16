@@ -58,11 +58,11 @@
       "edit": [
         [
           {
-            "name": "images",
+            "name": "title",
             "size": 6
           },
           {
-            "name": "title",
+            "name": "images",
             "size": 6
           }
         ]

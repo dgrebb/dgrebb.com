@@ -7,7 +7,7 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "id",
+      "mainField": "date",
       "defaultSortBy": "id",
       "defaultSortOrder": "ASC"
     },
@@ -22,7 +22,7 @@
       },
       "date": {
         "edit": {
-          "label": "date",
+          "label": "Date",
           "description": "",
           "placeholder": "",
           "visible": true,

@@ -22,7 +22,7 @@
       },
       "name": {
         "edit": {
-          "label": "name",
+          "label": "Name",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "slug": {
         "edit": {
-          "label": "slug",
+          "label": "Slug",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "summary": {
         "edit": {
-          "label": "summary",
+          "label": "Summary",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -64,7 +64,7 @@
       },
       "skills": {
         "edit": {
-          "label": "skills",
+          "label": "Skills",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -151,12 +151,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "slug",
-        "skills"
-      ],
       "edit": [
         [
           {
@@ -170,14 +164,14 @@
         ],
         [
           {
-            "name": "summary",
-            "size": 12
+            "name": "skills",
+            "size": 6
           }
         ],
         [
           {
-            "name": "skills",
-            "size": 6
+            "name": "summary",
+            "size": 12
           }
         ],
         [
@@ -186,6 +180,12 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "name",
+        "slug",
+        "skills"
       ]
     }
   },

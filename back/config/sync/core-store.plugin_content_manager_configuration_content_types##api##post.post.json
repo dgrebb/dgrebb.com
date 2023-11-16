@@ -263,25 +263,15 @@
         ],
         [
           {
-            "name": "hero",
-            "size": 6
+            "name": "summary",
+            "size": 4
           },
           {
-            "name": "summary",
-            "size": 6
-          }
-        ],
-        [
+            "name": "hero",
+            "size": 4
+          },
           {
             "name": "position",
-            "size": 4
-          },
-          {
-            "name": "heroAuthorLink",
-            "size": 4
-          },
-          {
-            "name": "heroAuthor",
             "size": 4
           }
         ],
@@ -305,6 +295,16 @@
           {
             "name": "footnotes",
             "size": 12
+          }
+        ],
+        [
+          {
+            "name": "heroAuthor",
+            "size": 4
+          },
+          {
+            "name": "heroAuthorLink",
+            "size": 4
           }
         ],
         [

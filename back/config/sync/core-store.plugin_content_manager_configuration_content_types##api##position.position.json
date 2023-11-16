@@ -337,17 +337,21 @@
         ],
         [
           {
-            "name": "hero",
+            "name": "startDate",
+            "size": 4
+          },
+          {
+            "name": "endDate",
             "size": 4
           }
         ],
         [
           {
-            "name": "projects",
-            "size": 6
+            "name": "hero",
+            "size": 4
           },
           {
-            "name": "organizations",
+            "name": "summary",
             "size": 6
           }
         ],
@@ -361,8 +365,28 @@
             "size": 4
           },
           {
+            "name": "projects",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "organizations",
+            "size": 4
+          },
+          {
             "name": "awards",
             "size": 4
+          },
+          {
+            "name": "certifications",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "body",
+            "size": 12
           }
         ],
         [
@@ -386,32 +410,6 @@
         [
           {
             "name": "seo",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "startDate",
-            "size": 4
-          },
-          {
-            "name": "endDate",
-            "size": 4
-          }
-        ],
-        [
-          {
-            "name": "summary",
-            "size": 6
-          },
-          {
-            "name": "certifications",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "body",
             "size": 12
           }
         ]

@@ -221,6 +221,20 @@
           "sortable": false
         }
       },
+      "hero": {
+        "edit": {
+          "label": "hero",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "hero",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -281,25 +295,26 @@
       }
     },
     "layouts": {
-      "list": [
-        "name",
-        "slug",
-        "skills",
-        "positions",
-        "organizations"
-      ],
       "edit": [
         [
           {
             "name": "name",
-            "size": 6
+            "size": 4
           },
           {
             "name": "slug",
-            "size": 6
+            "size": 4
           }
         ],
         [
+          {
+            "name": "startDate",
+            "size": 4
+          },
+          {
+            "name": "endDate",
+            "size": 4
+          },
           {
             "name": "URL",
             "size": 4
@@ -307,15 +322,15 @@
         ],
         [
           {
+            "name": "skills",
+            "size": 4
+          },
+          {
             "name": "positions",
             "size": 4
           },
           {
             "name": "organizations",
-            "size": 4
-          },
-          {
-            "name": "skills",
             "size": 4
           }
         ],
@@ -331,27 +346,9 @@
         ],
         [
           {
-            "name": "artifacts",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "seo",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "startDate",
+            "name": "hero",
             "size": 4
           },
-          {
-            "name": "endDate",
-            "size": 4
-          }
-        ],
-        [
           {
             "name": "summary",
             "size": 6
@@ -362,7 +359,26 @@
             "name": "body",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "artifacts",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "seo",
+            "size": 12
+          }
         ]
+      ],
+      "list": [
+        "name",
+        "slug",
+        "skills",
+        "positions",
+        "organizations"
       ]
     }
   },
