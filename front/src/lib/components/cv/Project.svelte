@@ -47,7 +47,11 @@
         {#each videos as { videoFileURL, videoCaptionURL, details: { title, URL, description, credits } }}
           <h4>{title}</h4>
           <div class="video-player">
-            <video controls class="project-video-player">
+            <video
+              crossorigin="anonymous"
+              controls
+              class="project-video-player"
+            >
               <source src={videoFileURL} type="video/mp4" />
               <track
                 default
