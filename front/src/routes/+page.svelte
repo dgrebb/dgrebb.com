@@ -1,8 +1,8 @@
 <script>
-  import Image from '@components/Image.svelte';
-  import Links from '@components/Links.svelte';
-  import Meta from '@components/Meta.svelte';
-  import PageTransition from '@components/PageTransition.svelte';
+  import Image from '@components/general/Image.svelte';
+  import Links from '@components/general/Links.svelte';
+  import Meta from '@components/general/Meta.svelte';
+  import PageTransition from '@components/general/PageTransition.svelte';
   import Link from '@components/content/renderers/Link.svelte';
   import Flourish from '@layout/Flourish.svelte';
   import SvelteMarkdown from 'svelte-markdown';

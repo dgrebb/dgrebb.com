@@ -1,5 +1,5 @@
 <script>
-  import PageTransition from '@components/PageTransition.svelte';
+  import PageTransition from '@components/general/PageTransition.svelte';
   import Flourish from '@layout/Flourish.svelte';
   import '@styles/pages/cv.css';
 
