@@ -1,6 +1,6 @@
 <script>
   import { page } from '$app/stores';
-  import PageTransition from '@components/PageTransition.svelte';
+  import PageTransition from '@components/general/PageTransition.svelte';
   import Flourish from '@layout/Flourish.svelte';
   import * as Sentry from '@sentry/sveltekit';
   import '@styles/pages/not-found.css';

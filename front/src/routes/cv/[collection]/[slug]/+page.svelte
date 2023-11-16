@@ -1,6 +1,6 @@
 <script>
-  import Meta from '@components/Meta.svelte';
-  import PageTransition from '@components/PageTransition.svelte';
+  import Meta from '@components/general/Meta.svelte';
+  import PageTransition from '@components/general/PageTransition.svelte';
   import Award from '@components/cv/Award.svelte';
   import Certification from '@components/cv/Certification.svelte';
   import Classification from '@components/cv/Classification.svelte';

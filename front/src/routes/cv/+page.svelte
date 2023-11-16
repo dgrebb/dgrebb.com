@@ -1,6 +1,6 @@
 <script>
-  import Meta from '@components/Meta.svelte';
-  import PageTransition from '@components/PageTransition.svelte';
+  import Meta from '@components/general/Meta.svelte';
+  import PageTransition from '@components/general/PageTransition.svelte';
   import Flourish from '@layout/Flourish.svelte';
   import '@styles/pages/cv.css';
 

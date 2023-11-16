@@ -1,5 +1,5 @@
 <script>
-  import PageNav from '@components/PageNav.svelte';
+  import PageNav from '@components/general/PageNav.svelte';
   import AnimatedImage from '@components/content/AnimatedImage.svelte';
   import Code from '@components/content/Code.svelte';
   import Footnotes from '@components/content/renderers/Footnotes.svelte';
