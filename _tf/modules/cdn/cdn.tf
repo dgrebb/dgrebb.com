@@ -62,6 +62,12 @@ resource "aws_cloudfront_distribution" "this" {
       cookies {
         forward = "none"
       }
+
+      headers = [
+        "Origin",
+        "Access-Control-Request-Headers",
+        "Access-Control-Request-Method",
+      ]
     }
 
     function_association {

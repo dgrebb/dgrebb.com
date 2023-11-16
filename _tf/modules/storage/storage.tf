@@ -138,7 +138,10 @@ resource "aws_s3_bucket_cors_configuration" "assets" {
   }
 
   cors_rule {
-    allowed_methods = ["GET"]
+    allowed_headers = ["*"]
+    allowed_methods = ["GET", "HEAD"]
     allowed_origins = ["*"]
+    expose_headers  = []
+    max_age_seconds = 3000
   }
 }
