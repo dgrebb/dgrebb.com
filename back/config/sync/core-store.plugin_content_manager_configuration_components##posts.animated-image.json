@@ -1,0 +1,95 @@
+{
+  "key": "plugin_content_manager_configuration_components::posts.animated-image",
+  "value": {
+    "uid": "posts.animated-image",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "id",
+      "defaultSortBy": "id",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "animation": {
+        "edit": {
+          "label": "Animation",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "animation",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "still": {
+        "edit": {
+          "label": "Still",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "still",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "figcaption": {
+        "edit": {
+          "label": "Figure Caption",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "figcaption",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "animation",
+        "still",
+        "figcaption"
+      ],
+      "edit": [
+        [
+          {
+            "name": "figcaption",
+            "size": 4
+          },
+          {
+            "name": "animation",
+            "size": 4
+          },
+          {
+            "name": "still",
+            "size": 4
+          }
+        ]
+      ]
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

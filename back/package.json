@@ -12,6 +12,7 @@
     "develop": "strapi develop",
     "postinstall": "patch-package",
     "start": "strapi start",
+    "cs": "config-sync",
     "strapi": "strapi"
   },
   "dependencies": {
@@ -21,7 +22,8 @@
     "@strapi/plugin-users-permissions": "4.14.0",
     "@strapi/provider-upload-aws-s3": "4.14.0",
     "@strapi/strapi": "4.14.0",
-    "pg": "^8.11.3"
+    "pg": "^8.11.3",
+    "strapi-plugin-config-sync": "^1.2.3"
   },
   "devDependencies": {
     "patch-package": "8.0.0"
