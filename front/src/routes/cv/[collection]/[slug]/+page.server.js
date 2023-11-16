@@ -62,7 +62,7 @@ export async function load({ params: { collection, slug } }) {
       itemData = await shapePositionData(data);
       break;
     case 'project':
-      endpoint += `?populate[hero]=*&populate[seo]=*&populate[skills]=*&populate[organizations]=*&populate[projects]=*&populate[industries]=*&populate[awards]=*&populate[positions]=*&populate[artifacts][on][artifacts.websites][populate]=*&filters[slug][$eq]=${slug}`;
+      endpoint += `?populate[hero]=*&populate[seo]=*&populate[skills]=*&populate[organizations]=*&populate[projects]=*&populate[industries]=*&populate[awards]=*&populate[classification]=*&populate[positions]=*&populate[artifacts][on][artifacts.websites][populate]=*&populate[artifacts][on][artifacts.videos][populate]=*&filters[slug][$eq]=${slug}`;
       data = await requestContent(endpoint, collection);
       itemData = await shapeProjectData(data);
       break;

@@ -1,9 +1,19 @@
 async function shapeArtifactData(data) {
-  let shapenedArtifactData = {};
+  let shapenedArtifactData = {
+    websites: [],
+    videos: [],
+  };
   data.forEach((artifact) => {
     switch (artifact.__component) {
       case 'artifacts.websites':
-        shapenedArtifactData.websites = [...artifact.details];
+        shapenedArtifactData.websites.push(...artifact.details);
+        break;
+      case 'artifacts.videos':
+        shapenedArtifactData.videos.push({
+          videoFileURL: artifact.videoFileURL,
+          videoCaptionURL: artifact.videoCaptionURL,
+          details: artifact.details,
+        });
         break;
 
       default:
