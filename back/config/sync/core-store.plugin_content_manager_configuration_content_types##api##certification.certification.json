@@ -22,7 +22,7 @@
       },
       "skills": {
         "edit": {
-          "label": "skills",
+          "label": "Skills",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -37,7 +37,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Title",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -51,7 +51,7 @@
       },
       "slug": {
         "edit": {
-          "label": "slug",
+          "label": "Slug",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -65,7 +65,7 @@
       },
       "body": {
         "edit": {
-          "label": "body",
+          "label": "Body",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -79,7 +79,7 @@
       },
       "dates": {
         "edit": {
-          "label": "dates",
+          "label": "Dates",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -93,7 +93,7 @@
       },
       "documentation": {
         "edit": {
-          "label": "documentation",
+          "label": "Documentation",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -107,7 +107,7 @@
       },
       "positions": {
         "edit": {
-          "label": "positions",
+          "label": "Positions",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -116,6 +116,20 @@
         },
         "list": {
           "label": "positions",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "seo": {
+        "edit": {
+          "label": "seo",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "seo",
           "searchable": false,
           "sortable": false
         }
@@ -180,6 +194,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "skills",
+        "title",
+        "slug"
+      ],
       "edit": [
         [
           {
@@ -216,13 +236,13 @@
             "name": "body",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "seo",
+            "size": 12
+          }
         ]
-      ],
-      "list": [
-        "id",
-        "skills",
-        "title",
-        "slug"
       ]
     }
   },

@@ -74,17 +74,15 @@
         [
           {
             "name": "title",
-            "size": 6
-          }
-        ],
-        [
+            "size": 4
+          },
           {
             "name": "url",
-            "size": 6
+            "size": 4
           },
           {
             "name": "icon",
-            "size": 6
+            "size": 4
           }
         ]
       ]

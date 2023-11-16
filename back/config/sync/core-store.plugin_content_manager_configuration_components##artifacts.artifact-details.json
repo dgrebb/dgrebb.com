@@ -102,16 +102,20 @@
         [
           {
             "name": "title",
-            "size": 6
+            "size": 4
+          },
+          {
+            "name": "URL",
+            "size": 4
           },
           {
             "name": "files",
-            "size": 6
+            "size": 4
           }
         ],
         [
           {
-            "name": "URL",
+            "name": "credits",
             "size": 6
           }
         ],
@@ -119,12 +123,6 @@
           {
             "name": "description",
             "size": 12
-          }
-        ],
-        [
-          {
-            "name": "credits",
-            "size": 6
           }
         ]
       ]
