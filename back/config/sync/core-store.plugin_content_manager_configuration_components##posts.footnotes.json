@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Title",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "link": {
         "edit": {
-          "label": "link",
+          "label": "Link",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "linkTitle": {
         "edit": {
-          "label": "linkTitle",
+          "label": "Link Title",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -77,14 +77,12 @@
             "size": 4
           },
           {
+            "name": "linkTitle",
+            "size": 4
+          },
+          {
             "name": "link",
             "size": 4
-          }
-        ],
-        [
-          {
-            "name": "linkTitle",
-            "size": 6
           }
         ]
       ]

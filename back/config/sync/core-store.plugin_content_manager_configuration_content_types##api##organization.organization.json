@@ -242,24 +242,22 @@
         [
           {
             "name": "name",
-            "size": 6
+            "size": 4
           },
           {
             "name": "slug",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "images",
-            "size": 6
+            "size": 4
           },
           {
             "name": "URL",
-            "size": 6
+            "size": 4
           }
         ],
         [
+          {
+            "name": "skills",
+            "size": 4
+          },
           {
             "name": "positions",
             "size": 4
@@ -267,31 +265,33 @@
           {
             "name": "projects",
             "size": 4
-          },
+          }
+        ],
+        [
           {
-            "name": "skills",
+            "name": "industries",
             "size": 4
           }
         ],
         [
           {
-            "name": "seo",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "summary",
-            "size": 6
+            "name": "images",
+            "size": 4
           },
           {
-            "name": "industries",
+            "name": "summary",
             "size": 6
           }
         ],
         [
           {
             "name": "body",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "seo",
             "size": 12
           }
         ]

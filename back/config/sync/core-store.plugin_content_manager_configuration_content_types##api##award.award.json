@@ -22,7 +22,7 @@
       },
       "award": {
         "edit": {
-          "label": "award",
+          "label": "Award",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "slug": {
         "edit": {
-          "label": "slug",
+          "label": "Slug",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -64,7 +64,7 @@
       },
       "date": {
         "edit": {
-          "label": "date",
+          "label": "Date",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -78,7 +78,7 @@
       },
       "summary": {
         "edit": {
-          "label": "summary",
+          "label": "Summary",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -92,7 +92,7 @@
       },
       "positions": {
         "edit": {
-          "label": "positions",
+          "label": "Positions",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -107,7 +107,7 @@
       },
       "projects": {
         "edit": {
-          "label": "projects",
+          "label": "Projects",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -122,7 +122,7 @@
       },
       "body": {
         "edit": {
-          "label": "body",
+          "label": "Body",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -136,7 +136,7 @@
       },
       "seo": {
         "edit": {
-          "label": "seo",
+          "label": "SEO",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -247,13 +247,13 @@
         ],
         [
           {
-            "name": "seo",
+            "name": "body",
             "size": 12
           }
         ],
         [
           {
-            "name": "body",
+            "name": "seo",
             "size": 12
           }
         ]

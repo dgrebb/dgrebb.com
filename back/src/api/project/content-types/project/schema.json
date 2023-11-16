@@ -19,6 +19,11 @@
       "type": "uid",
       "targetField": "name"
     },
+    "hero": {
+      "allowedTypes": ["images"],
+      "type": "media",
+      "multiple": false
+    },
     "startDate": {
       "type": "date"
     },
