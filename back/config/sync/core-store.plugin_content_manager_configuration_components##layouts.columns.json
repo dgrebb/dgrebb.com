@@ -1,0 +1,77 @@
+{
+  "key": "plugin_content_manager_configuration_components::layouts.columns",
+  "value": {
+    "uid": "layouts.columns",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "heading",
+      "defaultSortBy": "heading",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "heading": {
+        "edit": {
+          "label": "heading",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "heading",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "text": {
+        "edit": {
+          "label": "text",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "text",
+          "searchable": false,
+          "sortable": false
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "heading"
+      ],
+      "edit": [
+        [
+          {
+            "name": "heading",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "text",
+            "size": 12
+          }
+        ]
+      ]
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

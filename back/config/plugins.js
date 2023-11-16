@@ -37,6 +37,28 @@ module.exports = ({ env }) => {
 
   return {
     upload,
+    "config-sync": {
+      syncDir: "config/sync/",
+      enabled: true,
+      config: {
+        minify: false,
+        importOnBootstrap: false,
+        excludedTypes: ["admin-role", "i18n-locale", "user-role"],
+        excludedConfig: [
+          "core-store.core_admin_auth",
+          "core-store.core_admin_project-settings",
+          "core-store.plugin_users-permissions_grant",
+          "core-store.plugin_i18n_default_locale",
+          "core-store.plugin_open-ai_settings",
+          "core-store.plugin_upload_metrics",
+          "core-store.plugin_upload_settings",
+          "core-store.plugin_upload_view_configuration",
+          "core-store.plugin_users-permissions_advanced",
+          "core-store.plugin_users-permissions_email",
+          "core-store.strapi_content_types_schema",
+        ],
+      },
+    },
     sentry: {
       enabled: true,
       config: {
