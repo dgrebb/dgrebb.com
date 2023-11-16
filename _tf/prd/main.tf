@@ -99,6 +99,7 @@ module "state" {
 
 module "www_cdn_bucket" {
   source             = "../modules/storage"
+  basedomain         = var.basedomain
   domain             = var.domain
   dashed_domain      = var.dashed_domain
   force_destroy      = false
@@ -107,6 +108,7 @@ module "www_cdn_bucket" {
 
 module "uploads_cdn_bucket" {
   source             = "../modules/storage"
+  basedomain         = var.basedomain
   domain             = var.cdndomain
   dashed_domain      = var.dashed_cdndomain
   force_destroy      = false
