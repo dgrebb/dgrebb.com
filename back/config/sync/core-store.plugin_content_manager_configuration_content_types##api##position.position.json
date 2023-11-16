@@ -1,0 +1,431 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::position.position",
+  "value": {
+    "uid": "api::position.position",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 100,
+      "mainField": "title",
+      "defaultSortBy": "title",
+      "defaultSortOrder": "DESC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "title": {
+        "edit": {
+          "label": "title",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "slug": {
+        "edit": {
+          "label": "slug",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "slug",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "startDate": {
+        "edit": {
+          "label": "startDate",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "startDate",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "endDate": {
+        "edit": {
+          "label": "endDate",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "endDate",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "summary": {
+        "edit": {
+          "label": "summary",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "summary",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "hero": {
+        "edit": {
+          "label": "hero",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "hero",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "organizations": {
+        "edit": {
+          "label": "organizations",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "organizations",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "projects": {
+        "edit": {
+          "label": "projects",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "projects",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "skills": {
+        "edit": {
+          "label": "skills",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "skill"
+        },
+        "list": {
+          "label": "skills",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "industries": {
+        "edit": {
+          "label": "industries",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "industry"
+        },
+        "list": {
+          "label": "industries",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "awards": {
+        "edit": {
+          "label": "awards",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "award"
+        },
+        "list": {
+          "label": "awards",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "certifications": {
+        "edit": {
+          "label": "certifications",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "certifications",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "accomplishments": {
+        "edit": {
+          "label": "accomplishments",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "accomplishments",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "responsibilities": {
+        "edit": {
+          "label": "responsibilities",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "responsibilities",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "wisdom": {
+        "edit": {
+          "label": "wisdom",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "wisdom",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "body": {
+        "edit": {
+          "label": "body",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "body",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "seo": {
+        "edit": {
+          "label": "seo",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "seo",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdBy": {
+        "edit": {
+          "label": "createdBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "createdBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedBy": {
+        "edit": {
+          "label": "updatedBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "updatedBy",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "edit": [
+        [
+          {
+            "name": "title",
+            "size": 6
+          },
+          {
+            "name": "slug",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "hero",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "projects",
+            "size": 6
+          },
+          {
+            "name": "organizations",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "skills",
+            "size": 4
+          },
+          {
+            "name": "industries",
+            "size": 4
+          },
+          {
+            "name": "awards",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "accomplishments",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "responsibilities",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "wisdom",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "seo",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "startDate",
+            "size": 4
+          },
+          {
+            "name": "endDate",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "summary",
+            "size": 6
+          },
+          {
+            "name": "certifications",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "body",
+            "size": 12
+          }
+        ]
+      ],
+      "list": [
+        "title",
+        "slug",
+        "organizations",
+        "industries",
+        "skills"
+      ]
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

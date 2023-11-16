@@ -1,0 +1,115 @@
+{
+  "key": "plugin_content_manager_configuration_components::posts.quote",
+  "value": {
+    "uid": "posts.quote",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "citation",
+      "defaultSortBy": "citation",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "text": {
+        "edit": {
+          "label": "Text",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "text",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "citation": {
+        "edit": {
+          "label": "Citation",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "citation",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "citationLink": {
+        "edit": {
+          "label": "Citation Link",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "citationLink",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "citationLinkTitle": {
+        "edit": {
+          "label": "Citation Link Title",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "citationLinkTitle",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "citation",
+        "citationLink",
+        "text"
+      ],
+      "edit": [
+        [
+          {
+            "name": "text",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "citation",
+            "size": 4
+          },
+          {
+            "name": "citationLink",
+            "size": 4
+          },
+          {
+            "name": "citationLinkTitle",
+            "size": 4
+          }
+        ]
+      ]
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

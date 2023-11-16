@@ -1,0 +1,274 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::industry.industry",
+  "value": {
+    "uid": "api::industry.industry",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 100,
+      "mainField": "industry",
+      "defaultSortBy": "industry",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "industry": {
+        "edit": {
+          "label": "industry",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "industry",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "slug": {
+        "edit": {
+          "label": "slug",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "slug",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "summary": {
+        "edit": {
+          "label": "summary",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "summary",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "organizations": {
+        "edit": {
+          "label": "organizations",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "organizations",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "positions": {
+        "edit": {
+          "label": "positions",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "positions",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "skills": {
+        "edit": {
+          "label": "skills",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "skill"
+        },
+        "list": {
+          "label": "skills",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "projects": {
+        "edit": {
+          "label": "projects",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "projects",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "body": {
+        "edit": {
+          "label": "body",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "body",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "seo": {
+        "edit": {
+          "label": "seo",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "seo",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdBy": {
+        "edit": {
+          "label": "createdBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "createdBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedBy": {
+        "edit": {
+          "label": "updatedBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "updatedBy",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "edit": [
+        [
+          {
+            "name": "industry",
+            "size": 6
+          },
+          {
+            "name": "slug",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "positions",
+            "size": 6
+          },
+          {
+            "name": "projects",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "seo",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "summary",
+            "size": 6
+          },
+          {
+            "name": "organizations",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "skills",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "body",
+            "size": 12
+          }
+        ]
+      ],
+      "list": [
+        "industry",
+        "slug",
+        "positions",
+        "projects"
+      ]
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

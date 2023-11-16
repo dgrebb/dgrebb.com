@@ -1,0 +1,97 @@
+{
+  "key": "plugin_content_manager_configuration_components::posts.footnotes",
+  "value": {
+    "uid": "posts.footnotes",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "title",
+      "defaultSortBy": "title",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "title": {
+        "edit": {
+          "label": "title",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "link": {
+        "edit": {
+          "label": "link",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "link",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "linkTitle": {
+        "edit": {
+          "label": "linkTitle",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "linkTitle",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "title",
+        "link",
+        "linkTitle"
+      ],
+      "edit": [
+        [
+          {
+            "name": "title",
+            "size": 4
+          },
+          {
+            "name": "link",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "linkTitle",
+            "size": 6
+          }
+        ]
+      ]
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

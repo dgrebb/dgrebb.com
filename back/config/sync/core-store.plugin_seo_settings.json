@@ -1,0 +1,64 @@
+{
+  "key": "plugin_seo_settings",
+  "value": {
+    "api::footer.footer": {
+      "collectionName": "footer",
+      "seoChecks": {
+        "metaTitle": true,
+        "metaDescription": true,
+        "metaRobots": true,
+        "metaSocial": true,
+        "wordCount": true,
+        "canonicalUrl": true,
+        "keywordDensity": true,
+        "structuredData": true,
+        "alternativeText": true,
+        "lastUpdatedAt": true
+      }
+    },
+    "api::home.home": {
+      "collectionName": "home",
+      "seoChecks": {
+        "metaTitle": true,
+        "metaDescription": true,
+        "metaRobots": true,
+        "metaSocial": true,
+        "wordCount": true,
+        "canonicalUrl": true,
+        "keywordDensity": true,
+        "structuredData": true,
+        "alternativeText": true,
+        "lastUpdatedAt": true
+      }
+    },
+    "api::navigation.navigation": {
+      "collectionName": "navigation",
+      "seoChecks": {
+        "metaTitle": true,
+        "metaDescription": true,
+        "metaRobots": true,
+        "metaSocial": true,
+        "wordCount": true,
+        "canonicalUrl": true,
+        "keywordDensity": true,
+        "structuredData": true,
+        "alternativeText": true,
+        "lastUpdatedAt": true
+      }
+    },
+    "api::post.post": {
+      "seoChecks": {
+        "metaTitle": true,
+        "metaDescription": true,
+        "metaSocial": true,
+        "wordCount": true,
+        "canonicalUrl": true,
+        "keywordDensity": true,
+        "alternativeText": true
+      }
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

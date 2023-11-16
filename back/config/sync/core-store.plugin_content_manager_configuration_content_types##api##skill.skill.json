@@ -1,0 +1,351 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::skill.skill",
+  "value": {
+    "uid": "api::skill.skill",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 100,
+      "mainField": "skill",
+      "defaultSortBy": "skill",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "skill": {
+        "edit": {
+          "label": "skill",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "skill",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "slug": {
+        "edit": {
+          "label": "slug",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "slug",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "svg": {
+        "edit": {
+          "label": "svg",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "svg",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "proficiency": {
+        "edit": {
+          "label": "proficiency",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "proficiency",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "classifications": {
+        "edit": {
+          "label": "classifications",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "classifications",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "summary": {
+        "edit": {
+          "label": "summary",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "summary",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "projects": {
+        "edit": {
+          "label": "projects",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "projects",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "positions": {
+        "edit": {
+          "label": "positions",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "positions",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "organizations": {
+        "edit": {
+          "label": "organizations",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "organizations",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "body": {
+        "edit": {
+          "label": "body",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "body",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "seo": {
+        "edit": {
+          "label": "seo",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "seo",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "certifications": {
+        "edit": {
+          "label": "certifications",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "certifications",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "industries": {
+        "edit": {
+          "label": "industries",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "industry"
+        },
+        "list": {
+          "label": "industries",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdBy": {
+        "edit": {
+          "label": "createdBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "createdBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedBy": {
+        "edit": {
+          "label": "updatedBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "updatedBy",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "edit": [
+        [
+          {
+            "name": "skill",
+            "size": 4
+          },
+          {
+            "name": "proficiency",
+            "size": 4
+          },
+          {
+            "name": "slug",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "summary",
+            "size": 6
+          },
+          {
+            "name": "svg",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "projects",
+            "size": 4
+          },
+          {
+            "name": "positions",
+            "size": 4
+          },
+          {
+            "name": "organizations",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "industries",
+            "size": 4
+          },
+          {
+            "name": "certifications",
+            "size": 4
+          },
+          {
+            "name": "classifications",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "body",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "seo",
+            "size": 12
+          }
+        ]
+      ],
+      "list": [
+        "skill",
+        "slug",
+        "svg",
+        "proficiency",
+        "positions",
+        "projects",
+        "organizations"
+      ]
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}
