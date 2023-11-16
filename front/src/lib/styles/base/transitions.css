@@ -87,5 +87,6 @@ body.ready.animating {
   .main .transition-container:last-of-type {
     height: 0;
     max-height: 0;
+    overflow: hidden;
   }
 }
