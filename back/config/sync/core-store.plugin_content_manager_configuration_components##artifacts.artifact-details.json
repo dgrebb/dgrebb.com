@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Title",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "files": {
         "edit": {
-          "label": "files",
+          "label": "Files",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -62,9 +62,23 @@
           "sortable": true
         }
       },
+      "URLTitle": {
+        "edit": {
+          "label": "URL Title",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "URLTitle",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "description": {
         "edit": {
-          "label": "description",
+          "label": "Description",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -78,7 +92,7 @@
       },
       "credits": {
         "edit": {
-          "label": "credits",
+          "label": "Credits",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -109,14 +123,18 @@
             "size": 4
           },
           {
-            "name": "files",
+            "name": "URLTitle",
             "size": 4
           }
         ],
         [
           {
             "name": "credits",
-            "size": 6
+            "size": 4
+          },
+          {
+            "name": "files",
+            "size": 4
           }
         ],
         [
