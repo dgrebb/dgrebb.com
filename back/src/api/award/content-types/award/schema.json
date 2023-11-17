@@ -12,12 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "award": {
+    "name": {
       "type": "string"
     },
     "slug": {
-      "type": "uid",
-      "targetField": "award"
+      "type": "uid"
     },
     "URL": {
       "type": "string",

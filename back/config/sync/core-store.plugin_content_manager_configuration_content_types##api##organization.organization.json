@@ -97,7 +97,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "industry"
+          "mainField": "name"
         },
         "list": {
           "label": "industries",
@@ -127,7 +127,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "title"
+          "mainField": "name"
         },
         "list": {
           "label": "positions",
@@ -142,7 +142,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "skill"
+          "mainField": "name"
         },
         "list": {
           "label": "skills",
@@ -238,6 +238,14 @@
       }
     },
     "layouts": {
+      "list": [
+        "name",
+        "slug",
+        "positions",
+        "projects",
+        "skills",
+        "URL"
+      ],
       "edit": [
         [
           {
@@ -295,14 +303,6 @@
             "size": 12
           }
         ]
-      ],
-      "list": [
-        "name",
-        "slug",
-        "positions",
-        "projects",
-        "skills",
-        "URL"
       ]
     }
   },

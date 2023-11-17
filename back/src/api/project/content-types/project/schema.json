@@ -20,7 +20,9 @@
       "targetField": "name"
     },
     "hero": {
-      "allowedTypes": ["images"],
+      "allowedTypes": [
+        "images"
+      ],
       "type": "media",
       "multiple": false
     },
