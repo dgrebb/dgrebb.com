@@ -2,10 +2,17 @@
   import { page } from '$app/stores';
   import PageTransition from '@components/general/PageTransition.svelte';
   import Flourish from '@layout/Flourish.svelte';
-  import * as Sentry from '@sentry/sveltekit';
   import '@styles/pages/not-found.css';
+  import { onMount } from 'svelte';
   export let data;
   $: ({ pathname } = data);
+
+  let Sentry;
+
+  onMount(async () => {
+    Sentry = await import('@sentry/sveltekit');
+  });
+
   Sentry.setContext('SvelteKit', {
     url: $page.url,
     params: $page.params,
