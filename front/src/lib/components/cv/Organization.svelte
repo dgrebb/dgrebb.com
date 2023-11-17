@@ -18,16 +18,16 @@
 
 <h1>{name}</h1>
 
-{#each industries as { attributes: { industry, slug: industrySlug } }}
-  <h2><a href="/cv/industry/{industrySlug}">{industry}</a></h2>
+{#each industries as { attributes: { name, slug: industrySlug } }}
+  <h2><a href="/cv/industry/{industrySlug}">{name}</a></h2>
 {/each}
 
-{#each skills as { attributes: { skill, slug: skillSlug } }}
-  <h2><a href="/cv/skill/{skillSlug}">{skill}</a></h2>
+{#each skills as { attributes: { name, slug: skillSlug } }}
+  <h2><a href="/cv/skill/{skillSlug}">{name}</a></h2>
 {/each}
 
-{#each positions as { attributes: { title, slug: positionSlug } }}
-  <h2><a href="/cv/position/{positionSlug}">{title}</a></h2>
+{#each positions as { attributes: { name, slug: positionSlug } }}
+  <h2><a href="/cv/position/{positionSlug}">{name}</a></h2>
 {/each}
 
 {#each projects as { attributes: { name, slug: projectSlug } }}

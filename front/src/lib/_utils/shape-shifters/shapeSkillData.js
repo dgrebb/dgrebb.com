@@ -1,6 +1,7 @@
 export async function shapeSkillData(data) {
   let skill,
     hero,
+    name,
     slug,
     svg,
     summary,
@@ -13,6 +14,7 @@ export async function shapeSkillData(data) {
 
   skill = {
     hero,
+    name,
     slug,
     svg,
     summary,

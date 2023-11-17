@@ -1,7 +1,7 @@
 <script>
   export let content;
   let {
-    industry,
+    name,
     seo,
     industrySlug,
     summary,
@@ -15,7 +15,7 @@
 
 <h1 class="collection-title">Industries</h1>
 
-<h1>{industry}</h1>
+<h1>{name}</h1>
 
 {#if organizations}
   <h2>Organizations</h2>
@@ -24,9 +24,8 @@
   {/each}
 {/if}
 
-<h1>{industry}</h1>
-{#each skills as { attributes: { skill, slug: skillSlug } }}
-  <h2><a href="/cv/skill/{skillSlug}">{skill}</a></h2>
+{#each skills as { attributes: { name, slug: skillSlug } }}
+  <h2><a href="/cv/skill/{skillSlug}">{name}</a></h2>
 {/each}
 
 {#each projects as { attributes: { name, slug: projectSlug } }}

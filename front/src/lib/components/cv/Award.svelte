@@ -1,7 +1,7 @@
 <script>
   export let content;
   let {
-    award,
+    name,
     slug,
     URL,
     date,
@@ -15,9 +15,9 @@
 
 <h1 class="collection-title">Awards</h1>
 
-<h1>{award}</h1>
-{#each positions as { attributes: { title, slug: positionSlug } }}
-  <h2><a href="/cv/position/{positionSlug}">{title}</a></h2>
+<h1>{name}</h1>
+{#each positions as { attributes: { name, slug: positionSlug } }}
+  <h2><a href="/cv/position/{positionSlug}">{name}</a></h2>
 {/each}
 
 {#each projects as { attributes: { name, slug: projectSlug } }}

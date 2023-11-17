@@ -10,8 +10,9 @@
   $: ({
     collection,
     pageData: {
-      content: { title, hero, introduction, seo },
+      content: { title, singleItemRoute, hero, introduction, seo },
     },
+    collectionData,
   } = data);
 </script>
 
@@ -29,6 +30,15 @@
       </article>
     {/if}
     <!-- TODO: use a similar svelte:component pattern here for collection lists -->
+    {#if collectionData}
+      <ul class="collection-list">
+        {#each collectionData as { attributes: { name, slug } }}
+          <li class="collection-list-item">
+            <a href={`/cv/${singleItemRoute}/${slug}`}>{name}</a>
+          </li>
+        {/each}
+      </ul>
+    {/if}
   </section>
 </PageTransition>
 <!-- <Meta {pageMeta} /> -->

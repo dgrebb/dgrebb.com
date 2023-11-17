@@ -21,9 +21,9 @@
 {#if skills.length}
   <h2>skills</h2>
   <ul class="collection-attributes">
-    {#each skills as { attributes: { skill, slug: skillSlug } }}
+    {#each skills as { attributes: { name, slug: skillSlug } }}
       <li class="attribute">
-        <a href="/cv/skill/{skillSlug}">{skill}</a>
+        <a href="/cv/skill/{skillSlug}">{name}</a>
       </li>
     {/each}
   </ul>

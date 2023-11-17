@@ -1,6 +1,5 @@
 export async function shapeClassificationData(data) {
-  let classification,
-    seo,
+  let seo,
     name,
     hero,
     start,
@@ -12,9 +11,9 @@ export async function shapeClassificationData(data) {
     skills,
     organizations,
     industries,
-    awards = false;
+    awards;
 
-  classification = {
+  let classification = ({
     seo,
     name,
     hero,
@@ -28,7 +27,7 @@ export async function shapeClassificationData(data) {
     organizations,
     industries,
     awards,
-  } = data[0].attributes;
+  } = data[0].attributes);
 
   var pageMeta = {
     ...seo,

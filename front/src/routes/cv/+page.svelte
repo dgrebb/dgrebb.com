@@ -7,14 +7,14 @@
   export let data;
 
   const { pathname, page, positions, pageMeta } = data;
-  const { title, hero, intro } = page;
+  const { name, hero, intro } = page;
 </script>
 
 <PageTransition transitionKey={pathname}>
   <section class="cv meat">
     <Flourish />
     <a id="main">Main Content</a>
-    <h1>{title}</h1>
+    <h1>{name}</h1>
     {#if hero}
       <img src={hero.url} alt={hero.alternativeText} />
     {/if}
@@ -23,18 +23,18 @@
         {intro}
       </div>
     {/if}
-    {#each positions as { title, slug, startDate, endDate, summary, awards, industries, organizations, projects, skills }, i}
+    {#each positions as { name, slug, startDate, endDate, summary, awards, industries, organizations, projects, skills }, i}
       <div class="position-timeline-item">
-        <h1><a href="/cv/position/{slug}">{title}</a></h1>
+        <h1><a href="/cv/position/{slug}">{name}</a></h1>
         <date class="position-timeline-date"
           >{#if endDate}{startDate}{:else}Current{/if}</date
         >
         {#if summary}
           <p>{summary}</p>
         {/if}
-        {#each awards as { attributes: { award, slug: awardSlug, URL }, i }}
+        {#each awards as { attributes: { name, slug: awardSlug, URL }, i }}
           <a href="/cv/award/{awardSlug}">
-            <h3>{award}</h3>
+            <h3>{name}</h3>
           </a>
         {/each}
         {#each organizations as { attributes: { name, slug: orgSlug, URL }, i }}
@@ -46,17 +46,17 @@
           <a href="/cv/project/{projectSlug}"> <h3>{name}</h3></a>
           <a href={URL}>Check it out</a>
         {/each}
-        {#each skills as { attributes: { skill, slug: skillSlug, svg, proficiency, summary }, i }}
+        {#each skills as { attributes: { name, slug: skillSlug, svg, proficiency, summary }, i }}
           <a href="/cv/skill/{skillSlug}">
             <h3>
-              {#if svg}<span class="skill-icon">{@html svg}</span>{/if}{skill} ➔
+              {#if svg}<span class="skill-icon">{@html svg}</span>{/if}{name} ➔
               {proficiency}
             </h3>
           </a>
         {/each}
-        {#each industries as { attributes: { industry, slug: industrySlug }, i }}
+        {#each industries as { attributes: { name, slug: industrySlug }, i }}
           <a href="/cv/industry/{industrySlug}">
-            <h3>{industry}</h3>
+            <h3>{name}</h3>
           </a>
         {/each}
       </div>

@@ -1,5 +1,8 @@
 export async function shapeAwardData(data) {
-  let award,
+  let name, slug, URL, date, summary, body, seo, positions, projects;
+
+  let award = ({
+    name,
     slug,
     URL,
     date,
@@ -7,15 +10,13 @@ export async function shapeAwardData(data) {
     body,
     seo,
     positions,
-    projects = false;
-
-  award = { slug, URL, date, summary, body, seo, positions, projects } =
-    data[0].attributes;
+    projects,
+  } = data[0].attributes);
 
   var pageMeta = {
     ...seo,
     type: 'website',
-    metaTitle: seo?.metaTitle || award,
+    metaTitle: seo?.metaTitle || name,
   };
 
   /**
@@ -24,9 +25,7 @@ export async function shapeAwardData(data) {
   pageMeta.metaImage = pageMeta?.metaImage?.data?.attributes || false;
 
   return {
-    award: {
-      ...award,
-    },
+    award,
     pageMeta,
   };
 }
