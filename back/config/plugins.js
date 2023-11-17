@@ -11,6 +11,7 @@ module.exports = ({ env }) => {
             providerOptions: {
               baseUrl: `https://${env("CDN_BASE_URL")}`,
               rootPath: "img",
+              sizeLimit: 536870912,
               s3Options: {
                 accessKeyId: env("AWS_ACCESS_KEY_ID"),
                 secretAccessKey: env("AWS_ACCESS_SECRET"),
