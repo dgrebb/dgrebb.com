@@ -75,8 +75,8 @@
     {#if skills}
       <h1>Skills</h1>
       <ul class="project-skills">
-        {#each skills as { attributes: { skill, slug: skillSlug } }}
-          <li><a href="/cv/skill/{skillSlug}">{skill}</a></li>
+        {#each skills as { attributes: { name, slug: skillSlug } }}
+          <li><a href="/cv/skill/{skillSlug}">{name}</a></li>
         {/each}
       </ul>
     {/if}
@@ -91,8 +91,8 @@
   {#if industries}
     <h1>Industries</h1>
     <ul class="project-industries">
-      {#each industries as { attributes: { industry, slug: industrySlug } }}
-        <li><a href="/cv/industry/{industrySlug}">{industry}</a></li>
+      {#each industries as { attributes: { name, slug: industrySlug } }}
+        <li><a href="/cv/industry/{industrySlug}">{name}</a></li>
       {/each}
     </ul>
   {/if}

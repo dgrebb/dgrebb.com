@@ -2,7 +2,7 @@
   export let content;
 
   let {
-    skill,
+    name,
     hero,
     slug: skillSlug,
     svg,
@@ -18,8 +18,7 @@
 </script>
 
 <h1 class="collection-title">
-  {#if svg}<span class="skill-icon">{@html svg}</span>{/if}
-  {skill}
+  {#if svg}<span class="skill-icon">{@html svg}</span>{/if}{name}
 </h1>
 {#if summary}
   <p>{summary}</p>
@@ -29,9 +28,9 @@
 {#if certifications.length}
   <h2>certifications</h2>
   <ul class="collection-attributes">
-    {#each certifications as { attributes: { title, slug: certificationSlug } }}
+    {#each certifications as { attributes: { name, slug: certificationSlug } }}
       <li class="attribute">
-        <a href="/cv/certification/{certificationSlug}">{title}</a>
+        <a href="/cv/certification/{certificationSlug}">{name}</a>
       </li>
     {/each}
   </ul>

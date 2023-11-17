@@ -1,7 +1,7 @@
 export async function shapePositionData(data) {
   let position,
     seo,
-    title,
+    name,
     startDate,
     endDate,
     positionSlug,
@@ -16,7 +16,7 @@ export async function shapePositionData(data) {
 
   position = {
     seo,
-    title,
+    name,
     startDate,
     endDate,
     slug: positionSlug,
@@ -33,7 +33,7 @@ export async function shapePositionData(data) {
   var pageMeta = {
     ...seo,
     type: 'website',
-    metaTitle: seo?.metaTitle || title,
+    metaTitle: seo?.metaTitle || name,
   };
 
   /**
