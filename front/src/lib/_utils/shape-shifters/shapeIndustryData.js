@@ -1,24 +1,25 @@
 export async function shapeIndustryData(data) {
-  let industry,
-    seo,
+  let seo,
+    name,
     industrySlug,
     summary,
     skills,
     organizations,
     positions,
     projects,
-    body = false;
+    body;
 
-  industry = {
+  let industry = ({
     seo,
-    industrySlug,
+    name,
+    slug: industrySlug,
     summary,
     skills,
     organizations,
     positions,
     projects,
     body,
-  } = data[0].attributes;
+  } = data[0].attributes);
 
   var pageMeta = {
     ...seo,
