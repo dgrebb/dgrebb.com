@@ -7,11 +7,15 @@
   },
   "options": {},
   "attributes": {
-    "videoFileURL": {
-      "type": "string"
+    "videoFile": {
+      "allowedTypes": ["videos"],
+      "type": "media",
+      "multiple": false
     },
-    "videoCaptionURL": {
-      "type": "string"
+    "videoCaptions": {
+      "allowedTypes": ["files"],
+      "type": "media",
+      "multiple": false
     },
     "details": {
       "type": "component",
