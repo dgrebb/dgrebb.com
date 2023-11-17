@@ -12,12 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "skill": {
+    "name": {
       "type": "string"
     },
     "slug": {
-      "type": "uid",
-      "targetField": "skill"
+      "type": "uid"
     },
     "svg": {
       "type": "text"
@@ -54,14 +53,6 @@
       "target": "api::organization.organization",
       "mappedBy": "skills"
     },
-    "body": {
-      "type": "richtext"
-    },
-    "seo": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
-    },
     "certifications": {
       "type": "relation",
       "relation": "manyToMany",
@@ -73,6 +64,14 @@
       "relation": "manyToMany",
       "target": "api::industry.industry",
       "mappedBy": "skills"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }

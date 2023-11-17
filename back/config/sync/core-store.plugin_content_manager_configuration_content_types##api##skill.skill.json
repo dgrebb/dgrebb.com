@@ -7,8 +7,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 100,
-      "mainField": "skill",
-      "defaultSortBy": "skill",
+      "mainField": "name",
+      "defaultSortBy": "name",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,16 +20,16 @@
           "sortable": true
         }
       },
-      "skill": {
+      "name": {
         "edit": {
-          "label": "skill",
+          "label": "name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "skill",
+          "label": "name",
           "searchable": true,
           "sortable": true
         }
@@ -127,7 +127,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "title"
+          "mainField": "name"
         },
         "list": {
           "label": "positions",
@@ -185,7 +185,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "title"
+          "mainField": "name"
         },
         "list": {
           "label": "certifications",
@@ -200,7 +200,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "industry"
+          "mainField": "name"
         },
         "list": {
           "label": "industries",
@@ -271,15 +271,15 @@
       "edit": [
         [
           {
-            "name": "skill",
-            "size": 4
-          },
-          {
-            "name": "proficiency",
+            "name": "name",
             "size": 4
           },
           {
             "name": "slug",
+            "size": 4
+          },
+          {
+            "name": "proficiency",
             "size": 4
           }
         ],
@@ -335,7 +335,7 @@
         ]
       ],
       "list": [
-        "skill",
+        "name",
         "slug",
         "svg",
         "proficiency",

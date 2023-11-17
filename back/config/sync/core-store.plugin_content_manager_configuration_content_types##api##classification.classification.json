@@ -69,7 +69,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "skill"
+          "mainField": "name"
         },
         "list": {
           "label": "skills",
@@ -182,7 +182,6 @@
         ]
       ],
       "list": [
-        "id",
         "name",
         "slug",
         "skills"

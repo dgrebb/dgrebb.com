@@ -7,8 +7,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 100,
-      "mainField": "industry",
-      "defaultSortBy": "industry",
+      "mainField": "name",
+      "defaultSortBy": "name",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,16 +20,16 @@
           "sortable": true
         }
       },
-      "industry": {
+      "name": {
         "edit": {
-          "label": "industry",
+          "label": "name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "industry",
+          "label": "name",
           "searchable": true,
           "sortable": true
         }
@@ -84,7 +84,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "title"
+          "mainField": "name"
         },
         "list": {
           "label": "positions",
@@ -99,7 +99,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "skill"
+          "mainField": "name"
         },
         "list": {
           "label": "skills",
@@ -213,7 +213,7 @@
       "edit": [
         [
           {
-            "name": "industry",
+            "name": "name",
             "size": 6
           },
           {
@@ -259,7 +259,7 @@
         ]
       ],
       "list": [
-        "industry",
+        "name",
         "slug",
         "positions",
         "projects"
