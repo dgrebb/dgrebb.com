@@ -1,5 +1,10 @@
-import * as Sentry from '@sentry/sveltekit';
 import { PUBLIC_ENV, PUBLIC_SENTRY_DSN } from '$env/static/public';
+
+let Sentry;
+
+onMount(async () => {
+  Sentry = await import('@sentry/sveltekit');
+});
 
 Sentry.init({
   dsn: PUBLIC_SENTRY_DSN,

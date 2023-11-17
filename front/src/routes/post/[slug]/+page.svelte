@@ -30,6 +30,12 @@
   $: related = post.related?.data || false;
   $: categories = post.categories?.data || false;
 
+  let Sentry;
+
+  onMount(async () => {
+    Sentry = await import('@sentry/sveltekit');
+  });
+
   let loaded,
     failed = false;
   let loading = true;
