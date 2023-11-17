@@ -12,12 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "industry": {
+    "name": {
       "type": "string"
     },
     "slug": {
-      "type": "uid",
-      "targetField": "industry"
+      "type": "uid"
     },
     "summary": {
       "type": "text"

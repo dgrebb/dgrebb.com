@@ -48,6 +48,20 @@
           "sortable": true
         }
       },
+      "hero": {
+        "edit": {
+          "label": "hero",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "hero",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "startDate": {
         "edit": {
           "label": "startDate",
@@ -111,7 +125,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "title"
+          "mainField": "name"
         },
         "list": {
           "label": "positions",
@@ -126,7 +140,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "industry"
+          "mainField": "name"
         },
         "list": {
           "label": "industries",
@@ -141,7 +155,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "skill"
+          "mainField": "name"
         },
         "list": {
           "label": "skills",
@@ -171,7 +185,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "award"
+          "mainField": "name"
         },
         "list": {
           "label": "awards",
@@ -217,20 +231,6 @@
         },
         "list": {
           "label": "seo",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "hero": {
-        "edit": {
-          "label": "hero",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "hero",
           "searchable": false,
           "sortable": false
         }
@@ -295,6 +295,13 @@
       }
     },
     "layouts": {
+      "list": [
+        "name",
+        "slug",
+        "skills",
+        "positions",
+        "organizations"
+      ],
       "edit": [
         [
           {
@@ -372,13 +379,6 @@
             "size": 12
           }
         ]
-      ],
-      "list": [
-        "name",
-        "slug",
-        "skills",
-        "positions",
-        "organizations"
       ]
     }
   },

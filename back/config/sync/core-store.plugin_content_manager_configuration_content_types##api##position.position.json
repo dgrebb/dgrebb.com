@@ -7,8 +7,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 100,
-      "mainField": "title",
-      "defaultSortBy": "title",
+      "mainField": "name",
+      "defaultSortBy": "endDate",
       "defaultSortOrder": "DESC"
     },
     "metadatas": {
@@ -20,16 +20,16 @@
           "sortable": true
         }
       },
-      "title": {
+      "name": {
         "edit": {
-          "label": "title",
+          "label": "name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "title",
+          "label": "name",
           "searchable": true,
           "sortable": true
         }
@@ -141,7 +141,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "skill"
+          "mainField": "name"
         },
         "list": {
           "label": "skills",
@@ -156,7 +156,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "industry"
+          "mainField": "name"
         },
         "list": {
           "label": "industries",
@@ -171,7 +171,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "award"
+          "mainField": "name"
         },
         "list": {
           "label": "awards",
@@ -186,7 +186,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "title"
+          "mainField": "name"
         },
         "list": {
           "label": "certifications",
@@ -327,7 +327,7 @@
       "edit": [
         [
           {
-            "name": "title",
+            "name": "name",
             "size": 6
           },
           {
@@ -415,8 +415,10 @@
         ]
       ],
       "list": [
-        "title",
+        "name",
         "slug",
+        "endDate",
+        "startDate",
         "organizations",
         "industries",
         "skills"

@@ -7,8 +7,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 100,
-      "mainField": "title",
-      "defaultSortBy": "title",
+      "mainField": "name",
+      "defaultSortBy": "name",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,31 +20,16 @@
           "sortable": true
         }
       },
-      "skills": {
+      "name": {
         "edit": {
-          "label": "Skills",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "skill"
-        },
-        "list": {
-          "label": "skills",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "title": {
-        "edit": {
-          "label": "Title",
+          "label": "Name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "title",
+          "label": "name",
           "searchable": true,
           "sortable": true
         }
@@ -61,6 +46,21 @@
           "label": "slug",
           "searchable": true,
           "sortable": true
+        }
+      },
+      "skills": {
+        "edit": {
+          "label": "Skills",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "skills",
+          "searchable": false,
+          "sortable": false
         }
       },
       "body": {
@@ -112,7 +112,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "title"
+          "mainField": "name"
         },
         "list": {
           "label": "positions",
@@ -194,16 +194,10 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "skills",
-        "title",
-        "slug"
-      ],
       "edit": [
         [
           {
-            "name": "title",
+            "name": "name",
             "size": 6
           },
           {
@@ -243,6 +237,11 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "name",
+        "slug",
+        "skills"
       ]
     }
   },

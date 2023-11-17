@@ -61,23 +61,42 @@
           "searchable": false,
           "sortable": false
         }
+      },
+      "singleItemRoute": {
+        "edit": {
+          "label": "singleItemRoute",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "singleItemRoute",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
       "list": [
         "id",
         "title",
-        "hero"
+        "hero",
+        "singleItemRoute"
       ],
       "edit": [
         [
           {
             "name": "title",
-            "size": 6
+            "size": 4
+          },
+          {
+            "name": "singleItemRoute",
+            "size": 4
           },
           {
             "name": "hero",
-            "size": 6
+            "size": 4
           }
         ],
         [

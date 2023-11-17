@@ -12,18 +12,17 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid"
+    },
     "skills": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::skill.skill",
       "inversedBy": "certifications"
-    },
-    "title": {
-      "type": "string"
-    },
-    "slug": {
-      "type": "uid",
-      "targetField": "title"
     },
     "body": {
       "type": "richtext"

@@ -7,8 +7,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 100,
-      "mainField": "award",
-      "defaultSortBy": "award",
+      "mainField": "name",
+      "defaultSortBy": "name",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,16 +20,16 @@
           "sortable": true
         }
       },
-      "award": {
+      "name": {
         "edit": {
-          "label": "Award",
+          "label": "Name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "award",
+          "label": "name",
           "searchable": true,
           "sortable": true
         }
@@ -97,7 +97,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "title"
+          "mainField": "name"
         },
         "list": {
           "label": "positions",
@@ -211,7 +211,7 @@
       "edit": [
         [
           {
-            "name": "award",
+            "name": "name",
             "size": 6
           },
           {
@@ -259,10 +259,11 @@
         ]
       ],
       "list": [
-        "id",
-        "award",
+        "name",
+        "projects",
         "URL",
-        "date"
+        "date",
+        "positions"
       ]
     }
   },
