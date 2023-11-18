@@ -102,6 +102,7 @@ jobs:
           name: "${{ env.BRANCH_NAME }}"
         run: |
           touch front/.env
+          echo PUBLIC_ORIGIN='${{ vars.WWW_DOMAIN }}' >> front/.env
           echo PUBLIC_API_URL='${{ secrets.PUBLIC_API_URL }}' >> front/.env
           echo PUBLIC_API_PATH_NAVIGATION='${{ secrets.PUBLIC_API_PATH_NAVIGATION }}' >> front/.env
           echo PUBLIC_API_PATH_HOME='${{ secrets.PUBLIC_API_PATH_HOME }}' >> front/.env

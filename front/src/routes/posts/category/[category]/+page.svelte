@@ -3,10 +3,8 @@
   import Meta from '@components/general/Meta.svelte';
   import PageTransition from '@components/general/PageTransition.svelte';
   import TransitionElasticFly from '@components/general/TransitionElasticFly.svelte';
-  import Link from '@components/content/renderers/Link.svelte';
   import Tag from '@components/icons/Tag.svelte';
   import Flourish from '@layout/Flourish.svelte';
-  import SvelteMarkdown from 'svelte-markdown';
   import PageNav from '@components/general/PageNav.svelte';
   import '@styles/pages/category.css';
 
@@ -77,10 +75,7 @@
                 </ul>
                 {#if summary && summary.length}
                   <div class="post-item-summary">
-                    <SvelteMarkdown
-                      renderers={{ link: Link }}
-                      source={summary}
-                    />
+                    {@html summary}
                   </div>
                 {/if}
               </li>

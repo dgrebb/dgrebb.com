@@ -22,8 +22,9 @@ else
     echo "PUBLIC_MEDIA_URL=\"\"" | tee -a $frontEnvFile >/dev/null
 fi
 
-echo "PUBLIC_ENV=${ENV}" | tee -a $frontEnvFile >/dev/null
 echo "API_KEY=\"$(pass dg/api/${1}/apikey)\"" | tee -a $frontEnvFile >/dev/null
+echo "PUBLIC_ENV=${ENV}" | tee -a $frontEnvFile >/dev/null
+echo "PUBLIC_ORIGIN=$(pass dg/www/${1}/domain)" | tee -a $frontEnvFile >/dev/null
 echo "PUBLIC_API_PATH_NAVIGATION=$(pass dg/cms/api/paths/navigation)" | tee -a $frontEnvFile >/dev/null
 echo "PUBLIC_API_PATH_HOME=$(pass dg/cms/api/paths/home)" | tee -a $frontEnvFile >/dev/null
 echo "PUBLIC_API_PATH_FOOTER=$(pass dg/cms/api/paths/footer)" | tee -a $frontEnvFile >/dev/null

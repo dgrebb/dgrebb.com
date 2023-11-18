@@ -1,7 +1,7 @@
 <script>
   import { tocClick } from '@utils/uiHelpers.js';
-  import SvelteMarkdown from 'svelte-markdown';
-  export let contents;
+  import { marked } from 'marked';
+  export let toc;
   export let pageFenceClickHandler = null;
   export let activeLink = null;
   export let setActiveLink = null;
@@ -22,7 +22,7 @@
 </script>
 
 <ul class="toc">
-  {#each contents as { text, link }, i}
+  {#each toc as { text, link }, i}
     <li>
       <a
         class="toc-link"
@@ -39,7 +39,7 @@
           TOCAnchorFocus(e);
         }}
       >
-        <SvelteMarkdown source={text} isInline />
+        {@html marked.parseInline(text)}
       </a>
     </li>
   {/each}

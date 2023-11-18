@@ -1,6 +1,4 @@
 <script>
-  import SvelteMarkdown from 'svelte-markdown';
-
   export let content;
 
   let {
@@ -28,7 +26,7 @@
     <h1>{name}</h1>
 
     {#if body}
-      <SvelteMarkdown source={body} />
+      {@html body}
     {/if}
   </section>
   <section class="project-artifacts">
