@@ -44,7 +44,7 @@
       {/if}
       {#if videos}
         <h3>Videos</h3>
-        {#each videos as { videoFileURL, videoCaptionURL, details: { title, URL, description, credits } }}
+        {#each videos as { videoFile, videoCaptions, details: { title, URL, description, credits } }}
           <h4>{title}</h4>
           <div class="video-player">
             <video
@@ -52,12 +52,12 @@
               controls
               class="project-video-player"
             >
-              <source src={videoFileURL} type="video/mp4" />
+              <source src={videoFile} type="video/mp4" />
               <track
                 default
                 kind="captions"
                 type="text/vtt"
-                src={videoCaptionURL}
+                src={videoCaptions}
                 srclang="en"
               />
             </video>
