@@ -1,6 +1,5 @@
 <script>
   import { tocClick } from '@utils/uiHelpers.js';
-  import { marked } from 'marked';
   export let toc;
   export let pageFenceClickHandler = null;
   export let activeLink = null;
@@ -39,7 +38,7 @@
           TOCAnchorFocus(e);
         }}
       >
-        {@html marked.parseInline(text)}
+        {@html text}
       </a>
     </li>
   {/each}

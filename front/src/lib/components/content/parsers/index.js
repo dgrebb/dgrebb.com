@@ -6,7 +6,7 @@ export const parseTOC = function (contents) {
   const headings = tokens.filter((t) => t.type === 'heading' && t.depth <= 2);
   return [
     ...headings.map((h) => ({
-      text: h.text,
+      text: marked.parseInline(h.text),
       link: `#${slugger(h.text)}`,
     })),
   ];
