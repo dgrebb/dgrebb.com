@@ -264,6 +264,20 @@
           "sortable": false
         }
       },
+      "title": {
+        "edit": {
+          "label": "title",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -336,6 +350,10 @@
           }
         ],
         [
+          {
+            "name": "title",
+            "size": 4
+          },
           {
             "name": "startDate",
             "size": 4

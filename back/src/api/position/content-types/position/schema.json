@@ -19,6 +19,9 @@
       "type": "uid",
       "targetField": "name"
     },
+    "title": {
+      "type": "string"
+    },
     "startDate": {
       "type": "date"
     },
@@ -32,9 +35,7 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "organizations": {
       "type": "relation",

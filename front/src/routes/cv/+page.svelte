@@ -7,14 +7,14 @@
   export let data;
 
   const { pathname, page, positions, pageMeta } = data;
-  const { name, hero, intro } = page;
+  const { title, hero, intro } = page;
 </script>
 
 <PageTransition transitionKey={pathname}>
   <section class="cv meat">
     <Flourish />
     <a id="main">Main Content</a>
-    <h1>{name}</h1>
+    <h1>{title}</h1>
     {#if hero}
       <img src={hero.url} alt={hero.alternativeText} />
     {/if}
@@ -23,9 +23,10 @@
         {intro}
       </div>
     {/if}
-    {#each positions as { name, slug, startDate, endDate, summary, awards, industries, organizations, projects, skills }, i}
+    {#each positions as { name, slug, title, startDate, endDate, summary, awards, industries, organizations, projects, skills }, i}
       <div class="position-timeline-item">
         <h1><a href="/cv/position/{slug}">{name}</a></h1>
+        {#if title}<h2>{title}</h2>{/if}
         <date class="position-timeline-date"
           >{#if endDate}{startDate}{:else}Current{/if}</date
         >

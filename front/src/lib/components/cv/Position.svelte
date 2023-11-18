@@ -3,6 +3,7 @@
   let {
     name,
     slug,
+    title,
     summary,
     body,
     startDate,
@@ -17,6 +18,7 @@
 <h1 class="collection-title">Roles</h1>
 
 <h1>{name}</h1>
+{#if title}<h2>{title}</h2>{/if}
 {#each skills as { attributes: { name, slug: skillSlug } }}
   <h2><a href="/cv/skill/{skillSlug}">{name}</a></h2>
 {/each}
