@@ -29,20 +29,16 @@ export const heading = function (text, level, raw) {
  * @returns An anchor with title and rel attributes set based on external domain
  */
 export const link = function (href, title, text) {
+  let external, titleAttr, rel;
   const internalPattern = /\/|\#|m|t/g;
-  let external;
-
   external = href.charAt(0).match(internalPattern)
     ? false
     : new URL(href).origin !== ORIGIN
       ? true
       : false;
 
-  return `<a
-    href="${href}"
-    ${title ? 'title="' + title + '"' : undefined}
-    rel="${external ? 'nofollow noopener noreferrer' : undefined}"
-  >
-    ${text}
-  </a>`;
+  titleAttr = title ? `title="${title}"` : '';
+  rel = external ? 'rel="nofollow noopener noreferrer"' : '';
+
+  return `<a href="${href}" ${titleAttr} ${rel}>${text}</a>`;
 };
