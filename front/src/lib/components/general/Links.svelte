@@ -7,6 +7,7 @@
   import IconStackOverflow from '~icons/mdi/stackoverflow';
   import IconLinkedIn from '~icons/entypo-social/linkedin';
   import IconTwitter from '~icons/mdi/twitter';
+  import IconX from '~icons/simple-icons/x';
   import IconMastodon from '~icons/mdi/mastodon';
   import IconFlickr from '~icons/icomoon-free/flickr2';
   import IconGoodreads from '~icons/ph/goodreads-logo-fill';
@@ -22,6 +23,7 @@
     IconStackOverflow,
     IconLinkedIn,
     IconTwitter,
+    IconX,
     IconMastodon,
     IconFlickr,
     IconGoodreads,
