@@ -3,9 +3,7 @@
   import Links from '@components/general/Links.svelte';
   import Meta from '@components/general/Meta.svelte';
   import PageTransition from '@components/general/PageTransition.svelte';
-  import Link from '@components/content/renderers/Link.svelte';
   import Flourish from '@layout/Flourish.svelte';
-  import SvelteMarkdown from 'svelte-markdown';
   import '@styles/pages/home.css';
 
   export let data;
@@ -37,7 +35,7 @@
     </noscript>
     <a id="main">Main Content</a>
     <h1 class="headline">{headline}</h1>
-    <SvelteMarkdown renderers={{ link: Link }} source={intro} />
+    {@html intro}
   </section>
   {#if links.length}
     <section class="links">

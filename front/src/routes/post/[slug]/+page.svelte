@@ -13,8 +13,9 @@
   $: ({
     pathname,
     post,
-    content,
+    toc,
     summary,
+    content,
     post: { title, slug },
     pageMeta,
   } = data);
@@ -29,12 +30,6 @@
   $: footnotes = post.footnotes.length ? post.footnotes : false;
   $: related = post.related?.data || false;
   $: categories = post.categories?.data || false;
-
-  let Sentry;
-
-  onMount(async () => {
-    Sentry = await import('@sentry/sveltekit');
-  });
 
   let loaded,
     failed = false;
@@ -70,6 +65,7 @@
       {updatedAt}
       {slug}
       {title}
+      {toc}
       {summary}
       {content}
       {footnotes}
@@ -83,16 +79,6 @@
     <ScrollTop />
   </slot>
 </PageTransition>
-
-{#if failed}
-  <script>
-    Sentry.captureMessage('Image Not Found', {
-      image: src,
-      page: document.location.pathname,
-      hostname: document.location.hostname,
-    });
-  </script>
-{/if}
 
 {#key pathname}
   <Meta {pageMeta} />

@@ -1,32 +1,22 @@
 import { error } from '@sveltejs/kit';
 import api from '@api';
 import {
-  PUBLIC_API_URL as URL,
+  PUBLIC_API_URL as API,
   PUBLIC_API_PATH_POST as POST,
   PUBLIC_POST_PARAMS as PARAMS,
 } from '$env/static/public';
 import { marked } from 'marked';
+import { link, heading } from '@components/content/renderers';
+import { parseTOC } from '@components/content/parsers';
 
-const renderer = {
-  heading(text, level) {
-    const id = text.toLowerCase().replace(/[^\w]+/g, '-');
-    let depth = level + 1;
-
-    return `<h${depth} id="${id}" class="post-heading">
-      <a
-        href="#${id}"
-        class="heading-anchor-link"
-        aria-label="Copy link to the &ldquo;${text}&rdquo; section">#</a
-      >
-      ${text}
-    </h${depth}>`;
-  },
-};
+const renderer = new marked.Renderer();
+renderer.link = link;
+renderer.heading = heading;
 
 marked.use({ renderer });
 
 export async function load({ params: { slug }, route }) {
-  const endpoint = URL + POST + slug + PARAMS;
+  const endpoint = API + POST + slug + PARAMS;
   const post = await api(endpoint);
 
   if (!post || post.error) {
@@ -55,32 +45,26 @@ export async function load({ params: { slug }, route }) {
 
   function markItUp(text) {
     const content = marked.parse(text);
-
     return content;
   }
 
-  let toc;
-  $: toc = [];
-  function filterTokens(event) {
-    const tokens = event.detail.tokens;
-    const headings = tokens.filter((t) => t.type === 'heading' && t.depth <= 2);
-    toc = [
-      ...toc,
-      ...headings.map((h) => ({
-        text: h.text,
-        link: `#${slugger(h.text)}`,
-      })),
-    ];
-  }
-
-  function handleParsed(event) {
-    filterTokens(event);
-  }
+  let toc = [];
 
   const markedContent = content.map((c) => {
-    return c.__component === 'posts.text'
-      ? { ...c, text: markItUp(c.text) }
-      : c;
+    switch (c.__component) {
+      case 'posts.text':
+        toc.push(...parseTOC(c.text));
+        return { ...c, text: markItUp(c.text) };
+        break;
+      case 'posts.animated-image':
+        return {
+          ...c,
+          figcaption: c.figcaption ? markItUp(c.figcaption) : null,
+        };
+        break;
+      default:
+        return c;
+    }
   });
 
   const pageMeta = {
@@ -110,7 +94,8 @@ export async function load({ params: { slug }, route }) {
 
   return {
     post: post || {},
-    summary: markItUp(summary),
+    toc,
+    summary: summary ? markItUp(summary) : false,
     content: markedContent,
     pageMeta,
   };

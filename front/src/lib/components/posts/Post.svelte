@@ -3,15 +3,12 @@
   import AnimatedImage from '@components/content/AnimatedImage.svelte';
   import Code from '@components/content/Code.svelte';
   import Footnotes from '@components/content/renderers/Footnotes.svelte';
-  import Link from '@components/content/renderers/Link.svelte';
-  import PostHeading from '@components/content/renderers/PostHeading.svelte';
-  import slugger from 'slugger';
-  // import SvelteMarkdown from 'svelte-markdown';
 
   export let publishedAt,
     updatedAt,
     slug,
     title,
+    toc,
     summary,
     content,
     footnotes,
@@ -31,26 +28,6 @@
         day: '2-digit',
       })
     : false;
-
-  let toc;
-  $: toc = [];
-  function filterTokens(event) {
-    const tokens = event.detail.tokens;
-    const headings = tokens.filter((t) => t.type === 'heading' && t.depth <= 2);
-    toc = [
-      ...toc,
-      ...headings.map((h) => ({
-        text: h.text,
-        link: `#${slugger(h.text)}`,
-      })),
-    ];
-  }
-
-  function handleParsed(event) {
-    filterTokens(event);
-  }
-
-  $: contents = toc ? [...toc] : false;
 
   $: showAside = true;
   $: asideLabel = showAside ? 'Hide' : 'Show';
@@ -72,8 +49,8 @@
   {#if updatedAt}<meta name="date_modified" content={updatedAt} />{/if}
 </svelte:head>
 
-{#if (contents && contents.length) || (categories && categories.length) || (related && related.length)}
-  <PageNav {contents} {categories} {related} {pathname} mini {setActiveLink} />
+{#if (toc && toc.length) || (categories && categories.length) || (related && related.length)}
+  <PageNav {toc} {categories} {related} {pathname} mini {setActiveLink} />
 {/if}
 <h1 class="post-title">{title}</h1>
 <article class="post-article" class:full={!showAside}>
@@ -84,22 +61,12 @@
   >
   {#if summary}
     <div class="summary">
-      <!-- <SvelteMarkdown
-        source={summary}
-        renderers={{ link: Link, heading: PostHeading }}
-        on:parsed={handleParsed}
-      /> -->
       {@html summary}
     </div>
   {/if}
   {#if content}
     {#each content as c, i}
       {#if c.__component === 'posts.text'}
-        <!-- <SvelteMarkdown
-          source={c.text}
-          renderers={{ link: Link, heading: PostHeading }}
-          on:parsed={handleParsed}
-        /> -->
         {@html c.text}
       {/if}
       {#if c.__component === 'posts.quote'}
@@ -180,8 +147,7 @@
           {#each cols as { heading, text }}
             <div class="text-column" class:headless={!heading}>
               {#if heading !== null}<header>{heading}</header>{/if}
-              <!-- <SvelteMarkdown source={text} /> -->
-              {text}
+              {@html text}
             </div>
           {/each}
         </section>
@@ -204,7 +170,7 @@
   >{asideLabel} Sidebar</button
 > -->
 <aside class="aside" class:show={showAside}>
-  {#if (contents && contents.length) || (categories && categories.length) || (related && related.length)}
-    <PageNav {contents} {categories} {related} {pathname} {setActiveLink} />
+  {#if (toc && toc.length) || (categories && categories.length) || (related && related.length)}
+    <PageNav {toc} {categories} {related} {pathname} {setActiveLink} />
   {/if}
 </aside>

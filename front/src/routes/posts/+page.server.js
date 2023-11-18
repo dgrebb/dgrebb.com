@@ -6,6 +6,11 @@ import {
   PUBLIC_API_PATH_POSTS as POSTS,
   PUBLIC_POSTS_PREVIEW_PARAMS as PARAMS,
 } from '$env/static/public';
+import { marked } from 'marked';
+import { link } from '@components/content/renderers';
+
+const renderer = new marked.Renderer();
+renderer.link = link;
 
 const pageEndpoint = URL + PAGE;
 const postsEndpoint = URL + POSTS + PARAMS;
@@ -51,8 +56,13 @@ export async function load({ route }) {
       'A desk with various electronics, music instruments, audio equipment, and books laid out in an organized fashion.',
   };
 
+  const markedPage = {
+    ...page,
+    description: marked.parse(page.description),
+  };
+
   return {
-    page: page || {},
+    page: markedPage || {},
     posts: posts || [],
     pageMeta,
   };

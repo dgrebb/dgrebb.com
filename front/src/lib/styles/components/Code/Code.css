@@ -13,6 +13,7 @@
   position: relative;
   z-index: 3;
   transition: transform 0s;
+  will-change: transform;
   margin-top: 2rem;
   margin-bottom: 2rem;
   box-shadow: var(--shadow-elevation-medium);

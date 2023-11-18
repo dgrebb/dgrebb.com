@@ -1,3 +1,6 @@
+import { marked } from 'marked';
+import { link, heading } from '@components/content/renderers';
+
 async function shapeArtifactData(data) {
   let shapenedArtifactData = {
     websites: [],
@@ -25,6 +28,12 @@ async function shapeArtifactData(data) {
 }
 
 export async function shapeProjectData(data) {
+  const renderer = new marked.Renderer();
+  renderer.link = link;
+  renderer.heading = heading;
+
+  marked.use({ renderer });
+
   let project,
     seo,
     name,
@@ -74,6 +83,7 @@ export async function shapeProjectData(data) {
     project: {
       ...project,
       hero: hero?.data?.attributes || false,
+      body: body ? marked.parse(body) : false,
       artifacts: await shapeArtifactData(project.artifacts),
     },
     pageMeta,
