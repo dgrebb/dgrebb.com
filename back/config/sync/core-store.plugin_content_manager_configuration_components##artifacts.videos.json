@@ -7,7 +7,7 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "videoFileURL",
+      "mainField": "id",
       "defaultSortBy": "id",
       "defaultSortOrder": "ASC"
     },
@@ -34,32 +34,32 @@
           "sortable": false
         }
       },
-      "videoFileURL": {
+      "videoFile": {
         "edit": {
-          "label": "Video File URL",
+          "label": "Video",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "videoFileURL",
-          "searchable": true,
-          "sortable": true
+          "label": "videoFile",
+          "searchable": false,
+          "sortable": false
         }
       },
-      "videoCaptionURL": {
+      "videoCaptions": {
         "edit": {
-          "label": "Video Caption URL",
+          "label": "Captions",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "videoCaptionURL",
-          "searchable": true,
-          "sortable": true
+          "label": "videoCaptions",
+          "searchable": false,
+          "sortable": false
         }
       }
     },
@@ -67,17 +67,17 @@
       "list": [
         "id",
         "details",
-        "videoFileURL",
-        "videoCaptionURL"
+        "videoFile",
+        "videoCaptions"
       ],
       "edit": [
         [
           {
-            "name": "videoFileURL",
+            "name": "videoFile",
             "size": 6
           },
           {
-            "name": "videoCaptionURL",
+            "name": "videoCaptions",
             "size": 6
           }
         ],

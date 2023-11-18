@@ -10,8 +10,8 @@ async function shapeArtifactData(data) {
         break;
       case 'artifacts.videos':
         shapenedArtifactData.videos.push({
-          videoFileURL: artifact.videoFileURL,
-          videoCaptionURL: artifact.videoCaptionURL,
+          videoFile: artifact.videoFile.data.attributes.url,
+          videoCaptions: artifact.videoCaptions.data.attributes.url,
           details: artifact.details,
         });
         break;
