@@ -47,19 +47,23 @@
         {#each videos as { videoFile, videoCaptions, details: { title, URL, description, credits } }}
           <h4>{title}</h4>
           <div class="video-player">
+            <!-- svelte-ignore a11y-media-has-caption -->
+            <!--TODO: Remove ignore-rule -->
             <video
               crossorigin="anonymous"
               controls
               class="project-video-player"
             >
               <source src={videoFile} type="video/mp4" />
-              <track
-                default
-                kind="captions"
-                type="text/vtt"
-                src={videoCaptions}
-                srclang="en"
-              />
+              {#if videoCaptions}
+                <track
+                  default
+                  kind="captions"
+                  type="text/vtt"
+                  src={videoCaptions}
+                  srclang="en"
+                />
+              {/if}
             </video>
           </div>
         {/each}

@@ -27,7 +27,7 @@ function structurePositions(data) {
 
 export async function load({ params: { pathname } }) {
   var cv, positionsData;
-  let seo, hero, name, intro;
+  let seo, hero, title, intro;
 
   try {
     cv = await api(endpoint);
@@ -47,11 +47,11 @@ export async function load({ params: { pathname } }) {
 
   ({
     seo,
-    content: { hero, name, introduction: intro },
+    content: { hero, title, introduction: intro },
   } = cv);
 
   const page = {
-    name,
+    title,
     intro,
     hero: hero?.data?.attributes || false,
   };
@@ -61,7 +61,7 @@ export async function load({ params: { pathname } }) {
   var pageMeta = {
     ...seo,
     type: 'website',
-    metaTitle: seo?.metaTitle || name,
+    metaTitle: seo?.metaTitle || title,
   };
 
   /**
