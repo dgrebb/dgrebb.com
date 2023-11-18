@@ -10,6 +10,8 @@ import { link } from '@components/content/renderers';
 const renderer = new marked.Renderer();
 renderer.link = link;
 
+marked.use({ renderer });
+
 const endpoint = URL + HOME;
 
 export async function load({ params: { pathname } }) {
