@@ -13,6 +13,8 @@
   $: ({
     pathname,
     post,
+    content,
+    summary,
     post: { title, slug },
     pageMeta,
   } = data);
@@ -24,8 +26,6 @@
   $: heroMime = hero?.mime;
   $: position = post.position || 'center center';
   $: ({ publishedAt, updatedAt } = post);
-  $: summary = post.summary || false;
-  $: content = post?.content?.length ? post.content : false;
   $: footnotes = post.footnotes.length ? post.footnotes : false;
   $: related = post.related?.data || false;
   $: categories = post.categories?.data || false;
