@@ -1,12 +1,9 @@
 <script>
   import Meta from '@components/general/Meta.svelte';
   import PageTransition from '@components/general/PageTransition.svelte';
-  import Code from '@components/content/Code.svelte';
-  import Link from '@components/content/renderers/Link.svelte';
   import Flourish from '@layout/Flourish.svelte';
   import ScrollTop from '@layout/ScrollTop.svelte';
   import '@styles/pages/privacy.css';
-  import SvelteMarkdown from 'svelte-markdown';
 
   export let data;
   const { title, details, pageMeta, updatedAt, pathname } = data;
@@ -23,7 +20,7 @@
       <h2 class="date">Effective Date: <mark>{date}</mark></h2>
     </section>
     <section class="privacy-main">
-      <SvelteMarkdown renderers={{ link: Link, code: Code }} source={details} />
+      {@html details}
     </section>
   </article>
 

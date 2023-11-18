@@ -186,32 +186,6 @@
   padding-right: 1rem;
   padding-left: 1rem;
   width: 100%;
-  .post-heading {
-    position: relative;
-    padding: 0.25rem 0;
-  }
-  .heading-anchor-link {
-    display: inline;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: auto;
-    opacity: 0;
-    transition:
-      opacity var(--transition-duration-md) ease-in-out,
-      color var(--transition-duration-md);
-    border: none;
-    height: 100%;
-    font-size: 1rem;
-    font-family: var(--font-lb);
-    &:hover,
-    &:focus,
-    &:focus-visible,
-    &:active {
-      opacity: 1;
-      color: var(--highlight-clr);
-    }
-  }
   .summary {
     font-family: var(--font-lb);
     text-wrap: pretty;
@@ -389,9 +363,6 @@
     padding-right: 1.5rem;
     padding-left: 1.5rem;
   }
-  .post-article .heading-anchor-link {
-    left: -1rem;
-  }
   .post-article .summary {
     padding-right: 1.75rem;
     padding-left: 1.75rem;
@@ -499,11 +470,6 @@
   }
   .post-article {
     margin-bottom: -2rem;
-  }
-  .post-article .heading-anchor-link {
-    left: -2.5rem;
-    vertical-align: middle;
-    font-size: unset;
   }
   .post-article blockquote {
     p:first-child::before,

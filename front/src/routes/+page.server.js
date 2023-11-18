@@ -4,6 +4,11 @@ import {
 } from '$env/static/public';
 import api from '@api';
 import { error } from '@sveltejs/kit';
+import { marked } from 'marked';
+import { link } from '@components/content/renderers';
+
+const renderer = new marked.Renderer();
+renderer.link = link;
 
 const endpoint = URL + HOME;
 
@@ -35,7 +40,7 @@ export async function load({ params: { pathname } }) {
   const page = {
     headline,
     image,
-    intro,
+    intro: intro ? marked.parse(intro) : false,
     links,
   };
   var pageMeta = {

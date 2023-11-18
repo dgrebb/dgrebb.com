@@ -125,6 +125,35 @@
       padding-top: 0.25rem;
     }
   }
+  .privacy-main,
+  .post-article {
+    .post-heading {
+      position: relative;
+      padding: 0.25rem 0;
+    }
+    .heading-anchor-link {
+      display: inline;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: auto;
+      opacity: 0;
+      transition:
+        opacity var(--transition-duration-md) ease-in-out,
+        color var(--transition-duration-md);
+      border: none;
+      height: 100%;
+      font-size: 1rem;
+      font-family: var(--font-lb);
+      &:hover,
+      &:focus,
+      &:focus-visible,
+      &:active {
+        opacity: 1;
+        color: var(--highlight-clr);
+      }
+    }
+  }
 }
 h1.page-heading {
   transition-duration: var(--transition-duration);
@@ -156,6 +185,12 @@ h1.page-heading {
       ol,
       ul {
         margin: 0.75rem 0 0.75rem 0.75rem;
+      }
+    }
+    .privacy-main,
+    .post-article {
+      .heading-anchor-link {
+        left: -1rem;
       }
     }
   }
@@ -210,6 +245,14 @@ h1.page-heading {
       line-height: 1.75rem;
       & + p {
         padding-top: 0.5rem;
+      }
+    }
+    .privacy-main,
+    .post-article {
+      .heading-anchor-link {
+        left: -2.5rem;
+        vertical-align: middle;
+        font-size: inherit;
       }
     }
   }

@@ -6,7 +6,7 @@
   import ListIcon from '~icons/gg/list';
   import '@styles/components/page-nav.css';
 
-  export let contents = false;
+  export let toc = false;
   export let categories = false;
   export let related = false;
   export let pathname = false;
@@ -46,10 +46,10 @@
     </label>
   {/if}
   <div class="page-navigation-list" use:focusTrap={mini}>
-    {#if contents && contents.length}
+    {#if toc && toc.length}
       <h2>Table of Contents</h2>
       <TableOfContents
-        {contents}
+        {toc}
         {pageFenceClickHandler}
         {setActiveLink}
         {activeLink}
@@ -58,7 +58,7 @@
     {#if categories && categories.length}
       <h2>Categories</h2>
       <ul class="page-navigation-list">
-        {#if !contents}
+        {#if !toc}
           <li class="page-navigation-category-all">
             <a
               on:click={(e) => {

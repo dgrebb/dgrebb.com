@@ -4,6 +4,14 @@ import {
   PUBLIC_API_URL as URL,
   PUBLIC_API_PATH_PRIVACY as PRIVACY,
 } from '$env/static/public';
+import { marked } from 'marked';
+import { heading, link } from '@components/content/renderers';
+
+const renderer = new marked.Renderer();
+renderer.link = link;
+renderer.heading = heading;
+
+marked.use({ renderer });
 
 const endpoint = URL + PRIVACY;
 
@@ -33,8 +41,14 @@ export async function load({ params }) {
     url: 'https://s.dgrebb.com/img/default_privacy_963504effe.webp',
     alternativeText: 'The Circuit of Life',
   };
+
+  var markedPrivacyDetails = privacyContent
+    ? marked.parse(privacyContent.details)
+    : false;
+
   return {
     ...privacyContent,
+    details: markedPrivacyDetails || false,
     pageMeta,
   };
 }

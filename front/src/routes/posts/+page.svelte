@@ -1,12 +1,10 @@
 <script>
   import Meta from '@components/general/Meta.svelte';
   import PageTransition from '@components/general/PageTransition.svelte';
-  import Link from '@components/content/renderers/Link.svelte';
   import PostsGrid from '@components/posts/PostsGrid.svelte';
   import Flourish from '@layout/Flourish.svelte';
   import '@styles/pages/posts.css';
   import { onMount } from 'svelte';
-  import SvelteMarkdown from 'svelte-markdown';
 
   export let data;
   let mounted = false;
@@ -45,7 +43,7 @@
     <a id="main">Main Content</a>
     <h1 class="title">{headline}</h1>
     <div class="summary">
-      <SvelteMarkdown renderers={{ link: Link }} source={description} />
+      {@html description}
     </div>
     <PostsGrid {gridItems} />
   </section>

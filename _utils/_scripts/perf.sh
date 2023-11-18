@@ -8,11 +8,11 @@ elif [[ $2 == "p" ]]; then
 else
   URL="https://local.dgrebb.com"
 fi
-urls="${URL}/index.html?roboto
+urls="${URL}/?roboto
+${URL}/post/animating-page-and-view-transitions-with-accessibility-in-mind/?roboto
 ${URL}/posts/index.html?roboto
-${URL}/post/hello-world/index.html?roboto
-${URL}/posts/category/all/index.html?roboto
-${URL}/privacy/index.html?roboto"
+${URL}/posts/category/all/?roboto
+${URL}/privacy/?roboto"
 # exec 3>&1 &>/dev/null
 if [ $# -eq 0 ]; then
   printf "\n${red}Argument for perf command [dev] is required.\n"
