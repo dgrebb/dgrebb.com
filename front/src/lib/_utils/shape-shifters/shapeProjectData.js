@@ -11,7 +11,7 @@ async function shapeArtifactData(data) {
       case 'artifacts.videos':
         shapenedArtifactData.videos.push({
           videoFile: artifact.videoFile.data.attributes.url,
-          videoCaptions: artifact.videoCaptions.data.attributes.url,
+          videoCaptions: artifact.videoCaptions?.data?.attributes?.url || null,
           details: artifact.details,
         });
         break;
@@ -28,6 +28,7 @@ export async function shapeProjectData(data) {
   let project,
     seo,
     name,
+    title,
     hero,
     startDate,
     endDate,
@@ -43,6 +44,7 @@ export async function shapeProjectData(data) {
   project = {
     seo,
     name,
+    title,
     hero,
     startDate,
     endDate,
