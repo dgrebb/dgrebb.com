@@ -101,6 +101,13 @@
         height: 2rem;
       }
     }
+    .x-icon {
+      padding-top: 5px;
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
     .instagram-icon {
       padding-top: 6px;
     }
@@ -109,6 +116,13 @@
     }
     .pinboard-icon {
       padding-top: 3px;
+    }
+    .catchafire-icon {
+      svg {
+        padding-top: 3px;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
     }
   }
 }

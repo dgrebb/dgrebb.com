@@ -8,7 +8,7 @@
       "searchable": true,
       "pageSize": 100,
       "mainField": "title",
-      "defaultSortBy": "updatedAt",
+      "defaultSortBy": "createdAt",
       "defaultSortOrder": "DESC"
     },
     "metadatas": {
@@ -321,8 +321,7 @@
         "hero",
         "createdAt",
         "updatedAt",
-        "slug",
-        "id"
+        "slug"
       ]
     }
   },
