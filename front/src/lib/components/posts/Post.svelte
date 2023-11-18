@@ -6,7 +6,7 @@
   import Link from '@components/content/renderers/Link.svelte';
   import PostHeading from '@components/content/renderers/PostHeading.svelte';
   import slugger from 'slugger';
-  import SvelteMarkdown from 'svelte-markdown';
+  // import SvelteMarkdown from 'svelte-markdown';
 
   export let publishedAt,
     updatedAt,
@@ -84,21 +84,23 @@
   >
   {#if summary}
     <div class="summary">
-      <SvelteMarkdown
+      <!-- <SvelteMarkdown
         source={summary}
         renderers={{ link: Link, heading: PostHeading }}
         on:parsed={handleParsed}
-      />
+      /> -->
+      {@html summary}
     </div>
   {/if}
   {#if content}
     {#each content as c, i}
       {#if c.__component === 'posts.text'}
-        <SvelteMarkdown
+        <!-- <SvelteMarkdown
           source={c.text}
           renderers={{ link: Link, heading: PostHeading }}
           on:parsed={handleParsed}
-        />
+        /> -->
+        {@html c.text}
       {/if}
       {#if c.__component === 'posts.quote'}
         <blockquote>
@@ -178,7 +180,8 @@
           {#each cols as { heading, text }}
             <div class="text-column" class:headless={!heading}>
               {#if heading !== null}<header>{heading}</header>{/if}
-              <SvelteMarkdown source={text} />
+              <!-- <SvelteMarkdown source={text} /> -->
+              {text}
             </div>
           {/each}
         </section>
