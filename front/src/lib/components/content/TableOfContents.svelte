@@ -21,7 +21,7 @@
 </script>
 
 <ul class="toc">
-  {#each toc as { text, link }, i}
+  {#each toc as { text, link }}
     <li>
       <a
         class="toc-link"

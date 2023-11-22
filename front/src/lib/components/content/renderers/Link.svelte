@@ -4,7 +4,7 @@
   export let href = '';
   export let text = '';
   export let title = undefined;
-  const internalPattern = /\/|\#|m|t/g;
+  const internalPattern = /\/|#|m|t/g;
   let external;
 
   onMount(() => {

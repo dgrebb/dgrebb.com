@@ -1,4 +1,5 @@
 import { PUBLIC_ENV, PUBLIC_SENTRY_DSN } from '$env/static/public';
+import { onMount } from 'svelte';
 
 let Sentry;
 

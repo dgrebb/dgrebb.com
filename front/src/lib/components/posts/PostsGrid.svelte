@@ -4,7 +4,7 @@
 </script>
 
 <ul class="posts-grid">
-  {#each gridItems as { lazyImage, slug, title }, i (slug)}
+  {#each gridItems as { lazyImage, slug, title }}
     <li
       class="posts-grid-item"
       style={lazyImage && `background-image: url('${lazyImage}');`}

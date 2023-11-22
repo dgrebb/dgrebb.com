@@ -12,7 +12,6 @@
 
   async function handleCopy(e) {
     const button = e.target;
-    const svg = button.querySelectorAll('svg');
     animations = button.querySelectorAll('.icon-code-copied animate');
     resets = button.querySelectorAll('.icon-code-copied set');
     button.closest('.syntax-highlighter').classList.toggle('copying', false);
@@ -34,11 +33,6 @@
         resets.forEach((a) => a.beginElement());
       }, 2333);
     }
-  }
-
-  async function handleFocusOut(e) {
-    const button = e.target;
-    resets = button.querySelectorAll('.icon-code-copied set');
   }
 </script>
 

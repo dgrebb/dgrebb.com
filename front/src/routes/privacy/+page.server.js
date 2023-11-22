@@ -15,7 +15,7 @@ marked.use({ renderer });
 
 const endpoint = URL + PRIVACY;
 
-export async function load({ params }) {
+export async function load() {
   const privacyContent = await api(endpoint);
   if (!privacyContent) {
     throw error(500, {

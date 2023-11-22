@@ -30,7 +30,9 @@
     : false;
 
   $: showAside = true;
+  // eslint-disable-next-line no-unused-vars
   $: asideLabel = showAside ? 'Hide' : 'Show';
+  // eslint-disable-next-line no-unused-vars
   function asideToggle() {
     showAside = !showAside;
   }

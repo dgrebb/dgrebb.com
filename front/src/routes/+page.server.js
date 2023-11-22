@@ -14,7 +14,7 @@ marked.use({ renderer });
 
 const endpoint = URL + HOME;
 
-export async function load({ params: { pathname } }) {
+export async function load() {
   var home;
   let seo, bioPicture, headline, image, intro, links;
 

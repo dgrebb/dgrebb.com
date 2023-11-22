@@ -1,17 +1,6 @@
 export async function shapeAwardData(data) {
-  let name, slug, URL, date, summary, body, seo, positions, projects;
-
-  let award = ({
-    name,
-    slug,
-    URL,
-    date,
-    summary,
-    body,
-    seo,
-    positions,
-    projects,
-  } = data[0].attributes);
+  let award,
+    { name, seo } = (award = data[0].attributes);
 
   var pageMeta = {
     ...seo,

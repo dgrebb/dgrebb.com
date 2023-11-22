@@ -23,7 +23,7 @@
     }
   }
 
-  function pageFenceClickHandler(e) {
+  function pageFenceClickHandler() {
     const pageNavCheckbox = document.getElementById('page-navigation-checkbox');
     pageNavCheckbox.checked = false;
   }
@@ -75,7 +75,7 @@
             </a>
           </li>
         {/if}
-        {#each categories as { attributes: { name, slug } }, i}
+        {#each categories as { attributes: { name, slug } }}
           <li>
             <a
               on:click={(e) => {
@@ -97,7 +97,7 @@
     {#if related && related.length}
       <h2>Related Posts</h2>
       <ul class="page-navigation-list">
-        {#each related as { attributes: { title, slug } }, i}
+        {#each related as { attributes: { title, slug } }}
           <li>
             <a
               on:click={() => relatedClick(pathname, title)}

@@ -25,7 +25,7 @@ function structurePositions(data) {
   return reducedPositions;
 }
 
-export async function load({ params: { pathname } }) {
+export async function load() {
   var cv, positionsData;
   let seo, hero, title, intro;
 

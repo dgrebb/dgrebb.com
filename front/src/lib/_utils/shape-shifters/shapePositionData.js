@@ -1,34 +1,6 @@
 export async function shapePositionData(data) {
   let position,
-    seo,
-    name,
-    startDate,
-    endDate,
-    positionSlug,
-    summary,
-    body,
-    hero,
-    skills,
-    organizations,
-    projects,
-    industries,
-    awards = false;
-
-  position = {
-    seo,
-    name,
-    startDate,
-    endDate,
-    slug: positionSlug,
-    summary,
-    body,
-    hero,
-    skills,
-    organizations,
-    projects,
-    industries,
-    awards,
-  } = data[0].attributes;
+    { name, hero, seo } = (position = data[0].attributes);
 
   var pageMeta = {
     ...seo,

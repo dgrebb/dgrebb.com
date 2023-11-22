@@ -2,10 +2,6 @@
   export let content;
   let {
     name,
-    organizationSlug,
-    images,
-    URL,
-    summary,
     body,
     industries: { data: industries },
     positions: { data: positions },
@@ -17,6 +13,10 @@
 <h1 class="collection-title">Organizations</h1>
 
 <h1>{name}</h1>
+
+{#if body}
+  {body}
+{/if}
 
 {#each industries as { attributes: { name, slug: industrySlug } }}
   <h2><a href="/cv/industry/{industrySlug}">{name}</a></h2>

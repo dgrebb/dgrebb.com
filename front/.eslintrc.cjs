@@ -11,4 +11,10 @@ module.exports = {
     es2017: true,
     node: true,
   },
+  globals: {
+    plausible: true,
+  },
+  rules: {
+    'svelte/no-at-html-tags': 'off',
+  },
 };

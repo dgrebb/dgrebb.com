@@ -55,13 +55,11 @@ export async function load({ params: { slug }, route }) {
       case 'posts.text':
         toc.push(...parseTOC(c.text));
         return { ...c, text: markItUp(c.text) };
-        break;
       case 'posts.animated-image':
         return {
           ...c,
           figcaption: c.figcaption ? markItUp(c.figcaption) : null,
         };
-        break;
       default:
         return c;
     }

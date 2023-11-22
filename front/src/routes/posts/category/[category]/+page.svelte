@@ -50,7 +50,7 @@
       >
         {#if posts && posts.length}
           <ul>
-            {#each posts as { attributes: { title, publishedAt, slug, summary, categories, position, hero: { data: { attributes: { formats: { thumbnail } } } } } }, i}
+            {#each posts as { attributes: { title, publishedAt, slug, summary, categories, position, hero: { data: { attributes: { formats: { thumbnail } } } } } }}
               {@const date = new Date(publishedAt).toDateString()}
               <li class="post-item">
                 <a href="/post/{slug}">

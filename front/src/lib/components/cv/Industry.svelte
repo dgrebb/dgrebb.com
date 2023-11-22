@@ -2,9 +2,6 @@
   export let content;
   let {
     name,
-    seo,
-    industrySlug,
-    summary,
     skills: { data: skills },
     organizations: { data: organizations },
     positions: { data: positions },
@@ -17,6 +14,10 @@
 
 <h1>{name}</h1>
 
+{#if body}
+  {body}
+{/if}
+
 {#if organizations}
   <h2>Organizations</h2>
   {#each organizations as { attributes: { name, slug: organizationSlug } }}
@@ -24,10 +25,14 @@
   {/each}
 {/if}
 
-{#each skills as { attributes: { name, slug: skillSlug } }}
-  <h2><a href="/cv/skill/{skillSlug}">{name}</a></h2>
+{#each positions as { attributes: { name, slug: positionSlug } }}
+  <h2><a href="/cv/position/{positionSlug}">{name}</a></h2>
 {/each}
 
 {#each projects as { attributes: { name, slug: projectSlug } }}
   <h2><a href="/cv/project/{projectSlug}">{name}</a></h2>
+{/each}
+
+{#each skills as { attributes: { name, slug: skillSlug } }}
+  <h2><a href="/cv/skill/{skillSlug}">{name}</a></h2>
 {/each}

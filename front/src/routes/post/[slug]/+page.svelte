@@ -31,23 +31,15 @@
   $: related = post.related?.data || false;
   $: categories = post.categories?.data || false;
 
-  let loaded,
-    failed = false;
-  let loading = true;
+  let loaded = false;
 
   onMount(() => {
     if (heroImage) {
       const img = new Image();
       img.src = heroImage;
-      loading = true;
 
       img.onload = () => {
-        loading = false;
         loaded = true;
-      };
-      img.onerror = () => {
-        loading = false;
-        failed = true;
       };
     }
   });
