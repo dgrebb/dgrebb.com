@@ -5,7 +5,7 @@
     body,
     positions: { data: positions },
     projects: { data: projects },
-  } = content[0].attributes;
+  } = content.award;
 </script>
 
 <h1 class="collection-title">Awards</h1>
