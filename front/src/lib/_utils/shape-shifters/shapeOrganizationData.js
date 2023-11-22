@@ -1,4 +1,4 @@
-export async function shapeOrganizationData([data]) {
+export async function shapeOrganizationData(data) {
   let organization,
     { name, images, seo } = (organization = data[0].attributes);
 
