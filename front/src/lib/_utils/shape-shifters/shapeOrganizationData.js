@@ -1,25 +1,6 @@
 export async function shapeOrganizationData([data]) {
   let organization,
-    name,
-    images,
-    URL,
-    summary,
-    projects,
-    positions,
-    skills,
-    body,
-    seo = false;
-
-  organization = {
-    name,
-    images,
-    URL,
-    summary,
-    projects,
-    positions,
-    skills,
-    body,
-  } = data.attributes;
+    { name, images, seo } = (organization = data[0].attributes);
 
   var pageMeta = {
     ...seo,

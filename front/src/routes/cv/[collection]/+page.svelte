@@ -5,12 +5,12 @@
 
   export let data;
 
-  let title, hero, introduction, seo;
+  let title, hero, introduction;
 
   $: ({
     collection,
     pageData: {
-      content: { title, singleItemRoute, hero, introduction, seo },
+      content: { title, singleItemRoute, hero, introduction },
     },
     collectionData,
   } = data);

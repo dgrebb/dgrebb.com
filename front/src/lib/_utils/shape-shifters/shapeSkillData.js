@@ -1,30 +1,6 @@
 export async function shapeSkillData(data) {
   let skill,
-    hero,
-    name,
-    slug,
-    svg,
-    summary,
-    proficiency,
-    classifications,
-    projects,
-    positions,
-    organizations,
-    seo = false;
-
-  skill = {
-    hero,
-    name,
-    slug,
-    svg,
-    summary,
-    proficiency,
-    classifications,
-    projects,
-    positions,
-    organizations,
-    seo,
-  } = data[0].attributes;
+    { hero, seo } = (skill = data[0].attributes);
 
   var pageMeta = {
     ...seo,

@@ -16,6 +16,7 @@
     if ($navigating) {
       if ($navigating.from.route.id === $navigating.to.route.id) {
         initialHeight = nodeOut.offsetHeight;
+        // eslint-disable-next-line no-unused-vars
         let animation = nodeOut.closest('.category-posts-list').animate(
           [
             {
@@ -38,6 +39,7 @@
 
     if ($navigating) {
       if ($navigating.from.route.id === $navigating.to.route.id) {
+        // eslint-disable-next-line no-unused-vars
         let animation = nodeIn.closest('.category-posts-list').animate(
           [
             {

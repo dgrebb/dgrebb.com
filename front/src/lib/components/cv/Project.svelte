@@ -2,13 +2,7 @@
   export let content;
 
   let {
-    seo,
     name,
-    hero,
-    startDate,
-    endDate,
-    projectSlug,
-    summary,
     body,
     artifacts,
     artifacts: { websites, videos },
@@ -36,7 +30,11 @@
         <h3>Websites</h3>
         <ul class="website-artifacts-list">
           {#each websites as { title, URL, URLTitle, description, credits }}
-            <li><a href={URL} target="_blank" title={URLTitle}>{title}</a></li>
+            <li>
+              <a href={URL} target="_blank" title={URLTitle}>{title}</a>
+              {#if description}{description}{/if}
+              {#if credits}{credits}{/if}
+            </li>
           {/each}
         </ul>
       {/if}
@@ -63,6 +61,9 @@
                 />
               {/if}
             </video>
+            {#if URL}{URL}{/if}
+            {#if description}{description}{/if}
+            {#if credits}{credits}{/if}
           </div>
         {/each}
       {/if}
@@ -73,6 +74,15 @@
 <aside class="project-aside">
   <!-- TODO: Similarly, each artifact type should have a component 
   to match, which is dynamically selected by artifact type  -->
+
+  {#if awards}
+    <h1>Awards</h1>
+    <ul class="project-awards">
+      {#each awards as { attributes: { name, slug: awardSlug } }}
+        <li><a href="/cv/award/{awardSlug}">{name}</a></li>
+      {/each}
+    </ul>
+  {/if}
   {#if organizations}
     {#if skills}
       <h1>Skills</h1>

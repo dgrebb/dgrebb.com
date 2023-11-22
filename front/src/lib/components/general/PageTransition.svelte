@@ -32,6 +32,7 @@
 
   function animateIntroEnd() {
     if (motionless() === true) return;
+    const header = document.querySelector('.header');
     setTimeout(() => {
       header.classList.toggle('scroll-transition', false);
       document.body.classList.toggle('animating', false);
