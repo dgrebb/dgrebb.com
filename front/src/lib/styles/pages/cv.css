@@ -46,32 +46,63 @@
   }
 }
 
-input.date-toggle:checked ~ div.career-timeline-item,
-.career-timeline-item:hover,
-.career-timeline-item:has(details[open]) {
-  .career-timeline-date {
-    transform: translateX(-3.5rem);
-    opacity: 1;
+input#date-toggle-checkbox:checked {
+  & ~ div.career-timeline-item,
+  .career-timeline-item:hover,
+  .career-timeline-item:has(details[open]) {
+    .career-timeline-date {
+      transform: translateX(-3.5rem);
+      opacity: 1;
+    }
   }
-  h1.item-title::before {
-    transform: scale(1.33);
+  ~ label {
+    time {
+      opacity: 1;
+    }
   }
 }
 
-input.date-toggle {
+input#date-toggle-checkbox {
   visibility: hidden;
+}
+
+label.date-toggle,
+label.date-toggle time {
+  transition-duration: var(--transition-duration-md);
+  transition-property: color, opacity;
+  transition-timing-function: var(--transition-timing-function);
+  color: var(--highlight-clr);
 }
 
 label.date-toggle {
   position: absolute;
   left: -30px;
-  transition-duration: var(--transition-duration);
-  transition-property: color;
-  transition-timing-function: var(--transition-timing-function);
   cursor: pointer;
-  color: var(--highlight-clr);
+  time {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.3;
+    z-index: 1;
+    transition-duration: var(--transition-duration);
+    padding-top: 0.33rem;
+    color: var(--highlight-clr);
+    font-size: 1.25rem;
+    text-rendering: auto;
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+    -webkit-text-size-adjust: 100%;
+  }
   &:hover {
     color: var(--fg-clr);
+    time {
+      opacity: 1;
+    }
   }
   svg {
     background-color: var(--bg-clr);

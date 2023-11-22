@@ -31,10 +31,7 @@
       </div>
     {/if}
     <div class="career-timeline">
-      <input id="date-toggle" type="checkbox" class="date-toggle" />
-      <label for="date-toggle" class="date-toggle">
-        <Calendar />
-      </label>
+      <Calendar />
       {#each positions as { name, slug, title, startDate, endDate, summary, awards, industries, organizations, projects, skills }}
         <div class="career-timeline-item">
           <h1 class="item-title"><a href="/cv/position/{slug}">{name}</a></h1>
