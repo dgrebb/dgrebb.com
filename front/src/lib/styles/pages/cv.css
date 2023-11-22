@@ -1,36 +1,97 @@
-.position-timeline-item {
+.career-timeline {
+  position: relative;
+  margin: auto;
+  padding-top: 2rem;
+  max-width: 77%;
+}
+
+.career-timeline-item {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   border-left: 2px solid var(--highlight-clr);
   padding: 2rem;
-  &:hover {
-    .position-timeline-date {
-      &::before {
-        transform: scale(1.33);
-      }
+  &:hover,
+  &:has(details[open]) {
+    .career-timeline-date {
+      transform: translateX(-3.33rem);
+      opacity: 1;
     }
+    h1.item-title::before {
+      transform: scale(1.33);
+    }
+  }
+  h1.item-title {
+    position: relative;
+    line-height: 1;
+    &::before {
+      position: absolute;
+      bottom: -0.75rem;
+      left: -2.5rem;
+      transition-duration: 215ms;
+      transition-property: transform;
+      transition-timing-function: var(--transition-timing-function);
+      box-sizing: border-box;
+      margin-right: 2px;
+      outline: 2px solid var(--highlight-clr);
+      border-radius: 50%;
+      background-color: var(--bg-clr);
+      width: 1rem;
+      height: 1rem;
+      content: '';
+    }
+  }
+  summary {
+    cursor: pointer;
   }
 }
 
-.position-timeline-date {
+input.date-toggle:checked ~ div.career-timeline-item,
+.career-timeline-item:hover,
+.career-timeline-item:has(details[open]) {
+  .career-timeline-date {
+    transform: translateX(-3.5rem);
+    opacity: 1;
+  }
+  h1.item-title::before {
+    transform: scale(1.33);
+  }
+}
+
+input.date-toggle {
+  visibility: hidden;
+}
+
+label.date-toggle {
+  position: absolute;
+  left: -30px;
+  transition-duration: var(--transition-duration);
+  transition-property: color;
+  transition-timing-function: var(--transition-timing-function);
+  cursor: pointer;
+  color: var(--highlight-clr);
+  &:hover {
+    color: var(--fg-clr);
+  }
+  svg {
+    background-color: var(--bg-clr);
+  }
+}
+
+.career-timeline-date {
   display: flex;
   position: relative;
-  align-items: center;
-  &::before {
-    display: inline;
-    position: absolute;
-    left: -2.5rem;
-    vertical-align: middle;
-    transition-duration: 215ms;
-    transition-property: transform;
-    transition-timing-function: var(--transition-timing-function);
-    box-sizing: border-box;
-    border: 2px solid var(--highlight-clr);
-    border-radius: 50%;
-    background-color: var(--bg-clr);
-    width: 1rem;
-    height: 1rem;
-    content: '';
-  }
+  top: -1.25rem;
+  right: 100%;
+  align-content: center;
+  justify-content: right;
+  opacity: 0;
+  transition-duration: 215ms;
+  transition-property: transform, opacity;
+  transition-timing-function: var(--transition-timing-function);
+  padding-top: 2px;
+  font-family: var(--font-lb);
+  text-align: right;
 }
 
 .main .meat h1.collection-title {
