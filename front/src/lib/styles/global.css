@@ -9,7 +9,10 @@
 :root {
   --white: 223, 224, 224;
   --black: 19, 19, 20;
-  background: var(--bg-gradient);
+  transition-duration: var(--transition-duration-md);
+  transition-property: background;
+  transition-timing-function: var(--transition-timing-function);
+  background: var(--bg-lightsource);
   background-repeat: no-repeat;
   background-color: var(--bg-clr);
   :focus-visible {
@@ -72,6 +75,7 @@ body {
   top: 0;
   right: 0;
   left: 0;
+  transform: translateZ(0);
   z-index: 1;
   transition-duration: var(--transition-duration);
   transition-property: background-color;
@@ -79,7 +83,6 @@ body {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   background-color: var(--fg-clr);
   height: 0.5rem;
-  transform: translateZ(0);
 }
 
 #main {

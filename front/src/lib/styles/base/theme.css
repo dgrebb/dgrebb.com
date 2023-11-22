@@ -63,6 +63,11 @@
       var(--sunshine),
       var(--bg-clr) 333px
     );
+    --bg-lightsource: linear-gradient(
+      190deg,
+      var(--sunshine),
+      transparent 333px
+    );
     --content-bg-gradient: linear-gradient(
       190deg,
       var(--sunshine),
@@ -142,6 +147,7 @@ html.light-theme {
   --bg-clr: var(--lemon-50);
   --bg-light-clr: var(--lemon-25);
   --bg-gradient: linear-gradient(190deg, var(--sunshine), var(--bg-clr) 333px);
+  --bg-lightsource: linear-gradient(190deg, var(--sunshine), transparent 333px);
   --content-bg-clr: var(--dirty-sidewalk);
   --content-bg-gradient: linear-gradient(
     190deg,
@@ -234,6 +240,11 @@ html.light-theme {
       var(--moonshine),
       var(--bg-clr) 333px
     );
+    --bg-lightsource: linear-gradient(
+      190deg,
+      var(--moonshine),
+      transparent 333px
+    );
     --content-bg-gradient: linear-gradient(
       190deg,
       var(--moonshine),
@@ -299,6 +310,11 @@ html.dark-theme {
   --content-bg-clr: var(--blue-rock);
   --bg-light-clr: var(--oxford-blue);
   --bg-gradient: linear-gradient(190deg, var(--moonshine), var(--bg-clr) 333px);
+  --bg-lightsource: linear-gradient(
+    190deg,
+    var(--moonshine),
+    transparent 333px
+  );
   --content-bg-gradient: linear-gradient(
     190deg,
     var(--moonshine),
