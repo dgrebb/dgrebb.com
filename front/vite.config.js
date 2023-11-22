@@ -45,4 +45,7 @@ export default defineConfig({
   css: {
     postcss,
   },
+  test: {
+    include: ['src/**/*.{test,spec}.{js,ts}'],
+  },
 });
