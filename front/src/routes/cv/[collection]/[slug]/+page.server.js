@@ -1,7 +1,4 @@
-import {
-  PUBLIC_API_PATH_POSITIONS as POS,
-  PUBLIC_API_URL as URL,
-} from '$env/static/public';
+import { PUBLIC_API_URL as URL } from '$env/static/public';
 import api from '@api';
 import {
   shapeAwardData,

@@ -30,7 +30,7 @@ export const heading = function (text, level, raw) {
  */
 export const link = function (href, title, text) {
   let external, titleAttr, rel;
-  const internalPattern = /\/|\#|m|t/g;
+  const internalPattern = /\/|#|m|t/g;
   external = href.charAt(0).match(internalPattern)
     ? false
     : new URL(href).origin !== ORIGIN

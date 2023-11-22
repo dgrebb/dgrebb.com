@@ -11,12 +11,12 @@
     };
   }
 
-  function animateOut(node) {
+  function animateOut() {
     if (motionless() === true) return false;
     document.body.classList.toggle('animating-page', true);
   }
 
-  function animateIn(node) {
+  function animateIn() {
     if (motionless() === true) return false;
     setTimeout(() => {
       document.body.classList.toggle('animating', false);

@@ -35,37 +35,7 @@ export async function shapeProjectData(data) {
   marked.use({ renderer });
 
   let project,
-    seo,
-    name,
-    title,
-    hero,
-    startDate,
-    endDate,
-    projectSlug,
-    summary,
-    body,
-    artifacts,
-    skills,
-    organizations,
-    industries,
-    awards = false;
-
-  project = {
-    seo,
-    name,
-    title,
-    hero,
-    startDate,
-    endDate,
-    slug: projectSlug,
-    summary,
-    body,
-    artifacts,
-    skills,
-    organizations,
-    industries,
-    awards,
-  } = data[0].attributes;
+    { name, hero, body, seo } = (project = data[0].attributes);
 
   var pageMeta = {
     ...seo,

@@ -1,5 +1,5 @@
 import * as Sentry from '@sentry/sveltekit';
-import { PUBLIC_ENV, PUBLIC_SENTRY_DSN } from '$env/static/public';
+import { PUBLIC_ENV } from '$env/static/public';
 
 console.info('404 - Not Found ~ /404 handler');
 

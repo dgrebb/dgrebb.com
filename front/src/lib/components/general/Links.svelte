@@ -42,7 +42,7 @@
 </script>
 
 <ul aria-label="Links to Dan Grebb on The Internet" class="link-list">
-  {#each linkMap as { url, title, linkClass, icon }, i}
+  {#each linkMap as { url, title, linkClass, icon }}
     <li class="link">
       <a
         href={url}

@@ -6,7 +6,7 @@ import {
 import api from '@api';
 import { error } from '@sveltejs/kit';
 
-export async function load({ params: { pathname, collection } }) {
+export async function load({ params: { collection } }) {
   const pageEndpoint = `${URL}/${collection + PAGE}`;
   const collectionEndpoint = `${URL}/${collection + ITEMS}`;
   let pageData, collectionData;

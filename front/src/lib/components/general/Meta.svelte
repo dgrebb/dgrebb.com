@@ -77,14 +77,28 @@
     },
     images: OGImages,
   }}
-  twitter={{
-    site: '@dgrebb',
-    creator: '@dgrebb',
-    cardType: 'summary_large_image',
-    title: twitter?.title || socialTitle || pageMeta.title,
-    description: twitter?.description || pageMeta.metaDescription,
-    image: twitter?.image?.data?.attributes?.url || metaImage.url,
-    imageAlt:
-      twitter?.image?.data?.attributes?.alternativeText || metaImage.alt,
-  }}
+  twitter={twitter
+    ? {
+        site: '@dgrebb',
+        creator: '@dgrebb',
+        cardType: 'summary_large_image',
+        title: twitter?.title || socialTitle || pageMeta.title,
+        description: twitter?.description || pageMeta.metaDescription,
+        image: twitter?.image?.data?.attributes?.url || metaImage.url,
+        imageAlt:
+          twitter?.image?.data?.attributes?.alternativeText || metaImage.alt,
+      }
+    : false}
+  facebook={facebook
+    ? {
+        site: '@dgrebb',
+        creator: '@dgrebb',
+        cardType: 'summary_large_image',
+        title: twitter?.title || socialTitle || pageMeta.title,
+        description: twitter?.description || pageMeta.metaDescription,
+        image: twitter?.image?.data?.attributes?.url || metaImage.url,
+        imageAlt:
+          twitter?.image?.data?.attributes?.alternativeText || metaImage.alt,
+      }
+    : false}
 />

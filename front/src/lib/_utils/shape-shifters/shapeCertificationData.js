@@ -1,34 +1,6 @@
 export async function shapeCertificationData(data) {
   let certification,
-    seo,
-    name,
-    hero,
-    start,
-    end,
-    certificationSlug,
-    summary,
-    body,
-    artifacts,
-    skills,
-    organizations,
-    industries,
-    awards = false;
-
-  certification = {
-    seo,
-    name,
-    hero,
-    start,
-    end,
-    slug: certificationSlug,
-    summary,
-    body,
-    artifacts,
-    skills,
-    organizations,
-    industries,
-    awards,
-  } = data[0].attributes;
+    { name, hero, seo } = (certification = data[0].attributes);
 
   var pageMeta = {
     ...seo,
