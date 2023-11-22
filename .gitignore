@@ -78,6 +78,7 @@ nbproject
 public/uploads/*
 !public/uploads/.gitkeep
 .vscode
+front.*
 
 ############################
 # Node.js
@@ -129,13 +130,11 @@ crash.*.log
 ############################
 # Commitizen
 ############################
-
 .cz.toml
 
 ############################
 # Visual Regression Tests
 ############################
-
 _ci/backstop/bd/bitmaps_test/*
 _ci/backstop/bd/html_report/*
 
