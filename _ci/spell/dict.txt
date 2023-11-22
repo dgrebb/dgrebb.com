@@ -30,6 +30,7 @@ hljs
 introend
 introstart
 jsonencode
+lightsource
 navbrand
 navigateth
 notfound
