@@ -17,9 +17,14 @@
 
 .career-timeline {
   position: relative;
-  margin: 0 auto 0 15%;
-  padding-top: 2rem;
-  max-width: 80%;
+  margin: 0 0 0 5%;
+  @media screen and (min-width: 640px) {
+    margin: 0 auto 0 15%;
+    padding-top: 2rem;
+  }
+  @media screen and (min-width: 768px) {
+    max-width: 80%;
+  }
 }
 
 label.date-toggle,
@@ -31,9 +36,24 @@ label.date-toggle time {
 }
 
 label.date-toggle {
+  display: block;
   position: absolute;
   left: -30px;
+  z-index: 2;
   cursor: pointer;
+  height: 3rem;
+  svg {
+    display: block;
+    height: 100%;
+  }
+  @media screen and (min-width: 640px) {
+    display: inline;
+    height: auto;
+    svg {
+      display: inline;
+      height: auto;
+    }
+  }
   time {
     display: flex;
     position: absolute;
@@ -71,6 +91,8 @@ label.date-toggle {
 }
 
 input#date-toggle-checkbox {
+  position: relative;
+  top: 2rem;
   z-index: -1;
   &:focus-visible {
     ~ label {
@@ -78,13 +100,19 @@ input#date-toggle-checkbox {
       outline-offset: 2px;
     }
   }
+
+  @media screen and (min-width: 640px) {
+    top: 1rem;
+  }
 }
 input#date-toggle-checkbox:checked {
   & ~ .career-timeline-item,
   .career-timeline-item:has(details[open]) {
     .career-timeline-date {
-      transform: translateX(-3.5rem);
       opacity: 1;
+      @media screen and (min-width: 640px) {
+        transform: translateX(-3.5rem);
+      }
     }
   }
   & ~ .career-timeline-item {
@@ -92,7 +120,9 @@ input#date-toggle-checkbox:checked {
     &:focus,
     &:focus-visible {
       .career-timeline-date {
-        transform: translateX(-4rem);
+        @media screen and (min-width: 640px) {
+          transform: translateX(-4rem);
+        }
       }
     }
   }
@@ -125,25 +155,44 @@ body.ready .main section .career-timeline-item {
   flex-direction: column;
   margin: 0;
   border-left: 2px solid var(--highlight-clr);
-  padding: 2rem;
-  padding-top: 0;
+  padding: 1rem 1rem 0 2rem;
+  padding-top: 1.5rem;
+  @media screen and (min-width: 640px) {
+    padding: 2rem;
+    padding-top: 0;
+  }
   &:first-of-type {
     margin-top: 1.9rem;
+  }
+  &:last-of-type {
+    border-left-width: 2px;
+    border-image: linear-gradient(
+        to bottom,
+        var(--highlight-clr) 77%,
+        transparent
+      )
+      1;
   }
   &:hover,
   &:focus,
   &:focus-visible,
   &:focus-within,
+  &:active,
   &:has(details[open]) {
     .career-timeline-date {
-      transform: translateX(-3.75rem);
-      opacity: 1;
+      @media screen and (min-width: 640px) {
+        transform: translateX(-3.75rem);
+        opacity: 1;
+      }
     }
-    h1.item-title a {
+    h1.item-title {
       color: var(--fg-clr-o);
     }
     header.item-basics::before {
-      transform: scale(1.33) translateX(-1px);
+      transform: scale(1.33) translateX(-0.5px);
+      @media screen and (min-width: 640px) {
+        transform: scale(1.33) translateX(1px);
+      }
     }
   }
 }
@@ -170,23 +219,46 @@ body.ready .main section .career-timeline-item {
     content: '';
   }
   .career-timeline-date {
-    position: absolute;
-    right: 100%;
-    bottom: 0;
-    opacity: 0;
     transition-duration: 215ms;
     transition-property: transform, opacity;
     transition-timing-function: var(--transition-timing-function);
     padding-top: 1px;
-    width: 11rem;
+    color: var(--fg-clr-o);
     font-size: 1rem;
     line-height: 1;
     font-family: var(--font-lb);
-    text-align: right;
     text-transform: uppercase;
+    .career-timeline-date-month {
+      display: none;
+      @media screen and (min-width: 1200px) {
+        display: inline;
+      }
+    }
     .timeline-text-highlight {
       color: var(--primary-clr);
       font-family: var(--font-lbb);
+      &.m {
+        display: inline;
+      }
+      &.d {
+        display: none;
+      }
+      @media screen and (min-width: 768px) {
+        &.d {
+          display: inline;
+        }
+        &.m {
+          display: none;
+        }
+      }
+    }
+    @media screen and (min-width: 640px) {
+      position: absolute;
+      right: 100%;
+      bottom: 0;
+      opacity: 0;
+      width: 11rem;
+      text-align: right;
     }
   }
   h1.item-title {
@@ -198,53 +270,69 @@ body.ready .main section .career-timeline-item {
       var(--transition-timing-function);
     border-bottom-width: thin;
     border-bottom-color: var(--fg-clr-ooo);
-    padding-left: 0.5rem;
-    font-size: 2rem;
-    line-height: 2;
+    padding-bottom: 0.75rem;
+    color: var(--fg-clr-oo);
+    font-size: 1.5rem;
+    line-height: 1.2;
+    @media screen and (min-width: 640px) {
+      padding-bottom: 1.25rem;
+      padding-left: 0.5rem;
+      font-size: 2rem;
+    }
     a {
       padding-bottom: 0.5rem;
-      color: var(--fg-clr-oo);
     }
   }
 }
 
 .position-info {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 0.5rem 0 0.5rem;
+  padding-top: 0.5rem;
+  @media screen and (min-width: 640px) {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0.5rem 0 0.5rem;
+  }
   .item-organizations {
     position: relative;
     top: -0.25rem;
     padding: 0;
-    width: 40%;
+    @media screen and (min-width: 640px) {
+      width: 40%;
+    }
   }
   .skills {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: right;
-    justify-self: flex-end;
     margin: 0;
     padding: 0;
-    width: 50%;
-    text-align: right;
-    li {
-      display: inline;
-      margin: 0;
-      padding: 0;
+    @media screen and (min-width: 640px) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: right;
+      justify-self: flex-end;
+      width: 50%;
+      text-align: right;
+      li {
+        display: inline;
+        margin: 0;
+        padding: 0;
+      }
     }
   }
   li.skill,
   .skill {
     display: inline-block;
-    vertical-align: middle;
     opacity: 0.77;
     filter: brightness(0.75);
     transition-delay: 333ms;
     transition-duration: var(--transition-duration);
     transition-property: filter, opacity;
+    margin: 0;
     border: 0;
-    padding: 0.25rem;
-    height: 1.5rem;
+    padding: 0.25rem 0.5rem 0 0;
+    height: 1.25rem;
+    @media screen and (min-width: 640px) {
+      padding: 0.25rem;
+      height: 1.5rem;
+    }
     &:hover,
     &:focus,
     &:focus-visible {
@@ -263,6 +351,6 @@ body.ready .main section .career-timeline-item {
 
 .item-details {
   .position-summary {
-    padding-bottom: 0;
+    padding: 1.5rem 0.5rem 0 0.5rem;
   }
 }

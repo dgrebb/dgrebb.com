@@ -9,6 +9,7 @@
 
   const { pathname, page, positions, pageMeta } = data;
   const { title, hero, intro } = page;
+  const currentYear = new Date().getFullYear();
 
   function prettyDate(inputDate) {
     const [year, month, day] = inputDate.split('-');
@@ -47,10 +48,14 @@
             <!-- <h1 class="item-title"><a href="/cv/position/{slug}">{name}</a></h1> -->
             <h1 class="item-title">{name}</h1>
             <time datetime={startDate} class="career-timeline-date"
-              >{#if endDate}{prettyDate(startDate).month}
+              >{#if endDate}<span class="career-timeline-date-month"
+                  >{prettyDate(startDate).month}</span
+                >
                 <span class="timeline-text-highlight"
                   >{prettyDate(startDate).year}</span
-                >{:else}<span class="timeline-text-highlight">Current</span
+                >{:else}<span class="timeline-text-highlight m"
+                  >{currentYear}</span
+                ><span class="timeline-text-highlight d">Current</span
                 >{/if}</time
             >
           </header>
