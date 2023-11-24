@@ -10,7 +10,8 @@
     "details": {
       "type": "component",
       "repeatable": true,
-      "component": "artifacts.artifact-details"
+      "component": "artifacts.artifact-details",
+      "required": true
     }
   }
 }
