@@ -34,7 +34,7 @@
 </script>
 
 <PageTransition transitionKey={slug}>
-  <section class="cv meat">
+  <section class="cv meat {collection}">
     <Flourish />
     <a id="main">Main Content</a>
     <svelte:component this={components[collection]} content={itemData} />

@@ -22,8 +22,8 @@
   <h2><a href="/cv/industry/{industrySlug}">{name}</a></h2>
 {/each}
 
-{#each skills as { attributes: { name, slug: skillSlug } }}
-  <h2><a href="/cv/skill/{skillSlug}">{name}</a></h2>
+{#each skills as { attributes: { name, slug: skillSlug, svg } }}
+  <h2><a href="/cv/skill/{skillSlug}">{name}</a>{@html svg}</h2>
 {/each}
 
 {#each positions as { attributes: { name, slug: positionSlug } }}

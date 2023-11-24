@@ -1,0 +1,12 @@
+.project-article {
+  float: left;
+  width: 80%;
+}
+.project-aside {
+  float: right;
+  width: 20%;
+}
+.project-skills .skill svg {
+  display: inline;
+  height: 1rem;
+}

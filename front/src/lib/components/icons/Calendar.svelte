@@ -1,7 +1,7 @@
 <script>
   const datetime = new Date();
   const date = datetime.getDate();
-  let showDates = false;
+  let showDates = true;
 </script>
 
 <input id="date-toggle-checkbox" type="checkbox" bind:checked={showDates} />
@@ -41,11 +41,10 @@
         <line class="c" x1="12.8166" y1="10.258" x2="12.8166" y2="4.5"></line>
         <line class="c" x1="35.1834" y1="10.258" x2="35.1834" y2="4.5"></line>
       </g>
-    </g><g id="iconCarrier">
+    </g><g id="paper">
       <defs>
         <style>
-          .c {
-            fill: none;
+          .calback {
             stroke: currentColor;
             stroke-linecap: round;
             stroke-linejoin: round;
@@ -54,7 +53,7 @@
       </defs>
       <g id="b">
         <path
-          class="c"
+          class="calback"
           d="m8.0988,7.8588c-1.0601,0-1.9194.8593-1.9194,1.9194v31.8025c0,1.06.8593,1.9193,1.9193,1.9193h31.8025c1.06,0,1.9193-.8592,1.9194-1.9192h0V9.7782c0-1.0601-.8593-1.9194-1.9194-1.9194H8.0988Z"
         ></path>
         <line class="c" x1="12.8166" y1="10.258" x2="12.8166" y2="4.5"></line>

@@ -17,7 +17,7 @@
 </script>
 
 <PageTransition transitionKey={collection}>
-  <section class="cv meat">
+  <section class="cv meat {collection}">
     <Flourish />
     <a id="main">Main Content</a>
     {#if hero}
@@ -32,8 +32,9 @@
     <!-- TODO: use a similar svelte:component pattern here for collection lists -->
     {#if collectionData}
       <ul class="collection-list">
-        {#each collectionData as { attributes: { name, slug } }}
+        {#each collectionData as { attributes: { name, slug, svg } }}
           <li class="collection-list-item">
+            {#if svg}{@html svg}{/if}
             <a href={`/cv/${singleItemRoute}/${slug}`}>{name}</a>
           </li>
         {/each}
