@@ -31,7 +31,7 @@ jobs:
 
     steps:
       - name: 𐂷 Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: dgrebb/dgrebb.com
           ref: ${{ github.ref }}
@@ -41,7 +41,7 @@ jobs:
             _ci/perf
 
       - name: ⬢ Setup Node & Cache
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: "18.18.0"
 
