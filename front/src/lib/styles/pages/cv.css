@@ -1,17 +1,11 @@
 .main .cv.meat {
   width: 100%;
-  h1.collection-title {
+  h1.collection-title,
+  h1.skill-title {
     position: relative;
     height: auto;
     font-size: 9rem;
     line-height: 1;
-    .skill-icon {
-      display: inline-block;
-      height: 3rem;
-      svg {
-        height: 100%;
-      }
-    }
   }
 }
 
@@ -189,9 +183,9 @@ body.ready .main section .career-timeline-item {
       color: var(--fg-clr-o);
     }
     header.item-basics::before {
-      transform: scale(1.33) translateX(-0.5px);
+      transform: scale(1.33) translateX(-1.33%);
       @media screen and (min-width: 640px) {
-        transform: scale(1.33) translateX(1px);
+        transform: scale(1.33) translateX(-1.33%);
       }
     }
   }
@@ -320,11 +314,12 @@ body.ready .main section .career-timeline-item {
   li.skill,
   .skill {
     display: inline-block;
-    opacity: 0.77;
-    filter: brightness(0.75);
+    opacity: 0.3;
+    /* filter: brightness(0.75); */
     transition-delay: 333ms;
-    transition-duration: var(--transition-duration);
+    transition-duration: var(--transition-duration-md);
     transition-property: filter, opacity;
+    transition-timing-function: var(--transition-timing-function);
     margin: 0;
     border: 0;
     padding: 0.25rem 0.5rem 0 0;
@@ -333,18 +328,27 @@ body.ready .main section .career-timeline-item {
       padding: 0.25rem;
       height: 1.5rem;
     }
+    svg {
+      display: block;
+      opacity: 0;
+      width: auto;
+      height: 100%;
+      color: var(--fg-clr);
+      &.loaded,
+      &.failed {
+        opacity: 1;
+      }
+      &.failed {
+        background-color: red;
+      }
+    }
     &:hover,
     &:focus,
     &:focus-visible {
       opacity: 1;
       filter: brightness(1.25);
       transition-delay: 0s;
-      transition-duration: 0;
-    }
-    svg {
-      display: block;
-      width: auto;
-      height: 100%;
+      transition-duration: 200ms;
     }
   }
 }

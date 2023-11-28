@@ -1,0 +1,18 @@
+h1.skill-title {
+  text-align: center;
+  .skill-icon {
+    display: inline-block;
+    height: 3rem;
+    svg {
+      height: 100%;
+    }
+
+    svg {
+      opacity: 0;
+      transition: opacity 333ms;
+      &.loaded {
+        opacity: 1;
+      }
+    }
+  }
+}

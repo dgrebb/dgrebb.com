@@ -15,6 +15,7 @@
   export let data;
 
   $: ({
+    pathname,
     slug,
     collection,
     itemData,
@@ -40,4 +41,6 @@
     <svelte:component this={components[collection]} content={itemData} />
   </section>
 </PageTransition>
-<Meta {pageMeta} />
+{#key pathname}
+  <Meta {pageMeta} />
+{/key}
