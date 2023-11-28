@@ -22,6 +22,14 @@
       "targetField": "name",
       "required": true
     },
+    "icon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
     "svg": {
       "type": "text"
     },
