@@ -148,6 +148,21 @@
           "sortable": false
         }
       },
+      "experiences": {
+        "edit": {
+          "label": "experiences",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "experiences",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -208,6 +223,13 @@
       }
     },
     "layouts": {
+      "list": [
+        "name",
+        "projects",
+        "URL",
+        "date",
+        "positions"
+      ],
       "edit": [
         [
           {
@@ -256,14 +278,13 @@
             "name": "seo",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "experiences",
+            "size": 6
+          }
         ]
-      ],
-      "list": [
-        "name",
-        "projects",
-        "URL",
-        "date",
-        "positions"
       ]
     }
   },

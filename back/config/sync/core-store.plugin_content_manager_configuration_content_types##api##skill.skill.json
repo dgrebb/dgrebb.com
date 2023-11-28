@@ -48,6 +48,20 @@
           "sortable": true
         }
       },
+      "icon": {
+        "edit": {
+          "label": "icon",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "icon",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "svg": {
         "edit": {
           "label": "svg",
@@ -208,16 +222,17 @@
           "sortable": false
         }
       },
-      "icon": {
+      "experiences": {
         "edit": {
-          "label": "icon",
+          "label": "experiences",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "name"
         },
         "list": {
-          "label": "icon",
+          "label": "experiences",
           "searchable": false,
           "sortable": false
         }
@@ -282,6 +297,15 @@
       }
     },
     "layouts": {
+      "list": [
+        "icon",
+        "name",
+        "slug",
+        "proficiency",
+        "positions",
+        "projects",
+        "organizations"
+      ],
       "edit": [
         [
           {
@@ -352,16 +376,13 @@
             "name": "seo",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "experiences",
+            "size": 6
+          }
         ]
-      ],
-      "list": [
-        "icon",
-        "name",
-        "slug",
-        "proficiency",
-        "positions",
-        "projects",
-        "organizations"
       ]
     }
   },
