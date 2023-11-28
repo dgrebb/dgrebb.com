@@ -13,7 +13,7 @@
     classifications: { data: classifications },
     certifications: { data: certifications },
     projects: { data: projects },
-    positions: { data: positions },
+    experiences: { data: experiences },
     organizations: { data: organizations },
   } = content.skill;
 </script>
@@ -76,12 +76,12 @@
   </ul>
 {/if}
 
-{#if positions.length}
-  <h2>Positions Employed</h2>
+{#if experiences.length}
+  <h2>Experiences</h2>
   <ul class="collection-attributes">
-    {#each positions as { attributes: { name, slug: positionSlug } }}
+    {#each experiences as { attributes: { name, slug: experienceSlug } }}
       <li class="attribute">
-        <a href="/cv/position/{positionSlug}">{name}</a>
+        <a href="/cv/experience/{experienceSlug}">{name}</a>
       </li>
     {/each}
   </ul>

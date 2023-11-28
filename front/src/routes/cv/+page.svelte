@@ -8,7 +8,7 @@
 
   export let data;
 
-  const { pathname, page, positions, pageMeta } = data;
+  const { pathname, page, experiences, pageMeta } = data;
   const { title, intro } = page;
   const currentYear = new Date().getFullYear();
 
@@ -43,10 +43,10 @@
     {/if}
     <div class="experience-timeline">
       <Calendar />
-      {#each positions as { name, slug, startDate, endDate, summary, organizations, skills }}
+      {#each experiences as { name, slug, startDate, endDate, summary, organizations, skills }}
         <section class="experience-timeline-item" class:current={!endDate}>
           <header class="item-basics">
-            <!-- <h1 class="item-title"><a href="/cv/position/{slug}">{name}</a></h1> -->
+            <!-- <h1 class="item-title"><a href="/cv/experience/{slug}">{name}</a></h1> -->
             <h1 class="item-title">{name}</h1>
             <time datetime={startDate} class="experience-timeline-date"
               >{#if endDate}<span class="experience-timeline-date-month"
@@ -61,7 +61,7 @@
             >
           </header>
           <main class="item-details">
-            <div class="position-info">
+            <div class="experience-info">
               <p class="item-organizations">
                 {#each organizations as { attributes: { name, slug: orgSlug } }, i}
                   <!-- <a href="/cv/organization/{orgSlug}">{name}</a
@@ -98,7 +98,7 @@
               </ul>
             </div>
             {#if summary}
-              <p class="position-summary">{summary}</p>
+              <p class="experience-summary">{summary}</p>
             {/if}
           </main>
           <!-- <details class="item-details" open>

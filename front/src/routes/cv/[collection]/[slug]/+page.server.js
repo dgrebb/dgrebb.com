@@ -6,7 +6,7 @@ import {
   shapeClassificationData,
   shapeIndustryData,
   shapeOrganizationData,
-  shapePositionData,
+  shapeExperienceData,
   shapeProjectData,
   shapeSkillData,
 } from '@shape-shifters';
@@ -29,7 +29,7 @@ export async function load({ params: { collection, slug } }) {
 
   switch (collection) {
     case 'award':
-      endpoint += `?populate[seo]=*&populate[skills]=*&populate[organizations]=*&populate[projects]=*&populate[p]=*&populate[positions]=*&filters[slug][$eq]=${slug}`;
+      endpoint += `?populate[seo]=*&populate[skills]=*&populate[organizations]=*&populate[projects]=*&populate[p]=*&populate[experiences]=*&filters[slug][$eq]=${slug}`;
       data = await requestContent(endpoint, collection);
       itemData = await shapeAwardData(data);
       break;
@@ -44,27 +44,27 @@ export async function load({ params: { collection, slug } }) {
       itemData = await shapeClassificationData(data);
       break;
     case 'industry':
-      endpoint = `${URL}/industries?populate[seo]=*&populate[skills]=*&populate[organizations]=*&populate[projects]=*&populate[awards]=*&populate[positions]=*&populate[images]=*&filters[slug][$eq]=${slug}`;
+      endpoint = `${URL}/industries?populate[seo]=*&populate[skills]=*&populate[organizations]=*&populate[projects]=*&populate[awards]=*&populate[experiences]=*&populate[images]=*&filters[slug][$eq]=${slug}`;
       data = await requestContent(endpoint, collection);
       itemData = await shapeIndustryData(data);
       break;
     case 'organization':
-      endpoint += `?populate[seo]=*&populate[skills]=*&populate[projects]=*&populate[industries]=*&populate[positions]=*&populate[images]=*&filters[slug][$eq]=${slug}`;
+      endpoint += `?populate[seo]=*&populate[skills]=*&populate[projects]=*&populate[industries]=*&populate[experiences]=*&populate[images]=*&filters[slug][$eq]=${slug}`;
       data = await requestContent(endpoint, collection);
       itemData = await shapeOrganizationData(data);
       break;
-    case 'position':
+    case 'experience':
       endpoint += `?populate[hero]=*&populate[seo]=*&populate[skills]=*&populate[organizations]=*&populate[projects]=*&populate[industries]=*&populate[awards]=*&filters[slug][$eq]=${slug}`;
       data = await requestContent(endpoint, collection);
-      itemData = await shapePositionData(data);
+      itemData = await shapeExperienceData(data);
       break;
     case 'project':
-      endpoint += `?populate[hero]=*&populate[seo]=*&populate[skills]=*&populate[organizations]=*&populate[projects]=*&populate[industries]=*&populate[awards]=*&populate[classification]=*&populate[positions]=*&populate[artifacts][on][artifacts.websites][populate]=*&populate[artifacts][on][artifacts.videos][populate]=*&filters[slug][$eq]=${slug}`;
+      endpoint += `?populate[hero]=*&populate[seo]=*&populate[skills]=*&populate[organizations]=*&populate[projects]=*&populate[industries]=*&populate[awards]=*&populate[classification]=*&populate[experiences]=*&populate[artifacts][on][artifacts.websites][populate]=*&populate[artifacts][on][artifacts.videos][populate]=*&filters[slug][$eq]=${slug}`;
       data = await requestContent(endpoint, collection);
       itemData = await shapeProjectData(data);
       break;
     case 'skill':
-      endpoint += `?populate[hero]=*&populate[icon]=*&populate[seo]=*&populate[certifications]=*&populate[organizations]=*&populate[projects]=*&populate[industries]=*&populate[awards]=*&populate[classifications]=*&populate[positions]=*&filters[slug][$eq]=${slug}`;
+      endpoint += `?populate[hero]=*&populate[icon]=*&populate[seo]=*&populate[certifications]=*&populate[organizations]=*&populate[projects]=*&populate[industries]=*&populate[awards]=*&populate[classifications]=*&populate[experiences]=*&filters[slug][$eq]=${slug}`;
       data = await requestContent(endpoint, collection);
       itemData = await shapeSkillData(data);
       break;

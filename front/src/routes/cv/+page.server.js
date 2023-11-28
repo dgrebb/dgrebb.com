@@ -1,37 +1,37 @@
 import {
   PUBLIC_API_PATH_CV_PAGE as CV,
-  PUBLIC_API_CV_PATH_LANDING_POSITION_LISTING as POSITIONS,
+  PUBLIC_API_CV_PATH_LANDING_EXPERIENCE_LISTING as EX,
   PUBLIC_API_URL as URL,
 } from '$env/static/public';
 import api from '@api';
 import { error } from '@sveltejs/kit';
 
 const endpoint = URL + CV;
-const positionsEndpoint = URL + POSITIONS;
+const experiencesEndpoint = URL + EX;
 
-function structurePositions(data) {
-  var reducedPositions = [];
-  data.map((position) => {
+function structureExperiences(data) {
+  var reducedExperiences = [];
+  data.map((experience) => {
     let pos = {
-      ...position.attributes,
-      skills: position.attributes.skills.data,
-      organizations: position.attributes.organizations.data,
-      projects: position.attributes.projects.data,
-      industries: position.attributes.industries.data,
-      awards: position.attributes.awards.data,
+      ...experience.attributes,
+      skills: experience.attributes.skills.data,
+      organizations: experience.attributes.organizations.data,
+      projects: experience.attributes.projects.data,
+      industries: experience.attributes.industries.data,
+      awards: experience.attributes.awards.data,
     };
-    reducedPositions.push(pos);
+    reducedExperiences.push(pos);
   });
-  return reducedPositions;
+  return reducedExperiences;
 }
 
 export async function load() {
-  var cv, positionsData;
+  var cv, experiencesData;
   let seo, hero, title, intro;
 
   try {
     cv = await api(endpoint);
-    positionsData = await api(positionsEndpoint);
+    experiencesData = await api(experiencesEndpoint);
   } catch (error) {
     console.warn('CV page API error.');
     console.error(error);
@@ -41,8 +41,8 @@ export async function load() {
     throw error(500, 'CV Page Error');
   }
 
-  if (!positionsData) {
-    throw error(500, 'Positions error on CV Page');
+  if (!experiencesData) {
+    throw error(500, 'Experiences error on CV Page');
   }
 
   ({
@@ -56,7 +56,7 @@ export async function load() {
     hero: hero?.data?.attributes || false,
   };
 
-  const positions = structurePositions(positionsData);
+  const experiences = structureExperiences(experiencesData);
 
   var pageMeta = {
     ...seo,
@@ -72,7 +72,7 @@ export async function load() {
 
   return {
     page,
-    positions,
+    experiences,
     pageMeta,
   };
 }

@@ -1,6 +1,6 @@
-export async function shapePositionData(data) {
-  let position,
-    { name, hero, seo } = (position = data[0].attributes);
+export async function shapeExperienceData(data) {
+  let experience,
+    { name, hero, seo } = (experience = data[0].attributes);
 
   var pageMeta = {
     ...seo,
@@ -15,8 +15,8 @@ export async function shapePositionData(data) {
     pageMeta?.metaImage?.data?.attributes || hero?.data?.attributes || false;
 
   return {
-    position: {
-      ...position,
+    experience: {
+      ...experience,
       hero: hero?.data?.attributes || false,
     },
     pageMeta,
