@@ -1,12 +1,12 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::organization.organization",
+  "key": "plugin_content_manager_configuration_content_types::api::experience.experience",
   "value": {
-    "uid": "api::organization.organization",
+    "uid": "api::experience.experience",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
-      "pageSize": 100,
+      "pageSize": 10,
       "mainField": "name",
       "defaultSortBy": "name",
       "defaultSortOrder": "ASC"
@@ -22,7 +22,7 @@
       },
       "name": {
         "edit": {
-          "label": "name",
+          "label": "Name",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "slug": {
         "edit": {
-          "label": "slug",
+          "label": "Slug",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -48,30 +48,44 @@
           "sortable": true
         }
       },
-      "images": {
+      "title": {
         "edit": {
-          "label": "images",
+          "label": "Title",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "images",
-          "searchable": false,
-          "sortable": false
+          "label": "title",
+          "searchable": true,
+          "sortable": true
         }
       },
-      "URL": {
+      "startDate": {
         "edit": {
-          "label": "URL",
+          "label": "startDate",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "URL",
+          "label": "startDate",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "endDate": {
+        "edit": {
+          "label": "endDate",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "endDate",
           "searchable": true,
           "sortable": true
         }
@@ -90,9 +104,23 @@
           "sortable": true
         }
       },
-      "industries": {
+      "hero": {
         "edit": {
-          "label": "industries",
+          "label": "hero",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "hero",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "organizations": {
+        "edit": {
+          "label": "organizations",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -100,7 +128,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "industries",
+          "label": "organizations",
           "searchable": false,
           "sortable": false
         }
@@ -120,21 +148,6 @@
           "sortable": false
         }
       },
-      "positions": {
-        "edit": {
-          "label": "positions",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "positions",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "skills": {
         "edit": {
           "label": "skills",
@@ -146,6 +159,93 @@
         },
         "list": {
           "label": "skills",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "industries": {
+        "edit": {
+          "label": "industries",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "industries",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "awards": {
+        "edit": {
+          "label": "awards",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "awards",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "classifications": {
+        "edit": {
+          "label": "classifications",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "classifications",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "accomplishments": {
+        "edit": {
+          "label": "accomplishments",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "accomplishments",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "responsibilities": {
+        "edit": {
+          "label": "responsibilities",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "responsibilities",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "wisdom": {
+        "edit": {
+          "label": "wisdom",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "wisdom",
           "searchable": false,
           "sortable": false
         }
@@ -174,21 +274,6 @@
         },
         "list": {
           "label": "seo",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "experiences": {
-        "edit": {
-          "label": "experiences",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "experiences",
           "searchable": false,
           "sortable": false
         }
@@ -253,16 +338,12 @@
       }
     },
     "layouts": {
-      "list": [
-        "name",
-        "slug",
-        "positions",
-        "projects",
-        "skills",
-        "URL"
-      ],
       "edit": [
         [
+          {
+            "name": "title",
+            "size": 4
+          },
           {
             "name": "name",
             "size": 4
@@ -270,10 +351,26 @@
           {
             "name": "slug",
             "size": 4
+          }
+        ],
+        [
+          {
+            "name": "startDate",
+            "size": 4
           },
           {
-            "name": "URL",
+            "name": "endDate",
             "size": 4
+          }
+        ],
+        [
+          {
+            "name": "hero",
+            "size": 4
+          },
+          {
+            "name": "summary",
+            "size": 6
           }
         ],
         [
@@ -282,7 +379,7 @@
             "size": 4
           },
           {
-            "name": "positions",
+            "name": "organizations",
             "size": 4
           },
           {
@@ -294,16 +391,14 @@
           {
             "name": "industries",
             "size": 4
-          }
-        ],
-        [
+          },
           {
-            "name": "images",
+            "name": "awards",
             "size": 4
           },
           {
-            "name": "summary",
-            "size": 6
+            "name": "classifications",
+            "size": 4
           }
         ],
         [
@@ -314,16 +409,34 @@
         ],
         [
           {
-            "name": "seo",
+            "name": "accomplishments",
             "size": 12
           }
         ],
         [
           {
-            "name": "experiences",
-            "size": 6
+            "name": "responsibilities",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "wisdom",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "seo",
+            "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "name",
+        "slug",
+        "title"
       ]
     }
   },
