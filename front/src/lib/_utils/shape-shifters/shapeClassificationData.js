@@ -1,18 +1,21 @@
 export async function shapeClassificationData(data) {
   let classification,
-    { name, hero, seo } = (classification = data[0].attributes);
+    { updatedAt, publishedAt, name, introduction, seo } = (classification =
+      data[0].attributes);
 
-  var pageMeta = {
+  const pageMeta = {
     ...seo,
-    type: 'website',
-    metaTitle: seo?.metaTitle || name,
+    updatedAt,
+    publishedAt,
+    type: 'article',
+    metaTitle: name || seo?.metaTitle || 'Classifications « CV « Dan Grebb',
+    socialTitle: `${seo?.metaTitle || name} « Classifications « CV « Dan Grebb`,
+    titleTemplate: '%s « Classifications « CV « Dan Grebb',
+    metaDescription:
+      seo?.metaDescription ||
+      introduction ||
+      'Dan did something. Once or twice. Check it out!',
   };
-
-  /**
-   * Isolates the `metaImage` object properties we care about
-   */
-  pageMeta.metaImage =
-    pageMeta?.metaImage?.data?.attributes || hero?.data?.attributes || false;
 
   return {
     classification,

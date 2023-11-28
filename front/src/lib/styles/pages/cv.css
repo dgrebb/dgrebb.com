@@ -34,13 +34,12 @@
 }
 
 label.date-toggle,
-label.date-toggle time {
+label.date-toggle time,
+svg .calback {
   transition-duration: var(--transition-duration-md);
-  transition-property: color, opacity;
+  transition-property: color, opacity, fill;
   transition-timing-function: var(--transition-timing-function);
-  color: var(--highlight-clr);
 }
-
 label.date-toggle {
   display: block;
   position: absolute;
@@ -48,6 +47,7 @@ label.date-toggle {
   z-index: 3;
   cursor: pointer;
   height: 3rem;
+  color: var(--highlight-clr);
   svg {
     display: block;
     height: 100%;
@@ -70,7 +70,7 @@ label.date-toggle {
     z-index: 1;
     transition-duration: var(--transition-duration);
     padding-top: 0.33rem;
-    color: var(--highlight-clr);
+    color: var(--fg-clr);
     font-size: 1.25rem;
     text-align: center;
   }
