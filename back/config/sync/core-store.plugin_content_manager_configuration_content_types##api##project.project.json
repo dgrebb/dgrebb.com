@@ -310,13 +310,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "name",
-        "slug",
-        "skills",
-        "positions",
-        "organizations"
-      ],
       "edit": [
         [
           {
@@ -325,6 +318,10 @@
           },
           {
             "name": "slug",
+            "size": 4
+          },
+          {
+            "name": "URL",
             "size": 4
           }
         ],
@@ -336,33 +333,33 @@
           {
             "name": "endDate",
             "size": 4
-          },
-          {
-            "name": "URL",
-            "size": 4
           }
         ],
         [
+          {
+            "name": "experiences",
+            "size": 4
+          },
           {
             "name": "skills",
             "size": 4
           },
           {
-            "name": "positions",
-            "size": 4
-          },
-          {
-            "name": "organizations",
+            "name": "awards",
             "size": 4
           }
         ],
         [
           {
+            "name": "organizations",
+            "size": 4
+          },
+          {
             "name": "industries",
             "size": 4
           },
           {
-            "name": "awards",
+            "name": "positions",
             "size": 4
           }
         ],
@@ -393,13 +390,14 @@
             "name": "seo",
             "size": 12
           }
-        ],
-        [
-          {
-            "name": "experiences",
-            "size": 6
-          }
         ]
+      ],
+      "list": [
+        "name",
+        "slug",
+        "skills",
+        "positions",
+        "organizations"
       ]
     }
   },

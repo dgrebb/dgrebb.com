@@ -223,13 +223,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "name",
-        "projects",
-        "URL",
-        "date",
-        "positions"
-      ],
       "edit": [
         [
           {
@@ -259,11 +252,17 @@
         ],
         [
           {
-            "name": "positions",
+            "name": "experiences",
             "size": 6
           },
           {
             "name": "projects",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "positions",
             "size": 6
           }
         ],
@@ -278,13 +277,14 @@
             "name": "seo",
             "size": 12
           }
-        ],
-        [
-          {
-            "name": "experiences",
-            "size": 6
-          }
         ]
+      ],
+      "list": [
+        "name",
+        "projects",
+        "URL",
+        "date",
+        "positions"
       ]
     }
   },
