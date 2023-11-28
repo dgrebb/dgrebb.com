@@ -8,7 +8,11 @@
           "type": "oneOf",
           "scopes": [
             {
-              "description": "Other changes that don't modify src or test files",
+              "description": "Work in progress. Ignored in Changelog and SemVer.",
+              "name": "WIP"
+            },
+            {
+              "description": "Maintenance and such. Maps to PATCH in SemVer.",
               "name": "chore"
             },
             {

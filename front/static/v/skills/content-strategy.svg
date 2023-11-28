@@ -1,0 +1,13 @@
+<svg version="2.0" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+  <defs>
+    <symbol id="content-strategy" fill="currentColor" viewBox="0 0 60 60">
+      <path
+        d="M7 39H5v20c0 .6.4 1 1 1h17v-2H7V39zM7 2h36v9c0 .6.4 1 1 1h9v28h2V11c0-.1 0-.2-.1-.3v-.1c-.1-.1-.1-.2-.2-.3l-10-10c-.1-.1-.2-.1-.3-.2h-.1c-.1 0-.2-.1-.3-.1H6c-.6 0-1 .4-1 1v16h2V2zm38 1.4 6.6 6.6H45V3.4z" />
+      <path
+        d="M10 5h2v2h-2zM10 9h14v2H10zM10 13h14v2H10zM14 5h2v2h-2zM18 5h2v2h-2zM34 35v-7.6l5.7-5.7c.3-.3.4-.7.2-1.1-.1-.4-.5-.6-.9-.6H1c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h32c.6 0 1-.4 1-1zm-2-8v7H2V22h34.6l-4.3 4.3c-.2.2-.3.4-.3.7zM59 44H22c-.4 0-.7.2-.9.6-.2.4-.1.8.1 1.1l4.8 5.7V59c0 .6.4 1 1 1h32c.6 0 1-.4 1-1V45c0-.6-.4-1-1-1zm-1 14H27.9v-7c0-.2-.1-.4-.2-.6L24.1 46H58v12z" />
+      <path
+        d="M4 25h2v2H4zM8 25h2v2H8zM12 25h18v2H12zM4 29h2v2H4zM8 29h22v2H8zM30 49h2v2h-2zM34 49h22v2H34zM30 53h2v2h-2zM34 53h2v2h-2zM38 53h18v2H38zM42 22h8v2h-8zM40 26h10v2H40zM36 30h14v2H36zM36 34h14v2H36zM9 54h2v2H9zM13 54h2v2h-2zM17 54h2v2h-2zM9 50h2v2H9zM13 50h2v2h-2zM9 46h2v2H9zM9 42h2v2H9zM13 46h2v2h-2zM17 50h2v2h-2zM21 54h2v2h-2z" />
+    </symbol>
+  </defs>
+  <use href="#content-strategy"></use>
+</svg>

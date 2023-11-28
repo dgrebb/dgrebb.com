@@ -47,13 +47,28 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "details": {
+        "edit": {
+          "label": "details",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "details",
+          "searchable": false,
+          "sortable": false
+        }
       }
     },
     "layouts": {
       "list": [
         "id",
         "images",
-        "title"
+        "title",
+        "details"
       ],
       "edit": [
         [
@@ -64,6 +79,12 @@
           {
             "name": "images",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "details",
+            "size": 12
           }
         ]
       ]

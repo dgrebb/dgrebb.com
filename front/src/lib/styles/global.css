@@ -18,7 +18,7 @@
   :focus-visible {
     outline: 2px dashed var(--highlight-clr);
     outline-offset: 0.25rem;
-    border-bottom: 0 !important;
+    border-bottom-color: transparent !important;
   }
   a {
     text-decoration: none;

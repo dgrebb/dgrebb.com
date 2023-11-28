@@ -47,8 +47,12 @@ const config = {
         if (process.env.WARN_ONLY && path.includes('/uploads')) {
           return;
         }
+        if (path.includes('/v')) {
+          return;
+        }
         throw new Error(message);
       },
+      handleMissingId: 'warn',
     },
   },
   preprocess: vitePreprocess(),

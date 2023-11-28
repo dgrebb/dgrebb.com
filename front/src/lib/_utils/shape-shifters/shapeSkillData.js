@@ -1,11 +1,20 @@
 export async function shapeSkillData(data) {
   let skill,
-    { hero, seo } = (skill = data[0].attributes);
+    { name, hero, summary, updatedAt, publishedAt, seo } = (skill =
+      data[0].attributes);
 
-  var pageMeta = {
+  const pageMeta = {
     ...seo,
-    type: 'website',
-    metaTitle: seo?.metaTitle || skill,
+    updatedAt,
+    publishedAt,
+    type: 'article',
+    metaTitle: seo?.metaTitle || name,
+    socialTitle: `${seo?.metaTitle || name} « Skills « Dan Grebb`,
+    titleTemplate: '%s « Skills « Dan Grebb',
+    metaDescription:
+      seo?.metaDescription ||
+      summary ||
+      'Dan did something. Once or twice. Check it out!',
   };
 
   /**

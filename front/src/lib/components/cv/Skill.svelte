@@ -1,11 +1,13 @@
 <script>
+  import SkillIcon from '@components/icons/SkillIcon.svelte';
+  import '@styles/pages/skill.css';
   export let content;
 
   let {
     name,
     body,
     hero,
-    svg,
+    slug,
     summary,
     proficiency,
     classifications: { data: classifications },
@@ -16,10 +18,9 @@
   } = content.skill;
 </script>
 
-<h1 class="collection-title">
-  {#if svg}<span class="skill-icon">{@html svg}</span>{/if}{name}
+<h1 class="skill-title">
+  <span class="skill-icon"><SkillIcon {slug} {name} /></span>{name}
 </h1>
-<h1>{name}</h1>
 {#if hero}
   {hero}
 {/if}
@@ -27,8 +28,16 @@
   <p>{summary}</p>
 {/if}
 
-{#if proficiency}{proficiency}{/if}
-
+<label for={name}>Proficiency:</label>
+<meter
+  id={name}
+  min="0"
+  max="10"
+  low="2"
+  high="8"
+  optimum="`0`"
+  value={proficiency}>at at {proficiency}/10</meter
+>
 {#if body}
   {body}
 {/if}
