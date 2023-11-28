@@ -35,12 +35,21 @@ export async function shapeProjectData(data) {
   marked.use({ renderer });
 
   let project,
-    { name, hero, body, seo } = (project = data[0].attributes);
+    { updatedAt, publishedAt, introduction, name, hero, body, seo } = (project =
+      data[0].attributes);
 
-  var pageMeta = {
+  const pageMeta = {
     ...seo,
-    type: 'website',
-    metaTitle: seo?.metaTitle || name,
+    updatedAt,
+    publishedAt,
+    type: 'article',
+    metaTitle: name || seo?.metaTitle || 'Projects « CV « Dan Grebb',
+    socialTitle: `${seo?.metaTitle || name} « Projects « CV « Dan Grebb`,
+    titleTemplate: '%s « Projects « CV « Dan Grebb',
+    metaDescription:
+      seo?.metaDescription ||
+      introduction ||
+      'Dan did something. Once or twice. Check it out!',
   };
 
   /**

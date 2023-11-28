@@ -1,20 +1,24 @@
 <script>
   import PageTransition from '@components/general/PageTransition.svelte';
+  import Meta from '@components/general/Meta.svelte';
   // import SkillIcon from '@components/icons/SkillIcon.svelte';
   import Flourish from '@layout/Flourish.svelte';
   import '@styles/pages/cv.css';
 
   export let data;
 
-  let title, hero, introduction;
+  let title, hero, introduction, pageMeta;
 
   $: ({
+    pathname,
     collection,
     pageData: {
       content: { title, singleItemRoute, hero, introduction },
     },
+    pageMeta,
     collectionData,
   } = data);
+  // $: console.log('🚀 ~ file: +page.svelte:21 ~ data:', data);
 </script>
 
 <PageTransition transitionKey={collection}>
@@ -43,4 +47,6 @@
     {/if}
   </section>
 </PageTransition>
-<!-- <Meta {pageMeta} /> -->
+{#key pathname}
+  <Meta {pageMeta} />
+{/key}

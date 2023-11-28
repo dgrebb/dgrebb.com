@@ -27,7 +27,7 @@ function structureExperiences(data) {
 
 export async function load() {
   var cv, experiencesData;
-  let seo, hero, title, intro;
+  let updatedAt, publishedAt, seo, hero, summary, title, intro;
 
   try {
     cv = await api(endpoint);
@@ -47,7 +47,14 @@ export async function load() {
 
   ({
     seo,
-    content: { hero, title, introduction: intro },
+    content: {
+      updatedAt,
+      publishedAt,
+      hero,
+      summary,
+      title,
+      introduction: intro,
+    },
   } = cv);
 
   const page = {
@@ -58,10 +65,18 @@ export async function load() {
 
   const experiences = structureExperiences(experiencesData);
 
-  var pageMeta = {
+  const pageMeta = {
     ...seo,
-    type: 'website',
+    updatedAt,
+    publishedAt,
+    type: 'article',
     metaTitle: seo?.metaTitle || title,
+    socialTitle: `${seo?.metaTitle || title} « Dan Grebb`,
+    titleTemplate: '%s « Skills « Dan Grebb',
+    metaDescription:
+      seo?.metaDescription ||
+      summary ||
+      'Dan did something. Once or twice. Check it out!',
   };
 
   /**
