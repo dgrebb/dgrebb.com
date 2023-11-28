@@ -12,7 +12,7 @@
   }
 }
 
-.career-timeline {
+.experience-timeline {
   time {
     text-rendering: auto;
     -webkit-font-smoothing: auto;
@@ -22,7 +22,7 @@
   }
 }
 
-.career-timeline {
+.experience-timeline {
   position: relative;
   margin: 0 0 0 5%;
   @media screen and (min-width: 640px) {
@@ -106,20 +106,20 @@ input#date-toggle-checkbox {
   }
 }
 input#date-toggle-checkbox:checked {
-  & ~ .career-timeline-item,
-  .career-timeline-item:has(details[open]) {
-    .career-timeline-date {
+  & ~ .experience-timeline-item,
+  .experience-timeline-item:has(details[open]) {
+    .experience-timeline-date {
       opacity: 1;
       @media screen and (min-width: 640px) {
         transform: translateX(-3.5rem);
       }
     }
   }
-  & ~ .career-timeline-item {
+  & ~ .experience-timeline-item {
     &:hover,
     &:focus,
     &:focus-visible {
-      .career-timeline-date {
+      .experience-timeline-date {
         @media screen and (min-width: 640px) {
           transform: translateX(-5rem) scale(1.2);
         }
@@ -133,7 +133,7 @@ input#date-toggle-checkbox:checked {
   }
 }
 
-.career-timeline-item {
+.experience-timeline-item {
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -187,7 +187,7 @@ input#date-toggle-checkbox:checked {
     border: 4px solid var(--bg-clr);
     background-color: var(--highlight-clr);
   }
-  .career-timeline-date {
+  .experience-timeline-date {
     transition-duration: 215ms;
     transition-property: transform, opacity;
     transition-timing-function: var(--transition-timing-function);
@@ -199,7 +199,7 @@ input#date-toggle-checkbox:checked {
     font-family: var(--font-lb);
     text-align: right;
     text-transform: uppercase;
-    .career-timeline-date-month {
+    .experience-timeline-date-month {
       display: none;
       @media screen and (min-width: 1200px) {
         display: inline;
@@ -257,7 +257,7 @@ input#date-toggle-checkbox:checked {
   }
 }
 
-body.ready .main section .career-timeline-item {
+body.ready .main section .experience-timeline-item {
   position: relative;
   &:not(:hover):not(.current) {
     opacity: 0.8;
@@ -306,7 +306,7 @@ body.ready .main section .career-timeline-item {
     .item-title {
       color: var(--primary-clr);
     }
-    .career-timeline-date {
+    .experience-timeline-date {
       @media screen and (min-width: 640px) {
         opacity: 1;
       }

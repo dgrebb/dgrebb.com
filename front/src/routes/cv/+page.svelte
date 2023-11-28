@@ -41,15 +41,15 @@
         {intro}
       </div>
     {/if}
-    <div class="career-timeline">
+    <div class="experience-timeline">
       <Calendar />
       {#each positions as { name, slug, startDate, endDate, summary, organizations, skills }}
-        <section class="career-timeline-item" class:current={!endDate}>
+        <section class="experience-timeline-item" class:current={!endDate}>
           <header class="item-basics">
             <!-- <h1 class="item-title"><a href="/cv/position/{slug}">{name}</a></h1> -->
             <h1 class="item-title">{name}</h1>
-            <time datetime={startDate} class="career-timeline-date"
-              >{#if endDate}<span class="career-timeline-date-month"
+            <time datetime={startDate} class="experience-timeline-date"
+              >{#if endDate}<span class="experience-timeline-date-month"
                   >{prettyDate(startDate).month}</span
                 >
                 <span class="timeline-text-highlight"
