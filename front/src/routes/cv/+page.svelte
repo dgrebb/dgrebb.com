@@ -1,4 +1,5 @@
 <script>
+  import SkillIcon from '@components/icons/SkillIcon.svelte';
   import Meta from '@components/general/Meta.svelte';
   import PageTransition from '@components/general/PageTransition.svelte';
   import Flourish from '@layout/Flourish.svelte';
@@ -8,7 +9,7 @@
   export let data;
 
   const { pathname, page, positions, pageMeta } = data;
-  const { title, hero, intro } = page;
+  const { title, intro } = page;
   const currentYear = new Date().getFullYear();
 
   function prettyDate(inputDate) {
@@ -32,9 +33,9 @@
     <Flourish />
     <a id="main">Main Content</a>
     <h1>{title}</h1>
-    {#if hero}
+    <!-- {#if hero}
       <img src={hero.url} alt={hero.alternativeText} />
-    {/if}
+    {/if} -->
     {#if intro}
       <div class="summary">
         {intro}
@@ -71,14 +72,34 @@
                 {/each}
               </p>
               <ul class="skills">
-                {#each skills as { attributes: { name, slug: skillSlug, svg } }}
-                  {#if svg}
+                {#each skills as { attributes: { name, icon, slug: skillSlug } }}
+                  {#if icon.data}
                     <li class="skill" title={name}>
-                      <!-- <a href="/cv/skill/{skillSlug}" class="skill" title={name}
-                        >{@html svg}</a
-                      > -->
-                      {@html svg}
+                      <!-- <a
+                        href="/cv/skill/{skillSlug}"
+                        class="skill"
+                        title={name}
+                      >
+                      </a> -->
+                      <SkillIcon
+                        iconURL={icon?.data?.attributes?.url || false}
+                        iconAltText={icon?.data?.attributes?.alternativeText ||
+                          false}
+                        slug={skillSlug}
+                      />
                     </li>
+                    <!-- <li class="skill" title={name}>
+                      <a
+                        href="/cv/skill/{skillSlug}"
+                        class="skill"
+                        title={name}
+                      >
+                        <SkillIcon
+                          iconURL={icon.data.attributes.url}
+                          slug={skillSlug}
+                        />
+                      </a>
+                    </li> -->
                   {/if}
                 {/each}
               </ul>

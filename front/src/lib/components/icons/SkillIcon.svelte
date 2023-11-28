@@ -1,8 +1,7 @@
 <script>
   import { onMount } from 'svelte';
 
-  export let iconURL,
-    slug = false;
+  export let iconURL, slug, iconAltText;
 
   let loaded = false;
   let failed = false;
@@ -21,12 +20,25 @@
   });
 </script>
 
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  width="64"
-  height="64"
-  class:loaded
-  class:failed
->
-  <use href="{iconURL}#{slug}" />
-</svg>
+{#if iconAltText}
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="64"
+    height="64"
+    class:loaded
+    class:failed
+    aria-label={iconAltText}
+  >
+    <use href="{iconURL}#{slug}" />
+  </svg>
+{:else}
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="64"
+    height="64"
+    class:loaded
+    class:failed
+  >
+    <use href="{iconURL}#{slug}" />
+  </svg>
+{/if}

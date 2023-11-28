@@ -10,6 +10,16 @@
 }
 
 .career-timeline {
+  time {
+    text-rendering: auto;
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+    -webkit-text-size-adjust: 100%;
+    will-change: transform;
+  }
+}
+
+.career-timeline {
   position: relative;
   margin: 0 0 0 5%;
   @media screen and (min-width: 640px) {
@@ -63,10 +73,6 @@ label.date-toggle {
     padding-top: 0.33rem;
     color: var(--highlight-clr);
     font-size: 1.25rem;
-    text-rendering: auto;
-    -webkit-font-smoothing: auto;
-    -moz-osx-font-smoothing: auto;
-    -webkit-text-size-adjust: 100%;
   }
   svg .calback {
     fill: var(--bg-clr);
@@ -127,23 +133,6 @@ input#date-toggle-checkbox:checked {
   }
 }
 
-body.ready .main section .career-timeline-item {
-  &:hover,
-  &:focus,
-  &:focus-visible {
-    opacity: 1;
-    /* TODO: Add anchor to the below h1 when links are ready */
-    h1 {
-      border-bottom-color: var(--fg-clr-oo);
-      /* &:hover,
-      &:focus,
-      &:focus-visible {
-        border-bottom-color: var(--highlight-clr);
-      } */
-    }
-  }
-}
-
 .career-timeline-item {
   display: flex;
   flex-direction: column;
@@ -167,28 +156,6 @@ body.ready .main section .career-timeline-item {
       )
       1;
   }
-  &:hover,
-  &:focus,
-  &:focus-visible,
-  &:focus-within,
-  &:active,
-  &:has(details[open]) {
-    .career-timeline-date {
-      @media screen and (min-width: 640px) {
-        transform: translateX(-3.75rem);
-        opacity: 1;
-      }
-    }
-    h1.item-title {
-      color: var(--fg-clr-o);
-    }
-    header.item-basics::before {
-      transform: scale(1.33) translateX(-1.33%);
-      @media screen and (min-width: 640px) {
-        transform: scale(1.33) translateX(-1.33%);
-      }
-    }
-  }
 }
 
 .item-basics {
@@ -196,21 +163,29 @@ body.ready .main section .career-timeline-item {
   position: relative;
   flex-direction: column;
   justify-content: center;
-  &::before {
+  &::before,
+  &:after {
     position: absolute;
     bottom: 0;
     left: -2.5rem;
     transform: translateX(-1px);
+    opacity: 1;
     transition-duration: 215ms;
-    transition-property: transform;
+    transition-property: transform, background-color, border-width;
     transition-timing-function: var(--transition-timing-function);
     box-sizing: border-box;
-    outline: 2px solid var(--highlight-clr);
     border-radius: 50%;
     background-color: var(--bg-clr);
     width: 1rem;
     height: 1rem;
     content: '';
+  }
+  &:before {
+    outline: 2px solid var(--highlight-clr);
+  }
+  &:after {
+    border: 4px solid var(--bg-clr);
+    background-color: var(--highlight-clr);
   }
   .career-timeline-date {
     transition-duration: 215ms;
@@ -255,17 +230,18 @@ body.ready .main section .career-timeline-item {
       text-align: right;
     }
   }
-  h1.item-title {
+  .item-title {
     display: flex;
     position: relative;
     flex-direction: column;
     justify-content: center;
-    transition: border-color var(--transition-duration)
-      var(--transition-timing-function);
+    transition-duration: var(--transition-duration);
+    transition-property: color, border-color;
+    transition-timing-function: var(--transition-timing-function);
     border-bottom-width: thin;
-    border-bottom-color: var(--fg-clr-ooo);
+    border-bottom-color: var(--primary-clr);
     padding-bottom: 0.75rem;
-    color: var(--fg-clr-oo);
+    color: var(--fg-clr-o);
     font-size: 1.5rem;
     line-height: 1.2;
     @media screen and (min-width: 640px) {
@@ -275,6 +251,82 @@ body.ready .main section .career-timeline-item {
     }
     a {
       padding-bottom: 0.5rem;
+    }
+  }
+}
+
+body.ready .main section .career-timeline-item {
+  &:not(:hover):not(.current) {
+    opacity: 0.9;
+    h1.item-title {
+      border-bottom-color: var(--fg-clr-ooo);
+      border-bottom-color: var(--fg-clr-oo);
+      color: var(--fg-clr-oo);
+    }
+    .skill {
+      opacity: 0.5;
+    }
+  }
+  &:hover,
+  &:focus,
+  &:focus-visible,
+  &:focus-within,
+  &:active {
+    opacity: 1;
+    border-left: 2px solid;
+    border-image: linear-gradient(
+        to bottom,
+        var(--orange-100-a75),
+        var(--highlight-clr),
+        var(--orange-100-a75)
+      )
+      1;
+    color: var(--fg-clr-o);
+    .item-title {
+      color: var(--primary-clr);
+    }
+    .career-timeline-date {
+      @media screen and (min-width: 640px) {
+        transform: translateX(-3.75rem);
+        opacity: 1;
+      }
+    }
+    header.item-basics {
+      &:before,
+      &:after {
+        transform: scale(1.33) translateX(-1.33%);
+        @media screen and (min-width: 640px) {
+          transform: scale(1.33) translateX(-1.33%);
+        }
+      }
+      &:after {
+        opacity: 0.9;
+        background-color: var(--primary-clr);
+      }
+    }
+    .position-summary {
+      transition-duration: var(--transition-duration-md);
+      transition-property: color;
+      transition-timing-function: var(--transition-timing-function);
+    }
+    .skills {
+      &:hover {
+        li.skill,
+        .skill {
+          display: inline-block;
+          /* filter: brightness(0.75); */
+          transition-delay: 333ms;
+          transition-duration: var(--transition-duration-md);
+          &:hover,
+          &:focus,
+          &:focus-visible {
+            opacity: 1;
+            filter: brightness(1.25);
+            transition-delay: 0s;
+            transition-duration: 200ms;
+          }
+        }
+      }
     }
   }
 }
@@ -314,19 +366,17 @@ body.ready .main section .career-timeline-item {
   li.skill,
   .skill {
     display: inline-block;
-    opacity: 0.3;
-    /* filter: brightness(0.75); */
-    transition-delay: 333ms;
+    opacity: 0.7;
     transition-duration: var(--transition-duration-md);
     transition-property: filter, opacity;
     transition-timing-function: var(--transition-timing-function);
     margin: 0;
     border: 0;
-    padding: 0.25rem 0.5rem 0 0;
+    padding: 0 0.11rem;
     height: 1.25rem;
     @media screen and (min-width: 640px) {
-      padding: 0.25rem;
-      height: 1.5rem;
+      margin: 0.33rem 0;
+      padding: 0 0.33rem;
     }
     svg {
       display: block;
