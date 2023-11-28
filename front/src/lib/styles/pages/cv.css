@@ -7,6 +7,9 @@
     font-size: 9rem;
     line-height: 1;
   }
+  .summary {
+    padding: 1rem 2rem;
+  }
 }
 
 .career-timeline {
@@ -24,7 +27,6 @@
   margin: 0 0 0 5%;
   @media screen and (min-width: 640px) {
     margin: 0 auto 0 15%;
-    padding-top: 2rem;
   }
   @media screen and (min-width: 768px) {
     max-width: 80%;
@@ -42,8 +44,8 @@ label.date-toggle time {
 label.date-toggle {
   display: block;
   position: absolute;
-  left: -30px;
-  z-index: 2;
+  left: -31px;
+  z-index: 3;
   cursor: pointer;
   height: 3rem;
   svg {
@@ -51,18 +53,15 @@ label.date-toggle {
     height: 100%;
   }
   @media screen and (min-width: 640px) {
-    display: inline;
+    top: 1rem;
+    width: auto;
     height: auto;
-    svg {
-      display: inline;
-      height: auto;
-    }
   }
   time {
     display: flex;
     position: absolute;
     top: 0.0875rem;
-    right: -2px;
+    right: 0;
     bottom: 0;
     left: 0;
     justify-content: center;
@@ -73,6 +72,7 @@ label.date-toggle {
     padding-top: 0.33rem;
     color: var(--highlight-clr);
     font-size: 1.25rem;
+    text-align: center;
   }
   svg .calback {
     fill: var(--bg-clr);
@@ -121,7 +121,7 @@ input#date-toggle-checkbox:checked {
     &:focus-visible {
       .career-timeline-date {
         @media screen and (min-width: 640px) {
-          transform: translateX(-4rem);
+          transform: translateX(-5rem) scale(1.2);
         }
       }
     }
@@ -145,7 +145,7 @@ input#date-toggle-checkbox:checked {
     padding-top: 0;
   }
   &:first-of-type {
-    margin-top: 1.9rem;
+    padding-top: 1rem;
   }
   &:last-of-type {
     border-left-width: 2px;
@@ -191,11 +191,13 @@ input#date-toggle-checkbox:checked {
     transition-duration: 215ms;
     transition-property: transform, opacity;
     transition-timing-function: var(--transition-timing-function);
+    will-change: opacity, transform;
     padding-top: 1px;
     color: var(--fg-clr-o);
-    font-size: 1rem;
-    line-height: 1;
+    font-size: 0.875rem;
+    line-height: 1rem;
     font-family: var(--font-lb);
+    text-align: right;
     text-transform: uppercase;
     .career-timeline-date-month {
       display: none;
@@ -256,8 +258,9 @@ input#date-toggle-checkbox:checked {
 }
 
 body.ready .main section .career-timeline-item {
+  position: relative;
   &:not(:hover):not(.current) {
-    opacity: 0.9;
+    opacity: 0.8;
     h1.item-title {
       border-bottom-color: var(--fg-clr-ooo);
       border-bottom-color: var(--fg-clr-oo);
@@ -267,27 +270,44 @@ body.ready .main section .career-timeline-item {
       opacity: 0.5;
     }
   }
+  &:before {
+    position: absolute;
+    right: 100%;
+    padding-left: calc(100vw * 0.15);
+    height: 100%;
+    content: '';
+  }
   &:hover,
   &:focus,
   &:focus-visible,
   &:focus-within,
   &:active {
+    &:before {
+      border-right: 2px solid;
+      border-image: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 1) 28%,
+        rgba(199, 121, 4, 0) 83%
+      );
+    }
+  }
+  &:hover,
+  &:focus,
+  &:focus-visible,
+  &:focus-within,
+  &:active,
+  &:before:hover,
+  &:before:focus,
+  &:before:focus-visible,
+  &:before:focus-within,
+  &:before:active {
     opacity: 1;
-    border-left: 2px solid;
-    border-image: linear-gradient(
-        to bottom,
-        var(--orange-100-a75),
-        var(--highlight-clr),
-        var(--orange-100-a75)
-      )
-      1;
     color: var(--fg-clr-o);
     .item-title {
       color: var(--primary-clr);
     }
     .career-timeline-date {
       @media screen and (min-width: 640px) {
-        transform: translateX(-3.75rem);
         opacity: 1;
       }
     }
@@ -352,10 +372,9 @@ body.ready .main section .career-timeline-item {
     @media screen and (min-width: 640px) {
       display: flex;
       flex-wrap: wrap;
+      align-content: start;
       justify-content: right;
-      justify-self: flex-end;
       width: 50%;
-      text-align: right;
       li {
         display: inline;
         margin: 0;
