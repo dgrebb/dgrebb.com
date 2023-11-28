@@ -40,5 +40,6 @@ echo "PUBLIC_API_PATH_CV_PAGE=$(pass dg/cms/api/cv/landing)" | tee -a $frontEnvF
 echo "PUBLIC_API_LANDING_PAGE_PARTIAL=$(pass dg/cms/api/cv/landing-partial)" | tee -a $frontEnvFile >/dev/null
 echo "PUBLIC_API_CV_COLLECTION_PARAMS=$(pass dg/cms/api/cv/collection-params)" | tee -a $frontEnvFile >/dev/null
 echo "PUBLIC_API_CV_PATH_LANDING_POSITION_LISTING=$(pass dg/cms/api/cv/position-listing)" | tee -a $frontEnvFile >/dev/null
+echo "PUBLIC_API_CV_PATH_LANDING_EXPERIENCE_LISTING=$(pass dg/cms/api/cv/experience-listing)" | tee -a $frontEnvFile >/dev/null
 echo "PUBLIC_API_URL=\"$(pass dg/api/${1}/url)\"" | tee -a $frontEnvFile >/dev/null
 echo "PUBLIC_SENTRY_DSN=\"$(pass dg/www/logs/sentrydsn)\"" | tee -a $frontEnvFile >/dev/null

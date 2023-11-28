@@ -344,7 +344,7 @@ body.ready .main section .experience-timeline-item {
         background-color: var(--primary-clr);
       }
     }
-    .position-summary {
+    .experience-summary {
       transition-duration: var(--transition-duration-md);
       transition-property: color;
       transition-timing-function: var(--transition-timing-function);
@@ -371,7 +371,7 @@ body.ready .main section .experience-timeline-item {
   }
 }
 
-.position-info {
+.experience-info {
   padding-top: 0.5rem;
   @media screen and (min-width: 640px) {
     display: flex;
@@ -445,7 +445,7 @@ body.ready .main section .experience-timeline-item {
 }
 
 .item-details {
-  .position-summary {
+  .experience-summary {
     padding: 1.5rem 0.5rem 0 0.5rem;
   }
 }

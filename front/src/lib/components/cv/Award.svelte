@@ -3,7 +3,7 @@
   let {
     name,
     body,
-    positions: { data: positions },
+    experiences: { data: experiences },
     projects: { data: projects },
   } = content.award;
 </script>
@@ -11,8 +11,8 @@
 <h1 class="collection-title">Awards</h1>
 
 <h1>{name}</h1>
-{#each positions as { attributes: { name, slug: positionSlug } }}
-  <h2><a href="/cv/position/{positionSlug}">{name}</a></h2>
+{#each experiences as { attributes: { name, slug: experienceSlug } }}
+  <h2><a href="/cv/experience/{experienceSlug}">{name}</a></h2>
 {/each}
 
 {#if body}
@@ -23,6 +23,6 @@
   <h2><a href="/cv/project/{projectSlug}">{name}</a></h2>
 {/each}
 
-{#each positions as { attributes: { name, slug: positionSlug } }}
-  <h2><a href="/cv/position/{positionSlug}">{name}</a></h2>
+{#each experiences as { attributes: { name, slug: experienceSlug } }}
+  <h2><a href="/cv/experience/{experienceSlug}">{name}</a></h2>
 {/each}

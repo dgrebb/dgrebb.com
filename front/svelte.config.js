@@ -33,7 +33,7 @@ const config = {
         '/cv/classifications',
         '/cv/industries',
         '/cv/organizations',
-        '/cv/positions',
+        '/cv/experiences',
         '/cv/projects',
         '/cv/skills',
         '/posts/category',
