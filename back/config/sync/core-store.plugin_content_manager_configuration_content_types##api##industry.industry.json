@@ -225,12 +225,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "name",
-        "slug",
-        "positions",
-        "projects"
-      ],
       "edit": [
         [
           {
@@ -248,21 +242,27 @@
             "size": 4
           },
           {
-            "name": "positions",
-            "size": 4
-          },
-          {
-            "name": "projects",
+            "name": "experiences",
             "size": 4
           }
         ],
         [
           {
-            "name": "organizations",
+            "name": "skills",
             "size": 4
           },
           {
-            "name": "skills",
+            "name": "projects",
+            "size": 4
+          },
+          {
+            "name": "organizations",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "positions",
             "size": 4
           }
         ],
@@ -277,13 +277,13 @@
             "name": "seo",
             "size": 12
           }
-        ],
-        [
-          {
-            "name": "experiences",
-            "size": 6
-          }
         ]
+      ],
+      "list": [
+        "name",
+        "slug",
+        "positions",
+        "projects"
       ]
     }
   },

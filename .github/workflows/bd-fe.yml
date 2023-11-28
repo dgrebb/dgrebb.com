@@ -45,6 +45,8 @@ on:
         required: true
       PUBLIC_API_CV_PATH_LANDING_POSITION_LISTING:
         required: true
+      PUBLIC_API_CV_PATH_LANDING_EXPERIENCE_LISTING:
+        required: true
       API_KEY:
         required: true
       PUBLIC_SENTRY_DSN:
@@ -117,6 +119,7 @@ jobs:
           echo PUBLIC_CATEGORY_PAGE_PARAMS='${{ secrets.PUBLIC_CATEGORY_PAGE_PARAMS }}' >> front/.env
           echo PUBLIC_API_PATH_CV_PAGE='${{ secrets.PUBLIC_API_PATH_CV_PAGE }}' >> front/.env
           echo PUBLIC_API_CV_PATH_LANDING_POSITION_LISTING='${{ secrets.PUBLIC_API_CV_PATH_LANDING_POSITION_LISTING }}' >> front/.env
+          echo PUBLIC_API_CV_PATH_LANDING_EXPERIENCE_LISTING='${{ secrets.PUBLIC_API_CV_PATH_LANDING_EXPERIENCE_LISTING }}' >> front/.env
           echo PUBLIC_API_LANDING_PAGE_PARTIAL='${{ secrets.PUBLIC_API_LANDING_PAGE_PARTIAL }}' >> front/.env
           echo PUBLIC_API_CV_COLLECTION_PARAMS='${{ secrets.PUBLIC_API_CV_COLLECTION_PARAMS }}' >> front/.env
           echo PUBLIC_API_PATH_POSITIONS='${{ secrets.PUBLIC_API_PATH_POSITIONS }}' >> front/.env

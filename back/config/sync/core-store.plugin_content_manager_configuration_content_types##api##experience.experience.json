@@ -193,21 +193,6 @@
           "sortable": false
         }
       },
-      "classifications": {
-        "edit": {
-          "label": "classifications",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "classifications",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "accomplishments": {
         "edit": {
           "label": "accomplishments",
@@ -278,6 +263,21 @@
           "sortable": false
         }
       },
+      "certifications": {
+        "edit": {
+          "label": "certifications",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "certifications",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -338,6 +338,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "name",
+        "slug",
+        "title"
+      ],
       "edit": [
         [
           {
@@ -395,10 +401,6 @@
           {
             "name": "awards",
             "size": 4
-          },
-          {
-            "name": "classifications",
-            "size": 4
           }
         ],
         [
@@ -430,13 +432,13 @@
             "name": "seo",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "certifications",
+            "size": 6
+          }
         ]
-      ],
-      "list": [
-        "id",
-        "name",
-        "slug",
-        "title"
       ]
     }
   },
