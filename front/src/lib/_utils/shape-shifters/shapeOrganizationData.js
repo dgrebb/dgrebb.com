@@ -1,11 +1,20 @@
 export async function shapeOrganizationData(data) {
   let organization,
-    { name, images, seo } = (organization = data[0].attributes);
+    { updatedAt, publishedAt, name, introduction, images, seo } =
+      (organization = data[0].attributes);
 
-  var pageMeta = {
+  const pageMeta = {
     ...seo,
-    type: 'website',
-    metaTitle: seo?.metaTitle || name,
+    updatedAt,
+    publishedAt,
+    type: 'article',
+    metaTitle: name || seo?.metaTitle || 'Organizations « CV « Dan Grebb',
+    socialTitle: `${seo?.metaTitle || name} « Organizations « CV « Dan Grebb`,
+    titleTemplate: '%s « Organizations « CV « Dan Grebb',
+    metaDescription:
+      seo?.metaDescription ||
+      introduction ||
+      'Dan did something. Once or twice. Check it out!',
   };
 
   pageMeta.metaImage =
