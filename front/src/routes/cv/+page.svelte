@@ -73,17 +73,16 @@
               </p>
               <ul class="skills">
                 {#each skills as { attributes: { name, icon, slug: skillSlug } }}
-                  {#if icon.data}
-                    <li class="skill" title={name}>
-                      <!-- <a
+                  <li class="skill" title={name}>
+                    <!-- <a
                         href="/cv/skill/{skillSlug}"
                         class="skill"
                         title={name}
                       >
                       </a> -->
-                      <SkillIcon {name} slug={skillSlug} />
-                    </li>
-                    <!-- <li class="skill" title={name}>
+                    <SkillIcon {name} slug={skillSlug} />
+                  </li>
+                  <!-- <li class="skill" title={name}>
                       <a
                         href="/cv/skill/{skillSlug}"
                         class="skill"
@@ -95,7 +94,6 @@
                         />
                       </a>
                     </li> -->
-                  {/if}
                 {/each}
               </ul>
             </div>

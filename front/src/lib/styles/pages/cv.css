@@ -408,7 +408,7 @@ body.ready .main section .experience-timeline-item {
         opacity: 1;
       }
       &.failed {
-        background-color: red;
+        /* background-color: red; */
       }
     }
     &:hover,
