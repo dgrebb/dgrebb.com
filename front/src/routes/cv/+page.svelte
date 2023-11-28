@@ -81,12 +81,7 @@
                         title={name}
                       >
                       </a> -->
-                      <SkillIcon
-                        iconURL={icon?.data?.attributes?.url || false}
-                        iconAltText={icon?.data?.attributes?.alternativeText ||
-                          false}
-                        slug={skillSlug}
-                      />
+                      <SkillIcon {name} slug={skillSlug} />
                     </li>
                     <!-- <li class="skill" title={name}>
                       <a

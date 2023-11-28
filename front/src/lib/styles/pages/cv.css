@@ -372,7 +372,7 @@ body.ready .main section .experience-timeline-item {
     @media screen and (min-width: 640px) {
       display: flex;
       flex-wrap: wrap;
-      align-content: start;
+      align-content: flex-start;
       justify-content: right;
       width: 50%;
       li {

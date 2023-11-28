@@ -1,10 +1,12 @@
 <script>
   import { onMount } from 'svelte';
 
-  export let iconURL, slug, iconAltText;
-
   let loaded = false;
   let failed = false;
+
+  export let name, slug;
+
+  let iconURL = `/v/skills/${slug}.svg#${slug}`;
 
   onMount(() => {
     const img = new Image();
@@ -16,29 +18,18 @@
     };
     img.onerror = () => {
       failed = true;
+      iconURL = `/v/skills/_generic.svg#generic`;
     };
   });
 </script>
 
-{#if iconAltText}
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="64"
-    height="64"
-    class:loaded
-    class:failed
-    aria-label={iconAltText}
-  >
-    <use href="{iconURL}#{slug}" />
-  </svg>
-{:else}
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="64"
-    height="64"
-    class:loaded
-    class:failed
-  >
-    <use href="{iconURL}#{slug}" />
-  </svg>
-{/if}
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="64"
+  height="64"
+  class:loaded
+  class:failed
+  aria-label={name}
+>
+  <use href={iconURL} />
+</svg>
