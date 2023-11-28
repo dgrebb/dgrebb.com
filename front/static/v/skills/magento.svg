@@ -1,0 +1,9 @@
+<svg version="2.0" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+  <defs>
+    <symbol id="magento" viewBox="-4.5 0 54 54">
+      <path fill="#F37B1F" fill-rule="evenodd"
+        d="M22.486 0 0 13.845v26.308l5.84 3.496V17.34l16.65-10.29 16.666 10.274.069.04-.008 26.247L45 40.153V13.845L22.486 0Zm2.976 46.957-2.976 1.848-2.979-1.858V16.22l-7.713 4.826v26.305L22.486 54l10.782-6.695V21.03l-7.806-4.833v30.76Z" />
+    </symbol>
+  </defs>
+  <use href="#magento"></use>
+</svg>

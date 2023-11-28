@@ -1,5 +1,6 @@
 <script>
   import PageTransition from '@components/general/PageTransition.svelte';
+  // import SkillIcon from '@components/icons/SkillIcon.svelte';
   import Flourish from '@layout/Flourish.svelte';
   import '@styles/pages/cv.css';
 
@@ -17,7 +18,7 @@
 </script>
 
 <PageTransition transitionKey={collection}>
-  <section class="cv meat">
+  <section class="cv meat {collection}">
     <Flourish />
     <a id="main">Main Content</a>
     {#if hero}
@@ -34,6 +35,7 @@
       <ul class="collection-list">
         {#each collectionData as { attributes: { name, slug } }}
           <li class="collection-list-item">
+            <!-- <SkillIcon {name} {slug} /> -->
             <a href={`/cv/${singleItemRoute}/${slug}`}>{name}</a>
           </li>
         {/each}

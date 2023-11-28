@@ -11,7 +11,7 @@
 
 <h1 class="collection-title">Roles</h1>
 
-<h1>{name}</h1>
+<h1 class="position-title">{name}</h1>
 
 {#if body}
   {body}

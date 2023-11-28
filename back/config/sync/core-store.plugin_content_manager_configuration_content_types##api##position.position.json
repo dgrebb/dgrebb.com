@@ -7,7 +7,7 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 100,
-      "mainField": "name",
+      "mainField": "title",
       "defaultSortBy": "endDate",
       "defaultSortOrder": "DESC"
     },
@@ -341,17 +341,17 @@
       "edit": [
         [
           {
-            "name": "name",
-            "size": 6
+            "name": "title",
+            "size": 4
           },
           {
-            "name": "slug",
+            "name": "name",
             "size": 6
           }
         ],
         [
           {
-            "name": "title",
+            "name": "slug",
             "size": 4
           },
           {
@@ -433,11 +433,12 @@
         ]
       ],
       "list": [
+        "title",
+        "organizations",
         "name",
         "slug",
         "endDate",
         "startDate",
-        "organizations",
         "industries",
         "skills"
       ]

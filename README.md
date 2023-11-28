@@ -3,6 +3,8 @@
 <!-- omit in toc -->
 # [dgrebb.com](https://www.dgrebb.com)
 
+[![🚜 Build, Deploy, and Test](https://github.com/dgrebb/dgrebb.com/actions/workflows/bdt-fe.yml/badge.svg)](https://github.com/dgrebb/dgrebb.com/actions/workflows/bdt-fe.yml)
+
 Hark! Welcome to the repository for dgrebb.com, whereupon thou shalt find the source code and assets for mine own personal website. If thou art inclined to explore the inner workings of this fine establishment or dost seek to make contributions, thou hast come to the right place.
 
 - [Wiki](#wiki)

@@ -150,6 +150,36 @@
           "sortable": false
         }
       },
+      "certifications": {
+        "edit": {
+          "label": "certifications",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "certifications",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "industries": {
+        "edit": {
+          "label": "industries",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "industries",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "body": {
         "edit": {
           "label": "body",
@@ -178,32 +208,16 @@
           "sortable": false
         }
       },
-      "certifications": {
+      "icon": {
         "edit": {
-          "label": "certifications",
+          "label": "icon",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "name"
+          "editable": true
         },
         "list": {
-          "label": "certifications",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "industries": {
-        "edit": {
-          "label": "industries",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "industries",
+          "label": "icon",
           "searchable": false,
           "sortable": false
         }
@@ -289,6 +303,12 @@
             "size": 6
           },
           {
+            "name": "icon",
+            "size": 6
+          }
+        ],
+        [
+          {
             "name": "svg",
             "size": 6
           }
@@ -335,9 +355,9 @@
         ]
       ],
       "list": [
+        "icon",
         "name",
         "slug",
-        "svg",
         "proficiency",
         "positions",
         "projects",

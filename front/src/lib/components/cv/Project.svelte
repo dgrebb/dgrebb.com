@@ -1,5 +1,6 @@
 <script>
   export let content;
+  import '@styles/pages/skills.css';
 
   let {
     name,
@@ -87,8 +88,12 @@
     {#if skills}
       <h1>Skills</h1>
       <ul class="project-skills">
-        {#each skills as { attributes: { name, slug: skillSlug } }}
-          <li><a href="/cv/skill/{skillSlug}">{name}</a></li>
+        {#each skills as { attributes: { name, slug: skillSlug, svg } }}
+          <li class="skill">
+            <a href="/cv/skill/{skillSlug}"
+              >{#if svg}{@html svg}{/if}{name}</a
+            >
+          </li>
         {/each}
       </ul>
     {/if}
@@ -109,14 +114,3 @@
     </ul>
   {/if}
 </aside>
-
-<style>
-  .project-article {
-    float: left;
-    width: 80%;
-  }
-  .project-aside {
-    float: right;
-    width: 20%;
-  }
-</style>

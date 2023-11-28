@@ -1,5 +1,5 @@
 const { ID, envDir, allViewports } = require('./scenarios/vars.js');
-const { homepage, privacy, posts, post, cats } = require('./scenarios');
+const { homepage, privacy, posts, post, cats, cv } = require('./scenarios');
 
 let scenarios = [
   homepage.homepage_default,
@@ -21,6 +21,7 @@ let scenarios = [
   cats.cats_mobile_mini_nav_active,
   cats.cats_mobile_select_all_category,
   cats.cats_select_all_category,
+  cv.landing,
 ];
 
 let captureLimit = 15;
@@ -39,7 +40,7 @@ module.exports = {
   paths: {
     bitmaps_reference: `bd/bitmaps_reference/${envDir}`,
     bitmaps_test: `bd/bitmaps_test/${envDir}`,
-    engine_scripts: 'bd/engine_scripts',
+    engine_scripts: 'scripts',
     html_report: `bd/html_report/${envDir}`,
     ci_report: `bd/ci_report/${envDir}`,
   },

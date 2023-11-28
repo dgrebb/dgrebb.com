@@ -2,19 +2,27 @@
   "collectionName": "components_projects_images",
   "info": {
     "displayName": "Images",
-    "icon": "picture"
+    "icon": "picture",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "title": {
       "type": "string"
+    },
+    "details": {
+      "type": "component",
+      "repeatable": false,
+      "component": "artifacts.artifact-details",
+      "required": true
     }
   }
 }
