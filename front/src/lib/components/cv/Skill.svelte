@@ -7,12 +7,7 @@
     name,
     body,
     hero,
-    icon: {
-      data: {
-        attributes: { url: iconURL },
-      },
-    },
-    slug: skillSlug,
+    slug,
     summary,
     proficiency,
     classifications: { data: classifications },
@@ -24,7 +19,7 @@
 </script>
 
 <h1 class="skill-title">
-  <span class="skill-icon"><SkillIcon slug={skillSlug} {iconURL} /></span>{name}
+  <span class="skill-icon"><SkillIcon {slug} {name} /></span>{name}
 </h1>
 {#if hero}
   {hero}

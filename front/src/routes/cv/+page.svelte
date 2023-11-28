@@ -72,7 +72,7 @@
                 {/each}
               </p>
               <ul class="skills">
-                {#each skills as { attributes: { name, icon, slug: skillSlug } }}
+                {#each skills as { attributes: { name, slug: skillSlug } }}
                   <li class="skill" title={name}>
                     <!-- <a
                         href="/cv/skill/{skillSlug}"

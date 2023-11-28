@@ -17,8 +17,16 @@
       setTimeout(function () {}, 1000);
     };
     img.onerror = () => {
-      failed = true;
-      iconURL = `/v/skills/_generic.svg#generic`;
+      const fallback = new Image();
+      fallback.src = `/v/skills/_generic.svg#generic`;
+
+      fallback.onload = () => {
+        loaded = true;
+        setTimeout(function () {}, 1000);
+        failed = true;
+        loaded = true;
+        iconURL = `/v/skills/_generic.svg#generic`;
+      };
     };
   });
 </script>

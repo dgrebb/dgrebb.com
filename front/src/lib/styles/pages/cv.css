@@ -104,7 +104,27 @@ input#date-toggle-checkbox {
   @media screen and (min-width: 640px) {
     top: 1rem;
   }
+  & ~ .experience-timeline-item {
+    &:hover,
+    &:focus,
+    &:focus-visible,
+    &:focus-within,
+    &:active,
+    &:before:hover,
+    &:before:focus,
+    &:before:focus-visible,
+    &:before:focus-within,
+    &:before:active {
+      .experience-timeline-date {
+        opacity: 0;
+        @media screen and (min-width: 640px) {
+          opacity: 0;
+        }
+      }
+    }
+  }
 }
+
 input#date-toggle-checkbox:checked {
   & ~ .experience-timeline-item,
   .experience-timeline-item:has(details[open]) {
@@ -372,7 +392,7 @@ body.ready .main section .experience-timeline-item {
     @media screen and (min-width: 640px) {
       display: flex;
       flex-wrap: wrap;
-      align-content: flex-start;
+      align-content: flex-end;
       justify-content: right;
       width: 50%;
       li {
@@ -384,7 +404,9 @@ body.ready .main section .experience-timeline-item {
   }
   li.skill,
   .skill {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     opacity: 0.7;
     transition-duration: var(--transition-duration-md);
     transition-property: filter, opacity;
@@ -394,8 +416,8 @@ body.ready .main section .experience-timeline-item {
     padding: 0 0.11rem;
     height: 1.25rem;
     @media screen and (min-width: 640px) {
-      margin: 0.33rem 0;
-      padding: 0 0.33rem;
+      padding: 0.25rem 0.33rem;
+      height: 1.55rem;
     }
     svg {
       display: block;

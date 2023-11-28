@@ -1,5 +1,6 @@
 <script>
   import PageTransition from '@components/general/PageTransition.svelte';
+  // import SkillIcon from '@components/icons/SkillIcon.svelte';
   import Flourish from '@layout/Flourish.svelte';
   import '@styles/pages/cv.css';
 
@@ -32,9 +33,9 @@
     <!-- TODO: use a similar svelte:component pattern here for collection lists -->
     {#if collectionData}
       <ul class="collection-list">
-        {#each collectionData as { attributes: { name, slug, svg } }}
+        {#each collectionData as { attributes: { name, slug } }}
           <li class="collection-list-item">
-            {#if svg}{@html svg}{/if}
+            <!-- <SkillIcon {name} {slug} /> -->
             <a href={`/cv/${singleItemRoute}/${slug}`}>{name}</a>
           </li>
         {/each}
