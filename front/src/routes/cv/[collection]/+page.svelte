@@ -26,7 +26,7 @@
     {/if}
     <h1 class="collection-title">{title}</h1>
     {#if introduction}
-      <article class="position-longform">
+      <article class="experience-longform">
         {introduction}
       </article>
     {/if}

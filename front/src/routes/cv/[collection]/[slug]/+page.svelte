@@ -6,7 +6,7 @@
   import Classification from '@components/cv/Classification.svelte';
   import Industry from '@components/cv/Industry.svelte';
   import Organization from '@components/cv/Organization.svelte';
-  import Position from '@components/cv/Position.svelte';
+  import Experience from '@components/cv/Experience.svelte';
   import Project from '@components/cv/Project.svelte';
   import Skill from '@components/cv/Skill.svelte';
   import Flourish from '@layout/Flourish.svelte';
@@ -28,7 +28,7 @@
     classification: Classification,
     industry: Industry,
     organization: Organization,
-    position: Position,
+    experience: Experience,
     project: Project,
     skill: Skill,
   };

@@ -4,7 +4,7 @@
     name,
     skills: { data: skills },
     organizations: { data: organizations },
-    positions: { data: positions },
+    experiences: { data: experiences },
     projects: { data: projects },
     body,
   } = content.industry;
@@ -25,8 +25,8 @@
   {/each}
 {/if}
 
-{#each positions as { attributes: { name, slug: positionSlug } }}
-  <h2><a href="/cv/position/{positionSlug}">{name}</a></h2>
+{#each experiences as { attributes: { name, slug: experienceSlug } }}
+  <h2><a href="/cv/experience/{experienceSlug}">{name}</a></h2>
 {/each}
 
 {#each projects as { attributes: { name, slug: projectSlug } }}
