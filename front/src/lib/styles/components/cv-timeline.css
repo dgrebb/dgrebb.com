@@ -1,0 +1,56 @@
+label.date-toggle,
+label.date-toggle time,
+svg .calback {
+  transition-duration: var(--transition-duration-md);
+  transition-property: color, opacity, fill;
+  transition-timing-function: var(--transition-timing-function);
+}
+label.date-toggle {
+  display: block;
+  position: absolute;
+  left: -31px;
+  z-index: 3;
+  cursor: pointer;
+  height: 3rem;
+  color: var(--highlight-clr);
+  svg {
+    display: block;
+    height: 100%;
+  }
+  @media screen and (min-width: 640px) {
+    top: 1rem;
+    width: auto;
+    height: auto;
+  }
+  time {
+    display: flex;
+    position: absolute;
+    top: 0.0875rem;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.5;
+    z-index: 1;
+    transition-duration: var(--transition-duration);
+    padding-top: 0.33rem;
+    color: var(--fg-clr);
+    font-size: 1.25rem;
+    text-align: center;
+  }
+  svg .calback {
+    fill: var(--bg-clr);
+  }
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    color: var(--fg-clr);
+    time {
+      opacity: 1;
+    }
+    svg .calback {
+      fill: var(--hardlight-clr);
+    }
+  }
+}

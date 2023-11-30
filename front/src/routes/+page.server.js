@@ -16,7 +16,7 @@ const endpoint = URL + HOME;
 
 export async function load() {
   var home;
-  let seo, bioPicture, headline, image, intro, links;
+  let seo, bioPicture, headline, image, intro;
 
   try {
     home = await api(endpoint);
@@ -29,7 +29,7 @@ export async function load() {
     throw error(500, 'Home Page Error');
   }
 
-  ({ seo, bioPicture, headline, image, intro, links } = home);
+  ({ seo, bioPicture, headline, image, intro } = home);
 
   image = { ...bioPicture?.data?.attributes?.formats?.thumbnail } || {
     url: '/bio.jpg',
@@ -43,7 +43,6 @@ export async function load() {
     headline,
     image,
     intro: intro ? marked.parse(intro) : false,
-    links,
   };
   var pageMeta = {
     ...seo,

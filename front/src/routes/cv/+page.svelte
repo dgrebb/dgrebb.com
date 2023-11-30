@@ -5,10 +5,11 @@
   import Flourish from '@layout/Flourish.svelte';
   import Calendar from '@components/icons/Calendar.svelte';
   import '@styles/pages/cv.css';
+  import Links from '@components/general/Links.svelte';
 
   export let data;
 
-  const { pathname, page, experiences, pageMeta } = data;
+  const { pathname, socialContent, page, experiences, pageMeta } = data;
   const { title, intro } = page;
   const currentYear = new Date().getFullYear();
 
@@ -31,16 +32,19 @@
 <PageTransition transitionKey={pathname}>
   <section class="cv meat">
     <Flourish />
-    <a id="main">Main Content</a>
-    <h1>{title}</h1>
-    <!-- {#if hero}
-      <img src={hero.url} alt={hero.alternativeText} />
-    {/if} -->
-    {#if intro}
-      <div class="summary">
-        {intro}
-      </div>
-    {/if}
+    <header class="cv-masthead">
+      <a id="main">Main Content</a>
+      <!-- {#if hero}
+        <img src={hero.url} alt={hero.alternativeText} />
+      {/if} -->
+      <h1 class="page-heading">{title}</h1>
+      <Links links={socialContent} />
+      {#if intro}
+        <div class="summary">
+          {@html intro}
+        </div>
+      {/if}
+    </header>
     <div class="experience-timeline">
       <Calendar />
       {#each experiences as { name, slug, startDate, endDate, summary, organizations, skills }}
