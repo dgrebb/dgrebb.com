@@ -1,3 +1,10 @@
+.cv.meat {
+  h1.skill-title {
+    position: relative;
+    height: auto;
+    line-height: 1;
+  }
+}
 .project-article {
   float: left;
   width: 80%;

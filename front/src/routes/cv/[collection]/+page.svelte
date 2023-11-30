@@ -18,7 +18,6 @@
     pageMeta,
     collectionData,
   } = data);
-  // $: console.log('🚀 ~ file: +page.svelte:21 ~ data:', data);
 </script>
 
 <PageTransition transitionKey={collection}>

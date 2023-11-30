@@ -1,0 +1,73 @@
+.links {
+  align-items: stretch;
+  padding-top: 1.75rem;
+  padding-right: 2rem;
+  padding-bottom: 0.75rem;
+  padding-left: 2rem;
+
+  .link-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .link {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    line-height: 1;
+    a {
+      display: inline-block;
+      opacity: 0.3;
+      transition:
+        color var(--transition-duration),
+        opacity 200ms;
+      transition-timing-function: var(--transition-timing-function);
+      padding: 0.25rem;
+      height: 100%;
+      &:hover,
+      &:focus {
+        opacity: 1;
+        transition:
+          color 200ms,
+          opacity var(--transition-duration);
+        transition-timing-function: var(--transition-timing-function);
+        color: var(--highlight-clr);
+      }
+    }
+    svg {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+    .twitter-icon {
+      padding-top: 5px;
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+    .x-icon {
+      padding-top: 5px;
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+    .instagram-icon {
+      padding-top: 6px;
+    }
+    .link-icon {
+      padding-top: 7px;
+    }
+    .pinboard-icon {
+      padding-top: 3px;
+    }
+    .catchafire-icon {
+      svg {
+        padding-top: 3px;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+  }
+}

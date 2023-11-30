@@ -7,7 +7,14 @@
   import '@styles/pages/home.css';
 
   export let data;
-  const { headline, image, intro, links, pageMeta, pathname } = data;
+  const {
+    headline,
+    image,
+    intro,
+    socialContent: links,
+    pageMeta,
+    pathname,
+  } = data;
 </script>
 
 <PageTransition transitionKey={pathname}>
