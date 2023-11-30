@@ -1,14 +1,66 @@
+@import '../components/cv-timeline.css';
+
 .main .cv.meat {
   width: 100%;
+  h1.page-heading,
   h1.collection-title,
   h1.skill-title {
-    position: relative;
-    height: auto;
-    font-size: 9rem;
+    margin-top: 0;
+    padding: 0;
+    font-size: 2rem;
     line-height: 1;
+    @media screen and (min-width: 480px) {
+      font-size: 3rem;
+    }
+    @media screen and (min-width: 640px) {
+      font-size: 5rem;
+    }
   }
-  .summary {
-    padding: 1rem 2rem;
+}
+
+.cv-masthead {
+  & .page-heading {
+    font-size: 2rem;
+    text-align: center;
+  }
+  & .summary {
+    margin: 0 auto;
+    padding: 0 1rem;
+    p {
+      padding: 0.5rem 0;
+    }
+    @media screen and (min-width: 640px) {
+      padding-bottom: 0;
+      max-width: 80%;
+    }
+  }
+  & .link-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 50%;
+    .link {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 0;
+      height: 2rem;
+      a {
+        display: inline-block;
+        border: none;
+        padding: 0.25rem;
+        width: auto;
+        height: 100%;
+        svg {
+          height: 100%;
+        }
+        &.catchafire-icon {
+          max-height: 80%;
+        }
+      }
+    }
   }
 }
 
@@ -24,132 +76,12 @@
 
 .experience-timeline {
   position: relative;
-  margin: 0 0 0 5%;
+  margin: 0 0 0 7%;
   @media screen and (min-width: 640px) {
     margin: 0 auto 0 15%;
   }
   @media screen and (min-width: 768px) {
     max-width: 80%;
-  }
-}
-
-label.date-toggle,
-label.date-toggle time,
-svg .calback {
-  transition-duration: var(--transition-duration-md);
-  transition-property: color, opacity, fill;
-  transition-timing-function: var(--transition-timing-function);
-}
-label.date-toggle {
-  display: block;
-  position: absolute;
-  left: -31px;
-  z-index: 3;
-  cursor: pointer;
-  height: 3rem;
-  color: var(--highlight-clr);
-  svg {
-    display: block;
-    height: 100%;
-  }
-  @media screen and (min-width: 640px) {
-    top: 1rem;
-    width: auto;
-    height: auto;
-  }
-  time {
-    display: flex;
-    position: absolute;
-    top: 0.0875rem;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    justify-content: center;
-    align-items: center;
-    opacity: 0.5;
-    z-index: 1;
-    transition-duration: var(--transition-duration);
-    padding-top: 0.33rem;
-    color: var(--fg-clr);
-    font-size: 1.25rem;
-    text-align: center;
-  }
-  svg .calback {
-    fill: var(--bg-clr);
-  }
-  &:hover,
-  &:focus,
-  &:focus-visible {
-    color: var(--fg-clr);
-    time {
-      opacity: 1;
-    }
-    svg .calback {
-      fill: var(--hardlight-clr);
-    }
-  }
-}
-
-input#date-toggle-checkbox {
-  position: relative;
-  top: 2rem;
-  z-index: -1;
-  &:focus-visible {
-    ~ label {
-      outline: 2px dashed var(--highlight-clr);
-      outline-offset: 2px;
-    }
-  }
-
-  @media screen and (min-width: 640px) {
-    top: 1rem;
-  }
-  & ~ .experience-timeline-item {
-    &:hover,
-    &:focus,
-    &:focus-visible,
-    &:focus-within,
-    &:active,
-    &:before:hover,
-    &:before:focus,
-    &:before:focus-visible,
-    &:before:focus-within,
-    &:before:active {
-      .experience-timeline-date {
-        opacity: 0;
-        @media screen and (min-width: 640px) {
-          opacity: 0;
-        }
-      }
-    }
-  }
-}
-
-input#date-toggle-checkbox:checked {
-  & ~ .experience-timeline-item,
-  .experience-timeline-item:has(details[open]) {
-    .experience-timeline-date {
-      opacity: 1;
-      @media screen and (min-width: 640px) {
-        transform: translateX(-3.5rem);
-      }
-    }
-  }
-  & ~ .experience-timeline-item {
-    &:hover,
-    &:focus,
-    &:focus-visible {
-      .experience-timeline-date {
-        @media screen and (min-width: 640px) {
-          transform: translateX(-5rem) scale(1.2);
-        }
-      }
-    }
-  }
-  ~ label {
-    time {
-      opacity: 1;
-    }
   }
 }
 
@@ -214,11 +146,14 @@ input#date-toggle-checkbox:checked {
     will-change: opacity, transform;
     padding-top: 1px;
     color: var(--fg-clr-o);
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1rem;
     font-family: var(--font-lb);
-    text-align: right;
     text-transform: uppercase;
+    @media screen and (min-width: 640px) {
+      font-size: 0.875rem;
+      text-align: right;
+    }
     .experience-timeline-date-month {
       display: none;
       @media screen and (min-width: 1200px) {
@@ -353,7 +288,7 @@ body.ready .main section .experience-timeline-item {
       &:hover {
         li.skill,
         .skill {
-          display: inline-block;
+          /* display: inline-block; */
           /* filter: brightness(0.75); */
           transition-delay: 333ms;
           transition-duration: var(--transition-duration-md);
@@ -387,35 +322,35 @@ body.ready .main section .experience-timeline-item {
     }
   }
   .skills {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-end;
     margin: 0;
-    padding: 0;
+    padding-top: 1rem;
     @media screen and (min-width: 640px) {
-      display: flex;
-      flex-wrap: wrap;
-      align-content: flex-end;
+      align-content: flex-start;
       justify-content: right;
+      padding-top: 0;
       width: 50%;
-      li {
-        display: inline;
-        margin: 0;
-        padding: 0;
-      }
     }
   }
   li.skill,
   .skill {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
+    justify-items: flex-start;
     opacity: 0.7;
     transition-duration: var(--transition-duration-md);
     transition-property: filter, opacity;
     transition-timing-function: var(--transition-timing-function);
     margin: 0;
     border: 0;
-    padding: 0 0.11rem;
-    height: 1.25rem;
+    padding: 0.25rem;
+    height: 1.5rem;
     @media screen and (min-width: 640px) {
+      align-items: flex-end;
+      justify-items: flex-end;
       padding: 0.25rem 0.33rem;
       height: 1.55rem;
     }
@@ -446,6 +381,129 @@ body.ready .main section .experience-timeline-item {
 
 .item-details {
   .experience-summary {
-    padding: 1.5rem 0.5rem 0 0.5rem;
+    padding: 1.5rem 0 0 0;
+    @media screen and (min-width: 640px) {
+      padding: 1.5rem 0.5rem 0 0.5rem;
+    }
+  }
+}
+
+input#date-toggle-checkbox {
+  position: relative;
+  top: 2rem;
+  z-index: -1;
+  &:focus-visible {
+    ~ label {
+      outline: 2px dashed var(--highlight-clr);
+      outline-offset: 2px;
+    }
+  }
+
+  @media screen and (min-width: 640px) {
+    top: 1rem;
+  }
+  & ~ .experience-timeline-item {
+    &:hover,
+    &:focus,
+    &:focus-visible,
+    &:focus-within,
+    &:active,
+    &:before:hover,
+    &:before:focus,
+    &:before:focus-visible,
+    &:before:focus-within,
+    &:before:active {
+      .experience-timeline-date {
+        opacity: 0;
+        @media screen and (min-width: 640px) {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+
+input#date-toggle-checkbox:checked {
+  & ~ .experience-timeline-item,
+  .experience-timeline-item:has(details[open]) {
+    .experience-timeline-date {
+      opacity: 1;
+      @media screen and (min-width: 640px) {
+        transform: translateX(-3.5rem);
+      }
+    }
+  }
+  & ~ .experience-timeline-item {
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      .experience-timeline-date {
+        @media screen and (min-width: 640px) {
+          transform: translateX(-5rem) scale(1.2);
+        }
+      }
+    }
+  }
+  ~ label {
+    time {
+      opacity: 1;
+    }
+  }
+}
+
+label.date-toggle,
+label.date-toggle time,
+svg .calback {
+  transition-duration: var(--transition-duration-md);
+  transition-property: color, opacity, fill;
+  transition-timing-function: var(--transition-timing-function);
+}
+label.date-toggle {
+  display: block;
+  position: absolute;
+  left: -31px;
+  z-index: 3;
+  cursor: pointer;
+  height: 3rem;
+  color: var(--highlight-clr);
+  svg {
+    display: block;
+    height: 100%;
+  }
+  @media screen and (min-width: 640px) {
+    top: 1rem;
+    width: auto;
+    height: auto;
+  }
+  time {
+    display: flex;
+    position: absolute;
+    top: 0.0875rem;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.5;
+    z-index: 1;
+    transition-duration: var(--transition-duration);
+    padding-top: 0.33rem;
+    color: var(--fg-clr);
+    font-size: 1.25rem;
+    text-align: center;
+  }
+  svg .calback {
+    fill: var(--bg-clr);
+  }
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    color: var(--fg-clr);
+    time {
+      opacity: 1;
+    }
+    svg .calback {
+      fill: var(--hardlight-clr);
+    }
   }
 }
