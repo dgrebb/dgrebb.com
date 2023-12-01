@@ -13,12 +13,13 @@
       font-size: 3rem;
     }
     @media screen and (min-width: 640px) {
-      font-size: 5rem;
+      font-size: 4rem;
     }
   }
 }
 
 .cv-masthead {
+  padding: 2rem 0 1rem 0;
   & .page-heading {
     font-size: 2rem;
     text-align: center;
@@ -30,6 +31,7 @@
       padding: 0.5rem 0;
     }
     @media screen and (min-width: 640px) {
+      padding: 1rem 0;
       padding-bottom: 0;
       max-width: 80%;
     }
@@ -40,7 +42,11 @@
     flex-wrap: wrap;
     justify-content: center;
     margin: 0 auto;
+    padding-bottom: 1.5rem;
     max-width: 50%;
+    @media screen and (min-width: 640px) {
+      padding-bottom: 1rem;
+    }
     .link {
       display: flex;
       flex-direction: row;
@@ -326,7 +332,7 @@ body.ready .main section .experience-timeline-item {
     flex-wrap: wrap;
     align-content: flex-end;
     margin: 0;
-    padding-top: 1rem;
+    padding-top: 0.25rem;
     @media screen and (min-width: 640px) {
       align-content: flex-start;
       justify-content: right;
