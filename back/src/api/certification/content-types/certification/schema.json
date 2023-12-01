@@ -43,12 +43,6 @@
         "files"
       ]
     },
-    "positions": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::position.position",
-      "mappedBy": "certifications"
-    },
     "seo": {
       "type": "component",
       "repeatable": false,
