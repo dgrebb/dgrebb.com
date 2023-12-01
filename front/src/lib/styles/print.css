@@ -1,0 +1,62 @@
+@media print {
+  :root {
+    background: transparent !important;
+  }
+  html,
+  body {
+    background: transparent !important;
+
+    & > div > header.header,
+    & > div > footer.footer,
+    .flourish,
+    .links,
+    .cv-masthead .link-list,
+    .cv .experience-timeline .skills {
+      display: none !important;
+    }
+  }
+  .bio-picture {
+    filter: none;
+  }
+  .transition-container {
+    display: block !important;
+  }
+  .cv-masthead {
+    .summary {
+      padding: 0;
+      padding-bottom: 0.5rem;
+    }
+  }
+  .experience-timeline {
+    margin: 0;
+    .experience-summary {
+      padding-top: 0.5rem;
+    }
+    .date-toggle,
+    #date-toggle-checkbox {
+      display: none;
+    }
+    .experience-timeline-item {
+      border: none;
+      padding: 1rem 0 0;
+      &:before {
+        display: none !important;
+      }
+      h1.item-title {
+        padding-bottom: 0.25rem;
+        font-size: 1.25rem;
+        font-family: var(--font-lbb);
+        text-transform: uppercase;
+      }
+      .item-basics {
+        &:before,
+        &:after {
+          display: none;
+        }
+      }
+      .item-details {
+        padding-bottom: 1rem;
+      }
+    }
+  }
+}

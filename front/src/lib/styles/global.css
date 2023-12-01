@@ -1,4 +1,5 @@
 @import 'base/reset.css';
+@import 'print.css';
 @import 'base/theme.css';
 @import 'base/transitions.css';
 @import 'base/fonts.css';
