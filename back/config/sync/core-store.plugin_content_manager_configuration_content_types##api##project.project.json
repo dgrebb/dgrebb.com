@@ -118,21 +118,6 @@
           "sortable": true
         }
       },
-      "positions": {
-        "edit": {
-          "label": "positions",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "positions",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "industries": {
         "edit": {
           "label": "industries",
@@ -310,6 +295,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "name",
+        "slug",
+        "skills",
+        "organizations"
+      ],
       "edit": [
         [
           {
@@ -357,10 +348,6 @@
           {
             "name": "industries",
             "size": 4
-          },
-          {
-            "name": "positions",
-            "size": 4
           }
         ],
         [
@@ -391,13 +378,6 @@
             "size": 12
           }
         ]
-      ],
-      "list": [
-        "name",
-        "slug",
-        "skills",
-        "positions",
-        "organizations"
       ]
     }
   },

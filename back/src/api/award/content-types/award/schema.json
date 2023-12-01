@@ -32,12 +32,6 @@
     "summary": {
       "type": "text"
     },
-    "positions": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::position.position",
-      "inversedBy": "awards"
-    },
     "projects": {
       "type": "relation",
       "relation": "manyToMany",

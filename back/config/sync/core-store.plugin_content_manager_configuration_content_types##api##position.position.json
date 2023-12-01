@@ -48,6 +48,20 @@
           "sortable": true
         }
       },
+      "title": {
+        "edit": {
+          "label": "title",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "startDate": {
         "edit": {
           "label": "startDate",
@@ -100,96 +114,6 @@
         },
         "list": {
           "label": "hero",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "organizations": {
-        "edit": {
-          "label": "organizations",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "organizations",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "projects": {
-        "edit": {
-          "label": "projects",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "projects",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "skills": {
-        "edit": {
-          "label": "skills",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "skills",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "industries": {
-        "edit": {
-          "label": "industries",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "industries",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "awards": {
-        "edit": {
-          "label": "awards",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "awards",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "certifications": {
-        "edit": {
-          "label": "certifications",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "certifications",
           "searchable": false,
           "sortable": false
         }
@@ -264,20 +188,6 @@
           "sortable": false
         }
       },
-      "title": {
-        "edit": {
-          "label": "title",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "title",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -338,6 +248,13 @@
       }
     },
     "layouts": {
+      "list": [
+        "title",
+        "name",
+        "slug",
+        "endDate",
+        "startDate"
+      ],
       "edit": [
         [
           {
@@ -375,34 +292,6 @@
         ],
         [
           {
-            "name": "skills",
-            "size": 4
-          },
-          {
-            "name": "industries",
-            "size": 4
-          },
-          {
-            "name": "projects",
-            "size": 4
-          }
-        ],
-        [
-          {
-            "name": "organizations",
-            "size": 4
-          },
-          {
-            "name": "awards",
-            "size": 4
-          },
-          {
-            "name": "certifications",
-            "size": 4
-          }
-        ],
-        [
-          {
             "name": "body",
             "size": 12
           }
@@ -431,16 +320,6 @@
             "size": 12
           }
         ]
-      ],
-      "list": [
-        "title",
-        "organizations",
-        "name",
-        "slug",
-        "endDate",
-        "startDate",
-        "industries",
-        "skills"
       ]
     }
   },

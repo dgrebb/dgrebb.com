@@ -48,12 +48,6 @@
       "target": "api::project.project",
       "mappedBy": "organizations"
     },
-    "positions": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::position.position",
-      "mappedBy": "organizations"
-    },
     "skills": {
       "type": "relation",
       "relation": "manyToMany",
