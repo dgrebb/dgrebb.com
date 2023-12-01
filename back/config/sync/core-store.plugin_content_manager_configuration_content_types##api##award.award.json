@@ -90,21 +90,6 @@
           "sortable": false
         }
       },
-      "positions": {
-        "edit": {
-          "label": "Positions",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "positions",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "projects": {
         "edit": {
           "label": "Projects",
@@ -223,6 +208,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "name",
+        "projects",
+        "URL",
+        "date"
+      ],
       "edit": [
         [
           {
@@ -262,12 +253,6 @@
         ],
         [
           {
-            "name": "positions",
-            "size": 6
-          }
-        ],
-        [
-          {
             "name": "body",
             "size": 12
           }
@@ -278,13 +263,6 @@
             "size": 12
           }
         ]
-      ],
-      "list": [
-        "name",
-        "projects",
-        "URL",
-        "date",
-        "positions"
       ]
     }
   },

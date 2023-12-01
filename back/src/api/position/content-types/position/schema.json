@@ -42,42 +42,6 @@
         "images"
       ]
     },
-    "organizations": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::organization.organization",
-      "inversedBy": "positions"
-    },
-    "projects": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::project.project",
-      "mappedBy": "positions"
-    },
-    "skills": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::skill.skill",
-      "inversedBy": "positions"
-    },
-    "industries": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::industry.industry",
-      "inversedBy": "positions"
-    },
-    "awards": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::award.award",
-      "mappedBy": "positions"
-    },
-    "certifications": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::certification.certification",
-      "inversedBy": "positions"
-    },
     "accomplishments": {
       "displayName": "Accomplishments",
       "type": "component",

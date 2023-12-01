@@ -105,21 +105,6 @@
           "sortable": false
         }
       },
-      "positions": {
-        "edit": {
-          "label": "Positions",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "positions",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "seo": {
         "edit": {
           "label": "seo",
@@ -209,6 +194,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "name",
+        "slug",
+        "skills",
+        "experiences"
+      ],
       "edit": [
         [
           {
@@ -252,12 +243,6 @@
             "size": 12
           }
         ]
-      ],
-      "list": [
-        "name",
-        "slug",
-        "skills",
-        "experiences"
       ]
     }
   },

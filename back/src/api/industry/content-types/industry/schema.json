@@ -31,12 +31,6 @@
       "target": "api::organization.organization",
       "mappedBy": "industries"
     },
-    "positions": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::position.position",
-      "mappedBy": "industries"
-    },
     "skills": {
       "type": "relation",
       "relation": "manyToMany",

@@ -120,21 +120,6 @@
           "sortable": false
         }
       },
-      "positions": {
-        "edit": {
-          "label": "positions",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "positions",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "skills": {
         "edit": {
           "label": "skills",
@@ -253,6 +238,13 @@
       }
     },
     "layouts": {
+      "list": [
+        "name",
+        "slug",
+        "projects",
+        "skills",
+        "URL"
+      ],
       "edit": [
         [
           {
@@ -286,10 +278,6 @@
           {
             "name": "projects",
             "size": 4
-          },
-          {
-            "name": "positions",
-            "size": 4
           }
         ],
         [
@@ -314,14 +302,6 @@
             "size": 12
           }
         ]
-      ],
-      "list": [
-        "name",
-        "slug",
-        "positions",
-        "projects",
-        "skills",
-        "URL"
       ]
     }
   },
