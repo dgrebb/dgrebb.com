@@ -6,10 +6,10 @@
       "bulkable": true,
       "filterable": true,
       "searchable": true,
-      "pageSize": 10,
-      "mainField": "name",
-      "defaultSortBy": "name",
-      "defaultSortOrder": "ASC"
+      "pageSize": 100,
+      "mainField": "title",
+      "defaultSortBy": "endDate",
+      "defaultSortOrder": "DESC"
     },
     "metadatas": {
       "id": {
@@ -338,12 +338,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "slug",
-        "title"
-      ],
       "edit": [
         [
           {
@@ -401,6 +395,10 @@
           {
             "name": "awards",
             "size": 4
+          },
+          {
+            "name": "certifications",
+            "size": 4
           }
         ],
         [
@@ -432,13 +430,12 @@
             "name": "seo",
             "size": 12
           }
-        ],
-        [
-          {
-            "name": "certifications",
-            "size": 6
-          }
         ]
+      ],
+      "list": [
+        "title",
+        "name",
+        "slug"
       ]
     }
   },

@@ -248,13 +248,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "title",
-        "name",
-        "slug",
-        "endDate",
-        "startDate"
-      ],
       "edit": [
         [
           {
@@ -263,14 +256,14 @@
           },
           {
             "name": "name",
-            "size": 6
-          }
-        ],
-        [
+            "size": 4
+          },
           {
             "name": "slug",
             "size": 4
-          },
+          }
+        ],
+        [
           {
             "name": "startDate",
             "size": 4
@@ -320,6 +313,13 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "title",
+        "name",
+        "slug",
+        "endDate",
+        "startDate"
       ]
     }
   },
