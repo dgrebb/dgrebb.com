@@ -1,16 +1,15 @@
-name: 🚜 Build, Deploy, and Test
-run-name: "🚜 ${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Build, Deploy, and Test - ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest {0}', github.ref_name) }}"
+name: 🧑‍🚀 Build & Deploy Release
+run-name: "🧑‍🚀 ${{ github.ref_name == 'main' && 'PRD' || github.ref_name == 'release/*' || 'STG' }} - Build, Deploy, and Test - ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest {0}', github.ref_name) }}"
 
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - "front/**"
-    branches: [main, develop]
-  push:
-    paths:
-      - "front/**"
-    branches: [main, develop]
+    inputs:
+      env:
+        description: 'Target deployment environment.'
+        type: environment
+        required: true
+        default: 'stg'
+    branches: [release/*]
 
 permissions:
   checks: write
@@ -30,7 +29,7 @@ jobs:
     needs: lint
     uses: ./.github/workflows/bd-fe.yml
     with:
-      env: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+      env: ${{ github.event.inputs.env }}
     secrets:
       AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -60,34 +59,34 @@ jobs:
       DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
       GH_WORKFLOW_TOKEN: ${{ secrets.GH_WORKFLOW_TOKEN }}
 
-  backstop:
-    name: 👀 
-    needs: build_deploy
-    uses: ./.github/workflows/test-backstop.yml
-    secrets:
-      GH_WORKFLOW_TOKEN: ${{ secrets.GH_WORKFLOW_TOKEN }}
-      AWS_S3_BUCKET_REPORTS: ${{ secrets.AWS_S3_BUCKET_REPORTS }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_REGION: ${{ secrets.AWS_REGION }}
-      REPORTS_DISTRIBUTION: ${{ secrets.REPORTS_DISTRIBUTION }}
+  # backstop:
+  #   name: 👀 
+  #   needs: build_deploy
+  #   uses: ./.github/workflows/test-backstop.yml
+  #   secrets:
+  #     GH_WORKFLOW_TOKEN: ${{ secrets.GH_WORKFLOW_TOKEN }}
+  #     AWS_S3_BUCKET_REPORTS: ${{ secrets.AWS_S3_BUCKET_REPORTS }}
+  #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #     AWS_REGION: ${{ secrets.AWS_REGION }}
+  #     REPORTS_DISTRIBUTION: ${{ secrets.REPORTS_DISTRIBUTION }}
 
-  lighthouse:
-    name: 🕯️
-    needs: build_deploy
-    uses: ./.github/workflows/test-lighthouse.yml
-    secrets:
-      AWS_S3_BUCKET_REPORTS: ${{ secrets.AWS_S3_BUCKET_REPORTS }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_REGION: ${{ secrets.AWS_REGION }}
-      REPORTS_DISTRIBUTION: ${{ secrets.REPORTS_DISTRIBUTION }}
-      GH_WORKFLOW_TOKEN: ${{ secrets.GH_WORKFLOW_TOKEN }}
+  # lighthouse:
+  #   name: 🕯️
+  #   needs: build_deploy
+  #   uses: ./.github/workflows/test-lighthouse.yml
+  #   secrets:
+  #     AWS_S3_BUCKET_REPORTS: ${{ secrets.AWS_S3_BUCKET_REPORTS }}
+  #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #     AWS_REGION: ${{ secrets.AWS_REGION }}
+  #     REPORTS_DISTRIBUTION: ${{ secrets.REPORTS_DISTRIBUTION }}
+  #     GH_WORKFLOW_TOKEN: ${{ secrets.GH_WORKFLOW_TOKEN }}
 
-  pagespeed:
-    name: 📈
-    needs: build_deploy
-    uses: ./.github/workflows/test-psi.yml
-    secrets:
-      PSI_APIKEY: ${{ secrets.PSI_APIKEY }}
-      GH_WORKFLOW_TOKEN: ${{ secrets.GH_WORKFLOW_TOKEN }}
+  # pagespeed:
+  #   name: 📈
+  #   needs: build_deploy
+  #   uses: ./.github/workflows/test-psi.yml
+  #   secrets:
+  #     PSI_APIKEY: ${{ secrets.PSI_APIKEY }}
+  #     GH_WORKFLOW_TOKEN: ${{ secrets.GH_WORKFLOW_TOKEN }}
