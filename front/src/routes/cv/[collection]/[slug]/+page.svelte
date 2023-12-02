@@ -38,9 +38,19 @@
   <section class="cv meat {collection}">
     <Flourish />
     <a id="main">Main Content</a>
-    <svelte:component this={components[collection]} content={itemData} />
+    {#if itemData.length}
+      <svelte:component this={components[collection]} content={itemData} />
+    {:else}
+      <div class="empty-content">
+        <h2>Nothing here yet. You're early!</h2>
+        «&nbsp;<a href="/cv/">Back to CV</a>
+      </div>
+    {/if}
   </section>
 </PageTransition>
-{#key pathname}
-  <Meta {pageMeta} />
-{/key}
+<!-- TODO: Remove this conditional when page-ready -->
+{#if pageMeta}
+  {#key pathname}
+    <Meta {pageMeta} />
+  {/key}
+{/if}

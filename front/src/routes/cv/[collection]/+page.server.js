@@ -42,8 +42,8 @@ export async function load({ params: { collection } }) {
     updatedAt,
     publishedAt,
     type: 'article',
-    metaTitle: title || seo?.metaTitle || 'CV « Dan Grebb',
-    socialTitle: `${seo?.metaTitle || title} CV « Dan Grebb`,
+    metaTitle: title || seo?.metaTitle || '',
+    socialTitle: `${seo?.metaTitle || title} « CV « Dan Grebb`,
     titleTemplate: '%s « CV « Dan Grebb',
     metaDescription:
       seo?.metaDescription ||
@@ -58,9 +58,9 @@ export async function load({ params: { collection } }) {
     pageMeta?.metaImage?.data?.attributes || hero?.data?.attributes || false;
 
   return {
-    collection,
-    pageData,
-    pageMeta,
-    collectionData,
+    collection: collection || null,
+    pageData: pageData || {},
+    pageMeta: pageMeta || {},
+    collectionData: collectionData || {},
   };
 }

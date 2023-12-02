@@ -28,6 +28,7 @@ const config = {
     inlineStyleThreshold: Infinity,
     prerender: {
       entries: [
+        '/cv',
         '/cv/awards',
         '/cv/certifications',
         '/cv/classifications',
@@ -36,6 +37,7 @@ const config = {
         '/cv/experiences',
         '/cv/projects',
         '/cv/skills',
+        '/cv/skill/fixing-errors',
         '/posts/category',
         '/privacy',
         '/404',
