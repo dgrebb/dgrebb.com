@@ -163,6 +163,10 @@
           {
             "name": "metaDescription",
             "size": 4
+          },
+          {
+            "name": "canonicalURL",
+            "size": 4
           }
         ],
         [
@@ -172,35 +176,13 @@
           },
           {
             "name": "keywords",
-            "size": 4
+            "size": 6
           }
         ],
         [
           {
             "name": "metaSocial",
             "size": 12
-          }
-        ],
-        [
-          {
-            "name": "metaRobots",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "structuredData",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "metaViewport",
-            "size": 6
-          },
-          {
-            "name": "canonicalURL",
-            "size": 6
           }
         ]
       ]
