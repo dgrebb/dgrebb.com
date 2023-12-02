@@ -1,9 +1,14 @@
 name: 🚀 Build & Deploy 
-run-name: "🚀 ${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Build & Deploy - ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest {0}', github.ref_name) }}"
+run-name: "🚀 ${{ inputs.env == 'prd' && 'PRD' || 'STG' }} - Build & Deploy - ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest {0}', github.ref_name) }}"
 
 on:
   workflow_dispatch:
   workflow_call:
+    inputs:
+      env:
+        description: 'Target deployment environment.'
+        type: string
+        required: true
     secrets:
       AWS_S3_BUCKET:
         required: true
@@ -70,14 +75,12 @@ env:
 
 jobs:
   build_deploy:
-    name: ${{ github.ref_name == 'main' && 'PRD' || 'STG' }} Deployment
+    name: ${{ inputs.env == 'prd' && 'PRD' || 'STG' }} Deployment
     runs-on: ubuntu-latest
+    environment: ${{ inputs.env }}
     concurrency:
       group: build-deploy
       cancel-in-progress: true
-
-    environment:
-      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
 
     env:
       DEPLOY_ENV: "${{ vars.ENV_NAME }}"
@@ -87,7 +90,7 @@ jobs:
         id: vars
         env:
           name: "${{ env.BRANCH_NAME }}"
-          environment: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+          environment: inputs.env
         run: |
           echo "RELEASE_NAME=${environment}-${name/\//-}" >> $GITHUB_ENV
           echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
@@ -141,7 +144,7 @@ jobs:
       - name: ↻ Build
         run: |
           cd front
-          if [ ${{ github.ref_name }} == 'main' ]; then 
+          if [ ${{ inputs.env }} == 'prd' ]; then 
             SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} \
             DEPLOY_ENV=$DEPLOY_ENV \
             UPLOAD_SOURCEMAPS=true \
@@ -158,7 +161,7 @@ jobs:
           fi
 
       - name: 🤖 Robots
-        if: ${{ github.ref_name == 'main' }}
+        if: ${{ inputs.env == 'prd' }}
         run: |
           sed -i 's/^Disallow\: \/$/Allow\: \//' front/build/robots.txt
 
