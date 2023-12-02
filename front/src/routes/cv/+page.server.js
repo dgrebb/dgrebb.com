@@ -77,13 +77,13 @@ export async function load() {
     updatedAt,
     publishedAt,
     type: 'article',
-    metaTitle: seo?.metaTitle || title,
-    socialTitle: `${seo?.metaTitle || title} « Dan Grebb`,
+    metaTitle: `Resume « Dan Grebb`,
+    socialTitle: `Resume « Dan Grebb`,
     titleTemplate: '%s « Skills « Dan Grebb',
     metaDescription:
       seo?.metaDescription ||
       summary ||
-      'Dan did something. Once or twice. Check it out!',
+      "Dan Grebb's Resume. A collection of professional experiences, awards, projects, and skills collected since 1999.",
   };
 
   /**
