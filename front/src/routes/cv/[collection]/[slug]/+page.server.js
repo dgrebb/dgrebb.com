@@ -31,42 +31,58 @@ export async function load({ params: { collection, slug } }) {
     case 'award':
       endpoint += `?populate[seo]=*&populate[skills]=*&populate[organizations]=*&populate[projects]=*&populate[p]=*&populate[experiences]=*&filters[slug][$eq]=${slug}`;
       data = await requestContent(endpoint, collection);
-      itemData = await shapeAwardData(data);
+      // itemData = await shapeAwardData(data);
+      // TODO: Remove the ternaries when page-ready
+      itemData = data.length ? await shapeAwardData(data) : false;
       break;
     case 'certification':
       endpoint += `?populate[seo]=*&populate[skills]=*&filters[slug][$eq]=${slug}`;
       data = await requestContent(endpoint, collection);
-      itemData = await shapeCertificationData(data);
+      // itemData = await shapeCertificationData(data);
+      // TODO: Remove the ternaries when page-ready
+      itemData = data.length ? await shapeCertificationData(data) : false;
       break;
     case 'classification':
       endpoint += `?populate[seo]=*&populate[skills]=*&filters[slug][$eq]=${slug}`;
       data = await requestContent(endpoint, collection);
-      itemData = await shapeClassificationData(data);
+      // itemData = await shapeClassificationData(data);
+      // TODO: Remove the ternaries when page-ready
+      itemData = data.length ? await shapeClassificationData(data) : false;
       break;
     case 'industry':
       endpoint = `${URL}/industries?populate[seo]=*&populate[skills]=*&populate[organizations]=*&populate[projects]=*&populate[awards]=*&populate[experiences]=*&populate[images]=*&filters[slug][$eq]=${slug}`;
       data = await requestContent(endpoint, collection);
-      itemData = await shapeIndustryData(data);
+      // itemData = await shapeIndustryData(data);
+      // TODO: Remove the ternaries when page-ready
+      itemData = data.length ? await shapeIndustryData(data) : false;
       break;
     case 'organization':
       endpoint += `?populate[seo]=*&populate[skills]=*&populate[projects]=*&populate[industries]=*&populate[experiences]=*&populate[images]=*&filters[slug][$eq]=${slug}`;
       data = await requestContent(endpoint, collection);
-      itemData = await shapeOrganizationData(data);
+      // itemData = await shapeOrganizationData(data);
+      // TODO: Remove the ternaries when page-ready
+      itemData = data.length ? await shapeOrganizationData(data) : false;
       break;
     case 'experience':
       endpoint += `?populate[hero]=*&populate[seo]=*&populate[skills]=*&populate[organizations]=*&populate[projects]=*&populate[industries]=*&populate[awards]=*&filters[slug][$eq]=${slug}`;
       data = await requestContent(endpoint, collection);
-      itemData = await shapeExperienceData(data);
+      // itemData = await shapeExperienceData(data);
+      // TODO: Remove the ternaries when page-ready
+      itemData = data.length ? await shapeExperienceData(data) : false;
       break;
     case 'project':
       endpoint += `?populate[hero]=*&populate[seo]=*&populate[skills]=*&populate[organizations]=*&populate[projects]=*&populate[industries]=*&populate[awards]=*&populate[classification]=*&populate[experiences]=*&populate[artifacts][on][artifacts.websites][populate]=*&populate[artifacts][on][artifacts.videos][populate]=*&filters[slug][$eq]=${slug}`;
       data = await requestContent(endpoint, collection);
-      itemData = await shapeProjectData(data);
+      // itemData = await shapeProjectData(data);
+      // TODO: Remove the ternaries when page-ready
+      itemData = data.length ? await shapeProjectData(data) : false;
       break;
     case 'skill':
       endpoint += `?populate[hero]=*&populate[icon]=*&populate[seo]=*&populate[certifications]=*&populate[organizations]=*&populate[projects]=*&populate[industries]=*&populate[awards]=*&populate[classifications]=*&populate[experiences]=*&filters[slug][$eq]=${slug}`;
       data = await requestContent(endpoint, collection);
-      itemData = await shapeSkillData(data);
+      // itemData = await shapeSkillData(data);
+      // TODO: Remove the ternaries when page-ready
+      itemData = data.length ? await shapeSkillData(data) : false;
       break;
   }
 
@@ -75,8 +91,8 @@ export async function load({ params: { collection, slug } }) {
   }
 
   return {
-    slug,
-    collection,
-    itemData,
+    slug: slug || false,
+    collection: collection || false,
+    itemData: itemData || {},
   };
 }
