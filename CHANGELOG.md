@@ -2,6 +2,109 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.10.0] - 2023-12-02
+
+### 💡 Features
+
+- ***(back)*** Adds experiences collection-type, fields, and configuration (#1027)
+- ***(back)*** Updates collections schema "name" field and adds singleItemRoute field (#1001)
+- ***(back)*** Adds video file fields and configuration to projects (#997)
+- ***(back)*** Installs, configures, and exports config via strapi-plugin-config-sync (#884)
+- ***(back)*** Adds svg field to skills schema (#991)
+- ***(back)*** Adds skill type collection, fields, and schema (#976)
+- ***(back)*** Adds slug field to all cv-related collections (#978)
+- ***(back)*** Adds seo fields to all cv singletons and collections (#974)
+- ***(back)*** Adds landing page singletons and shared fields (#971)
+- ***(back)*** Adds relations and fields for positions and projects (#966, #962)
+- ***(back)*** Adds awards collection-type, fields, and schema (#967)
+- ***(back)*** Adds organizations collection-type, fields, and schema (#961)
+- ***(back)*** Adds skills collection-type, fields, and schema (#965)
+- ***(front)*** Adds print stylesheet for CV and home (#1029)
+- ***(front)*** Adds pageMeta data handlers to CV collection and item pages (#1024)
+- ***(front)*** Styles and animates the experiences page (#1015) (#990) (#1021) (#1020)
+- ***(front)*** Refactors all page/component markdown rendering (#933)
+- ***(front)*** Updates routes and routes for collection listing pages (#1001)
+- ***(front)*** Adds styles and video display to projects route and api' (#997)
+- ***(front)*** Adds svg implementation to skills pages (#991)
+- ***(front)*** Complets cv collection page/route pattern, components, and data shapers (#834)
+- ***(front)*** Adds routes and components for cv collections and single item views (#834)
+- ***(front)*** Adds cv timeline styles and markup (#827)
+- ***(front)*** Adds position server route and page (#976)
+- ***(front)*** Adds positions api and content to cv route (#976)
+- ***(front)*** Adds cv collection and slug routes (#976)
+- ***(front)*** Creates CV api, server, and page routes (#832)
+
+### 🐛 Bug Fixes
+
+- ***(back)*** Increase upload limit and refactor video fields (#1004)
+- ***(back)*** Downgrades to and patches strapi@14.4.0
+- ***(ci)*** Updates workflow run name based on env input
+- ***(ci)*** Adds cv page secret to workflows (#832)
+- ***(front)*** Corrects title template for cv page
+- ***(front)*** Fixes formatting typo
+- ***(front)*** Moves TOC markdown parsing to server (#1011)
+- ***(front)*** Adds prerendering entries to avoid unlinked section ssg errors (#834)
+- ***(front)*** Increases navbar inactive link contrast
+- ***(front)*** Sets hero to false if null (#832)
+- ***(front)*** Guards against null cv hero (#832)
+- ***(front)*** Prevents page jump on pagenav toggle (#956)
+- ***(terraform)*** Updates terraform configuration for s3/cloudfront CORS (#999)
+
+### 📜 Documentation
+
+- ***(project)*** Updates privacy policy
+
+### ⚡️ Performance
+
+- ***(front)*** Reduces svg size; adds --force-prefers-reduced-motion to lighthouse
+
+### ♻️  Refactor
+
+- ***(back)*** Refactor classifications collection, naming, and relationships (#965)
+- ***(front)*** Makes minor adjustments to background gradient (#1014)
+- ***(front)*** Fixes eslint issues and updates configs (#1014)
+- ***(front)*** Reinitializes sveltekit with jsdoc, playwright, vitetest, and eslint (#1014)
+- ***(front)*** Reorganizes components and adjusts imports (#998)
+- ***(front)*** Moves apis into separate files
+
+### 👷 Build
+
+- ***(back)*** Adds certifications collection, fields, schema, and relationships (#984)
+- ***(back)*** Adds summary/body fields to all cv attribute collections
+- ***(ci)*** Adds release workflow and inputs (#1047)
+- ***(front)*** Installs markedjs, renders markdown on server with custom heading (#933)
+- ***(front)*** Refactors video, position, and project fields (#1005)
+- ***(front)*** Adds cv collection headline style
+- ***(front)*** Adds collection item data shape-shifters (#834)
+- ***(front)*** Refactors cv api implementation and variable naming (#976)
+- ***(front)*** Adds positions api vars and styles cv landing (#976)
+- ***(front)*** Updates API var for cv page (#832)
+- ***(front)*** Refactors active navigation system
+
+### 💚 Continuous Integration
+
+- ***(back)*** Updates content type and component view configurations (#994)
+- ***(front)*** Updates lighthouse and dynamically imports Sentry for better chunking
+
+### ✅ Testing
+
+- ***(backstop)*** Adds CV tests and updates local/stg refs (#979) (#1041)
+- ***(backstop)*** Updates gh-stg refs
+- ***(backstop)*** Updates gh-prd refs
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(back)*** Removes positions relations from schema and view (#1027)
+- ***(back)*** Updates to, adds `sharp@>=0.32.6` override, and patches strapi@4.14.6 (#1006)
+- ***(back)*** Changes posts display name (for UI sort hack)
+- ***(backstop)*** Updates gh-stg refs
+- ***(ci)*** Updates gh workflows to node@20.9.0
+- ***(front)*** Adds placeholder CV messages for forthcoming content
+- ***(front)*** Tweaks for twitter and catchafire rebrandings
+- ***(front)*** Adjusts api and page rendering for video artifacts (#1005)
+- ***(front)*** Adjusts formatting post-prettier update (#983)
+- ***(front)*** Updates and patches FE dependencies (#983)
+
 ## [3.9.1] - 2023-11-07
 
 ### 🐛 Bug Fixes
