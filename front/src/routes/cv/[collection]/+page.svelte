@@ -34,7 +34,7 @@
       </article>
     {/if}
     <!-- TODO: use a similar svelte:component pattern here for collection lists -->
-    {#if collectionData}
+    {#if collectionData.length}
       <ul class="collection-list">
         {#each collectionData as { attributes: { name, slug } }}
           <li class="collection-list-item">
@@ -43,9 +43,17 @@
           </li>
         {/each}
       </ul>
+    {:else}
+      <div class="empty-content">
+        <h2>Nothing here yet. You're early!</h2>
+        «&nbsp;<a href="/cv/">Back to CV</a>
+      </div>
     {/if}
   </section>
 </PageTransition>
-{#key pathname}
-  <Meta {pageMeta} />
-{/key}
+<!-- TODO: Remove this conditional when page-ready -->
+{#if pageMeta}
+  {#key pathname}
+    <Meta {pageMeta} />
+  {/key}
+{/if}

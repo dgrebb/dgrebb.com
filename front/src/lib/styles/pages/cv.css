@@ -9,12 +9,16 @@
     padding: 0;
     font-size: 2rem;
     line-height: 1;
+    text-align: center;
     @media screen and (min-width: 480px) {
       font-size: 3rem;
     }
     @media screen and (min-width: 640px) {
       font-size: 4rem;
     }
+  }
+  .empty-content {
+    text-align: center;
   }
 }
 
@@ -373,9 +377,9 @@ body.ready .main section .experience-timeline-item {
       &.failed {
         opacity: 1;
       }
-      &.failed {
-        /* background-color: red; */
-      }
+      /* &.failed {
+        background-color: red;
+      } */
     }
     &:hover,
     &:focus,

@@ -4,12 +4,12 @@
   align-items: center;
   padding-bottom: 3rem;
   height: auto;
-  line-height: 1.5;
   img {
     margin-bottom: 2.75rem;
   }
   h1 {
     font-size: 11rem;
+    line-height: 1;
     font-family: 'Public Sans Black', sans-serif;
   }
   p {
