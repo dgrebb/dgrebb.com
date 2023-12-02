@@ -326,6 +326,9 @@ body.ready .main section .experience-timeline-item {
     @media screen and (min-width: 640px) {
       width: 40%;
     }
+    .self {
+      font-family: var(--font-psb);
+    }
   }
   .skills {
     display: flex;

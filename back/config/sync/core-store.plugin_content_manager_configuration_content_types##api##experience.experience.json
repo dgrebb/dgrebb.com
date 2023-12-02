@@ -435,6 +435,10 @@
       "list": [
         "title",
         "name",
+        "organizations",
+        "projects",
+        "industries",
+        "skills",
         "slug"
       ]
     }

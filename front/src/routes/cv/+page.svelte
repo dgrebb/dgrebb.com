@@ -68,11 +68,14 @@
             <div class="experience-info">
               <p class="item-organizations">
                 {#each organizations as { attributes: { name, slug: orgSlug } }, i}
+                  {@const self = name.toLowerCase().includes('self')}
                   <!-- <a href="/cv/organization/{orgSlug}">{name}</a
                   >{#if i < organizations.length - 1},&nbsp;
                   {/if} -->
-                  {name}{#if i < organizations.length - 1},&nbsp;
-                  {/if}
+                  <span class="organization" class:self
+                    >{name}{#if i < organizations.length - 1},&nbsp;
+                    {/if}</span
+                  >
                 {/each}
               </p>
               <ul class="skills">

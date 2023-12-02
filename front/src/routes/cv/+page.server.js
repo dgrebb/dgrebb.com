@@ -12,8 +12,22 @@ const endpoint = URL + CV;
 const experiencesEndpoint = URL + EX;
 
 function structureExperiences(data) {
+  const orderedExperiences = data.sort((a, b) => {
+    const startDateA = new Date(a.attributes.startDate).getTime();
+    const startDateB = new Date(b.attributes.startDate).getTime();
+
+    if (a.attributes.endDate === null && b.attributes.endDate !== null) {
+      return -1; // Move item with null endDate to the front
+    } else if (a.attributes.endDate !== null && b.attributes.endDate === null) {
+      return 1; // Move item with null endDate to the front
+    } else {
+      // Sort by startDate for other cases (descending order)
+      return startDateB - startDateA || 0;
+    }
+  });
+
   var reducedExperiences = [];
-  data.map((experience) => {
+  orderedExperiences.map((experience) => {
     let pos = {
       ...experience.attributes,
       skills: experience.attributes.skills.data,
