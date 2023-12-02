@@ -91,13 +91,15 @@ export async function load() {
     updatedAt,
     publishedAt,
     type: 'article',
-    metaTitle: `Resume « Dan Grebb`,
-    socialTitle: `Resume « Dan Grebb`,
-    titleTemplate: '%s « Skills « Dan Grebb',
+    metaTitle: 'Résumé',
+    socialTitle:
+      seo?.metaSocial?.find((obj) => obj.socialNetwork === 'Twitter')?.title ||
+      `Résumé « Dan Grebb`,
+    titleTemplate: '%s « Dan Grebb',
     metaDescription:
       seo?.metaDescription ||
       summary ||
-      "Dan Grebb's Resume. A collection of professional experiences, awards, projects, and skills collected since 1999.",
+      "Dan Grebb's Résumé. A collection of professional experiences, awards, projects, and skills collected since 1999.",
   };
 
   /**
