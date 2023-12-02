@@ -1,0 +1,54 @@
+<svg version="2.0" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="a" x1="66.73" x2="26.4" y1="-662.84" y2="-613.01"
+      gradientTransform="matrix(.49996 0 0 -.49996 0 -292.482)" gradientUnits="userSpaceOnUse">
+      <stop offset=".06" style="stop-color:#0cb0f2;stop-opacity:1" />
+      <stop offset=".21" style="stop-color:#10adf2;stop-opacity:1" />
+      <stop offset=".37" style="stop-color:#1ea5f3;stop-opacity:1" />
+      <stop offset=".54" style="stop-color:#3497f5;stop-opacity:1" />
+      <stop offset=".71" style="stop-color:#5283f7;stop-opacity:1" />
+      <stop offset=".88" style="stop-color:#796af9;stop-opacity:1" />
+      <stop offset=".97" style="stop-color:#905cfb;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="b" x1="20.9" x2="41.11" y1="-706.33" y2="-659.59"
+      gradientTransform="matrix(.49996 0 0 -.49996 0 -292.482)" gradientUnits="userSpaceOnUse">
+      <stop offset=".06" style="stop-color:#0cb0f2;stop-opacity:1" />
+      <stop offset=".2" style="stop-color:#0db2ee;stop-opacity:1" />
+      <stop offset=".35" style="stop-color:#12b7e0;stop-opacity:1" />
+      <stop offset=".51" style="stop-color:#19c0ca;stop-opacity:1" />
+      <stop offset=".68" style="stop-color:#23ccac;stop-opacity:1" />
+      <stop offset=".85" style="stop-color:#30dc85;stop-opacity:1" />
+      <stop offset=".97" style="stop-color:#3bea62;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="c" x1="48.62" x2="88.12" y1="-644.91" y2="-594.24"
+      gradientTransform="matrix(.49996 0 0 -.49996 0 -292.482)" gradientUnits="userSpaceOnUse">
+      <stop offset=".06" style="stop-color:#0cb0f2;stop-opacity:1" />
+      <stop offset=".2" style="stop-color:#0db2ee;stop-opacity:1" />
+      <stop offset=".35" style="stop-color:#12b7e0;stop-opacity:1" />
+      <stop offset=".51" style="stop-color:#19c0ca;stop-opacity:1" />
+      <stop offset=".68" style="stop-color:#23ccac;stop-opacity:1" />
+      <stop offset=".85" style="stop-color:#30dc85;stop-opacity:1" />
+      <stop offset=".97" style="stop-color:#3bea62;stop-opacity:1" />
+    </linearGradient>
+    <symbol id="teamcity" viewBox="0 0 64 64" version="1.1">
+      <path
+        d="M22.957 1.46a12.424 12.424 0 0 0-2.762-1C7.344-2.59-2.203 10.009 3.043 21.458c.05.05 9.352 20.45 10.852 23.7 0 0 17.097-7.848 20.597-15.9 3.238-7.5-2.226-21.187-3.226-23.241Zm0 0"
+        style="stroke:none;fill-rule:nonzero;fill:url(#a)" />
+      <path
+        d="M61.59 24.215a12.169 12.169 0 0 0-4.3-4c-.048 0-12.048-6.602-12.048-6.602S4.043 37.496 4 37.563c-4.648 5.3-5.7 13.699-.352 20.996a12.629 12.629 0 0 0 6.5 4.601c4.852 1.5 9.149.899 12.75-1 .102-.05 33.848-17.95 33.946-18.047 6.597-3.453 9.652-12.25 4.746-19.898Zm0 0"
+        style="stroke:none;fill-rule:nonzero;fill:#0cb0f2;fill-opacity:1" />
+      <path
+        d="m19.207 18.969-10.996 13.5-4.266 5.093c-4.648 5.301-5.699 13.7-.351 20.997a12.629 12.629 0 0 0 6.5 4.601c4.851 1.5 9.199.899 12.8-1 0 0 .848-.45 2.297-1.25 4.57-2.469 10.875-19.074 15.176-31.914Zm0 0"
+        style="stroke:none;fill-rule:nonzero;fill:url(#b)" />
+      <path
+        d="m36.496 31.96 8.746-18.46c0-.027.024-.05.051-.05.047-.15.75-1.95.797-2.052a8.493 8.493 0 0 0-.899-7.949A7.13 7.13 0 0 0 40.742.301a8.199 8.199 0 0 0-8.55 2.847c-.051.051-1.95 2.25-1.95 2.25l-14 17.25Zm0 0"
+        style="stroke:none;fill-rule:nonzero;fill:url(#c)" />
+      <path d="M11.992 11.965h40V51.96h-40Zm0 0"
+        style="stroke:none;fill-rule:nonzero;fill:#000;fill-opacity:1" />
+      <path
+        d="M21.395 20.813h-5.403v-3.5h14.653v3.5h-5.352v13.792h-3.898Zm9.25 5.183c0-4.996 3.699-9.047 9.046-9.047 3.25 0 5.25 1.098 6.852 2.7l-2.453 2.8c-1.348-1.199-2.7-1.949-4.45-1.949-2.898 0-5.046 2.45-5.046 5.398v.051c0 3 2.047 5.45 5.047 5.45 2 0 3.199-.801 4.55-2.051l2.45 2.449c-1.801 1.902-3.75 3.101-7.098 3.101a8.714 8.714 0 0 1-6.352-2.546 8.698 8.698 0 0 1-2.546-6.356M15.992 43.961h14.653v2.652H15.992Zm0 0"
+        style="stroke:none;fill-rule:nonzero;fill:#fff;fill-opacity:1" />
+    </symbol>
+  </defs>
+  <use href="#teamcity"></use>
+</svg>

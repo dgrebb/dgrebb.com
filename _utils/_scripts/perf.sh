@@ -9,6 +9,7 @@ else
   URL="https://local.dgrebb.com"
 fi
 urls="${URL}/?roboto
+${URL}/cv/?roboto
 ${URL}/post/animating-page-and-view-transitions-with-accessibility-in-mind/?roboto
 ${URL}/posts/index.html?roboto
 ${URL}/posts/category/all/?roboto

@@ -214,7 +214,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "name"
+          "mainField": "title"
         },
         "list": {
           "label": "experiences",
@@ -282,15 +282,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "icon",
-        "name",
-        "slug",
-        "proficiency",
-        "experiences",
-        "projects",
-        "organizations"
-      ],
       "edit": [
         [
           {
@@ -330,9 +321,7 @@
           {
             "name": "classifications",
             "size": 4
-          }
-        ],
-        [
+          },
           {
             "name": "industries",
             "size": 4
@@ -366,6 +355,15 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "icon",
+        "name",
+        "slug",
+        "proficiency",
+        "experiences",
+        "projects",
+        "organizations"
       ]
     }
   },
