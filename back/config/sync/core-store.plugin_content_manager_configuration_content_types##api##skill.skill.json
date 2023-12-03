@@ -48,34 +48,6 @@
           "sortable": true
         }
       },
-      "icon": {
-        "edit": {
-          "label": "icon",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "icon",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "svg": {
-        "edit": {
-          "label": "svg",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "svg",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "proficiency": {
         "edit": {
           "label": "proficiency",
@@ -342,28 +314,15 @@
             "name": "seo",
             "size": 12
           }
-        ],
-        [
-          {
-            "name": "icon",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "svg",
-            "size": 6
-          }
         ]
       ],
       "list": [
-        "icon",
         "name",
-        "slug",
-        "proficiency",
         "experiences",
+        "organizations",
         "projects",
-        "organizations"
+        "slug",
+        "proficiency"
       ]
     }
   },

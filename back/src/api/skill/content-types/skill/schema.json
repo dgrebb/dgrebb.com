@@ -22,17 +22,6 @@
       "targetField": "name",
       "required": true
     },
-    "icon": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "svg": {
-      "type": "text"
-    },
     "proficiency": {
       "type": "integer",
       "max": 10,
