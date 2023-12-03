@@ -1,0 +1,11 @@
+<svg version="2.0" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 48 48">
+  <defs>
+    <symbol id="piano" viewBox="0 0 48 48">
+      <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+        <path fill="#2F88FF" d="M4 8h40v16H4z" />
+        <path fill="#FFFFFF" d="M4 24h40v16H4zM10 24v8M16 24v8M26 24v8M32 24v8M38 24v8" />
+      </g>
+    </symbol>
+  </defs>
+  <use href="#piano"></use>
+</svg>
