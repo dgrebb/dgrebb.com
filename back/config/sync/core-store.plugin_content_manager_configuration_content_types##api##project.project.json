@@ -227,7 +227,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "name"
+          "mainField": "title"
         },
         "list": {
           "label": "experiences",
@@ -295,12 +295,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "name",
-        "slug",
-        "skills",
-        "organizations"
-      ],
       "edit": [
         [
           {
@@ -324,16 +318,6 @@
           {
             "name": "endDate",
             "size": 4
-          }
-        ],
-        [
-          {
-            "name": "experiences",
-            "size": 4
-          },
-          {
-            "name": "skills",
-            "size": 4
           },
           {
             "name": "awards",
@@ -342,12 +326,22 @@
         ],
         [
           {
+            "name": "experiences",
+            "size": 6
+          },
+          {
             "name": "organizations",
-            "size": 4
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "skills",
+            "size": 6
           },
           {
             "name": "industries",
-            "size": 4
+            "size": 6
           }
         ],
         [
@@ -378,6 +372,12 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "name",
+        "slug",
+        "skills",
+        "organizations"
       ]
     }
   },

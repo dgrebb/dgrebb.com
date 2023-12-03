@@ -135,12 +135,12 @@
       },
       "experiences": {
         "edit": {
-          "label": "experiences",
+          "label": "Experiences",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "name"
+          "mainField": "title"
         },
         "list": {
           "label": "experiences",
@@ -208,12 +208,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "name",
-        "projects",
-        "URL",
-        "date"
-      ],
       "edit": [
         [
           {
@@ -263,6 +257,12 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "name",
+        "projects",
+        "URL",
+        "date"
       ]
     }
   },

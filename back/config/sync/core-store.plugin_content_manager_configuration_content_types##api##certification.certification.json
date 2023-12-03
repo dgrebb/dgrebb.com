@@ -121,12 +121,12 @@
       },
       "experiences": {
         "edit": {
-          "label": "experiences",
+          "label": "Experiences",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "name"
+          "mainField": "title"
         },
         "list": {
           "label": "experiences",
@@ -194,35 +194,29 @@
       }
     },
     "layouts": {
-      "list": [
-        "name",
-        "slug",
-        "skills",
-        "experiences"
-      ],
       "edit": [
         [
           {
             "name": "name",
-            "size": 6
+            "size": 4
           },
           {
             "name": "slug",
-            "size": 6
+            "size": 4
+          },
+          {
+            "name": "documentation",
+            "size": 4
           }
         ],
         [
           {
-            "name": "documentation",
-            "size": 4
-          },
-          {
             "name": "skills",
-            "size": 4
+            "size": 6
           },
           {
             "name": "experiences",
-            "size": 4
+            "size": 6
           }
         ],
         [
@@ -243,6 +237,12 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "name",
+        "slug",
+        "skills",
+        "experiences"
       ]
     }
   },
