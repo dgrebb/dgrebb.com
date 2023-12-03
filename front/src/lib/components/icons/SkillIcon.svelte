@@ -22,7 +22,6 @@
 
       fallback.onload = () => {
         loaded = true;
-        setTimeout(function () {}, 1000);
         failed = true;
         loaded = true;
         iconURL = `/v/skills/_generic.svg#generic`;
