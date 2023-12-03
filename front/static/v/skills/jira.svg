@@ -1,26 +1,7 @@
-<svg version="2.0" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+<svg version="2.0" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 32 32" fill="currentColor">
   <defs>
-    <symbol id="jira" fill="none" viewBox="0 0 32 32">
-      <path fill="#2684FF"
-        d="M29.665 15.216 17.208 3.168 16 2l-9.377 9.07-4.288 4.146a1.083 1.083 0 0 0 0 1.568l8.567 8.286L16 30l9.377-9.07.146-.14 4.142-4.006a1.083 1.083 0 0 0 0-1.567ZM16 20.14 11.72 16 16 11.86 20.28 16 16 20.14Z" />
-      <path fill="url(#a)" fill-rule="evenodd"
-        d="M16 11.86a6.81 6.81 0 0 1-.03-9.827l-9.366 9.055 5.097 4.93L16 11.861Z"
-        clip-rule="evenodd" />
-      <path fill="url(#b)" fill-rule="evenodd"
-        d="M20.291 15.989 16 20.139a6.857 6.857 0 0 1 2.112 4.93c0 1.85-.76 3.623-2.112 4.93l9.389-9.08-5.098-4.93Z"
-        clip-rule="evenodd" />
-      <defs>
-        <linearGradient id="a" x1="15.236" x2="8.096" y1="7.673" y2="10.79"
-          gradientUnits="userSpaceOnUse">
-          <stop offset=".18" stop-color="#0052CC" />
-          <stop offset="1" stop-color="#2684FF" />
-        </linearGradient>
-        <linearGradient id="b" x1="16.818" x2="23.944" y1="24.279" y2="21.184"
-          gradientUnits="userSpaceOnUse">
-          <stop offset=".18" stop-color="#0052CC" />
-          <stop offset="1" stop-color="#2684FF" />
-        </linearGradient>
-      </defs>
+    <symbol id="jira" fill="currentColor" viewBox="0 0 32 32">
+      <path d="M13.821 3.179 1.842 15.159a1.184 1.184 0 0 0 0 1.68c4.724 4.71 9.435 9.463 14.158 14.157a7.455 7.455 0 0 0 2.185-5.282 7.455 7.455 0 0 0-2.283-5.379l-.002-.002-4.336-4.335 3.999-3.999a8.07 8.07 0 0 1-2.361-5.715c0-1.12.227-2.187.639-3.157l-.02.053zm2.184-2.175a7.445 7.445 0 0 0-2.189 5.284c0 2.145.904 4.079 2.352 5.441l.004.004 4.264 4.265-3.995 3.996a8.098 8.098 0 0 1 2.366 5.731c0 1.106-.221 2.16-.621 3.121l.02-.054L30.16 16.838a1.184 1.184 0 0 0 0-1.68z"/>
     </symbol>
   </defs>
   <use href="#jira"></use>
