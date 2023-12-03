@@ -278,29 +278,31 @@
         [
           {
             "name": "experiences",
-            "size": 4
-          },
-          {
-            "name": "projects",
-            "size": 4
+            "size": 6
           },
           {
             "name": "organizations",
-            "size": 4
+            "size": 6
           }
         ],
         [
           {
-            "name": "classifications",
-            "size": 4
+            "name": "projects",
+            "size": 6
           },
           {
+            "name": "classifications",
+            "size": 6
+          }
+        ],
+        [
+          {
             "name": "industries",
-            "size": 4
+            "size": 6
           },
           {
             "name": "certifications",
-            "size": 4
+            "size": 6
           }
         ],
         [

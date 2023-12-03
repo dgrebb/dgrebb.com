@@ -170,7 +170,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "name"
+          "mainField": "title"
         },
         "list": {
           "label": "experiences",
@@ -238,13 +238,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "name",
-        "slug",
-        "projects",
-        "skills",
-        "URL"
-      ],
       "edit": [
         [
           {
@@ -263,21 +256,21 @@
         [
           {
             "name": "skills",
-            "size": 4
+            "size": 6
           },
           {
-            "name": "experiences",
-            "size": 4
-          },
-          {
-            "name": "industries",
-            "size": 4
+            "name": "projects",
+            "size": 6
           }
         ],
         [
           {
-            "name": "projects",
-            "size": 4
+            "name": "experiences",
+            "size": 6
+          },
+          {
+            "name": "industries",
+            "size": 6
           }
         ],
         [
@@ -302,6 +295,13 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "name",
+        "slug",
+        "projects",
+        "skills",
+        "URL"
       ]
     }
   },

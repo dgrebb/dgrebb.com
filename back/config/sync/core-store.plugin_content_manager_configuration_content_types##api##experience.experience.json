@@ -375,30 +375,32 @@
         ],
         [
           {
-            "name": "skills",
-            "size": 4
-          },
-          {
             "name": "organizations",
-            "size": 4
+            "size": 6
           },
           {
             "name": "projects",
-            "size": 4
+            "size": 6
           }
         ],
         [
           {
-            "name": "industries",
-            "size": 4
+            "name": "skills",
+            "size": 6
           },
           {
+            "name": "industries",
+            "size": 6
+          }
+        ],
+        [
+          {
             "name": "awards",
-            "size": 4
+            "size": 6
           },
           {
             "name": "certifications",
-            "size": 4
+            "size": 6
           }
         ],
         [
