@@ -38,7 +38,7 @@
   <section class="cv meat {collection}">
     <Flourish />
     <a id="main">Main Content</a>
-    {#if itemData.length}
+    {#if itemData}
       <svelte:component this={components[collection]} content={itemData} />
     {:else}
       <div class="empty-content">
