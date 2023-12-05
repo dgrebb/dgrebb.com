@@ -49,7 +49,7 @@ const config = {
         if (process.env.WARN_ONLY && path.includes('/uploads')) {
           return;
         }
-        if (path.includes('/v')) {
+        if (path.includes('/v') || path.includes('/cv')) {
           return;
         }
         throw new Error(message);
