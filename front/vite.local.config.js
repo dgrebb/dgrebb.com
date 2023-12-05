@@ -2,6 +2,7 @@ import { sentrySvelteKit } from '@sentry/sveltekit';
 import { sveltekit } from '@sveltejs/kit/vite';
 import fs from 'fs';
 import path from 'path';
+import { visualizer } from 'rollup-plugin-visualizer';
 import Icons from 'unplugin-icons/vite';
 import { defineConfig } from 'vite';
 import postcss from './postcss.config.js';
@@ -27,6 +28,10 @@ const sourceMapsUploadOptions = {
 
 export default defineConfig({
   plugins: [
+    visualizer({
+      emitFile: true,
+      filename: 'stats.html',
+    }),
     process.env.UPLOAD_SOURCEMAPS
       ? sentrySvelteKit({
           sourceMapsUploadOptions,
