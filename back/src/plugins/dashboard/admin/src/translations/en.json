@@ -1,0 +1,10 @@
+{
+  "dashboard.posts.title": "Posts",
+  "dashboard.projects.title": "Projects",
+  "dashboard.homepage.title": "Homepage",
+  "dashboard.analytics.title": "Analytics",
+  "dashboard.posts.label": "Edit Posts",
+  "dashboard.projects.label": "Edit Projects",
+  "dashboard.homepage.label": "Edit Homepage",
+  "dashboard.analytics.label": "Visit plausible.io"
+}
