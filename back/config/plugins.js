@@ -37,6 +37,10 @@ module.exports = ({ env }) => {
         };
 
   return {
+    dashboard: {
+      enabled: true,
+      resolve: "./src/plugins/dashboard",
+    },
     upload,
     "config-sync": {
       syncDir: "config/sync/",
