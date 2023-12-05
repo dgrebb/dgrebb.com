@@ -33,7 +33,12 @@ while test "$1" != --; do
         ;;
     b | build)
         setFrontEnv ${env}
-        cdfront && npm run build.l
+        cdfront && npm run build.${env}
+        break
+        ;;
+    bp | build-production)
+        setFrontEnv ${env}
+        cdfront && npm run build.p
         break
         ;;
     bx | bx)
