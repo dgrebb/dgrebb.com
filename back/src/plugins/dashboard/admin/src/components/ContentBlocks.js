@@ -1,11 +1,12 @@
-import React from 'react';
-
+import React from "react";
+import { useHistory } from "react-router-dom";
 import { Box, Flex, Grid, GridItem } from "@strapi/design-system";
 import { ContentBox, useTracking } from "@strapi/helper-plugin";
 import {
   FeatherSquare,
   InformationSquare,
   ChartBubble,
+  Crown,
 } from "@strapi/icons";
 import { useIntl } from "react-intl";
 import styled from "styled-components";
@@ -26,6 +27,13 @@ const StyledInformationSquare = styled(InformationSquare)`
   }
 `;
 
+const StyledCrown = styled(Crown)`
+  path {
+    fill: #7289da !important;
+    stroke: #7289da !important;
+  }
+`;
+
 const StyledFeatherSquare = styled(FeatherSquare)`
   path {
     stroke: #7289da !important;
@@ -36,50 +44,85 @@ const ContentBlocks = () => {
   const { formatMessage } = useIntl();
   const { trackUsage } = useTracking();
 
-  const handleClick = (eventName) => {
-    trackUsage(eventName);
+  const { push } = useHistory();
+  const navigate = (e, url) => {
+    e.preventDefault();
+    push(url);
   };
 
   return (
     <Flex direction="column" alignItems="stretch" gap={5}>
       <Grid gap={5}>
-        <GridItem col={4}>
+        <GridItem col={3}>
           <BlockLink
-            href="/admin/content-manager/collectionType/api::post.post"
+            href="#"
+            onClick={(e) => {
+              navigate(
+                e,
+                "/content-manager/collectionType/api::post.post?page=1&pageSize=100"
+              );
+            }}
           >
             <ContentBox
               title={formatMessage({
-                id: "app.components.HomePage.ManagePosts.title",
+                id: "dashboard.posts.title",
                 defaultMessage: "Posts",
               })}
               subtitle={formatMessage({
-                id: "app.components.HomePage.ManagePosts.subtitle",
-                defaultMessage: "Manage Post Content",
+                id: "dashboard.posts.label",
+                defaultMessage: "Edit Posts",
               })}
               icon={<StyledFeatherSquare />}
               iconBackground="primary100"
             />
           </BlockLink>
         </GridItem>
-        <GridItem col={4}>
+        <GridItem col={3}>
           <BlockLink
-            href="/admin/content-manager/singleType/api::home.home"
+            href="#"
+            onClick={(e) => {
+              navigate(
+                e,
+                "/content-manager/collectionType/api::project.project?page=1&pageSize=100"
+              );
+            }}
+          >
+            <ContentBox
+              title={formatMessage({
+                id: "dashboard.projects.title",
+                defaultMessage: "Edit Projects",
+              })}
+              subtitle={formatMessage({
+                id: "dashboard.projects.subtitle",
+                defaultMessage: "Add or Manage Projects",
+              })}
+              icon={<StyledCrown />}
+              iconBackground="primary100"
+            />
+          </BlockLink>
+        </GridItem>
+        <GridItem col={3}>
+          <BlockLink
+            href="#"
+            onClick={(e) => {
+              navigate(e, "/content-manager/singleType/api::home.home");
+            }}
           >
             <ContentBox
               title={formatMessage({
                 id: "app.components.HomePage.HomeContent.title",
-                defaultMessage: "Edit Homepage",
+                defaultMessage: "Edit Projects",
               })}
               subtitle={formatMessage({
                 id: "app.components.HomePage.HomeContent.subtitle",
-                defaultMessage: "Edit Homepage Content",
+                defaultMessage: "Edit Project Content",
               })}
               icon={<StyledInformationSquare />}
               iconBackground="primary100"
             />
           </BlockLink>
         </GridItem>
-        <GridItem col={4}>
+        <GridItem col={3}>
           <BlockLink
             href="https://plausible.io/dgrebb.com"
             target="_blank"
@@ -102,7 +145,7 @@ const ContentBlocks = () => {
       </Grid>
       <Box padding={4} shadow="filterShadow">
         <iframe
-          plausible-embed
+          plausible-embed="true"
           id="plausible"
           src="https://plausible.io/share/dgrebb.com?auth=8sm72wfwKETpyquVl_Np_&embed=true&theme=dark"
           scrolling="no"

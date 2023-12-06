@@ -1,4 +1,7 @@
 module.exports = ({ env }) => ({
+  flags: {
+    nps: false,
+  },
   auth: {
     secret: env("ADMIN_JWT_SECRET"),
   },

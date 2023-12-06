@@ -1,4 +1,4 @@
-module.exports = [
+module.exports = ({ env }) => [
   "strapi::errors",
   {
     name: "strapi::security",
@@ -21,9 +21,7 @@ module.exports = [
             "market-assets.strapi.io",
             `${process.env.CDN_BASE_URL}`,
           ],
-          "default-src": [
-            "plausible.io"
-          ],
+          "default-src": ["plausible.io"],
           upgradeInsecureRequests: null,
         },
       },
@@ -37,5 +35,5 @@ module.exports = [
   "strapi::session",
   "strapi::favicon",
   "strapi::public",
-  "global::redirect",
+  { resolve: "./src/middlewares/redirect" },
 ];
