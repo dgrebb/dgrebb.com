@@ -11,7 +11,6 @@
     "build": "strapi build",
     "cs": "config-sync",
     "develop": "strapi develop",
-    "postinstall": "patch-package",
     "start": "strapi start",
     "strapi": "strapi"
   },
@@ -28,9 +27,6 @@
     "react-router-dom": "^5.3.4",
     "strapi-plugin-config-sync": "^1.2.3",
     "styled-components": "^5.3.11"
-  },
-  "devDependencies": {
-    "patch-package": "8.0.0"
   },
   "engines": {
     "node": ">=16.0.0 <=20.x.x",
