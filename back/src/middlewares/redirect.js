@@ -1,11 +1,12 @@
 "use strict";
 
-module.exports = (config, { strapi }) => {
-  return async (ctx, next) => {
-    if (ctx.path === "/") {
-      ctx.redirect(strapi.config.get("server.admin.url", "/admin"));
-      return;
-    }
-    await next();
-  };
+module.exports = (_config, { strapi }) => {
+  const redirects = ["/", "/index.html", "/admin/"].map((path) => ({
+    method: "GET",
+    path,
+    handler: (ctx) => ctx.redirect("/admin/plugins/dashboard"),
+    config: { auth: false },
+  }));
+
+  strapi.server.routes(redirects);
 };

@@ -9,7 +9,7 @@ import { FormattedMessage } from "react-intl";
 import styled from "styled-components";
 
 import cornerOrnamentPath from "./assets/corner-ornament.svg";
-import ContentBlocks from "./ContentBlocks";
+import ContentBlocks from "../../components/ContentBlocks";
 
 const LogoContainer = styled(Box)`
   position: absolute;
