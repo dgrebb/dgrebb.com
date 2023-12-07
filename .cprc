@@ -9,7 +9,7 @@
           "scopes": [
             {
               "description": "Work in progress. Ignored in Changelog and SemVer.",
-              "name": "WIP"
+              "name": "wip"
             },
             {
               "description": "Maintenance and such. Maps to PATCH in SemVer.",
