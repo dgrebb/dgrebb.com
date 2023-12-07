@@ -10,9 +10,7 @@ FROM base AS dependencies
 WORKDIR /opt/
 COPY package*.json ./
 COPY ./patches ./patches
-RUN npm ci --include=dev \
-    && npm run postinstall  --loglevel verbose \
-    && npm cache clean --force
+RUN npm ci --include=dev && npm cache clean --force
 
 # -------- Build -------- #
 FROM base AS build
