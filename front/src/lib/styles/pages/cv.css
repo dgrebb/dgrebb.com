@@ -370,8 +370,8 @@ body.ready .main section .experience-timeline-item {
     svg {
       display: block;
       opacity: 0;
-      transition-property: opacity;
       transition-duration: var(--transition-duration);
+      transition-property: opacity;
       transition-timing-function: var(--transition-timing-function);
       width: auto;
       height: 100%;
