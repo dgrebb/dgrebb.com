@@ -142,6 +142,8 @@
       transparent,
       var(--hardlight-clr)
     );
+    --skill-icon-brightness: brightness(0.5);
+    --skill-icon-brightness-hover: brightness(1);
   }
 }
 html.light-theme {
@@ -217,6 +219,8 @@ html.light-theme {
     transparent,
     var(--hardlight-clr)
   );
+  --skill-icon-brightness: brightness(0.5);
+  --skill-icon-brightness-hover: brightness(1);
 }
 
 /* --------------------------------------- */
@@ -300,6 +304,8 @@ html.light-theme {
       transparent,
       var(--rim-clr)
     );
+    --skill-icon-brightness: brightness(1);
+    --skill-icon-brightness-hover: brightness(1.25);
   }
 }
 html.dark-theme {
@@ -377,4 +383,6 @@ html.dark-theme {
     transparent,
     var(--rim-clr)
   );
+  --skill-icon-brightness: brightness(1);
+  --skill-icon-brightness-hover: brightness(1.25);
 }

@@ -29,6 +29,7 @@
     <section class="experience-timeline-item" class:current={!endDate}>
       <header class="item-basics">
         <h1 class="item-title">{name}</h1>
+        {#if endDate}<span class="arrow" aria-hidden="true"></span>{/if}
         <time datetime={startDate} class="experience-timeline-date">
           {#if endDate}
             <span class="experience-timeline-date-month"
@@ -42,6 +43,16 @@
             <span class="timeline-text-highlight d">Current</span>
           {/if}
         </time>
+        {#if endDate}
+          <time datetime={endDate} class="experience-timeline-date--end">
+            <span class="experience-timeline-date-month"
+              >{prettyDate(endDate).month}</span
+            >
+            <span class="timeline-text-highlight"
+              >{prettyDate(endDate).year}</span
+            >
+          </time>
+        {/if}
       </header>
       <main class="item-details">
         <div class="experience-info">
