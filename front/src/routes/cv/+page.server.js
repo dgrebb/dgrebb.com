@@ -12,33 +12,32 @@ const endpoint = URL + CV;
 const experiencesEndpoint = URL + EX;
 
 function structureExperiences(data) {
-  const orderedExperiences = data.sort((a, b) => {
-    const startDateA = new Date(a.attributes.startDate).getTime();
-    const startDateB = new Date(b.attributes.startDate).getTime();
+  return data
+    .slice() // Create a shallow copy to avoid modifying the original array
+    .sort((a, b) => {
+      const startDateA = new Date(a.attributes.startDate).getTime();
+      const startDateB = new Date(b.attributes.startDate).getTime();
 
-    if (a.attributes.endDate === null && b.attributes.endDate !== null) {
-      return -1; // Move item with null endDate to the front
-    } else if (a.attributes.endDate !== null && b.attributes.endDate === null) {
-      return 1; // Move item with null endDate to the front
-    } else {
+      if (a.attributes.endDate === null && b.attributes.endDate !== null) {
+        return -1; // Move item with null endDate to the front
+      } else if (
+        a.attributes.endDate !== null &&
+        b.attributes.endDate === null
+      ) {
+        return 1; // Move item with null endDate to the front
+      }
+
       // Sort by startDate for other cases (descending order)
       return startDateB - startDateA || 0;
-    }
-  });
-
-  var reducedExperiences = [];
-  orderedExperiences.map((experience) => {
-    let pos = {
+    })
+    .map((experience) => ({
       ...experience.attributes,
       skills: experience.attributes.skills.data,
       organizations: experience.attributes.organizations.data,
       projects: experience.attributes.projects.data,
       industries: experience.attributes.industries.data,
       awards: experience.attributes.awards.data,
-    };
-    reducedExperiences.push(pos);
-  });
-  return reducedExperiences;
+    }));
 }
 
 export async function load() {
@@ -51,8 +50,10 @@ export async function load() {
   let updatedAt, publishedAt, seo, hero, summary, title, intro;
 
   try {
-    cv = await api(endpoint);
-    experiencesData = await api(experiencesEndpoint);
+    [cv, experiencesData] = await Promise.all([
+      api(endpoint),
+      api(experiencesEndpoint),
+    ]);
   } catch (error) {
     console.warn('CV page API error.');
     console.error(error);
