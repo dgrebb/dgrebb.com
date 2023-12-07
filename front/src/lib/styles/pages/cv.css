@@ -88,9 +88,10 @@
   position: relative;
   margin: 0 0 0 7%;
   @media screen and (min-width: 640px) {
-    margin: 0 auto 0 15%;
+    margin: 0 0 0 11%;
   }
   @media screen and (min-width: 768px) {
+    margin: 0 10% 0 15%;
     max-width: 80%;
   }
 }
@@ -135,6 +136,7 @@
     transition-duration: 215ms;
     transition-property: transform, background-color, border-width;
     transition-timing-function: var(--transition-timing-function);
+    will-change: opacity, transform;
     box-sizing: border-box;
     border-radius: 50%;
     background-color: var(--bg-clr);
@@ -149,7 +151,52 @@
     border: 4px solid var(--bg-clr);
     background-color: var(--highlight-clr);
   }
-  .experience-timeline-date {
+  .item-title,
+  .item-title::after {
+    transition-timing-function: var(--transition-timing-function);
+  }
+  .item-title {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    transition-duration: var(--transition-duration);
+    transition-property: color, border-color;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    color: var(--fg-clr-o);
+    color: var(--fg-clr-oo);
+    font-size: 1.5rem;
+    line-height: 1.2;
+    @media screen and (min-width: 640px) {
+      padding-left: 0.5rem;
+      font-size: 2rem;
+    }
+    &::after {
+      transition-duration: 1s;
+      transition-property: width;
+      transition-timing-function: ease-out;
+      border-bottom-width: 1px;
+      border-style: solid;
+      border-image: linear-gradient(
+          to right,
+          var(--fg-clr-o) 87%,
+          rgba(255, 255, 255, 0)
+        )
+        1;
+      padding-top: 0.75rem;
+      width: 90%;
+      content: '';
+      @media screen and (min-width: 640px) {
+        padding-top: 1.25rem;
+      }
+    }
+    a {
+      padding-bottom: 0.5rem;
+    }
+  }
+  .experience-timeline-date,
+  .experience-timeline-date--end {
     transition-duration: 215ms;
     transition-property: transform, opacity;
     transition-timing-function: var(--transition-timing-function);
@@ -160,9 +207,10 @@
     line-height: 1rem;
     font-family: var(--font-lb);
     text-transform: uppercase;
+    white-space: nowrap;
     @media screen and (min-width: 640px) {
+      position: absolute;
       font-size: 0.875rem;
-      text-align: right;
     }
     .experience-timeline-date-month {
       display: none;
@@ -172,14 +220,14 @@
     }
     .timeline-text-highlight {
       color: var(--primary-clr);
-      font-family: var(--font-lbb);
+      /* font-family: var(--font-lbb); */
       &.m {
         display: inline;
       }
       &.d {
         display: none;
       }
-      @media screen and (min-width: 768px) {
+      @media screen and (min-width: 1024px) {
         &.d {
           display: inline;
         }
@@ -188,36 +236,47 @@
         }
       }
     }
+  }
+  .experience-timeline-date {
     @media screen and (min-width: 640px) {
-      position: absolute;
+      text-align: right;
+    }
+    @media screen and (min-width: 640px) {
       right: 100%;
       bottom: 0;
       opacity: 0;
-      width: 11rem;
       text-align: right;
     }
   }
-  .item-title {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    justify-content: center;
-    transition-duration: var(--transition-duration);
-    transition-property: color, border-color;
-    transition-timing-function: var(--transition-timing-function);
-    border-bottom-width: thin;
-    border-bottom-color: var(--primary-clr);
-    padding-bottom: 0.75rem;
-    color: var(--fg-clr-o);
-    font-size: 1.5rem;
-    line-height: 1.2;
-    @media screen and (min-width: 640px) {
-      padding-bottom: 1.25rem;
-      padding-left: 0.5rem;
-      font-size: 2rem;
+  .experience-timeline-date--end {
+    display: none;
+    bottom: 0;
+    left: 100%;
+    opacity: 0;
+    z-index: 3;
+    padding-left: 0.5rem;
+    text-align: left;
+    @media screen and (min-width: 768px) {
+      display: inline-block;
     }
-    a {
-      padding-bottom: 0.5rem;
+  }
+  .arrow {
+    display: none;
+    position: absolute;
+    right: 1rem;
+    bottom: 0.3rem;
+    vertical-align: middle;
+    opacity: 0;
+    transition-delay: 100ms;
+    transition-duration: var(--transition-duration);
+    transition-property: right opacity;
+    transition-timing-function: ease-out;
+    border-radius: 50%;
+    background-color: var(--primary-clr);
+    width: 0.5rem;
+    height: 0.5rem;
+    @media screen and (min-width: 768px) {
+      display: inline-block;
     }
   }
 }
@@ -226,11 +285,6 @@ body.ready .main section .experience-timeline-item {
   position: relative;
   &:not(:hover):not(.current) {
     opacity: 0.8;
-    h1.item-title {
-      border-bottom-color: var(--fg-clr-ooo);
-      border-bottom-color: var(--fg-clr-oo);
-      color: var(--fg-clr-oo);
-    }
     .skill {
       opacity: 0.5;
     }
@@ -270,10 +324,9 @@ body.ready .main section .experience-timeline-item {
     color: var(--fg-clr-o);
     .item-title {
       color: var(--primary-clr);
-    }
-    .experience-timeline-date {
-      @media screen and (min-width: 640px) {
-        opacity: 1;
+      &::after {
+        transition-timing-function: ease-in;
+        width: 110%;
       }
     }
     header.item-basics {
@@ -287,6 +340,12 @@ body.ready .main section .experience-timeline-item {
       &:after {
         opacity: 0.9;
         background-color: var(--primary-clr);
+      }
+      .arrow {
+        right: 0;
+        opacity: 1;
+        transition-delay: 0;
+        /* transition-duration: var(--transition-duration); */
       }
     }
     .experience-summary {
@@ -352,8 +411,8 @@ body.ready .main section .experience-timeline-item {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-items: flex-start;
     opacity: 0.7;
+    filter: var(--skill-icon-brightness);
     transition-duration: var(--transition-duration-md);
     transition-property: filter, opacity;
     transition-timing-function: var(--transition-timing-function);
@@ -388,7 +447,7 @@ body.ready .main section .experience-timeline-item {
     &:focus,
     &:focus-visible {
       opacity: 1;
-      filter: brightness(1.25);
+      filter: var(--skill-icon-brightness-hover);
       transition-delay: 0s;
       transition-duration: 200ms;
     }
@@ -444,6 +503,9 @@ input#date-toggle-checkbox:checked {
         transform: translateX(-3.5rem);
       }
     }
+    .experience-timeline-date--end {
+      opacity: 0;
+    }
   }
   & ~ .experience-timeline-item {
     &:hover,
@@ -452,6 +514,12 @@ input#date-toggle-checkbox:checked {
       .experience-timeline-date {
         @media screen and (min-width: 640px) {
           transform: translateX(-5rem) scale(1.2);
+        }
+      }
+      .experience-timeline-date--end {
+        @media screen and (min-width: 768px) {
+          transform: translateX(1rem) scale(1.2);
+          opacity: 0.8;
         }
       }
     }
