@@ -69,6 +69,10 @@ while test "$1" != --; do
         cdfront && npm run lint
         break
         ;;
+    r | bundle-report)
+        open $directory/../front/.report/index.html
+        break
+        ;;
     ?)
         echo "script usage: $(basename \$0) [dev]" >&2
         break

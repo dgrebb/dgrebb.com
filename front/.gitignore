@@ -3,7 +3,7 @@ node_modules
 /build
 /.svelte-kit
 /package
-stats.html
+.report
 .env
 .env.*
 !.env.example

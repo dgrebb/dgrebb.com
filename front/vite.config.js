@@ -9,8 +9,16 @@ import postcss from './postcss.config.js';
 export default defineConfig({
   plugins: [
     visualizer({
-      emitFile: true,
-      filename: 'stats.html',
+      template: 'treemap',
+      filename: '.report/stats.html',
+    }),
+    visualizer({
+      template: 'network',
+      filename: '.report/network.html',
+    }),
+    visualizer({
+      template: 'sunburst',
+      filename: '.report/sunburst.html',
     }),
     sentrySvelteKit({
       sourceMapsUploadOptions: {
