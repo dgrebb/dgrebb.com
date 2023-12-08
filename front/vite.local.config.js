@@ -29,8 +29,16 @@ const sourceMapsUploadOptions = {
 export default defineConfig({
   plugins: [
     visualizer({
-      emitFile: true,
-      filename: 'stats.html',
+      template: 'treemap',
+      filename: '.report/stats.html',
+    }),
+    visualizer({
+      template: 'network',
+      filename: '.report/network.html',
+    }),
+    visualizer({
+      template: 'sunburst',
+      filename: '.report/sunburst.html',
     }),
     process.env.UPLOAD_SOURCEMAPS
       ? sentrySvelteKit({
