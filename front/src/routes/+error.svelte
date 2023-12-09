@@ -1,16 +1,15 @@
 <script>
   import { PUBLIC_ENV, PUBLIC_SENTRY_DSN } from '$env/static/public';
-  import { page } from '$app/stores';
   import PageTransition from '@components/general/PageTransition.svelte';
   import Flourish from '@layout/Flourish.svelte';
   import '@styles/pages/not-found.css';
   import { onMount } from 'svelte';
   export let data;
   $: ({ pathname } = data);
-  let init, setContext, captureMessage;
+  let init, captureMessage;
 
   onMount(async function () {
-    ({ init, setContext, captureMessage } = await import('@sentry/sveltekit'));
+    ({ init, captureMessage } = await import('@sentry/sveltekit'));
     init({
       dsn: PUBLIC_SENTRY_DSN,
       debug: PUBLIC_ENV === 'development' ? false : false,
