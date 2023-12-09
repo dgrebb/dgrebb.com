@@ -1,25 +1,38 @@
 <script>
+  import { PUBLIC_ENV, PUBLIC_SENTRY_DSN } from '$env/static/public';
   import { page } from '$app/stores';
   import PageTransition from '@components/general/PageTransition.svelte';
   import Flourish from '@layout/Flourish.svelte';
   import '@styles/pages/not-found.css';
-  import * as Sentry from '@sentry/sveltekit';
+  import { onMount } from 'svelte';
   export let data;
   $: ({ pathname } = data);
+  let init, setContext, captureMessage;
 
-  Sentry.setContext('SvelteKit', {
-    url: $page.url,
-    params: $page.params,
-    route: $page.route.id,
-    status: $page.status,
-    error: $page.error.message,
-    data: $page.data,
-  });
-  Sentry.captureMessage('Page Not Found', {
-    tags: {
+  onMount(async function () {
+    ({ init, setContext, captureMessage } = await import('@sentry/sveltekit'));
+    init({
+      dsn: PUBLIC_SENTRY_DSN,
+      debug: PUBLIC_ENV === 'development' ? false : false,
+      environment: PUBLIC_ENV,
+      integrations: [],
+      normalizeDepth: 0,
+      beforeSend(event) {
+        if (event.user) {
+          delete event.user.ip;
+        }
+        if (event.server_name) {
+          delete event.server_name;
+        }
+        return event;
+      },
+    });
+    captureMessage('Page Not Found', {
+      tags: {
+        status: 'NOT_FOUND',
+      },
       status: 'NOT_FOUND',
-    },
-    status: 'NOT_FOUND',
+    });
   });
 </script>
 
