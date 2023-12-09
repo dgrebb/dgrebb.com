@@ -19,7 +19,7 @@
       normalizeDepth: 0,
       beforeSend(event) {
         if (event.user) {
-          delete event.user.ip;
+          delete event.user;
         }
         if (event.server_name) {
           delete event.server_name;
@@ -32,7 +32,7 @@
       pathname,
       status: 404,
     });
-    captureMessage(`Page Not Found: ${href}`, {
+    captureMessage(`Page Not Found: ${pathname}`, {
       beforeSend(event) {
         if (event.user) {
           delete event.user;
