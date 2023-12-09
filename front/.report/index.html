@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <title>dgrebb.com Reports</title>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        background-color: rgb(33 33 33);
+        padding: 0;
+        color: rgb(216, 255, 224);
+        font-family: Helvetica;
+      }
+      main {
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        width: 50%;
+        text-align: center;
+      }
+      main img.backhouse {
+        margin-bottom: 2rem;
+      }
+      main h1 {
+        margin-bottom: 1rem;
+      }
+      main h2 {
+        margin: 0 0 0.5rem 0;
+        font-weight: lighter;
+      }
+      div.badges {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 477px;
+        img {
+          padding: 0.5rem;
+        }
+      }
+      main ul {
+        display: flex;
+        margin: 0;
+        margin: 1.33rem 0;
+        padding: 0;
+        list-style-type: none;
+      }
+      main li {
+        margin: 0 0.33rem;
+      }
+      main a {
+        display: inline-block;
+        transition-duration: 333ms;
+        transition-property: background-color, color;
+        margin: 0.5rem 0;
+        border: thin solid rgb(0, 102, 0);
+        background-color: rgb(8, 63, 8);
+        padding: 1rem 2rem;
+        color: rgb(144, 229, 144);
+        text-decoration: none;
+        text-transform: capitalize;
+      }
+      main a:hover {
+        border-color: rgb(133, 255, 133);
+        background-color: rgb(32, 135, 32);
+        color: rgb(221, 255, 221);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <ul>
+        <li>
+          <a href="network.html">Network</a>
+        </li>
+        <li>
+          <a href="stats.html">Treemap</a>
+        </li>
+        <li>
+          <a href="sunburst.html">Sunburst</a>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>
