@@ -5,43 +5,52 @@ import { visualizer } from 'rollup-plugin-visualizer';
 import Icons from 'unplugin-icons/vite';
 import { defineConfig } from 'vite';
 import postcss from './postcss.config.js';
+const { SENTRY_AUTH_TOKEN, RELEASE_NAME, DEPLOY_ENV, DIST } = process.env;
+
+const sourceMapsUploadOptions = DEPLOY_ENV
+  ? {
+      authToken: SENTRY_AUTH_TOKEN,
+      org: 'dgrebb',
+      project: 'dgrebb',
+      telemetry: false,
+      debug: true,
+      include: ['build'],
+      setCommits: {
+        auto: true,
+      },
+      release: RELEASE_NAME,
+      dist: DIST,
+      finalize: false,
+      deploy: {
+        env: DEPLOY_ENV,
+      },
+    }
+  : null;
 
 export default defineConfig({
   plugins: [
-    visualizer({
-      template: 'treemap',
-      filename: '.report/stats.html',
-    }),
-    visualizer({
-      template: 'network',
-      filename: '.report/network.html',
-    }),
-    visualizer({
-      template: 'sunburst',
-      filename: '.report/sunburst.html',
-    }),
     sentrySvelteKit({
-      sourceMapsUploadOptions: {
-        authToken: process.env.SENTRY_AUTH_TOKEN,
-        org: 'dgrebb',
-        project: 'dgrebb',
-        telemetry: false,
-        debug: true,
-        include: ['build'],
-        setCommits: {
-          auto: true,
-        },
-        release: process.env.RELEASE_NAME,
-        dist: process.env.DIST,
-        finalize: false,
-        deploy: {
-          env: process.env.DEPLOY_ENV,
-        },
-      },
+      autoUploadSourceMaps: false,
+      sourceMapsUploadOptions,
     }),
     sveltekit(),
     Icons({
       compiler: 'svelte',
+    }),
+    visualizer({
+      sourcemap: true,
+      template: 'treemap',
+      filename: '.report/stats.html',
+    }),
+    visualizer({
+      sourcemap: true,
+      template: 'network',
+      filename: '.report/network.html',
+    }),
+    visualizer({
+      sourcemap: true,
+      template: 'sunburst',
+      filename: '.report/sunburst.html',
     }),
   ],
   resolve: {
