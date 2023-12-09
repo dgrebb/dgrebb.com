@@ -179,7 +179,7 @@
     padding: 1.5rem;
   }
   p.summary {
-    padding: 2rem 0;
+    padding: 2rem;
   }
   &::before {
     position: absolute;

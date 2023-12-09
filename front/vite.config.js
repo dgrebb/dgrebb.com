@@ -30,6 +30,7 @@ const sourceMapsUploadOptions = DEPLOY_ENV
 export default defineConfig({
   plugins: [
     sentrySvelteKit({
+      autoInstrument: false,
       autoUploadSourceMaps: false,
       sourceMapsUploadOptions,
     }),
