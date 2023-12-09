@@ -5,9 +5,8 @@
   import PageTransition from '@components/general/PageTransition.svelte';
   import Flourish from '@layout/Flourish.svelte';
   import '@styles/pages/not-found.css';
-  export let data;
-  $: ({ pathname } = data);
-  console.log('🚀 ~ file: +page.svelte:4 ~ page:', $page);
+
+  const { pathname, href } = $page.url;
 
   let init, setContext, captureMessage;
   onMount(async function () {
@@ -28,26 +27,20 @@
         return event;
       },
     });
-    setContext('SvelteKit', {
-      url: $page.url,
-      params: $page.params,
-      route: $page.route,
-      status: $page.status,
-      error: $page.error,
-      data: $page.data,
+    setContext('Page Details', {
+      url: href,
+      pathname,
+      status: 404,
     });
-    captureMessage('Page Not Found', {
+    captureMessage(`Page Not Found: ${href}`, {
       beforeSend(event) {
         if (event.user) {
-          delete event.user.ip;
+          delete event.user;
         }
         if (event.server_name) {
           delete event.server_name;
         }
         return event;
-      },
-      trace: {
-        status: 'NOT_FOUND',
       },
     });
   });
