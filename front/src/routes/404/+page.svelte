@@ -7,6 +7,7 @@
   import '@styles/pages/not-found.css';
   export let data;
   $: ({ pathname } = data);
+  console.log('🚀 ~ file: +page.svelte:4 ~ page:', $page);
 
   let init, setContext, captureMessage;
   onMount(async function () {
