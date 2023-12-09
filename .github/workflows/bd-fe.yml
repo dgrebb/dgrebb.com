@@ -90,7 +90,7 @@ jobs:
         id: vars
         env:
           name: "${{ env.BRANCH_NAME }}"
-          environment: inputs.env
+          environment: ${{ inputs.env }}
         run: |
           echo "RELEASE_NAME=${environment}-${name/\//-}" >> $GITHUB_ENV
           echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
