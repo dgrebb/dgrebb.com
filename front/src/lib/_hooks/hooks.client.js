@@ -1,4 +1,8 @@
-import { PUBLIC_ENV, PUBLIC_SENTRY_DSN } from '$env/static/public';
+import {
+  PUBLIC_ENV,
+  PUBLIC_RELEASE,
+  PUBLIC_SENTRY_DSN,
+} from '$env/static/public';
 import { onMount } from 'svelte';
 
 let init, BrowserTracing, setTag, captureException;
@@ -9,6 +13,7 @@ onMount(async function () {
   ));
 
   init({
+    release: PUBLIC_RELEASE,
     dsn: PUBLIC_SENTRY_DSN,
     debug: PUBLIC_ENV === 'development' ? false : false,
     environment: PUBLIC_ENV,

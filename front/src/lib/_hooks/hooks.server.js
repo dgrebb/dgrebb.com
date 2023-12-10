@@ -1,10 +1,15 @@
-import { PUBLIC_ENV as env, PUBLIC_SENTRY_DSN } from '$env/static/public';
+import {
+  PUBLIC_ENV as env,
+  PUBLIC_RELEASE,
+  PUBLIC_SENTRY_DSN,
+} from '$env/static/public';
 import * as Sentry from '@sentry/sveltekit';
 import { minify } from 'html-minifier-terser';
 import { dev, building } from '$app/environment';
 
 Sentry.init({
   dsn: PUBLIC_SENTRY_DSN,
+  release: PUBLIC_RELEASE,
   environment: env,
   integrations: [],
   beforeSend(event) {

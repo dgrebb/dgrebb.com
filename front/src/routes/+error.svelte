@@ -1,5 +1,9 @@
 <script>
-  import { PUBLIC_ENV, PUBLIC_SENTRY_DSN } from '$env/static/public';
+  import {
+    PUBLIC_ENV,
+    PUBLIC_RELEASE,
+    PUBLIC_SENTRY_DSN,
+  } from '$env/static/public';
   import PageTransition from '@components/general/PageTransition.svelte';
   import Flourish from '@layout/Flourish.svelte';
   import '@styles/pages/not-found.css';
@@ -12,6 +16,7 @@
     ({ init, captureMessage } = await import('@sentry/sveltekit'));
     init({
       dsn: PUBLIC_SENTRY_DSN,
+      release: PUBLIC_RELEASE,
       debug: PUBLIC_ENV === 'development' ? false : false,
       environment: PUBLIC_ENV,
       integrations: [],

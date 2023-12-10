@@ -1,5 +1,9 @@
 <script>
-  import { PUBLIC_ENV, PUBLIC_SENTRY_DSN } from '$env/static/public';
+  import {
+    PUBLIC_ENV,
+    PUBLIC_RELEASE,
+    PUBLIC_SENTRY_DSN,
+  } from '$env/static/public';
   import { page } from '$app/stores';
   import { onMount } from 'svelte';
   import PageTransition from '@components/general/PageTransition.svelte';
@@ -13,6 +17,7 @@
     ({ init, setContext, captureMessage } = await import('@sentry/sveltekit'));
     init({
       dsn: PUBLIC_SENTRY_DSN,
+      release: PUBLIC_RELEASE,
       debug: PUBLIC_ENV === 'development' ? false : false,
       environment: PUBLIC_ENV,
       integrations: [],

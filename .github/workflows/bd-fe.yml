@@ -128,6 +128,8 @@ jobs:
           echo PUBLIC_API_PATH_POSITIONS='${{ secrets.PUBLIC_API_PATH_POSITIONS }}' >> front/.env
           echo API_KEY=${{ secrets.API_KEY }} >> front/.env
           echo PUBLIC_SENTRY_DSN=${{ secrets.PUBLIC_SENTRY_DSN }} >> front/.env
+          PUBLIC_RELEASE='${{ inputs.env == 'prd' && '' || 'stg@' }}'
+          echo PUBLIC_RELEASE="${PUBLIC_RELEASE}$(cat front/package.json | jq -r '.version')" >> front/.env
           echo PUBLIC_ENV=${{ secrets.PUBLIC_ENV }} >> front/.env
           cat front/.env
 
