@@ -32,7 +32,7 @@ export default defineConfig({
   plugins: [
     sentrySvelteKit({
       autoInstrument: false,
-      autoUploadSourceMaps: false,
+      autoUploadSourceMaps: DEPLOY_ENV ? true : false,
       sourceMapsUploadOptions,
     }),
     sveltekit(),

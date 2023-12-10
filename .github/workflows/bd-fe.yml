@@ -1,4 +1,4 @@
-name: 🚀 Build & Deploy 
+name: 🚀 Build & Deploy
 run-name: "🚀 ${{ inputs.env == 'prd' && 'PRD' || 'STG' }} - Build & Deploy - ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest {0}', github.ref_name) }}"
 
 on:
@@ -6,7 +6,7 @@ on:
   workflow_call:
     inputs:
       env:
-        description: 'Target deployment environment.'
+        description: "Target deployment environment."
         type: string
         required: true
     secrets:
@@ -144,21 +144,17 @@ jobs:
       - name: ↻ Build
         run: |
           cd front
-          if [ ${{ inputs.env }} == 'prd' ]; then 
-            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} \
-            DEPLOY_ENV=$DEPLOY_ENV \
-            UPLOAD_SOURCEMAPS=true \
-            RELEASE_NAME=${{ env.RELEASE_NAME }} \
-            DIST=${{ env.DIST }} \
-            npm run build
+          if [ ${{ inputs.env }} == 'prd' ]; then
+            e=p
           else
-            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} \
-            DEPLOY_ENV=$DEPLOY_ENV \
-            UPLOAD_SOURCEMAPS=true \
-            RELEASE_NAME=${{ env.RELEASE_NAME }} \
-            DIST=${{ env.DIST }} \
-            npm run build.s
+            e=s
           fi
+          SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} \
+          DEPLOY_ENV=$DEPLOY_ENV \
+          UPLOAD_SOURCEMAPS=true \
+          RELEASE_NAME=${{ env.RELEASE_NAME }} \
+          DIST=${{ env.DIST }} \
+            npm run build.${e}
 
       - name: 🤖 Robots
         if: ${{ inputs.env == 'prd' }}
