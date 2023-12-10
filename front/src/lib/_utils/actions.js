@@ -8,17 +8,19 @@
 export const focusTrap = (node, enabled) => {
   if (!enabled) return false;
 
-  node.addEventListener('keydown', function (e) {
-    var focusableEls = node.querySelectorAll(
-      'a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])'
-    );
-    var firstFocusableEl = focusableEls[0];
-    var lastFocusableEl = focusableEls[focusableEls.length - 1];
-    var isTab = e.key === 'Tab' || e.keyCode === 9;
-    var isEsc = e.key === 'Escape' || e.keyCode === 27;
+  /**
+   * Event listener for handling keydown events within the focus trap.
+   *
+   * @param {KeyboardEvent} e - The keyboard event object.
+   */
+  const keydownHandler = (e) => {
+    const isTab = e.key === 'Tab' || e.keyCode === 9;
+    const isEsc = e.key === 'Escape' || e.keyCode === 27;
+
     if (isTab) {
-      var activeElement = document.activeElement;
-      var focusElement = e.shiftKey ? firstFocusableEl : lastFocusableEl;
+      const activeElement = document.activeElement;
+      const focusElement = e.shiftKey ? firstFocusableEl : lastFocusableEl;
+
       if (activeElement === focusElement) {
         e.preventDefault();
         (e.shiftKey ? lastFocusableEl : firstFocusableEl).focus();
@@ -30,5 +32,15 @@ export const focusTrap = (node, enabled) => {
     } else {
       return;
     }
-  });
+  };
+
+  // Cache the result of querySelectorAll
+  const focusableEls = node.querySelectorAll(
+    'a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])'
+  );
+  const firstFocusableEl = focusableEls[0];
+  const lastFocusableEl = focusableEls[focusableEls.length - 1];
+
+  // Add event listener for keydown events
+  node.addEventListener('keydown', keydownHandler);
 };
