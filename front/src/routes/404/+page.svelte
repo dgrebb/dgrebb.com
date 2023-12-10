@@ -14,7 +14,7 @@
 
   let init, setContext, captureMessage;
   onMount(async function () {
-    ({ init, setContext, captureMessage } = await import('@sentry/sveltekit'));
+    ({ init, setContext, captureMessage } = await import('@sentry/browser'));
     init({
       dsn: PUBLIC_SENTRY_DSN,
       release: PUBLIC_RELEASE,

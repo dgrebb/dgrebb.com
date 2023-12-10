@@ -1,4 +1,4 @@
-import { sentrySvelteKit } from '@sentry/sveltekit';
+import { sentryVitePlugin } from '@sentry/vite-plugin';
 import { bundleStats } from 'rollup-plugin-bundle-stats';
 import { sveltekit } from '@sveltejs/kit/vite';
 import path from 'path';
@@ -30,10 +30,17 @@ const sourceMapsUploadOptions = DEPLOY_ENV
 
 export default defineConfig({
   plugins: [
-    sentrySvelteKit({
+    sentryVitePlugin({
       autoInstrument: false,
       autoUploadSourceMaps: DEPLOY_ENV ? true : false,
       sourceMapsUploadOptions,
+      bundleSizeOptimizations: {
+        excludeDebugStatements: true,
+        excludePerformanceMonitoring: false,
+        excludeReplayIframe: true,
+        excludeReplayShadowDom: true,
+        excludeReplayWorker: true,
+      },
     }),
     sveltekit(),
     Icons({

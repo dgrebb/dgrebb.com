@@ -1,4 +1,4 @@
-import { sentrySvelteKit } from '@sentry/sveltekit';
+import { sentryVitePlugin } from '@sentry/vite-plugin';
 import { sveltekit } from '@sveltejs/kit/vite';
 import fs from 'fs';
 import path from 'path';
@@ -32,7 +32,7 @@ const sourceMapsUploadOptions = UPLOAD_SOURCEMAPS
 
 export default defineConfig({
   plugins: [
-    sentrySvelteKit({
+    sentryVitePlugin({
       autoUploadSourceMaps: false,
       sourceMapsUploadOptions,
     }),

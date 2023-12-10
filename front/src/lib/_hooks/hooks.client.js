@@ -1,41 +1,41 @@
-import {
-  PUBLIC_ENV,
-  PUBLIC_RELEASE,
-  PUBLIC_SENTRY_DSN,
-} from '$env/static/public';
-import { onMount } from 'svelte';
+// import {
+//   PUBLIC_ENV,
+//   PUBLIC_RELEASE,
+//   PUBLIC_SENTRY_DSN,
+// } from '$env/static/public';
+// import { onMount } from 'svelte';
 
-let init, BrowserTracing, setTag, captureException;
+// let init, BrowserTracing, setTag, captureException;
 
-onMount(async function () {
-  ({ init, BrowserTracing, setTag, captureException } = await import(
-    '@sentry/sveltekit'
-  ));
+// onMount(async function () {
+//   ({ init, BrowserTracing, setTag, captureException } = await import(
+//     '@sentry/sveltekit'
+//   ));
 
-  init({
-    release: PUBLIC_RELEASE,
-    dsn: PUBLIC_SENTRY_DSN,
-    debug: PUBLIC_ENV === 'development' ? false : false,
-    environment: PUBLIC_ENV,
-    integrations: [new BrowserTracing()],
-    normalizeDepth: 0,
-    beforeSend(event) {
-      if (event.user) {
-        delete event.user.ip;
-      }
-      if (event.server_name) {
-        delete event.server_name;
-      }
-      return event;
-    },
-  });
-});
+//   init({
+//     release: PUBLIC_RELEASE,
+//     dsn: PUBLIC_SENTRY_DSN,
+//     debug: PUBLIC_ENV === 'development' ? false : false,
+//     environment: PUBLIC_ENV,
+//     integrations: [new BrowserTracing()],
+//     normalizeDepth: 0,
+//     beforeSend(event) {
+//       if (event.user) {
+//         delete event.user.ip;
+//       }
+//       if (event.server_name) {
+//         delete event.server_name;
+//       }
+//       return event;
+//     },
+//   });
+// });
 
-export async function handleError({ error, event }) {
-  setTag('environment', PUBLIC_ENV);
-  captureException(error, { extra: { event } });
+// export async function handleError({ error, event }) {
+//   setTag('environment', PUBLIC_ENV);
+//   captureException(error, { extra: { event } });
 
-  return {
-    message: 'Client error.',
-  };
-}
+//   return {
+//     message: 'Client error.',
+//   };
+// }

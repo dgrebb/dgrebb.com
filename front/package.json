@@ -37,7 +37,7 @@
     "@iconify-json/simple-icons": "^1.1.82",
     "@iconify-json/typcn": "^1.1.8",
     "@playwright/test": "^1.40.1",
-    "@sentry/sveltekit": "^7.85.0",
+    "@sentry/vite-plugin": "^2.10.2",
     "@sveltejs/adapter-auto": "^2.1.1",
     "@sveltejs/adapter-static": "^2.0.3",
     "@sveltejs/kit": "^1.27.7",
@@ -68,6 +68,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@sentry/browser": "^7.86.0",
     "rollup-plugin-bundle-stats": "^4.8.3"
   }
 }

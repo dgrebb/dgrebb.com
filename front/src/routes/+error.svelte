@@ -13,7 +13,7 @@
   let init, captureMessage;
 
   onMount(async function () {
-    ({ init, captureMessage } = await import('@sentry/sveltekit'));
+    ({ init, captureMessage } = await import('@sentry/browser'));
     init({
       dsn: PUBLIC_SENTRY_DSN,
       release: PUBLIC_RELEASE,

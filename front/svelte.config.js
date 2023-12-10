@@ -4,6 +4,7 @@ import path from 'path';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
+  preprocess: vitePreprocess(),
   kit: {
     appDir: 's',
     adapter: adapter({
@@ -12,7 +13,7 @@ const config = {
       precompress: true,
       strict: true,
       hooks: {
-        client: '$lib/_hooks/hooks.client.js',
+        // client: '$lib/_hooks/hooks.client.js',
         server: '$lib/_hooks/hooks.server.js',
       },
     }),
@@ -57,7 +58,6 @@ const config = {
       handleMissingId: 'warn',
     },
   },
-  preprocess: vitePreprocess(),
 };
 
 export default config;
