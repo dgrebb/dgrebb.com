@@ -8,110 +8,120 @@ import {
 import api from '@api';
 import { error } from '@sveltejs/kit';
 
+/**
+ * Defines the URL endpoints for fetching CV and experiences data.
+ */
 const endpoint = URL + CV;
 const experiencesEndpoint = URL + EX;
 
+/**
+ * Takes raw experiences data, sorts it based on start date, and maps it to
+ * a more structured format.
+ *
+ * @param {Array} data - Raw experiences data.
+ * @returns {Array} - Structured experiences data.
+ */
 function structureExperiences(data) {
-  return data
-    .slice() // Create a shallow copy to avoid modifying the original array
-    .sort((a, b) => {
-      const startDateA = new Date(a.attributes.startDate).getTime();
-      const startDateB = new Date(b.attributes.startDate).getTime();
+  const sortedData = data.slice().sort((a, b) => {
+    const startDateA = new Date(a.attributes.startDate).getTime();
+    const startDateB = new Date(b.attributes.startDate).getTime();
 
-      if (a.attributes.endDate === null && b.attributes.endDate !== null) {
-        return -1; // Move item with null endDate to the front
-      } else if (
-        a.attributes.endDate !== null &&
-        b.attributes.endDate === null
-      ) {
-        return 1; // Move item with null endDate to the front
-      }
+    if (a.attributes.endDate === null && b.attributes.endDate !== null) {
+      return -1; // Move item with null endDate to the front
+    } else if (a.attributes.endDate !== null && b.attributes.endDate === null) {
+      return 1; // Move item with null endDate to the front
+    }
 
-      // Sort by startDate for other cases (descending order)
-      return startDateB - startDateA || 0;
-    })
-    .map((experience) => ({
-      ...experience.attributes,
-      skills: experience.attributes.skills.data,
-      organizations: experience.attributes.organizations.data,
-      projects: experience.attributes.projects.data,
-      industries: experience.attributes.industries.data,
-      awards: experience.attributes.awards.data,
-    }));
+    // Sort by startDate for other cases (descending order)
+    return startDateB - startDateA || 0;
+  });
+
+  return sortedData.map((experience) => ({
+    ...experience.attributes,
+    skills: experience.attributes.skills.data,
+    organizations: experience.attributes.organizations.data,
+    projects: experience.attributes.projects.data,
+    industries: experience.attributes.industries.data,
+    awards: experience.attributes.awards.data,
+  }));
 }
 
+/**
+ * SvelteKit load function for fetching and processing data for the CV page.
+ *
+ * @returns {Promise} - Resolves to an object containing page, experiences,
+ * and pageMeta data.
+ */
 export async function load() {
   const renderer = new marked.Renderer();
   renderer.link = link;
   renderer.heading = heading;
   marked.use({ renderer });
 
-  var cv, experiencesData;
-  let updatedAt, publishedAt, seo, hero, summary, title, intro;
-
   try {
-    [cv, experiencesData] = await Promise.all([
+    const [cv, experiencesData] = await Promise.all([
       api(endpoint),
       api(experiencesEndpoint),
     ]);
+
+    if (!cv) {
+      throw error(500, 'CV Page Error');
+    }
+
+    if (!experiencesData) {
+      throw error(500, 'Experiences error on CV Page');
+    }
+
+    const {
+      seo,
+      content: {
+        updatedAt,
+        publishedAt,
+        hero,
+        summary,
+        title,
+        introduction: intro,
+      },
+    } = cv;
+
+    const page = {
+      title,
+      intro: marked.parse(intro),
+      hero: hero?.data?.attributes || false,
+    };
+
+    const experiences = structureExperiences(experiencesData);
+
+    const pageMeta = {
+      ...seo,
+      updatedAt,
+      publishedAt,
+      type: 'article',
+      metaTitle: 'Résumé',
+      socialTitle:
+        seo?.metaSocial?.find((obj) => obj.socialNetwork === 'Twitter')
+          ?.title || `Résumé « Dan Grebb`,
+      titleTemplate: '%s « Dan Grebb',
+      metaDescription:
+        seo?.metaDescription ||
+        summary ||
+        "Dan Grebb's Résumé. A collection of professional experiences, awards, projects, and skills collected since 1999.",
+    };
+
+    /**
+     * Isolates the `metaImage` object properties we care about
+     */
+    pageMeta.metaImage =
+      pageMeta?.metaImage?.data?.attributes || hero?.data?.attributes || false;
+
+    return {
+      page,
+      experiences,
+      pageMeta,
+    };
   } catch (error) {
     console.warn('CV page API error.');
     console.error(error);
-  }
-
-  if (!cv) {
     throw error(500, 'CV Page Error');
   }
-
-  if (!experiencesData) {
-    throw error(500, 'Experiences error on CV Page');
-  }
-
-  ({
-    seo,
-    content: {
-      updatedAt,
-      publishedAt,
-      hero,
-      summary,
-      title,
-      introduction: intro,
-    },
-  } = cv);
-
-  const page = {
-    title,
-    intro: marked.parse(intro),
-    hero: hero?.data?.attributes || false,
-  };
-
-  const experiences = structureExperiences(experiencesData);
-
-  const pageMeta = {
-    ...seo,
-    updatedAt,
-    publishedAt,
-    type: 'article',
-    metaTitle: 'Résumé',
-    socialTitle:
-      seo?.metaSocial?.find((obj) => obj.socialNetwork === 'Twitter')?.title ||
-      `Résumé « Dan Grebb`,
-    titleTemplate: '%s « Dan Grebb',
-    metaDescription:
-      seo?.metaDescription ||
-      summary ||
-      "Dan Grebb's Résumé. A collection of professional experiences, awards, projects, and skills collected since 1999.",
-  };
-
-  /**
-   * Isolates the `metaImage` object properties we care about
-   */
-  pageMeta.metaImage =
-    pageMeta?.metaImage?.data?.attributes || hero?.data?.attributes || false;
-
-  return {
-    page,
-    experiences,
-    pageMeta,
-  };
 }
