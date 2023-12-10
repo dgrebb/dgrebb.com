@@ -4,6 +4,22 @@
   import Code from '@components/content/Code.svelte';
   import Footnotes from '@components/content/renderers/Footnotes.svelte';
 
+  /**
+   * Props for the blog post component.
+   * @typedef {Object} BlogPostProps
+   * @property {string} publishedAt - The publication date.
+   * @property {string} updatedAt - The last update date.
+   * @property {string} slug - The post slug.
+   * @property {string} title - The post title.
+   * @property {Array} toc - Table of Contents.
+   * @property {string} summary - The post summary.
+   * @property {Array} content - The main content of the post.
+   * @property {Array} footnotes - Footnotes for the post.
+   * @property {Array} categories - Categories associated with the post.
+   * @property {Array} related - Related posts.
+   * @property {string} pathname - The current path.
+   */
+
   export let publishedAt,
     updatedAt,
     slug,
@@ -16,11 +32,42 @@
     related,
     pathname;
 
+  /** @type {boolean} */
+  let showAside = true;
+
+  /**
+   * Label for the aside toggle button.
+   * @type {string}
+   */
+  // eslint-disable-next-line no-unused-vars
+  let asideLabel = showAside ? 'Hide' : 'Show';
+
+  /**
+   * Toggles the visibility of the aside.
+   */
+  // eslint-disable-next-line no-unused-vars
+  function asideToggle() {
+    showAside = !showAside;
+  }
+
+  /**
+   * Sets the active link in the page navigation.
+   * @param {Event} e - The click event.
+   */
+  const setActiveLink = function (e) {
+    const links = e.target.closest('ul').querySelectorAll('a');
+    links.forEach((link) => {
+      link.classList.toggle('active', false);
+    });
+    e.target.classList.toggle('active', true);
+  };
+
   const pub = new Date(publishedAt).toLocaleDateString('en-us', {
     year: 'numeric',
     month: 'short',
     day: '2-digit',
   });
+
   const up = updatedAt
     ? new Date(updatedAt).toLocaleDateString('en-us', {
         year: 'numeric',
@@ -28,22 +75,6 @@
         day: '2-digit',
       })
     : false;
-
-  $: showAside = true;
-  // eslint-disable-next-line no-unused-vars
-  $: asideLabel = showAside ? 'Hide' : 'Show';
-  // eslint-disable-next-line no-unused-vars
-  function asideToggle() {
-    showAside = !showAside;
-  }
-
-  const setActiveLink = (e) => {
-    const links = e.target.closest('ul').querySelectorAll('a');
-    links.forEach((link) => {
-      link.classList.toggle('active', false);
-    });
-    e.target.classList.toggle('active', true);
-  };
 </script>
 
 <svelte:head>
