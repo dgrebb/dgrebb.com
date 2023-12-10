@@ -31,6 +31,7 @@ const sourceMapsUploadOptions = DEPLOY_ENV
 export default defineConfig({
   plugins: [
     sentryVitePlugin({
+      telemetry: false,
       autoInstrument: false,
       autoUploadSourceMaps: DEPLOY_ENV ? true : false,
       sourceMapsUploadOptions,
