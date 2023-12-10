@@ -29,6 +29,10 @@ export default defineConfig({
     }),
     bundleStats({
       outDir: '../../../.report/bundle-stats',
+      baseline: true,
+      baselineFilepath:
+        '../../../.report/__fixtures__/bundlestats-baseline.json',
+      json: true,
     }),
   ],
   resolve: {

@@ -73,6 +73,11 @@ while test "$1" != --; do
         open $directory/../front/.report/index.html
         break
         ;;
+    ba | baseline-report)
+        printDgMsg "Baselining the current BundleStats report..."
+        cdfront && npm run baseline
+        break
+        ;;
     ?)
         echo "script usage: $(basename \$0) [dev]" >&2
         break
