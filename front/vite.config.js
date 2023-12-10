@@ -1,4 +1,5 @@
 import { sentrySvelteKit } from '@sentry/sveltekit';
+import { bundleStats } from 'rollup-plugin-bundle-stats';
 import { sveltekit } from '@sveltejs/kit/vite';
 import path from 'path';
 import { visualizer } from 'rollup-plugin-visualizer';
@@ -52,6 +53,9 @@ export default defineConfig({
       sourcemap: true,
       template: 'sunburst',
       filename: '.report/sunburst.html',
+    }),
+    bundleStats({
+      outDir: '../../../.report/bundle-stats',
     }),
   ],
   resolve: {

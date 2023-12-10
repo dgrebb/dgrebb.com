@@ -66,5 +66,8 @@
     "vite": "^4.5.1",
     "vitest": "^1.0.1"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "rollup-plugin-bundle-stats": "^4.8.3"
+  }
 }
