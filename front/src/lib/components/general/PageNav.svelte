@@ -46,7 +46,7 @@
     </label>
   {/if}
   <div class="page-navigation-list" use:focusTrap={mini}>
-    {#if toc && toc.length}
+    {#if toc && toc.length > 0}
       <h2>Table of Contents</h2>
       <TableOfContents
         {toc}
