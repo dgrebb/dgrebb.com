@@ -86,21 +86,25 @@ jobs:
       DEPLOY_ENV: "${{ vars.ENV_NAME }}"
 
     steps:
-      - name: 🤿 Set Vars
-        id: vars
-        env:
-          name: "${{ env.BRANCH_NAME }}"
-          environment: ${{ inputs.env }}
-        run: |
-          echo "RELEASE_NAME=${environment}-${name/\//-}" >> $GITHUB_ENV
-          echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
-
       - name: 𐂷 Checkout
         uses: actions/checkout@v4
         with:
           repository: dgrebb/dgrebb.com
           ref: ${{ github.ref }}
           token: ${{ github.token }}
+
+      - name: 🤿 Set Vars
+        id: vars
+        env:
+          name: "${{ env.BRANCH_NAME }}"
+          RELEASE_SUFFIX: ${{ contains(github.ref, 'main') && '' || contains(github.ref, 'release') && '-RC' || '-alpha.' }}
+        run: |
+          if [ ${{ inputs.env }} == 'prd' ]; then
+            echo "RELEASE_NAME=front@$(cat front/package.json | jq -r '.version')${RELEASE_SUFFIX}" >> $GITHUB_ENV
+          else
+            echo "RELEASE_NAME=front@$(cat front/package.json | jq -r '.version')${RELEASE_SUFFIX}${name/\//-}" >> $GITHUB_ENV
+          fi
+          echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
 
       - name: 📐 Set Environment
         env:
@@ -128,8 +132,7 @@ jobs:
           echo PUBLIC_API_PATH_POSITIONS='${{ secrets.PUBLIC_API_PATH_POSITIONS }}' >> front/.env
           echo API_KEY=${{ secrets.API_KEY }} >> front/.env
           echo PUBLIC_SENTRY_DSN=${{ secrets.PUBLIC_SENTRY_DSN }} >> front/.env
-          PUBLIC_RELEASE='${{ inputs.env == 'prd' && '' || 'stg@' }}'
-          echo PUBLIC_RELEASE="${PUBLIC_RELEASE}$(cat front/package.json | jq -r '.version')" >> front/.env
+          echo PUBLIC_RELEASE="${RELEASE_NAME}" >> front/.env
           echo PUBLIC_ENV=${{ secrets.PUBLIC_ENV }} >> front/.env
           cat front/.env
 
