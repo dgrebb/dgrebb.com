@@ -61,26 +61,4 @@
       <p>Robots doing maintenance. Be back soon!</p>
     </section>
   </body>
-  <script
-    src="https://browser.sentry-cdn.com/7.54.0/bundle.tracing.min.js"
-    integrity="sha384-+h0OKHbAGUGuqyOQt8GPxoAlivqJAJnscoCE5ftl2SV77nWLjqoXvT4p6QLPjEh1"
-    crossorigin="anonymous"
-  ></script>
-  <script>
-    const { hostname: e } = document.location;
-    let environment;
-    (environment = e.includes('local')
-      ? 'development'
-      : e.includes('stg')
-        ? 'staging'
-        : 'production'),
-      Sentry.init({
-        dsn: 'https://02b9c4dc55d14cf5bbdd30b7e592eb9a@o4505287560462336.ingest.sentry.io/4505312527187968',
-        tracesSampleRate: 1,
-        environment,
-      }),
-      Sentry.captureMessage('Page Not Found', {
-        page: document.location.pathname,
-      });
-  </script>
 </html>
