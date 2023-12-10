@@ -60,6 +60,7 @@ Strapi
 subactive
 subdir
 themeset
+treemap
 typcn
 unminified
 unplugin

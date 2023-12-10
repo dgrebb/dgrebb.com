@@ -16,7 +16,7 @@ renderer.link = link;
 marked.use({ renderer });
 
 export async function load({ params }) {
-  const category = params.category || 'all';
+  const category = params.category.replace('/', '') || 'all';
   const categoryPageEndpoint =
     URL + '/categories-page?populate[0]=seo.metaImage';
   const categoriesListEndpoint =

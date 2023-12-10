@@ -82,7 +82,9 @@
             {/each}
           </ul>
         {:else}
-          <p class="summary">There aren't any posts yet! Come back soon.</p>
+          <p class="summary">
+            There aren't any posts like that yet. Come back soon!
+          </p>
         {/if}
       </TransitionElasticFly>
     </div>

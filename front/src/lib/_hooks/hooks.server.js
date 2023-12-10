@@ -1,29 +1,9 @@
-import { PUBLIC_ENV as env, PUBLIC_SENTRY_DSN } from '$env/static/public';
-import * as Sentry from '@sentry/sveltekit';
 import { minify } from 'html-minifier-terser';
 import { dev, building } from '$app/environment';
 
-Sentry.init({
-  dsn: PUBLIC_SENTRY_DSN,
-  environment: env,
-  integrations: [],
-  beforeSend(event) {
-    if (event.user) {
-      delete event.user.ip;
-    }
-    if (event.server_name) {
-      delete event.server_name;
-    }
-    return event;
-  },
-});
-
 export function handleError({ error, event }) {
-  if (env === 'production')
-    Sentry.captureException(error, { extra: { event } });
-
-  console.log('Error:');
-  console.log(error);
+  console.warn(`Error: ${error}`);
+  console.warn(`Event: ${event}`);
 
   return {
     message: 'Whoops!',

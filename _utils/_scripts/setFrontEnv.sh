@@ -23,6 +23,7 @@ else
 fi
 
 echo "API_KEY=\"$(pass dg/api/${1}/apikey)\"" | tee -a $frontEnvFile >/dev/null
+echo "PUBLIC_RELEASE=\"local@$(cat $directory/../front/package.json | jq -r '.version')"\" | tee -a $frontEnvFile >/dev/null
 echo "PUBLIC_ENV=${ENV}" | tee -a $frontEnvFile >/dev/null
 echo "PUBLIC_ORIGIN=$(pass dg/www/${1}/domain)" | tee -a $frontEnvFile >/dev/null
 echo "PUBLIC_API_PATH_NAVIGATION=$(pass dg/cms/api/paths/navigation)" | tee -a $frontEnvFile >/dev/null
