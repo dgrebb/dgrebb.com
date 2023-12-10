@@ -3,11 +3,11 @@ import {
   PUBLIC_RELEASE,
   PUBLIC_SENTRY_DSN,
 } from '$env/static/public';
-import * as Sentry from '@sentry/sveltekit';
+import { init, captureException } from '@sentry/sveltekit';
 import { minify } from 'html-minifier-terser';
 import { dev, building } from '$app/environment';
 
-Sentry.init({
+init({
   dsn: PUBLIC_SENTRY_DSN,
   release: PUBLIC_RELEASE,
   environment: env,
@@ -24,8 +24,7 @@ Sentry.init({
 });
 
 export function handleError({ error, event }) {
-  if (env === 'production')
-    Sentry.captureException(error, { extra: { event } });
+  if (env === 'production') captureException(error, { extra: { event } });
 
   console.log('Error:');
   console.log(error);
