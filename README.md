@@ -32,7 +32,7 @@ The below components are a majority of the product stack. Thorough details may b
 - Terraform/OpenTF
 - Docker
 - Plausible Analytics
-- Sentry.io
+- ~~Sentry.io~~ 
 - StackOverflow
 - Discord (Svelte, Strapi, NextJS)
 

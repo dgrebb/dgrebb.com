@@ -5,10 +5,10 @@ on:
   workflow_dispatch:
     inputs:
       env:
-        description: 'Target deployment environment.'
+        description: "Target deployment environment."
         type: environment
         required: true
-        default: 'stg'
+        default: "stg"
     branches: [release/*]
 
 permissions:
@@ -23,9 +23,9 @@ jobs:
   lint:
     name: 💨
     uses: ./.github/workflows/lint.yml
-    
+
   build_deploy:
-    name: 🚀 
+    name: 🚀
     needs: lint
     uses: ./.github/workflows/bd-fe.yml
     with:
@@ -53,14 +53,12 @@ jobs:
       PUBLIC_API_CV_PATH_LANDING_POSITION_LISTING: ${{ secrets.PUBLIC_API_CV_PATH_LANDING_POSITION_LISTING }}
       PUBLIC_API_CV_PATH_LANDING_EXPERIENCE_LISTING: ${{ secrets.PUBLIC_API_CV_PATH_LANDING_EXPERIENCE_LISTING }}
       API_KEY: ${{ secrets.API_KEY }}
-      PUBLIC_SENTRY_DSN: ${{ secrets.PUBLIC_SENTRY_DSN }}
       PUBLIC_ENV: ${{ secrets.PUBLIC_ENV }}
-      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
       GH_WORKFLOW_TOKEN: ${{ secrets.GH_WORKFLOW_TOKEN }}
 
   # backstop:
-  #   name: 👀 
+  #   name: 👀
   #   needs: build_deploy
   #   uses: ./.github/workflows/test-backstop.yml
   #   secrets:

@@ -25,7 +25,6 @@ act --pull=false \
     -s PUBLIC_API_PATH_FOOTER="$(pass dg/cms/api/paths/footer)" \
     -s PUBLIC_API_URL=$(pass dg/api/${1}/url) \
     -s API_KEY=$(pass dg/api/${1}/apikey) \
-    -s PUBLIC_SENTRY_DSN=$(pass dg/www/logs/sentrydsn) \
     -s AWS_ACCESS_KEY_ID=$(pass dg/aws/id) \
     -s AWS_SECRET_ACCESS_KEY=$(pass dg/aws/secret) \
     -s AWS_REGION=$(pass dg/aws/region) \

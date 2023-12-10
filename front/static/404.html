@@ -122,34 +122,4 @@
       <a href="/">Go Home</a>
     </section>
   </body>
-  <script
-    src="https://js.sentry-cdn.com/02b9c4dc55d14cf5bbdd30b7e592eb9a.min.js"
-    crossorigin="anonymous"
-  ></script>
-  <script id="four-ohhhhh-four">
-    const { hostname: e } = document.location;
-    const environment = e.includes('local')
-      ? 'development'
-      : e.includes('stg')
-        ? 'staging'
-        : 'production';
-    Sentry.init({
-      dsn: 'https://02b9c4dc55d14cf5bbdd30b7e592eb9a@o4505287560462336.ingest.sentry.io/4505312527187968',
-      environment,
-      beforeSend(event) {
-        if (event.user) {
-          delete event.user.ip;
-        }
-        if (event.server_name) {
-          delete event.server_name;
-        }
-        return event;
-      },
-    });
-    Sentry.captureMessage('Page Not Found', {
-      extra: {
-        page: document.location.pathname,
-      },
-    });
-  </script>
 </html>

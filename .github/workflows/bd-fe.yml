@@ -54,11 +54,7 @@ on:
         required: true
       API_KEY:
         required: true
-      PUBLIC_SENTRY_DSN:
-        required: true
       PUBLIC_ENV:
-        required: true
-      SENTRY_AUTH_TOKEN:
         required: true
       DISTRIBUTION:
         required: true
@@ -131,7 +127,6 @@ jobs:
           echo PUBLIC_API_CV_COLLECTION_PARAMS='${{ secrets.PUBLIC_API_CV_COLLECTION_PARAMS }}' >> front/.env
           echo PUBLIC_API_PATH_POSITIONS='${{ secrets.PUBLIC_API_PATH_POSITIONS }}' >> front/.env
           echo API_KEY=${{ secrets.API_KEY }} >> front/.env
-          echo PUBLIC_SENTRY_DSN=${{ secrets.PUBLIC_SENTRY_DSN }} >> front/.env
           echo PUBLIC_RELEASE="${RELEASE_NAME}" >> front/.env
           echo PUBLIC_ENV=${{ secrets.PUBLIC_ENV }} >> front/.env
           cat front/.env
@@ -154,11 +149,6 @@ jobs:
           else
             e=s
           fi
-          SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} \
-          DEPLOY_ENV=$DEPLOY_ENV \
-          UPLOAD_SOURCEMAPS=true \
-          RELEASE_NAME=${{ env.RELEASE_NAME }} \
-          DIST=${{ env.DIST }} \
             npm run build.${e}
 
       - name: 🤖 Robots
@@ -198,6 +188,3 @@ jobs:
             echo '- Pull Request: [#${{ github.event.number }}](https://github.com/dgrebb/dgrebb.com/pull/${{ github.event.number }}) ${{ github.event.pull_request.title }}' >> $GITHUB_STEP_SUMMARY
             echo '- ${{ github.event.pull_request.changed_files }} Files Changed: [ ${{ github.event.pull_request.commits }} Commits](https://github.com/dgrebb/dgrebb.com/pull/${{ github.event.number }}/commits) | [Diff](https://github.com/dgrebb/dgrebb.com/pull/${{ github.event.number }}/files)' >> $GITHUB_STEP_SUMMARY
           fi
-          echo '## Release Details' >> $GITHUB_STEP_SUMMARY
-          echo '- Release: [${{ env.RELEASE_NAME }}](https://dgrebb.sentry.io/releases/${{ env.RELEASE_NAME }})' >> $GITHUB_STEP_SUMMARY
-          echo '- Dist: ${{ env.DIST }}' >> $GITHUB_STEP_SUMMARY
