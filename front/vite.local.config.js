@@ -1,3 +1,5 @@
+import { bundleStats } from 'rollup-plugin-bundle-stats';
+import progress from 'vite-plugin-progress';
 import { sveltekit } from '@sveltejs/kit/vite';
 import fs from 'fs';
 import path from 'path';
@@ -24,6 +26,14 @@ export default defineConfig({
       template: 'sunburst',
       filename: '.report/sunburst.html',
     }),
+    bundleStats({
+      outDir: '../../../.report/bundle-stats',
+      baseline: true,
+      baselineFilepath:
+        '../../../.report/__fixtures__/bundlestats-baseline.json',
+      json: true,
+    }),
+    progress(),
   ],
   resolve: {
     alias: {
