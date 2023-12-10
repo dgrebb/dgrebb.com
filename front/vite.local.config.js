@@ -1,4 +1,3 @@
-import { sentryVitePlugin } from '@sentry/vite-plugin';
 import { sveltekit } from '@sveltejs/kit/vite';
 import fs from 'fs';
 import path from 'path';
@@ -6,36 +5,9 @@ import { visualizer } from 'rollup-plugin-visualizer';
 import Icons from 'unplugin-icons/vite';
 import { defineConfig } from 'vite';
 import postcss from './postcss.config.js';
-const { UPLOAD_SOURCEMAPS, SENTRY_AUTH_TOKEN, RELEASE_NAME, DIST } =
-  process.env;
-
-const sourceMapsUploadOptions = UPLOAD_SOURCEMAPS
-  ? {
-      authToken: SENTRY_AUTH_TOKEN,
-      uploadSourceMaps: true,
-      telemetry: false,
-      debug: false,
-      org: 'dgrebb',
-      project: 'dgrebb',
-      include: ['build'],
-      setCommits: {
-        auto: true,
-      },
-      release: RELEASE_NAME,
-      dist: DIST,
-      finalize: false,
-      deploy: {
-        env: 'development',
-      },
-    }
-  : null;
 
 export default defineConfig({
   plugins: [
-    sentryVitePlugin({
-      autoUploadSourceMaps: false,
-      sourceMapsUploadOptions,
-    }),
     sveltekit(),
     Icons({
       compiler: 'svelte',

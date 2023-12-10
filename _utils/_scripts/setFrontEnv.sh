@@ -43,4 +43,3 @@ echo "PUBLIC_API_CV_COLLECTION_PARAMS=$(pass dg/cms/api/cv/collection-params)" |
 echo "PUBLIC_API_CV_PATH_LANDING_POSITION_LISTING=$(pass dg/cms/api/cv/position-listing)" | tee -a $frontEnvFile >/dev/null
 echo "PUBLIC_API_CV_PATH_LANDING_EXPERIENCE_LISTING=$(pass dg/cms/api/cv/experience-listing)" | tee -a $frontEnvFile >/dev/null
 echo "PUBLIC_API_URL=\"$(pass dg/api/${1}/url)\"" | tee -a $frontEnvFile >/dev/null
-echo "PUBLIC_SENTRY_DSN=\"$(pass dg/www/logs/sentrydsn)\"" | tee -a $frontEnvFile >/dev/null
