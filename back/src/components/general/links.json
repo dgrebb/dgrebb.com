@@ -33,6 +33,11 @@
         "Catchafire"
       ],
       "default": "Link"
+    },
+    "cv": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }
