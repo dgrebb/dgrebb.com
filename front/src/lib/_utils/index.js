@@ -1,12 +1,17 @@
 export const darkTheme = 'dark-theme';
 export const lightTheme = 'light-theme';
 
+/**
+ * Manages theme preference in local storage.
+ * @param {boolean} dark - Theme preference (optional).
+ * @returns {boolean | undefined} - Theme preference if retrieved, otherwise false.
+ */
 export const themeStorage = (dark) => {
   const key = 'dgd';
-  const storedValue = localStorage.getItem(key);
   if (dark !== undefined) {
     localStorage.setItem(key, dark);
   } else {
+    const storedValue = localStorage.getItem(key);
     return storedValue && storedValue !== 'null' && storedValue !== 'undefined'
       ? storedValue
       : false;
@@ -22,6 +27,11 @@ export const scrollTop = (e) => {
   document.getElementById('header')?.scrollIntoView();
 };
 
+/**
+ * Check if the given element is entirely outside the viewport.
+ * @param {HTMLElement} element - The HTML element to check.
+ * @returns {boolean} - True if the element is outside the viewport, false otherwise.
+ */
 export const isElementOutsideViewport = (element) => {
   const rect = element.getBoundingClientRect();
   return (
