@@ -4,7 +4,7 @@ By accessing or using this website, you're happily agreeing to the terms laid ou
 
 # Information We Collect
 
-1. **Personal Information**: Rest assured, we don't collect personal details apart from browser and system information. We've gone to great lengths to remove any personally identifiable information from our Analytics and Error Logging tools (more on those below). This includes visitors' IP addresses and even the fancy-sounding `server_name`, which refers to your computer's network name.
+1. **Personal Information**: Rest assured, we don't collect personal details apart from browser and system information. We've gone to great lengths to remove any personally identifiable information from our Analytics and Error Logging tools (more on those below).
 
    1. **[Plausible Analytics](https://plausible.io)** is our trusty sidekick for keeping track of pageviews and counting visitors. You might enjoy checking out the company's [delightful post about privacy policies](https://plausible.io/blog/privacy-policy-page#privacy-policy-examples), which inspired most of this document. We [publicly share analytics data](https://p.dgrebb.com/). For more specific details about Plausible's privacy practices, please see the [Third-Party Services](#third-party-services) section below. 
 
