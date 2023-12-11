@@ -62,7 +62,7 @@
           <li class="page-navigation-category-all">
             <a
               on:click={(e) => {
-                categoryClick(pathname, name);
+                categoryClick(pathname, 'All Categories');
                 setActiveLink(e);
                 if (mini) pageFenceClickHandler();
               }}
