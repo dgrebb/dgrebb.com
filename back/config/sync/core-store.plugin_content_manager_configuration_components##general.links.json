@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Title",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "url": {
         "edit": {
-          "label": "url",
+          "label": "URL",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "icon": {
         "edit": {
-          "label": "icon",
+          "label": "Icon",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -58,6 +58,20 @@
         },
         "list": {
           "label": "icon",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "cv": {
+        "edit": {
+          "label": "Show on CV",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "cv",
           "searchable": true,
           "sortable": true
         }
@@ -78,6 +92,12 @@
           },
           {
             "name": "url",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "cv",
             "size": 4
           },
           {
