@@ -2,6 +2,8 @@ import { PUBLIC_ORIGIN as ORIGIN } from '$env/static/public';
 import slugger from 'slugger';
 
 /**
+ * @function
+ * @name heading
  *
  * @param {string} text The heading text
  * @param {number} level The heading level
@@ -22,6 +24,8 @@ export const heading = function (text, level, raw) {
 };
 
 /**
+ * @function
+ * @name link
  *
  * @param {string} href The anchor href
  * @param {string} title The anchor title
