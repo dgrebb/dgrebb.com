@@ -7,25 +7,33 @@
   export let width;
   export let height;
   export let classes;
+  export let loadingMethod = 'lazy';
   export let ariaHidden = 'false';
 
   let loaded = false;
   let failed = false;
   let loading = true;
 
-  onMount(() => {
-    const img = new Image();
-    img.src = src;
-    loading = true;
+  /**
+   * Lifecycle function executed after the component is mounted.
+   * Asynchronously loads the image and updates the component state accordingly.
+   *
+   * @function onMount
+   * @async
+   * @throws {Error} - Throws an error if image loading fails.
+   */
+  onMount(async function () {
+    try {
+      const img = new Image();
+      img.src = src;
 
-    img.onload = () => {
+      await img.decode();
       loading = false;
       loaded = true;
-    };
-    img.onerror = () => {
+    } catch (error) {
       loading = false;
       failed = true;
-    };
+    }
   });
 </script>
 
@@ -43,6 +51,7 @@
       {height}
       class={classes}
       aria-hidden={ariaHidden}
+      loading={loadingMethod}
     />
   {:else if failed}
     <p>That image was lost. Poor thing.</p>

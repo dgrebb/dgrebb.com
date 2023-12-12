@@ -1,7 +1,29 @@
 <script>
+  /**
+   * Svelte component for generating meta tags based on the provided pageMeta.
+   * @module MetaTagsComponent
+   * @typedef {import('svelte-meta-tags/MetaTags.svelte').MetaTagsProps} MetaTagsProps
+   * @typedef {Object} PageMeta
+   * @property {string} metaTitle - The title for the meta tags.
+   * @property {string} socialTitle - The social title for the meta tags.
+   * @property {Object} metaImage - The meta image information.
+   * @property {string} metaDescription - The meta description for the page.
+   * @property {string} metaRobots - The meta robots tag.
+   * @property {string} canonicalURL - The canonical URL for the page.
+   * @property {string} metaViewport - The meta viewport settings.
+   * @property {string} metaKeywords - The meta keywords for the page.
+   * @property {Object[]} metaSocial - The array of social network information.
+   * @property {string} updatedAt - The last update time for the page.
+   * @property {string} publishedAt - The published time for the page.
+   * @property {string} type - The type of the page.
+   * @property {string} titleTemplate - The title template for the page.
+   * @param {Object} props - Component properties.
+   * @param {PageMeta} props.pageMeta - The page meta information.
+   */
   import { PUBLIC_ENV as env } from '$env/static/public';
   import MetaTags from 'svelte-meta-tags/MetaTags.svelte';
 
+  /** @type {MetaTagsProps} */
   export let pageMeta;
 
   const {
