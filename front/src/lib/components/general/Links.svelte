@@ -47,7 +47,7 @@
   };
 
   /**
-   * @type {import('svelte/store').Writable<ReadonlyArray<Link>>}
+   * @type {Link[]}
    */
   export let links;
 

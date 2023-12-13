@@ -1,31 +1,76 @@
 <script>
+  /**
+   * Svelte component for displaying an SVG icon based on a provided slug.
+   * @module IconComponent
+   * @param {string} name - The aria-label for the SVG icon.
+   * @param {string} slug - The unique identifier for the icon.
+   */
   import { onMount } from 'svelte';
 
+  /**
+   * Flag indicating whether the icon is successfully loaded.
+   * @type {boolean}
+   */
   let loaded = false;
+
+  /**
+   * Flag indicating whether loading the icon has failed.
+   * @type {boolean}
+   */
   let failed = false;
 
-  export let name, slug;
+  /** @type {string} */
+  export let name;
 
+  /** @type {string} */
+  export let slug;
+
+  /**
+   * URL for the SVG icon based on the provided slug.
+   * @type {string}
+   */
   let iconURL = `/v/skills/${slug}.svg#${slug}`;
 
+  /**
+   * Handles the successful load of the SVG icon.
+   */
+  const handleLoad = () => {
+    loaded = true;
+  };
+
+  /**
+   * Handles the successful load of the fallback icon in case of an error.
+   */
+  const handleFallback = () => {
+    /**
+     * Image object for loading the fallback icon.
+     * @type {HTMLImageElement}
+     */
+    const fallback = new Image();
+    fallback.src = `/v/skills/_generic.svg#generic`;
+    fallback.onload = () => {
+      loaded = true;
+      failed = true;
+      loaded = true;
+      iconURL = `/v/skills/_generic.svg#generic`;
+    };
+  };
+
+  /**
+   * Lifecycle function called when the component is mounted.
+   */
   onMount(() => {
+    /**
+     * Image object for loading the SVG icon.
+     * @type {HTMLImageElement}
+     */
     const img = new Image();
     img.src = iconURL;
 
-    img.onload = () => {
-      loaded = true;
-      setTimeout(function () {}, 1000);
-    };
-    img.onerror = () => {
-      const fallback = new Image();
-      fallback.src = `/v/skills/_generic.svg#generic`;
+    img.onload = () => handleLoad();
 
-      fallback.onload = () => {
-        loaded = true;
-        failed = true;
-        loaded = true;
-        iconURL = `/v/skills/_generic.svg#generic`;
-      };
+    img.onerror = () => {
+      handleFallback();
     };
   });
 </script>
