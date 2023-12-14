@@ -1,7 +1,6 @@
 <script>
   import Meta from '@components/general/Meta.svelte';
   import PageTransition from '@components/general/PageTransition.svelte';
-  import Flourish from '@layout/Flourish.svelte';
   import ScrollTop from '@layout/ScrollTop.svelte';
   import '@styles/pages/privacy.css';
 
@@ -13,7 +12,7 @@
 
 <PageTransition transitionKey={pathname}>
   <article class="privacy meat">
-    <Flourish />
+    <span class="flourish" />
     <section class="masthead">
       <a id="main">Main Content</a>
       <h1 class="title">{title}</h1>

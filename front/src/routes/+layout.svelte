@@ -2,7 +2,6 @@
   import { page } from '$app/stores';
   import { PUBLIC_ENV as ENV } from '$env/static/public';
   import { PlausibleAnalytics } from '@accuser/svelte-plausible-analytics';
-  import Flourish from '@layout/Flourish.svelte';
   import Footer from '@layout/Footer.svelte';
   import Header from '@layout/Header.svelte';
   import '@styles/global.css';
@@ -35,7 +34,7 @@
   });
 </script>
 
-<Flourish />
+<span class="flourish" />
 <Header {navHeading} {navItems} />
 <main class="main" class:secondary class:l-post={post} data-sveltekit-noscroll>
   <slot />

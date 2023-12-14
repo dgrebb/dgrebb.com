@@ -2,7 +2,6 @@
   import Meta from '@components/general/Meta.svelte';
   import PageTransition from '@components/general/PageTransition.svelte';
   import PostsGrid from '@components/posts/PostsGrid.svelte';
-  import Flourish from '@layout/Flourish.svelte';
   import '@styles/pages/posts.css';
 
   export let data;
@@ -33,7 +32,7 @@
 
 <PageTransition transitionKey={pathname}>
   <section class="posts">
-    <Flourish />
+    <span class="flourish" />
     <a id="main">Main Content</a>
     <h1 class="title">{headline}</h1>
     <div class="summary">

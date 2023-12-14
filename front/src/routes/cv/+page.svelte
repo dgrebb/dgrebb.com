@@ -3,7 +3,6 @@
   import Links from '@components/general/Links.svelte';
   import Meta from '@components/general/Meta.svelte';
   import PageTransition from '@components/general/PageTransition.svelte';
-  import Flourish from '@layout/Flourish.svelte';
   import '@styles/pages/cv.css';
 
   export let data;
@@ -16,7 +15,7 @@
 
 <PageTransition transitionKey={pathname}>
   <section class="cv meat">
-    <Flourish />
+    <span class="flourish" />
     <header class="cv-masthead">
       <a id="main">Main Content</a>
       <h1 class="page-heading">{title}</h1>

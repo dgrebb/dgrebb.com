@@ -10,39 +10,33 @@ import { error } from '@sveltejs/kit';
 export const prerender = true;
 export const trailingSlash = 'always';
 
-const navigationEndpoint = URL + NAV;
-const socialEndpoint = URL + HOME;
-const footerEndpoint = URL + FOOT;
-
 export async function load({ url: { pathname } }) {
-  const [navigationContent, socialContent, footerContent] = await Promise.all([
-    api(navigationEndpoint),
-    api(socialEndpoint),
-    api(footerEndpoint),
-  ]);
+  try {
+    const [navigationContent, socialContent, footerContent] = await Promise.all(
+      [api(URL + NAV), api(URL + HOME), api(URL + FOOT)]
+    );
 
-  if (!navigationContent || !footerContent) {
+    if (!navigationContent || !footerContent) {
+      throw error(500, {
+        message: 'Layout Error',
+      });
+    }
+
+    let navItems = navigationContent.navItems.map((item) => ({
+      ...item,
+      childRoutes: item.childRoutes.split(',').map((child) => child.trim()),
+    }));
+
+    return {
+      ...navigationContent,
+      navItems,
+      socialContent: socialContent.links,
+      ...footerContent,
+      pathname,
+    };
+  } catch (err) {
     throw error(500, {
-      message: 'Layout Error',
+      message: 'Error fetching data',
     });
   }
-
-  let navItems = [];
-  navigationContent.navItems.forEach(function (item) {
-    let routeArray = item.childRoutes.split(',').map(function (child) {
-      return child.trim();
-    });
-    navItems.push({
-      ...item,
-      childRoutes: routeArray,
-    });
-  });
-
-  return {
-    ...navigationContent,
-    navItems,
-    socialContent: socialContent.links,
-    ...footerContent,
-    pathname,
-  };
 }

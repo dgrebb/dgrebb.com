@@ -4,7 +4,6 @@
   import PageTransition from '@components/general/PageTransition.svelte';
   import TransitionElasticFly from '@components/general/TransitionElasticFly.svelte';
   import Tag from '@components/icons/Tag.svelte';
-  import Flourish from '@layout/Flourish.svelte';
   import PageNav from '@components/general/PageNav.svelte';
   import '@styles/pages/category.css';
 
@@ -42,7 +41,7 @@
       <PageNav {categories} mini top {pathname} {setActiveLink} {category} />
     </header>
     <div class="category-posts-list">
-      <Flourish />
+      <span class="flourish" />
       <TransitionElasticFly
         transitionKey={name}
         delay={500}

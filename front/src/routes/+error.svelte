@@ -1,6 +1,5 @@
 <script>
   import PageTransition from '@components/general/PageTransition.svelte';
-  import Flourish from '@layout/Flourish.svelte';
   import '@styles/pages/not-found.css';
   export let data;
   $: ({ pathname } = data);
@@ -12,7 +11,7 @@
 
 <PageTransition transitionKey={pathname}>
   <section class="not-found">
-    <Flourish />
+    <span class="flourish" />
     <a id="main">Main Content</a>
     <h1>404</h1>
     <p>Nothing found here.</p>
