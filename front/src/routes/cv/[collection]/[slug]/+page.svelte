@@ -9,7 +9,6 @@
   import Experience from '@components/cv/Experience.svelte';
   import Project from '@components/cv/Project.svelte';
   import Skill from '@components/cv/Skill.svelte';
-  import Flourish from '@layout/Flourish.svelte';
   import '@styles/pages/cv.css';
 
   export let data;
@@ -36,7 +35,7 @@
 
 <PageTransition transitionKey={slug}>
   <section class="cv meat {collection}">
-    <Flourish />
+    <span class="flourish" />
     <a id="main">Main Content</a>
     {#if itemData}
       <svelte:component this={components[collection]} content={itemData} />

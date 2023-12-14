@@ -64,12 +64,11 @@
     <div
       class="post-hero"
       class:loaded
-      style="background-image: url('{heroImage}'); background-position: {position}"
+      style={`background-image: url('${heroImage}'); background-position: ${position}`}
     />
     <div
-      class="post-hero post-hero-"
-      class:loaded
-      style="background-image: url('{heroThumb}'); background-position: {position}"
+      class={`post-hero {loaded ? 'post-hero-loaded' : ''}`}
+      style={`background-image: url('${heroThumb}'); background-position: ${position}`}
     />
     <noscript>
       <div

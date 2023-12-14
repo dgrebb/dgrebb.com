@@ -25,11 +25,11 @@ export async function load({ params }) {
     URL + CAT + category + '?populate[0]=seo.metaImage';
   const postsEndpoint =
     URL + POSTS + (category !== 'all' ? CAT_PARAMS + category : POSTS_PARAMS);
-  const [
+  var [
     categoryPageContent,
     categoriesListContent,
     individualCategoryContent,
-    posts,
+    postData,
   ] = await Promise.all([
     api(categoryPageEndpoint),
     api(categoriesListEndpoint),
@@ -80,28 +80,24 @@ export async function load({ params }) {
       'A tree with various objects floating around it, signifying many different categories of information.',
   };
 
-  var markedPosts = [];
-
-  posts
-    ? posts.map((post) => {
-        return markedPosts.push({
-          ...post,
-          attributes: {
-            ...post.attributes,
-            summary: post.attributes.summary
-              ? marked.parse(post.attributes.summary)
-              : false,
-          },
-        });
-      })
-    : false;
+  const posts = postData
+    ? postData.map((post) => ({
+        ...post,
+        attributes: {
+          ...post.attributes,
+          summary: post.attributes.summary
+            ? marked.parse(post.attributes.summary)
+            : false,
+        },
+      }))
+    : [];
 
   return {
     category,
     categoryPageContent,
     categoriesListContent,
     individualCategoryContent,
-    posts: markedPosts || [],
+    posts,
     pageMeta,
   };
 }
