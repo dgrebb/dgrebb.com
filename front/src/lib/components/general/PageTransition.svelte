@@ -19,11 +19,10 @@
 
   /**
    * Initiates the outro animation.
-   * @async
    * @function
    * @returns {Promise<void>} A promise that resolves after the animation starts.
    */
-  async function animateOutroStart() {
+  function animateOutroStart() {
     if (motionless()) return;
     const header = document.querySelector('.header');
     const isHeaderOutsideViewport = isElementOutsideViewport(header);
@@ -35,24 +34,28 @@
   }
 
   /**
-   * Finalizes the outro animation.
+   * Ends the outro animation.
    * @function
+   * @returns {Promise<void>} A promise that resolves after the animation ends.
    */
   function animateOutroEnd() {
     if (to === '/') return;
     scrollTop();
   }
+
   /**
    * Initiates the intro animation.
    * @function
+   * @returns {Promise<void>} A promise that resolves after the animation starts.
    */
   function animateIntroStart() {
     if (motionless()) return;
   }
 
   /**
-   * Finalizes the intro animation using requestAnimationFrame for better performance.
+   * Ends the intro animation.
    * @function
+   * @returns {Promise<void>} A promise that resolves after the animation ends.
    */
   function animateIntroEnd() {
     if (motionless()) return;

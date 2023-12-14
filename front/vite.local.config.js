@@ -1,6 +1,7 @@
 import { bundleStats } from 'rollup-plugin-bundle-stats';
 import progress from 'vite-plugin-progress';
 import { sveltekit } from '@sveltejs/kit/vite';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
 import fs from 'fs';
 import path from 'path';
 import { visualizer } from 'rollup-plugin-visualizer';
@@ -10,6 +11,7 @@ import postcss from './postcss.config.js';
 
 export default defineConfig({
   plugins: [
+    svelte({ hot: !process.env.VITEST }),
     sveltekit(),
     Icons({
       compiler: 'svelte',
@@ -69,5 +71,10 @@ export default defineConfig({
       cert: fs.readFileSync('local.dgrebb.com.crt'),
     },
     port: 443,
+  },
+  test: {
+    include: ['src/**/*.{test,spec}.{js,ts}'],
+    globals: true,
+    environment: 'local',
   },
 });

@@ -2,7 +2,6 @@
   import { page } from '$app/stores';
   import { onMount } from 'svelte';
   import PageTransition from '@components/general/PageTransition.svelte';
-  import Flourish from '@layout/Flourish.svelte';
   import '@styles/pages/not-found.css';
 
   const { pathname } = $page.url;
@@ -16,7 +15,7 @@
 
 <PageTransition transitionKey={pathname}>
   <section class="not-found">
-    <Flourish />
+    <span class="flourish" />
     <a id="main">Main Content</a>
     <h1>404</h1>
     <p>Nothing found here.</p>

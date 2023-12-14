@@ -42,7 +42,6 @@
   import Links from '@components/general/Links.svelte';
   import Meta from '@components/general/Meta.svelte';
   import PageTransition from '@components/general/PageTransition.svelte';
-  import Flourish from '@layout/Flourish.svelte';
   import '@styles/pages/home.css';
 
   /**
@@ -62,7 +61,7 @@
 
 <PageTransition transitionKey={pathname}>
   <section class="bio">
-    <Flourish />
+    <span class="flourish" />
 
     {#if image}
       <Image

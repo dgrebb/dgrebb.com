@@ -20,24 +20,23 @@ export async function load({ route }) {
   try {
     [page, posts] = await Promise.all([api(pageEndpoint), api(postsEndpoint)]);
   } catch (error) {
-    console.warn('Error fetching posts grid data.');
-    console.error(error);
-  }
+    if (!page) {
+      console.error({
+        route: route.id,
+        endpoint: pageEndpoint,
+        error: page.error,
+      });
+      console.warn('Error fetching posts page data.');
+    }
 
-  if (!page) {
-    console.error({
-      route: route.id,
-      endpoint: pageEndpoint,
-      error: page.error,
-    });
-  }
-
-  if (!posts.length) {
-    console.error({
-      route,
-      endpoint: postsEndpoint,
-      error: posts.error,
-    });
+    if (!posts.length) {
+      console.error({
+        route,
+        endpoint: postsEndpoint,
+        error: posts.error,
+      });
+      console.warn('Error fetching posts grid data.');
+    }
   }
 
   var pageMeta = {

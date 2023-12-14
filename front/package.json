@@ -22,10 +22,12 @@
     "postbuild.l": "npx -y -q svelte-sitemap -i '404.html' -i '/404/index.html' -i 'shingle.html' -i '/shingle/index.html' -i '/posts/category/index.html' -i '**/cv/**' -t --attribution=false --domain https://local.dgrebb.com",
     "postbuild.s": "npx -y -q svelte-sitemap -i '404.html' -i '/404/index.html' -i 'shingle.html' -i '/shingle/index.html' -i '/posts/category/index.html' -i '**/cv/**' -t --attribution=false --domain https://stg.dgrebb.com",
     "postbuild": "npx -y -q svelte-sitemap -i '404.html' -i '/404/index.html' -i 'shingle.html' -i '/shingle/index.html' -i '/posts/category/index.html' -i '**/cv/**' -t --attribution=false --domain https://www.dgrebb.com",
-    "test": "npm run test:integration && npm run test:unit",
     "format": "prettier --write .",
-    "test:integration": "playwright test",
-    "test:unit": "vitest",
+    "test.all": "npm run test.integration && npm run test.unit",
+    "test.integration": "playwright test",
+    "test.unit": "vitest",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
     "postinstall": "patch-package"
   },
   "devDependencies": {

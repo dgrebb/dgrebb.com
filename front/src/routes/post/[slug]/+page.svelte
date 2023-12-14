@@ -4,7 +4,6 @@
   import PageTransition from '@components/general/PageTransition.svelte';
   import Post from '@components/posts/Post.svelte';
   import PostHero from '@components/posts/PostHero.svelte';
-  import Flourish from '@layout/Flourish.svelte';
   import '@styles/pages/post.css';
   import { onMount } from 'svelte';
 
@@ -47,7 +46,7 @@
 
 <PageTransition transitionKey={pathname}>
   <section class="post meat">
-    <Flourish />
+    <span class="flourish" />
     {#if heroImage}
       <PostHero {heroImage} {heroMime} {loaded} {position} {heroThumb} />
     {/if}

@@ -2,7 +2,6 @@
   import PageTransition from '@components/general/PageTransition.svelte';
   import Meta from '@components/general/Meta.svelte';
   // import SkillIcon from '@components/icons/SkillIcon.svelte';
-  import Flourish from '@layout/Flourish.svelte';
   import '@styles/pages/cv.css';
 
   export let data;
@@ -22,7 +21,7 @@
 
 <PageTransition transitionKey={collection}>
   <section class="cv meat {collection}">
-    <Flourish />
+    <span class="flourish" />
     <a id="main">Main Content</a>
     {#if hero}
       <img src={hero.url} alt={hero.alternativeText} />
