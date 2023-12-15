@@ -11,7 +11,6 @@ import postcss from './postcss.config.js';
 
 export default defineConfig({
   plugins: [
-    svelte({ hot: !process.env.VITEST }),
     sveltekit(),
     Icons({
       compiler: 'svelte',
