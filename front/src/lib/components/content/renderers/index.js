@@ -1,5 +1,6 @@
 import { PUBLIC_ORIGIN as ORIGIN } from '$env/static/public';
 import slugger from 'slugger';
+import { extractDomainWithoutWWW } from '@utils';
 
 /**
  * @function
@@ -41,7 +42,13 @@ export const link = function (href, title, text) {
       ? true
       : false;
 
-  titleAttr = title ? `title="${title}"` : '';
+  let linkTitle = external
+    ? title
+      ? title
+      : extractDomainWithoutWWW(href)
+    : title;
+
+  titleAttr = linkTitle ? `title="${linkTitle}"` : '';
   rel = external ? 'rel="nofollow noopener noreferrer"' : '';
 
   return `<a href="${href}" ${titleAttr} ${rel}>${text}</a>`;
