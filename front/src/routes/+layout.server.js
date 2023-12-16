@@ -17,7 +17,7 @@ export async function load({ url: { pathname } }) {
     );
 
     if (!navigationContent || !footerContent) {
-      throw error(500, {
+      error(500, {
         message: 'Layout Error',
       });
     }
@@ -35,7 +35,7 @@ export async function load({ url: { pathname } }) {
       pathname,
     };
   } catch (err) {
-    throw error(500, {
+    error(500, {
       message: 'Error fetching data',
     });
   }

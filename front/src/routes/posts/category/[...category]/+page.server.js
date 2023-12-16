@@ -43,7 +43,7 @@ export async function load({ params }) {
       postsEndpoint,
       individualCategoryEndpoint,
     });
-    throw error(404, {
+    error(404, {
       message: 'Category not found!',
     });
   }

@@ -87,7 +87,7 @@ export async function load({ params: { collection, slug } }) {
   }
 
   if (!data) {
-    throw error(500, `${collection} Collection Item Page Error`);
+    error(500, `${collection} Collection Item Page Error`);
   }
 
   return {

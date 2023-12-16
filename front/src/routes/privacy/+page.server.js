@@ -19,7 +19,7 @@ export async function load() {
   try {
     const privacyContent = await api(endpoint);
     if (!privacyContent) {
-      throw error(500, {
+      error(500, {
         message: 'Privacy Page Error: Content not available',
       });
     }
