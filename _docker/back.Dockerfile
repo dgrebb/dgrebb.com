@@ -9,8 +9,8 @@ RUN apk update && apk add --no-cache build-base \
 FROM base AS dependencies
 WORKDIR /opt/
 COPY package*.json ./
-COPY ./patches ./patches
-RUN npm ci --include=dev && npm cache clean --force
+# COPY ./patches ./patches
+RUN npm ci && npm cache clean --force
 
 # -------- Build -------- #
 FROM base AS build
