@@ -51,7 +51,7 @@ export async function load({ params: { slug }, route }) {
         error: post?.error,
       });
 
-      throw error(404, {
+      error(404, {
         message: `Page not found!`,
       });
     }
@@ -119,7 +119,7 @@ export async function load({ params: { slug }, route }) {
     return {
       post: post || {},
       toc,
-      summary: summary ? markItUp(summary) : false,
+      summary: summary ? await markItUp(summary) : false,
       content: markedContent,
       pageMeta,
     };

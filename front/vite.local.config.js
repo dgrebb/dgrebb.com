@@ -1,7 +1,6 @@
 import { bundleStats } from 'rollup-plugin-bundle-stats';
 import progress from 'vite-plugin-progress';
 import { sveltekit } from '@sveltejs/kit/vite';
-import { svelte } from '@sveltejs/vite-plugin-svelte';
 import fs from 'fs';
 import path from 'path';
 import { visualizer } from 'rollup-plugin-visualizer';
@@ -10,32 +9,6 @@ import { defineConfig } from 'vite';
 import postcss from './postcss.config.js';
 
 export default defineConfig({
-  plugins: [
-    sveltekit(),
-    Icons({
-      compiler: 'svelte',
-    }),
-    visualizer({
-      template: 'treemap',
-      filename: '.report/stats.html',
-    }),
-    visualizer({
-      template: 'network',
-      filename: '.report/network.html',
-    }),
-    visualizer({
-      template: 'sunburst',
-      filename: '.report/sunburst.html',
-    }),
-    bundleStats({
-      outDir: '../../../.report/bundle-stats',
-      baseline: true,
-      baselineFilepath:
-        '../../../.report/__fixtures__/bundlestats-baseline.json',
-      json: true,
-    }),
-    progress(),
-  ],
   resolve: {
     alias: {
       '@api': path.resolve('./src/lib/api'),
@@ -57,6 +30,32 @@ export default defineConfig({
   optimizeDeps: {
     include: ['highlight.js/lib/core'],
   },
+  plugins: [
+    Icons({
+      compiler: 'svelte',
+    }),
+    visualizer({
+      template: 'treemap',
+      filename: '.report/stats.html',
+    }),
+    visualizer({
+      template: 'network',
+      filename: '.report/network.html',
+    }),
+    visualizer({
+      template: 'sunburst',
+      filename: '.report/sunburst.html',
+    }),
+    bundleStats({
+      outDir: '../../../.report/bundle/current',
+      compare: true,
+      baselineFilepath: '../../../.report/bundle/previous/bundle-stats.json',
+      json: true,
+      html: true,
+    }),
+    sveltekit(),
+    progress(),
+  ],
   server: {
     proxy: {
       '^/uploads/.*': {
