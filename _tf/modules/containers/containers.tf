@@ -71,7 +71,7 @@ resource "aws_ecs_task_definition" "strapi" {
         "CMD-SHELL",
         "wget --no-verbose --tries=1 --spider http://localhost:1337/_health || exit 1"
       ]
-      interval    = 300
+      interval    = 30
       timeout     = 5
       retries     = 3
       startPeriod = 30

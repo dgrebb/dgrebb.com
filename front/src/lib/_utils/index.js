@@ -22,7 +22,7 @@ export const themeName = async function (preference) {
   return preference ? darkTheme : lightTheme;
 };
 
-export const scrollTop = function () {
+export const scrollTop = function (e) {
   e?.preventDefault();
   document.getElementById('header')?.scrollIntoView();
 };
