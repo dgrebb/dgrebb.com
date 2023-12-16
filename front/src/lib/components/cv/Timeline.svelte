@@ -25,7 +25,7 @@
 
 <div class="experience-timeline">
   {#if items.length}<Calendar />{/if}
-  {#each items as { name, slug, startDate, endDate, story, organizations, skills }}
+  {#each items as { name, slug, startDate, endDate, summary, story, organizations, skills }}
     <section class="experience-timeline-item" class:current={!endDate}>
       <header class="item-basics">
         <h1 class="item-title">{name}</h1>
@@ -74,6 +74,8 @@
         </div>
         {#if story}
           <p class="experience-summary">{@html story}</p>
+        {:else if summary}
+          <p class="experience-summary">{@html summary}</p>
         {/if}
       </main>
     </section>
