@@ -26,7 +26,7 @@ export async function load() {
   }
 
   if (!home) {
-    throw error(500, 'Home Page Error');
+    error(500, 'Home Page Error');
   }
 
   ({ seo, bioPicture, headline, image, intro } = home);

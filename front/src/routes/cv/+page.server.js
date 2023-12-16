@@ -65,11 +65,11 @@ export async function load() {
     ]);
 
     if (!cv) {
-      throw error(500, 'CV Page Error');
+      error(500, 'CV Page Error');
     }
 
     if (!experiencesData) {
-      throw error(500, 'Experiences error on CV Page');
+      error(500, 'Experiences error on CV Page');
     }
 
     const {

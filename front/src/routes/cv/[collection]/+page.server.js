@@ -29,7 +29,7 @@ export async function load({ params: { collection } }) {
   }
 
   if (!collectionData) {
-    throw error(500, `${collection} Collection Page Error`);
+    error(500, `${collection} Collection Page Error`);
   }
 
   ({
