@@ -72,11 +72,13 @@
             {/each}
           </ul>
         </div>
-        {#if story}
-          <p class="experience-summary">{@html story}</p>
-        {:else if summary}
-          <p class="experience-summary">{@html summary}</p>
-        {/if}
+        <div class="experience-summary">
+          {#if story}
+            {@html story}
+          {:else if summary}
+            {@html summary}
+          {/if}
+        </div>
       </main>
     </section>
   {/each}
