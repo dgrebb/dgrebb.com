@@ -7,7 +7,7 @@
 
   export let data;
 
-  const { pathname, socialContent, page, experiences, pageMeta } = data;
+  const { pathname, generalContent, page, experiences, pageMeta } = data;
   const { title, intro } = page;
   // TODO: remove this rule transgressor
   /* eslint-disable no-unused-vars */
@@ -19,7 +19,7 @@
     <header class="cv-masthead">
       <a id="main">Main Content</a>
       <h1 class="page-heading">{title}</h1>
-      <Links links={socialContent} />
+      <Links links={generalContent.filter((link) => link.cv === true)} />
       {#if intro}
         <div class="summary">
           {@html intro}
