@@ -21,7 +21,7 @@
    * @param {PageMeta} props.pageMeta - The page meta information.
    */
   import { PUBLIC_ENV as env } from '$env/static/public';
-  import MetaTags from 'svelte-meta-tags/MetaTags.svelte';
+  import MetaTags from '@components/general/MetaTags.svelte';
 
   /** @type {MetaTagsProps} */
   export let pageMeta;
