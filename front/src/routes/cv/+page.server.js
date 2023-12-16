@@ -41,9 +41,13 @@ function structureExperiences(data) {
     return startDateB - startDateA || 0;
   });
 
+  // TODO: remove short-circuit from story field
   return sortedData.map((experience) => ({
     ...experience.attributes,
-    story: marked(experience.attributes.story),
+    story: experience?.attributes?.story
+      ? marked(experience.attributes.story)
+      : false,
+    summary: marked(experience.attributes.summary),
     skills: experience.attributes.skills.data,
     organizations: experience.attributes.organizations.data,
     projects: experience.attributes.projects.data,
