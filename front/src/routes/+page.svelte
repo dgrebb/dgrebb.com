@@ -29,7 +29,7 @@
    * @property {string} headline - The headline or title for the bio section.
    * @property {ImageData} image - The data for the image in the bio section.
    * @property {string} intro - The introduction text for the bio section.
-   * @property {Array<SocialLink>} socialContent - The array of social links.
+   * @property {Array<SocialLink>} generalContent - The array of social links.
    * @property {PageMeta} pageMeta - The meta information for the page.
    * @property {string} pathname - The pathname of the page.
    */
@@ -53,7 +53,7 @@
     headline,
     image,
     intro,
-    socialContent: links,
+    generalContent: links,
     pageMeta,
     pathname,
   } = data;
