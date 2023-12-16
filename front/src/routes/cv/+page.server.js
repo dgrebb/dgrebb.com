@@ -8,6 +8,11 @@ import {
 import api from '@api';
 import { error } from '@sveltejs/kit';
 
+const renderer = new marked.Renderer();
+renderer.link = link;
+renderer.heading = heading;
+marked.use({ renderer });
+
 /**
  * Defines the URL endpoints for fetching CV and experiences data.
  */
@@ -38,6 +43,7 @@ function structureExperiences(data) {
 
   return sortedData.map((experience) => ({
     ...experience.attributes,
+    story: marked(experience.attributes.story),
     skills: experience.attributes.skills.data,
     organizations: experience.attributes.organizations.data,
     projects: experience.attributes.projects.data,
@@ -53,11 +59,6 @@ function structureExperiences(data) {
  * and pageMeta data.
  */
 export async function load() {
-  const renderer = new marked.Renderer();
-  renderer.link = link;
-  renderer.heading = heading;
-  marked.use({ renderer });
-
   try {
     const [cv, experiencesData] = await Promise.all([
       api(endpoint),
