@@ -29,6 +29,9 @@
     "endDate": {
       "type": "date"
     },
+    "story": {
+      "type": "text"
+    },
     "summary": {
       "type": "text"
     },
@@ -36,9 +39,7 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "organizations": {
       "type": "relation",

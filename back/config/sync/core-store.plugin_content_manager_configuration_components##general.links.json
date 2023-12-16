@@ -64,7 +64,7 @@
       },
       "cv": {
         "edit": {
-          "label": "Show on CV",
+          "label": "cv",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -97,11 +97,11 @@
         ],
         [
           {
-            "name": "cv",
+            "name": "icon",
             "size": 4
           },
           {
-            "name": "icon",
+            "name": "cv",
             "size": 4
           }
         ]
