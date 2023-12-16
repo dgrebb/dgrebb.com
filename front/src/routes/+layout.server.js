@@ -12,9 +12,8 @@ export const trailingSlash = 'always';
 
 export async function load({ url: { pathname } }) {
   try {
-    const [navigationContent, socialContent, footerContent] = await Promise.all(
-      [api(URL + NAV), api(URL + HOME), api(URL + FOOT)]
-    );
+    const [navigationContent, generalContent, footerContent] =
+      await Promise.all([api(URL + NAV), api(URL + HOME), api(URL + FOOT)]);
 
     if (!navigationContent || !footerContent) {
       error(500, {
@@ -30,7 +29,7 @@ export async function load({ url: { pathname } }) {
     return {
       ...navigationContent,
       navItems,
-      socialContent: socialContent.links,
+      generalContent: generalContent.links,
       ...footerContent,
       pathname,
     };
