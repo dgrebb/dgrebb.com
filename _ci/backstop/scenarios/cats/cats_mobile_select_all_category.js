@@ -11,7 +11,7 @@ module.exports = {
     '.page-navigation.mini .page-navigation-toggle',
     '.mini .page-navigation-category-all a',
   ],
-  postInteractionWait: 100,
+  postInteractionWait: 1000,
   selectors: ['viewport'],
   selectorExpansion: false,
   misMatchThreshold: 0.2,
