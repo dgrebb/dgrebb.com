@@ -135,6 +135,7 @@
           lang={c.syntax}
           title={c?.title}
           lineNumbers={c.showLineNumbers === true || lines.length > 0}
+          startingLineNumber={c.startingLineNumber || 1}
           copyButton={c?.showCopyButton === true}
           highlightedLines={lines
             ? lines.sort((a, b) => {
