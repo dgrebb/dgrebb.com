@@ -21,23 +21,16 @@
       "type": "boolean",
       "default": false
     },
+    "startingLineNumber": {
+      "type": "integer"
+    },
     "highlightedLines": {
       "type": "string",
       "regex": "^ *\\d+ *(?:, *\\d+ *)*$"
     },
-    "maxHeight": {
-      "type": "integer",
-      "min": 300
-    },
     "syntax": {
       "type": "enumeration",
-      "enum": [
-        "JavaScript",
-        "CSS",
-        "HTML",
-        "Shell",
-        "Svelte"
-      ]
+      "enum": ["JavaScript", "JSON", "CSS", "HTML", "Shell", "Svelte"]
     }
   }
 }
