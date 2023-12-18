@@ -76,6 +76,20 @@
           "sortable": true
         }
       },
+      "startingLineNumber": {
+        "edit": {
+          "label": "Starting Line Number",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "startingLineNumber",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "highlightedLines": {
         "edit": {
           "label": "Highlighted Lines",
@@ -86,20 +100,6 @@
         },
         "list": {
           "label": "highlightedLines",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "maxHeight": {
-        "edit": {
-          "label": "MaxHeight",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "maxHeight",
           "searchable": true,
           "sortable": true
         }
@@ -120,12 +120,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "code",
-        "title",
-        "syntax"
-      ],
+      "list": ["id", "code", "title", "syntax"],
       "edit": [
         [
           {
@@ -153,11 +148,11 @@
             "size": 4
           },
           {
-            "name": "highlightedLines",
+            "name": "startingLineNumber",
             "size": 4
           },
           {
-            "name": "maxHeight",
+            "name": "highlightedLines",
             "size": 4
           }
         ]
