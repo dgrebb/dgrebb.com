@@ -251,6 +251,20 @@
       padding-top: 1rem;
     }
   }
+  ol {
+    li {
+      counter-increment: item;
+      list-style-type: none;
+      &:before {
+        display: inline-block;
+        padding-right: 0.5em;
+        width: 1.5em;
+        content: counter(item) '.';
+        font-family: var(--font-psb);
+        text-align: right;
+      }
+    }
+  }
   code {
     color: var(--fg-clr-o);
   }
