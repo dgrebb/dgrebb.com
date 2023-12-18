@@ -53,7 +53,7 @@ body.ready {
   }
   .main section {
     transition-duration: var(--transition-duration);
-    transition-property: opacity, background-color;
+    transition-property: opacity, background;
     transition-timing-function: var(--transition-timing-function);
   }
   .footer {
