@@ -52,7 +52,7 @@ export async function shapeProjectData(data) {
   renderer.link = link;
   renderer.heading = heading;
 
-  marked.use({ renderer });
+  marked.use({ renderer, gfm: true });
 
   /**
    * Destructuring relevant attributes from the first element of the data array.

@@ -11,7 +11,7 @@ const renderer = new marked.Renderer();
 renderer.link = link;
 renderer.heading = heading;
 
-marked.use({ renderer });
+marked.use({ renderer, gfm: true });
 
 const endpoint = URL + PRIVACY;
 

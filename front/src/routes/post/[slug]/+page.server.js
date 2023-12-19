@@ -6,6 +6,7 @@ import {
   PUBLIC_POST_PARAMS as PARAMS,
 } from '$env/static/public';
 import { marked } from 'marked';
+import markedAlert from 'marked-alert';
 import { link, heading } from '@components/content/renderers';
 import { parseTOC } from '@components/content/parsers';
 
@@ -13,7 +14,7 @@ const renderer = new marked.Renderer();
 renderer.link = link;
 renderer.heading = heading;
 
-marked.use({ renderer });
+marked.use(markedAlert(), { renderer, gfm: true });
 
 // Markdown rendering function
 /**
