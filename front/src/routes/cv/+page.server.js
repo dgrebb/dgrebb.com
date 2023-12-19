@@ -11,7 +11,7 @@ import { error } from '@sveltejs/kit';
 const renderer = new marked.Renderer();
 renderer.link = link;
 renderer.heading = heading;
-marked.use({ renderer });
+marked.use({ renderer, gfm: true });
 
 /**
  * Defines the URL endpoints for fetching CV and experiences data.

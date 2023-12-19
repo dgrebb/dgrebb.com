@@ -13,7 +13,7 @@ import { link } from '@components/content/renderers';
 const renderer = new marked.Renderer();
 renderer.link = link;
 
-marked.use({ renderer });
+marked.use({ renderer, gfm: true });
 
 export async function load({ params }) {
   const category = params.category.replace('/', '') || 'all';
