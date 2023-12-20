@@ -70,10 +70,8 @@ while test "$1" != --; do
         if [[ ! $REPLY =~ ^[Yy]$ ]]; then
             exit 1
         fi
-        echo "Updating Strapi, related packages, installing, patching, and building..."
+        echo "Updating Strapi, related packages, installing, and building..."
         rm -rf package-lock.json node_modules && npm i
-        npx patch-package @strapi/strapi
-        npx patch-package @strapi/admin
         npm run build && dg c d
         break
         ;;
