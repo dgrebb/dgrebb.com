@@ -7,12 +7,13 @@ import {
 } from '$env/static/public';
 import { marked } from 'marked';
 import markedAlert from 'marked-alert';
-import { link, heading } from '@components/content/renderers';
+import { link, heading, image } from '@components/content/renderers';
 import { parseTOC } from '@components/content/parsers';
 
 const renderer = new marked.Renderer();
 renderer.link = link;
 renderer.heading = heading;
+renderer.image = image;
 
 marked.use(markedAlert(), { renderer, gfm: true });
 

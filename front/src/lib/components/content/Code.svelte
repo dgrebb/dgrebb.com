@@ -1,16 +1,11 @@
 <script>
   import { Highlight, LineNumbers, HighlightSvelte } from 'svelte-highlight';
-  import {
-    bash,
-    css,
-    javascript,
-    json,
-    plaintext,
-    xml,
-  } from 'svelte-highlight/languages';
-  // import  from 'svelte-highlight/languages/javascript';
-  // import  from 'svelte-highlight/languages/xml';
-  // import  from 'svelte-highlight/languages/css';
+  import javascript from 'svelte-highlight/languages/javascript';
+  import bash from 'svelte-highlight/languages/bash';
+  import css from 'svelte-highlight/languages/css';
+  import json from 'svelte-highlight/languages/json';
+  import plaintext from 'svelte-highlight/languages/plaintext';
+  import xml from 'svelte-highlight/languages/xml';
   import CodeCopy from './CodeCopy.svelte';
   import '@styles/components/Code/Code.css';
 
