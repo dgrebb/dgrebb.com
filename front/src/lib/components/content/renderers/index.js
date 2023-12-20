@@ -53,3 +53,23 @@ export const link = function (href, title, text) {
 
   return `<a href="${href}" ${titleAttr} ${rel}>${text}</a>`;
 };
+
+/**
+ * @function
+ * @name image
+ *
+ * @param {string} href The anchor href
+ * @param {string} title The image title attribute value
+ * @param {string} text The image alt text
+ * @returns An anchor with title and rel attributes set based on external domain
+ */
+export const image = function (href, title, text) {
+  const match = /\{ align=(left|right) \}/.exec(text);
+  const alignment = match ? match[1] : null;
+  const cleanText = text
+    ? text.replace(/\{ align=(left|right) \}/, '').trim()
+    : '';
+  const imageTitle = title !== null ? `title="${title}"` : '';
+
+  return `<img src="${href}" src="${href}" alt="${cleanText}" ${imageTitle} style="float: ${alignment};" />`;
+};

@@ -152,7 +152,7 @@
 }
 
 @supports (initial-letter: 2) {
-  .post .summary p::first-letter {
+  .post .summary p:first-of-type::first-letter {
     font-family: var(--font-lbb);
     -webkit-initial-letter: 2;
     initial-letter: 2;
@@ -163,7 +163,7 @@
 }
 
 @supports not (initial-letter: 2) {
-  .post .summary p::first-letter {
+  .post .summary p:first-of-type::first-letter {
     vertical-align: middle;
     float: left;
     padding-top: 0.4rem;
@@ -325,6 +325,9 @@
           content: '“';
         }
       }
+      &:first-child:last-child {
+        padding-bottom: 1rem;
+      }
     }
     footer {
       position: relative;
@@ -340,9 +343,8 @@
     --important-clr: #a371f7;
     --warning-clr: #d29922;
     --caution-clr: #f85149;
-    margin: 2rem 1rem;
     border-left: 0.25em solid;
-    padding: 1rem 1.25rem;
+    padding: 1.5rem 2rem;
     &-title {
       display: flex;
       align-items: center;
@@ -398,6 +400,14 @@
       }
     }
   }
+  > pre {
+    overflow-x: auto;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+  }
   .footnotes {
     li {
       margin-left: 1.2rem;
@@ -430,7 +440,8 @@
     padding-right: 1.75rem;
     padding-left: 1.75rem;
   }
-  .post-article blockquote {
+  .post-article blockquote,
+  .post-article .markdown-alert {
     width: 83%;
   }
   .post-article .text-columns {
