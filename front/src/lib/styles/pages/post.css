@@ -407,6 +407,26 @@
     white-space: -o-pre-wrap;
     word-wrap: break-word;
   }
+  .post-image {
+    &--left,
+    &--right,
+    &--center {
+      max-width: 100%;
+    }
+    &--left {
+      float: left;
+      padding: 0.5rem 0.5rem 0.5rem 0;
+    }
+    &--right {
+      float: right;
+      padding: 0.5rem 0 0.5rem 0.5rem;
+    }
+    &--center {
+      float: none;
+      margin: auto;
+      padding: 0.5rem;
+    }
+  }
   .footnotes {
     li {
       margin-left: 1.2rem;
