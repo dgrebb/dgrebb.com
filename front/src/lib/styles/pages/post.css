@@ -270,6 +270,7 @@
   }
   blockquote,
   .markdown-alert {
+    position: relative;
     margin: 3rem auto;
     box-shadow: var(--shadow-elevation-medium);
     border-left: 0.5rem solid var(--hardlight-clr);
@@ -277,20 +278,6 @@
     background: var(--bg-light-clr);
     padding: 0.5rem 1.5rem;
     color: var(--fg-clr-oo);
-  }
-  blockquote {
-    position: relative;
-    border-left-color: var(--hardlight-clr);
-    overflow: visible;
-    font-style: italic;
-    font-family: var(--font-lb);
-    p:first-child::before,
-    &::after {
-      position: absolute;
-      z-index: 9;
-      color: var(--blockquotes-clr);
-      font-size: 4rem;
-    }
     &::before {
       position: absolute;
       top: 0;
@@ -308,14 +295,28 @@
       padding: 1px 1px 0 0;
       content: '';
     }
+    * {
+      position: relative;
+      z-index: 6;
+    }
+  }
+  blockquote {
+    border-left-color: var(--hardlight-clr);
+    overflow: visible;
+    font-style: italic;
+    font-family: var(--font-lb);
+    p:first-child::before,
+    &::after {
+      position: absolute;
+      color: var(--blockquotes-clr);
+      font-size: 4rem;
+    }
     &::after {
       right: 0;
       bottom: -3.5rem;
       content: '”';
     }
     p {
-      position: relative;
-      z-index: 7;
       padding: 1rem 0 0 0;
       &:first-child {
         &::before {
@@ -330,8 +331,6 @@
       }
     }
     footer {
-      position: relative;
-      z-index: 6;
       margin-top: 1rem;
       padding-bottom: 1.5rem;
       text-align: right;
