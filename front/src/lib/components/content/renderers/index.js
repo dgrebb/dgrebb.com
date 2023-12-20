@@ -64,12 +64,12 @@ export const link = function (href, title, text) {
  * @returns An anchor with title and rel attributes set based on external domain
  */
 export const image = function (href, title, text) {
-  const match = /\{ align=(left|right) \}/.exec(text);
+  const match = /\{ align=(left|right|center) \}/.exec(text);
   const alignment = match ? match[1] : null;
   const cleanText = text
-    ? text.replace(/\{ align=(left|right) \}/, '').trim()
+    ? text.replace(/\{ align=(left|right|center) \}/, '').trim()
     : '';
   const imageTitle = title !== null ? `title="${title}"` : '';
 
-  return `<img src="${href}" src="${href}" alt="${cleanText}" ${imageTitle} style="float: ${alignment};" />`;
+  return `<img src="${href}" src="${href}" alt="${cleanText}" ${imageTitle} class="post-image--${alignment}" />`;
 };
