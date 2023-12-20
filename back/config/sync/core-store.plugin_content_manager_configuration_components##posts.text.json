@@ -22,8 +22,8 @@
       },
       "text": {
         "edit": {
-          "label": "text",
-          "description": "",
+          "label": "Text",
+          "description": "Image alignment: ![image.png { align=right } ](http://lexample.com/image.png)",
           "placeholder": "",
           "visible": true,
           "editable": true
