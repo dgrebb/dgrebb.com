@@ -400,7 +400,7 @@
       }
     }
   }
-  pre {
+  > pre {
     overflow-x: auto;
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;
