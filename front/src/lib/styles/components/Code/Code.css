@@ -19,7 +19,7 @@
   box-shadow: var(--shadow-elevation-medium);
   border-radius: 0.5rem;
   background-color: var(--bg-light-clr);
-  padding: 0 1rem;
+  padding: 0 1.5rem 0 1rem;
   width: 100%;
   &::before {
     position: absolute;
@@ -104,6 +104,12 @@
   .code-copy-btn {
     z-index: 9;
     color: var(--fg-clr-oooo);
+  }
+  &.headerless,
+  &.titleless {
+    > pre {
+      padding-top: 1rem;
+    }
   }
   > pre {
     position: relative;
@@ -241,6 +247,13 @@
   transition-property: color;
   padding: 0.75rem;
   line-height: 1.6;
+  .titleless & {
+    padding: 0.5rem;
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
   > * {
     pointer-events: none;
   }
@@ -307,6 +320,9 @@
   .syntax-highlighter {
     padding: 0 1.75rem 1.75rem 1.5rem;
     width: auto;
+    &.headerless > pre {
+      padding-top: 2rem;
+    }
     > pre {
       padding: 4.75rem 0 0 0;
     }

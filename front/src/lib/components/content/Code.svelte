@@ -17,6 +17,8 @@
   export let lineNumbers = false;
   export let highlightedLines = false;
   let langLower = lang.toLowerCase();
+  console.log('🚀 ~ file: Code.svelte:16 ~ copyButton:', copyButton);
+  console.log('🚀 ~ file: Code.svelte:15 ~ title:', title);
 
   let which = {
     shell: bash,
@@ -31,10 +33,21 @@
   let language = which[langLower] || plaintext;
 </script>
 
-<div class="syntax-highlighter" data-code-instance-id={key}>
-  <span class="title full" class:copy={copyButton === true}>
-    {#if title}{title}{:else}Example:{/if}
-  </span>
+<div
+  class={`${
+    title === null && copyButton === false
+      ? 'headerless '
+      : title === null && copyButton === true
+        ? 'titleless '
+        : ''
+  }syntax-highlighter`}
+  data-code-instance-id={key}
+>
+  {#if title !== null}
+    <span class="title full" class:copy={copyButton === true}>
+      {#if title}{title}{/if}
+    </span>
+  {/if}
   {#if copyButton === true}
     <CodeCopy {text} {key} {pageTitle} {pageSlug} {title} />
   {/if}
