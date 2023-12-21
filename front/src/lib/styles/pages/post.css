@@ -343,12 +343,12 @@
     --warning-clr: #d29922;
     --caution-clr: #f85149;
     border-left: 0.25em solid;
-    padding: 1.5rem 2rem;
+    padding: 0.75rem 1.25rem;
     &-title {
       display: flex;
       align-items: center;
       padding: 0;
-      padding-bottom: 1rem;
+      padding-bottom: 0.5rem;
     }
     svg {
       fill: currentColor;
@@ -399,7 +399,8 @@
       }
     }
   }
-  > pre {
+  > pre,
+  p code {
     overflow-x: auto;
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;
