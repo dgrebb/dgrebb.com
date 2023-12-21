@@ -36,9 +36,11 @@
         "CSS",
         "HTML",
         "Shell",
-        "Svelte"
+        "Svelte",
+        "plaintext"
       ],
-      "required": true
+      "required": true,
+      "default": "plaintext"
     }
   }
 }

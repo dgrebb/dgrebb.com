@@ -17,8 +17,6 @@
   export let lineNumbers = false;
   export let highlightedLines = false;
   let langLower = lang.toLowerCase();
-  console.log('🚀 ~ file: Code.svelte:16 ~ copyButton:', copyButton);
-  console.log('🚀 ~ file: Code.svelte:15 ~ title:', title);
 
   let which = {
     shell: bash,
