@@ -76,20 +76,6 @@
           "sortable": true
         }
       },
-      "startingLineNumber": {
-        "edit": {
-          "label": "Starting Line Number",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "startingLineNumber",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "highlightedLines": {
         "edit": {
           "label": "Highlighted Lines",
@@ -106,7 +92,7 @@
       },
       "syntax": {
         "edit": {
-          "label": "Syntax",
+          "label": "Language",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -117,10 +103,29 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "startingLineNumber": {
+        "edit": {
+          "label": "Starting Line Number",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "startingLineNumber",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
-      "list": ["id", "code", "title", "syntax"],
+      "list": [
+        "id",
+        "code",
+        "title",
+        "syntax"
+      ],
       "edit": [
         [
           {
