@@ -2,6 +2,80 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.11.0] - 2023-12-21
+
+### 💡 Features
+
+- ***(back)*** Migrates to strapi 4.16.0 (#1086)
+- ***(back)*** Adds startingLineNumber and 'JSON' language enum to Code component
+- ***(back)*** Adds links cv boolean and experiences story fields (#1050)
+- ***(back)*** Adds CV boolean to links field schema (#1050)
+- ***(back)*** Adds custom dashboard plugin (#1053)
+- ***(front)*** Post markdown alerts and image floats (#1080) (#1083)
+- ***(front)*** Adds github-flavored markdown alerts to post type (#1083)
+- ***(front)*** Adds startingLineNumber to Code component
+- ***(front)*** Uses rendered story field in timeline (#1050)
+- ***(front)*** Renames links data object and uses cv page filter (#1050)
+- ***(front)*** Renders title else domain for external markdown link titles (#1050)
+- ***(front)*** Use local MetaTags component for svelte-meta-tags migration (#1074)
+- ***(front)*** Migrates to SvelteKit 2 (#1072)
+- ***(front)*** Adds timeline component and endDate style and animation (#1059)
+- ***(front)*** Adds Timeline component (#1059)
+
+### 🐛 Bug Fixes
+
+- ***(ci)*** Corrects github inputs var reference
+- ***(docker)*** Removes patches dir and devDeps from docker image (#1033)
+- ***(front)*** Adds ordered list style to posts (#1078)
+- ***(front)*** Pins svelte-highlight@7.4.2
+- ***(front)*** Converts svg to solid color for safari and chrome (#1052)
+
+### ⚡️ Performance
+
+- ***(front)*** Improves performance of route servers and pages (#1061)
+- ***(front)*** Improves performance of posts, icons, and links components (#1061)
+- ***(front)*** Improves performance of home and general components (#1061)
+- ***(front)*** Improves parser and renderer performance (#1061)
+- ***(front)*** Improves data processor, util, and helper performance (#1061)
+- ***(front)*** Improves post page and related component performance (#1061)
+- ***(front)*** Refactors cv landing api (#1061)
+- ***(front)*** Adds rollup-plugin-visualizer configuration for prod/lower (#1061)
+
+### ♻️  Refactor
+
+- ***(utils)*** Removes patch-package from CLI utils
+
+### 👷 Build
+
+- ***(back)*** Removes patch-package and postinstall script
+- ***(front)*** Adds rollup-plugin-visualizer
+
+### 💚 Continuous Integration
+
+- ***(github)*** Updates release workflow to run regression
+
+### 🪮  Styling
+
+- ***(front)*** Adjusts post background and transition
+- ***(front)*** Adjusts hover states and breakpoints for timeline items (#1069)
+- ***(front)*** Adjustments for a11y focus states (#1061)
+
+### ✅ Testing
+
+- ***(perf)*** Updates tests for perf boost delays
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(back)*** Removes positions content-type and skills icon and svg fields (#1044)
+- ***(back)*** Upgrades to strapi/plugin-seo@1.9.8 (#1033)
+- ***(back)*** Updates to and removes patches for strapi@14.5.5 (#1033)
+- ***(back)*** Adds the .strapi runtime dir to .gitignore
+- ***(backstop)*** Updates gh-prd refs
+- ***(backstop)*** Updates local refs
+- ***(front)*** Removes Sentry from CI, documentation, utils, and frontend (#1062)
+- ***(front)*** Refactor category route with [...spread] (#1061)
+- ***(front)*** Updates FE deps and fixes vite vulnerability (#1055)
+
 ## [3.10.0] - 2023-12-02
 
 ### 💡 Features
