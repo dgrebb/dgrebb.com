@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.11.1] - 2023-12-21
+
+### 🐛 Bug Fixes
+
+- ***(back)*** Requires language field and sets plaintext as default (#1094)
+- ***(front)*** Fixes code line wrap and headerless Code (#1094)
+
 ## [3.11.0] - 2023-12-21
 
 ### 💡 Features
