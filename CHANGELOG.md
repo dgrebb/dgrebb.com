@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.11.2] - 2023-12-22
+
+### ✅ Testing
+
+- ***(front)*** Rolls out a test build of svelte-plausible-analytics (accuser/svelte-plausible-analytics#10)
+
 ## [3.11.1] - 2023-12-21
 
 ### 🐛 Bug Fixes
