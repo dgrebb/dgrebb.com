@@ -49,5 +49,13 @@
 </footer>
 
 {#if mounted && !isAutomation}
-  <PlausibleAnalytics {domain} {apiHost} enabled outboundLinks />
+  {#key route}
+    <PlausibleAnalytics
+      {domain}
+      {apiHost}
+      enabled
+      outboundLinks
+      pageviewProps={{ theme: document.documentElement.classList }}
+    />
+  {/key}
 {/if}
