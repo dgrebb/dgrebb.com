@@ -47,12 +47,6 @@
         "right bottom"
       ]
     },
-    "heroAuthor": {
-      "type": "string"
-    },
-    "heroAuthorLink": {
-      "type": "string"
-    },
     "content": {
       "type": "dynamiczone",
       "components": [
