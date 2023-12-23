@@ -1,8 +1,13 @@
 name: 🙈 BackstopJS
-run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - BackstopJS ${{ github.event_name == 'pull_request' && format('PR #{0}: {1} on ', github.event.pull_request.number, github.event.pull_request.title) || format('on latest {0}', github.ref_name) }}"
+run-name: "${{ inputs.env == 'prd' && 'PRD' || 'STG' }} - BackstopJS ${{ github.event_name == 'pull_request' && format('PR #{0}: {1} on ', github.event.pull_request.number, github.event.pull_request.title) || format('on latest {0}', github.ref_name) }}"
 
 on:
   workflow_call:
+    inputs:
+      env:
+        description: "Target deployment environment."
+        type: string
+        required: true
     secrets:
       GH_WORKFLOW_TOKEN:
         required: true
@@ -36,10 +41,10 @@ jobs:
       cancel-in-progress: true
 
     environment:
-      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+      name: ${{ inputs.env }}
 
     env:
-      DEPLOY_ENV: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+      DEPLOY_ENV: ${{ inputs.env }}
 
     steps:
       - name: 𐂷 Checkout
@@ -54,7 +59,7 @@ jobs:
       - name: ⬢ Setup Node & Cache
         uses: actions/setup-node@v4
         with:
-          node-version: "20.9.0"
+          node-version: "20.x"
           cache: "npm"
           cache-dependency-path: |
             _ci/backstop/package.json
@@ -65,7 +70,7 @@ jobs:
         run: cd _ci/backstop && npm ci && npx playwright install --with-deps
 
       - name: 🔥 Warmup Cache
-        run: ./_ci/_utils/warmup.sh ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+        run: ./_ci/_utils/warmup.sh ${{ inputs.env }}
 
       - name: 👀 Testing Bitmaps
         id: backstop
@@ -75,7 +80,7 @@ jobs:
       - name: Summarize Failures
         if: steps.backstop.outcome != 'success'
         env:
-          REPORT_PATH: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+          REPORT_PATH: ${{ inputs.env }}
         run: |
           cd _ci/backstop
           echo "# Backstop Summary" >> $GITHUB_STEP_SUMMARY
@@ -86,7 +91,7 @@ jobs:
       - name: Summarize Success
         if: steps.backstop.outcome == 'success'
         env:
-          REPORT_PATH: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+          REPORT_PATH: ${{ inputs.env }}
         run: |
           echo "# Backstop Summary" >> $GITHUB_STEP_SUMMARY
           echo "## 📋 <a href=\"http://${{ vars.REPORTS_DOMAIN }}/backstop/html_report/gh-$REPORT_PATH/\" target=\"_blank\">View Report</a>" >> $GITHUB_STEP_SUMMARY
@@ -119,7 +124,7 @@ jobs:
       - name: 🛟 Saving Artifact
         if: steps.backstop.outcome != 'success'
         env:
-          REPORT_PATH: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+          REPORT_PATH: ${{ inputs.env }}
         uses: actions/upload-artifact@v3
         with:
           name: backstop-report
