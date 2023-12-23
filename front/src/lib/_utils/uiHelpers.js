@@ -35,24 +35,36 @@ export const themeToggleClick = (theme) => {
 /**
  * Track a click on the code copy button.
  * @param {string} pageTitle - The title of the page containing the code.
- * @param {string} pageSlug - The slug of the page containing the code.
+ * @param {string} page - The slug of the page containing the code.
  * @param {string} [codeTitle='Untitled'] - The title of the code being copied.
  * @param {string} componentInstanceID - The unique identifier of the code component instance.
  */
 export const codeCopyClick = (
   pageTitle,
-  pageSlug,
+  page,
   codeTitle = 'Untitled',
   componentInstanceID
 ) => {
-  trackPlausible('Code Copy', {
+  trackPlausible('Copied Code', {
     pageTitle,
-    pageSlug,
+    page,
     codeTitle,
-    codeIdentifier: `code_copy__${pageSlug.replace(
+    codeIdentifier: `code_copy__${page.replace(
       /-/g,
       '_'
     )}__${componentInstanceID}`,
+  });
+};
+
+/**
+ * Track a click on the code copy button.
+ * @param {string} altText - The title of the page containing the code.
+ * @param {string} page - The slug of the page containing the code.
+ */
+export const animatedImagePlay = (altText, page) => {
+  trackPlausible('Played Animated Image', {
+    altText,
+    page,
   });
 };
 

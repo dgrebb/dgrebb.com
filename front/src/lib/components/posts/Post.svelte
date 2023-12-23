@@ -171,6 +171,7 @@
           {still}
           {sAlt}
           {figcaption}
+          {slug}
         />
       {/if}
       {#if c.__component === 'posts.columns'}

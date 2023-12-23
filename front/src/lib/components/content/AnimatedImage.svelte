@@ -1,6 +1,13 @@
 <script>
+  import { animatedImagePlay } from '@utils/uiHelpers';
   import '@styles/components/animated-image.css';
-  export let animation, width, height, aAlt, still, sAlt, figcaption;
+  export let animation, width, height, aAlt, still, sAlt, figcaption, slug;
+
+  $: playing = false;
+  const altText = aAlt ? aAlt : sAlt || 'No alt text. This should be fixed.';
+  function playPauseClickHandler(altText, slug) {
+    return playing === true ? false : animatedImagePlay(altText, slug);
+  }
 </script>
 
 <div class="media-box">
@@ -13,8 +20,15 @@
         alt="Still frame{sAlt === null ? '' : `: ${sAlt}`}"
         loading="lazy"
       />
-      <details>
-        <summary aria-label="Click to play the animation">
+      <details bind:open={playing}>
+        <summary
+          aria-label="Click to play the animation"
+          on:click={playPauseClickHandler(altText, slug)}
+          on:keydown={playPauseClickHandler(altText, slug)}
+          role="switch"
+          tabindex="0"
+          aria-checked={playing}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="19.2"
@@ -44,7 +58,7 @@
             src={animation}
             {width}
             {height}
-            alt="Animated{aAlt === null ? '' : `: ${aAlt}`}"
+            alt={`Animated${aAlt === null ? '' : ' ' + aAlt}`}
             loading="lazy"
           />
         </div>
