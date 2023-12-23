@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.12.0] - 2023-12-23
+
+### 💡 Features
+
+- ***(front)*** Adds event to animated image play actions (#1101)
+- ***(terraform)*** Redirects naked domain to www (#1093)
+
 ## [3.11.2] - 2023-12-22
 
 ### ✅ Testing
