@@ -90,34 +90,6 @@
           "sortable": true
         }
       },
-      "heroAuthor": {
-        "edit": {
-          "label": "Hero Attribution",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "heroAuthor",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "heroAuthorLink": {
-        "edit": {
-          "label": "Hero Attribution Link",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "heroAuthorLink",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "content": {
         "edit": {
           "label": "Content",
@@ -250,6 +222,15 @@
       }
     },
     "layouts": {
+      "list": [
+        "title",
+        "categories",
+        "related",
+        "hero",
+        "createdAt",
+        "updatedAt",
+        "slug"
+      ],
       "edit": [
         [
           {
@@ -299,29 +280,10 @@
         ],
         [
           {
-            "name": "heroAuthor",
-            "size": 4
-          },
-          {
-            "name": "heroAuthorLink",
-            "size": 4
-          }
-        ],
-        [
-          {
             "name": "seo",
             "size": 12
           }
         ]
-      ],
-      "list": [
-        "title",
-        "categories",
-        "related",
-        "hero",
-        "createdAt",
-        "updatedAt",
-        "slug"
       ]
     }
   },
