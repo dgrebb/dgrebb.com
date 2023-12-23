@@ -26,9 +26,7 @@ jobs:
   psi:
     name: 📊 Page Speed Insights
     runs-on: ubuntu-latest
-
-    environment:
-      name: ${{ inputs.env }}
+    environment: ${{ inputs.env }}
 
     steps:
       - name: 𐂷 Checkout
