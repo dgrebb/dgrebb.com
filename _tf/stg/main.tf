@@ -20,6 +20,7 @@ module "www_cdn" {
   log_enabled   = true
   log_bucket    = module.www_cdn_bucket.log_bucket
   cert          = module.network.wildcard_cert
+  redirect      = false
 }
 
 module "uploads_cdn" {
@@ -30,6 +31,7 @@ module "uploads_cdn" {
   log_enabled   = true
   log_bucket    = module.uploads_cdn_bucket.log_bucket
   cert          = module.network.uploads_cert
+  redirect      = false
 }
 
 module "containers" {
@@ -77,6 +79,7 @@ module "network" {
   uploads_cdn          = module.uploads_cdn.cf_distribution
   reports_cdn          = module.reports_cdn.cf_distribution
   www_record_overwrite = true
+  redirect             = false
 }
 
 module "scaling" {
@@ -135,6 +138,7 @@ module "reports_cdn" {
   log_enabled   = false
   log_bucket    = false
   cert          = module.network.reports_cert
+  redirect      = false
 }
 
 module "reports_bucket" {

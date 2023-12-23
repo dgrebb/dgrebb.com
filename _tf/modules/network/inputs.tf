@@ -13,3 +13,4 @@ variable "www_cdn" {}
 variable "uploads_cdn" {}
 variable "www_record_overwrite" {}
 variable "reports_cdn" {}
+variable "redirect" {}
