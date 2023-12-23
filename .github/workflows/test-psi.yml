@@ -1,5 +1,5 @@
 name: 🔍 PageSpeed Insights
-run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - PSI Run for ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest {0}', github.ref_name) }}"
+run-name: "${{ inputs.env == 'prd' && 'PRD' || 'STG' }} - PSI Run for ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest {0}', github.ref_name) }}"
 
 on:
   workflow_dispatch:
@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
 
     environment:
-      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+      name: ${{ inputs.env }}
 
     steps:
       - name: 𐂷 Checkout
@@ -37,6 +37,7 @@ jobs:
           repository: dgrebb/dgrebb.com
           ref: ${{ github.ref }}
           token: ${{ github.token }}
+          fetch-depth: 1
           sparse-checkout: |
             _ci/_utils
             _ci/perf
