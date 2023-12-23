@@ -13,11 +13,21 @@ resource "aws_cloudfront_origin_access_identity" "this" {
 
 resource "aws_cloudfront_function" "subdir" {
   name    = "subdir-index-${var.dashed_domain}"
-  runtime = "cloudfront-js-1.0"
+  runtime = "cloudfront-js-2.0"
   comment = "Redirect subdirectory root to index.html"
   publish = true
   code    = file("${path.module}/ref/subdir-index.js")
 }
+
+resource "aws_cloudfront_function" "redirect" {
+  count   = var.redirect ? 1 : 0
+  name    = "naked-redirect-${var.dashed_domain}"
+  runtime = "cloudfront-js-2.0"
+  comment = "Redirect naked domain to www"
+  publish = true
+  code    = file("${path.module}/ref/naked-redirect.js")
+}
+
 
 resource "aws_cloudfront_distribution" "this" {
   comment             = var.domain
@@ -70,9 +80,22 @@ resource "aws_cloudfront_distribution" "this" {
       ]
     }
 
-    function_association {
-      event_type   = "viewer-request"
-      function_arn = aws_cloudfront_function.subdir.arn
+    # Replaced by naked-redirect below, when redirect is true
+    dynamic "function_association" {
+      for_each = var.redirect ? [] : [1]
+      content {
+        event_type   = "viewer-request"
+        function_arn = aws_cloudfront_function.subdir.arn
+      }
+    }
+
+    # Test this on STG by first setting redirect = true on `www_cdn` in main.tf
+    dynamic "function_association" {
+      for_each = var.redirect ? [1] : []
+      content {
+        event_type   = "viewer-request"
+        function_arn = aws_cloudfront_function.redirect[0].arn
+      }
     }
 
     compress               = true
