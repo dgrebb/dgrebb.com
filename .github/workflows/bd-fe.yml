@@ -88,6 +88,7 @@ jobs:
           repository: dgrebb/dgrebb.com
           ref: ${{ github.ref }}
           token: ${{ github.token }}
+          fetch-depth: 1
 
       - name: 🤿 Set Vars
         id: vars

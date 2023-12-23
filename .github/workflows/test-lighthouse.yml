@@ -38,6 +38,7 @@ jobs:
           repository: dgrebb/dgrebb.com
           ref: ${{ github.ref }}
           token: ${{ github.token }}
+          fetch-depth: 1
           sparse-checkout: |
             _ci/_utils
             _ci/perf
