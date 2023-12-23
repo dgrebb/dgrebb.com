@@ -35,13 +35,11 @@ jobs:
   backstop:
     name: 🙈 BackstopJS
     runs-on: ubuntu-latest
+    environment: ${{ inputs.env }}
 
     concurrency:
       group: backstop
       cancel-in-progress: true
-
-    environment:
-      name: ${{ inputs.env }}
 
     env:
       DEPLOY_ENV: ${{ inputs.env }}
