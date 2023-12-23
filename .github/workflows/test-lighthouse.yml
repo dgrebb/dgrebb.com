@@ -1,9 +1,14 @@
-name: ⛵️ Lighthouse 
-run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Lighthouse Run for ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest {0}', github.ref_name) }}"
+name: ⛵️ Lighthouse
+run-name: "${{ inputs.env == 'prd' && 'PRD' || 'STG' }} - Lighthouse Run for ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest {0}', github.ref_name) }}"
 
 on:
   workflow_dispatch:
   workflow_call:
+    inputs:
+      env:
+        description: "Target deployment environment."
+        type: string
+        required: true
     secrets:
       AWS_S3_BUCKET_REPORTS:
         required: true
@@ -18,16 +23,13 @@ on:
       GH_WORKFLOW_TOKEN:
         required: true
 
-env:
-  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
-
 jobs:
   lighthouse:
     name: ⛵️ Lighthouse
     runs-on: ubuntu-latest
 
     environment:
-      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+      name: ${{ inputs.env }}
 
     steps:
       - name: 𐂷 Checkout
@@ -43,7 +45,7 @@ jobs:
       - name: ⬢ Setup Node & Cache
         uses: actions/setup-node@v4
         with:
-          node-version: "18.18.0"
+          node-version: "20.x"
 
       - name: ↧ Install & Patch
         run: |
@@ -51,7 +53,7 @@ jobs:
 
       - name: 🌤️ Warmup CloudFront Cache
         run: |
-          _ci/_utils/warmup.sh ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+          _ci/_utils/warmup.sh ${{ inputs.env }}
 
       - name: 🔦 Lighthouse
         id: lighthouse

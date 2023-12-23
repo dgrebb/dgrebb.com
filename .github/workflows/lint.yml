@@ -1,9 +1,14 @@
-name: 🧺 Lint 
-run-name: "${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - 🧼 Linting ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest {0}', github.ref_name) }}"
+name: 🧺 Lint
+run-name: "${{ inputs.env == 'prd' && 'PRD' || 'STG' }} - 🧼 Linting ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest {0}', github.ref_name) }}"
 
 on:
   workflow_dispatch:
   workflow_call:
+    inputs:
+      env:
+        description: "Target deployment environment."
+        type: string
+        required: true
 
 env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
@@ -13,7 +18,7 @@ jobs:
     name: ≅ Lint
     runs-on: ubuntu-latest
     environment:
-      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+      name: ${{ inputs.env }}
 
     steps:
       - name: 𐂷 Checkout
@@ -28,7 +33,7 @@ jobs:
       - name: ⬢ Setup Node & Cache
         uses: actions/setup-node@v4
         with:
-          node-version: "20.9.0"
+          node-version: "20.x"
           cache: "npm"
           cache-dependency-path: |
             front/package.json
