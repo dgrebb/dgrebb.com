@@ -77,7 +77,7 @@ ssl
 nbproject
 public/uploads/*
 !public/uploads/.gitkeep
-.vscode
+.vscode/settings.json
 front.*
 
 ############################
