@@ -41,6 +41,7 @@ ongoingly
 outro
 outroend
 outrostart
+pageview
 pageviews
 pinboard
 precompress

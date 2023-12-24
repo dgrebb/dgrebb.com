@@ -1,0 +1,19 @@
+{
+  "recommendations": [
+    "vunguyentuan.vscode-css-variables",
+    "hookyqr.jsdoctagcomplete",
+    "dbaeumer.vscode-eslint",
+    "tombonnike.vscode-status-bar-format-toggle",
+    "hashicorp.terraform",
+    "lllllllqw.jsdoc",
+    "cpylua.language-postcss",
+    "yzhang.markdown-all-in-one",
+    "christian-kohler.path-intellisense",
+    "esbenp.prettier-vscode",
+    "foxundermoon.shell-format",
+    "svelte.svelte-vscode",
+    "ardenivanov.svelte-intellisense",
+    "chakrounanas.turbo-console-log",
+    "pflannery.vscode-versionlens"
+  ]
+}
