@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.13.0] - 2023-12-25
+
+### 💡 Features
+
+- ***(front)*** Adds RSS route, server, and xml (#1108)
+
+### 🪮  Styling
+
+- ***(front)*** Adjusts cv spacing and icons
+- ***(front)*** Updates catchafire, goodreads, and pinboard svgs
+
 ## [3.12.0] - 2023-12-23
 
 ### 💡 Features
