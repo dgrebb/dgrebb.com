@@ -42,6 +42,7 @@ const config = {
         '/posts/category',
         '/privacy',
         '/404',
+        '/RSS.xml',
       ],
       handleHttpError: ({ path, referrer, message }) => {
         if (path === '/404' && referrer === '/privacy/') {
