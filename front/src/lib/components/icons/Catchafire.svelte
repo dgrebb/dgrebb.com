@@ -1,8 +1,6 @@
 <svg
   xmlns="http://www.w3.org/2000/svg"
   class="main-logo caf-mr-2"
-  width="64"
-  height="64"
   viewBox="0 0 16 16"
   ><path
     fill="currentColor"
