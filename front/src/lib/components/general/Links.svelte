@@ -5,13 +5,13 @@
   import IconInstagram from '~icons/mdi/instagram';
   import IconSoundCloud from '~icons/ph/soundcloud-logo-bold';
   import IconStackOverflow from '~icons/mdi/stackoverflow';
-  import IconLinkedIn from '~icons/entypo-social/linkedin';
+  import IconLinkedIn from '~icons/mdi/linkedin';
   import IconTwitter from '~icons/mdi/twitter';
   import IconX from '~icons/simple-icons/x';
   import IconMastodon from '~icons/mdi/mastodon';
   import IconFlickr from '~icons/icomoon-free/flickr2';
-  import IconGoodreads from '~icons/ph/goodreads-logo-fill';
-  import IconPinboard from '~icons/typcn/pin-outline';
+  import IconGoodreads from '~icons/ph/goodreads-logo-bold';
+  import IconPinboard from '~icons/typcn/pin';
   import IconLink from '~icons/mdi/external-link';
 
   /**
