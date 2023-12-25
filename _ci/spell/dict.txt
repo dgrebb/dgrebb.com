@@ -32,6 +32,7 @@ introend
 introstart
 jsonencode
 lightsource
+maxage
 navbrand
 navigateth
 notfound
