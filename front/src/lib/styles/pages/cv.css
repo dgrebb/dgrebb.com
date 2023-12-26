@@ -223,8 +223,6 @@
       &:before,
       &:after {
         transform: scale(1.33) translateX(-1.33%);
-      }
-      &:after {
         opacity: 0.9;
         background-color: var(--primary-clr);
       }
