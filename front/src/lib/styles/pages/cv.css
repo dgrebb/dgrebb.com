@@ -1,6 +1,6 @@
 @import '../components/cv-timeline.css';
 
-.main .cv.meat {
+.cv.meat {
   width: 100%;
   h1.page-heading {
     font-family: var(--font-psbl);
@@ -186,12 +186,7 @@
     &:focus,
     &:focus-visible,
     &:focus-within,
-    &:active,
-    &:before:hover,
-    &:before:focus,
-    &:before:focus-visible,
-    &:before:focus-within,
-    &:before:active {
+    &:active {
       .item-title::after {
         width: 120%;
       }
@@ -204,12 +199,7 @@
   &:focus,
   &:focus-visible,
   &:focus-within,
-  &:active,
-  &:before:hover,
-  &:before:focus,
-  &:before:focus-visible,
-  &:before:focus-within,
-  &:before:active {
+  &:active {
     opacity: 1;
     color: var(--fg-clr-o);
     .item-title {
@@ -492,6 +482,7 @@
       transition-timing-function: var(--transition-timing-function);
       width: auto;
       height: 100%;
+      overflow: visible;
       color: var(--fg-clr);
       &.loaded,
       &.failed {
@@ -526,7 +517,9 @@
     }
     p:first-of-type {
       padding-top: 1.5rem;
-      @media screen and (min-width: 640px) {
+    }
+    @media screen and (min-width: 640px) {
+      p {
         padding: 1.5rem 0 0.5rem 0.5rem;
       }
     }
