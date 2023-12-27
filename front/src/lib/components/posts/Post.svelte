@@ -3,6 +3,8 @@
   import AnimatedImage from '@components/content/AnimatedImage.svelte';
   import Code from '@components/content/Code.svelte';
   import Footnotes from '@components/content/renderers/Footnotes.svelte';
+  import { copyText } from '@utils';
+  import { onMount } from 'svelte';
 
   /**
    * Props for the blog post component.
@@ -75,6 +77,15 @@
         day: '2-digit',
       })
     : false;
+
+  onMount(function () {
+    const codes = document.querySelectorAll('.post-article p code');
+    codes.forEach(function (code) {
+      code.addEventListener('click', function (e) {
+        copyText(e);
+      });
+    });
+  });
 </script>
 
 <svelte:head>
