@@ -41,6 +41,29 @@ while test "$1" != --; do
         cdfront && npm run build.p
         break
         ;;
+    u | update)
+        printDgMsg "Updating dependencies..."
+        echo
+        cdfront && npx ncu -u --dep dev
+        echo # newline
+        printDgMsg "All dependencies up to date!"
+        echo # newline
+        read -p $'\e[33mFlush node_modules and reinstall now?\e[0m: ' -n 1 -r
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            echo # newline
+            rm -rf package-lock.json node_modules && npm i
+            read -p $'\e[32mStart the dev server?\e[0m: ' -n 1 -r
+            echo # newline
+            if [[ $REPLY =~ ^[Yy]$ ]]; then
+                npm run dev.l
+            else
+                exit 0
+            fi
+        else
+            exit 0
+        fi
+        break
+        ;;
     bx | bx)
         setFrontEnv ${env}
         branch=$(git branch --show-current)
