@@ -79,7 +79,7 @@
     : false;
 
   onMount(function () {
-    const codes = document.querySelectorAll('.post-article p code');
+    const codes = document.querySelectorAll('.post-article p > code');
     codes.forEach(function (code) {
       code.addEventListener('click', function (e) {
         copyText(e);
