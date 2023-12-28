@@ -1,8 +1,9 @@
 <script>
-  import PageNav from '@components/general/PageNav.svelte';
   import AnimatedImage from '@components/content/AnimatedImage.svelte';
   import Code from '@components/content/Code.svelte';
   import Footnotes from '@components/content/renderers/Footnotes.svelte';
+  import PageNav from '@components/general/PageNav.svelte';
+  import { popImage } from '@utils/popoverHandlers';
   import { copyText } from '@utils';
   import { onMount } from 'svelte';
 
@@ -80,10 +81,14 @@
 
   onMount(function () {
     const codes = document.querySelectorAll('.post-article p > code');
+    const popoverImages = document.querySelectorAll('.popover--image');
+
     codes.forEach(function (code) {
-      code.addEventListener('click', function (e) {
-        copyText(e);
-      });
+      code.addEventListener('click', (e) => copyText(e));
+    });
+
+    popoverImages.forEach(function (image) {
+      image.addEventListener('click', (e) => popImage(e));
     });
   });
 </script>

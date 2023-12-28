@@ -54,7 +54,7 @@ export const link = function (href, title, text) {
   titleAttr = linkTitle ? `title="${linkTitle}"` : '';
   rel = external ? 'rel="nofollow noopener noreferrer"' : '';
   classes = external ? 'external ' : '';
-  classes += image ? 'image ' : '';
+  classes += image ? 'popover--image ' : '';
   classes = classes.trim();
 
   return `<a href="${href}" class="${classes}" ${titleAttr} ${rel}>${text}</a>`;

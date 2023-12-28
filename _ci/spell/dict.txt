@@ -31,14 +31,19 @@ hljs
 introend
 introstart
 jsonencode
+ldquo
 lightsource
 maxage
 navbrand
 navigateth
+nofollow
+noopener
+noreferrer
 notfound
 obtaineth
 ohhhhh
 ongoingly
+onwarn
 outro
 outroend
 outrostart
@@ -53,6 +58,7 @@ provideth
 psbl
 psxl
 pubdate
+rdquo
 regexall
 replacestate
 reportsdomain
