@@ -73,7 +73,9 @@ jobs:
   build_deploy:
     name: ${{ inputs.env == 'prd' && 'PRD' || 'STG' }} Deployment
     runs-on: ubuntu-latest
-    environment: ${{ inputs.env }}
+    environment:
+      name: ${{ inputs.env }}
+      url: "https://${{ vars.WWW_DOMAIN }}"
     concurrency:
       group: build-deploy
       cancel-in-progress: true

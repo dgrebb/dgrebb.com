@@ -53,7 +53,7 @@ export const motionless = function () {
 /**
  * Extracts the domain from a URL without the 'www' prefix.
  *
- * @param {string} url - The URL from which to extract the domain.
+ * @param {string} url The URL from which to extract the domain.
  * @returns {string|null} The extracted domain without 'www' or null if no match is found.
  */
 export const extractDomainWithoutWWW = function (url) {
@@ -67,3 +67,34 @@ export const extractDomainWithoutWWW = function (url) {
     return null;
   }
 };
+
+/**
+ * Copies text inside the clicked DOM node
+ *
+ * @param {Event} e The event which triggered the copy.
+ * @returns {Clipboard.writeText} Text is written to the system clipboard.
+ *
+ * @async
+ *
+ * ## Example:
+ * ```javascript
+ * const codes = document.querySelectorAll('code');
+ * codes.forEach(function (code) {
+ *   code.addEventListener('click', function (e) {
+ *     copyText(e);
+ *   });
+ * });
+ * ```
+ */
+export async function copyText(e) {
+  const text = e.target.innerHTML;
+  if (e.type === 'click' || e.code === 'Enter' || e.code === 'Space') {
+    try {
+      await navigator.clipboard.writeText(text);
+      // Handle success, e.g., show a notification
+    } catch (error) {
+      console.error('Error copying text to clipboard:', error);
+      // Handle the error, e.g., show an error message
+    }
+  }
+}

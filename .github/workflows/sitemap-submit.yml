@@ -8,6 +8,9 @@ jobs:
   ping:
     name: 🏓 Ping Google
     runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.env }}
+      url: "https://${{ vars.WWW_DOMAIN }}"
 
     steps:
       - name: Send HTTP GET request
