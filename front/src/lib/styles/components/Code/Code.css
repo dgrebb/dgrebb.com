@@ -21,6 +21,7 @@
   background-color: var(--bg-light-clr);
   padding: 0 1.5rem 0 1rem;
   width: 100%;
+  font-size: 1rem;
   &::before {
     position: absolute;
     top: 0;

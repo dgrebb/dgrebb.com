@@ -35,7 +35,9 @@ jobs:
   backstop:
     name: 🙈 BackstopJS
     runs-on: ubuntu-latest
-    environment: ${{ inputs.env }}
+    environment:
+      name: ${{ inputs.env }}
+      url: "https://${{ vars.WWW_DOMAIN }}"
 
     concurrency:
       group: backstop
