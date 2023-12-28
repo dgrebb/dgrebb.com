@@ -45,6 +45,9 @@ outrostart
 pageview
 pageviews
 pinboard
+popoverstate
+popovertarget
+popovertargetaction
 precompress
 provideth
 psbl

@@ -34,13 +34,16 @@ export const heading = function (text, level, raw) {
  * @returns An anchor with title and rel attributes set based on external domain
  */
 export const link = function (href, title, text) {
-  let external, titleAttr, rel;
+  let external, image, classes, titleAttr, rel;
   const internalPattern = /\/|#|m|t/g;
+  const imageExtensions = /\.(jpg|jpeg|png|gif|bmp|svg|webp)$/i;
+
   external = href.charAt(0).match(internalPattern)
     ? false
     : new URL(href).origin !== ORIGIN
       ? true
       : false;
+  image = imageExtensions.test(href);
 
   let linkTitle = external
     ? title
@@ -50,8 +53,11 @@ export const link = function (href, title, text) {
 
   titleAttr = linkTitle ? `title="${linkTitle}"` : '';
   rel = external ? 'rel="nofollow noopener noreferrer"' : '';
+  classes = external ? 'external ' : '';
+  classes += image ? 'image ' : '';
+  classes = classes.trim();
 
-  return `<a href="${href}" ${titleAttr} ${rel}>${text}</a>`;
+  return `<a href="${href}" class="${classes}" ${titleAttr} ${rel}>${text}</a>`;
 };
 
 /**

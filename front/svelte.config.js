@@ -5,6 +5,12 @@ import path from 'path';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   preprocess: vitePreprocess(),
+  onwarn: (warning, handler) => {
+    if (warning.code === 'css-unused-selector') {
+      return;
+    }
+    handler(warning);
+  },
   kit: {
     appDir: 's',
     adapter: adapter({
