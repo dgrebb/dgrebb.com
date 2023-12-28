@@ -17,7 +17,9 @@ jobs:
   lint:
     name: ≅ Lint
     runs-on: ubuntu-latest
-    environment: ${{ inputs.env }}
+    environment:
+      name: ${{ inputs.env }}
+      url: "https://${{ vars.WWW_DOMAIN }}"
 
     steps:
       - name: 𐂷 Checkout
