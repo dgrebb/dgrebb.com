@@ -1,11 +1,11 @@
 diff --git a/node_modules/svelte-highlight/LineNumbers.svelte b/node_modules/svelte-highlight/LineNumbers.svelte
-index 4312cb3..d9380da 100644
+index 704976d..1483d23 100644
 --- a/node_modules/svelte-highlight/LineNumbers.svelte
 +++ b/node_modules/svelte-highlight/LineNumbers.svelte
-@@ -14,14 +14,32 @@ $:
-   len = len_digits - MIN_DIGITS < 1 ? MIN_DIGITS : len_digits;
- $:
-   width = len * DIGIT_WIDTH;
+@@ -24,14 +24,32 @@
+   $: len_digits = lines.length.toString().length;
+   $: len = len_digits - MIN_DIGITS < 1 ? MIN_DIGITS : len_digits;
+   $: width = len * DIGIT_WIDTH;
 +
 +function isHighlightStart(lines, n) {
 +  const i = lines.indexOf(n);
@@ -37,7 +37,7 @@ index 4312cb3..d9380da 100644
            <td
              class:hljs={true}
              class:hideBorder
-@@ -34,21 +52,9 @@ $:
+@@ -44,21 +62,9 @@
              <code style:color="var(--line-number-color, currentColor)">
                {lineNumber}
              </code>
@@ -59,7 +59,7 @@ index 4312cb3..d9380da 100644
            </td>
          </tr>
        {/each}
-@@ -117,26 +123,4 @@ $:
+@@ -127,26 +133,4 @@
    pre {
      z-index: 1;
    }
