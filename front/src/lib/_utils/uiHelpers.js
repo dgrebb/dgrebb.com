@@ -69,6 +69,20 @@ export const animatedImagePlay = (altText, page) => {
 };
 
 /**
+ * Track a image popover opens.
+ * @param {string} title - The title of the image, if set.
+ * @param {string} image - The src of the image.
+ * @param {string} page - The slug of the page containing the popover link.
+ */
+export const popoverImage = (title, image, page) => {
+  trackPlausible('Opened Popover Image', {
+    title: title ? title : false,
+    image,
+    page,
+  });
+};
+
+/**
  * Helper function to track Plausible events.
  * @param {string} eventName - The name of the Plausible event to track.
  * @param {object} props - Additional properties associated with the event.
