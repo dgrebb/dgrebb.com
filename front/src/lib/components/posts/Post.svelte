@@ -1,7 +1,7 @@
 <script>
   import AnimatedImage from '@components/content/AnimatedImage.svelte';
   import Code from '@components/content/Code.svelte';
-  import Footnotes from '@components/content/renderers/Footnotes.svelte';
+  import Footnotes from '@components/posts/Footnotes.svelte';
   import PageNav from '@components/general/PageNav.svelte';
   import { popImage } from '@utils/popoverHandlers';
   import { copyText } from '@utils';
