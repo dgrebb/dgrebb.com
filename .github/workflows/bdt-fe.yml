@@ -97,3 +97,24 @@ jobs:
     secrets:
       PSI_APIKEY: ${{ secrets.PSI_APIKEY }}
       GH_WORKFLOW_TOKEN: ${{ secrets.GH_WORKFLOW_TOKEN }}
+
+  summarize:
+    name: ✍ Workflow
+    needs: [backstop, lighthouse, pagespeed]
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.env }}
+      url: "https://${{ vars.WWW_DOMAIN }}"
+    steps:
+      - name: generate
+        run: |
+          echo '# Summary' >> $GITHUB_STEP_SUMMARY
+          echo '## Run Initiator'
+          echo '- Actor: ${{ github.actor }}' >> $GITHUB_STEP_SUMMARY 
+          echo '- Event: ${{ github.event_name }}' >> $GITHUB_STEP_SUMMARY
+          echo '## Run Details' >> $GITHUB_STEP_SUMMARY
+          echo '- Branch: [${{ env.BRANCH_NAME }}](https://github.com/dgrebb/dgrebb.com/tree/${{ env.BRANCH_NAME }})' >> $GITHUB_STEP_SUMMARY
+          if [ "${{ github.event_name }}" = "pull_request" ]; then 
+            echo '- Pull Request: [#${{ github.event.number }}](https://github.com/dgrebb/dgrebb.com/pull/${{ github.event.number }}) ${{ github.event.pull_request.title }}' >> $GITHUB_STEP_SUMMARY
+            echo '- ${{ github.event.pull_request.changed_files }} Files Changed: [ ${{ github.event.pull_request.commits }} Commits](https://github.com/dgrebb/dgrebb.com/pull/${{ github.event.number }}/commits) | [Diff](https://github.com/dgrebb/dgrebb.com/pull/${{ github.event.number }}/files)' >> $GITHUB_STEP_SUMMARY
+          fi

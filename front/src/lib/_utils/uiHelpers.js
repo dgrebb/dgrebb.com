@@ -75,8 +75,8 @@ export const animatedImagePlay = (altText, page) => {
  * @param {string} page - The slug of the page containing the popover link.
  */
 export const popoverImage = (title, image, page) => {
-  trackPlausible('Popover Image Opened', {
-    title,
+  trackPlausible('Opened Popover Image', {
+    title: title ? title : false,
     image,
     page,
   });
