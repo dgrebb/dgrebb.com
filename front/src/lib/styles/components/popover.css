@@ -1,0 +1,105 @@
+.popover {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  box-shadow: var(--shadow-elevation-high);
+  background-color: rgba(var(--black), 0.5);
+  padding: 2rem;
+  &_slot {
+    display: flex;
+    position: relative;
+    flex-grow: 0;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0.25rem solid var(--hardlight-clr);
+    border-radius: 1rem;
+    background: var(--bg-clr);
+    height: auto;
+  }
+  &_title {
+    background-color: var(--hardlight-clr);
+    padding: 1rem 2rem 1rem 1rem;
+    min-width: 100%;
+    &.titleless {
+      background-color: none;
+      padding: 0;
+    }
+    &_heading {
+      width: min-content;
+      min-width: 100%;
+    }
+  }
+  &_close {
+    --size: 15px;
+    --thickness: 3px;
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.77;
+    transition: opacity var(--transition-duration)
+      var(--transition-timing-function);
+    cursor: pointer;
+    margin: 0;
+    border: 0;
+    padding: 15px;
+    width: 20px;
+    height: 20px;
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      opacity: 1;
+    }
+
+    .icon-cross {
+      position: relative;
+      margin: 0;
+      border: 0;
+      background: none;
+      padding: 0;
+      width: var(--size);
+      height: var(--size);
+
+      &:before,
+      &:after {
+        position: absolute;
+        right: 0;
+        left: 0;
+        border-radius: var(--thickness);
+        background: var(--primary-clr);
+        height: var(--thickness);
+        content: '';
+      }
+
+      &:before {
+        transform: rotate(45deg);
+      }
+
+      &:after {
+        transform: rotate(-45deg);
+      }
+
+      span {
+        display: block;
+      }
+    }
+  }
+
+  &_content {
+    padding: 2rem;
+  }
+}

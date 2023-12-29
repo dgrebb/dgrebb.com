@@ -72,6 +72,7 @@ Strapi
 subactive
 subdir
 themeset
+titleless
 treemap
 typcn
 unminified
