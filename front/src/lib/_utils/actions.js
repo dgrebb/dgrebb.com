@@ -44,3 +44,33 @@ export const focusTrap = (node, enabled) => {
   // Add event listener for keydown events
   node.addEventListener('keydown', keydownHandler);
 };
+
+/**
+ * A Svelte action to dispatch a custom event when a click occurs outside of the specified node.
+ *
+ * @param {HTMLElement} node - The HTML element to monitor for outside clicks.
+ * @returns An object with a `destroy` method to clean up the event listener.
+ */
+export function clickOutside(node) {
+  /**
+   * Handles click events and dispatches a custom event if the click is outside the node.
+   *
+   * @param {Event} event - The click event object.
+   */
+  const handleClick = (event) => {
+    if (node && !node.contains(event.target) && !event.defaultPrevented) {
+      node.dispatchEvent(new CustomEvent('click_outside', node));
+    }
+  };
+
+  document.addEventListener('click', handleClick, true);
+
+  return {
+    /**
+     * Cleans up the event listener when the action is destroyed.
+     */
+    destroy() {
+      document.removeEventListener('click', handleClick, true);
+    },
+  };
+}
