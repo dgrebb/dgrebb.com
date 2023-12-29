@@ -88,7 +88,7 @@
     });
 
     popoverImages.forEach(function (image) {
-      image.addEventListener('click', (e) => popImage(e));
+      image.addEventListener('click', (e) => popImage(e, slug));
     });
   });
 </script>
