@@ -25,12 +25,15 @@
     border: 0.25rem solid var(--hardlight-clr);
     border-radius: 1rem;
     background: var(--bg-clr);
+    max-width: 95%;
     height: auto;
+    max-height: 95%;
   }
   &_title {
     background-color: var(--hardlight-clr);
-    padding: 1rem 2rem 1rem 1rem;
+    padding: 1rem 2rem;
     min-width: 100%;
+    text-align: center;
     &.titleless {
       background-color: none;
       padding: 0;
@@ -101,5 +104,6 @@
 
   &_content {
     padding: 2rem;
+    overflow-y: auto;
   }
 }
