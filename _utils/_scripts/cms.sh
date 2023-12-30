@@ -10,13 +10,13 @@ while test "$1" != --; do
     case $1 in
     d | dev)
         echo # newline
-        warning
-        echo # newline
-        read -p $'\e[44m\e[1;33m\n\n  Before you start Strapi, are you sure \n  there will be no content loss starting\n\n  it right now? \n  > ' -n 1 -r
-        echo # newline
-        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-            exit 1
-        fi
+        # warning
+        # echo # newline
+        # read -p $'\e[44m\e[1;33m\n\n  Before you start Strapi, are you sure \n  there will be no content loss starting\n\n  it right now? \n  > ' -n 1 -r
+        # echo # newline
+        # if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        #     exit 1
+        # fi
         setBackEnv ld
         cdback &&
             trap 'printf "\n"; printDgMsg "Done!" ; exit 0' SIGINT
