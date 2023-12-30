@@ -8,7 +8,7 @@
       "searchable": true,
       "pageSize": 100,
       "mainField": "title",
-      "defaultSortBy": "createdAt",
+      "defaultSortBy": "updatedAt",
       "defaultSortOrder": "DESC"
     },
     "metadatas": {
@@ -222,15 +222,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "title",
-        "categories",
-        "related",
-        "hero",
-        "createdAt",
-        "updatedAt",
-        "slug"
-      ],
       "edit": [
         [
           {
@@ -284,6 +275,15 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "title",
+        "categories",
+        "related",
+        "hero",
+        "createdAt",
+        "updatedAt",
+        "slug"
       ]
     }
   },
