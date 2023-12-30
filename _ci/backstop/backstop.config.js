@@ -11,6 +11,7 @@ let scenarios = [
   post.post_navigate_from_posts,
   post.post_components,
   post.post_syntax_highlighter,
+  post.post_image_popover,
   post.post_animated_image,
   post.post_aside_toc_click,
   post.post_aside_toc_active,
