@@ -20,7 +20,12 @@ const minification_options = {
 };
 
 export async function handle({ event, resolve }) {
-  let response = resolve(event);
+  let response;
+  if (event.url.pathname.startsWith('/uploads')) {
+    return new Response('custom response');
+  } else {
+    response = resolve(event);
+  }
 
   if (!dev && building) {
     response = await resolve(event, {
