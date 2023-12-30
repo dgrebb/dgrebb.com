@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.14.0] - 2023-12-30
+
+### 💡 Features
+
+- ***(front)*** Adds popover component, api, and styles (#1092)
+- ***(front)*** Adds inline code copying (#1089)
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Fixes titleless popover padding
+
+### 📜 Documentation
+
+- ***(github)*** Adds PR template
+
+### ✅ Testing
+
+- ***(backstop)*** Updates popover style and adds test and refs (#1119)
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(front)*** Upgrades to and patches svelte-highlight@7.4.7 (#1115)
+- ***(front)*** Adds frontend dependency update script and updates dependencies 🤪
+
 ## [3.13.0] - 2023-12-25
 
 ### 💡 Features
