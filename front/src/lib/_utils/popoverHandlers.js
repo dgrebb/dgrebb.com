@@ -13,7 +13,7 @@ export function popImage(e, page) {
       show: true,
       title,
       content: image
-        ? `<img src=${image} />`
+        ? `<img src="${image}" alt="${title}" />`
         : `<h2>Oops...</h2><p>We lost that image somewhere along the way. Sorry!</p>`,
     });
   });

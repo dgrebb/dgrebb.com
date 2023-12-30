@@ -14,14 +14,7 @@ const config = {
   kit: {
     appDir: 's',
     adapter: adapter({
-      pages: 'build',
-      assets: 'build',
       precompress: true,
-      strict: true,
-      hooks: {
-        // client: '$lib/_hooks/hooks.client.js',
-        server: '$lib/_hooks/hooks.server.js',
-      },
     }),
     alias: {
       '@api': path.resolve('./src/lib/api'),
@@ -62,7 +55,7 @@ const config = {
         }
         throw new Error(message);
       },
-      handleMissingId: 'warn',
+      handleMissingId: 'ignore',
     },
   },
 };
