@@ -39,6 +39,7 @@
     &.titleless {
       background-color: none;
       padding: 0;
+      padding-top: 1rem;
     }
     &_heading {
       width: min-content;
