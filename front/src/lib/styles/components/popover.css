@@ -22,15 +22,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 0.25rem solid var(--hardlight-clr);
+    border: 1rem solid var(--hardlight-clr);
+    border-top: none;
     border-radius: 1rem;
     background: var(--bg-clr);
+    max-width: 95%;
     height: auto;
+    max-height: 95%;
   }
   &_title {
     background-color: var(--hardlight-clr);
-    padding: 1rem 2rem 1rem 1rem;
+    padding: 1rem 2rem 1rem 2rem;
     min-width: 100%;
+    font-size: 1rem;
+    text-align: center;
     &.titleless {
       background-color: none;
       padding: 0;
@@ -41,11 +46,12 @@
     }
   }
   &_close {
+    --area: 20px;
     --size: 15px;
     --thickness: 3px;
     display: flex;
     position: absolute;
-    top: 0;
+    top: calc(var(--size));
     right: 0;
     flex-flow: column nowrap;
     justify-content: center;
@@ -56,6 +62,7 @@
     cursor: pointer;
     margin: 0;
     border: 0;
+    background-color: transparent;
     padding: 15px;
     width: 20px;
     height: 20px;
@@ -63,6 +70,7 @@
     &:focus,
     &:focus-visible {
       opacity: 1;
+      background-color: var(--hardlight-clr);
     }
 
     .icon-cross {
@@ -101,5 +109,6 @@
 
   &_content {
     padding: 2rem;
+    overflow-y: auto;
   }
 }
