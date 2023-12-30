@@ -8,7 +8,7 @@ module.exports = {
   viewports: aboveSmallViewports,
   onReadyScript: 'playwright/onReadyPopover.js',
   delay: 300,
-  clickSelector: '.computer-doggo .popover--image',
+  clickSelector: '.dashboard-with-plausible .popover--image',
   postInteractionWait: 250,
   selectors: ['viewport'],
   selectorExpansion: false,
