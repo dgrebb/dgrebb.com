@@ -38,6 +38,9 @@
             <span class="timeline-text-highlight"
               >{prettyDate(startDate).year}</span
             >
+            <span class="print-date"
+              >{prettyDate(startDate).year} - {prettyDate(endDate).year}</span
+            >
           {:else}
             <span class="timeline-text-highlight m">{currentYear}</span>
             <span class="timeline-text-highlight d">Current</span>
