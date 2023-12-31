@@ -1,4 +1,4 @@
-import { PUBLIC_API_URL as URL } from '$env/static/public';
+import { API_URL as URL } from '$env/static/private';
 import api from '@api';
 import {
   shapeAwardData,

@@ -1,10 +1,10 @@
 import { marked } from 'marked';
 import { link, heading } from '@components/content/renderers';
 import {
-  PUBLIC_API_PATH_CV_PAGE as CV,
-  PUBLIC_API_CV_PATH_LANDING_EXPERIENCE_LISTING as EX,
-  PUBLIC_API_URL as URL,
-} from '$env/static/public';
+  API_PATH_CV_PAGE as CV,
+  API_CV_PATH_LANDING_EXPERIENCE_LISTING as EX,
+  API_URL as URL,
+} from '$env/static/private';
 import api from '@api';
 import { error } from '@sveltejs/kit';
 

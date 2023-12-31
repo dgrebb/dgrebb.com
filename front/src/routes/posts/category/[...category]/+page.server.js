@@ -1,12 +1,12 @@
 import { error } from '@sveltejs/kit';
 import api, { categoryAPI } from '@api';
 import {
-  PUBLIC_API_URL as URL,
-  PUBLIC_API_PATH_POSTS as POSTS,
-  PUBLIC_POSTS_PREVIEW_PARAMS as POSTS_PARAMS,
-  PUBLIC_API_PATH_CATEGORY as CAT,
-  PUBLIC_CATEGORY_PAGE_PARAMS as CAT_PARAMS,
-} from '$env/static/public';
+  API_URL as URL,
+  API_PATH_POSTS as POSTS,
+  POSTS_PREVIEW_PARAMS as POSTS_PARAMS,
+  API_PATH_CATEGORY as CAT,
+  CATEGORY_PAGE_PARAMS as CAT_PARAMS,
+} from '$env/static/private';
 import { marked } from 'marked';
 import { link } from '@components/content/renderers';
 

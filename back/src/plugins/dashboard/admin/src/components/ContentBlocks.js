@@ -83,18 +83,18 @@ const ContentBlocks = () => {
             onClick={(e) => {
               navigate(
                 e,
-                "/content-manager/collectionType/api::project.project?page=1&pageSize=100"
+                "/content-manager/collectionType/api::experience.experience?page=1&pageSize=100"
               );
             }}
           >
             <ContentBox
               title={formatMessage({
-                id: "dashboard.projects.title",
-                defaultMessage: "Edit Projects",
+                id: "dashboard.experiences.title",
+                defaultMessage: "Edit Experiences",
               })}
               subtitle={formatMessage({
-                id: "dashboard.projects.subtitle",
-                defaultMessage: "Add or Manage Projects",
+                id: "dashboard.experiences.subtitle",
+                defaultMessage: "Add or Manage Experiences",
               })}
               icon={<StyledCrown />}
               iconBackground="primary100"

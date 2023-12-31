@@ -20,7 +20,7 @@
    * @param {Object} props - Component properties.
    * @param {PageMeta} props.pageMeta - The page meta information.
    */
-  import { PUBLIC_ENV as env } from '$env/static/public';
+  import { PUBLIC_ENV as ENV } from '$env/static/public';
   import MetaTags from '@components/general/MetaTags.svelte';
 
   /** @type {MetaTagsProps} */
@@ -63,7 +63,7 @@
   {titleTemplate}
   description={metaDescription ||
     'Dan Grebb is a Software Engineer from Philadelphia, Pennsylvania.'}
-  robots={env === 'production' || env === 'development'
+  robots={ENV === 'production' || ENV === 'development'
     ? metaRobots || 'index, follow'
     : 'noindex, nofollow'}
   canonical={canonicalURL || false}

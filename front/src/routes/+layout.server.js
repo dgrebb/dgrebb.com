@@ -1,9 +1,9 @@
 import {
-  PUBLIC_API_PATH_FOOTER as FOOT,
-  PUBLIC_API_PATH_NAVIGATION as NAV,
-  PUBLIC_API_PATH_HOME as HOME,
-  PUBLIC_API_URL as URL,
-} from '$env/static/public';
+  API_PATH_FOOTER as FOOT,
+  API_PATH_NAVIGATION as NAV,
+  API_PATH_HOME as HOME,
+  API_URL as URL,
+} from '$env/static/private';
 import api from '@api';
 import { error } from '@sveltejs/kit';
 

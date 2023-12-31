@@ -1,9 +1,9 @@
 import { error } from '@sveltejs/kit';
 import api from '@api';
 import {
-  PUBLIC_API_URL as URL,
-  PUBLIC_API_PATH_PRIVACY as PRIVACY,
-} from '$env/static/public';
+  API_URL as URL,
+  API_PATH_PRIVACY as PRIVACY,
+} from '$env/static/private';
 import { marked } from 'marked';
 import { heading, link } from '@components/content/renderers';
 

@@ -28,6 +28,7 @@ export async function handle({ event, resolve }) {
   }
 
   if (!dev && building) {
+    console.log(event.url.href);
     response = await resolve(event, {
       transformPageChunk: ({ html }) => minify(html, minification_options),
     });

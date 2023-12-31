@@ -110,27 +110,27 @@ jobs:
           name: "${{ env.BRANCH_NAME }}"
         run: |
           touch front/.env
-          echo PUBLIC_ORIGIN='${{ vars.WWW_DOMAIN }}' >> front/.env
-          echo PUBLIC_API_URL='${{ secrets.PUBLIC_API_URL }}' >> front/.env
-          echo PUBLIC_API_PATH_NAVIGATION='${{ secrets.PUBLIC_API_PATH_NAVIGATION }}' >> front/.env
-          echo PUBLIC_API_PATH_HOME='${{ secrets.PUBLIC_API_PATH_HOME }}' >> front/.env
-          echo PUBLIC_API_PATH_FOOTER='${{ secrets.PUBLIC_API_PATH_FOOTER }}' >> front/.env
-          echo PUBLIC_API_PATH_PRIVACY='${{ secrets.PUBLIC_API_PATH_PRIVACY }}' >> front/.env
-          echo PUBLIC_API_PATH_POSTS_PAGE='${{ secrets.PUBLIC_API_PATH_POSTS_PAGE }}' >> front/.env
-          echo PUBLIC_API_PATH_POSTS='${{ secrets.PUBLIC_API_PATH_POSTS }}' >> front/.env
-          echo PUBLIC_POSTS_PREVIEW_PARAMS='${{ secrets.PUBLIC_POSTS_PREVIEW_PARAMS }}' >> front/.env
-          echo PUBLIC_API_PATH_POST='${{ secrets.PUBLIC_API_PATH_POST }}' >> front/.env
-          echo PUBLIC_POST_PARAMS='${{ secrets.PUBLIC_POST_PARAMS }}' >> front/.env
-          echo PUBLIC_API_PATH_CATEGORY='${{ secrets.PUBLIC_API_PATH_CATEGORY }}' >> front/.env
-          echo PUBLIC_CATEGORY_PAGE_PARAMS='${{ secrets.PUBLIC_CATEGORY_PAGE_PARAMS }}' >> front/.env
-          echo PUBLIC_API_PATH_CV_PAGE='${{ secrets.PUBLIC_API_PATH_CV_PAGE }}' >> front/.env
-          echo PUBLIC_API_CV_PATH_LANDING_POSITION_LISTING='${{ secrets.PUBLIC_API_CV_PATH_LANDING_POSITION_LISTING }}' >> front/.env
-          echo PUBLIC_API_CV_PATH_LANDING_EXPERIENCE_LISTING='${{ secrets.PUBLIC_API_CV_PATH_LANDING_EXPERIENCE_LISTING }}' >> front/.env
-          echo PUBLIC_API_LANDING_PAGE_PARTIAL='${{ secrets.PUBLIC_API_LANDING_PAGE_PARTIAL }}' >> front/.env
-          echo PUBLIC_API_CV_COLLECTION_PARAMS='${{ secrets.PUBLIC_API_CV_COLLECTION_PARAMS }}' >> front/.env
+          echo ORIGIN='${{ vars.WWW_DOMAIN }}' >> front/.env
+          echo API_URL='${{ secrets.PUBLIC_API_URL }}' >> front/.env
+          echo API_PATH_NAVIGATION='${{ secrets.PUBLIC_API_PATH_NAVIGATION }}' >> front/.env
+          echo API_PATH_HOME='${{ secrets.PUBLIC_API_PATH_HOME }}' >> front/.env
+          echo API_PATH_FOOTER='${{ secrets.PUBLIC_API_PATH_FOOTER }}' >> front/.env
+          echo API_PATH_PRIVACY='${{ secrets.PUBLIC_API_PATH_PRIVACY }}' >> front/.env
+          echo API_PATH_POSTS_PAGE='${{ secrets.PUBLIC_API_PATH_POSTS_PAGE }}' >> front/.env
+          echo API_PATH_POSTS='${{ secrets.PUBLIC_API_PATH_POSTS }}' >> front/.env
+          echo POSTS_PREVIEW_PARAMS='${{ secrets.PUBLIC_POSTS_PREVIEW_PARAMS }}' >> front/.env
+          echo API_PATH_POST='${{ secrets.PUBLIC_API_PATH_POST }}' >> front/.env
+          echo POST_PARAMS='${{ secrets.PUBLIC_POST_PARAMS }}' >> front/.env
+          echo API_PATH_CATEGORY='${{ secrets.PUBLIC_API_PATH_CATEGORY }}' >> front/.env
+          echo CATEGORY_PAGE_PARAMS='${{ secrets.PUBLIC_CATEGORY_PAGE_PARAMS }}' >> front/.env
+          echo API_PATH_CV_PAGE='${{ secrets.PUBLIC_API_PATH_CV_PAGE }}' >> front/.env
+          echo API_CV_PATH_LANDING_POSITION_LISTING='${{ secrets.PUBLIC_API_CV_PATH_LANDING_POSITION_LISTING }}' >> front/.env
+          echo API_CV_PATH_LANDING_EXPERIENCE_LISTING='${{ secrets.PUBLIC_API_CV_PATH_LANDING_EXPERIENCE_LISTING }}' >> front/.env
+          echo API_LANDING_PAGE_PARTIAL='${{ secrets.PUBLIC_API_LANDING_PAGE_PARTIAL }}' >> front/.env
+          echo API_CV_COLLECTION_PARAMS='${{ secrets.PUBLIC_API_CV_COLLECTION_PARAMS }}' >> front/.env
           echo PUBLIC_API_PATH_POSITIONS='${{ secrets.PUBLIC_API_PATH_POSITIONS }}' >> front/.env
           echo API_KEY=${{ secrets.API_KEY }} >> front/.env
-          echo PUBLIC_RELEASE="${RELEASE_NAME}" >> front/.env
+          echo RELEASE="${RELEASE_NAME}" >> front/.env
           echo PUBLIC_ENV=${{ secrets.PUBLIC_ENV }} >> front/.env
           cat front/.env
 
