@@ -1,33 +1,94 @@
 name: 📡 CMS Publish
+run-name: "📢 CMS Publish to ${{ inputs.env == 'prd' && 'PRD' || 'STG' }}"
 
 on:
   workflow_dispatch:
+    inputs:
+      env:
+        description: "Target deployment environment."
+        type: environment
+        required: true
+        default: "stg"
+
+permissions:
+  checks: write
+  contents: write
+  pull-requests: write
+
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
 jobs:
-  approve:
-    runs-on: ubuntu-latest
-    permissions:
-      issues: write
-    concurrency:
-      group: cms-publish
-      cancel-in-progress: true
+  lint:
+    name: 💨
+    uses: ./.github/workflows/lint.yml
+    with:
+      env: ${{ inputs.env }}
 
+  build_deploy:
+    name: 🚀
+    needs: lint
+    uses: ./.github/workflows/bd-fe.yml
+    with:
+      env: ${{ inputs.env }}
+    secrets:
+      AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      PUBLIC_API_URL: ${{ secrets.PUBLIC_API_URL }}
+      PUBLIC_API_PATH_NAVIGATION: ${{ secrets.PUBLIC_API_PATH_NAVIGATION }}
+      PUBLIC_API_PATH_HOME: ${{ secrets.PUBLIC_API_PATH_HOME }}
+      PUBLIC_API_PATH_FOOTER: ${{ secrets.PUBLIC_API_PATH_FOOTER }}
+      PUBLIC_API_PATH_PRIVACY: ${{ secrets.PUBLIC_API_PATH_PRIVACY }}
+      PUBLIC_API_PATH_POSTS_PAGE: ${{ secrets.PUBLIC_API_PATH_POSTS_PAGE }}
+      PUBLIC_API_PATH_POSTS: ${{ secrets.PUBLIC_API_PATH_POSTS }}
+      PUBLIC_POSTS_PREVIEW_PARAMS: ${{ secrets.PUBLIC_POSTS_PREVIEW_PARAMS }}
+      PUBLIC_API_PATH_POST: ${{ secrets.PUBLIC_API_PATH_POST }}
+      PUBLIC_POST_PARAMS: ${{ secrets.PUBLIC_POST_PARAMS }}
+      PUBLIC_API_PATH_CATEGORY: ${{ secrets.PUBLIC_API_PATH_CATEGORY }}
+      PUBLIC_CATEGORY_PAGE_PARAMS: ${{ secrets.PUBLIC_CATEGORY_PAGE_PARAMS }}
+      PUBLIC_API_PATH_CV_PAGE: ${{ secrets.PUBLIC_API_PATH_CV_PAGE }}
+      PUBLIC_API_LANDING_PAGE_PARTIAL: ${{ secrets.PUBLIC_API_LANDING_PAGE_PARTIAL }}
+      PUBLIC_API_CV_COLLECTION_PARAMS: ${{ secrets.PUBLIC_API_CV_COLLECTION_PARAMS }}
+      PUBLIC_API_CV_PATH_LANDING_POSITION_LISTING: ${{ secrets.PUBLIC_API_CV_PATH_LANDING_POSITION_LISTING }}
+      PUBLIC_API_CV_PATH_LANDING_EXPERIENCE_LISTING: ${{ secrets.PUBLIC_API_CV_PATH_LANDING_EXPERIENCE_LISTING }}
+      API_KEY: ${{ secrets.API_KEY }}
+      PUBLIC_ENV: ${{ secrets.PUBLIC_ENV }}
+      DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
+      GH_WORKFLOW_TOKEN: ${{ secrets.GH_WORKFLOW_TOKEN }}
+
+  backstop:
+    name: 👀
+    needs: build_deploy
+    uses: ./.github/workflows/test-backstop.yml
+    with:
+      env: ${{ inputs.env }}
+    secrets:
+      GH_WORKFLOW_TOKEN: ${{ secrets.GH_WORKFLOW_TOKEN }}
+      AWS_S3_BUCKET_REPORTS: ${{ secrets.AWS_S3_BUCKET_REPORTS }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      REPORTS_DISTRIBUTION: ${{ secrets.REPORTS_DISTRIBUTION }}
+
+  summarize:
+    name: ✍ Workflow
+    needs: [backstop, lighthouse, pagespeed]
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.env }}
+      url: "https://${{ vars.WWW_DOMAIN }}"
     steps:
-      - name: ✓ Approve
-        uses: dgrebb/manual-approval@0.2.0
-        with:
-          secret: ${{ github.TOKEN }}
-          approvers: dgrebb
-          minimum-approvals: 1
-          issue-title: "Deploying ${{ github.ref_name }} via CMS Dispatch Event"
-          issue-body: "Please approve or deny the deployment of version ${{ github.ref_name }}."
-          exclude-workflow-initiator-as-approver: false
-          additional-approved-words: y,a
-          labels: "content"
-      - name: 🛰️ Dispatch B&D FE
+      - name: generate
         run: |
-          curl --location 'https://api.github.com/repos/dgrebb/dgrebb.com/actions/workflows/bd-fe.yml/dispatches' \
-          -H 'Content-Type: application/json' \
-          -H 'Accept: application/vnd.github+json' \
-          -H 'Authorization: Bearer ${{ secrets.DISPATCH_TOKEN }}' \
-          --data '{"ref": "${{ github.ref_name }}"}'
+          echo '# Summary' >> $GITHUB_STEP_SUMMARY
+          echo '## Run Initiator'
+          echo '- Actor: ${{ github.actor }}' >> $GITHUB_STEP_SUMMARY 
+          echo '- Event: ${{ github.event_name }}' >> $GITHUB_STEP_SUMMARY
+          echo '## Run Details' >> $GITHUB_STEP_SUMMARY
+          echo '- Branch: [${{ env.BRANCH_NAME }}](https://github.com/dgrebb/dgrebb.com/tree/${{ env.BRANCH_NAME }})' >> $GITHUB_STEP_SUMMARY
+          if [ "${{ github.event_name }}" = "pull_request" ]; then 
+            echo '- Pull Request: [#${{ github.event.number }}](https://github.com/dgrebb/dgrebb.com/pull/${{ github.event.number }}) ${{ github.event.pull_request.title }}' >> $GITHUB_STEP_SUMMARY
+            echo '- ${{ github.event.pull_request.changed_files }} Files Changed: [ ${{ github.event.pull_request.commits }} Commits](https://github.com/dgrebb/dgrebb.com/pull/${{ github.event.number }}/commits) | [Diff](https://github.com/dgrebb/dgrebb.com/pull/${{ github.event.number }}/files)' >> $GITHUB_STEP_SUMMARY
+          fi

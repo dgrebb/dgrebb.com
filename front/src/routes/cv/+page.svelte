@@ -20,6 +20,9 @@
       <a id="main">Main Content</a>
       <h1 class="page-heading">{title}</h1>
       <Links links={generalContent.filter((link) => link.cv === true)} />
+      <p class="print-links">
+        dgrebb.com <br />github.com/dgrebb • linkedin.com/in/dgrebb
+      </p>
       {#if intro}
         <div class="summary">
           {@html intro}
