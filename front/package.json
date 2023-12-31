@@ -21,6 +21,7 @@
     "preview.local": "vite --config vite.local.config.js preview",
     "postbuild.l": "npx -y -q svelte-sitemap -i '404.html' -i '/404/index.html' -i 'shingle.html' -i '/shingle/index.html' -i '/posts/category/index.html' -i '**/cv/*/**' -t --attribution=false --domain https://local.dgrebb.com",
     "postbuild.s": "npx -y -q svelte-sitemap -i '404.html' -i '/404/index.html' -i 'shingle.html' -i '/shingle/index.html' -i '/cv/*/**' -t --attribution=false --domain https://stg.dgrebb.com",
+    "postbuild.p": "npx -y -q svelte-sitemap -i '404.html' -i '/404/index.html' -i 'shingle.html' -i '/shingle/index.html' -i '/cv/*/**' -t --attribution=false --domain https://www.dgrebb.com",
     "postbuild": "npx -y -q svelte-sitemap -i '404.html' -i '/404/index.html' -i 'shingle.html' -i '/shingle/index.html' -i '/cv/*/**' -t --attribution=false --domain https://www.dgrebb.com",
     "format": "prettier --write .",
     "test.all": "npm run test.integration && npm run test.unit",

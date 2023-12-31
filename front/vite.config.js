@@ -1,7 +1,5 @@
-import { bundleStats } from 'rollup-plugin-bundle-stats';
 import { sveltekit } from '@sveltejs/kit/vite';
 import path from 'path';
-import { visualizer } from 'rollup-plugin-visualizer';
 import Icons from 'unplugin-icons/vite';
 import { defineConfig } from 'vite';
 import postcss from './postcss.config.js';
@@ -30,28 +28,6 @@ export default defineConfig({
   plugins: [
     Icons({
       compiler: 'svelte',
-    }),
-    visualizer({
-      sourcemap: true,
-      template: 'treemap',
-      filename: '.report/stats.html',
-    }),
-    visualizer({
-      sourcemap: true,
-      template: 'network',
-      filename: '.report/network.html',
-    }),
-    visualizer({
-      sourcemap: true,
-      template: 'sunburst',
-      filename: '.report/sunburst.html',
-    }),
-    bundleStats({
-      outDir: '../../../.report/bundle/current',
-      compare: true,
-      baselineFilepath: '../../../.report/bundle/previous/bundle-stats.json',
-      json: true,
-      html: true,
     }),
     sveltekit(),
   ],
