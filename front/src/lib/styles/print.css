@@ -1,10 +1,38 @@
 @media print {
   :root {
     background: transparent !important;
+    height: auto !important;
+  }
+  @page {
+    size: auto;
+    margin: 0.5in 1in 0.5in 1in;
   }
   html,
   body {
     background: transparent !important;
+    height: auto !important;
+    overflow: visible !important;
+    font-family: Georgia, 'Times New Roman', Times, serif !important;
+
+    & > *,
+    strong,
+    em,
+    .self {
+      font-family: Georgia, 'Times New Roman', Times, serif !important;
+    }
+
+    strong,
+    .self {
+      font-weight: 700 !important;
+    }
+
+    em {
+      font-style: italic !important;
+    }
+
+    a {
+      border: none !important;
+    }
 
     & > div > header.header,
     & > div > footer.footer,
@@ -22,9 +50,21 @@
     display: block !important;
   }
   .cv-masthead {
+    h1.page-heading {
+      letter-spacing: -0.083rem !important;
+    }
     .summary {
       padding: 0;
       padding-bottom: 0.5rem;
+    }
+    .link-list {
+      display: none;
+    }
+    .print-links {
+      display: block;
+      visibility: visible;
+      padding-top: 0;
+      text-align: center;
     }
   }
   .experience-timeline {
@@ -37,6 +77,7 @@
       display: none;
     }
     .experience-timeline-item {
+      display: block;
       border: none;
       padding: 1rem 0 0;
       &:before {
@@ -47,12 +88,27 @@
         top: 0;
         right: 0;
         line-height: 1.5;
+        .timeline-text-highlight {
+          display: none;
+        }
+      }
+      .timeline-text-highlight.m {
+        display: none !important;
+      }
+      .timeline-text-highlight.d {
+        display: inline !important;
       }
       h1.item-title {
         padding-bottom: 0.25rem;
+        font-weight: 500 !important;
         font-size: 1.25rem;
         font-family: var(--font-lbb);
         text-transform: uppercase;
+        &::after {
+          border-bottom: 1px solid black !important;
+          border-image: none !important;
+          width: 100% !important;
+        }
       }
       .item-basics {
         &:before,

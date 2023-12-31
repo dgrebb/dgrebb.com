@@ -47,7 +47,7 @@ const config = {
         if (path === '/404' && referrer === '/privacy/') {
           return;
         }
-        if (path.includes('/uploads')) {
+        if (path.includes('/uploads') || /^\/cv\//.test(path)) {
           return;
         }
         if (path.includes('/v')) {
