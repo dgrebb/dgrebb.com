@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.14.1] - 2023-12-31
+
+### 🪮  Styling
+
+- ***(front)*** Improves print stylesheet for CV (#1044)
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(front)*** Adds svg for django
+
 ## [3.14.0] - 2023-12-30
 
 ### 💡 Features
