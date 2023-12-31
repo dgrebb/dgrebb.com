@@ -50,7 +50,7 @@ const config = {
         if (path.includes('/uploads')) {
           return;
         }
-        if (path.includes('/v') || path.includes('/cv')) {
+        if (path.includes('/v')) {
           return;
         }
         throw new Error(message);
