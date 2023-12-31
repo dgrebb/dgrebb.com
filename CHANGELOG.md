@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.14.2] - 2023-12-31
+
+### 🐛 Bug Fixes
+
+- ***(ci)*** Removes reporting prod config and adds missing `postbuild.p` script
+
 ## [3.14.1] - 2023-12-31
 
 ### 🪮  Styling
