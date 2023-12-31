@@ -1,6 +1,6 @@
 {
   "name": "dgrebb.com",
-  "version": "3.14.0",
+  "version": "3.14.1",
   "private": true,
   "scripts": {
     "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
