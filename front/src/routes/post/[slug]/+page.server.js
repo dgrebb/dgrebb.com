@@ -1,10 +1,10 @@
 import { error } from '@sveltejs/kit';
 import api from '@api';
 import {
-  PUBLIC_API_URL as API,
-  PUBLIC_API_PATH_POST as POST,
-  PUBLIC_POST_PARAMS as PARAMS,
-} from '$env/static/public';
+  API_URL as API,
+  API_PATH_POST as POST,
+  POST_PARAMS as PARAMS,
+} from '$env/static/private';
 import { marked } from 'marked';
 import markedAlert from 'marked-alert';
 import { link, heading, image } from '@components/content/renderers';

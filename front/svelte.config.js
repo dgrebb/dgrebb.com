@@ -14,7 +14,10 @@ const config = {
   kit: {
     appDir: 's',
     adapter: adapter({
+      pages: 'build',
+      assets: 'build',
       precompress: true,
+      // strict: true,
     }),
     alias: {
       '@api': path.resolve('./src/lib/api'),

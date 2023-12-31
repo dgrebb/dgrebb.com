@@ -1,4 +1,4 @@
-import { PUBLIC_ORIGIN as ORIGIN } from '$env/static/public';
+import { ORIGIN as ORIGIN } from '$env/static/private';
 import slugger from 'slugger';
 import { extractDomainWithoutWWW } from '@utils';
 
