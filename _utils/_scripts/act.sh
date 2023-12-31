@@ -20,10 +20,10 @@ act --pull=false \
     -e $directory/../_ci/dispatches/${EVENT_JSON}.workflow_dispatch.json \
     -s GITHUB_TOKEN=$(pass dg/github/pat) \
     -s PUBLIC_ENV=development \
-    -s PUBLIC_API_PATH_NAVIGATION="$(pass dg/cms/api/paths/navigation)" \
-    -s PUBLIC_API_PATH_HOME="$(pass dg/cms/api/paths/home)" \
-    -s PUBLIC_API_PATH_FOOTER="$(pass dg/cms/api/paths/footer)" \
-    -s PUBLIC_API_URL=$(pass dg/api/${1}/url) \
+    -s API_PATH_NAVIGATION="$(pass dg/cms/api/paths/navigation)" \
+    -s API_PATH_HOME="$(pass dg/cms/api/paths/home)" \
+    -s API_PATH_FOOTER="$(pass dg/cms/api/paths/footer)" \
+    -s API_URL=$(pass dg/api/${1}/url) \
     -s API_KEY=$(pass dg/api/${1}/apikey) \
     -s AWS_ACCESS_KEY_ID=$(pass dg/aws/id) \
     -s AWS_SECRET_ACCESS_KEY=$(pass dg/aws/secret) \

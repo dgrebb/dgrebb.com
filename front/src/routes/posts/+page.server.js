@@ -1,10 +1,10 @@
 import api from '@api';
 import {
-  PUBLIC_API_URL as URL,
-  PUBLIC_API_PATH_POSTS_PAGE as PAGE,
-  PUBLIC_API_PATH_POSTS as POSTS,
-  PUBLIC_POSTS_PREVIEW_PARAMS as PARAMS,
-} from '$env/static/public';
+  API_URL as URL,
+  API_PATH_POSTS_PAGE as PAGE,
+  API_PATH_POSTS as POSTS,
+  POSTS_PREVIEW_PARAMS as PARAMS,
+} from '$env/static/private';
 import { marked } from 'marked';
 import { link } from '@components/content/renderers';
 

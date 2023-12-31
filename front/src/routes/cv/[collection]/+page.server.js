@@ -1,8 +1,8 @@
 import {
-  PUBLIC_API_LANDING_PAGE_PARTIAL as PAGE,
-  PUBLIC_API_CV_COLLECTION_PARAMS as ITEMS,
-  PUBLIC_API_URL as URL,
-} from '$env/static/public';
+  API_LANDING_PAGE_PARTIAL as PAGE,
+  API_CV_COLLECTION_PARAMS as ITEMS,
+  API_URL as URL,
+} from '$env/static/private';
 import api from '@api';
 import { error } from '@sveltejs/kit';
 
