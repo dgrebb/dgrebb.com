@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.14.3] - 2024-01-01
+
+### ♻️  Refactor
+
+- ***(front)*** Privatize env config for SEO improvements (#1131)
+
 ## [3.14.2] - 2023-12-31
 
 ### 🐛 Bug Fixes
