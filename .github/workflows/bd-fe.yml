@@ -157,7 +157,14 @@ jobs:
       - name: 🤖 Robots
         if: ${{ inputs.env == 'prd' }}
         run: |
+          robots=front/build/robots.txt
           sed -i 's/^Disallow\: \/$/Allow\: \//' front/build/robots.txt
+          echo "" >>$robots
+          echo "" >>$robots
+          echo "User-agent: Googlebot" >>$robots
+          echo "Allow: /s/" >>$robots
+          echo "" >>$robots
+          echo "Sitemap: https://www.dgrebb.com/sitemap.xml" >>$robots
 
       - name: ↕ Sync S3
         uses: jakejarvis/s3-sync-action@master
