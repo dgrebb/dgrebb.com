@@ -3,7 +3,7 @@ import { dev, building } from '$app/environment';
 
 export function handleError({ error, event }) {
   console.warn(`Error: ${error}`);
-  console.warn(`Event: ${event}`);
+  console.dir(event);
 
   return {
     message: 'Whoops!',
