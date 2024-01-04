@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.14.4] - 2024-01-04
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Adds sitemap.xml to robots.txt (#1120)
+- ***(front)*** Moves disallow / rule to top of robots.txt
+
 ## [3.14.3] - 2024-01-01
 
 ### ♻️  Refactor
