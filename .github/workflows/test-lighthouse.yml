@@ -47,7 +47,7 @@ jobs:
       - name: ⬢ Setup Node & Cache
         uses: actions/setup-node@v4
         with:
-          node-version: "20.x"
+          node-version: "20"
 
       - name: ↧ Install & Patch
         run: |

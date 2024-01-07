@@ -28,7 +28,7 @@ while test "$1" != --; do
         break
         ;;
     i | install)
-        cdfront && npm i --package-lock-only && pnpm i
+        cdfront && pnpm i
         break
         ;;
     b | build)
@@ -51,7 +51,7 @@ while test "$1" != --; do
         read -p $'\e[33mFlush node_modules and reinstall now?\e[0m: ' -n 1 -r
         if [[ $REPLY =~ ^[Yy]$ ]]; then
             echo # newline
-            rm -rf package-lock.json node_modules && npm i --package-lock-only && pnpm i
+            rm -rf package-lock.json pnpm-lock.yaml node_modules && pnpm i
             read -p $'\e[32mStart the dev server?\e[0m: ' -n 1 -r
             echo # newline
             if [[ $REPLY =~ ^[Yy]$ ]]; then
