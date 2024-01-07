@@ -62,7 +62,9 @@
       {apiHost}
       enabled
       outboundLinks
-      pageviewProps={{ theme: document.documentElement.classList }}
+      pageviewProps={{
+        theme: document.documentElement.classList.toString(),
+      }}
     />
   {/key}
 {/if}

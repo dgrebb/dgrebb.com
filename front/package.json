@@ -32,7 +32,7 @@
     "postinstall": "patch-package"
   },
   "devDependencies": {
-    "@accuser/svelte-plausible-analytics": "dgrebb/svelte-plausible-analytics#downstream/feature/support-custom-pageview-properties",
+    "@accuser/svelte-plausible-analytics": "dgrebb/svelte-plausible-analytics#downstream/feature-support-custom-pageview-properties",
     "@iconify-json/entypo-social": "^1.1.8",
     "@iconify-json/gg": "^1.1.9",
     "@iconify-json/icomoon-free": "^1.1.8",
