@@ -2,8 +2,10 @@
   import ScrollTop from '$lib/layout/ScrollTop.svelte';
   import Meta from '@components/general/Meta.svelte';
   import PageTransition from '@components/general/PageTransition.svelte';
+  import Popover from '@components/general/Popover.svelte';
   import Post from '@components/posts/Post.svelte';
   import PostHero from '@components/posts/PostHero.svelte';
+  import { popover } from '@store';
   import '@styles/pages/post.css';
   import { onMount } from 'svelte';
 
@@ -69,6 +71,10 @@
   <slot name="scroll-top">
     <ScrollTop />
   </slot>
+
+  {#if $popover.show}
+    <Popover {...$popover} />
+  {/if}
 </PageTransition>
 
 {#key pathname}
