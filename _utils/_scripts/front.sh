@@ -18,27 +18,27 @@ while test "$1" != --; do
     d | dev)
         setFrontEnv ${env}
         cdfront &&
-            npm run dev.${env} -- --host
+            pnpm run dev.${env} --host
         break
         ;;
     dn | dev-network)
         setFrontEnv ${env}
         cdfront &&
-            npm run dev -- --host
+            pnpm run dev --host
         break
         ;;
     i | install)
-        cdfront && npm i
+        cdfront && npm i --package-lock-only && pnpm i
         break
         ;;
     b | build)
         setFrontEnv ${env}
-        cdfront && npm run build.${env}
+        cdfront && pnpm run build.${env}
         break
         ;;
     bp | build-production)
         setFrontEnv ${env}
-        cdfront && npm run build.p
+        cdfront && pnpm run build.p
         break
         ;;
     u | update)
@@ -51,11 +51,11 @@ while test "$1" != --; do
         read -p $'\e[33mFlush node_modules and reinstall now?\e[0m: ' -n 1 -r
         if [[ $REPLY =~ ^[Yy]$ ]]; then
             echo # newline
-            rm -rf package-lock.json node_modules && npm i
+            rm -rf package-lock.json node_modules && npm i --package-lock-only && pnpm i
             read -p $'\e[32mStart the dev server?\e[0m: ' -n 1 -r
             echo # newline
             if [[ $REPLY =~ ^[Yy]$ ]]; then
-                npm run dev.l
+                pnpm run dev.l
             else
                 exit 0
             fi
@@ -74,7 +74,7 @@ while test "$1" != --; do
             DEPLOY_ENV=development \
             UPLOAD_SOURCEMAPS=true \
             RELEASE_NAME=$RELEASE_NAME DIST=$DIST \
-            DEPLOY_ENV=$DEPLOY_ENV npm run build.${env}
+            DEPLOY_ENV=$DEPLOY_ENV pnpm run build.${env}
         break
         ;;
     s | http-server)
@@ -85,11 +85,11 @@ while test "$1" != --; do
         break
         ;;
     p | preview)
-        cdfront && npm run preview.local -- --host
+        cdfront && pnpm run preview.local --host
         break
         ;;
     l | lint)
-        cdfront && npm run lint
+        cdfront && pnpm run lint
         break
         ;;
     r | bundle-report)
@@ -98,7 +98,7 @@ while test "$1" != --; do
         ;;
     ba | baseline-report)
         printDgMsg "Baselining the current BundleStats report..."
-        cdfront && npm run baseline
+        cdfront && pnpm run baseline
         break
         ;;
     ?)
