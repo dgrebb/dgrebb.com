@@ -4,7 +4,12 @@
   let showDates = true;
 </script>
 
-<input id="date-toggle-checkbox" type="checkbox" bind:checked={showDates} />
+<input
+  id="date-toggle-checkbox"
+  type="checkbox"
+  bind:checked={showDates}
+  aria-label={`${showDates ? 'Hide' : 'Show'} Dates`}
+/>
 <label
   for="date-toggle-checkbox"
   class="date-toggle"
