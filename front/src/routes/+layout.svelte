@@ -2,10 +2,8 @@
   import { page } from '$app/stores';
   import { PUBLIC_ENV as ENV } from '$env/static/public';
   import { PlausibleAnalytics } from '@accuser/svelte-plausible-analytics';
-  import Popover from '@components/general/Popover.svelte';
   import Footer from '@layout/Footer.svelte';
   import Header from '@layout/Header.svelte';
-  import { popover } from '@store';
   import '@styles/global.css';
   import { onMount } from 'svelte';
 
@@ -42,10 +40,6 @@
 <main class="main" class:secondary class:l-post={post} data-sveltekit-noscroll>
   <slot />
 </main>
-
-{#if $popover.show}
-  <Popover {...$popover} />
-{/if}
 
 <footer
   class="footer"
