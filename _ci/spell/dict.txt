@@ -26,6 +26,7 @@ fullname
 Goodreads
 Grebb
 hardlight
+headerless
 headshot
 hljs
 introend
