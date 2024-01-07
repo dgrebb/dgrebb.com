@@ -134,15 +134,23 @@ jobs:
           echo PUBLIC_ENV=${{ secrets.PUBLIC_ENV }} >> front/.env
           cat front/.env
 
-      - name: ⬢ Setup Node & Cache
-        uses: actions/setup-node@v4
+      - name: ⚄ Setup pnpm
+        uses: pnpm/action-setup@v2
         with:
-          node-version: "20.x"
-          cache: "npm"
-          cache-dependency-path: front/package-lock.json
+          version: 8
 
-      - name: ↧ Install & Patch
-        run: cd front && npm ci
+      - name: ⬢ Setup Node & Cache
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+          cache: "pnpm"
+          cache-dependency-path: |
+            front/package.json
+            front/pnpm-lock.yaml
+            front/node_modules
+
+      - name: ↧ Install Dependencies
+        run: cd front && pnpm install
 
       - name: ↻ Build
         run: |
@@ -152,7 +160,7 @@ jobs:
           else
             e=s
           fi
-            npm run build.${e}
+            pnpm run build.${e}
 
       - name: 🤖 Robots
         if: ${{ inputs.env == 'prd' }}
