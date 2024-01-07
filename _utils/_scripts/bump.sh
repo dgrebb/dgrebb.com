@@ -17,7 +17,7 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     git status
     exit 0
 else
-echo # newline
+    echo # newline
     branch=$(git branch --show-current)
     [[ $branch != release* ]] && git checkout -b release/$ver
     branch=$(git branch --show-current)
@@ -43,9 +43,9 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 else
     echo # newline
     cdfront
-    npm version $ver -s
+    pnpm version $ver -s
     cdback
-    npm version $ver -s
+    pnpm version $ver -s
     cd $directory/../
     cz bump --files-only
     git status

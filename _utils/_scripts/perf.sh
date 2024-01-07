@@ -28,8 +28,8 @@ while test "$1" != --; do
       u="$(echo "$url" | tr -d '\r')"
       undurl=$(echo "$u" | sed -E 's|https?://([^/]+)(/[^?#]*)?([?#]?.*)?|\2|;s|/+$||;s|/|_|g')
       echo "Running Lighthouse on $u and writing report to ./${undurl}"
-      npm run lhgh $u -- --output-path ./reports/mobile_${undurl}report.html --disable-extensions --view
-      npm run lhgh-d $u -- --output-path ./reports/desktop_${undurl}report.html --disable-extensions --view
+      pnpm run lhgh $u --output-path ./reports/mobile_${undurl}report.html --disable-extensions --view
+      pnpm run lhgh-d $u --output-path ./reports/desktop_${undurl}report.html --disable-extensions --view
     done <<<"$urls"
     break
     ;;
@@ -38,17 +38,17 @@ while test "$1" != --; do
       case $2 in
       s)
         echo 'Testing CSS on STG'
-        npm run wals -s
+        pnpm run wals -s
         break 2
         ;;
       p)
         echo 'Testing CSS on PROD'
-        npm run walp -s
+        pnpm run walp -s
         break 2
         ;;
       *)
         echo 'Testing CSS on Local'
-        npm run wall -s
+        pnpm run wall -s
         break 2
         ;;
       esac
