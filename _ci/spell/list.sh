@@ -17,9 +17,9 @@ for url in $urls; do
   echo "=================================================="
   echo
   echo "📖 Reading $url..."
-  content=$(wget $url -q -O - | npm run text -- -p human --selectors[] {} :selector=img :format=skip) >/dev/null
-  spelling=$(echo $content | npm run -s spell.web.list -- stdin://$url --quiet)
-  grammar=$(echo "$content" | npm run grammar)
+  content=$(wget $url -q -O - | pnpm run text -p human --selectors[] {} :selector=img :format=skip) >/dev/null
+  spelling=$(echo $content | pnpm run -s spell.web.list stdin://$url --quiet)
+  grammar=$(echo "$content" | pnpm run grammar)
   echo
   # sp=$(printf "${BG}✓ All spelling correct!${NC}")
   # if [[ $spelling ]]; then sp=$(printf "${BY}%s\n\n${NC}${BR}%s${NC}" "Spelling errors found!" "$spelling"); fi

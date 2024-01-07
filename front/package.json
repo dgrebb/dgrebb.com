@@ -24,7 +24,7 @@
     "postbuild.p": "npx -y -q svelte-sitemap -i '404.html' -i '/404/index.html' -i 'shingle.html' -i '/shingle/index.html' -i '/cv/*/**' -t --attribution=false --domain https://www.dgrebb.com",
     "postbuild": "npx -y -q svelte-sitemap -i '404.html' -i '/404/index.html' -i 'shingle.html' -i '/shingle/index.html' -i '/cv/*/**' -t --attribution=false --domain https://www.dgrebb.com",
     "format": "prettier --write .",
-    "test.all": "npm run test.integration && npm run test.unit",
+    "test.all": "pnpm run test.integration && pnpm run test.unit",
     "test.integration": "playwright test",
     "test.unit": "vitest",
     "test": "vitest",

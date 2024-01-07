@@ -35,11 +35,11 @@ while test "$1" != --; do
         break
         ;;
     l | lint)
-        cd $directory/../front && npm run lint
+        cd $directory/../front && pnpm run lint
         break
         ;;
     ck | check)
-        cd $directory/../front && npm run check
+        cd $directory/../front && pnpm run check
         break
         ;;
     d | docker)
@@ -95,6 +95,8 @@ while test "$1" != --; do
         break
         ;;
     sp | spelling | cspell)
+        cd $directory/../_ci/spell
+        trap exit 0 INT
         /bin/bash $directory/../_ci/spell/content.sh $2
         break
         ;;
