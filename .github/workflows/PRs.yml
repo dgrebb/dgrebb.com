@@ -1,17 +1,14 @@
-name: 🤖 PR Assignment
+name: Assign PR
 
 on:
-  pull_request:
-    types: [opened, edited, synchronize, reopened]
+  pull_request_target:
+    types: [opened, reopened]
+
+permissions:
+  pull-requests: write
 
 jobs:
-  auto-assign:
+  assign-author:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
     steps:
-      - name: "Auto-assign PR"
-        uses: pozil/auto-assign-issue@v1
-        with:
-          repo-token: ${{ secrets.GH_WORKFLOW_TOKEN }}
-          assignees: dgrebb
+      - uses: toshimaru/auto-author-assign@v2.0.0
