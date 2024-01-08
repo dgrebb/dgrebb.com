@@ -43,9 +43,9 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 else
     echo # newline
     cdfront
-    pnpm version $ver -s
+    pnpm version $ver --reporter=silent
     cdback
-    pnpm version $ver -s
+    pnpm version $ver --reporter=silent
     cd $directory/../
     cz bump --files-only
     git status

@@ -57,18 +57,23 @@ jobs:
           sparse-checkout: |
             _ci
 
+      - name: ⚄ Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       - name: ⬢ Setup Node & Cache
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: "20"
-          cache: "npm"
+          cache: "pnpm"
           cache-dependency-path: |
             _ci/backstop/package.json
-            _ci/backstop/package-lock.json
+            _ci/backstop/pnpm-lock.yaml
             _ci/backstop/node_modules
 
-      - name: ↧ Install & Patch
-        run: cd _ci/backstop && npm ci && npx playwright install --with-deps
+      - name: ↧ Install Dependencies
+        run: cd _ci/backstop && pnpm install && npx playwright install --with-deps
 
       - name: 🔥 Warmup Cache
         run: ./_ci/_utils/warmup.sh ${{ inputs.env }}
@@ -76,7 +81,7 @@ jobs:
       - name: 👀 Testing Bitmaps
         id: backstop
         continue-on-error: true
-        run: cd _ci/backstop && ENV=$DEPLOY_ENV npm run test.gh
+        run: cd _ci/backstop && ENV=$DEPLOY_ENV pnpm test.gh
 
       - name: Summarize Failures
         if: steps.backstop.outcome != 'success'
