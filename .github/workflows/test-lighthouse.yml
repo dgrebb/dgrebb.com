@@ -44,14 +44,24 @@ jobs:
             _ci/_utils
             _ci/perf
 
+      - name: ⚄ Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       - name: ⬢ Setup Node & Cache
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: "20"
+          cache: "pnpm"
+          cache-dependency-path: |
+            _ci/perf/package.json
+            _ci/perf/pnpm-lock.yaml
+            _ci/perf/node_modules
 
       - name: ↧ Install & Patch
         run: |
-          cd _ci/perf && npm ci
+          cd _ci/perf && pnpm i
 
       - name: 🌤️ Warmup CloudFront Cache
         run: |
@@ -68,8 +78,8 @@ jobs:
             undurl=$(echo "$u" | sed -E 's|https?://([^/]+)(/[^?#]*)?([?#]?.*)?|\2|;s|/+$||;s|/|_|g')
             automation_url="${u}?roboto"
             echo "Running Lighthouse on $u and writing report to ./$undurl"
-            npm run lhgh $automation_url -- --output-path ./mobile_"$undurl"report.html --disable-extensions --force-prefers-reduced-motion
-            npm run lhgh-d $automation_url -- --output-path ./desktop_"$undurl"report.html --disable-extensions --force-prefers-reduced-motion
+            pnpm lhgh $automation_url -- --output-path ./mobile_"$undurl"report.html --disable-extensions --force-prefers-reduced-motion
+            pnpm lhgh-d $automation_url -- --output-path ./desktop_"$undurl"report.html --disable-extensions --force-prefers-reduced-motion
           done <<<"$urls"
 
       - name: ⚓️ Drop Anchor
