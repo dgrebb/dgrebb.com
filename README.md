@@ -5,92 +5,75 @@
 
 [![🚜 Build, Deploy, and Test](https://github.com/dgrebb/dgrebb.com/actions/workflows/bdt-fe.yml/badge.svg)](https://github.com/dgrebb/dgrebb.com/actions/workflows/bdt-fe.yml)
 
-Hark! Welcome to the repository for dgrebb.com, whereupon thou shalt find the source code and assets for mine own personal website. If thou art inclined to explore the inner workings of this fine establishment or dost seek to make contributions, thou hast come to the right place.
+Welcome to the repository for dgrebb.com, your resource for accessing the source code and assets of my personal website. This platform serves as a hub for those interested in exploring the site's architecture or contributing to its development.
 
 - [Wiki](#wiki)
-- [Thank Youse \& Supporting Products](#thank-youse--supporting-products)
 - [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Develop](#develop)
-  - [Production](#production)
-- [Contributing](#contributing)
+- [Stack](#stack)
+  - [Backend](#backend)
+  - [Frontend](#frontend)
+  - [CI/CD](#cicd)
+  - [Analysis and Testing](#analysis-and-testing)
+- [Companion Sites](#companion-sites)
 - [License](#license)
 
 ## Wiki
 
-Design, architecture, ALM, frontend, backend, testing, regression, utilities, and other various components of the site are ongoingly documented in [the wiki](https://github.com/dgrebb/dgrebb.com/wiki).
-
-## Thank Youse & Supporting Products
-
-The below components are a majority of the product stack. Thorough details may be found on the wiki [technology page](https://github.com/dgrebb/dgrebb.com/wiki/technology).
-
-- AWS
-- Strapi
-- Svelte/SvelteKit
-- GitHub
-- Terraform/OpenTF
-- Docker
-- Plausible Analytics
-- ~~Sentry.io~~ 
-- StackOverflow
-- Discord (Svelte, Strapi, NextJS)
+The wiki is in progress, but provides comprehensive documentation on design, architecture, application lifecycle management (ALM), frontend and backend development, testing, regression, utilities, and various other components of the site. Detailed information can be found at the [wiki](https://github.com/dgrebb/dgrebb.com/wiki).
 
 ## Features
 
-dgrebb.com boasts the following features:
+dgrebb.com is equipped with the following features:
 
-- [ ] **Posts**: The website doth house a collection of scribblings penned by mine own hand, covering various subjects and revealing my musings, opinions, and occasional moments of enlightenment.
-- [ ] **CV/Portfolio**: A section, akin to a tome of my deeds, doth showcase the projects and works I hath undertaken, providing a glimpse into mine past accomplishments and professional endeavors.
-- [ ] **Contact Form**: By means of the website's contact form, one can easily reach out to me, facilitating direct communication and inquiries.
+- [x] Posts: The website hosts a range of articles authored by me, covering diverse topics and sharing insights, opinions, and expert analysis.
+  - [x] Categories
+  - [ ] Comments: Plans to introduce a commenting system with moderation capabilities. Anonymity will be permitted, subject to review prior to publication.
+- [x] CV/Portfolio: A dedicated section showcasing my professional projects and accomplishments, offering a detailed view of my career trajectory and skills.
+- [ ] Contact Form: An integrated contact form for streamlined communication, enabling direct inquiries and interactions.
 
-## Installation
+## Stack
 
-To set up dgrebb.com upon thy local realm, followeth these steps:
+### Backend
 
-- [ ] Final Install Steps Commeth
-  - [ ] `setup.sh`
-  - [ ] taketh the long road
-- [ ] Perhaps/Questionable
-  - [ ] doze installer
-  - [ ] \*nix installer (sans macos built-ins)
+- [AWS](https://aws.amazon.com/) ECS, ALB, CloudFront, RDS (Postgres), Secrets Manager
+- [Docker](https://www.docker.com/)
+- [Strapi CMS](https://github.com/strapi/strapi/) (Content API)
 
-## Usage
+### Frontend
 
-Once thou hast established the repository locally, thou canst set the website in motion with the following command:
+- JavaScript, [Svelte](https://github.com/sveltejs/svelte)/[SvelteKit](https://github.com/sveltejs/kit)
+  - [@iconify-json](https://github.com/iconify/icon-sets/blob/master/readme.md#iconify-icon-sets-in-json-format)
+  - [marked](https://github.com/markedjs/marked)
+  - [svelte-highlight](https://github.com/metonym/svelte-highlight)
+  - [svelte-meta-tags](https://github.com/oekazuma/svelte-meta-tags)
+  - [svelte-plausible-analytics](https://github.com/accuser/svelte-plausible-analytics/)
+- SSG with forward-facing SSR architecture
+- Vanilla CSS with some PostCSS/Sass Syntactical Sugar
+- [Vite](https://vitejs.dev/), [Rollup](https://rollupjs.org/), [Bundle Stats](https://github.com/relative-ci/bundle-stats/tree/master/packages/rollup-plugin), [Visualizer](https://github.com/btd/rollup-plugin-visualizer)
 
-### Develop
+### CI/CD
 
-- [ ] Upon thy command line, declare the sacred words: `dg dev` - developeth mode
+- [BackstopJS](https://github.com/garris/BackstopJS) - Visual Regression Suite
+- [GitHub Actions](https://github.com/features/actions) - Build, Deploy, and Test Automation
+- [Lighthouse CLI](https://github.com/GoogleChrome/lighthouse) - Performance Testing
+- [PageSpeed Insights CLI](https://github.com/GoogleChromeLabs/psi) - Performance Testing
+- [Pass](https://www.passwordstore.org/) - Local Secrets Management
 
-Behold the marvels of dgrebb.com in develop mode!
+### Analysis and Testing
 
-Thus, in the realm of development, thou shalt mold dgrebb.com to thy vision, bringing forth creativity and innovation in its purest form. Embrace this mode, and let thy imagination run free.
+- [Axe](https://github.com/dequelabs/axe-core) - Accessibility (a11y) Testing
+- [cspell](https://cspell.org/) - Spell Checking
+- [gramma](https://github.com/caderek/gramma) - Grammar Sanity
+- [NVDA](https://www.nvaccess.org/about-nvda/) - a11y Testing
+- [Prettier](https://prettier.io/)/[ESLint](https://eslint.org/) - Code Formatting and Analysis
+- [SiteOne Crawler Desktop](https://github.com/janreges/siteone-crawler-gui) (Written in Svelte!) - SEO, a11y, HTTP, Security, Headers, and much more.
+- [Wallace](https://www.projectwallace.com/) - CSS Analyzer
 
-### Production
+## Companion Sites
 
-Hear ye, noble beings! In the realm of production mode, dgrebb.com shineth brighter than ever. Let me guide thee through the steps to unleash its magnificence upon the world.
-
-- [ ] Speaketh the sacred words, thus: `dg start` - production mode
-
-Lo! A bundle of thy website's code shall be created, optimized and ready for the grand unveiling.
-
-Behold the site now runneth upon thine localhost. Accost thy browser and navigateth to http://localhost:3000.
-
-May thy journey in production mode be prosperous and bringeth thee the adulation thou so rightly deserve.
-
-## Contributing
-
-Verily, I doth welcome contributions to dgrebb.com! Should thou possess suggestions, bug fixes, or newfangled features to proffer, prithee, followeth these steps:
-
-- Fork this repository, creating thine own forked copy.
-- Fashion a new branch for thy contribution thus: `git checkout -b my-contribution`
-- Wrought thy changes and commit them with messages that doth describe their essence.
-- Push thy changes to thy forked repository: `git push origin my-contribution`
-- Open a pull request in this repository, wherein thou shalt provideth a comprehensive account of thine changes.
-
-Ensureth, I pray, that thy contributions align with the coding style and best practices befitting this project. I shall review thy pull request, offering counsel or merging it forthwith, should it warrant such action.
+- [p.dgrebb.com](https://p.dgrebb.com/) - Public Analytics
+- [reports.dgrebb.com](https://reports.dgrebb.com/) - CI/CD Reporting and Tests
 
 ## License
 
-The content of this repository, behold, is licensed under the MIT License, granting thee the freedom to use, modify, and distribute the code. Pray, bear in mind that the content of the website, including the blog posts and portfolio items, may be subject to differing licensing restrictions.
+The code in this repository is licensed under the MIT License, allowing for free use, modification, and distribution. Note that website content, including blog posts and portfolio items, may be subject to different licensing terms.

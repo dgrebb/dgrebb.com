@@ -1,17 +1,7 @@
-Be it known to all that this creation is governed by the solemn covenant of the MIT License, which I hereby declare:
+Copyright (c) 2008-2024 Dan Grebb and others
 
-MIT LICENSE
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-Copyright © 2023 Daniel Paul Grebb
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-This document beareth witness that henceforth, the authorship and rights to this software, along with its accompanying documentation, shall be vested in [fullname], during this year and all those to follow.
-
-By the grace of this license, let it be known that any person who obtaineth a copy of this software, along with its associated documentation files (the "Software"), shall be granted permission, free of charge, to deal with the Software without hindrance. This includes, but is not limited to, the rights to use, copy, modify, merge, publish, distribute, sublicense, and even sell copies of the Software.
-
-Moreover, it is granted unto those who receive the Software the power to bestow the same rights upon others who may come into possession of it, all in accordance with the following conditions:
-
-    The aforementioned copyright notice and this permission notice shall be included, unwavering, in all copies or substantial portions of the Software, as a testament to its origin and the liberties bestowed upon it.
-
-    THE SOFTWARE IS PROVIDED "AS IS," without any warranty or guarantee, whether express or implied. The author and the copyright holders shall bear no responsibility for any claim, damage, or liability arising out of the use or misuse of the Software. It is the sole responsibility of the user to ascertain its suitability and assume all risks that may arise from its use.
-
-Thus, let this MIT License be known far and wide, that all who encounter this Software may understand the freedoms granted unto them and the terms under which they may wield its power.
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
