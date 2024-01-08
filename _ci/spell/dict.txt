@@ -29,6 +29,7 @@ hardlight
 headerless
 headshot
 hljs
+iconify
 introend
 introstart
 jsonencode
