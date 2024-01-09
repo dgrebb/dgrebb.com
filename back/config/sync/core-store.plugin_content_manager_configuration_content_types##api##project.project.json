@@ -375,9 +375,11 @@
       ],
       "list": [
         "name",
-        "slug",
+        "experiences",
         "skills",
-        "organizations"
+        "awards",
+        "organizations",
+        "slug"
       ]
     }
   },

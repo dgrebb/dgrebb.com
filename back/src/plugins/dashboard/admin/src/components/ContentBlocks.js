@@ -53,7 +53,103 @@ const ContentBlocks = () => {
   return (
     <Flex direction="column" alignItems="stretch" gap={5}>
       <Grid gap={5}>
-        <GridItem col={3}>
+        <GridItem col={2}>
+          <BlockLink
+            href="#"
+            onClick={(e) => {
+              navigate(
+                e,
+                "/content-manager/collectionType/api::experience.experience?page=1&pageSize=100"
+              );
+            }}
+          >
+            <ContentBox
+              title={formatMessage({
+                id: "dashboard.experiences.title",
+                defaultMessage: "Experiences",
+              })}
+              subtitle={formatMessage({
+                id: "dashboard.experiences.subtitle",
+                defaultMessage: "Add or Manage Experiences",
+              })}
+              icon={<StyledCrown />}
+              iconBackground="primary100"
+            />
+          </BlockLink>
+        </GridItem>
+        <GridItem col={2}>
+          <BlockLink
+            href="#"
+            onClick={(e) => {
+              navigate(
+                e,
+                "/content-manager/collectionType/api::skill.skill?page=1&pageSize=100"
+              );
+            }}
+          >
+            <ContentBox
+              title={formatMessage({
+                id: "dashboard.experiences.title",
+                defaultMessage: "Skills",
+              })}
+              subtitle={formatMessage({
+                id: "dashboard.skills.subtitle",
+                defaultMessage: "Add or Manage Skills",
+              })}
+              icon={<StyledCrown />}
+              iconBackground="primary100"
+            />
+          </BlockLink>
+        </GridItem>
+        <GridItem col={2}>
+          <BlockLink
+            href="#"
+            onClick={(e) => {
+              navigate(
+                e,
+                "/content-manager/collectionType/api::project.project?page=1&pageSize=100"
+              );
+            }}
+          >
+            <ContentBox
+              title={formatMessage({
+                id: "app.components.HomePage.ProjectContent.title",
+                defaultMessage: "Projects",
+              })}
+              subtitle={formatMessage({
+                id: "app.components.HomePage.ProjectContent.subtitle",
+                defaultMessage: "Add or Manage Projects",
+              })}
+              icon={<StyledInformationSquare />}
+              iconBackground="primary100"
+            />
+          </BlockLink>
+        </GridItem>
+        <GridItem col={2}>
+          <BlockLink
+            href="#"
+            onClick={(e) => {
+              navigate(
+                e,
+                "/content-manager/collectionType/api::organization.organization?page=1&pageSize=100"
+              );
+            }}
+          >
+            <ContentBox
+              title={formatMessage({
+                id: "dashboard.organizations.title",
+                defaultMessage: "Organizations",
+              })}
+              subtitle={formatMessage({
+                id: "dashboard.organizations.subtitle",
+                defaultMessage: "Add or Manage Organizations",
+              })}
+              icon={<StyledCrown />}
+              iconBackground="primary100"
+            />
+          </BlockLink>
+        </GridItem>
+        <GridItem col={2}>
           <BlockLink
             href="#"
             onClick={(e) => {
@@ -70,59 +166,14 @@ const ContentBlocks = () => {
               })}
               subtitle={formatMessage({
                 id: "dashboard.posts.label",
-                defaultMessage: "Edit Posts",
+                defaultMessage: "Write or Edit Posts",
               })}
               icon={<StyledFeatherSquare />}
               iconBackground="primary100"
             />
           </BlockLink>
         </GridItem>
-        <GridItem col={3}>
-          <BlockLink
-            href="#"
-            onClick={(e) => {
-              navigate(
-                e,
-                "/content-manager/collectionType/api::experience.experience?page=1&pageSize=100"
-              );
-            }}
-          >
-            <ContentBox
-              title={formatMessage({
-                id: "dashboard.experiences.title",
-                defaultMessage: "Edit Experiences",
-              })}
-              subtitle={formatMessage({
-                id: "dashboard.experiences.subtitle",
-                defaultMessage: "Add or Manage Experiences",
-              })}
-              icon={<StyledCrown />}
-              iconBackground="primary100"
-            />
-          </BlockLink>
-        </GridItem>
-        <GridItem col={3}>
-          <BlockLink
-            href="#"
-            onClick={(e) => {
-              navigate(e, "/content-manager/singleType/api::home.home");
-            }}
-          >
-            <ContentBox
-              title={formatMessage({
-                id: "app.components.HomePage.HomeContent.title",
-                defaultMessage: "Edit Projects",
-              })}
-              subtitle={formatMessage({
-                id: "app.components.HomePage.HomeContent.subtitle",
-                defaultMessage: "Edit Project Content",
-              })}
-              icon={<StyledInformationSquare />}
-              iconBackground="primary100"
-            />
-          </BlockLink>
-        </GridItem>
-        <GridItem col={3}>
+        <GridItem col={2}>
           <BlockLink
             href="https://plausible.io/dgrebb.com"
             target="_blank"
