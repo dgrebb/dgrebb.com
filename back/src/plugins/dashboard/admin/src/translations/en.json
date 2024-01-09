@@ -1,12 +1,16 @@
 {
   "dashboard.posts.title": "Posts",
   "dashboard.projects.title": "Projects",
-  "dashboard.experiences.title": "Projects",
+  "dashboard.experiences.title": "Experiences",
+  "dashboard.skills.title": "Skills",
+  "dashboard.organizations.title": "Organizations",
   "dashboard.homepage.title": "Homepage",
   "dashboard.analytics.title": "Analytics",
   "dashboard.posts.label": "Edit Posts",
   "dashboard.projects.label": "Edit Projects",
-  "dashboard.experiences.label": "Edit Projects",
+  "dashboard.experiences.label": "Edit Experiences",
+  "dashboard.skills.label": "Edit Skills",
+  "dashboard.organizations.label": "Edit Organizations",
   "dashboard.homepage.label": "Edit Homepage",
   "dashboard.analytics.label": "Visit plausible.io"
 }
