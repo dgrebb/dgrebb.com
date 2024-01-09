@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.15.0] - 2024-01-09
+
+### 💡 Features
+
+- ***(back)*** Add more fastlinks to dashboard (#1155)
+- ***(project)*** Migrate everything but strapi to pnpm (#1141)
+
+### 🐛 Bug Fixes
+
+- ***(ci)*** Use setup-node@v4
+- ***(front)*** Add `aria-label`s to input toggles
+
+### 📜 Documentation
+
+- ***(project)*** Updates README and LICENSE
+
+### ♻️  Refactor
+
+- ***(ci)*** Use pnpm in GitHub Actions (#1141)
+- ***(front)*** Moves popover component to post page
+
+### 💚 Continuous Integration
+
+- ***(backstop)*** Move regression, perf, and related CI to pnpm (#1146)
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(back)*** Upgrade to strapi@4.16.2 (#1140)
+- ***(front)*** Upgrade fe deps and hoist pnpm install of highlight.js (#1141)
+- ***(perf)*** Pnpm overrides for perf security alerts
+
 ## [3.14.4] - 2024-01-04
 
 ### 🐛 Bug Fixes
