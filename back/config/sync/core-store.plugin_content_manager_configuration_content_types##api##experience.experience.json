@@ -8,7 +8,7 @@
       "searchable": true,
       "pageSize": 100,
       "mainField": "title",
-      "defaultSortBy": "endDate",
+      "defaultSortBy": "startDate",
       "defaultSortOrder": "DESC"
     },
     "metadatas": {
