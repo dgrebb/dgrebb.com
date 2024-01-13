@@ -78,8 +78,8 @@ jobs:
             undurl=$(echo "$u" | sed -E 's|https?://([^/]+)(/[^?#]*)?([?#]?.*)?|\2|;s|/+$||;s|/|_|g')
             automation_url="${u}?roboto"
             echo "Running Lighthouse on $u and writing report to ./$undurl"
-            pnpm lhgh $automation_url -- --output-path ./mobile_"$undurl"report.html --disable-extensions --force-prefers-reduced-motion
-            pnpm lhgh-d $automation_url -- --output-path ./desktop_"$undurl"report.html --disable-extensions --force-prefers-reduced-motion
+            pnpm lhgh $automation_url --output-path ./mobile_"$undurl"report.html --disable-extensions --force-prefers-reduced-motion
+            pnpm lhgh-d $automation_url --output-path ./desktop_"$undurl"report.html --disable-extensions --force-prefers-reduced-motion
           done <<<"$urls"
 
       - name: ⚓️ Drop Anchor
