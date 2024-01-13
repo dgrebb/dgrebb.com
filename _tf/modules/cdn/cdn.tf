@@ -37,6 +37,10 @@ resource "aws_cloudfront_distribution" "this" {
   is_ipv6_enabled     = true
   default_root_object = "index.html"
 
+  tags = {
+    "domain" = "dgrebb.com"
+  }
+
   custom_error_response {
     error_code         = 404
     response_code      = 404
@@ -80,9 +84,6 @@ resource "aws_cloudfront_distribution" "this" {
       ]
     }
 
-    # Apply/Remove Headers
-    response_headers_policy_id = aws_cloudfront_response_headers_policy.this.id
-
     # Replaced by naked-redirect below, when redirect is true
     dynamic "function_association" {
       for_each = var.redirect ? [] : [1]
@@ -106,6 +107,9 @@ resource "aws_cloudfront_distribution" "this" {
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
+
+    # Apply/Remove Headers
+    response_headers_policy_id = var.www ? aws_cloudfront_response_headers_policy.this.id : null
   }
 
   restrictions {
@@ -117,13 +121,32 @@ resource "aws_cloudfront_distribution" "this" {
   viewer_certificate {
     acm_certificate_arn      = var.cert.arn
     ssl_support_method       = "sni-only"
-    minimum_protocol_version = "TLSv1"
+    minimum_protocol_version = "TLSv1.2_2018"
   }
 }
 
 # Security Headers Policy and Server Removal
 resource "aws_cloudfront_response_headers_policy" "this" {
   name = "${var.dashed_domain}-security-headers-policy"
+
+  custom_headers_config {
+    items {
+      override = true
+      header   = "permissions-policy"
+      value    = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+    }
+    items {
+      override = true
+      header   = "feature-policy"
+      value    = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+    }
+    items {
+      override = true
+      header   = "server"
+      value    = "_"
+    }
+  }
+
   security_headers_config {
     content_type_options {
       override = true
@@ -148,7 +171,7 @@ resource "aws_cloudfront_response_headers_policy" "this" {
       override                   = true
     }
     content_security_policy {
-      content_security_policy = "frame-ancestors 'none'; default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'"
+      content_security_policy = "img-src 'self' https://${var.cdndomain}; frame-ancestors 'self'; frame-src 'self'; media-src 'self' https://*.${var.domain} data:; object-src 'self'; worker-src 'self';"
       override                = true
     }
   }

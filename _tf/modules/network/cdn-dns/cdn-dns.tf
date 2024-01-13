@@ -19,16 +19,34 @@ resource "aws_acm_certificate" "wildcard" {
   }
 }
 
-resource "aws_route53_record" "this" {
+resource "aws_route53_record" "this_a" {
   allow_overwrite = true
   name            = var.domain
   type            = "A"
   zone_id         = var.zone.zone_id
+
   alias {
     name                   = var.distribution.domain_name
     zone_id                = var.distribution.hosted_zone_id
     evaluate_target_health = false
   }
+
+  depends_on = [var.distribution]
+}
+
+resource "aws_route53_record" "this_aaaa" {
+  allow_overwrite = true
+  name            = var.domain
+  type            = "AAAA"
+  zone_id         = var.zone.zone_id
+
+  alias {
+    name                   = var.distribution.domain_name
+    zone_id                = var.distribution.hosted_zone_id
+    evaluate_target_health = false
+  }
+
+  depends_on = [var.distribution]
 }
 
 resource "aws_route53_record" "wildcard_validation" {
