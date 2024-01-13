@@ -2,7 +2,11 @@ import { minify } from 'html-minifier-terser';
 import { dev, building } from '$app/environment';
 
 export function handleError({ error, event }) {
-  console.warn(`Error: ${error}`);
+  if (event.url.pathname.startsWith('/v/skills')) {
+    return;
+  }
+
+  console.warn(error);
   console.dir(event);
 
   return {
@@ -22,7 +26,7 @@ const minification_options = {
 export async function handle({ event, resolve }) {
   let response;
   if (event.url.pathname.startsWith('/uploads')) {
-    return new Response('custom response');
+    return new Response('Local Image');
   } else {
     response = resolve(event);
   }

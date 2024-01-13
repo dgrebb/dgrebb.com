@@ -60,6 +60,16 @@ const config = {
       },
       handleMissingId: 'ignore',
     },
+    csp: {
+      mode: 'auto',
+      directives: {
+        'script-src': ['strict-dynamic'],
+        'style-src': ['self', 'unsafe-inline'],
+      },
+    },
+    csrf: {
+      checkOrigin: false,
+    },
   },
 };
 
