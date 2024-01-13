@@ -30,16 +30,36 @@ resource "aws_db_subnet_group" "this" {
 # WWW Record
 # ------------------------------------------------------------------------------
 
-resource "aws_route53_record" "www" {
+# IPV4
+resource "aws_route53_record" "www_a" {
   zone_id         = data.aws_route53_zone.main.zone_id
   name            = "www.${var.domain}"
   type            = "A"
   allow_overwrite = var.www_record_overwrite
+
   alias {
     name                   = var.www_cdn.domain_name
     zone_id                = var.www_cdn.hosted_zone_id
     evaluate_target_health = false
   }
+
+  depends_on = [var.www_cdn]
+}
+
+# IPV6
+resource "aws_route53_record" "www_aaaa" {
+  zone_id         = data.aws_route53_zone.main.zone_id
+  name            = "www.${var.domain}"
+  type            = "AAAA"
+  allow_overwrite = var.www_record_overwrite
+
+  alias {
+    name                   = var.www_cdn.domain_name
+    zone_id                = var.www_cdn.hosted_zone_id
+    evaluate_target_health = false
+  }
+
+  depends_on = [var.www_cdn]
 }
 
 # ------------------------------------------------------------------------------

@@ -21,6 +21,8 @@ module "www_cdn" {
   log_bucket    = module.www_cdn_bucket.log_bucket
   cert          = module.network.wildcard_cert
   redirect      = false
+  www           = true
+  cdndomain     = local.cdndomain
 }
 
 module "uploads_cdn" {
@@ -32,6 +34,8 @@ module "uploads_cdn" {
   log_bucket    = module.uploads_cdn_bucket.log_bucket
   cert          = module.network.uploads_cert
   redirect      = false
+  www           = false
+  cdndomain     = local.cdndomain
 }
 
 module "containers" {
@@ -139,6 +143,8 @@ module "reports_cdn" {
   log_bucket    = false
   cert          = module.network.reports_cert
   redirect      = false
+  www           = false
+  cdndomain     = local.cdndomain
 }
 
 module "reports_bucket" {
