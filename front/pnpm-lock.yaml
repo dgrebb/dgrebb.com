@@ -4,6 +4,14 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@sveltejs/kit@2.0.6':
+    hash: tnstbpfbszspjae3ex4qb7n2ue
+    path: patches/@sveltejs__kit@2.0.6.patch
+  svelte-highlight@7.4.8:
+    hash: qrhzf5kuypvsq4epyje5y7omjm
+    path: patches/svelte-highlight@7.4.8.patch
+
 devDependencies:
   '@accuser/svelte-plausible-analytics':
     specifier: dgrebb/svelte-plausible-analytics#downstream/feature-support-custom-pageview-properties
@@ -40,7 +48,7 @@ devDependencies:
     version: 3.0.1(@sveltejs/kit@2.0.6)
   '@sveltejs/kit':
     specifier: ^2.0.6
-    version: 2.0.6(@sveltejs/vite-plugin-svelte@3.0.1)(svelte@4.2.8)(vite@5.0.11)
+    version: 2.0.6(patch_hash=tnstbpfbszspjae3ex4qb7n2ue)(@sveltejs/vite-plugin-svelte@3.0.1)(svelte@4.2.8)(vite@5.0.11)
   '@sveltejs/vite-plugin-svelte':
     specifier: ^3.0.1
     version: 3.0.1(svelte@4.2.8)(vite@5.0.11)
@@ -106,7 +114,7 @@ devDependencies:
     version: 3.6.2(postcss@8.4.33)(svelte@4.2.8)
   svelte-highlight:
     specifier: 7.4.8
-    version: 7.4.8
+    version: 7.4.8(patch_hash=qrhzf5kuypvsq4epyje5y7omjm)
   svelte-meta-tags:
     specifier: ^3.1.0
     version: 3.1.0(svelte@4.2.8)(typescript@5.3.3)
@@ -768,10 +776,10 @@ packages:
     peerDependencies:
       '@sveltejs/kit': ^2.0.0
     dependencies:
-      '@sveltejs/kit': 2.0.6(@sveltejs/vite-plugin-svelte@3.0.1)(svelte@4.2.8)(vite@5.0.11)
+      '@sveltejs/kit': 2.0.6(patch_hash=tnstbpfbszspjae3ex4qb7n2ue)(@sveltejs/vite-plugin-svelte@3.0.1)(svelte@4.2.8)(vite@5.0.11)
     dev: true
 
-  /@sveltejs/kit@2.0.6(@sveltejs/vite-plugin-svelte@3.0.1)(svelte@4.2.8)(vite@5.0.11):
+  /@sveltejs/kit@2.0.6(patch_hash=tnstbpfbszspjae3ex4qb7n2ue)(@sveltejs/vite-plugin-svelte@3.0.1)(svelte@4.2.8)(vite@5.0.11):
     resolution: {integrity: sha512-dnHtyjBLGXx+hrZQ9GuqLlSfTBixewJaByUVWai7LmB4dgV3FwkK155OltEgONDQW6KW64hLNS/uojdx3uC2/g==}
     engines: {node: '>=18.13'}
     hasBin: true
@@ -796,6 +804,7 @@ packages:
       tiny-glob: 0.2.9
       vite: 5.0.11
     dev: true
+    patched: true
 
   /@sveltejs/vite-plugin-svelte-inspector@2.0.0(@sveltejs/vite-plugin-svelte@3.0.1)(svelte@4.2.8)(vite@5.0.11):
     resolution: {integrity: sha512-gjr9ZFg1BSlIpfZ4PRewigrvYmHWbDrq2uvvPB1AmTWKuM+dI1JXQSUu2pIrYLb/QncyiIGkFDFKTwJ0XqQZZg==}
@@ -2971,11 +2980,12 @@ packages:
       svelte: 4.2.8
     dev: true
 
-  /svelte-highlight@7.4.8:
+  /svelte-highlight@7.4.8(patch_hash=qrhzf5kuypvsq4epyje5y7omjm):
     resolution: {integrity: sha512-KjXI+RwpBiDvwgZX9M0T6JpmAPhLjC4Gcks5qIDrFd7iO/pEBFR3B6qeMUTFIhxipHEPp/rC4/0enAvCQtHp+A==}
     dependencies:
       highlight.js: 11.9.0
     dev: true
+    patched: true
 
   /svelte-hmr@0.15.3(svelte@4.2.8):
     resolution: {integrity: sha512-41snaPswvSf8TJUhlkoJBekRrABDXDMdpNpT2tfHIv4JuhgvHqLMhEPGtaQn0BmbNSTkuz2Ed20DF2eHw0SmBQ==}
@@ -3466,6 +3476,6 @@ packages:
       '@sveltejs/kit': ^1.30.3 || ^2.0.0
       svelte: ^4.2.8
     dependencies:
-      '@sveltejs/kit': 2.0.6(@sveltejs/vite-plugin-svelte@3.0.1)(svelte@4.2.8)(vite@5.0.11)
+      '@sveltejs/kit': 2.0.6(patch_hash=tnstbpfbszspjae3ex4qb7n2ue)(@sveltejs/vite-plugin-svelte@3.0.1)(svelte@4.2.8)(vite@5.0.11)
       svelte: 4.2.8
     dev: true
