@@ -280,7 +280,7 @@
     box-shadow: var(--shadow-elevation-medium);
     border-left: 0.5rem solid var(--hardlight-clr);
     border-radius: 0.5rem;
-    background: var(--bg-light-clr);
+    background-color: var(--blocked-content-bg);
     padding: 0.5rem 1.5rem;
     color: var(--fg-clr-oo);
     &::before {

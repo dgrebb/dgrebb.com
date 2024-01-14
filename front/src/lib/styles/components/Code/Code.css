@@ -18,7 +18,7 @@
   margin-bottom: 2rem;
   box-shadow: var(--shadow-elevation-medium);
   border-radius: 0.5rem;
-  background-color: var(--bg-light-clr);
+  background-color: var(--blocked-content-bg);
   padding: 0 1.5rem 0 1rem;
   width: 100%;
   font-size: 1rem;
@@ -208,11 +208,11 @@
     td:first-child {
       display: none;
       transition-property: color var(--transition-duration);
-      background: var(--bg-light-clr);
+      background: var(--blocked-content-bg);
       background: linear-gradient(
         90deg,
-        var(--bg-light-clr) 65%,
-        var(--bg-light-clr) 81%,
+        var(--blocked-content-bg) 65%,
+        var(--blocked-content-bg) 81%,
         transparent 100%
       );
       color: var(--fg-clr-oooo);
