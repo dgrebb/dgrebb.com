@@ -44,7 +44,7 @@ while test "$1" != --; do
     u | update)
         printDgMsg "Updating dependencies..."
         echo
-        cdfront && npx ncu -u --dep dev
+        cdfront && npx npm-check-updates -u --dep dev
         echo # newline
         printDgMsg "All dependencies up to date!"
         echo # newline
