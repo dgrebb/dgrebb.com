@@ -13,6 +13,7 @@
     "ref": "ENVIRONMENT=\"$ENV\" backstop reference --config=backstop.config.js",
     "ref.gh": "ENVIRONMENT=gh-\"$ENV\" backstop reference --config=backstop.config.js",
     "remote": "npx playwright install && ENVIRONMENT=\"$ENV\" backstop remote --config=backstop.config.js",
+    "remote.gh": "docker pull backstopjs/backstopjs && docker run -p 3000:3000 --platform linux/arm64 --rm -it -e ENVIRONMENT=\"$ENV\" --mount type=bind,source=\"$(pwd)\",target=/src backstopjs/backstopjs remote --config=backstop.config.js -d",
     "serve": "http-server -b -S -p 443 -a local.dgrebb.com -C ../../front/local.dgrebb.com.crt -K ../../front/local.dgrebb.com.key --cors='*' ../../front/build",
     "start": "ENVIRONMENT=\"$ENV\" pm2 start ecosystem.config.js && pm2 monit",
     "stop": "pm2 stop backstop && pm2 delete backstop && kill -9 $( lsof -i:3000 -t )",
