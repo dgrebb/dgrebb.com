@@ -10,7 +10,8 @@
   export let navItems;
 </script>
 
-<header class="header" id="header">
+<!-- svelte-ignore a11y-unknown-role -->
+<header class="header" id="header" role="header">
   <a href="#main" class="btn skip-to-content">Skip to Main Content</a>
   <div class="site-title">
     <NavHome {navHeading} {route} />

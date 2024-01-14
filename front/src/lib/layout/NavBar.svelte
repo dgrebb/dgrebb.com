@@ -5,7 +5,9 @@
   $: route = $page?.route?.id;
 </script>
 
-<nav class="nav-bar" aria-label="Site Pages">
+<!-- svelte-ignore a11y-no-redundant-roles -->
+
+<nav class="nav-bar" aria-label="Site Pages" role="navigation">
   <!-- <NavToggle /> -->
   <ul class="nav-list">
     {#each navItems as { href, title, childRoutes }}

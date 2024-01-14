@@ -16,7 +16,8 @@
 <PageTransition transitionKey={pathname}>
   <section class="cv meat">
     <span class="flourish" />
-    <header class="cv-masthead">
+    <!-- svelte-ignore a11y-unknown-role -->
+    <header class="cv-masthead" role="header">
       <a id="main">Main Content</a>
       <h1 class="page-heading">{title}</h1>
       <Links links={generalContent.filter((link) => link.cv === true)} />

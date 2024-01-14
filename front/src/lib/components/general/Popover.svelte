@@ -54,7 +54,8 @@
     use:clickOutside
     on:click_outside={(e) => hidePopover(e)}
   >
-    <header class="popover_title" class:titleless={!title}>
+    <!-- svelte-ignore a11y-unknown-role -->
+    <header class="popover_title" class:titleless={!title} role="header">
       {#if title}
         <h1 class="popover_title_heading">{title}</h1>
       {/if}
@@ -68,7 +69,8 @@
       </button>
     </header>
     {#if content}
-      <main class="popover_content">
+      <!-- svelte-ignore a11y-no-redundant-roles -->
+      <main class="popover_content" role="main">
         {@html content}
       </main>
     {/if}

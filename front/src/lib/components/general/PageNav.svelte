@@ -29,7 +29,8 @@
   }
 </script>
 
-<nav class="page-navigation" class:mini class:top>
+<!-- svelte-ignore a11y-no-redundant-roles -->
+<nav class="page-navigation" class:mini class:top role="navigation">
   {#if mini}
     <input
       type="checkbox"
