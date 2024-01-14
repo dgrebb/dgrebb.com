@@ -119,6 +119,7 @@ body {
 .bio a,
 .footer a,
 .privacy a,
+.category-posts-list .post-item-summary a,
 .cv a,
 .not-found a {
   transition-duration: var(--transition-duration);

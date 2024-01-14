@@ -60,9 +60,11 @@
     color: var(--fg-clr);
   }
   .post-item-summary,
-  a {
+  .post-item > a {
     display: flex;
+    position: relative;
     flex-direction: row;
+    z-index: 1;
     transition: color 0.5s;
     &:hover,
     &:focus,
