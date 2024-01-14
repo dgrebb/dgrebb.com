@@ -11,7 +11,7 @@
    * @property {string} metaRobots - The meta robots tag.
    * @property {string} canonicalURL - The canonical URL for the page.
    * @property {string} metaViewport - The meta viewport settings.
-   * @property {string} metaKeywords - The meta keywords for the page.
+   * @property {string} keywords - The meta keywords for the page.
    * @property {Object[]} metaSocial - The array of social network information.
    * @property {string} updatedAt - The last update time for the page.
    * @property {string} publishedAt - The published time for the page.
@@ -34,7 +34,7 @@
     metaRobots,
     canonicalURL,
     metaViewport,
-    metaKeywords,
+    keywords,
     metaSocial,
     updatedAt,
     publishedAt,
@@ -75,7 +75,7 @@
     {
       name: 'keywords',
       content:
-        metaKeywords ||
+        keywords ||
         'Dan Grebb, dgrebb, software, engineer, volunteer, craft, developer, web, Philadelphia, Pennsylvania',
     },
     {
