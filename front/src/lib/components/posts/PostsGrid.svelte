@@ -10,7 +10,7 @@
       style={lazyImage && `background-image: url('${lazyImage}');`}
     >
       <a href="/post/{slug}/" class="posts-grid-link">
-        <span class="link-bg">{title}</span>
+        <h2 class="link-bg">{title}</h2>
       </a>
     </li>
   {/each}
