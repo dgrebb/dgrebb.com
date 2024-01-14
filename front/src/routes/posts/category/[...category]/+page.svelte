@@ -30,7 +30,8 @@
 
 <PageTransition transitionKey={route}>
   <section class="category meat">
-    <header class="category-head">
+    <!-- svelte-ignore a11y-unknown-role -->
+    <header class="category-head" role="header">
       <a id="main">Main Content</a>
       <h1 class="page-heading">{headline}</h1>
       <!-- <TransitionFade transitionKey={name} delay={500} duration={333}>
@@ -88,7 +89,7 @@
       </TransitionElasticFly>
     </div>
 
-    <aside class="aside">
+    <aside class="aside" role="navigation">
       <PageNav {categories} {pathname} {setActiveLink} {category} />
     </aside>
   </section>

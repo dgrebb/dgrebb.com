@@ -37,14 +37,23 @@
 
 <span class="flourish" />
 <Header {navHeading} {navItems} {route} />
-<main class="main" class:secondary class:l-post={post} data-sveltekit-noscroll>
+<!-- svelte-ignore a11y-no-redundant-roles -->
+<main
+  class="main"
+  class:secondary
+  class:l-post={post}
+  data-sveltekit-noscroll
+  role="main"
+>
   <slot />
 </main>
 
+<!-- svelte-ignore a11y-unknown-role -->
 <footer
   class="footer"
   class:footer-secondary={secondary}
   data-sveltekit-noscroll
+  role="footer"
 >
   <Footer {copyleft} {copyright} />
 </footer>
