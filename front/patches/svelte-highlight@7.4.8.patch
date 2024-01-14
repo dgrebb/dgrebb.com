@@ -1,7 +1,7 @@
-diff --git a/node_modules/svelte-highlight/LineNumbers.svelte b/node_modules/svelte-highlight/LineNumbers.svelte
-index 704976d..1483d23 100644
---- a/node_modules/svelte-highlight/LineNumbers.svelte
-+++ b/node_modules/svelte-highlight/LineNumbers.svelte
+diff --git a/LineNumbers.svelte b/LineNumbers.svelte
+index 704976d98f45c0a472355927aed541adc0934806..1483d231bf576f849644280a8b0e306aae9e7d0e 100644
+--- a/LineNumbers.svelte
++++ b/LineNumbers.svelte
 @@ -24,14 +24,32 @@
    $: len_digits = lines.length.toString().length;
    $: len = len_digits - MIN_DIGITS < 1 ? MIN_DIGITS : len_digits;

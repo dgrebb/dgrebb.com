@@ -28,8 +28,7 @@
     "test.integration": "playwright test",
     "test.unit": "vitest",
     "test": "vitest",
-    "coverage": "vitest run --coverage",
-    "postinstall": "patch-package"
+    "coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@accuser/svelte-plausible-analytics": "dgrebb/svelte-plausible-analytics#downstream/feature-support-custom-pageview-properties",
@@ -74,5 +73,11 @@
     "vite-plugin-progress": "^0.0.7",
     "vitest": "^1.1.3"
   },
-  "type": "module"
+  "type": "module",
+  "pnpm": {
+    "patchedDependencies": {
+      "@sveltejs/kit@2.0.6": "patches/@sveltejs__kit@2.0.6.patch",
+      "svelte-highlight@7.4.8": "patches/svelte-highlight@7.4.8.patch"
+    }
+  }
 }

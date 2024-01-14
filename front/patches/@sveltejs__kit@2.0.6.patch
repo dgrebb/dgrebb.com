@@ -1,0 +1,26 @@
+diff --git a/src/exports/vite/index.js b/src/exports/vite/index.js
+index 5d685e8ee0d256b3a6e0ffde8a9d55149e14aa2b..73a5fad01ed7fac54fe2b607e7e4e1794dd98aba 100644
+--- a/src/exports/vite/index.js
++++ b/src/exports/vite/index.js
+@@ -573,8 +573,8 @@ function kit({ svelte_config }) {
+ 							input,
+ 							output: {
+ 								format: 'esm',
+-								entryFileNames: ssr ? '[name].js' : `${prefix}/[name].[hash].${ext}`,
+-								chunkFileNames: ssr ? 'chunks/[name].js' : `${prefix}/chunks/[name].[hash].${ext}`,
++								entryFileNames: ssr ? '[name].js' : `${prefix}/[hash].${ext}`,
++								chunkFileNames: ssr ? 'chunks/[name].js' : `${prefix}/chunks/[hash].${ext}`,
+ 								assetFileNames: `${prefix}/assets/[name].[hash][extname]`,
+ 								hoistTransitiveImports: false,
+ 								sourcemapIgnoreList
+@@ -588,8 +588,8 @@ function kit({ svelte_config }) {
+ 					worker: {
+ 						rollupOptions: {
+ 							output: {
+-								entryFileNames: `${prefix}/workers/[name]-[hash].js`,
+-								chunkFileNames: `${prefix}/workers/chunks/[name]-[hash].js`,
++								entryFileNames: `${prefix}/workers/[hash].js`,
++								chunkFileNames: `${prefix}/workers/chunks/[hash].js`,
+ 								assetFileNames: `${prefix}/workers/assets/[name]-[hash][extname]`,
+ 								hoistTransitiveImports: false
+ 							}
