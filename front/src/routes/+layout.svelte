@@ -36,7 +36,7 @@
 </script>
 
 <span class="flourish" />
-<Header {navHeading} {navItems} />
+<Header {navHeading} {navItems} {route} />
 <main class="main" class:secondary class:l-post={post} data-sveltekit-noscroll>
   <slot />
 </main>

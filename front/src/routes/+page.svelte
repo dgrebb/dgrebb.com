@@ -87,7 +87,7 @@
     </noscript>
 
     <a id="main">Main Content</a>
-    <h1 class="headline">{headline}</h1>
+    <h2 class="headline">{headline}</h2>
     {@html intro}
   </section>
 
