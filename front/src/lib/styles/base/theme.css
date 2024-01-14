@@ -108,6 +108,7 @@
     --code-highlight-bg-clr: var(--green);
     --code-hover-header-clr: var(--fg-clr-oo);
     --code-header-hover-clr: var(--highlight-clr);
+    --blocked-content-bg: white;
     --page-nav-heading: var(--fg-clr-oo);
     --page-nav-toggle-bg-clr: var(--sun-50);
     --page-nav-toggle-focus-bg-clr: var(--sun-50);
@@ -191,6 +192,7 @@ html.light-theme {
   --code-highlight-bg-clr: var(--green);
   --code-hover-header-clr: var(--fg-clr-oo);
   --code-header-hover-clr: var(--highlight-clr);
+  --blocked-content-bg: white;
   --page-nav-heading: var(--fg-clr-oo);
   --page-nav-toggle-bg-clr: var(--sun-50);
   --page-nav-toggle-focus-bg-clr: var(--sun-50);
@@ -279,6 +281,7 @@ html.light-theme {
     --code-header-hover-clr: var(--light);
     --code-copied-clr: var(--green);
     --code-highlight-bg-clr: var(--burnt-orange);
+    --blocked-content-bg: black;
     --page-nav-heading: var(--moon);
     --page-nav-toggle-bg-clr: var(--oxford-blue-a50);
     --page-nav-toggle-focus-bg-clr: var(--hardlight-clr);
@@ -352,6 +355,7 @@ html.dark-theme {
   --code-header-hover-clr: var(--light);
   --code-copied-clr: var(--green);
   --code-highlight-bg-clr: var(--burnt-orange);
+  --blocked-content-bg: black;
   --page-nav-heading: var(--moon);
   --page-nav-toggle-bg-clr: var(--oxford-blue-a50);
   --page-nav-toggle-focus-bg-clr: var(--hardlight-clr);
