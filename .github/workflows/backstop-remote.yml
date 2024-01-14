@@ -1,0 +1,67 @@
+name: Backstop Remote
+run-name: Running Backstop Remote
+
+on:
+  workflow_dispatch:
+
+permissions:
+  checks: write
+  contents: write
+  pull-requests: write
+
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+
+jobs:
+  backstop:
+    name: 📱 BackstopJS
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.env }}
+
+    env:
+      DEPLOY_ENV: ${{ inputs.env }}
+
+    steps:
+      - name: 𐂷 Checkout
+        uses: actions/checkout@v4
+        with:
+          repository: dgrebb/dgrebb.com
+          ref: ${{ github.ref }}
+          token: ${{ github.token }}
+          fetch-depth: 1
+          sparse-checkout: |
+            _ci/backstop
+
+      - name: ⚄ Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: ⬢ Setup Node & Cache
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+          cache-dependency-path: |
+            _ci/backstop/package.json
+            _ci/backstop/pnpm-lock.yaml
+            _ci/backstop/node_modules
+
+      - name: ↧ Install Dependencies
+        run: cd _ci/backstop && pnpm install && npx playwright install --with-deps
+
+      - name: "Running Remote {ಠʖಠ}"
+        id: backstop
+        continue-on-error: true
+        run: cd _ci/backstop && npx pm2 start "ENV=$DEPLOY_ENV pnpm remote.gh"
+
+      # TODO: https://github.com/tmshkr/ngrok-ssh
+      # TODO: https://github.com/tmshkr/ngrok-ssh-example/blob/main/.github/workflows/debug.yml
+      - name: Run ngrok
+        uses: LuisBoto/ngrok-tunnel-action@v0.1.7.2
+        with:
+          timeout: 1h
+          port: 3000
+          ngrok_authtoken: ${{ secrets.NGROK_AUTHTOKEN }}
+          tunnel_type: http
