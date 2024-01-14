@@ -220,7 +220,7 @@
 <!-- <button on:click={asideToggle} class="aside-toggle"
   >{asideLabel} Sidebar</button
 > -->
-<aside class="aside" class:show={showAside}>
+<aside class="aside" class:show={showAside} role="navigation">
   {#if (toc && toc.length) || (categories && categories.length) || (related && related.length)}
     <PageNav {toc} {categories} {related} {pathname} {setActiveLink} />
   {/if}
