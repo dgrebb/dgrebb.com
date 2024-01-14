@@ -1,7 +1,12 @@
 <script>
+  export let route;
   export let navHeading;
 </script>
 
 <a class="nav-home" href="/" aria-label="Dan Grebb | Home">
-  <h1>{navHeading}</h1>
+  {#if route === '/'}
+    <h1>{navHeading}</h1>
+  {:else}
+    {navHeading}
+  {/if}
 </a>
