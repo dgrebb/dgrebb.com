@@ -10,6 +10,15 @@
   }
 </script>
 
+<svelte:head>
+  <link
+    rel="preload"
+    href={animation}
+    as="image"
+    type="image/gif"
+    fetchpriority="high"
+  />
+</svelte:head>
 <div class="media-box">
   <figure class="animated-image">
     <div class="animation-player">
