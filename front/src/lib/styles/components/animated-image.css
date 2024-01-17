@@ -1,26 +1,15 @@
+.media-box {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  max-width: 100%;
+  height: auto;
+}
 .animated-image {
-  display: block;
   padding-bottom: 0.5rem;
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  height: auto;
   &:hover {
-    summary {
-      background-color: rgba(var(--clr-neut-800-rgb), 0.83);
-      color: var(--clr-neut-100);
-      &::before {
-        opacity: 0.5;
-      }
-      &:hover,
-      &:focus {
-        &::before {
-          opacity: 0.77;
-        }
-      }
-    }
-    [open] summary,
-    [open] summary::before {
-      opacity: 0.77;
-    }
     figcaption {
       opacity: 1;
     }
@@ -28,9 +17,9 @@
 
   .animation-player,
   img {
-    width: 100%;
-    height: 100%;
-    min-height: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: auto;
   }
 
   summary,
@@ -38,41 +27,34 @@
     border-radius: 0.33rem;
   }
   summary {
+    display: flex;
     position: absolute;
     top: 0.75rem;
     right: 0.75rem;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     z-index: 2;
-    transition-duration: var(--transition-duration);
-    transition-property: background-color, opacity, color;
-    transition-timing-function: var(--transition-timing-function);
     cursor: pointer;
-    border-radius: 0.33rem;
-    background-color: rgba(var(--clr-neut-900-rgb), 0.77);
-    padding: 0.33rem;
     color: var(--clr-neut-200);
     line-height: 1;
-    &::before {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      opacity: 0.33;
-      mix-blend-mode: difference;
-      transition-duration: var(--transition-duration);
-      transition-property: opacity;
-      transition-timing-function: var(--transition-timing-function);
-      border: 1px solid white;
-      content: '';
+    &:hover {
+      .play-icon,
+      .pause-icon {
+        opacity: 1;
+      }
     }
-    &:hover,
     &:focus,
     &:focus-visible {
-      background-color: rgba(var(--clr-neut-800-rgb), 0.95);
-      color: white;
-    }
-    &:focus-visible {
-      border: 1px solid transparent !important;
+      &:hover {
+        .play-icon,
+        .pause-icon {
+          opacity: 1;
+          border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+      }
     }
     &:active {
       top: 0.85rem;
@@ -80,6 +62,17 @@
     .play-icon,
     .pause-icon {
       vertical-align: middle;
+      opacity: 0.5;
+      mix-blend-mode: difference;
+      transition-duration: var(--transition-duration);
+      transition-property: background-color, opacity, border-color;
+      transition-timing-function: var(--transition-timing-function);
+      border: 1px solid rgba(255, 255, 255, 0.33);
+      border-radius: 0.33rem;
+      background-color: rgba(var(--clr-neut-900-rgb), 0.77);
+      padding: 0.5rem;
+      width: 4rem;
+      height: 3rem;
     }
     .pause-icon {
       display: none;
@@ -89,14 +82,31 @@
     }
   }
 
-  [open] summary,
-  [open] summary::before {
-    opacity: 0.33;
-  }
-
   [open] summary {
+    justify-content: end;
+    align-items: start;
+    &:focus,
+    &:focus-visible {
+      .play-icon,
+      .pause-icon {
+        opacity: 0.77;
+        padding: 0.25rem;
+        width: 2rem;
+        height: 1.5rem;
+      }
+      &:hover {
+        .play-icon,
+        .pause-icon {
+          opacity: 1;
+          border: 1px solid rgba(255, 255, 255, 0.77);
+        }
+      }
+    }
     &:hover {
-      opacity: 0.77;
+      .play-icon,
+      .pause-icon {
+        opacity: 0.5;
+      }
     }
     .play-icon {
       display: none;
@@ -128,10 +138,11 @@
   }
 
   .animation img {
-    display: inline-block;
+    display: inline;
     position: absolute;
     top: 0px;
     left: 0px;
+    color: rgba(0, 0, 0, 0);
   }
 
   figcaption {
@@ -155,12 +166,11 @@
 }
 
 .animation-player {
-  display: block;
   position: relative;
   box-shadow: var(--shadow-elevation-low);
-  width: 100%;
+  max-width: 100%;
 
   img {
-    width: 100%;
+    max-width: 100%;
   }
 }
