@@ -22,6 +22,8 @@ on:
         required: true
       GH_WORKFLOW_TOKEN:
         required: true
+env:
+  NODE_VERSION: 20
 
 jobs:
   lighthouse:
@@ -52,7 +54,7 @@ jobs:
       - name: ⬢ Setup Node & Cache
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: ${{ env.NODE_VERSION }}
           cache: "pnpm"
           cache-dependency-path: |
             _ci/perf/package.json
