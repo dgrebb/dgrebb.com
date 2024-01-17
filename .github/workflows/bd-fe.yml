@@ -68,6 +68,7 @@ permissions:
 
 env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+  NODE_VERSION: 20
 
 jobs:
   build_deploy:
@@ -142,7 +143,7 @@ jobs:
       - name: ⬢ Setup Node & Cache
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: ${{ env.NODE_VERSION }}
           cache: "pnpm"
           cache-dependency-path: |
             front/package.json
