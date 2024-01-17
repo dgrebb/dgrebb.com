@@ -29,7 +29,7 @@
     <section class="experience-timeline-item" class:current={!endDate}>
       <!-- svelte-ignore a11y-unknown-role -->
       <header class="item-basics" role="header">
-        <h1 class="item-title">{name}</h1>
+        <h2 class="item-title">{name}</h2>
         {#if endDate}<span class="arrow" aria-hidden="true"></span>{/if}
         <time datetime={startDate} class="experience-timeline-date">
           {#if endDate}
