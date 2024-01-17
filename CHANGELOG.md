@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.16.0] - 2024-01-17
+
+### 💡 Features
+
+- ***(front)*** Reflow post layout to full-width (#1028)
+- ***(terraform)*** Updates terraform modules to support ipv6, use tls >=1.2, and include csp (#1139)
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Uses correct property name for keywords (#1163)
+- ***(front)*** Removes CSP from SvelteKit (#1139)
+- ***(front)*** Adjusts size and margin of category listing items (#1157, #1158)
+- ***(github)*** Removes doubledash from pnpm script args
+
+### ♻️  Refactor
+
+- ***(front)*** Use pnpm patch for package changes
+
+### 💚 Continuous Integration
+
+- ***(github)*** Use composite action to install and cache backstop deps
+- ***(github)*** Adds backstop remote workflow (#1170)
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(front)*** Update style reset (#1168)
+- ***(front)*** Adds unnecessary roles based on w3 duplicity recommendtations (#1163)
+- ***(front)*** Updadtes layout and colors (#1163)
+- ***(front)*** Updates heading hierarchies (#1163)
+- ***(front)*** Updates FE dependencies and patches
+- ***(front)*** Clean up sveltekit prerender entries
+- ***(terraform)*** Upgrades to tf 2.3.2 and aws 5.32.1 providers (#1139)
+
 ## [3.15.0] - 2024-01-09
 
 ### 💡 Features
