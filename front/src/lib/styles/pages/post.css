@@ -168,7 +168,7 @@
     font-size: 3rem;
     line-height: 0.8;
     font-family: var(--font-lbb);
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 640px) {
       padding-top: 0.55rem;
       font-size: 3.5rem;
     }
@@ -522,7 +522,7 @@
     position: relative;
     float: right;
     z-index: 9;
-    margin-left: 3rem;
+    margin-left: 1.5rem;
     padding-bottom: 3rem;
     width: 25%;
     .page-navigation {
@@ -544,6 +544,10 @@
       padding: 0.175rem 0.25rem;
     }
     blockquote {
+      display: flex;
+      flex-direction: column;
+      width: auto;
+      max-width: 83%;
       & + h1,
       & + h2,
       & + h3,
