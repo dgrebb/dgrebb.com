@@ -16,7 +16,7 @@
     href={animation}
     as="image"
     type="image/gif"
-    fetchpriority="high"
+    fetchpriority="low"
   />
 </svelte:head>
 <div class="media-box">
