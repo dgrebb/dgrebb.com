@@ -16,12 +16,8 @@
     content: '';
   }
 
-  .post-article,
-  .aside,
-  .aside-toggle {
+  .post-article {
     position: relative;
-    position: relative;
-    z-index: 8;
     z-index: 8;
   }
 
@@ -280,7 +276,7 @@
     box-shadow: var(--shadow-elevation-medium);
     border-left: 0.5rem solid var(--hardlight-clr);
     border-radius: 0.5rem;
-    background-color: var(--blocked-content-bg);
+    background-color: var(--bg-light-clr);
     padding: 0.5rem 1.5rem;
     color: var(--fg-clr-oo);
     &::before {
@@ -521,14 +517,13 @@
   .post-hero {
     height: 400px;
   }
-  .post-article {
-    p > code {
-      padding: 0.175rem 0.25rem;
-    }
-  }
   .post .aside {
     display: block;
+    position: relative;
     float: right;
+    z-index: 9;
+    margin-left: 3rem;
+    padding-bottom: 3rem;
     width: 25%;
     .page-navigation {
       padding-left: 1rem;
@@ -538,9 +533,16 @@
     }
   }
   .post-article {
-    float: left;
     margin-bottom: 1rem;
-    width: 75%;
+    .summary {
+      margin-right: 25%;
+      p {
+        padding-right: 1.75rem;
+      }
+    }
+    p > code {
+      padding: 0.175rem 0.25rem;
+    }
     blockquote {
       & + h1,
       & + h2,
