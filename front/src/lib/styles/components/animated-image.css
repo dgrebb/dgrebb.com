@@ -57,7 +57,10 @@
       }
     }
     &:active {
-      top: 0.85rem;
+      .play-icon,
+      .pause-icon {
+        transform: translateY(0.033rem);
+      }
     }
     .play-icon,
     .pause-icon {
@@ -106,6 +109,12 @@
       .play-icon,
       .pause-icon {
         opacity: 0.5;
+      }
+    }
+    &:active {
+      .play-icon,
+      .pause-icon {
+        transform: translateY(0.033rem);
       }
     }
     .play-icon {

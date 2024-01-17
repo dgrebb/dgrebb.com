@@ -15,6 +15,7 @@ Use a better box model (opinionated).
 ::before,
 ::after {
   box-sizing: border-box;
+  min-width: 0;
 }
 
 /**
@@ -474,6 +475,11 @@ h5,
 h6 {
   font-weight: inherit;
   font-size: inherit;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 /**
