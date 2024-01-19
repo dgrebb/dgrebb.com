@@ -132,6 +132,20 @@
           "sortable": false
         }
       },
+      "skillBreakdown": {
+        "edit": {
+          "label": "Skill Breakdown",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "skillBreakdown",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "organizations": {
         "edit": {
           "label": "Organizations",
@@ -207,6 +221,21 @@
           "sortable": false
         }
       },
+      "certifications": {
+        "edit": {
+          "label": "Certifications",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "certifications",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "accomplishments": {
         "edit": {
           "label": "Accomplishments",
@@ -231,20 +260,6 @@
         },
         "list": {
           "label": "responsibilities",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "wisdom": {
-        "edit": {
-          "label": "wisdom",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "wisdom",
           "searchable": false,
           "sortable": false
         }
@@ -277,17 +292,16 @@
           "sortable": false
         }
       },
-      "certifications": {
+      "personalDevelopment": {
         "edit": {
-          "label": "Certifications",
+          "label": "Personal Development",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "name"
+          "editable": true
         },
         "list": {
-          "label": "certifications",
+          "label": "personalDevelopment",
           "searchable": false,
           "sortable": false
         }
@@ -352,15 +366,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "title",
-        "name",
-        "organizations",
-        "projects",
-        "industries",
-        "skills",
-        "slug"
-      ],
       "edit": [
         [
           {
@@ -398,6 +403,12 @@
           {
             "name": "summary",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "skillBreakdown",
+            "size": 12
           }
         ],
         [
@@ -450,16 +461,25 @@
         ],
         [
           {
-            "name": "seo",
+            "name": "personalDevelopment",
             "size": 12
           }
         ],
         [
           {
-            "name": "wisdom",
+            "name": "seo",
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "title",
+        "name",
+        "organizations",
+        "projects",
+        "industries",
+        "skills",
+        "slug"
       ]
     }
   },

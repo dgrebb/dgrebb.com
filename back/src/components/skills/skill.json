@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_skills_skills",
+  "info": {
+    "displayName": "Skill Breakdown",
+    "icon": "chartPie",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "skill": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::skill.skill"
+    },
+    "percentage": {
+      "type": "integer",
+      "required": true
+    },
+    "summary": {
+      "type": "text"
+    }
+  }
+}

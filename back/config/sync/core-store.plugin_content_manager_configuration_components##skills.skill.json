@@ -1,0 +1,98 @@
+{
+  "key": "plugin_content_manager_configuration_components::skills.skill",
+  "value": {
+    "uid": "skills.skill",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "percentage",
+      "defaultSortBy": "id",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "skill": {
+        "edit": {
+          "label": "Skill",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "skill",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "summary": {
+        "edit": {
+          "label": "Summary",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "summary",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "percentage": {
+        "edit": {
+          "label": "Percentage",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "percentage",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "skill",
+        "summary",
+        "percentage"
+      ],
+      "edit": [
+        [
+          {
+            "name": "skill",
+            "size": 4
+          },
+          {
+            "name": "summary",
+            "size": 8
+          }
+        ],
+        [
+          {
+            "name": "percentage",
+            "size": 4
+          }
+        ]
+      ]
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

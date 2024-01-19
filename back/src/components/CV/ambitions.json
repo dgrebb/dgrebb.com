@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_cv_ambitions",
+  "info": {
+    "displayName": "Ambitions",
+    "icon": "magic"
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "text"
+    }
+  }
+}

@@ -39,9 +39,12 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
+    },
+    "skillBreakdown": {
+      "type": "component",
+      "repeatable": true,
+      "component": "skills.skill"
     },
     "organizations": {
       "type": "relation",
@@ -73,6 +76,12 @@
       "target": "api::award.award",
       "inversedBy": "experiences"
     },
+    "certifications": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::certification.certification",
+      "mappedBy": "experiences"
+    },
     "accomplishments": {
       "type": "component",
       "repeatable": true,
@@ -83,10 +92,10 @@
       "repeatable": true,
       "component": "cv.responsibilities"
     },
-    "wisdom": {
+    "personalDevelopment": {
       "type": "component",
       "repeatable": true,
-      "component": "cv.wisdom"
+      "component": "cv.ambitions"
     },
     "body": {
       "type": "richtext"
@@ -95,12 +104,6 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
-    },
-    "certifications": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::certification.certification",
-      "mappedBy": "experiences"
     }
   }
 }

@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_cv_wisdoms",
+  "info": {
+    "displayName": "Personal Development",
+    "icon": "lightbulb",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Ambition": {
+      "displayName": "Ambitions",
+      "type": "component",
+      "repeatable": true,
+      "component": "cv.ambitions"
+    }
+  }
+}

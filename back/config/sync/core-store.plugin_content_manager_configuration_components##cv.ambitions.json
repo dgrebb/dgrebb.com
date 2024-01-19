@@ -1,14 +1,14 @@
 {
-  "key": "plugin_content_manager_configuration_components::cv.wisdom",
+  "key": "plugin_content_manager_configuration_components::cv.ambitions",
   "value": {
-    "uid": "cv.wisdom",
+    "uid": "cv.ambitions",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "Lesson",
-      "defaultSortBy": "Lesson",
+      "mainField": "description",
+      "defaultSortBy": "description",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,51 +20,50 @@
           "sortable": false
         }
       },
-      "Lesson": {
+      "description": {
         "edit": {
-          "label": "Lesson",
+          "label": "Description",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Lesson",
+          "label": "description",
           "searchable": true,
           "sortable": true
         }
       },
-      "Description": {
+      "summary": {
         "edit": {
-          "label": "Description",
+          "label": "Summary",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Description",
-          "searchable": false,
-          "sortable": false
+          "label": "summary",
+          "searchable": true,
+          "sortable": true
         }
       }
     },
     "layouts": {
       "list": [
         "id",
-        "Lesson"
+        "description",
+        "summary"
       ],
       "edit": [
         [
           {
-            "name": "Lesson",
+            "name": "description",
             "size": 6
-          }
-        ],
-        [
+          },
           {
-            "name": "Description",
-            "size": 12
+            "name": "summary",
+            "size": 6
           }
         ]
       ]
