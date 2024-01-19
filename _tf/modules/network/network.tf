@@ -10,6 +10,7 @@ data "aws_route53_zone" "main" {
 
 # Reference to default VPC
 resource "aws_default_vpc" "default" {
+  assign_generated_ipv6_cidr_block = true
 }
 
 # Default subnets
@@ -23,7 +24,9 @@ resource "aws_default_subnet" "this" {
 resource "aws_db_subnet_group" "this" {
   name        = var.dashed_domain
   description = "${var.domain} subnets"
-  subnet_ids  = [for subnet in aws_default_subnet.this : subnet.id]
+  # TODO: Set up IPv6
+  # supported_network_types = ["DUAL"]
+  subnet_ids = [for subnet in aws_default_subnet.this : subnet.id]
 }
 
 # ------------------------------------------------------------------------------
@@ -119,7 +122,7 @@ resource "aws_acm_certificate_validation" "reports" {
 # CMS Record, Cert, and Validation
 # ------------------------------------------------------------------------------
 
-resource "aws_route53_record" "cms" {
+resource "aws_route53_record" "cms_a" {
   zone_id         = data.aws_route53_zone.main.zone_id
   name            = var.cmsdomain
   type            = "A"
@@ -129,6 +132,22 @@ resource "aws_route53_record" "cms" {
     zone_id                = var.alb.zone_id
     evaluate_target_health = false
   }
+
+  depends_on = [var.alb]
+}
+
+resource "aws_route53_record" "cms_aaaa" {
+  zone_id         = data.aws_route53_zone.main.zone_id
+  name            = var.cmsdomain
+  type            = "A"
+  allow_overwrite = true
+  alias {
+    name                   = var.alb.dns_name
+    zone_id                = var.alb.zone_id
+    evaluate_target_health = false
+  }
+
+  depends_on = [var.alb]
 }
 
 resource "aws_acm_certificate" "cms" {
