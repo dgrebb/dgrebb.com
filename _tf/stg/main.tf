@@ -58,7 +58,8 @@ module "database" {
   db_password         = var.db_password
   instance_class      = "db.t3.micro"
   skip_final_snapshot = true
-  public_access       = true
+  # Public access needs "DUAL" mode to be disabled in database module first.
+  public_access = false
 }
 
 module "management" {
