@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.16.1] - 2024-01-20
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Reduce fetchpriority of animated images
+
+### 💚 Continuous Integration
+
+- ***(terraform)*** Ipv6 support for vpc and security groups (#1171)
+- ***(terraform)*** Upgrades to and requires Terraform 1.7.0 with hashicorp/aws 5.33.0 (#1176)
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(back)*** Override vite in backend package.json (CVE-2024-23331)
+- ***(back)*** Updates BE deps for CVE-2024-23331
+- ***(back)*** Fix update script
+- ***(front)*** Updates FE dependencies for CVE-2024-23331
+- ***(front)*** Use h2 for CV titles
+
 ## [3.16.0] - 2024-01-17
 
 ### 💡 Features
