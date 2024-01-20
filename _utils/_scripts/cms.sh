@@ -51,14 +51,14 @@ while test "$1" != --; do
         setBackEnv ld
         APP_KEYS=$(pass dg/cms/appkeys)
         filename=export_$(date '+%Y.%m.%d_%H-%M-%S')
-        cdback && npm run -- --silent strapi export -f ./.backups/${filename} -k ${APP_KEYS}
+        cdback && npm run -s -- strapi export -f ./.backups/${filename} -k ${APP_KEYS}
         break
         ;;
     im | import)
         setBackEnv ld
         APP_KEYS=$(pass dg/cms/appkeys)
         filename=export_$(date '+%Y.%m.%d_%H-%M-%S')
-        cdback && npm run -- --silent strapi import -f ./.backups/$2 -k ${APP_KEYS}
+        cdback && npm run -s -- strapi import -f ./.backups/$2 -k ${APP_KEYS}
         break
         ;;
     u | update)
