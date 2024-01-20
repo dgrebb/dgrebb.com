@@ -38,13 +38,13 @@
     "@iconify-json/icon-park-outline": "^1.1.15",
     "@iconify-json/mdi": "^1.1.64",
     "@iconify-json/ph": "^1.1.10",
-    "@iconify-json/simple-icons": "^1.1.87",
+    "@iconify-json/simple-icons": "^1.1.88",
     "@iconify-json/typcn": "^1.1.9",
-    "@playwright/test": "^1.40.1",
+    "@playwright/test": "^1.41.1",
     "@sveltejs/adapter-static": "^3.0.1",
-    "@sveltejs/kit": "^2.3.2",
+    "@sveltejs/kit": "^2.4.1",
     "@sveltejs/vite-plugin-svelte": "^3.0.1",
-    "autoprefixer": "^10.4.16",
+    "autoprefixer": "^10.4.17",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-svelte": "^2.35.1",
@@ -56,28 +56,28 @@
     "postcss-import": "^16.0.0",
     "postcss-nested": "^6.0.1",
     "postcss-nesting": "^12.0.2",
-    "prettier": "^3.2.1",
+    "prettier": "^3.2.4",
     "prettier-plugin-css-order": "^2.0.1",
     "prettier-plugin-svelte": "^3.1.2",
-    "rollup-plugin-bundle-stats": "^4.9.0",
+    "rollup-plugin-bundle-stats": "^4.9.1",
     "rollup-plugin-visualizer": "^5.12.0",
     "slugger": "^1.0.1",
-    "svelte": "^4.2.8",
+    "svelte": "^4.2.9",
     "svelte-check": "^3.6.3",
     "svelte-highlight": "7.4.8",
     "svelte-meta-tags": "^3.1.0",
     "svelte-sitemap": "^2.6.0",
     "typescript": "^5.3.3",
     "unplugin-icons": "^0.18.2",
-    "vite": "^5.0.11",
+    "vite": "^5.0.12",
     "vite-plugin-progress": "^0.0.7",
-    "vitest": "^1.2.0"
+    "vitest": "^1.2.1"
   },
   "type": "module",
   "pnpm": {
     "patchedDependencies": {
       "svelte-highlight@7.4.8": "patches/svelte-highlight@7.4.8.patch",
-      "@sveltejs/kit@2.3.2": "patches/@sveltejs__kit@2.3.2.patch"
+      "@sveltejs/kit@2.4.1": "patches/@sveltejs__kit@2.4.1.patch"
     }
   }
 }
