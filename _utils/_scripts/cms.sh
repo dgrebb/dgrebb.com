@@ -20,21 +20,21 @@ while test "$1" != --; do
         setBackEnv ld
         cdback &&
             trap 'printf "\n"; printDgMsg "Done!" ; exit 0' SIGINT
-        npm run develop
+        pnpm --silent develop
         break
         ;;
     ad | admin-dev)
         setBackEnv ld
         cdback &&
             trap 'printf "\n"; printDgMsg "Done!" ; exit 0' SIGINT
-        npm run develop -- --watch-admin
+        pnpm --silent develop --watch-admin
         break
         ;;
     ds | dev-stage)
         setBackEnv ls
         cdback &&
             trap 'printf "\n"; printDgMsg "Done!" ; exit 0' SIGINT
-        npm run develop -- --watch-admin
+        pnpm --silent develop --watch-admin
         break
         ;;
     i | install)
@@ -44,21 +44,21 @@ while test "$1" != --; do
         ;;
     b | build)
         setBackEnv ld
-        cdback && npm run build
+        cdback && pnpm --silent build
         break
         ;;
     ba | backup)
         setBackEnv ld
         APP_KEYS=$(pass dg/cms/appkeys)
         filename=export_$(date '+%Y.%m.%d_%H-%M-%S')
-        cdback && npm run -s -- strapi export -f ./.backups/${filename} -k ${APP_KEYS}
+        cdback && pnpm --silent strapi export -f ./.backups/${filename} -k ${APP_KEYS}
         break
         ;;
     im | import)
         setBackEnv ld
         APP_KEYS=$(pass dg/cms/appkeys)
         filename=export_$(date '+%Y.%m.%d_%H-%M-%S')
-        cdback && npm run -s -- strapi import -f ./.backups/$2 -k ${APP_KEYS}
+        cdback && pnpm --silent strapi import -f ./.backups/$2 -k ${APP_KEYS}
         break
         ;;
     u | update)
@@ -72,7 +72,7 @@ while test "$1" != --; do
         fi
         echo "Updating Strapi, related packages, installing, and building..."
         rm -rf package-lock.json node_modules && npm i
-        npm run build && dg c d
+        pnpm --silent build && dg c d
         break
         ;;
     du | dump)
