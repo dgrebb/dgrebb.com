@@ -1,5 +1,5 @@
 #!/bin/bash
-source $directory/_scripts/functions.sh
+source $DGPATH/_scripts/functions.sh
 
 if [[ $1 != p ]]; then EVENT_JSON="dev"; else EVENT_JSON="main"; fi
 
@@ -17,7 +17,7 @@ fi
 
 act --pull=false \
     -P ubuntu-latest=github-actions-test:latest \
-    -e $directory/../_ci/dispatches/${EVENT_JSON}.workflow_dispatch.json \
+    -e $DGPATH/../_ci/dispatches/${EVENT_JSON}.workflow_dispatch.json \
     -s GITHUB_TOKEN=$(pass dg/github/pat) \
     -s PUBLIC_ENV=development \
     -s API_PATH_NAVIGATION="$(pass dg/cms/api/paths/navigation)" \

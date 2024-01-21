@@ -1,6 +1,6 @@
 #!/bin/bash
-source $directory/_scripts/functions.sh
+source $DGPATH/_scripts/functions.sh
 
-cd $directory/../
+cd $DGPATH/../
 config="_utils/_cliff/config.toml"
 git cliff -c $config --unreleased

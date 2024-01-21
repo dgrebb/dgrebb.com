@@ -1,5 +1,5 @@
 #!/bin/bash
-source $directory/_scripts/functions.sh
+source $DGPATH/_scripts/functions.sh
 
 backstopURL='http://localhost:3000/bd/html_report?remote'
 
@@ -13,7 +13,7 @@ fi
 
 echo "${ENV} is the environment"
 
-cd $directory/../_ci/backstop
+cd $DGPATH/../_ci/backstop
 if [[ $1 == 'ref' ]]; then
     echo "Generating reference bitmaps for ${ENV}"
     if [[ $ENV == 'local' ]]; then

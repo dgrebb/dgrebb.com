@@ -1,12 +1,12 @@
 #!/bin/bash
-source $directory/_scripts/functions.sh
+source $DGPATH/_scripts/functions.sh
 
 if [ $# -eq 0 ]; then
     printDgErr "Argument for local (l), staging (s), or production (p) is required."
     exit 1
 fi
 
-frontEnvFile=$directory/../front/.env
+frontEnvFile=$DGPATH/../front/.env
 >$frontEnvFile
 
 printDgBnr "Setting ${ENV} environment variables..."
@@ -20,7 +20,7 @@ else
 fi
 
 echo "API_KEY=\"$(pass dg/api/${1}/apikey)\"" | tee -a $frontEnvFile >/dev/null
-echo "RELEASE=\"local@$(cat $directory/../front/package.json | jq -r '.version')"\" | tee -a $frontEnvFile >/dev/null
+echo "RELEASE=\"local@$(cat $DGPATH/../front/package.json | jq -r '.version')"\" | tee -a $frontEnvFile >/dev/null
 echo "PUBLIC_ENV=${ENV}" | tee -a $frontEnvFile >/dev/null
 echo "ORIGIN=$(pass dg/www/${1}/domain)" | tee -a $frontEnvFile >/dev/null
 echo "API_PATH_NAVIGATION=$(pass dg/cms/api/paths/navigation)" | tee -a $frontEnvFile >/dev/null

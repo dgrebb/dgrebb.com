@@ -1,6 +1,6 @@
 #!/bin/bash
-export directory=$(dirname $(realpath /usr/local/bin/dg))
-source $directory/_scripts/functions.sh
+export DGPATH=$(dirname $(realpath /usr/local/bin/dg))
+source $DGPATH/_scripts/functions.sh
 
 showHelp() {
     printf "${NC}$(basename "$0") [-h] [ d db dbl drb drbl r f cms tf] -- cli to manage dgrebb.com\n
@@ -27,35 +27,35 @@ fi
 while test "$1" != --; do
     case $1 in
     c | cms)
-        /bin/bash $directory/_scripts/cms.sh $2 $3
+        /bin/bash $DGPATH/_scripts/cms.sh $2 $3
         break
         ;;
     f | front)
-        /bin/bash $directory/_scripts/front.sh $2 $3 $4
+        /bin/bash $DGPATH/_scripts/front.sh $2 $3 $4
         break
         ;;
     l | lint)
-        cd $directory/../front && pnpm run lint
+        cd $DGPATH/../front && pnpm run lint
         break
         ;;
     ck | check)
-        cd $directory/../front && pnpm run check
+        cd $DGPATH/../front && pnpm run check
         break
         ;;
     d | docker)
-        /bin/bash $directory/_scripts/docker.sh $2 $3
+        /bin/bash $DGPATH/_scripts/docker.sh $2 $3
         break
         ;;
     tf | terraform)
-        /bin/bash $directory/_scripts/terraform.sh $2 $3 $4 $5 $6
+        /bin/bash $DGPATH/_scripts/terraform.sh $2 $3 $4 $5 $6
         break
         ;;
     b | bump)
-        /bin/bash $directory/_scripts/bump.sh
+        /bin/bash $DGPATH/_scripts/bump.sh
         break
         ;;
     ch | changelog)
-        /bin/bash $directory/_scripts/changelog.sh
+        /bin/bash $DGPATH/_scripts/changelog.sh
         break
         ;;
     g | github)
@@ -67,37 +67,37 @@ while test "$1" != --; do
         break
         ;;
     a | act)
-        /bin/bash $directory/_scripts/act.sh $2 $3
+        /bin/bash $DGPATH/_scripts/act.sh $2 $3
         break
         ;;
     tp | test-performance)
-        /bin/bash $directory/_scripts/perf.sh $2 $3 $4
+        /bin/bash $DGPATH/_scripts/perf.sh $2 $3 $4
         break
         ;;
     tv | test-visual | backstop)
-        /bin/bash $directory/_scripts/visual-regression.sh test $2
+        /bin/bash $DGPATH/_scripts/visual-regression.sh test $2
         break
         ;;
     tvt | test-visual-skip-build | backstop-test)
-        /bin/bash $directory/_scripts/visual-regression.sh test-now $2
+        /bin/bash $DGPATH/_scripts/visual-regression.sh test-now $2
         break
         ;;
     tvr | test-visual-remote-service | backstop-remote)
-        /bin/bash $directory/_scripts/visual-regression.sh remote $2
+        /bin/bash $DGPATH/_scripts/visual-regression.sh remote $2
         break
         ;;
     tvref | test-visual-ref | backstop-reference)
-        /bin/bash $directory/_scripts/visual-regression.sh ref $2
+        /bin/bash $DGPATH/_scripts/visual-regression.sh ref $2
         break
         ;;
     tva | test-visual-approve | backstop-approve)
-        /bin/bash $directory/_scripts/visual-regression.sh approve $2
+        /bin/bash $DGPATH/_scripts/visual-regression.sh approve $2
         break
         ;;
     sp | spelling | cspell)
-        cd $directory/../_ci/spell
+        cd $DGPATH/../_ci/spell
         trap exit 0 INT
-        /bin/bash $directory/../_ci/spell/content.sh $2
+        /bin/bash $DGPATH/../_ci/spell/content.sh $2
         break
         ;;
     -h | --help)
@@ -109,14 +109,14 @@ while test "$1" != --; do
         break
         ;;
     *)
-        projectPath=$(realpath ${directory}/..)
+        projectPath=$(realpath $DGPATH/..)
         if [ $(pwd) = ${projectPath} ]; then
             printDgErr "Unexpected args — you done goofed!" ]
             echo
             showHelp
         else
             printDgMsg "Moving to project directory"
-            cd ${directory}/../
+            cd $DGPATH/../
             $SHELL
         fi
         break

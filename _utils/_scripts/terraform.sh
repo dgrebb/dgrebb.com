@@ -1,17 +1,20 @@
 #!/bin/bash
-source $directory/_scripts/functions.sh
+source $DGPATH/_scripts/functions.sh
 
-environment=$1
-state_bucket=$(pass dg/aws/$environment/state-bucket)
-region=$(pass dg/aws/region)
-key="terraform.tfstate"
+ENV=$1
+BACKEND_CONFIG=$DGPATH/../_tf/$ENV/backend.hcl
+
+# Set up transient backend config
+echo "state_bucket=$(pass dg/aws/$ENV/state-bucket)" >>$BACKEND_CONFIG
+echo "region=$(pass dg/aws/region)" >>$BACKEND_CONFIG
+echo "key=terraform.tfstate" >>$BACKEND_CONFIG
 
 if [ $# -eq 0 ]; then
     printDgErr "Missing args for Terraform commands!"
 else
     while test "$2" != --; do
-        cd $directory/../_tf/$environment
-        printDgMsg "Working with Terraform in --- ${environment} --- environment!"
+        cd $DGPATH/../_tf/$ENV
+        printDgMsg "Working with Terraform in --- ${ENV} --- environment!"
         case $2 in
         f | fmt | format)
             printDgMsg "Formatting..."
@@ -27,25 +30,25 @@ else
         i | init)
             setTfEnv
             printDgMsg "Initializing..."
-            terraform init -backend-config="key=$key" -backend-config="bucket=$state_bucket" -backend-config="region=$region"
+            terraform init -backend-config=backend.hcl
             break 2
             ;;
         iu | init-upgrade)
             setTfEnv
             printDgMsg "Upgrading Terraform..."
-            terraform init -backend-config="key=$key" -backend-config="bucket=$state_bucket" -backend-config="region=$region" -upgrade
+            terraform init -backend-config=backend.hcl -upgrade
             break 2
             ;;
         ir | init-reconfigure)
             setTfEnv
             printDgMsg "Upgrading Terraform..."
-            terraform init -backend-config="key=$key" -backend-config="bucket=$state_bucket" -backend-config="region=$region" -reconfigure
+            terraform init -backend-config=backend.hcl -reconfigure
             break 2
             ;;
         im | import)
             setTfEnv
             printDgMsg "Initializing..."
-            terraform import -backend-config="key=$key" -backend-config="bucket=$state_bucket" -backend-config="region=$region" $3 $4
+            terraform import -backend-config=backend.hcl $3 $4
             break 2
             ;;
         p | plan)
