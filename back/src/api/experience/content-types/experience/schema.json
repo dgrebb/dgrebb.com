@@ -4,7 +4,7 @@
   "info": {
     "singularName": "experience",
     "pluralName": "experiences",
-    "displayName": "CV - Experiences",
+    "displayName": "👔 Experiences",
     "description": ""
   },
   "options": {
@@ -39,7 +39,9 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "organizations": {
       "type": "relation",

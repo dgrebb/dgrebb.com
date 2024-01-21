@@ -57,14 +57,14 @@
       "edit": [
         [
           {
-            "name": "Description",
-            "size": 12
+            "name": "Accomplishment",
+            "size": 6
           }
         ],
         [
           {
-            "name": "Accomplishment",
-            "size": 6
+            "name": "Description",
+            "size": 12
           }
         ]
       ]

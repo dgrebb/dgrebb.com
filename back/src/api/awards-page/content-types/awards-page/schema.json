@@ -4,7 +4,8 @@
   "info": {
     "singularName": "awards-page",
     "pluralName": "awards-pages",
-    "displayName": "Landing - Awards"
+    "displayName": "💼  Awards",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

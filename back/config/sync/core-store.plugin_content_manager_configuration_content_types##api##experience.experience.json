@@ -90,6 +90,20 @@
           "sortable": true
         }
       },
+      "story": {
+        "edit": {
+          "label": "Story",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "story",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "summary": {
         "edit": {
           "label": "Summary",
@@ -223,7 +237,7 @@
       },
       "wisdom": {
         "edit": {
-          "label": "Wisdom",
+          "label": "wisdom",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -276,20 +290,6 @@
           "label": "certifications",
           "searchable": false,
           "sortable": false
-        }
-      },
-      "story": {
-        "edit": {
-          "label": "Story",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "story",
-          "searchable": true,
-          "sortable": true
         }
       },
       "createdAt": {
@@ -352,6 +352,15 @@
       }
     },
     "layouts": {
+      "list": [
+        "title",
+        "name",
+        "organizations",
+        "projects",
+        "industries",
+        "skills",
+        "slug"
+      ],
       "edit": [
         [
           {
@@ -441,25 +450,16 @@
         ],
         [
           {
-            "name": "wisdom",
+            "name": "seo",
             "size": 12
           }
         ],
         [
           {
-            "name": "seo",
+            "name": "wisdom",
             "size": 12
           }
         ]
-      ],
-      "list": [
-        "title",
-        "name",
-        "organizations",
-        "projects",
-        "industries",
-        "skills",
-        "slug"
       ]
     }
   },
