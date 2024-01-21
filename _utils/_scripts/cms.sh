@@ -39,7 +39,7 @@ while test "$1" != --; do
         ;;
     i | install)
         setBackEnv ld
-        cdback && npm i
+        cdback && pnpm i
         break
         ;;
     b | build)
@@ -71,7 +71,7 @@ while test "$1" != --; do
             exit 1
         fi
         echo "Updating Strapi, related packages, installing, and building..."
-        rm -rf package-lock.json node_modules && npm i
+        rm -rf package-lock.json node_modules && pnpm i
         pnpm --silent build && dg c d
         break
         ;;
