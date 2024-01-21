@@ -3,8 +3,7 @@ description: Items to fix
 title: "🐞 [BUG]: "
 labels: ["bug"]
 projects: ["dgrebb.com"]
-assignees:
-  - dgrebb
+assignees: dgrebb
 body:
   - type: textarea
     id: what-happened

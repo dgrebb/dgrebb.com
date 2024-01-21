@@ -1,7 +1,7 @@
 ---
-name: Refactor
+name: ♽ Refactor
 about: Refactoring work.
-title: "♽[REF]: "
+title: "♽ [REF]: "
 labels: enhancement, refactor
 assignees: dgrebb
 
