@@ -1,5 +1,5 @@
 #!/bin/bash
-source $directory/_scripts/functions.sh
+source $DGPATH/_scripts/functions.sh
 
 # exec 3>&1 &>/dev/null
 if [ $# -eq 0 ]; then
@@ -93,7 +93,7 @@ while test "$1" != --; do
         break
         ;;
     r | bundle-report)
-        open $directory/../front/.report/index.html
+        open $DGPATH/../front/.report/index.html
         break
         ;;
     ba | baseline-report)

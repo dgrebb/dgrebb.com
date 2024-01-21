@@ -1,5 +1,5 @@
 #!/bin/bash
-source $directory/_scripts/functions.sh
+source $DGPATH/_scripts/functions.sh
 
 region=$(pass dg/aws/region)
 
@@ -14,25 +14,25 @@ else
         fi
         case $1 in
         b | build | bb | build-back)
-            cd $directory/../_docker
+            cd $DGPATH/../_docker
             printDgMsg "Building ${2}..."
             docker-compose -f _docker-compose.yml build
             break 2
             ;;
         ba | build-act)
-            cd $directory/../_docker
+            cd $DGPATH/../_docker
             printDgMsg "Building act testing image..."
             docker buildx build . -t github-actions-test -f act.Dockerfile --platform linux/amd64
             break 2
             ;;
         rb | rebuild)
-            cd $directory/../_docker
+            cd $DGPATH/../_docker
             printDgMsg "Rebuilding ${2}..."
             docker-compose -f _docker-compose.yml build --no-cache
             break 2
             ;;
         r | run)
-            cd $directory/../_docker
+            cd $DGPATH/../_docker
             printDgMsg "Running local container..."
             docker-compose -f _docker-compose.yml up
             break 2
@@ -44,6 +44,10 @@ else
             tag ${back_img} ${back_ecr_uri}
             # archive ${back_ecr_uri}:latest
             docker push ${back_ecr_uri}:latest
+            break 2
+            ;;
+        clean)
+            docker system prune -a --volumes
             break 2
             ;;
         *)

@@ -119,7 +119,10 @@ back/.backups
 # Local .terraform directories
 **/.terraform/*
 
-# .tfstate files
+# ----------- backend config
+backend.hcl
+
+# ----------- .tfstate files
 *.tfstate
 *.tfstate.*
 

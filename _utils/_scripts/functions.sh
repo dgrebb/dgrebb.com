@@ -1,19 +1,19 @@
 bluebg="\e[44m"
-green="32"
-red="31"
-yellow="33"
-BOLDRED="\e[1;${red}m"
-BOLDGREEN="\e[1;${green}m"
-BOLDYELLOW="\e[1;${yellow}m"
+green="\e[32m"
+red="\e[31m"
+yellow="\e[33m"
+BOLDRED="\e[1;32m"
+BOLDGREEN="\e[1;31m"
+BOLDYELLOW="\e[1;33m"
 
 NC="\033[0m" # No Color
 
 hello() {
-    $directory/_scripts/hello.sh
+    $DGPATH/_scripts/hello.sh
 }
 
 env() {
-    cd $directory/../back
+    cd $DGPATH/../back
     if [ $# -eq 0 ] || [ $1 = p ]; then
         setBackEnv p
         img p
@@ -39,7 +39,7 @@ img() {
 }
 
 fimg() {
-    cd $directory/../front
+    cd $DGPATH/../front
     if [ $# -eq 0 ] || [ $1 = p ]; then
         front_img=$(pass dg/www/domain)
         front_ecr_uri=$(pass dg/www/ecr-uri)
@@ -53,35 +53,35 @@ fimg() {
 
 setBackEnv() {
     printDgMsg "Setting Strapi .env..."
-    /bin/bash $directory/_scripts/setBackEnv.sh $1
+    /bin/bash $DGPATH/_scripts/setBackEnv.sh $1
 }
 
 setFrontEnv() {
-    /bin/bash $directory/_scripts/setFrontEnv.sh $1
+    /bin/bash $DGPATH/_scripts/setFrontEnv.sh $1
 }
 
 setDockerEnv() {
-    /bin/bash $directory/_scripts/setDockerEnv.sh $1
+    /bin/bash $DGPATH/_scripts/setDockerEnv.sh $1
 }
 
 shred() {
-    if [ -f $directory/../back/.env ]; then
+    if [ -f $DGPATH/../back/.env ]; then
         printDgMsg "Shredding Strapi .env..."
-        gshred $directory/../back/.env && rm $directory/../back/.env
+        gshred $DGPATH/../back/.env && rm $DGPATH/../back/.env
     fi
-    if [ -f $directory/../front/.env ]; then
+    if [ -f $DGPATH/../front/.env ]; then
         printDgMsg "Shredding Svelte .env..."
-        gshred $directory/../front/.env && rm $directory/../front/.env
+        gshred $DGPATH/../front/.env && rm $DGPATH/../front/.env
     fi
-    if [ -f $directory/../_docker/.env ]; then
+    if [ -f $DGPATH/../_docker/.env ]; then
         printDgMsg "Shredding Docker .env..."
-        gshred $directory/../_docker/.env && rm $directory/../_docker/.env
+        gshred $DGPATH/../_docker/.env && rm $DGPATH/../_docker/.env
     fi
 }
 
 setTfEnv() {
     printDgMsg "Setting Terraform vars..."
-    source $directory/../_tf/_scripts/set-tf-vars.sh
+    source $DGPATH/_scripts/setTFEnv.sh
 }
 
 retag() {
@@ -108,19 +108,19 @@ backstopRunTests() {
 }
 
 cdbackstop() {
-    cd ${directory}/../_ci/backstop
+    cd $DGPATH/../_ci/backstop
 }
 
 cdback() {
-    cd ${directory}/../back
+    cd $DGPATH/../back
 }
 
 cdfront() {
-    cd ${directory}/../front
+    cd $DGPATH/../front
 }
 
 cdperf() {
-    cd ${directory}/../_ci/perf
+    cd $DGPATH/../_ci/perf
 }
 
 printDg() {
@@ -128,17 +128,17 @@ printDg() {
 }
 
 printDgErr() {
-    printDg "${BOLDRED}${1}${NC}"
+    printDg "${red}${1}${NC}"
 }
 
 printDgMsg() {
-    printDg "${BOLDYELLOW}${1}${NC}"
+    printDg "${yellow}${1}${NC}"
 }
 
 printDgBnr() {
-    printDg "${bluebg}${BOLDYELLOW}${1}${NC}"
+    printDg "${bluebg}${BOLDGREEN}${1}${NC}"
 }
 
 warning() {
-    $directory/_scripts/warning.sh
+    $DGPATH/_scripts/warning.sh
 }
