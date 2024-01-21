@@ -4,7 +4,8 @@
   "info": {
     "singularName": "certifications-page",
     "pluralName": "certifications-pages",
-    "displayName": "Landing - Certifications"
+    "displayName": "💼  Certifications",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

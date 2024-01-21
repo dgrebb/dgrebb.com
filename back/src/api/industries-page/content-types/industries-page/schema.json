@@ -4,7 +4,8 @@
   "info": {
     "singularName": "industries-page",
     "pluralName": "industries-pages",
-    "displayName": "Landing - Industries"
+    "displayName": "💼  Industries",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "projects-page",
     "pluralName": "projects-pages",
-    "displayName": "Landing - Projects"
+    "displayName": "💼 Projects",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

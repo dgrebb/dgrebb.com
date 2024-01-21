@@ -4,7 +4,8 @@
   "info": {
     "singularName": "skills-page",
     "pluralName": "skills-pages",
-    "displayName": "Landing - Skills"
+    "displayName": "💼 Skills",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

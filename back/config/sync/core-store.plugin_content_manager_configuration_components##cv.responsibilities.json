@@ -36,7 +36,7 @@
       },
       "description": {
         "edit": {
-          "label": "description",
+          "label": "Description",
           "description": "",
           "placeholder": "",
           "visible": true,

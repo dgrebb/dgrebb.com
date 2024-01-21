@@ -4,7 +4,8 @@
   "info": {
     "singularName": "experiences-page",
     "pluralName": "experiences-pages",
-    "displayName": "Landing - Experiences"
+    "displayName": "💼  Experiences",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
