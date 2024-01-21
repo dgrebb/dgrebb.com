@@ -64,6 +64,7 @@ export async function load({ params }) {
       categoryDescription !== null
         ? categoryDescription
         : `"Read what I have to say about ${name}"`,
+    canonicalURL: seo?.canonicalURL ? seo?.canonicalURL : `https://www.dgrebb.com/posts/category/${category}/`
   };
 
   /**
