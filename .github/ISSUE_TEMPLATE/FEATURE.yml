@@ -3,8 +3,7 @@ description: What are we building?
 title: "✨ [FEAT]: "
 labels: "feature"
 projects: "dgrebb.com"
-assignees:
-  - dgrebb
+assignees: dgrebb
 body:
   - type: textarea
     id: summary
