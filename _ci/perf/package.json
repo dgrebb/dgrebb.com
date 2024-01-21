@@ -30,6 +30,11 @@
   "dependencies": {
     "npm-check-updates": "^16.14.12"
   },
+  "engines": {
+    "node": ">=16.0.0 <=20.x.x",
+    "npm": ">=6.0.0",
+    "pnpm": ">= 8.14.1"
+  },
   "pnpm": {
     "overrides": {
       "node-forge@<1.0.0": ">=1.0.0",
