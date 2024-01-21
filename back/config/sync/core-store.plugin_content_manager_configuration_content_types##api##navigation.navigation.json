@@ -22,7 +22,7 @@
       },
       "navItems": {
         "edit": {
-          "label": "navItems",
+          "label": "Nav Items",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "navHeading": {
         "edit": {
-          "label": "navHeading",
+          "label": "Nav Heading",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -108,25 +108,25 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "navItems",
-        "navHeading",
-        "createdAt"
-      ],
       "edit": [
-        [
-          {
-            "name": "navItems",
-            "size": 12
-          }
-        ],
         [
           {
             "name": "navHeading",
             "size": 6
           }
+        ],
+        [
+          {
+            "name": "navItems",
+            "size": 12
+          }
         ]
+      ],
+      "list": [
+        "id",
+        "navItems",
+        "navHeading",
+        "createdAt"
       ]
     }
   },

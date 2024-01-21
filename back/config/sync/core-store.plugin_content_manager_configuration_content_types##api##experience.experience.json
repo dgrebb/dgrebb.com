@@ -264,6 +264,20 @@
           "sortable": false
         }
       },
+      "personalDevelopment": {
+        "edit": {
+          "label": "Personal Development",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "personalDevelopment",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "body": {
         "edit": {
           "label": "Body",
@@ -288,20 +302,6 @@
         },
         "list": {
           "label": "seo",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "personalDevelopment": {
-        "edit": {
-          "label": "Personal Development",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "personalDevelopment",
           "searchable": false,
           "sortable": false
         }
@@ -407,12 +407,6 @@
         ],
         [
           {
-            "name": "skillBreakdown",
-            "size": 12
-          }
-        ],
-        [
-          {
             "name": "organizations",
             "size": 6
           },
@@ -443,7 +437,19 @@
         ],
         [
           {
+            "name": "skillBreakdown",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "body",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "personalDevelopment",
             "size": 12
           }
         ],
@@ -456,12 +462,6 @@
         [
           {
             "name": "responsibilities",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "personalDevelopment",
             "size": 12
           }
         ],

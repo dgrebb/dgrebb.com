@@ -64,8 +64,8 @@
       },
       "cv": {
         "edit": {
-          "label": "cv",
-          "description": "",
+          "label": "CV",
+          "description": "Show on CV page?",
           "placeholder": "",
           "visible": true,
           "editable": true

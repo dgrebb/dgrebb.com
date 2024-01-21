@@ -79,7 +79,7 @@
       },
       "seo": {
         "edit": {
-          "label": "seo",
+          "label": "SEO",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -151,11 +151,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "name",
-        "slug",
-        "skills"
-      ],
       "edit": [
         [
           {
@@ -185,6 +180,11 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "name",
+        "slug",
+        "skills"
       ]
     }
   },

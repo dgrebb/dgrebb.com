@@ -1,7 +1,6 @@
 {
   "key": "plugin_content_manager_configuration_components::cv.ambitions",
   "value": {
-    "uid": "cv.ambitions",
     "settings": {
       "bulkable": true,
       "filterable": true,
@@ -22,7 +21,7 @@
       },
       "description": {
         "edit": {
-          "label": "Description",
+          "label": "description",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +35,7 @@
       },
       "summary": {
         "edit": {
-          "label": "Summary",
+          "label": "summary",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -68,6 +67,7 @@
         ]
       ]
     },
+    "uid": "cv.ambitions",
     "isComponent": true
   },
   "type": "object",

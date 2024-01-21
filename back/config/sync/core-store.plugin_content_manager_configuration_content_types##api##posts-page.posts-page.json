@@ -22,7 +22,7 @@
       },
       "headline": {
         "edit": {
-          "label": "headline",
+          "label": "Headline",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "description": {
         "edit": {
-          "label": "description",
+          "label": "Description",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "seo": {
         "edit": {
-          "label": "seo",
+          "label": "SEO",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -122,12 +122,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "headline",
-        "seo",
-        "createdAt"
-      ],
       "edit": [
         [
           {
@@ -147,6 +141,12 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "headline",
+        "seo",
+        "createdAt"
       ]
     }
   },

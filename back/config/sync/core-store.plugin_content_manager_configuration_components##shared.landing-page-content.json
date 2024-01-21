@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Title",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "hero": {
         "edit": {
-          "label": "hero",
+          "label": "Hero",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "introduction": {
         "edit": {
-          "label": "introduction",
+          "label": "Introduction",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -64,8 +64,8 @@
       },
       "singleItemRoute": {
         "edit": {
-          "label": "singleItemRoute",
-          "description": "",
+          "label": "Item Route",
+          "description": "Full path to the `/route/[slug]` page.",
           "placeholder": "",
           "visible": true,
           "editable": true
