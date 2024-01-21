@@ -1,44 +1,42 @@
-# -------- Base Node -------- #
+# -------- Base -------- #
 FROM node:20-alpine AS base
 # Installing libvips-dev for sharp Compatibility
 RUN apk update && apk add --no-cache build-base \
     gcc autoconf automake zlib-dev libpng-dev \
     nasm bash vips-dev
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+WORKDIR /app
 
 # -------- Dependencies -------- #
-FROM base AS dependencies
-WORKDIR /opt/
-COPY package*.json ./
-# COPY ./patches ./patches
-RUN npm ci && npm cache clean --force
+# FROM base AS dependencies
+# COPY package.json pnpm-lock.yaml ./
+# RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile 
 
 # -------- Build -------- #
 FROM base AS build
-WORKDIR /opt/
-COPY --from=dependencies /opt/node_modules ./node_modules
-ENV PATH /opt/node_modules/.bin:$PATH
+COPY . /app
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile 
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
-WORKDIR /opt/app
-COPY . .
-RUN npm run build
+RUN pnpm run build
 
-# -------- Release -------- #
+# -------- Run -------- #
 FROM node:20-alpine
+COPY --from=build /app /app
+WORKDIR /app
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+ENV PATH="/app/node_modules/.bin:$PATH"
 RUN apk add --no-cache vips-dev
-WORKDIR /opt/
-COPY --from=build /opt/node_modules ./node_modules
-WORKDIR /opt/app
-COPY --from=build /opt/app ./
-ENV PATH /opt/node_modules/.bin:$PATH
+RUN corepack enable
 
-# -------- Healthcheck -------- #
 HEALTHCHECK --interval=30s --timeout=60s --retries=3 \
     CMD wget --no-verbose --tries=1 --spider \
     http://localhost:1337/_health || exit 1
 
-# -------- Run -------- #
-RUN chown -R node:node /opt/app
-USER node
+# RUN chown -R node:node /app
+# USER node
 EXPOSE 1337
-CMD ["npm", "run", "start"]
+CMD ["pnpm", "start"]
