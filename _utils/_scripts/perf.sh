@@ -1,5 +1,5 @@
 #!/bin/bash
-source $directory/_scripts/functions.sh
+source $DGPATH/_scripts/functions.sh
 
 if [[ $2 == "s" ]]; then
   URL="https://stg.dgrebb.com"

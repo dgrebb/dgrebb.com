@@ -1,12 +1,12 @@
 #!/bin/bash
-source $directory/_scripts/functions.sh
+source $DGPATH/_scripts/functions.sh
 
 # exec 3>&1 &>/dev/null
 if [ $# -eq 0 ]; then
     printf "\n${red}Argument for local (l) or production (p) is required.\n"
     exit 1
 fi
-backEnv=$directory/../back/.env
+backEnv=$DGPATH/../back/.env
 
 >$backEnv
 

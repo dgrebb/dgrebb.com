@@ -1,7 +1,8 @@
 #!/bin/bash
-source $directory/_scripts/functions.sh
-printDgMsg " ____   ___  ____  ____  ____  ____ 
-(    \ / __)(  _ \(  __)(  _ \(  _ \\
- ) D (( (_ \ )   / ) _)  ) _ ( ) _ (
-(____/ \___/(__\_)(____)(____/(____/
-v$(cz version -p)"
+source $DGPATH/_scripts/functions.sh
+printDgMsg "     _                _     _
+  __| | __ _ _ __ ___| |__ | |__
+ / _\` |/ _\` | '__/ _ \| '_ \|'_ \\
+| (_| | (_| | | |  __| |_) | |_) |
+ \__,_|\__, |_|  \___|_.__/|_.__/
+       |___/         v$(cz version -p)"

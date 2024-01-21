@@ -1,5 +1,5 @@
 #!/bin/bash
-source $directory/_scripts/functions.sh
+source $DGPATH/_scripts/functions.sh
 
 # exec 3>&1 &>/dev/null
 if [ $# -eq 0 ]; then
@@ -65,7 +65,7 @@ while test "$1" != --; do
         cdback
         current=$(cat package.json | jq -r '.dependencies["@strapi/strapi"]')
         latest=$(npm info @strapi/strapi version)
-        echo "The current Strapi version is $current. Have you updated $directory/../back/package.json with $latest?"
+        echo "The current Strapi version is $current. Have you updated $DGPATH/../back/package.json with $latest?"
         read -p $'\e[44m\n y/n \n  > ' -r
         if [[ ! $REPLY =~ ^[Yy]$ ]]; then
             exit 1

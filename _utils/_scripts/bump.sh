@@ -1,7 +1,7 @@
 #!/bin/bash
-source $directory/_scripts/functions.sh
+source $DGPATH/_scripts/functions.sh
 
-cd $directory/../
+cd $DGPATH/../
 config="_utils/_cliff/config.toml"
 file="CHANGELOG.md"
 str=$(cz bump --dry-run | awk '/tag to create: /')
@@ -46,7 +46,7 @@ else
     pnpm version $ver --reporter=silent
     cdback
     pnpm version $ver --reporter=silent
-    cd $directory/../
+    cd $DGPATH/../
     cz bump --files-only
     git status
 fi
