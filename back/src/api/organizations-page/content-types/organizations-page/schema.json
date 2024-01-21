@@ -4,7 +4,8 @@
   "info": {
     "singularName": "organizations-page",
     "pluralName": "organizations-pages",
-    "displayName": "Landing - Organizations"
+    "displayName": "💼  Organizations",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
