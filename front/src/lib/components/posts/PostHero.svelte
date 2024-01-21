@@ -1,4 +1,5 @@
 <script>
+  import '@styles/components/post-hero.css';
   /**
    * PostHero component.
    * @class
