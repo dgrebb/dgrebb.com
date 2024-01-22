@@ -64,7 +64,7 @@ export async function load({ params: { collection, slug } }) {
       itemData = data.length ? await shapeOrganizationData(data) : false;
       break;
     case 'experience':
-      endpoint += `?populate[hero]=*&populate[seo]=*&populate[skills]=*&populate[organizations]=*&populate[projects]=*&populate[industries]=*&populate[awards]=*&filters[slug][$eq]=${slug}`;
+      endpoint += `?populate[hero]=*&populate[body]=*&populate[seo]=*&populate[skills]=*&populate[organizations]=*&populate[projects]=*&populate[industries]=*&populate[awards]=*&populate[skillBreakdown][populate]=*&filters[slug][$eq]=${slug}`;
       data = await requestContent(endpoint, collection);
       // itemData = await shapeExperienceData(data);
       // TODO: Remove the ternaries when page-ready
