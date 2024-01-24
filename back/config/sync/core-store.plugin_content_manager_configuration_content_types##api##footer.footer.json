@@ -22,7 +22,7 @@
       },
       "copyleft": {
         "edit": {
-          "label": "copyleft",
+          "label": "Copyleft",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -108,12 +108,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "createdAt",
-        "updatedAt",
-        "createdBy"
-      ],
       "edit": [
         [
           {
@@ -127,6 +121,12 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "createdAt",
+        "updatedAt",
+        "createdBy"
       ]
     }
   },

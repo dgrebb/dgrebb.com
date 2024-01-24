@@ -30,6 +30,7 @@
       <!-- svelte-ignore a11y-unknown-role -->
       <header class="item-basics" role="header">
         <h2 class="item-title">{name}</h2>
+        <!-- <h2 class="item-title"><a href="/cv/experience/{slug}">{name}</a></h2> -->
         {#if endDate}<span class="arrow" aria-hidden="true"></span>{/if}
         <time datetime={startDate} class="experience-timeline-date">
           {#if endDate}

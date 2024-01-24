@@ -132,6 +132,20 @@
           "sortable": false
         }
       },
+      "skillBreakdown": {
+        "edit": {
+          "label": "Skill Breakdown",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "skillBreakdown",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "organizations": {
         "edit": {
           "label": "Organizations",
@@ -207,44 +221,17 @@
           "sortable": false
         }
       },
-      "accomplishments": {
+      "certifications": {
         "edit": {
-          "label": "Accomplishments",
+          "label": "Certifications",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "name"
         },
         "list": {
-          "label": "accomplishments",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "responsibilities": {
-        "edit": {
-          "label": "Responsibilities",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "responsibilities",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "wisdom": {
-        "edit": {
-          "label": "wisdom",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "wisdom",
+          "label": "certifications",
           "searchable": false,
           "sortable": false
         }
@@ -277,17 +264,16 @@
           "sortable": false
         }
       },
-      "certifications": {
+      "components": {
         "edit": {
-          "label": "Certifications",
+          "label": "Components",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "name"
+          "editable": true
         },
         "list": {
-          "label": "certifications",
+          "label": "components",
           "searchable": false,
           "sortable": false
         }
@@ -352,15 +338,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "title",
-        "name",
-        "organizations",
-        "projects",
-        "industries",
-        "skills",
-        "slug"
-      ],
       "edit": [
         [
           {
@@ -432,19 +409,19 @@
         ],
         [
           {
+            "name": "skillBreakdown",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "body",
             "size": 12
           }
         ],
         [
           {
-            "name": "accomplishments",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "responsibilities",
+            "name": "components",
             "size": 12
           }
         ],
@@ -453,13 +430,16 @@
             "name": "seo",
             "size": 12
           }
-        ],
-        [
-          {
-            "name": "wisdom",
-            "size": 12
-          }
         ]
+      ],
+      "list": [
+        "title",
+        "name",
+        "organizations",
+        "projects",
+        "industries",
+        "skills",
+        "slug"
       ]
     }
   },

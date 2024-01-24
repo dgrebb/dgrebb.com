@@ -98,3 +98,70 @@ export async function copyText(e) {
     }
   }
 }
+
+/**
+ * Calculates and returns a high-contrast color (either black or white)
+ * for optimal readability when displayed on top of the provided color.
+ * The function uses the luminance formula to determine the brightness
+ * of the input color and returns either black or white based on a
+ * luminance threshold.
+ *
+ * @param {string} hexColor - The hex code of the background color.
+ *                            Should be a valid hex color code starting with '#'
+ *                            and followed by six hexadecimal characters.
+ * @returns {string} A hex code ('#000000' for black or '#FFFFFF' for white)
+ *                   representing the high-contrast color.
+ *
+ * @example
+ * // returns '#000000'
+ * getHighContrastHexColor("#00FF00");
+ *
+ * @example
+ * // returns '#FFFFFF'
+ * getHighContrastHexColor("#0000FF");
+ */
+export const getHighContrastHexColor = function getHighContrastHexColor(
+  hexColor
+) {
+  // Convert hex color to RGB
+  const r = parseInt(hexColor.substring(1, 3), 16);
+  const g = parseInt(hexColor.substring(3, 5), 16);
+  const b = parseInt(hexColor.substring(5, 7), 16);
+
+  // Calculate luminance
+  const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+
+  // Return high contrast color
+  return luminance > 186 ? '#000000' : '#FFFFFF'; // 186 is a commonly used threshold
+};
+
+/**
+ * Converts a hexadecimal color value to its RGB representation in string format.
+ *
+ * @param {string} hex - The hexadecimal color string to convert. It can optionally start with '#'.
+ * @returns {string|null} A string representing the red (r), green (g), and blue (b)
+ *                        RGB values separated by commas, each as integers in the range 0-255.
+ *                        Returns null if the input is not a valid hexadecimal color string.
+ *
+ * @example
+ * // returns "255, 255, 255"
+ * getRGBFromHex("#ffffff");
+ *
+ * @example
+ * // returns "0, 0, 0"
+ * getRGBFromHex("000000");
+ *
+ * @example
+ * // returns null
+ * getRGBFromHex("#zzz");
+ */
+export const getRGBFromHex = function getRGBFromHex(hex) {
+  if (!/^#?([a-f\d]{6})$/i.test(hex)) {
+    return null;
+  }
+  const hexNormalized = hex.startsWith('#') ? hex.slice(1) : hex;
+  const r = parseInt(hexNormalized.substring(0, 2), 16);
+  const g = parseInt(hexNormalized.substring(2, 4), 16);
+  const b = parseInt(hexNormalized.substring(4, 6), 16);
+  return `${r}, ${g}, ${b}`;
+};

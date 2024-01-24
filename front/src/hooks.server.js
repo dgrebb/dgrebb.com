@@ -6,8 +6,12 @@ export function handleError({ error, event }) {
     return;
   }
 
+  console.warn('----------------------------');
+  console.dir({
+    params: event.params,
+    route: event.route,
+  });
   console.warn(error);
-  console.dir(event);
 
   return {
     message: 'Whoops!',

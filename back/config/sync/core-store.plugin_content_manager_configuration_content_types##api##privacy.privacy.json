@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Title",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "details": {
         "edit": {
-          "label": "details",
+          "label": "Details",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "seo": {
         "edit": {
-          "label": "seo",
+          "label": "SEO",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -122,12 +122,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "createdAt",
-        "updatedAt"
-      ],
       "edit": [
         [
           {
@@ -147,6 +141,12 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "createdAt",
+        "updatedAt"
       ]
     }
   },

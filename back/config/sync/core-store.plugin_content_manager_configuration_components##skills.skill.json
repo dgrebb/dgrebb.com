@@ -1,14 +1,13 @@
 {
-  "key": "plugin_content_manager_configuration_components::cv.wisdom",
+  "key": "plugin_content_manager_configuration_components::skills.skill",
   "value": {
-    "uid": "cv.wisdom",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "Lesson",
-      "defaultSortBy": "Lesson",
+      "mainField": "percentage",
+      "defaultSortBy": "id",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,55 +19,77 @@
           "sortable": false
         }
       },
-      "Lesson": {
+      "skill": {
         "edit": {
-          "label": "Lesson",
+          "label": "Skill",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "name"
         },
         "list": {
-          "label": "Lesson",
+          "label": "skill",
           "searchable": true,
           "sortable": true
         }
       },
-      "Description": {
+      "percentage": {
         "edit": {
-          "label": "Description",
+          "label": "Percentage",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Description",
-          "searchable": false,
-          "sortable": false
+          "label": "percentage",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "summary": {
+        "edit": {
+          "label": "Summary",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "summary",
+          "searchable": true,
+          "sortable": true
         }
       }
     },
     "layouts": {
       "list": [
         "id",
-        "Lesson"
+        "skill",
+        "percentage",
+        "summary"
       ],
       "edit": [
         [
           {
-            "name": "Lesson",
-            "size": 6
+            "name": "skill",
+            "size": 4
+          },
+          {
+            "name": "summary",
+            "size": 8
           }
         ],
         [
           {
-            "name": "Description",
-            "size": 12
+            "name": "percentage",
+            "size": 4
           }
         ]
       ]
     },
+    "uid": "skills.skill",
     "isComponent": true
   },
   "type": "object",

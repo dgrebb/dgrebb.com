@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_cv_achievements",
+  "info": {
+    "displayName": "Achievements",
+    "icon": "star",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "regex": "Use the title text to highlight a phrase before the description."
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}
