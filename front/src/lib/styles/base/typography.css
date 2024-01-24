@@ -134,14 +134,12 @@
     .heading-anchor-link {
       display: inline;
       position: absolute;
-      top: 0;
-      right: 0;
-      left: auto;
       opacity: 0;
       transition:
         opacity var(--transition-duration-md) ease-in-out,
         color var(--transition-duration-md);
       box-sizing: content-box;
+      inset: 0 0 auto auto;
       border: none;
       padding-right: 0.5rem;
       width: 100%;
