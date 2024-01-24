@@ -85,8 +85,7 @@
       }
       .experience-timeline-date {
         position: absolute;
-        top: 0;
-        right: 0;
+        inset: 0 0 auto auto;
         line-height: 1.5;
         .print-date {
           display: inline;

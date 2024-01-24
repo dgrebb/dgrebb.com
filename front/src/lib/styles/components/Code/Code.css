@@ -24,16 +24,13 @@
   font-size: 1rem;
   &::before {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
     z-index: 6;
     mask:
       linear-gradient(3deg, #fff 0 0) content-box,
       linear-gradient(3deg, #fff 0 0);
     mask-composite: exclude;
     box-sizing: border-box;
+    inset: 0;
     border-radius: 0.5rem;
     background: var(--rim-light-mask-bg);
     padding: 1px 1px 0 0;
