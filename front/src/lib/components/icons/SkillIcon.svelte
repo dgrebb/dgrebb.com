@@ -4,7 +4,7 @@
    * @module IconComponent
    * @param {string} name - The aria-label for the SVG icon.
    * @param {string} slug - The unique identifier for the icon.
-   * @param {string} color - The color to use for SVG `currentColor`.
+   * @param {string} iconColor - The color to use for SVG `currentColor`.
    */
   import { onMount } from 'svelte';
 
@@ -90,9 +90,7 @@
   class:loaded
   class:failed
   aria-label={name}
-  style={iconColor
-    ? `color: ${iconColor}; filter: brightness(1.3);`
-    : false}
+  style={iconColor ? `color: ${iconColor}; filter: brightness(1.3);` : false}
 >
   <use href={iconURL} />
 </svg>

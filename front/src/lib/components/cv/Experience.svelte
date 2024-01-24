@@ -6,7 +6,7 @@
     name,
     title,
     body,
-    skills: { data: skills },
+    // skills: { data: skills },
     highlightedSkills,
     projects: { data: projects },
   } = content.experience;

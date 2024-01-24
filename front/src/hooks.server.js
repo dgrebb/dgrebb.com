@@ -6,7 +6,7 @@ export function handleError({ error, event }) {
     return;
   }
 
-  console.warn('----------------------------')
+  console.warn('----------------------------');
   console.dir({
     params: event.params,
     route: event.route,
