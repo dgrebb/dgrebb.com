@@ -236,48 +236,6 @@
           "sortable": false
         }
       },
-      "accomplishments": {
-        "edit": {
-          "label": "Accomplishments",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "accomplishments",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "responsibilities": {
-        "edit": {
-          "label": "Responsibilities",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "responsibilities",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "personalDevelopment": {
-        "edit": {
-          "label": "Personal Development",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "personalDevelopment",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "body": {
         "edit": {
           "label": "Body",
@@ -302,6 +260,20 @@
         },
         "list": {
           "label": "seo",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "components": {
+        "edit": {
+          "label": "Components",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "components",
           "searchable": false,
           "sortable": false
         }
@@ -449,19 +421,7 @@
         ],
         [
           {
-            "name": "personalDevelopment",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "accomplishments",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "responsibilities",
+            "name": "components",
             "size": 12
           }
         ],

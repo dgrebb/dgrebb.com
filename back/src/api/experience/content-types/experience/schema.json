@@ -48,6 +48,17 @@
       "repeatable": true,
       "component": "skills.skill"
     },
+    "body": {
+      "type": "richtext"
+    },
+    "components": {
+      "type": "dynamiczone",
+      "components": [
+        "cv.accomplishments",
+        "cv.personal-development",
+        "cv.responsibilities"
+      ]
+    },
     "organizations": {
       "type": "relation",
       "relation": "manyToMany",
@@ -83,24 +94,6 @@
       "relation": "manyToMany",
       "target": "api::certification.certification",
       "mappedBy": "experiences"
-    },
-    "accomplishments": {
-      "type": "component",
-      "repeatable": true,
-      "component": "cv.accomplishments"
-    },
-    "responsibilities": {
-      "type": "component",
-      "repeatable": true,
-      "component": "cv.responsibilities"
-    },
-    "personalDevelopment": {
-      "type": "component",
-      "repeatable": true,
-      "component": "cv.ambitions"
-    },
-    "body": {
-      "type": "richtext"
     },
     "seo": {
       "type": "component",

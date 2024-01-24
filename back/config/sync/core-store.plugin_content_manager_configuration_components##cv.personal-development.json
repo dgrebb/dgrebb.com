@@ -1,7 +1,6 @@
 {
-  "key": "plugin_content_manager_configuration_components::cv.personaldevelopment",
+  "key": "plugin_content_manager_configuration_components::cv.personal-development",
   "value": {
-    "uid": "cv.personaldevelopment",
     "settings": {
       "bulkable": true,
       "filterable": true,
@@ -20,16 +19,16 @@
           "sortable": false
         }
       },
-      "Ambition": {
+      "achievement": {
         "edit": {
-          "label": "Ambition",
+          "label": "Achievement",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Ambition",
+          "label": "achievement",
           "searchable": false,
           "sortable": false
         }
@@ -38,17 +37,18 @@
     "layouts": {
       "list": [
         "id",
-        "Ambition"
+        "achievement"
       ],
       "edit": [
         [
           {
-            "name": "Ambition",
+            "name": "achievement",
             "size": 12
           }
         ]
       ]
     },
+    "uid": "cv.personal-development",
     "isComponent": true
   },
   "type": "object",
