@@ -29,15 +29,12 @@
   summary {
     display: flex;
     position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    bottom: 0.75rem;
-    left: 0.75rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 2;
     cursor: pointer;
+    inset: 0.75rem;
     color: var(--clr-neut-200);
     line-height: 1;
     &:hover {
@@ -136,10 +133,7 @@
 
   summary + * {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: 0;
   }
 
   .animation {
@@ -149,8 +143,7 @@
   .animation img {
     display: inline;
     position: absolute;
-    top: 0px;
-    left: 0px;
+    inset: 0 auto auto 0;
     color: rgba(0, 0, 0, 0);
   }
 
