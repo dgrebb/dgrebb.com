@@ -114,13 +114,15 @@ export async function copyText(e) {
  *
  * @example
  * // returns '#000000'
- * getHighContrastColor("#00FF00");
+ * getHighContrastHexColor("#00FF00");
  *
  * @example
  * // returns '#FFFFFF'
- * getHighContrastColor("#0000FF");
+ * getHighContrastHexColor("#0000FF");
  */
-export const getHighContrastColor = function getHighContrastColor(hexColor) {
+export const getHighContrastHexColor = function getHighContrastHexColor(
+  hexColor
+) {
   // Convert hex color to RGB
   const r = parseInt(hexColor.substring(1, 3), 16);
   const g = parseInt(hexColor.substring(3, 5), 16);
@@ -143,17 +145,17 @@ export const getHighContrastColor = function getHighContrastColor(hexColor) {
  *
  * @example
  * // returns "255, 255, 255"
- * hexToRGB("#ffffff");
+ * getRGBFromHex("#ffffff");
  *
  * @example
  * // returns "0, 0, 0"
- * hexToRGB("000000");
+ * getRGBFromHex("000000");
  *
  * @example
  * // returns null
- * hexToRGB("#zzz");
+ * getRGBFromHex("#zzz");
  */
-export const hexToRGB = function hexToRGB(hex) {
+export const getRGBFromHex = function getRGBFromHex(hex) {
   if (!/^#?([a-f\d]{6})$/i.test(hex)) {
     return null;
   }

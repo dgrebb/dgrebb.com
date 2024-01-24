@@ -1,6 +1,6 @@
 <script>
   import SkillIcon from '@components/icons/SkillIcon.svelte';
-  import { getHighContrastColor, hexToRGB } from '@utils';
+  import { getHighContrastHexColor, getRGBFromHex } from '@utils';
 
   export let skills;
 </script>
@@ -9,7 +9,7 @@
 
 <figure class="skill-graph">
   {#each skills as { name, slug, percentage, graphColor, iconColor, summary }}
-    {@const RGBColor = hexToRGB(graphColor)}
+    {@const RGBColor = getRGBFromHex(graphColor)}
     <div
       class="skill-graph__item"
       style={`
@@ -24,7 +24,7 @@
             {summary}
           </dd>{/if}
         {#if percentage}<dd class="skill-graph__item__details__def">
-            <span style={`color: ${getHighContrastColor(graphColor)};`}
+            <span style={`color: ${getHighContrastHexColor(graphColor)};`}
               >{percentage}&#65285;</span
             >
           </dd>{/if}

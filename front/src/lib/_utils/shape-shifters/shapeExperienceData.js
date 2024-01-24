@@ -32,7 +32,8 @@ export async function shapeExperienceData(data) {
         name,
         slug,
         percentage,
-        graphColor: graphColor || '#FE9739',
+        graphColor:
+          graphColor || Math.floor(Math.random() * 16777215).toString(16),
         iconColor,
         summary,
       };
