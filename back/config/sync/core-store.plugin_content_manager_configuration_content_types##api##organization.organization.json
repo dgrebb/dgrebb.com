@@ -22,7 +22,7 @@
       },
       "name": {
         "edit": {
-          "label": "name",
+          "label": "Name",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "slug": {
         "edit": {
-          "label": "slug",
+          "label": "Slug",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "images": {
         "edit": {
-          "label": "images",
+          "label": "Images",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -78,7 +78,7 @@
       },
       "summary": {
         "edit": {
-          "label": "summary",
+          "label": "Summary",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -92,7 +92,7 @@
       },
       "industries": {
         "edit": {
-          "label": "industries",
+          "label": "Industries",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -107,7 +107,7 @@
       },
       "projects": {
         "edit": {
-          "label": "projects",
+          "label": "Projects",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -122,7 +122,7 @@
       },
       "skills": {
         "edit": {
-          "label": "skills",
+          "label": "Skills",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -137,7 +137,7 @@
       },
       "body": {
         "edit": {
-          "label": "body",
+          "label": "Body",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -151,7 +151,7 @@
       },
       "seo": {
         "edit": {
-          "label": "seo",
+          "label": "SEO",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -165,7 +165,7 @@
       },
       "experiences": {
         "edit": {
-          "label": "experiences",
+          "label": "Experiences",
           "description": "",
           "placeholder": "",
           "visible": true,

@@ -1,0 +1,57 @@
+{
+  "key": "plugin_content_manager_configuration_components::cv.personal-development",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "id",
+      "defaultSortBy": "id",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "achievement": {
+        "edit": {
+          "label": "Achievement",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "achievement",
+          "searchable": false,
+          "sortable": false
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "achievement"
+      ],
+      "edit": [
+        [
+          {
+            "name": "achievement",
+            "size": 12
+          }
+        ]
+      ]
+    },
+    "uid": "cv.personal-development",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

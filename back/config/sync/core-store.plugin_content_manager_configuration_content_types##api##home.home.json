@@ -22,7 +22,7 @@
       },
       "bioPicture": {
         "edit": {
-          "label": "bioPicture",
+          "label": "Picture",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "headline": {
         "edit": {
-          "label": "headline",
+          "label": "Headline",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "intro": {
         "edit": {
-          "label": "intro",
+          "label": "Intro",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -64,7 +64,7 @@
       },
       "links": {
         "edit": {
-          "label": "links",
+          "label": "Links",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -78,7 +78,7 @@
       },
       "seo": {
         "edit": {
-          "label": "seo",
+          "label": "SEO",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -150,12 +150,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "headline",
-        "links",
-        "seo"
-      ],
       "edit": [
         [
           {
@@ -185,6 +179,12 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "headline",
+        "links",
+        "seo"
       ]
     }
   },

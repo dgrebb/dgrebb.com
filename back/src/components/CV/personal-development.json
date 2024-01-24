@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_cv_personal_developments",
+  "info": {
+    "displayName": "Personal Development",
+    "icon": "star",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "achievement": {
+      "displayName": "Achievements",
+      "type": "component",
+      "repeatable": true,
+      "component": "cv.achievements"
+    }
+  }
+}

@@ -145,6 +145,7 @@
     );
     --skill-icon-brightness: brightness(0.5);
     --skill-icon-brightness-hover: brightness(1);
+    --skill-graph-blend: luminosity;
   }
 }
 html.light-theme {
@@ -223,6 +224,7 @@ html.light-theme {
   );
   --skill-icon-brightness: brightness(0.5);
   --skill-icon-brightness-hover: brightness(1);
+  --skill-graph-blend: luminosity;
 }
 
 /* --------------------------------------- */
@@ -309,6 +311,7 @@ html.light-theme {
     );
     --skill-icon-brightness: brightness(1);
     --skill-icon-brightness-hover: brightness(1.25);
+    --skill-graph-blend: multiply;
   }
 }
 html.dark-theme {
@@ -389,4 +392,5 @@ html.dark-theme {
   );
   --skill-icon-brightness: brightness(1);
   --skill-icon-brightness-hover: brightness(1.25);
+  --skill-graph-blend: multiply;
 }

@@ -1,13 +1,12 @@
 {
-  "key": "plugin_content_manager_configuration_components::general.links",
+  "key": "plugin_content_manager_configuration_components::cv.achievements",
   "value": {
-    "uid": "general.links",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "icon",
+      "mainField": "title",
       "defaultSortBy": "title",
       "defaultSortOrder": "ASC"
     },
@@ -34,44 +33,16 @@
           "sortable": true
         }
       },
-      "url": {
+      "description": {
         "edit": {
-          "label": "URL",
+          "label": "Description",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "url",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "icon": {
-        "edit": {
-          "label": "Icon",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "icon",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "cv": {
-        "edit": {
-          "label": "CV",
-          "description": "Show on CV page?",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "cv",
+          "label": "description",
           "searchable": true,
           "sortable": true
         }
@@ -81,32 +52,22 @@
       "list": [
         "id",
         "title",
-        "url",
-        "icon"
+        "description"
       ],
       "edit": [
         [
           {
+            "name": "description",
+            "size": 6
+          },
+          {
             "name": "title",
-            "size": 4
-          },
-          {
-            "name": "url",
-            "size": 4
-          }
-        ],
-        [
-          {
-            "name": "icon",
-            "size": 4
-          },
-          {
-            "name": "cv",
-            "size": 4
+            "size": 6
           }
         ]
       ]
     },
+    "uid": "cv.achievements",
     "isComponent": true
   },
   "type": "object",

@@ -27,19 +27,24 @@
       "max": 10,
       "required": true
     },
-    "classifications": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::classification.classification",
-      "mappedBy": "skills"
+    "graphColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color",
+      "required": true
+    },
+    "iconColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
     },
     "summary": {
       "type": "text"
     },
-    "projects": {
+    "experiences": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::project.project",
+      "target": "api::experience.experience",
       "mappedBy": "skills"
     },
     "organizations": {
@@ -48,16 +53,28 @@
       "target": "api::organization.organization",
       "mappedBy": "skills"
     },
-    "certifications": {
+    "projects": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::certification.certification",
+      "target": "api::project.project",
+      "mappedBy": "skills"
+    },
+    "classifications": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::classification.classification",
       "mappedBy": "skills"
     },
     "industries": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::industry.industry",
+      "mappedBy": "skills"
+    },
+    "certifications": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::certification.certification",
       "mappedBy": "skills"
     },
     "body": {
@@ -67,12 +84,6 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
-    },
-    "experiences": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::experience.experience",
-      "mappedBy": "skills"
     }
   }
 }
