@@ -26,7 +26,7 @@
     },
     "highlightedLines": {
       "type": "string",
-      "regex": "^ *\\d+ *(?:, *\\d+ *)*$"
+      "regex": "^(\\s*\\d+\\s*(-\\s*\\d+\\s*)?(,\\s*)?)+$"
     },
     "syntax": {
       "type": "enumeration",
