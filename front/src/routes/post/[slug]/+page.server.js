@@ -30,6 +30,39 @@ async function markItUp(text) {
 }
 
 /**
+ * Parses the highlighted lines string into an array of line numbers.
+ * Adjusts line numbers for zero-based indexing and sorts them in ascending order.
+ *
+ * @param {string|false} lines - The string of highlighted lines or false.
+ * @returns {Array<number>|false} An array of adjusted line numbers, or false if input is falsy.
+ */
+async function parseHighlightedLines(lines) {
+  if (!lines) {
+    return false;
+  }
+
+  return lines
+    .split(',')
+    .reduce((acc, part) => {
+      const range = part
+        .trim()
+        .split('-')
+        .map((num) => parseInt(num, 10) - 1);
+
+      if (range.length === 2) {
+        for (let i = range[0]; i <= range[1]; i++) {
+          acc.push(i);
+        }
+      } else {
+        acc.push(range[0]);
+      }
+
+      return acc;
+    }, [])
+    .sort((a, b) => a - b);
+}
+
+/**
  * Load function to fetch and process a blog post.
  *
  * @param {Object} params - Parameters object containing the slug.
@@ -73,7 +106,7 @@ export async function load({ params: { slug }, route }) {
     let parsedTOC;
 
     // Process each content component
-    const markedContent = await Promise.all(
+    const parsedContent = await Promise.all(
       content.map(async (c) => {
         switch (c.__component) {
           case 'posts.text':
@@ -82,12 +115,49 @@ export async function load({ params: { slug }, route }) {
             toc.push(...parsedTOC);
             // Render markdown text
             return { ...c, text: await markItUp(c.text) };
-          case 'posts.animated-image':
-            // Render figcaption if present
+          case 'posts.code':
             return {
               ...c,
-              figcaption: c.figcaption ? await markItUp(c.figcaption) : null,
+              highlightedLines: await parseHighlightedLines(c.highlightedLines),
+              startingLineNumber: c.startingLineNumber ?? 1,
             };
+          case 'posts.animated-image': {
+            const {
+              animation: {
+                data: {
+                  attributes: {
+                    url: animation,
+                    width,
+                    height,
+                    alternativeText: aAlt,
+                  },
+                },
+              },
+              still: {
+                data: {
+                  attributes: { url: still, alternativeText: sAlt },
+                },
+              },
+              figcaption,
+              ...rest
+            } = c;
+
+            const enhancedFigcaption = figcaption
+              ? await markItUp(figcaption)
+              : null;
+
+            return {
+              ...rest,
+              animation,
+              width,
+              height,
+              aAlt,
+              still,
+              sAlt,
+              slug,
+              figcaption: enhancedFigcaption,
+            };
+          }
           default:
             return c;
         }
@@ -122,7 +192,7 @@ export async function load({ params: { slug }, route }) {
       post: post || {},
       toc,
       summary: summary ? await markItUp(summary) : false,
-      content: markedContent,
+      content: parsedContent,
       pageMeta,
     };
   } catch (error) {

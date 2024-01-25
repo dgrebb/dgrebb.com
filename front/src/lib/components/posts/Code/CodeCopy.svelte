@@ -1,6 +1,6 @@
 <script>
   import { codeCopyClick } from '@utils/uiHelpers';
-  export let pageTitle, pageSlug, title, text, key;
+  export let pageTitle, slug, title, code, key;
   $: copied = false;
   let animations;
   let resets;
@@ -17,8 +17,8 @@
     button.closest('.syntax-highlighter').classList.toggle('copying', false);
 
     if (e.type === 'click' || e.code === 'Enter' || e.code === 'Space') {
-      codeCopyClick(pageTitle, pageSlug, title, key);
-      await navigator.clipboard.writeText(text);
+      codeCopyClick(pageTitle, slug, title, key);
+      await navigator.clipboard.writeText(code);
       button.classList.toggle('copying', true);
       setTimeout(() => {
         resets[1].beginElement();
