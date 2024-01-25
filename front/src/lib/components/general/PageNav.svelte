@@ -1,5 +1,5 @@
 <script>
-  import TableOfContents from '@components/content/TableOfContents.svelte';
+  import TableOfContents from '@components/posts/TableOfContents.svelte';
   import ClosePageNav from '@components/icons/ClosePageNav.svelte';
   import { categoryClick, relatedClick } from '@utils/uiHelpers.js';
   import { focusTrap } from '@utils/actions.js';
