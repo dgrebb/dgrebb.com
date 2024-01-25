@@ -57,7 +57,7 @@
     }
   }
   &.copying {
-    transform: scale(101%);
+    transform: scale(99%);
   }
   .title,
   > pre {

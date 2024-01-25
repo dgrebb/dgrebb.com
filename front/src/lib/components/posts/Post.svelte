@@ -1,8 +1,10 @@
 <script>
-  import AnimatedImage from '@components/content/AnimatedImage.svelte';
-  import Code from '@components/content/Code.svelte';
+  import AnimatedImage from '@components/posts/AnimatedImage.svelte';
+  import Code from '@components/posts/Code/Code.svelte';
   import Footnotes from '@components/posts/Footnotes.svelte';
   import PageNav from '@components/general/PageNav.svelte';
+  import PostText from '@components/posts/PostText.svelte';
+  import BlockQuote from '@components/posts/BlockQuote.svelte';
   import { popImage } from '@utils/popoverHandlers';
   import { copyText } from '@utils';
   import { onMount } from 'svelte';
@@ -34,24 +36,6 @@
     categories,
     related,
     pathname;
-
-  /** @type {boolean} */
-  let showAside = true;
-
-  /**
-   * Label for the aside toggle button.
-   * @type {string}
-   */
-  // eslint-disable-next-line no-unused-vars
-  let asideLabel = showAside ? 'Hide' : 'Show';
-
-  /**
-   * Toggles the visibility of the aside.
-   */
-  // eslint-disable-next-line no-unused-vars
-  function asideToggle() {
-    showAside = !showAside;
-  }
 
   /**
    * Sets the active link in the page navigation.
@@ -91,6 +75,13 @@
       image.addEventListener('click', (e) => popImage(e, slug));
     });
   });
+
+  const components = {
+    'posts.text': PostText,
+    'posts.quote': BlockQuote,
+    'posts.code': Code,
+    'posts.animated-image': AnimatedImage,
+  };
 </script>
 
 <svelte:head>
@@ -103,15 +94,12 @@
 {/if}
 <h1 class="post-title">{title}</h1>
 <div class="post-layout">
-  <!-- <button on:click={asideToggle} class="aside-toggle"
-  >{asideLabel} Sidebar</button
-> -->
-  <aside class="aside" class:show={showAside} role="navigation">
+  <aside class="aside" role="navigation">
     {#if (toc && toc.length) || (categories && categories.length) || (related && related.length)}
       <PageNav {toc} {categories} {related} {pathname} {setActiveLink} />
     {/if}
   </aside>
-  <article class="post-article" class:full={!showAside}>
+  <article class="post-article">
     <time
       class="pubdate"
       datetime={publishedAt}
@@ -123,82 +111,16 @@
       </div>
     {/if}
     {#if content}
-      {#each content as c, i}
-        {#if c.__component === 'posts.text'}
-          {@html c.text}
-        {/if}
-        {#if c.__component === 'posts.quote'}
-          <blockquote>
-            <p>{c.text}</p>
-            {#if c.citation}
-              <footer>
-                <cite>
-                  {#if c.citationLink}
-                    &mdash;<a
-                      href={c.citationLink}
-                      title={c.citationLinkTitle}
-                      target="_blank"
-                      rel="nofollow noopener noreferrer">{c.citation}</a
-                    >
-                  {:else}
-                    &mdash;{c.citation}
-                  {/if}
-                </cite>
-              </footer>
-            {/if}
-          </blockquote>
-        {/if}
-        {#if c.__component === 'posts.code'}
-          {@const lines =
-            c?.highlightedLines?.split(',').map((item) => Number(item - 1)) ||
-            false}
-          <Code
-            key={i}
-            pageTitle={title}
-            pageSlug={slug}
-            text={c.code}
-            lang={c.syntax}
-            title={c?.title}
-            lineNumbers={c.showLineNumbers === true || lines.length > 0}
-            startingLineNumber={c.startingLineNumber || 1}
-            copyButton={c?.showCopyButton === true}
-            highlightedLines={lines
-              ? lines.sort((a, b) => {
-                  return a - b;
-                })
-              : false}
-          />
-        {/if}
-        {#if c.__component === 'posts.animated-image'}
-          {@const {
-            animation: {
-              data: {
-                attributes: {
-                  url: animation,
-                  width,
-                  height,
-                  alternativeText: aAlt,
-                },
-              },
-            },
-            still: {
-              data: {
-                attributes: { url: still, alternativeText: sAlt },
-              },
-            },
-            figcaption,
-          } = c}
-          <AnimatedImage
-            {animation}
-            {width}
-            {height}
-            {aAlt}
-            {still}
-            {sAlt}
-            {figcaption}
-            {slug}
-          />
-        {/if}
+      {#each content as c, key}
+        <svelte:component
+          this={components[c.__component]}
+          {...c}
+          {key}
+          pageTitle={title}
+          {slug}
+        />
+        <!-- TODO: Remove these fields and components
+          if not in use by 24.04.01
         {#if c.__component === 'posts.columns'}
           {@const cols = c.columns}
           {@const count = cols.length}
@@ -217,6 +139,7 @@
             {@html c.html}
           </div>
         {/if}
+        -->
       {/each}
     {/if}
     {#if footnotes}

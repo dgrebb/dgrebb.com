@@ -6,17 +6,23 @@
   import json from 'svelte-highlight/languages/json';
   import plaintext from 'svelte-highlight/languages/plaintext';
   import xml from 'svelte-highlight/languages/xml';
-  import CodeCopy from './CodeCopy.svelte';
+  import CodeCopy from '@components/posts/Code/CodeCopy.svelte';
   import '@styles/components/Code/Code.css';
 
-  export let pageTitle, pageSlug, lang, text;
+  export let pageTitle, slug, syntax, code, showLineNumbers;
+
+  /**
+   * The highlighted lines as a string, which can include single numbers or ranges.
+   * If false, indicates that no lines are highlighted.
+   */
+  export let highlightedLines = false;
   export let key = false;
   export let title = null;
-  export let copyButton = false;
+  export let showCopyButton = false;
   export let startingLineNumber = 1;
-  export let lineNumbers = false;
-  export let highlightedLines = false;
-  let langLower = lang.toLowerCase();
+  export let lineNumbers =
+    showLineNumbers === true || highlightedLines.length > 0 || false;
+  let langLower = syntax.toLowerCase();
 
   let which = {
     shell: bash,
@@ -33,26 +39,26 @@
 
 <div
   class={`${
-    title === null && copyButton === false
+    title === null && showCopyButton === false
       ? 'headerless '
-      : title === null && copyButton === true
+      : title === null && showCopyButton === true
         ? 'titleless '
         : ''
   }syntax-highlighter`}
   data-code-instance-id={key}
 >
   {#if title !== null}
-    <span class="title full" class:copy={copyButton === true}>
+    <span class="title full" class:copy={showCopyButton === true}>
       {#if title}{title}{/if}
     </span>
   {/if}
-  {#if copyButton === true}
-    <CodeCopy {text} {key} {pageTitle} {pageSlug} {title} />
+  {#if showCopyButton === true}
+    <CodeCopy {code} {key} {pageTitle} {slug} {title} />
   {/if}
   {#if highlightedLines}
     {#if lineNumbers === true}
-      {#if lang === 'Svelte'}
-        <HighlightSvelte code={text} {language} let:highlighted>
+      {#if syntax === 'Svelte'}
+        <HighlightSvelte {code} {language} let:highlighted>
           <LineNumbers
             {highlighted}
             {startingLineNumber}
@@ -63,7 +69,7 @@
           />
         </HighlightSvelte>
       {:else}
-        <Highlight code={text} {language} let:highlighted>
+        <Highlight {code} {language} let:highlighted>
           <LineNumbers
             {highlighted}
             {startingLineNumber}
@@ -75,11 +81,11 @@
         </Highlight>
       {/if}
     {:else}
-      <Highlight code={text} {language} />
+      <Highlight {code} {language} />
     {/if}
-  {:else if lang === 'Svelte'}
-    <HighlightSvelte code={text} {language} />
+  {:else if syntax === 'Svelte'}
+    <HighlightSvelte {code} {language} />
   {:else}
-    <Highlight code={text} {language} />
+    <Highlight {code} {language} />
   {/if}
 </div>
