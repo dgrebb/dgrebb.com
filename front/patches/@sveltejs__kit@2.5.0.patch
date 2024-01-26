@@ -1,8 +1,8 @@
 diff --git a/src/exports/vite/index.js b/src/exports/vite/index.js
-index 94d511ab86e7dfb86c95c53faff302b4e243914d..791868a4abca35f9aba1f1bc50b3f02462a8bb49 100644
+index e80fb786aca949d57431406ab6a16394ed82a90a..6ec870b698711cacfb908ef52fb9f30b1a7eb995 100644
 --- a/src/exports/vite/index.js
 +++ b/src/exports/vite/index.js
-@@ -636,8 +636,8 @@ async function kit({ svelte_config }) {
+@@ -635,8 +635,8 @@ async function kit({ svelte_config }) {
  							input,
  							output: {
  								format: 'esm',
@@ -13,7 +13,7 @@ index 94d511ab86e7dfb86c95c53faff302b4e243914d..791868a4abca35f9aba1f1bc50b3f024
  								assetFileNames: `${prefix}/assets/[name].[hash][extname]`,
  								hoistTransitiveImports: false,
  								sourcemapIgnoreList
-@@ -651,8 +651,8 @@ async function kit({ svelte_config }) {
+@@ -650,8 +650,8 @@ async function kit({ svelte_config }) {
  					worker: {
  						rollupOptions: {
  							output: {

@@ -18,7 +18,7 @@ export async function shapeExperienceData(data) {
     updatedAt,
     publishedAt,
     introduction,
-    body = false,
+    body,
     skillBreakdown,
     name,
     hero,
@@ -62,7 +62,7 @@ export async function shapeExperienceData(data) {
     experience: {
       ...experience,
       highlightedSkills,
-      body,
+      body: body ? marked(body) : false,
       hero: hero?.data?.attributes || false,
     },
     pageMeta,
