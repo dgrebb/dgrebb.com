@@ -3,8 +3,8 @@
   "version": "3.16.1",
   "private": true,
   "scripts": {
-    "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --compiler-warnings \"css-unused-selector:ignore\"",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch --compiler-warnings \"css-unused-selector:ignore\"",
     "prettier": "prettier",
     "baseline": "mv -f ./.report/bundle/current/* ./.report/bundle/previous",
     "bundle-stats": "bundle-stats",

@@ -145,7 +145,7 @@
           align-items: center;
         }
         &__term {
-          & .skill-icon__svg & {
+          & .skill-icon__svg {
             padding: 2.5rem 0 0.25rem 0;
           }
         }

@@ -43,31 +43,13 @@ jobs:
           token: ${{ github.token }}
           fetch-depth: 1
           sparse-checkout: |
-            _ci/_utils
-            _ci/perf
+            .github/actions
+            _ci
 
-      - name: ⚄ Setup pnpm
-        uses: pnpm/action-setup@v2
+      - name: 🛢 Install Dependencies
+        uses: ./.github/actions/install-cache-deps
         with:
-          version: 8
-
-      - name: ⬢ Setup Node & Cache
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: "pnpm"
-          cache-dependency-path: |
-            _ci/perf/package.json
-            _ci/perf/pnpm-lock.yaml
-            _ci/perf/node_modules
-
-      - name: ↧ Install & Patch
-        run: |
-          cd _ci/perf && pnpm i
-
-      - name: 🌤️ Warmup CloudFront Cache
-        run: |
-          _ci/_utils/warmup.sh ${{ inputs.env }}
+          WORKSPACE_ROOT: _ci/perf
 
       - name: 🔦 Lighthouse
         id: lighthouse

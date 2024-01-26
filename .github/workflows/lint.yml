@@ -31,26 +31,14 @@ jobs:
           token: ${{ github.token }}
           fetch-depth: 1
           sparse-checkout: |
+            .github/actions
             front
 
-      - name: ⚄ Setup pnpm
-        uses: pnpm/action-setup@v2
+      - name: 🛢 Install Dependencies
+        uses: ./.github/actions/install-cache-deps
         with:
-          version: 8
-
-      - name: ⬢ Setup Node & Cache
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: "pnpm"
-          cache-dependency-path: |
-            front/package.json
-            front/pnpm-lock.yaml
-            front/node_modules
-
-      - name: ↧ Install Dependencies
-        run: cd front && pnpm install
+          WORKSPACE_ROOT: front
 
       - name: 👓 Check
         run: |
-          cd front && npm run lint
+          cd front && pnpm check && pnpm lint

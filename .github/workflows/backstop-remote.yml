@@ -32,25 +32,13 @@ jobs:
           token: ${{ github.token }}
           fetch-depth: 1
           sparse-checkout: |
-            _ci/backstop
+            .github/actions
+            _ci
 
-      - name: ⚄ Setup pnpm
-        uses: pnpm/action-setup@v2
+      - name: 🛢 Install Dependencies
+        uses: ./.github/actions/install-cache-deps
         with:
-          version: 8
-
-      - name: ⬢ Setup Node & Cache
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: "pnpm"
-          cache-dependency-path: |
-            _ci/backstop/package.json
-            _ci/backstop/pnpm-lock.yaml
-            _ci/backstop/node_modules
-
-      - name: ↧ Install Dependencies
-        run: cd _ci/backstop && pnpm install && npx playwright install --with-deps
+          WORKSPACE_ROOT: _ci
 
       - name: "Running Remote {ಠʖಠ}"
         id: backstop
