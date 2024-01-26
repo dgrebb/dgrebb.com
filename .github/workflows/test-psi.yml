@@ -46,7 +46,7 @@ jobs:
       - name: 🛢 Install Dependencies
         uses: ./.github/actions/install-cache-deps
         with:
-          WORKSPACE_ROOT: _ci
+          WORKSPACE_ROOT: _ci/perf
 
       - name: 🌤️ Warmup CloudFront Cache
         run: |
