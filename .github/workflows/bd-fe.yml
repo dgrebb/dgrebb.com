@@ -92,6 +92,14 @@ jobs:
           ref: ${{ github.ref }}
           token: ${{ github.token }}
           fetch-depth: 1
+          sparse-checkout: |
+            .github/actions
+            front
+
+      - name: 🛢 Install Dependencies
+        uses: ./.github/actions/install-cache-deps
+        with:
+          WORKSPACE_ROOT: front
 
       - name: 🤿 Set Vars
         id: vars
@@ -134,24 +142,6 @@ jobs:
           echo RELEASE="${RELEASE_NAME}" >> front/.env
           echo PUBLIC_ENV=${{ secrets.PUBLIC_ENV }} >> front/.env
           cat front/.env
-
-      - name: ⚄ Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
-      - name: ⬢ Setup Node & Cache
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: "pnpm"
-          cache-dependency-path: |
-            front/package.json
-            front/pnpm-lock.yaml
-            front/node_modules
-
-      - name: ↧ Install Dependencies
-        run: cd front && pnpm install
 
       - name: ↻ Build
         run: |
