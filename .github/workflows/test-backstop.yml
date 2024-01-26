@@ -121,7 +121,7 @@ jobs:
         if: steps.backstop.outcome != 'success'
         env:
           REPORT_PATH: ${{ inputs.env }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: backstop-report
           retention-days: 3
