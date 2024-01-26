@@ -51,6 +51,7 @@ module.exports = ({ env }) => {
         excludedTypes: ["admin-role", "i18n-locale", "user-role"],
         excludedConfig: [
           "core-store.core_admin_auth",
+          "core-store.plugin_content_manager_configuration_content_types::plugin::content-releases",
           "core-store.core_admin_project-settings",
           "core-store.plugin_users-permissions_grant",
           "core-store.plugin_i18n_default_locale",

@@ -15,13 +15,13 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-color-picker": "^4.17.1",
-    "@strapi/plugin-i18n": "4.17.1",
-    "@strapi/plugin-sentry": "4.17.1",
+    "@strapi/plugin-color-picker": "4.19.0",
+    "@strapi/plugin-i18n": "4.19.0",
+    "@strapi/plugin-sentry": "4.19.0",
     "@strapi/plugin-seo": "^1.9.8",
-    "@strapi/plugin-users-permissions": "4.17.1",
-    "@strapi/provider-upload-aws-s3": "4.17.1",
-    "@strapi/strapi": "4.17.1",
+    "@strapi/plugin-users-permissions": "4.19.0",
+    "@strapi/provider-upload-aws-s3": "4.19.0",
+    "@strapi/strapi": "4.19.0",
     "pg": "^8.11.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -33,14 +33,6 @@
     "node": ">=16.0.0 <=20.x.x",
     "npm": ">=6.0.0",
     "pnpm": ">= 8.14.1"
-  },
-  "overrides": {
-    "vite@<4.5.2": "4.5.2"
-  },
-  "pnpm": {
-    "overrides": {
-      "vite@<4.5.2": "4.5.2"
-    }
   },
   "strapi": {},
   "devDependencies": {
