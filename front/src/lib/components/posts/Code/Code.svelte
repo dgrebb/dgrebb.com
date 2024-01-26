@@ -6,7 +6,7 @@
   import json from 'svelte-highlight/languages/json';
   import plaintext from 'svelte-highlight/languages/plaintext';
   import xml from 'svelte-highlight/languages/xml';
-  import CodeCopy from '@components/posts/Code/CodeCopy.svelte';
+  import CodeCopy from './CodeCopy.svelte';
   import '@styles/components/Code/Code.css';
 
   export let pageTitle, slug, syntax, code, showLineNumbers;
