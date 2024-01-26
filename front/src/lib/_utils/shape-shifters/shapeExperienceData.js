@@ -18,27 +18,12 @@ export async function shapeExperienceData(data) {
     updatedAt,
     publishedAt,
     introduction,
+    body = false,
     skillBreakdown,
     name,
     hero,
     seo,
   } = experience;
-
-  // Process and highlight skills
-  const highlightedSkills = skillBreakdown.map(
-    ({ skill, percentage, summary }) => {
-      const { name, slug, graphColor, iconColor } = skill.data.attributes;
-      return {
-        name,
-        slug,
-        percentage,
-        graphColor:
-          graphColor || Math.floor(Math.random() * 16777215).toString(16),
-        iconColor,
-        summary,
-      };
-    }
-  );
 
   // Construct page meta information
   const pageMeta = {
@@ -57,11 +42,27 @@ export async function shapeExperienceData(data) {
       seo?.metaImage?.data?.attributes || hero?.data?.attributes || false,
   };
 
+  // Process and highlight skills
+  const highlightedSkills = skillBreakdown.map(
+    ({ skill, percentage, summary }) => {
+      const { name, slug, graphColor, iconColor } = skill.data.attributes;
+      return {
+        name,
+        slug,
+        percentage,
+        graphColor:
+          graphColor || Math.floor(Math.random() * 16777215).toString(16),
+        iconColor,
+        summary,
+      };
+    }
+  );
+
   return {
     experience: {
       ...experience,
       highlightedSkills,
-      body: marked(experience.body),
+      body,
       hero: hero?.data?.attributes || false,
     },
     pageMeta,
