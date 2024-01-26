@@ -1,17 +1,12 @@
 <script>
+  import PostsGridItem from './PostsGridItem.svelte';
+
   import '@styles/components/posts-grid.css';
   export let gridItems;
 </script>
 
 <ul class="posts-grid">
-  {#each gridItems as { lazyImage, slug, title }}
-    <li
-      class="posts-grid-item"
-      style={lazyImage && `background-image: url('${lazyImage}');`}
-    >
-      <a href="/post/{slug}/" class="posts-grid-link">
-        <h2 class="link-bg">{title}</h2>
-      </a>
-    </li>
+  {#each gridItems as gridItem}
+    <PostsGridItem {...gridItem} />
   {/each}
 </ul>

@@ -31,3 +31,6 @@ body .footer {
 .post .hero-wrap noscript .hero.noscript {
   display: block;
 }
+.posts-grid .posts-grid-item {
+  opacity: 1 !important;
+}
