@@ -63,6 +63,7 @@ jobs:
         uses: ./.github/actions/install-cache-deps
         with:
           WORKSPACE_ROOT: _ci/backstop
+          BROWSER_BINARIES: true
 
       - name: 🔥 Warmup Cache
         run: ./_ci/_utils/warmup.sh ${{ inputs.env }}
