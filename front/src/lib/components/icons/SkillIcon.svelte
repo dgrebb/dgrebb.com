@@ -90,7 +90,7 @@
   class:loaded
   class:failed
   aria-label={name}
-  style={iconColor ? `color: ${iconColor}; filter: brightness(1.3);` : false}
+  style={iconColor && `color: ${iconColor}; filter: brightness(1.3);`}
 >
   <use href={iconURL} />
 </svg>

@@ -1,5 +1,6 @@
 <script>
-  import SkillBreakdown from './SkillBreakdown.svelte';
+  import SkillBreakdown from './SkillBreakdown/SkillBreakdown.svelte';
+  import '@styles/pages/experience.css';
 
   export let content;
   let {

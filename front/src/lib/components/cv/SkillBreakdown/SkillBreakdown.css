@@ -1,0 +1,161 @@
+@keyframes graphOut {
+  from {
+    overflow: visible;
+  }
+  to {
+    overflow: hidden;
+  }
+}
+
+@keyframes graphIn {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: visible;
+  }
+}
+
+.skill-graph {
+  display: flex;
+  position: relative;
+  margin-top: 11rem;
+  box-shadow: var(--shadow-elevation-low);
+  &__item {
+    position: relative;
+    filter: brightness(1);
+    animation: graphOut 0s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    transition-duration: var(--transition-duration-fast);
+    transition-property: width;
+    transition-timing-function: var(--transition-timing-function);
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 1rem 0;
+    width: calc(var(--width) * 100%);
+    /* overflow: hidden; */
+    &::before {
+      display: block;
+      position: absolute;
+      top: 0;
+      opacity: 1;
+      z-index: 0;
+      mix-blend-mode: var(--skill-graph-blend);
+      /* mix-blend-mode: multiply; */
+      filter: contrast(10%) brightness(100%) blur(0);
+      transition-delay: 1s;
+      transition-duration: var(--transition-duration);
+      transition-property: background, filter, opacity;
+      will-change: opacity, border-color, background-color, filter;
+      box-shadow: none;
+      background-image: inherit;
+      background-clip: border-box;
+      padding-right: 3px;
+      padding-left: 3px;
+      width: 100%;
+      height: 100%;
+      content: '';
+    }
+    &__details {
+      position: absolute;
+      bottom: 0;
+      justify-content: center;
+      opacity: 0;
+      z-index: 2;
+      transition-duration: var(--transition-duration);
+      transition-property: opacity;
+      will-change: opacity;
+      box-sizing: border-box;
+      width: 100%;
+      text-align: center;
+      &__term,
+      &__def,
+      & dd,
+      & {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 1rem;
+      }
+      &__def {
+        position: relative;
+        z-index: 1;
+        mix-blend-mode: difference;
+        line-height: 2rem;
+      }
+      &__term,
+      &__icon {
+        padding-bottom: 0.5rem;
+      }
+      &__icon {
+        align-self: center;
+        transition-duration: var(--transition-duration);
+        transition-property: max-height;
+        transition-timing-function: var(--transition-timing-function);
+        max-height: 1rem;
+      }
+    }
+    &:not(:hover),
+    &:not(:focus),
+    &:not(:focus-visible),
+    &:not(:active) {
+      &::before {
+        transition-delay: 50ms;
+        transition-duration: 500ms;
+      }
+    }
+    &:hover,
+    &:focus,
+    &:focus-visible,
+    &:active {
+      opacity: 1;
+      z-index: 1;
+      animation: graphIn 0s;
+      animation-delay: 0s;
+      box-shadow: var(--shadow-elevation-low);
+      width: calc(var(--width) * 2 * 100%);
+      /* overflow: visible; */
+      /* filter: brightness(1.1); */
+      /* transform: scale(1.01); */
+      &::before {
+        opacity: 0.5;
+        filter: contrast(10%) brightness(100%) blur(1rem);
+        transition-delay: 0s;
+        transition-duration: var(--transition-duration-fast);
+      }
+      &:first-of-type {
+        border-left: none;
+      }
+      &:last-of-type {
+        border-right: none;
+      }
+    }
+    &:hover &__details {
+      opacity: 1;
+      &__icon {
+        max-height: 3rem;
+      }
+    }
+    &:first-of-type {
+      &:before {
+        border-left: none;
+      }
+      &:before,
+      & {
+        border-top-left-radius: 0.25rem;
+        border-bottom-left-radius: 0.25rem;
+      }
+    }
+    &:last-of-type {
+      &:before {
+        border-right: none;
+      }
+      &:before,
+      & {
+        border-top-right-radius: 0.25rem;
+        border-bottom-right-radius: 0.25rem;
+      }
+    }
+  }
+}
