@@ -1,4 +1,6 @@
 <script>
+  import Aside from '@components/general/Aside/Aside.svelte';
+  import AsideGroup from '@components/general/Aside/AsideGroup.svelte';
   import SkillBreakdown from './SkillBreakdown/SkillBreakdown.svelte';
   import '@styles/pages/experience.css';
 
@@ -10,32 +12,46 @@
     // skills: { data: skills },
     highlightedSkills,
     projects: { data: projects },
+    organizations: { data: orgs },
   } = content.experience;
 </script>
 
-<h1 class="collection-title">Roles</h1>
+<article>
+  <header class="experience__header">
+    <p class="collection__title">Experience</p>
+    <h1 class="experience__title">{name}</h1>
+    {#if title}<h2>{title}</h2>{/if}
 
-<h1 class="experience-title">{name}</h1>
+    {#if highlightedSkills.length}
+      <SkillBreakdown skills={highlightedSkills} />
+      <!-- <div class="skill-graph">
+      {#each highlightedSkills as skill}
+        <p>{skill.name} - {skill.percentage}</p>
+      {/each}
+    </div> -->
+    {/if}
+  </header>
 
-{#if title}<h2>{title}</h2>{/if}
+  <Aside>
+    {#if orgs?.length}
+      <AsideGroup
+        collection="experience"
+        title={`Organization${orgs.length > 1 ? 's' : ''}`}
+        items={orgs}
+        singleton="organization"
+      />
+    {/if}
+  </Aside>
 
-{#if highlightedSkills.length}
-  <SkillBreakdown skills={highlightedSkills} />
-  <!-- <div class="skill-graph">
-    {#each highlightedSkills as skill}
-      <p>{skill.name} - {skill.percentage}</p>
-    {/each}
-  </div> -->
-{/if}
+  {#if body}
+    {@html body}
+  {/if}
 
-{#if body}
-  {@html body}
-{/if}
-
-<!-- {#each skills as { attributes: { name, slug: skillSlug } }}
+  <!-- {#each skills as { attributes: { name, slug: skillSlug } }}
   <h2><a href="/cv/skill/{skillSlug}">{name}</a></h2>
 {/each} -->
 
-{#each projects as { attributes: { name, slug: projectSlug } }}
-  <h2><a href="/cv/project/{projectSlug}">{name}</a></h2>
-{/each}
+  {#each projects as { attributes: { name, slug: projectSlug } }}
+    <h2><a href="/cv/project/{projectSlug}">{name}</a></h2>
+  {/each}
+</article>
