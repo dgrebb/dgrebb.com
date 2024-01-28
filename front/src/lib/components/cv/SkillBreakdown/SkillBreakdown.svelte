@@ -6,8 +6,6 @@
   export let skills;
 </script>
 
-<h2>Skill Breakdown</h2>
-
 <figure class="skill-graph">
   {#each skills as { name, slug, percentage, graphColor, iconColor, summary }}
     {@const RGBColor = getRGBFromHex(graphColor)}

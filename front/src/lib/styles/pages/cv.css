@@ -7,7 +7,7 @@
     letter-spacing: -0.175rem;
   }
   h1.page-heading,
-  h1.collection-title,
+  h1.collection__title,
   h1.skill-title {
     margin-top: 0;
     padding: 0;

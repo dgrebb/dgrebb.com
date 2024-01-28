@@ -1,3 +1,31 @@
 .cv.experience {
   position: relative;
 }
+
+.experience {
+  &__header {
+    text-align: center;
+    & h1,
+    h2 {
+      filter: brightness(1);
+      transition-duration: var(--transition-duration);
+      transition-property: filter, opacity;
+      transition-timing-function: var(--transition-timing-function);
+    }
+    @media screen and (min-width: 640px) {
+      &:has(
+          .skill-graph:hover,
+          .skill-graph:active,
+          .skill-graph:focus-visible,
+          .skill-graph:focus
+        ) {
+        & h1,
+        h2 {
+          opacity: 0.3;
+          filter: brightness(0.2) blur(0.5rem);
+          transition-duration: var(--transition-duration-fast);
+        }
+      }
+    }
+  }
+}
