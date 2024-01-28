@@ -1,14 +1,16 @@
 <script>
-  export let content;
+  import Aside from '@components/general/Aside/Aside.svelte';
+  import AsideGroup from '@components/general/Aside/AsideGroup.svelte';
   import '@styles/pages/skills.css';
 
+  export let content;
+  let collection = 'projects';
   let {
     name,
     body,
     artifacts,
     artifacts: { websites, videos },
-    organizations: { data: organizations },
-    industries: { data: industries },
+    organizations: { data: orgs },
     awards: { data: awards },
     skills: { data: skills },
   } = content.project;
@@ -19,6 +21,33 @@
     <p class="collection__title">Projects</p>
     <h1>{name}</h1>
   </header>
+
+  <Aside>
+    {#if orgs?.length}
+      <AsideGroup
+        {collection}
+        title={`Organization${orgs.length > 1 ? 's' : ''}`}
+        items={orgs}
+        singleton="organization"
+      />
+    {/if}
+    {#if awards?.length}
+      <AsideGroup
+        {collection}
+        title={`Project${awards.length > 1 ? 's' : ''}`}
+        items={awards}
+        singleton="project"
+      />
+    {/if}
+    {#if skills?.length}
+      <AsideGroup
+        {collection}
+        title={`Skill${skills.length > 1 ? 's' : ''}`}
+        items={skills}
+        singleton="skill"
+      />
+    {/if}
+  </Aside>
 
   <section class="project-details">
     {#if body}
