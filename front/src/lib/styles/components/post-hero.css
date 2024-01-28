@@ -71,9 +71,6 @@
 }
 
 @media screen and (min-width: 640px) {
-  .post {
-    margin-top: 1.5rem;
-  }
   .post-hero-wrap {
     height: 400px;
   }
@@ -83,11 +80,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .post {
-    margin-top: 3.5rem;
-    background: var(--content-bg-gradient), var(--bg-clr);
-    padding: 2.33rem;
-  }
   .post-hero-wrap {
     top: -5rem;
     left: 0;
