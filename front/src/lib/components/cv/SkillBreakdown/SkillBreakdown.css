@@ -80,7 +80,7 @@
       &:hover &__details {
         opacity: 1;
         &__icon {
-          max-height: 3rem;
+          max-height: 2rem;
         }
       }
     }
@@ -135,15 +135,15 @@
       }
       &__term,
       &__icon {
-        padding-bottom: 0.5rem;
+        padding-bottom: 0.25rem;
       }
       &__icon {
-        align-self: center;
+        align-self: bottom;
         filter: drop-shadow(-2px 1px 0.175rem rgba(0, 0, 0, 0.1));
         transition-duration: var(--transition-duration);
         transition-property: max-height;
         transition-timing-function: var(--transition-timing-function);
-        max-height: 1rem;
+        max-height: 0.5rem;
       }
     }
     &:first-of-type {

@@ -21,15 +21,6 @@
 <article class="experience__article">
   <header class="experience__header">
     <p class="collection__title">Experience</p>
-    {#if orgs?.length}
-      <h2>
-        {#each orgs as { attributes: { name, slug } }, key}
-          <a href="/cv/organization/{slug}"
-            >{name}{key === orgs.length ? ',' : ''}</a
-          >
-        {/each}
-      </h2>
-    {/if}
     <h1 class="experience__title">
       {name}
     </h1>
@@ -40,6 +31,16 @@
   </header>
 
   <Aside>
+    {#if orgs?.length}
+      <h2>Organizations</h2>
+      <p>
+        {#each orgs as { attributes: { name, slug } }, key}
+          <a href="/cv/organization/{slug}"
+            >{name}{key === orgs.length ? ',' : ''}</a
+          >
+        {/each}
+      </p>
+    {/if}
     <h2>Title</h2>
     <p>{title}</p>
     {#if projects?.length}

@@ -29,4 +29,7 @@
       }
     }
   }
+  &__title {
+    padding: 0.25rem 0 2rem 0;
+  }
 }
