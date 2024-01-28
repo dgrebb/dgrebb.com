@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.17.0] - 2024-01-28
+
+### 💡 Features
+
+- ***(back)*** Schemata, components, and views for skill breakdown (#1169)
+- ***(front)*** Components, data handling, and styles for Skill Breakdown (#1191)
+
+### 🐛 Bug Fixes
+
+- ***(ci)*** Install pnpm with npm
+- ***(front)*** Add loading state to posts grid (#1187)
+- ***(front)*** Apply fallback for category page canonicals (#1147)
+
+### ♻️  Refactor
+
+- ***(back)*** Allow ranges and individual Code line highlights
+- ***(back)*** Migrates strapi and docker to pnpm (#1180)
+- ***(backstop)*** Remove patch and use fork of super-simple-web-server
+- ***(ci)*** Refactors GH actions with composite base action
+- ***(front)*** Relocate posts components and render via svelte:component (#1184)
+- ***(utils)*** Refactors TF ENV, TF backend, and other utility scripts
+
+### 🪮  Styling
+
+- ***(back)*** Update collection and singleton display names (#1185)
+- ***(front)*** Remove content container background
+- ***(front)*** Combine position properties (#1190)
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(back)*** Update strapi and deps (#1196)
+- ***(front)*** Chore(front): update FE deps (#1196)
+- ***(github)*** Adds refactoring issue template
+- ***(project)*** Add engines and `enable-pre-post-scripts` for `pnpm` (#1180)
+
 ## [3.16.1] - 2024-01-20
 
 ### 🐛 Bug Fixes
