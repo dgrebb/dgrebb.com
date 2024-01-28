@@ -45,7 +45,7 @@
       /* mix-blend-mode: multiply; */
       filter: contrast(10%) brightness(100%) blur(0);
       transition-delay: 1s;
-      transition-duration: var(--transition-duration);
+      transition-duration: var(--transition-duration-fast);
       transition-property: background, filter, opacity;
       will-change: opacity, border-color, background-color, filter;
       box-shadow: none;
@@ -120,7 +120,7 @@
       /* transform: scale(1.01); */
       &::before {
         opacity: 0.5;
-        filter: contrast(10%) brightness(100%) blur(1rem);
+        filter: contrast(10%) brightness(100%);
         transition-delay: 0s;
         transition-duration: var(--transition-duration-fast);
       }
