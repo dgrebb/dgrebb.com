@@ -24,7 +24,7 @@
     {#if orgs?.length}
       <h2>
         {#each orgs as { attributes: { name, slug } }, key}
-          <a href="/organization/{slug}"
+          <a href="/cv/organization/{slug}"
             >{name}{key === orgs.length ? ',' : ''}</a
           >
         {/each}
