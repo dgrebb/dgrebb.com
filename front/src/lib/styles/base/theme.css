@@ -145,7 +145,7 @@
     );
     --skill-icon-brightness: brightness(0.5);
     --skill-icon-brightness-hover: brightness(1);
-    --skill-graph-blend: luminosity;
+    --skill-graph-blend: soft-light;
   }
 }
 html.light-theme {
@@ -224,7 +224,7 @@ html.light-theme {
   );
   --skill-icon-brightness: brightness(0.5);
   --skill-icon-brightness-hover: brightness(1);
-  --skill-graph-blend: luminosity;
+  --skill-graph-blend: soft-light;
 }
 
 /* --------------------------------------- */

@@ -2,7 +2,7 @@
   import AnimatedImage from '@components/posts/AnimatedImage.svelte';
   import Code from '@components/posts/Code/Code.svelte';
   import Footnotes from '@components/posts/Footnotes.svelte';
-  import PageNav from '@components/general/PageNav.svelte';
+  import PageNav from '@components/general/PageNav/PageNav.svelte';
   import PostText from '@components/posts/PostText.svelte';
   import BlockQuote from '@components/posts/BlockQuote.svelte';
   import { popImage } from '@utils/popoverHandlers';

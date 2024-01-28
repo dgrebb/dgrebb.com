@@ -8,21 +8,25 @@
   } = content.award;
 </script>
 
-<h1 class="collection-title">Awards</h1>
+<article>
+  <header class="experience__header">
+    <p class="collection__title">Awards</p>
+    <h1>{name}</h1>
+  </header>
 
-<h1>{name}</h1>
-{#each experiences as { attributes: { name, slug: experienceSlug } }}
-  <h2><a href="/cv/experience/{experienceSlug}">{name}</a></h2>
-{/each}
+  {#each experiences as { attributes: { name, slug: experienceSlug } }}
+    <h2><a href="/cv/experience/{experienceSlug}">{name}</a></h2>
+  {/each}
 
-{#if body}
-  {body}
-{/if}
+  {#if body}
+    {body}
+  {/if}
 
-{#each projects as { attributes: { name, slug: projectSlug } }}
-  <h2><a href="/cv/project/{projectSlug}">{name}</a></h2>
-{/each}
+  {#each projects as { attributes: { name, slug: projectSlug } }}
+    <h2><a href="/cv/project/{projectSlug}">{name}</a></h2>
+  {/each}
 
-{#each experiences as { attributes: { name, slug: experienceSlug } }}
-  <h2><a href="/cv/experience/{experienceSlug}">{name}</a></h2>
-{/each}
+  {#each experiences as { attributes: { name, slug: experienceSlug } }}
+    <h2><a href="/cv/experience/{experienceSlug}">{name}</a></h2>
+  {/each}
+</article>

@@ -4,7 +4,7 @@
   import PageTransition from '@components/general/PageTransition.svelte';
   import TransitionElasticFly from '@components/general/TransitionElasticFly.svelte';
   import Tag from '@components/icons/Tag.svelte';
-  import PageNav from '@components/general/PageNav.svelte';
+  import PageNav from '@components/general/PageNav/PageNav.svelte';
   import '@styles/pages/category.css';
 
   export let data;

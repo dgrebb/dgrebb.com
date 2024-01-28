@@ -1,25 +1,55 @@
 <script>
-  export let content;
+  import Aside from '@components/general/Aside/Aside.svelte';
+  import AsideGroup from '@components/general/Aside/AsideGroup.svelte';
   import '@styles/pages/skills.css';
 
+  export let content;
+  let collection = 'projects';
   let {
     name,
     body,
     artifacts,
     artifacts: { websites, videos },
-    organizations: { data: organizations },
-    industries: { data: industries },
+    organizations: { data: orgs },
     awards: { data: awards },
     skills: { data: skills },
   } = content.project;
 </script>
 
-<h1 class="collection-title">Projects</h1>
-
 <article class="project-article">
-  <section class="project-details">
+  <header class="experience__header">
+    <p class="collection__title">Projects</p>
     <h1>{name}</h1>
+  </header>
 
+  <Aside>
+    {#if orgs?.length}
+      <AsideGroup
+        {collection}
+        title={`Organization${orgs.length > 1 ? 's' : ''}`}
+        items={orgs}
+        singleton="organization"
+      />
+    {/if}
+    {#if awards?.length}
+      <AsideGroup
+        {collection}
+        title={`Project${awards.length > 1 ? 's' : ''}`}
+        items={awards}
+        singleton="project"
+      />
+    {/if}
+    {#if skills?.length}
+      <AsideGroup
+        {collection}
+        title={`Skill${skills.length > 1 ? 's' : ''}`}
+        items={skills}
+        singleton="skill"
+      />
+    {/if}
+  </Aside>
+
+  <section class="project-details">
     {#if body}
       {@html body}
     {/if}
@@ -71,46 +101,3 @@
     {/if}
   </section>
 </article>
-
-<aside class="project-aside">
-  <!-- TODO: Similarly, each artifact type should have a component 
-  to match, which is dynamically selected by artifact type  -->
-
-  {#if awards}
-    <h1>Awards</h1>
-    <ul class="project-awards">
-      {#each awards as { attributes: { name, slug: awardSlug } }}
-        <li><a href="/cv/award/{awardSlug}">{name}</a></li>
-      {/each}
-    </ul>
-  {/if}
-  {#if organizations}
-    {#if skills}
-      <h1>Skills</h1>
-      <ul class="project-skills">
-        {#each skills as { attributes: { name, slug: skillSlug, svg } }}
-          <li class="skill">
-            <a href="/cv/skill/{skillSlug}"
-              >{#if svg}{@html svg}{/if}{name}</a
-            >
-          </li>
-        {/each}
-      </ul>
-    {/if}
-    <h1>Organizations</h1>
-    <ul class="project-organizations">
-      {#each organizations as { attributes: { name, slug: organizationSlug } }}
-        <li><a href="/cv/organization/{organizationSlug}">{name}</a></li>
-      {/each}
-    </ul>
-  {/if}
-
-  {#if industries}
-    <h1>Industries</h1>
-    <ul class="project-industries">
-      {#each industries as { attributes: { name, slug: industrySlug } }}
-        <li><a href="/cv/industry/{industrySlug}">{name}</a></li>
-      {/each}
-    </ul>
-  {/if}
-</aside>
