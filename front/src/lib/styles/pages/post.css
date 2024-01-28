@@ -3,8 +3,8 @@
   position: relative;
   margin-top: 1.75rem;
   margin-left: 1rem;
-  border-radius: 0.77rem;
-  &::before {
+  /* border-radius: 0.77rem; */
+  /* &::before {
     position: absolute;
     mask:
       linear-gradient(3deg, #fff 0 0) content-box,
@@ -14,7 +14,7 @@
     border-radius: 0.77rem;
     padding: 1px 1px 0 0;
     content: '';
-  }
+  } */
 
   .post-article {
     position: relative;
@@ -495,7 +495,7 @@
 @media screen and (min-width: 768px) {
   .post {
     margin-top: 3.5rem;
-    background: var(--content-bg-gradient), var(--bg-clr);
+    /* background: var(--content-bg-gradient), var(--bg-clr); */
     padding: 2.33rem;
   }
   .post-article,
@@ -511,10 +511,6 @@
     margin-bottom: -2rem;
   }
   .post-article blockquote {
-    p:first-child::before,
-    &::after {
-      font-size: 5rem;
-    }
     &::after {
       bottom: -4rem;
     }

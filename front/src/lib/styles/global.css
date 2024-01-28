@@ -178,7 +178,7 @@ a.scroll-top {
   }
 }
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .privacy,
   .post {
     box-shadow: var(--shadow-elevation-high);
@@ -190,4 +190,4 @@ a.scroll-top {
   .post::before {
     background: var(--rim-light-mask-bg);
   }
-}
+} */

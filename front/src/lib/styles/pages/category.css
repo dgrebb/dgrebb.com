@@ -198,13 +198,13 @@
   }
 }
 
-.category-posts-transition-container {
+/* .category-posts-transition-container {
   box-shadow: var(--shadow-elevation-low);
   background: var(--rim-light-bg), var(--bg-clr);
   &::before {
     background: var(--rim-light-mask-bg);
   }
-}
+} */
 
 @media screen and (min-width: 480px) {
   .transition-elastic-fly-container ul {
@@ -259,13 +259,13 @@
       float: left;
       width: 77%;
     }
-    .category-posts-transition-container {
+    /* .category-posts-transition-container {
       box-shadow: var(--shadow-elevation-high);
       background: var(--category-rim-light-bg), var(--bg-clr);
       &::before {
         background: var(--category-rim-light-mask-bg);
       }
-    }
+    } */
   }
 }
 
