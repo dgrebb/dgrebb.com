@@ -26,7 +26,7 @@
     {#if hero}
       <img src={hero.url} alt={hero.alternativeText} />
     {/if}
-    <h1 class="collection-title">{title}</h1>
+    <p class="collection__title">{title}</p>
     {#if introduction}
       <article class="experience-longform">
         {introduction}
