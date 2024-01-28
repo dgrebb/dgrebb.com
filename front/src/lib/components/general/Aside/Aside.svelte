@@ -42,3 +42,10 @@
     </ul>
   {/if} -->
 </aside>
+
+<style lang="postcss">
+  .collection__aside {
+    float: right;
+    padding-left: 2rem;
+  }
+</style>

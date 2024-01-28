@@ -4,6 +4,7 @@
 
 .experience {
   &__header {
+    margin-bottom: 3rem;
     text-align: center;
     & h1,
     h2 {
