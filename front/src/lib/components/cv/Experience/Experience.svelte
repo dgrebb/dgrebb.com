@@ -21,8 +21,18 @@
 <article class="experience__article">
   <header class="experience__header">
     <p class="collection__title">Experience</p>
-    <h1 class="experience__title">{name}</h1>
-    {#if title}<h2>{title}</h2>{/if}
+    {#if orgs?.length}
+      <h2>
+        {#each orgs as { attributes: { name, slug } }, key}
+          <a href="/organization/{slug}"
+            >{name}{key === orgs.length ? ',' : ''}</a
+          >
+        {/each}
+      </h2>
+    {/if}
+    <h1 class="experience__title">
+      {name}
+    </h1>
 
     {#if highlightedSkills.length}
       <SkillBreakdown skills={highlightedSkills} />
@@ -30,14 +40,8 @@
   </header>
 
   <Aside>
-    {#if orgs?.length}
-      <AsideGroup
-        {collection}
-        title={`Organization${orgs.length > 1 ? 's' : ''}`}
-        items={orgs}
-        singleton="organization"
-      />
-    {/if}
+    <h2>Title</h2>
+    <p>{title}</p>
     {#if projects?.length}
       <AsideGroup
         {collection}

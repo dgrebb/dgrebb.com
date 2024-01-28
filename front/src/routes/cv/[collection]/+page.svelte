@@ -3,6 +3,7 @@
   import Meta from '@components/general/Meta.svelte';
   // import SkillIcon from '@components/icons/SkillIcon.svelte';
   import '@styles/pages/cv.css';
+  import '@styles/pages/collection.css';
 
   export let data;
 

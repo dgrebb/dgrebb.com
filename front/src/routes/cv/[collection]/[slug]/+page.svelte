@@ -10,6 +10,7 @@
   import Project from '@components/cv/Project.svelte';
   import Skill from '@components/cv/Skill.svelte';
   import '@styles/pages/cv.css';
+  import '@styles/pages/collection.css';
 
   export let data;
 
