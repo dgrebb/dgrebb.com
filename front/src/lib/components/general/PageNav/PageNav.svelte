@@ -1,10 +1,10 @@
 <script>
   import TableOfContents from '@components/posts/TableOfContents.svelte';
-  import ClosePageNav from '@components/icons/ClosePageNav.svelte';
+  import ClosePageNav from '@components/general/PageNav/ClosePageNav.svelte';
   import { categoryClick, relatedClick } from '@utils/uiHelpers.js';
   import { focusTrap } from '@utils/actions.js';
   import ListIcon from '~icons/gg/list';
-  import '@styles/components/page-nav.css';
+  import './page-nav.css';
 
   export let toc = false;
   export let categories = false;

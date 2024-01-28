@@ -25,12 +25,15 @@
 
 <div class="experience-timeline">
   {#if items.length}<Calendar />{/if}
-  {#each items as { name, slug, startDate, endDate, summary, story, organizations, skills }}
+  {#each items as { name, slug, startDate, endDate, summary, story, skillBreakdown, organizations, skills }}
     <section class="experience-timeline-item" class:current={!endDate}>
       <!-- svelte-ignore a11y-unknown-role -->
       <header class="item-basics" role="header">
-        <h2 class="item-title">{name}</h2>
-        <!-- <h2 class="item-title"><a href="/cv/experience/{slug}">{name}</a></h2> -->
+        {#if skillBreakdown.length}
+          <h2 class="item-title"><a href="/cv/experience/{slug}">{name}</a></h2>
+        {:else}
+          <h2 class="item-title">{name}</h2>
+        {/if}
         {#if endDate}<span class="arrow" aria-hidden="true"></span>{/if}
         <time datetime={startDate} class="experience-timeline-date">
           {#if endDate}

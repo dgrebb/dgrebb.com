@@ -32,11 +32,7 @@ const config = {
     prerender: {
       entries: [
         '/cv',
-        '/cv/awards',
-        '/cv/organizations',
         '/cv/experiences',
-        '/cv/projects',
-        '/cv/skills',
         '/posts/category/all',
         '/privacy',
         '/404',
@@ -49,7 +45,7 @@ const config = {
         if (path.includes('/uploads') || /^\/cv\//.test(path)) {
           return;
         }
-        if (path.includes('/v')) {
+        if (path.includes('/v') || path.includes('/cv')) {
           return;
         }
         throw new Error(message);

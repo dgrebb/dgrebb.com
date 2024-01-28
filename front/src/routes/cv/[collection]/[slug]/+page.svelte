@@ -6,10 +6,11 @@
   import Classification from '@components/cv/Classification.svelte';
   import Industry from '@components/cv/Industry.svelte';
   import Organization from '@components/cv/Organization.svelte';
-  import Experience from '@components/cv/Experience.svelte';
+  import Experience from '@components/cv/Experience/Experience.svelte';
   import Project from '@components/cv/Project.svelte';
   import Skill from '@components/cv/Skill.svelte';
   import '@styles/pages/cv.css';
+  import '@styles/pages/collection.css';
 
   export let data;
 

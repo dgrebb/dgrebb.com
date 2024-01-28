@@ -37,5 +37,13 @@
   "strapi": {},
   "devDependencies": {
     "prop-types": "^15.8.1"
+  },
+  "overrides": {
+    "vite": "^4.5.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "vite@<5.0.12": ">=5.0.12"
+    }
   }
 }
