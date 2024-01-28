@@ -511,10 +511,6 @@
     margin-bottom: -2rem;
   }
   .post-article blockquote {
-    p:first-child::before,
-    &::after {
-      font-size: 5rem;
-    }
     &::after {
       bottom: -4rem;
     }
