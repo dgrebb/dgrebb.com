@@ -10,6 +10,8 @@ on:
         required: true
         default: "stg"
     branches: [release/*]
+  push:
+    branches: [main]
 
 permissions:
   checks: write
