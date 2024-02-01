@@ -390,7 +390,7 @@
 
 @media screen and (min-width: 480px) {
   .post .post-title {
-    padding: 0 1.5rem;
+    padding: 1rem 1.5rem 0;
   }
   .post .post-title,
   .post .post-article {
