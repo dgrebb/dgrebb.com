@@ -187,14 +187,16 @@
   ol {
     li {
       counter-increment: item;
+      padding-left: 1rem;
       list-style-type: none;
       &:before {
-        display: inline-block;
-        padding-right: 0.5em;
-        width: 1.5em;
+        position: absolute;
+        left: 1rem;
+        margin-right: 0.5rem;
         content: counter(item) '.';
+        color: var(--fg-clr-ooo);
         font-family: var(--font-psb);
-        text-align: right;
+        /* text-align: right; */
       }
     }
   }
