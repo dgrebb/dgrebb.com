@@ -10,7 +10,9 @@
 }
 
 .syntax-highlighter {
+  display: flex;
   position: relative;
+  flex-direction: column;
   z-index: 3;
   transition: transform 0s;
   will-change: transform;
@@ -19,8 +21,8 @@
   box-shadow: var(--shadow-elevation-medium);
   border-radius: 0.5rem;
   background-color: var(--blocked-content-bg);
-  padding: 0 1.5rem 0 1rem;
   width: 100%;
+  max-height: 500px;
   font-size: 1rem;
   &::before {
     position: absolute;
@@ -35,6 +37,26 @@
     background: var(--rim-light-mask-bg);
     padding: 1px 1px 0 0;
     content: '';
+  }
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    .syntax-highlighter__screen-wrap {
+      > pre,
+      .line-number-wrap {
+        scrollbar-color: var(--fg-clr-oooo) transparent;
+        &::-webkit-scrollbar {
+          background-color: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+          border-radius: 3rem;
+          background: var(--fg-clr-oooo);
+          &::hover {
+            background: var(--fg-clr-oo);
+          }
+        }
+      }
+    }
   }
   &:hover,
   &:focus {
@@ -65,11 +87,15 @@
     transition-property: color, background-color, opacity;
     transition-timing-function: var(--transition-timing-function);
   }
+  header {
+    display: flex;
+    align-items: center;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    background-color: var(--hardlight-clr);
+  }
   .title,
   .language {
-    position: absolute;
-    background-color: var(--hardlight-clr);
-    padding: 0.75rem 43px 0.75rem 0.75rem;
     width: 50%;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
       'Liberation Mono', 'Courier New', monospace;
@@ -82,8 +108,8 @@
     }
   }
   .title {
-    left: 0;
     border-top-left-radius: 0.5rem;
+    padding-left: 0.75rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -109,91 +135,60 @@
       padding-top: 1rem;
     }
   }
-  > pre {
+  &__screen-wrap {
+    display: flex;
     position: relative;
-    top: 1px;
-    z-index: 7;
-    transition-duration: var(--transition-duration);
-    transition-property: scrollbar-color;
-    transition-timing-function: var(--transition-timing-function);
-    margin-bottom: -0.5rem;
-    padding: 4.25rem 0 0.5rem 0;
-    max-height: 33rem;
-    overflow: auto;
-    scrollbar-color: transparent transparent;
-    scrollbar-gutter: stable both-edges;
-    scrollbar-width: thin;
-    color: var(--fg-clr);
-    &::-webkit-scrollbar {
-      background-color: transparent;
-      width: 8px;
-      height: 8px;
-    }
-    &::-webkit-scrollbar-thumb {
-      transition-duration: var(--transition-duration);
-      transition-property: background;
-      transition-timing-function: var(--transition-timing-function);
-      border-radius: 3rem;
-      background: transparent;
-    }
-    &:hover,
-    &:focus,
-    &:focus-visible {
-      scrollbar-color: var(--fg-clr-oooo) transparent;
+    padding: 0 0.5rem 0.5rem 0.5rem;
+    min-height: 0;
+    max-height: 100%;
+    > pre,
+    .line-number-wrap {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      width: 100%;
+      overflow: scroll;
+      scrollbar-color: transparent transparent;
+      /* TODO: When Safari decides to start supporting 
+      scrollbar-gutter: stable both-edges; */
       &::-webkit-scrollbar {
-        background-color: transparent;
+        background: transparent;
         width: 8px;
         height: 8px;
       }
       &::-webkit-scrollbar-thumb {
+        transition-duration: var(--transition-duration);
+        transition-property: background;
+        transition-timing-function: var(--transition-timing-function);
         border-radius: 3rem;
-        background: var(--fg-clr-oooo);
+        background: transparent;
+      }
+      &::-webkit-scrollbar-corner {
+        background-color: transparent;
       }
     }
-    code {
-      color: var(--code-text);
+    > pre {
+      position: relative;
+      z-index: 7;
+      transition-duration: var(--transition-duration);
+      transition-property: scrollbar-color;
+      transition-timing-function: var(--transition-timing-function);
+      color: var(--fg-clr);
+      code {
+        color: var(--code-text);
+      }
     }
   }
   .line-number-wrap {
     position: relative;
     z-index: 7;
     transition: scrollbar-color 0.5s;
-    margin-bottom: -0.5rem;
-    padding: 3.25rem 0 0.5rem 0;
-    overflow-x: scroll;
-    scrollbar-color: transparent transparent;
-    scrollbar-gutter: stable both-edges;
-    scrollbar-width: thin;
-    &::-webkit-scrollbar {
-      transition: background-color 0.5s;
-      background-color: transparent;
-      width: 8px;
-      height: 8px;
-    }
-    &::-webkit-scrollbar-thumb {
-      transition: background-color 0.5s;
-      border-radius: 3rem;
-      background: transparent;
-    }
-    &:hover,
-    &:focus,
-    &:focus-visible {
-      scrollbar-color: var(--fg-clr-oooo) transparent;
-      &::-webkit-scrollbar {
-        background-color: transparent;
-        width: 8px;
-        height: 8px;
-      }
-      &::-webkit-scrollbar-thumb {
-        border-radius: 3rem;
-        background: var(--fg-clr-oooo);
-      }
-    }
     code {
       display: inline-block;
       height: 100%;
     }
     tr {
+      border: 0;
+      border-collapse: collapse;
       &:hover,
       &:focus,
       &:focus-visible {
@@ -201,6 +196,9 @@
           color: var(--highlight-clr);
         }
       }
+    }
+    td {
+      padding: 0;
     }
     td:first-child {
       display: none;
@@ -212,6 +210,7 @@
         var(--blocked-content-bg) 81%,
         transparent 100%
       );
+      padding-right: 0.5rem;
       color: var(--fg-clr-oooo);
     }
     td:last-child code {
@@ -239,18 +238,15 @@
 }
 
 .code-copy-btn {
-  position: absolute;
-  right: 0;
+  position: relative;
   transition-duration: var(--transition-duration);
   transition-property: color;
+  box-sizing: border-box;
+  margin: 0.75rem;
   padding: 0.75rem;
   line-height: 1.6;
   .titleless & {
     padding: 0.5rem;
-    svg {
-      width: 20px;
-      height: 20px;
-    }
   }
   > * {
     pointer-events: none;
@@ -259,7 +255,9 @@
     top: 2px;
   }
   svg {
+    position: absolute;
     vertical-align: text-bottom;
+    inset: 0 0 auto auto;
   }
   .icon-code-copy {
     display: inline;
@@ -305,7 +303,10 @@
 
 @media screen and (min-width: 480px) {
   .syntax-highlighter {
-    padding: 0 0.75rem 0.75rem 0.75rem;
+    &__screen-wrap {
+      /* TODO: Remove padding when Safari decides to start supporting */
+      padding: 0 1rem 0.75rem 1.5rem;
+    }
     .line-number-wrap {
       td:first-child {
         display: table-cell;
@@ -316,17 +317,21 @@
 
 @media screen and (min-width: 640px) {
   .syntax-highlighter {
-    padding: 0 1.75rem 1.75rem 1.5rem;
     width: auto;
-    &.headerless > pre {
-      padding-top: 2rem;
+    &__screen-wrap {
+      /* TODO: Remove padding when Safari decides to start supporting */
+      padding: 0 1rem 1rem 1.5rem;
+      > pre,
+      .line-number-wrap {
+        padding: 1rem 0 0;
+      }
     }
-    > pre {
-      padding: 4.75rem 0 0 0;
-    }
-    .line-number-wrap {
-      padding: 4rem 0 0 0;
-    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .syntax-highlighter {
+    max-height: 900px;
   }
 }
 
@@ -335,31 +340,11 @@
   (-moz-touch-enabled: 1),
   (pointer: coarse) {
   .syntax-highlighter {
-    padding: 0 1rem;
-    > pre {
-      padding: 4.5rem 0 1rem 0;
+    &__screen-wrap > pre {
       scrollbar-color: var(--code-scrollbar-clr) transparent;
     }
     .line-number-wrap {
-      padding: 3rem 0 0.75rem 0;
       scrollbar-color: var(--code-scrollbar-clr) transparent;
-    }
-  }
-}
-
-@media (hover: none) and (min-width: 640px),
-  (hover: on-demand) and (min-width: 640px),
-  (-moz-touch-enabled: 1) and (min-width: 640px),
-  (pointer: coarse) and (min-width: 640px) {
-  .syntax-highlighter {
-    padding: 0 2rem;
-    > pre {
-      padding-top: 4.5rem;
-      padding-bottom: 1.5rem;
-    }
-    .line-number-wrap {
-      padding-top: 4rem;
-      padding-bottom: 1.5rem;
     }
   }
 }
