@@ -1,5 +1,5 @@
 diff --git a/LineNumbers.svelte b/LineNumbers.svelte
-index 704976d98f45c0a472355927aed541adc0934806..1483d231bf576f849644280a8b0e306aae9e7d0e 100644
+index 704976d98f45c0a472355927aed541adc0934806..e79aef99eff32c36b8589523f4049139727856b8 100644
 --- a/LineNumbers.svelte
 +++ b/LineNumbers.svelte
 @@ -24,14 +24,32 @@
@@ -7,17 +7,17 @@ index 704976d98f45c0a472355927aed541adc0934806..1483d231bf576f849644280a8b0e306a
    $: len = len_digits - MIN_DIGITS < 1 ? MIN_DIGITS : len_digits;
    $: width = len * DIGIT_WIDTH;
 +
-+function isHighlightStart(lines, n) {
-+  const i = lines.indexOf(n);
-+  const prev = lines[i - 1];
-+  return prev !== n - 1;
-+}
++  function isHighlightStart(lines, n) {
++    const i = lines.indexOf(n);
++    const prev = lines[i - 1];
++    return prev !== n - 1;
++  }
 +
-+function isHighlightEnd(lines, n) {
-+  const i = lines.indexOf(n);
-+  const next = lines[i + 1];
-+  return next !== n + 1;
-+}
++  function isHighlightEnd(lines, n) {
++    const i = lines.indexOf(n);
++    const next = lines[i + 1];
++    return next !== n + 1;
++  }
  </script>
  
 -<div style:overflow-x="auto" {...$$restProps}>
@@ -59,7 +59,48 @@ index 704976d98f45c0a472355927aed541adc0934806..1483d231bf576f849644280a8b0e306a
            </td>
          </tr>
        {/each}
-@@ -127,26 +133,4 @@
+@@ -67,16 +73,10 @@
+ </div>
+ 
+ <style>
+-  pre {
+-    margin: 0;
+-  }
+-
+   table,
+   tr,
+   td {
+-    padding: 0;
+     border: 0;
+-    margin: 0;
+     vertical-align: baseline;
+   }
+ 
+@@ -86,23 +86,10 @@
+     border-spacing: 0;
+   }
+ 
+-  tr:first-of-type td {
+-    padding-top: 1em;
+-  }
+-
+-  tr:last-child td {
+-    padding-bottom: 1em;
+-  }
+-
+   tr td:first-of-type {
+     z-index: 2;
+   }
+ 
+-  td {
+-    padding-left: var(--padding-left, 1em);
+-    padding-right: var(--padding-right, 1em);
+-  }
+-
+   td.hljs:not(.hideBorder):after {
+     content: "";
+     position: absolute;
+@@ -127,26 +114,4 @@
    pre {
      z-index: 1;
    }

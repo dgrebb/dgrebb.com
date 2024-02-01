@@ -47,45 +47,51 @@
   }syntax-highlighter`}
   data-code-instance-id={key}
 >
-  {#if title !== null}
-    <span class="title full" class:copy={showCopyButton === true}>
-      {#if title}{title}{/if}
-    </span>
-  {/if}
-  {#if showCopyButton === true}
-    <CodeCopy {code} {key} {pageTitle} {slug} {title} />
-  {/if}
-  {#if highlightedLines}
-    {#if lineNumbers === true}
-      {#if syntax === 'Svelte'}
-        <HighlightSvelte {code} {language} let:highlighted>
-          <LineNumbers
-            {highlighted}
-            {startingLineNumber}
-            {highlightedLines}
-            --highlighted-background="transparent"
-            --padding-left="0"
-            hideBorder
-          />
-        </HighlightSvelte>
-      {:else}
-        <Highlight {code} {language} let:highlighted>
-          <LineNumbers
-            {highlighted}
-            {startingLineNumber}
-            {highlightedLines}
-            --highlighted-background="transparent"
-            --padding-left="0"
-            hideBorder
-          />
-        </Highlight>
+  {#if title !== null || showCopyButton === true}
+    <header>
+      {#if title !== null}
+        <span class="title full" class:copy={showCopyButton === true}>
+          {#if title}{title}{/if}
+        </span>
       {/if}
+      {#if showCopyButton === true}
+        <CodeCopy {code} {key} {pageTitle} {slug} {title} />
+      {/if}
+    </header>
+  {/if}
+  <div class="syntax-highlighter__screen-wrap">
+    {#if highlightedLines}
+      {#if lineNumbers === true}
+        {#if syntax === 'Svelte'}
+          <HighlightSvelte {code} {language} let:highlighted>
+            <LineNumbers
+              {highlighted}
+              {startingLineNumber}
+              {highlightedLines}
+              --highlighted-background="transparent"
+              --padding-left="0"
+              hideBorder
+            />
+          </HighlightSvelte>
+        {:else}
+          <Highlight {code} {language} let:highlighted>
+            <LineNumbers
+              {highlighted}
+              {startingLineNumber}
+              {highlightedLines}
+              --highlighted-background="transparent"
+              --padding-left="0"
+              hideBorder
+            />
+          </Highlight>
+        {/if}
+      {:else}
+        <Highlight {code} {language} />
+      {/if}
+    {:else if syntax === 'Svelte'}
+      <HighlightSvelte {code} {language} />
     {:else}
       <Highlight {code} {language} />
     {/if}
-  {:else if syntax === 'Svelte'}
-    <HighlightSvelte {code} {language} />
-  {:else}
-    <Highlight {code} {language} />
-  {/if}
+  </div>
 </div>
