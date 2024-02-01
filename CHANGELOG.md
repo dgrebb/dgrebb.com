@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.17.1] - 2024-02-01
+
+### ♻️  Refactor
+
+- ***(front)*** Use flexbox for syntax-highlighter (#1208)
+
+### 💚 Continuous Integration
+
+- ***(github)*** Trigger release deployment on push to `main`
+
+### 🪮  Styling
+
+- ***(front)*** Improve list styles
+
 ## [3.17.0] - 2024-01-28
 
 ### 💡 Features
