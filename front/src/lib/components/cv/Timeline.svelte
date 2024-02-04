@@ -1,4 +1,6 @@
 <script>
+  import { PATHS } from '$lib/CONSTANTS';
+  const { experience: exPath } = PATHS.one;
   import SkillIcon from '@components/icons/SkillIcon.svelte';
   import Calendar from '@components/icons/Calendar.svelte';
   import '@styles/pages/cv.css';
@@ -30,7 +32,7 @@
       <!-- svelte-ignore a11y-unknown-role -->
       <header class="item-basics" role="header">
         {#if skillBreakdown.length}
-          <h2 class="item-title"><a href="/cv/experience/{slug}">{name}</a></h2>
+          <h2 class="item-title"><a href="{exPath}/{slug}">{name}</a></h2>
         {:else}
           <h2 class="item-title">{name}</h2>
         {/if}

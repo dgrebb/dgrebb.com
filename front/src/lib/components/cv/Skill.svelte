@@ -1,6 +1,15 @@
 <script>
+  import { PATHS } from '$lib/CONSTANTS';
   import SkillIcon from '@components/icons/SkillIcon.svelte';
   import '@styles/pages/skill.css';
+
+  const {
+    organization: orgPath,
+    experience: exPath,
+    project: projPath,
+    classification: classPath,
+    certification: certPath,
+  } = PATHS.one;
   export let content;
 
   let {
@@ -48,7 +57,7 @@
   <ul class="collection-attributes">
     {#each certifications as { attributes: { name, slug: certificationSlug } }}
       <li class="attribute">
-        <a href="/cv/certification/{certificationSlug}">{name}</a>
+        <a href="{certPath}/{certificationSlug}">{name}</a>
       </li>
     {/each}
   </ul>
@@ -59,7 +68,7 @@
   <ul class="collection-attributes">
     {#each classifications as { attributes: { name, slug: classificationSlug } }}
       <li class="attribute">
-        <a href="/cv/classification/{classificationSlug}">{name}</a>
+        <a href="{classPath}/{classificationSlug}">{name}</a>
       </li>
     {/each}
   </ul>
@@ -70,7 +79,7 @@
   <ul class="collection-attributes">
     {#each projects as { attributes: { name, slug: projectSlug } }}
       <li class="attribute">
-        <a href="/cv/project/{projectSlug}">{name}</a>
+        <a href="{projPath}/{projectSlug}">{name}</a>
       </li>
     {/each}
   </ul>
@@ -81,7 +90,7 @@
   <ul class="collection-attributes">
     {#each experiences as { attributes: { name, slug: experienceSlug } }}
       <li class="attribute">
-        <a href="/cv/experience/{experienceSlug}">{name}</a>
+        <a href="{exPath}/{experienceSlug}">{name}</a>
       </li>
     {/each}
   </ul>
@@ -92,7 +101,7 @@
   <ul class="collection-attributes">
     {#each organizations as { attributes: { name, slug: organizationSlug } }}
       <li class="attribute">
-        <a href="/cv/organization/{organizationSlug}">{name}</a>
+        <a href="{orgPath}/{organizationSlug}">{name}</a>
       </li>
     {/each}
   </ul>

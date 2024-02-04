@@ -1,5 +1,5 @@
 <aside class="collection__aside">
-  <!-- TODO: Similarly, each artifact type should have a component 
+  <!-- TODO: Each artifact type should have a component 
   to match, which is dynamically selected by artifact type  -->
 
   <slot />

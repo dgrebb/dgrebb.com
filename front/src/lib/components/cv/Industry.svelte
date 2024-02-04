@@ -1,4 +1,12 @@
 <script>
+  import { PATHS } from '$lib/CONSTANTS';
+  const {
+    organizations: orgPath,
+    experience: exPath,
+    project: projPath,
+    skill: skillPath,
+  } = PATHS.one;
+
   export let content;
   let {
     name,
@@ -24,19 +32,19 @@
   {#if organizations}
     <h2>Organizations</h2>
     {#each organizations as { attributes: { name, slug: organizationSlug } }}
-      <h2><a href="/cv/organization/{organizationSlug}">{name}</a></h2>
+      <h2><a href="{orgPath}/{organizationSlug}">{name}</a></h2>
     {/each}
   {/if}
 
   {#each experiences as { attributes: { name, slug: experienceSlug } }}
-    <h2><a href="/cv/experience/{experienceSlug}">{name}</a></h2>
+    <h2><a href="{exPath}/{experienceSlug}">{name}</a></h2>
   {/each}
 
   {#each projects as { attributes: { name, slug: projectSlug } }}
-    <h2><a href="/cv/project/{projectSlug}">{name}</a></h2>
+    <h2><a href="{projPath}/{projectSlug}">{name}</a></h2>
   {/each}
 
   {#each skills as { attributes: { name, slug: skillSlug } }}
-    <h2><a href="/cv/skill/{skillSlug}">{name}</a></h2>
+    <h2><a href="{skillPath}/{skillSlug}">{name}</a></h2>
   {/each}
 </article>

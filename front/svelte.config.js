@@ -1,6 +1,11 @@
+import { PATHS } from './src/lib/CONSTANTS.js';
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import path from 'path';
+
+const {
+  landing: { cv, privacy, experiences, categories, rss, fof },
+} = PATHS;
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -30,22 +35,15 @@ const config = {
     },
     inlineStyleThreshold: Infinity,
     prerender: {
-      entries: [
-        '/cv',
-        '/cv/experiences',
-        '/posts/category/all',
-        '/privacy',
-        '/404',
-        '/RSS.xml',
-      ],
+      entries: [cv, experiences, categories, privacy, fof, rss],
       handleHttpError: ({ path, referrer, message }) => {
-        if (path === '/404' && referrer === '/privacy/') {
+        if (path === fof && referrer === `${privacy}/`) {
           return;
         }
         if (path.includes('/uploads') || /^\/cv\//.test(path)) {
           return;
         }
-        if (path.includes('/v') || path.includes('/cv')) {
+        if (path.includes('/v') || path.includes(cv)) {
           return;
         }
         throw new Error(message);

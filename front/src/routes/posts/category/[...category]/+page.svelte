@@ -1,4 +1,5 @@
 <script>
+  import { PATHS } from '$lib/CONSTANTS';
   import { page } from '$app/stores';
   import Meta from '@components/general/Meta.svelte';
   import PageTransition from '@components/general/PageTransition.svelte';
@@ -7,6 +8,7 @@
   import PageNav from '@components/general/PageNav/PageNav.svelte';
   import '@styles/pages/category.css';
 
+  const { post: postPath, category: categoryPath } = PATHS.one;
   export let data;
   const route = $page.route.id;
   $: ({
@@ -53,7 +55,7 @@
             {#each posts as { attributes: { title, publishedAt, slug, summary, categories, position, hero: { data: { attributes: { formats: { thumbnail } } } } } }}
               {@const date = new Date(publishedAt).toDateString()}
               <li class="post-item">
-                <a href="/post/{slug}">
+                <a href="{postPath}/{slug}">
                   <div class="post-item-heading">
                     <h2 class="post-title">{title}</h2>
                     <time datetime={date} class="post-date">{date}</time>
@@ -67,7 +69,7 @@
                 <ul class="category-tags">
                   {#each categories.data as { attributes: { name, slug } }}
                     <li class="category-tag" class:active={category === slug}>
-                      <a href="/posts/category/{slug}">
+                      <a href="{categoryPath}/{slug}">
                         <Tag />{name}
                       </a>
                     </li>

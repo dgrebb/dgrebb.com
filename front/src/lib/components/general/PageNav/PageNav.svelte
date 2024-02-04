@@ -1,10 +1,13 @@
 <script>
+  import { PATHS } from '$lib/CONSTANTS';
   import TableOfContents from '@components/posts/TableOfContents.svelte';
   import ClosePageNav from '@components/general/PageNav/ClosePageNav.svelte';
   import { categoryClick, relatedClick } from '@utils/uiHelpers.js';
   import { focusTrap } from '@utils/actions.js';
   import ListIcon from '~icons/gg/list';
   import './page-nav.css';
+  const { post: postPath, category: categoryPath } = PATHS.one;
+  const categoriesPath = PATHS.many.categories;
 
   export let toc = false;
   export let categories = false;
@@ -64,7 +67,7 @@
                 setActiveLink(e);
                 if (mini) pageFenceClickHandler();
               }}
-              href="/posts/category/all/"
+              href={categoriesPath}
               class="transition-link"
               class:active={category === 'all'}
               use:activeLink
@@ -81,7 +84,7 @@
                 setActiveLink(e);
                 if (mini) pageFenceClickHandler();
               }}
-              href="/posts/category/{slug}/"
+              href="{categoryPath}/{slug}/"
               class="transition-link"
               class:active={category === slug}
               use:activeLink
@@ -99,7 +102,7 @@
           <li>
             <a
               on:click={() => relatedClick(pathname, title)}
-              href="/post/{slug}/"
+              href="{postPath}/{slug}/"
               class="transition-link">{title}</a
             >
           </li>
