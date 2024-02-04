@@ -18,7 +18,6 @@ marked.use({ renderer, gfm: true });
  */
 const endpoint = URL + CV;
 const experiencesEndpoint = URL + EX;
-console.log('🚀 ~ EX:', EX);
 
 /**
  * Takes raw experiences data, sorts it based on start date, and maps it to
