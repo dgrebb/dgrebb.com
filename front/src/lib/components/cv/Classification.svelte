@@ -1,4 +1,6 @@
 <script>
+  import { PATHS } from '$lib/CONSTANTS';
+  const { skill: skillPath } = PATHS.one;
   export let content;
 
   let {
@@ -29,7 +31,7 @@
     <ul class="collection-attributes">
       {#each skills as { attributes: { name, slug: skillSlug } }}
         <li class="attribute">
-          <a href="/cv/skill/{skillSlug}">{name}</a>
+          <a href="{skillPath}/{skillSlug}">{name}</a>
         </li>
       {/each}
     </ul>

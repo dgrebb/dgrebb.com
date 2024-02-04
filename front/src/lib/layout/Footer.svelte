@@ -1,4 +1,6 @@
 <script>
+  import { PATHS } from '$lib/CONSTANTS';
+  const { privacy } = PATHS.landing;
   import CreativeCommons from '@components/icons/CreativeCommons.svelte';
   export let copyleft;
   export let copyright;
@@ -12,6 +14,6 @@
   <p>
     <CreativeCommons />
     {#if copyright}{copyright}{/if}{year} A.D. | Some Rights Reserved |
-    <a href="/privacy">Privacy Policy</a>
+    <a href="{privacy}/">Privacy Policy</a>
   </p>
 </small>

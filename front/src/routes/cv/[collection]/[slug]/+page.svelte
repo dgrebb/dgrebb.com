@@ -1,4 +1,6 @@
 <script>
+  import { PATHS } from '$lib/CONSTANTS';
+  const { cv } = PATHS.landing;
   import Meta from '@components/general/Meta.svelte';
   import PageTransition from '@components/general/PageTransition.svelte';
   import Award from '@components/cv/Award.svelte';
@@ -43,7 +45,7 @@
     {:else}
       <div class="empty-content">
         <h2>Nothing here yet. You're early!</h2>
-        «&nbsp;<a href="/cv/">Back to CV</a>
+        «&nbsp;<a href="{cv}/">Back to CV</a>
       </div>
     {/if}
   </section>

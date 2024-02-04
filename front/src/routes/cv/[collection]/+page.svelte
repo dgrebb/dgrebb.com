@@ -1,4 +1,6 @@
 <script>
+  import { PATHS } from '$lib/CONSTANTS';
+  const { cv } = PATHS.landing;
   import PageTransition from '@components/general/PageTransition.svelte';
   import Meta from '@components/general/Meta.svelte';
   // import SkillIcon from '@components/icons/SkillIcon.svelte';
@@ -39,14 +41,14 @@
         {#each collectionData as { attributes: { name, slug } }}
           <li class="collection-list-item">
             <!-- <SkillIcon {name} {slug} /> -->
-            <a href={`/cv/${singleItemRoute}/${slug}`}>{name}</a>
+            <a href="{cv}/{singleItemRoute}/{slug}">{name}</a>
           </li>
         {/each}
       </ul>
     {:else}
       <div class="empty-content">
         <h2>Nothing here yet. You're early!</h2>
-        «&nbsp;<a href="/cv/">Back to CV</a>
+        «&nbsp;<a href="{cv}/">Back to CV</a>
       </div>
     {/if}
   </section>
