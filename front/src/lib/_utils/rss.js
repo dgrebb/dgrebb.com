@@ -1,4 +1,6 @@
+import { PATHS } from '$lib/CONSTANTS';
 const website = 'https://www.dgrebb.com';
+const path = PATHS.one.post;
 const feedTitle = 'Dan Grebb | Computer Programmer';
 const feedDescription = 'Thoughts, learnings, and updates from Dan Grebb.';
 const feedLink = 'https://www.dgrebb.com';
@@ -7,7 +9,7 @@ const feedUpdated = new Date();
 export const xml = (posts) => `<?xml version="1.0" encoding="utf-8"?>
   <feed xmlns="http://www.w3.org/2005/Atom">
     <title>${feedTitle}</title>
-    <link href="${feedLink}/rss.xml" rel="self"/>
+    <link href="${feedLink}/RSS.xml" rel="self"/>
     <link href="${feedLink}"/>
     <id>${feedLink}/</id>
     <updated>${feedUpdated.toISOString()}</updated>
@@ -28,8 +30,8 @@ ${posts
 
     return `<entry>
         <title>${post.attributes.title}</title>
-        <link href="${website}/post/${slug}/"/>
-        <id>${website}/post/${slug}/</id>
+        <link href="${website}${path}/${slug}/"/>
+        <id>${website}${path}/${slug}/</id>
         <updated>${new Date(publishedAt).toISOString()}</updated>
         <published>${new Date(publishedAt).toISOString()}</published>
         ${

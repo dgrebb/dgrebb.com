@@ -1,9 +1,11 @@
 <script>
+  import { PATHS } from '$lib/CONSTANTS';
   import Aside from '@components/general/Aside/Aside.svelte';
   import AsideGroup from '@components/general/Aside/AsideGroup.svelte';
   import SkillBreakdown from '@components/cv/SkillBreakdown/SkillBreakdown.svelte';
   import './experience.css';
 
+  const { organizations: orgPath } = PATHS.one;
   let collection = 'experience';
 
   export let content;
@@ -35,9 +37,7 @@
       <h2>Organizations</h2>
       <p>
         {#each orgs as { attributes: { name, slug } }, key}
-          <a href="/cv/organization/{slug}"
-            >{name}{key === orgs.length ? ',' : ''}</a
-          >
+          <a href="{orgPath}/{slug}">{name}{key === orgs.length ? ',' : ''}</a>
         {/each}
       </p>
     {/if}

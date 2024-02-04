@@ -1,4 +1,9 @@
 <script>
+  import { PATHS } from '$lib/CONSTANTS';
+  const {
+    one: { post: postPath, category: categoryPath },
+    many: { posts: postsPath },
+  } = PATHS;
   import { page } from '$app/stores';
   import { PUBLIC_ENV as ENV } from '$env/static/public';
   import { PlausibleAnalytics } from '@accuser/svelte-plausible-analytics';
@@ -14,10 +19,10 @@
   let mounted = false;
   let isAutomation;
   $: secondary =
-    route === '/posts/category/[category]' ||
-    route === '/post/[slug]' ||
-    route === '/posts';
-  $: post = $page.route.id === '/post/[slug]';
+    route === `${categoryPath}/[category]` ||
+    route === `${postPath}/[slug]` ||
+    route === `${postsPath}`;
+  $: post = $page.route.id === `${postPath}/[slug]`;
 
   const domain =
       {

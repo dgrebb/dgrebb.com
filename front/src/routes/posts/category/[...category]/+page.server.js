@@ -1,3 +1,6 @@
+import { URIS, PATHS } from '$lib/CONSTANTS';
+const { www: wwwURI, cdn: cdnURI } = URIS;
+const { category: categoryPath } = PATHS.one;
 import { error } from '@sveltejs/kit';
 import api, { categoryAPI } from '@api';
 import {
@@ -66,7 +69,7 @@ export async function load({ params }) {
         : `"Read what I have to say about ${name}"`,
     canonicalURL: seo?.canonicalURL
       ? seo?.canonicalURL
-      : `https://www.dgrebb.com/posts/category/${category}/`,
+      : `${wwwURI}${categoryPath}/${category}/`,
   };
 
   /**
@@ -76,7 +79,7 @@ export async function load({ params }) {
     url:
       pageMeta?.metaImage?.formats?.large?.url ||
       categoryPageContent?.seo?.metaImage?.formats?.large?.url ||
-      'https://s.dgrebb.com/img/default_categories_ad8e01e054.webp',
+      `${cdnURI}/img/default_categories_ad8e01e054.webp`,
     alternativeText:
       pageMeta?.metaImage?.alternativeText ||
       categoryPageContent?.seo?.metaImage?.alternativeText ||
