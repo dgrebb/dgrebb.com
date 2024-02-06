@@ -1,4 +1,8 @@
-<aside class="collection__aside">
+<script>
+  import '@styles/components/page-nav.css';
+</script>
+
+<aside class="collection__aside page-navigation">
   <!-- TODO: Each artifact type should have a component 
   to match, which is dynamically selected by artifact type  -->
 
@@ -46,6 +50,7 @@
 <style lang="postcss">
   .collection__aside {
     float: right;
+    opacity: 0.85;
     padding-left: 2rem;
     width: 25%;
   }
