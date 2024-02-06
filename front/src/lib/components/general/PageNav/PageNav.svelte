@@ -5,7 +5,7 @@
   import { categoryClick, relatedClick } from '@utils/uiHelpers.js';
   import { focusTrap } from '@utils/actions.js';
   import ListIcon from '~icons/gg/list';
-  import './page-nav.css';
+  import '@styles/components/page-nav.css';
   const { post: postPath, category: categoryPath } = PATHS.one;
   const categoriesPath = PATHS.many.categories;
 

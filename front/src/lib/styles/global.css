@@ -118,7 +118,8 @@ body {
 .footer a,
 .privacy a,
 .category-posts-list .post-item-summary a,
-.cv a,
+.cv article section a,
+.cv .timeline a,
 .not-found a {
   transition-duration: var(--transition-duration);
   transition-property: color, border-color;
