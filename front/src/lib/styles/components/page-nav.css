@@ -1,6 +1,7 @@
 .meat .page-navigation {
   h2,
-  li {
+  li,
+  p {
     text-align: right;
   }
   h2 {
