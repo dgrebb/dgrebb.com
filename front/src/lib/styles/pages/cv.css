@@ -1,8 +1,6 @@
 @import '../components/cv-timeline.css';
 
 .cv.meat {
-  padding: 2.33rem;
-  max-width: 64rem;
   h1.page-heading {
     font-family: var(--font-psbl);
     letter-spacing: -0.0875rem;
