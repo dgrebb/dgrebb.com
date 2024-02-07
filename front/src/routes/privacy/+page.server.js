@@ -4,14 +4,7 @@ import {
   API_URL as URL,
   API_PATH_PRIVACY as PRIVACY,
 } from '$env/static/private';
-import { marked } from 'marked';
-import { heading, link } from '@components/content/renderers';
-
-const renderer = new marked.Renderer();
-renderer.link = link;
-renderer.heading = heading;
-
-marked.use({ renderer, gfm: true });
+import marked from '@components/content/markers/marker';
 
 const endpoint = URL + PRIVACY;
 
@@ -42,7 +35,7 @@ export async function load() {
     };
 
     var markedPrivacyDetails = privacyContent
-      ? marked(privacyContent.details)
+      ? await marked(privacyContent.details)
       : false;
 
     return {

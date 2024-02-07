@@ -5,62 +5,8 @@ import {
   API_PATH_POST as POST,
   POST_PARAMS as PARAMS,
 } from '$env/static/private';
-import { marked } from 'marked';
-import markedAlert from 'marked-alert';
-import { link, heading, image } from '@components/content/renderers';
-import { parseTOC } from '@components/content/parsers';
-
-const renderer = new marked.Renderer();
-renderer.link = link;
-renderer.heading = heading;
-renderer.image = image;
-
-marked.use(markedAlert(), { renderer, gfm: true });
-
-// Markdown rendering function
-/**
- * Render markdown text using the marked library.
- *
- * @param {string} text - The markdown text to render.
- * @returns {string} - Rendered HTML content.
- */
-async function markItUp(text) {
-  const content = marked.parse(text);
-  return content;
-}
-
-/**
- * Parses the highlighted lines string into an array of line numbers.
- * Adjusts line numbers for zero-based indexing and sorts them in ascending order.
- *
- * @param {string|false} lines - The string of highlighted lines or false.
- * @returns {Array<number>|false} An array of adjusted line numbers, or false if input is falsy.
- */
-async function parseHighlightedLines(lines) {
-  if (!lines) {
-    return false;
-  }
-
-  return lines
-    .split(',')
-    .reduce((acc, part) => {
-      const range = part
-        .trim()
-        .split('-')
-        .map((num) => parseInt(num, 10) - 1);
-
-      if (range.length === 2) {
-        for (let i = range[0]; i <= range[1]; i++) {
-          acc.push(i);
-        }
-      } else {
-        acc.push(range[0]);
-      }
-
-      return acc;
-    }, [])
-    .sort((a, b) => a - b);
-}
+import { parseTOC, parseHighlightedLines } from '@components/content/parsers';
+import postMarked from '@components/content/markers/postMarker';
 
 /**
  * Load function to fetch and process a blog post.
@@ -114,7 +60,7 @@ export async function load({ params: { slug }, route }) {
             parsedTOC = parseTOC(c.text);
             toc.push(...parsedTOC);
             // Render markdown text
-            return { ...c, text: await markItUp(c.text) };
+            return { ...c, text: await postMarked(c.text) };
           case 'posts.code':
             return {
               ...c,
@@ -143,7 +89,7 @@ export async function load({ params: { slug }, route }) {
             } = c;
 
             const enhancedFigcaption = figcaption
-              ? await markItUp(figcaption)
+              ? await postMarked(figcaption)
               : null;
 
             return {
@@ -191,7 +137,7 @@ export async function load({ params: { slug }, route }) {
     return {
       post: post || {},
       toc,
-      summary: summary ? await markItUp(summary) : false,
+      summary: summary ? await postMarked(summary) : false,
       content: parsedContent,
       pageMeta,
     };

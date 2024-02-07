@@ -10,7 +10,23 @@ import { extractDomainWithoutWWW } from '@utils';
  * @param {number} level The heading level
  * @returns A heading with offset level, anchor id, and anchor link
  */
-export const heading = function (text, level, raw) {
+export const heading = function (text, level) {
+  let depth = level + 1;
+
+  return `<h${depth} class="post-heading">
+      ${text}
+    </h${depth}>`;
+};
+
+/**
+ * @function
+ * @name anchorHeading
+ *
+ * @param {string} text The heading text
+ * @param {number} level The heading level
+ * @returns A heading with offset level, anchor id, and anchor link
+ */
+export const anchorHeading = function (text, level, raw) {
   const id = slugger(raw);
   let depth = level + 1;
 
