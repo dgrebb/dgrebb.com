@@ -1,10 +1,5 @@
-import { marked } from 'marked';
-import { link } from '@components/content/renderers';
-
-// Configure the marked renderer
-const renderer = new marked.Renderer();
-renderer.link = link;
-marked.use({ renderer, gfm: true });
+// import { Marked, Renderer } from 'marked';
+import marked from '@components/content/markers/marker';
 
 /**
  * Shapes and prepares experience data for rendering.
@@ -58,11 +53,14 @@ export async function shapeExperienceData(data) {
     }
   );
 
+  // Process markdown
+  const markedBody = body ? await marked(body) : false;
+
   return {
     experience: {
       ...experience,
       highlightedSkills,
-      body: body ? marked(body) : false,
+      body: markedBody,
       hero: hero?.data?.attributes || false,
     },
     pageMeta,

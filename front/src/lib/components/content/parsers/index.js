@@ -22,3 +22,38 @@ export const parseTOC = function (contents) {
 
   return headings;
 };
+
+/**
+ * Parses the highlighted lines string into an array of line numbers.
+ * Adjusts line numbers for zero-based indexing and sorts them in ascending order.
+ *
+ * @param {string|false} lines - The string of highlighted lines or false.
+ * @returns {Array<number>|false} An array of adjusted line numbers, or false if input is falsy.
+ */
+export const parseHighlightedLines = async function parseHighlightedLines(
+  lines
+) {
+  if (!lines) {
+    return false;
+  }
+
+  return lines
+    .split(',')
+    .reduce((acc, part) => {
+      const range = part
+        .trim()
+        .split('-')
+        .map((num) => parseInt(num, 10) - 1);
+
+      if (range.length === 2) {
+        for (let i = range[0]; i <= range[1]; i++) {
+          acc.push(i);
+        }
+      } else {
+        acc.push(range[0]);
+      }
+
+      return acc;
+    }, [])
+    .sort((a, b) => a - b);
+};

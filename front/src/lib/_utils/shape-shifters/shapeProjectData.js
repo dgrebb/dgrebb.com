@@ -1,5 +1,4 @@
-import { marked } from 'marked';
-import { link, heading } from '@components/content/renderers';
+import marked from '@components/content/markers/marker';
 
 /**
  * Shapes artifact data by categorizing websites and videos.
@@ -44,16 +43,6 @@ async function shapeArtifactData(data) {
  * @returns {Object} - Shaped project data with optimized artifacts and parsed body.
  */
 export async function shapeProjectData(data) {
-  /**
-   * Custom renderer for marked library.
-   * @type {marked.Renderer}
-   */
-  const renderer = new marked.Renderer();
-  renderer.link = link;
-  renderer.heading = heading;
-
-  marked.use({ renderer, gfm: true });
-
   /**
    * Destructuring relevant attributes from the first element of the data array.
    * @type {Object}
