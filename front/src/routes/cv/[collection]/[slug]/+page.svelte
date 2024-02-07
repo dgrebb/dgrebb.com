@@ -37,7 +37,7 @@
 </script>
 
 <PageTransition transitionKey={slug}>
-  <section class="cv meat {collection}">
+  <section class="cv meat singleton {collection}">
     <span class="flourish" />
     <a id="main">Main Content</a>
     {#if itemData}
@@ -56,3 +56,14 @@
     <Meta {pageMeta} />
   {/key}
 {/if}
+
+<style lang="postcss">
+  .singleton {
+    max-width: 64rem;
+  }
+  @media screen and (min-width: 640px) {
+    .singleton {
+      padding: 2.33rem;
+    }
+  }
+</style>
