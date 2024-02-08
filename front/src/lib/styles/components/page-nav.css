@@ -59,7 +59,7 @@
 .page-navigation.mini {
   -webkit-text-select: none;
   position: absolute;
-  top: -1rem;
+  top: 0;
   right: 1rem;
   z-index: 10;
   padding: 0.33rem 0.33rem 0.33rem 2.33rem;
