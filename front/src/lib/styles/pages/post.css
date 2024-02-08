@@ -1,7 +1,7 @@
 .post {
   display: block;
   position: relative;
-  margin-top: 1.75rem;
+  margin-top: 1rem;
   margin-left: 1rem;
   /* border-radius: 0.77rem; */
   /* &::before {
@@ -29,9 +29,11 @@
     padding: 0 1rem;
     line-height: 1.2;
     text-wrap: balance;
+    position: relative;
   }
 
   .pubdate {
+    padding-left: 1rem;
     color: var(--fg-clr-oo);
     font-size: 1rem;
   }
@@ -386,7 +388,10 @@
 
 @media screen and (min-width: 333px) {
   .post {
-    margin-top: 0.75rem;
+    margin-top: 0;
+    .pubdate {
+      padding-left: 1.5rem;
+    }
   }
 }
 
@@ -396,7 +401,7 @@
   }
   .post .post-title,
   .post .post-article {
-    top: -1rem;
+    /* top: -1rem; */
   }
   .post-article {
     padding-right: 1.5rem;
@@ -437,7 +442,8 @@
 
 @media screen and (min-width: 640px) {
   .post {
-    margin-top: 1.5rem;
+    /* margin-top: 1.5rem; */
+    padding-top: 1rem;
   }
   .post .aside {
     display: block;
@@ -496,18 +502,18 @@
 
 @media screen and (min-width: 768px) {
   .post {
-    margin-top: 3.5rem;
+    /* margin-top: 3.5rem; */
     /* background: var(--content-bg-gradient), var(--bg-clr); */
-    padding: 2.33rem;
+    padding: 1rem 2.33rem 0;
   }
   .post-article,
   .post .aside,
   .aside-toggle {
-    top: -4rem;
+    /* top: -4rem; */
   }
   .post .post-title,
   .post .post-article {
-    top: -5rem;
+    /* top: -5rem; */
   }
   .post-article {
     margin-bottom: -2rem;

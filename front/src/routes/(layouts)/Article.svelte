@@ -3,8 +3,8 @@
 </script>
 
 <div class="article">
-  <slot name="header" />
   <article>
+    <slot name="header" />
     <slot name="aside" />
     <slot name="content" />
   </article>
