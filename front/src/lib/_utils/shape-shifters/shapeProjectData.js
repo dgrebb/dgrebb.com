@@ -88,7 +88,7 @@ export async function shapeProjectData(data) {
    * Parsed body content.
    * @type {string|boolean}
    */
-  const parsedBody = body ? marked.parse(body) : false;
+  const parsedBody = body ? await marked(body) : false;
 
   /**
    * Final shaped project data.

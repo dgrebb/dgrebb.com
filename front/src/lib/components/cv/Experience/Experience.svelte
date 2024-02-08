@@ -1,9 +1,9 @@
 <script>
   import { PATHS } from '$lib/CONSTANTS';
+  import Article from '@layouts/Article.svelte';
   import Aside from '@components/general/Aside/Aside.svelte';
   import AsideGroup from '@components/general/Aside/AsideGroup.svelte';
   import SkillBreakdown from '@components/cv/SkillBreakdown/SkillBreakdown.svelte';
-  import './experience.css';
 
   const { organizations: orgPath } = PATHS.one;
   let collection = 'experience';
@@ -20,10 +20,10 @@
   } = content.experience;
 </script>
 
-<article class="experience__article">
-  <header class="experience__header">
+<Article>
+  <header class="article__header" slot="header">
     <p class="collection__title">Experience</p>
-    <h1 class="experience__title">
+    <h1 class="article__title">
       {name}
     </h1>
 
@@ -32,7 +32,7 @@
     {/if}
   </header>
 
-  <Aside>
+  <Aside slot="aside">
     {#if orgs?.length}
       <h2>Organizations</h2>
       <p>
@@ -61,9 +61,9 @@
     {/if}
   </Aside>
 
-  <section class="experience__body">
+  <section class="article__body" slot="content">
     {#if body}
       {@html body}
     {/if}
   </section>
-</article>
+</Article>

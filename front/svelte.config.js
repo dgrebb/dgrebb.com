@@ -32,6 +32,8 @@ const config = {
       '@styles': path.resolve('./src/lib/styles'),
       '@utils': path.resolve('./src/lib/_utils'),
       '@shape-shifters': path.resolve('./src/lib/_utils/shape-shifters'),
+      '@markers': path.resolve('./src/lib/components/content/markers'),
+      '@layouts': path.resolve('./src/routes/(layouts)'),
     },
     inlineStyleThreshold: Infinity,
     prerender: {
