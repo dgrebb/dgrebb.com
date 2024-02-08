@@ -107,11 +107,15 @@
         {heroThumb}
         slot="header"
       />
-      <a id="main">Main Content</a>
       {#if (toc && toc.length) || (categories && categories.length) || (related && related.length)}
         <PageNav {toc} {categories} {related} {pathname} mini {setActiveLink} />
       {/if}
       <h1 class="post-title">{title}</h1>
+      <time
+        class="pubdate"
+        datetime={publishedAt}
+        title={updatedAt ? `Updated ${up}` : false}>{pub}</time
+      >
     {/if}
   </header>
   <aside class="aside" role="navigation" slot="aside">
@@ -119,12 +123,8 @@
       <PageNav {toc} {categories} {related} {pathname} {setActiveLink} />
     {/if}
   </aside>
+  <a id="main">Main Content</a>
   <article class="post-article" slot="content">
-    <time
-      class="pubdate"
-      datetime={publishedAt}
-      title={updatedAt ? `Updated ${up}` : false}>{pub}</time
-    >
     {#if summary}
       <div class="summary">
         {@html summary}
