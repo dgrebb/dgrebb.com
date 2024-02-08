@@ -1,5 +1,6 @@
 <script>
   import Aside from '@components/general/Aside/Aside.svelte';
+  import Article from '@layouts/Article.svelte';
   import AsideGroup from '@components/general/Aside/AsideGroup.svelte';
   import '@styles/pages/skills.css';
 
@@ -16,13 +17,13 @@
   } = content.project;
 </script>
 
-<article class="project-article">
-  <header class="experience__header">
+<Article>
+  <header class="article__header" slot="header">
     <p class="collection__title">Projects</p>
     <h1>{name}</h1>
   </header>
 
-  <Aside>
+  <Aside slot="aside">
     {#if orgs?.length}
       <AsideGroup
         {collection}
@@ -49,12 +50,10 @@
     {/if}
   </Aside>
 
-  <section class="project-details">
+  <section class="project-details" slot="content">
     {#if body}
       {@html body}
     {/if}
-  </section>
-  <section class="project-artifacts">
     {#if Object.keys(artifacts).length}
       <h2>Artifacts</h2>
       {#if websites}
@@ -100,4 +99,4 @@
       {/if}
     {/if}
   </section>
-</article>
+</Article>

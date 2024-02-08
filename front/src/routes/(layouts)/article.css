@@ -1,8 +1,5 @@
-.cv.experience {
+.article {
   position: relative;
-}
-
-.experience {
   &__header {
     margin-bottom: 3rem;
     text-align: center;

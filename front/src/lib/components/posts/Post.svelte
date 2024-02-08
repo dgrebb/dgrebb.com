@@ -1,8 +1,10 @@
 <script>
+  import Article from '@layouts/Article.svelte';
   import AnimatedImage from '@components/posts/AnimatedImage.svelte';
   import Code from '@components/posts/Code/Code.svelte';
   import Footnotes from '@components/posts/Footnotes.svelte';
   import PageNav from '@components/general/PageNav/PageNav.svelte';
+  import PostHero from '@components/posts/PostHero.svelte';
   import PostText from '@components/posts/PostText.svelte';
   import BlockQuote from '@components/posts/BlockQuote.svelte';
   import { popImage } from '@utils/popoverHandlers';
@@ -35,7 +37,12 @@
     footnotes,
     categories,
     related,
-    pathname;
+    pathname,
+    heroImage,
+    heroMime,
+    loaded,
+    position,
+    heroThumb;
 
   /**
    * Sets the active link in the page navigation.
@@ -89,17 +96,30 @@
   {#if updatedAt}<meta name="date_modified" content={updatedAt} />{/if}
 </svelte:head>
 
-{#if (toc && toc.length) || (categories && categories.length) || (related && related.length)}
-  <PageNav {toc} {categories} {related} {pathname} mini {setActiveLink} />
-{/if}
-<h1 class="post-title">{title}</h1>
-<div class="post-layout">
-  <aside class="aside" role="navigation">
+<Article>
+  <header slot="header">
+    {#if heroImage}
+      <PostHero
+        {heroImage}
+        {heroMime}
+        {loaded}
+        {position}
+        {heroThumb}
+        slot="header"
+      />
+      <a id="main">Main Content</a>
+      {#if (toc && toc.length) || (categories && categories.length) || (related && related.length)}
+        <PageNav {toc} {categories} {related} {pathname} mini {setActiveLink} />
+      {/if}
+      <h1 class="post-title">{title}</h1>
+    {/if}
+  </header>
+  <aside class="aside" role="navigation" slot="aside">
     {#if (toc && toc.length) || (categories && categories.length) || (related && related.length)}
       <PageNav {toc} {categories} {related} {pathname} {setActiveLink} />
     {/if}
   </aside>
-  <article class="post-article">
+  <article class="post-article" slot="content">
     <time
       class="pubdate"
       datetime={publishedAt}
@@ -134,11 +154,6 @@
             {/each}
           </section>
         {/if}
-        {#if c.__component === 'posts.html'}
-          <div class="inline-html">
-            {@html c.html}
-          </div>
-        {/if}
         -->
       {/each}
     {/if}
@@ -148,4 +163,4 @@
       </footer>
     {/if}
   </article>
-</div>
+</Article>
