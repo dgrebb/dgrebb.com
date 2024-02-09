@@ -20,7 +20,6 @@
   display: flex;
   position: relative;
   align-items: center;
-  z-index: 9;
   padding: 1.25rem 0 0 1rem;
 }
 
