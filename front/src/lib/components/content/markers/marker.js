@@ -16,7 +16,6 @@ marker.use(markedAlert(), { renderer: renderer, gfm: true });
  * @param {string} text - The markdown text to render.
  * @returns {string} - Rendered HTML content.
  */
-export default async function marked(text) {
-  const content = marker.parse(text);
-  return content;
+export default function marked(text) {
+  return marker.parse(text);
 }
