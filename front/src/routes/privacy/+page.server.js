@@ -35,7 +35,7 @@ export async function load() {
     };
 
     var markedPrivacyDetails = privacyContent
-      ? await marked(privacyContent.details)
+      ? marked(privacyContent.details)
       : false;
 
     return {
