@@ -54,7 +54,7 @@ export async function shapeExperienceData(data) {
   );
 
   // Process markdown
-  const markedBody = body ? await marked(body) : false;
+  const markedBody = body ? marked(body) : false;
 
   return {
     experience: {
