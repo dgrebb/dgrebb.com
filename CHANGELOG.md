@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.18.0] - 2024-02-11
+
+### 💡 Features
+
+- ***(front)*** Add Dockerfile and YAML syntax-highlighter support
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Set style false when post hero is undefined
+- ***(front)*** Add overrides for motion styles with dynamic specificity (#1224)
+- ***(front)*** Set `ready` body class on 404 direct-hits
+- ***(front)*** Refactor marked instances, configuration, and imports (#1217)
+
+### ♻️  Refactor
+
+- ***(front)*** Reduce and reflow post and article layout and styles (#1216)
+- ***(front)*** Use PATHS and URIS constants (#1202)
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(back)*** Upgrade to strapi@4.19.1 (#1213)
+- ***(ci)*** Update playwright to 1.41.2
+- ***(front)*** Update and patch FE deps
+- ***(front)*** Update FE deps (#1213)
+- ***(terraform)*** Upgrade RDS to postgresql 15.5
+
 ## [3.17.1] - 2024-02-01
 
 ### ♻️  Refactor
