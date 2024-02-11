@@ -4,6 +4,13 @@ svg .calback {
   transition-duration: var(--transition-duration-md);
   transition-property: color, opacity, fill;
   transition-timing-function: var(--transition-timing-function);
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition-delay: 0.001s !important;
+    transition-duration: 0.001s !important;
+    scroll-behavior: auto !important;
+  }
 }
 label.date-toggle {
   display: block;
@@ -35,6 +42,13 @@ label.date-toggle {
     color: var(--fg-clr);
     font-size: 1.25rem;
     text-align: center;
+    @media (prefers-reduced-motion: reduce) {
+      animation-duration: 0.001s !important;
+      animation-iteration-count: 1 !important;
+      transition-delay: 0.001s !important;
+      transition-duration: 0.001s !important;
+      scroll-behavior: auto !important;
+    }
   }
   svg .calback {
     fill: var(--bg-clr);

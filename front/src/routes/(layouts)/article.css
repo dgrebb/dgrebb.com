@@ -30,3 +30,16 @@
     padding: 0.25rem 0 2rem 0;
   }
 }
+@media (prefers-reduced-motion: reduce) and (width >= 1px) {
+  *,
+  ::before,
+  ::after,
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition-delay: 0.001s !important;
+    transition-duration: 0.001s !important;
+    scroll-behavior: auto !important;
+  }
+}
