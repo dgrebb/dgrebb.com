@@ -52,7 +52,7 @@
       >
         {#if posts && posts.length}
           <ul>
-            {#each posts as { attributes: { title, publishedAt, slug, summary, categories, position, hero: { data: { attributes: { formats: { thumbnail } } } } } }}
+            {#each posts as { attributes: { title, publishedAt, slug, summary, categories, position, hero } }}
               {@const date = new Date(publishedAt).toDateString()}
               <li class="post-item">
                 <a href="{postPath}/{slug}">
@@ -62,8 +62,9 @@
                   </div>
                   <div
                     class="post-item-image"
-                    style="background-image: url('{thumbnail?.url}'); {position &&
-                      `background-position: ${position};`}"
+                    style={hero
+                      ? `background-image: url('${hero.url}'); background-position: ${position};`
+                      : false}
                   />
                 </a>
                 <ul class="category-tags">
