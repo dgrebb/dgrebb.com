@@ -91,6 +91,8 @@ export async function load({ params }) {
         ...post,
         attributes: {
           ...post.attributes,
+          hero:
+            post.attributes.hero?.data?.attributes?.formats?.thumbnail || false,
           summary: post.attributes.summary
             ? marked.parse(post.attributes.summary)
             : false,
