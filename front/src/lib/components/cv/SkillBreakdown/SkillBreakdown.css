@@ -40,6 +40,13 @@
       transition-timing-function: var(--transition-timing-function);
       cursor: pointer;
       padding: 1rem 0;
+      @media (prefers-reduced-motion: reduce) and (width >= 1px) {
+        animation-duration: 0.001s !important;
+        animation-iteration-count: 1 !important;
+        transition-delay: 0.001s !important;
+        transition-duration: 0.001s !important;
+        scroll-behavior: auto !important;
+      }
       &:not(:hover),
       &:not(:focus),
       &:not(:focus-visible),
@@ -47,6 +54,13 @@
         &::before {
           transition-delay: 50ms;
           transition-duration: 500ms;
+          @media (prefers-reduced-motion: reduce) and (width >= 1px) {
+            animation-duration: 0.001s !important;
+            animation-iteration-count: 1 !important;
+            transition-delay: 0.001s !important;
+            transition-duration: 0.001s !important;
+            scroll-behavior: auto !important;
+          }
         }
       }
       &:hover,
@@ -61,6 +75,13 @@
         transition-delay: (333ms);
         box-shadow: var(--shadow-elevation-low);
         width: calc(var(--width) * 2 * 100%);
+        @media (prefers-reduced-motion: reduce) and (width >= 1px) {
+          animation-duration: 0.001s !important;
+          animation-iteration-count: 1 !important;
+          transition-delay: 0.001s !important;
+          transition-duration: 0.001s !important;
+          scroll-behavior: auto !important;
+        }
         /* overflow: visible; */
         /* filter: brightness(1.1); */
         /* transform: scale(1.01); */
@@ -69,6 +90,13 @@
           filter: contrast(10%) brightness(100%);
           transition-delay: 0s;
           transition-duration: var(--transition-duration-fast);
+          @media (prefers-reduced-motion: reduce) and (width >= 1px) {
+            animation-duration: 0.001s !important;
+            animation-iteration-count: 1 !important;
+            transition-delay: 0.001s !important;
+            transition-duration: 0.001s !important;
+            scroll-behavior: auto !important;
+          }
         }
         &:first-of-type {
           border-left: none;
@@ -105,6 +133,13 @@
       width: 100%;
       height: 100%;
       content: '';
+      @media (prefers-reduced-motion: reduce) and (width >= 1px) {
+        animation-duration: 0.001s !important;
+        animation-iteration-count: 1 !important;
+        transition-delay: 0.001s !important;
+        transition-duration: 0.001s !important;
+        scroll-behavior: auto !important;
+      }
     }
     &__details {
       position: absolute;
@@ -118,6 +153,13 @@
       box-sizing: border-box;
       width: 100%;
       text-align: center;
+      @media (prefers-reduced-motion: reduce) and (width >= 1px) {
+        animation-duration: 0.001s !important;
+        animation-iteration-count: 1 !important;
+        transition-delay: 0.001s !important;
+        transition-duration: 0.001s !important;
+        scroll-behavior: auto !important;
+      }
       &__term,
       &__def,
       & dd,
@@ -144,6 +186,13 @@
         transition-property: max-height;
         transition-timing-function: var(--transition-timing-function);
         max-height: 0.5rem;
+        @media (prefers-reduced-motion: reduce) and (width >= 1px) {
+          animation-duration: 0.001s !important;
+          animation-iteration-count: 1 !important;
+          transition-delay: 0.001s !important;
+          transition-duration: 0.001s !important;
+          scroll-behavior: auto !important;
+        }
       }
     }
     &:first-of-type {
