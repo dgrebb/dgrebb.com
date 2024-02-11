@@ -6,7 +6,7 @@ resource "aws_db_instance" "this" {
   identifier                = var.dashed_cmsdomain
   allocated_storage         = 5
   engine                    = "postgres"
-  engine_version            = "15.3"
+  engine_version            = "15.5"
   instance_class            = var.instance_class
   multi_az                  = false
   db_name                   = "strapi"
