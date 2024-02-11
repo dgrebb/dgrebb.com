@@ -6,6 +6,8 @@
   import json from 'svelte-highlight/languages/json';
   import plaintext from 'svelte-highlight/languages/plaintext';
   import xml from 'svelte-highlight/languages/xml';
+  import yaml from 'svelte-highlight/languages/yaml';
+  import dockerfile from 'svelte-highlight/languages/dockerfile';
   import CodeCopy from './CodeCopy.svelte';
   import '@styles/components/Code/Code.css';
 
@@ -32,6 +34,8 @@
     json,
     hcl: javascript,
     html: xml,
+    yaml: yaml,
+    dockerfile: dockerfile,
   };
 
   let language = which[langLower] || plaintext;
