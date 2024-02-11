@@ -143,8 +143,8 @@ export async function load({ params: { slug }, route }) {
     };
   } catch (error) {
     console.error('Error loading post:', error);
-    throw error(500, {
-      message: 'Internal Server Error',
+    error(404, {
+      message: 'Not found',
     });
   }
 }

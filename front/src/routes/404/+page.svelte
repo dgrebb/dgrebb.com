@@ -6,7 +6,9 @@
 
   const { pathname } = $page.url;
 
-  onMount(async function () {});
+  onMount(async function () {
+    document.body.classList.toggle('ready', true);
+  });
 </script>
 
 <svelte:head>
