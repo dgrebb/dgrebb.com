@@ -131,6 +131,9 @@
   }
   &.headerless,
   &.titleless {
+    .syntax-highlighter__screen-wrap {
+      padding-bottom: 0.25rem;
+    }
     > pre {
       padding-top: 1rem;
     }

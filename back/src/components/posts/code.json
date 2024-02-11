@@ -37,7 +37,9 @@
         "HTML",
         "Shell",
         "Svelte",
-        "plaintext"
+        "plaintext",
+        "YAML",
+        "Dockerfile"
       ],
       "required": true,
       "default": "plaintext"
