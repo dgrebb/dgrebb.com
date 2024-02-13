@@ -93,5 +93,5 @@ export const image = function (href, title, text) {
     : '';
   const imageTitle = title !== null ? `title="${title}"` : '';
 
-  return `<img src="${href}" src="${href}" alt="${cleanText}" ${imageTitle} class="post-image--${alignment}" />`;
+  return `<img src="${href}" src="${href}" alt="${cleanText}" ${imageTitle} loading="lazy" class="post-image--${alignment}" />`;
 };
