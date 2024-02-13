@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.18.1] - 2024-02-13
+
+### 🐛 Bug Fixes
+
+- ***(ci)*** Use production environment in release workflow if `event_name` is "push"
+- ***(front)*** Add img loading="lazy" to post image parser
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(backstop)*** Overrides proxy-agent@<6.4.0 for CVE-2023-42282
+
 ## [3.18.0] - 2024-02-11
 
 ### 💡 Features
