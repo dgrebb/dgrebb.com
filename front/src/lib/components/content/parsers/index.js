@@ -2,6 +2,8 @@ import { marked } from 'marked';
 import slugger from 'slugger';
 
 /**
+ * @function
+ * @name parseTOC
  * Parses the table of contents from markdown content.
  *
  * @param {string} contents - The markdown content.
@@ -24,6 +26,8 @@ export const parseTOC = function (contents) {
 };
 
 /**
+ * @function
+ * @name parseHighlightedLines
  * Parses the highlighted lines string into an array of line numbers.
  * Adjusts line numbers for zero-based indexing and sorts them in ascending order.
  *
