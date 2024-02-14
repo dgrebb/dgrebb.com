@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.18.2] - 2024-02-14
+
+### 🐛 Bug Fixes
+
+- ***(front)*** ❤️  add assistive text to hero background image (#1234)
+
 ## [3.18.1] - 2024-02-13
 
 ### 🐛 Bug Fixes
