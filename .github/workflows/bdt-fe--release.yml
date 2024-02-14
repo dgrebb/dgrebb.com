@@ -21,6 +21,10 @@ permissions:
 env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
+concurrency:
+  group: "production"
+  cancel-in-progress: true
+
 jobs:
   lint:
     name: 💨
