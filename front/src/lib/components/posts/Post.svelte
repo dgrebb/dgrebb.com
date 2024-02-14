@@ -42,7 +42,8 @@
     heroMime,
     loaded,
     position,
-    heroThumb;
+    heroThumb,
+    heroAlt;
 
   /**
    * Sets the active link in the page navigation.
@@ -105,6 +106,7 @@
         {loaded}
         {position}
         {heroThumb}
+        {heroAlt}
         slot="header"
       />
       {#if (toc && toc.length) || (categories && categories.length) || (related && related.length)}

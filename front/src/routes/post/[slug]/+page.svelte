@@ -24,6 +24,7 @@
     ? hero.formats.thumbnail.url
     : false;
   $: heroImage = hero?.url ? hero.url : false;
+  $: heroAlt = hero?.alternativeText ? hero.alternativeText : false;
   $: heroMime = hero?.mime;
   $: position = post.position || 'center center';
   $: ({ publishedAt, updatedAt } = post);
@@ -65,6 +66,7 @@
       {loaded}
       {position}
       {heroThumb}
+      {heroAlt}
     />
   </section>
 
