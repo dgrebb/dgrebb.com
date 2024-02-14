@@ -9,6 +9,7 @@
    * @property {string} heroImage - URL of the hero image.
    * @property {string} heroMime - MIME type of the hero image.
    * @property {string} heroThumb - URL of the hero thumbnail.
+   * @property {string} heroAlt - Alt text for the hero image.
    * @property {boolean} loaded - Flag indicating whether the hero image is loaded.
    * @property {string} position - CSS background position for the images.
    */
@@ -27,6 +28,11 @@
    * @type {Props}
    */
   export let heroThumb;
+
+  /**
+   * @type {Props}
+   */
+  export let heroAlt;
 
   /**
    * @type {Props}
@@ -70,11 +76,15 @@
     <div
       class={`post-hero {loaded ? 'post-hero-loaded' : ''}`}
       style={`background-image: url('${heroThumb}'); background-position: ${position}`}
+      role="img"
+      aria-label={heroAlt ? heroAlt : null}
     />
     <noscript>
       <div
         class="post-hero noscript"
         style="background-image: url('{heroImage}'); background-position: {position};"
+        role="img"
+        aria-label={heroAlt}
       />
     </noscript>
   </div>
