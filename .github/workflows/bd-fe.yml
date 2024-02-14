@@ -78,7 +78,7 @@ jobs:
       name: ${{ inputs.env }}
       url: "https://${{ vars.WWW_DOMAIN }}"
     concurrency:
-      group: build-deploy
+      group: ${{ inputs.env == 'prd' && 'production-build' || 'staging-build'}}
       cancel-in-progress: true
 
     env:
