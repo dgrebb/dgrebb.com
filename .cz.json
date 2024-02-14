@@ -1,7 +1,7 @@
 {
   "commitizen": {
     "name": "cz_customize",
-    "version": "3.18.1",
+    "version": "3.18.2",
     "gpg_sign": true,
     "tag_format": "$major.$minor.$patch$prerelease",
     "version_type": "semver",
