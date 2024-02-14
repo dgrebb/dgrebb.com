@@ -42,7 +42,7 @@ jobs:
 
     concurrency:
       group: backstop
-      cancel-in-progress: true
+      cancel-in-progress: false
 
     env:
       DEPLOY_ENV: ${{ inputs.env }}
