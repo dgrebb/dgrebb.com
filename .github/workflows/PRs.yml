@@ -1,14 +1,29 @@
-name: Assign PR
+name: Assign and Review
 
 on:
-  pull_request_target:
-    types: [opened, reopened]
+  pull_request:
+    types: [opened, reopened, synchronize]
 
-permissions:
-  pull-requests: write
+permissions: write-all
 
 jobs:
   assign-author:
     runs-on: ubuntu-latest
     steps:
       - uses: toshimaru/auto-author-assign@v2.0.0
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+
+  review:
+    name: Peer Review
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: AI Code Reviewer
+        uses: grebbops/ai-codereviewer@main
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          exclude: "**/*.json, **/*.md, _ci/backstop/bd/**/*"

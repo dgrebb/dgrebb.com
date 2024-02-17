@@ -8,8 +8,8 @@
 
 ## Checklist before requesting a review
 
-- [ ] Code linting succeeds
-- [ ] Visual Regression is Passing
-- [ ] I have performed a self-review of my code
-- [ ] Do we need to implement analytics?
-- [ ] Have you tested with JavaScript off?
+- [x] Code linting succeeds
+- [x] Visual Regression is Passing
+- [x] I have performed a self-review of my code
+- [x] Do we need to implement analytics?
+- [x] Have you tested with JavaScript off?
