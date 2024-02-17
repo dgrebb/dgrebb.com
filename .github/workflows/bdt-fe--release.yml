@@ -8,7 +8,7 @@ on:
         description: "Target deployment environment."
         type: environment
         required: true
-        default: "stg"
+        default: "prd"
     branches: [release/*]
   push:
     branches: [main]
