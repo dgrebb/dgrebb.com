@@ -1,4 +1,5 @@
 name: Assign and Review
+run-name: "🦾 Reviewing ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest {0}', github.ref_name) }}"
 
 on:
   pull_request:
@@ -10,7 +11,7 @@ jobs:
   assign-author:
     runs-on: ubuntu-latest
     steps:
-      - uses: toshimaru/auto-author-assign@v2.0.0
+      - uses: grebbops/auto-author-assign@2.1.0
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
 
@@ -19,11 +20,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: AI Code Reviewer
-        uses: grebbops/ai-codereviewer@main
+        uses: grebbops/ai-codereviewer@develop
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          exclude: "**/*.json, **/*.md, _ci/backstop/bd/**/*"
+          exclude: ".github/**/*, **/*.json, **/*.md, _ci/backstop/bd/**/*"
