@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.18.3] - 2024-02-17
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Refactor RSS feed encoding, structure, and include thumbnail and hero (#1241)
+- ***(front)*** Remove left/right padding on centered post images (#1238)
+
+### ♻️  Refactor
+
+- ***(ci)*** Rework github actions triggers
+
 ## [3.18.2] - 2024-02-14
 
 ### 🐛 Bug Fixes
