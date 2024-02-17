@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.18.5] - 2024-02-17
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Revert all RSS changes but replace ampersands
+
 ## [3.18.4] - 2024-02-17
 
 ### 🐛 Bug Fixes
