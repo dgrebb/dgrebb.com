@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.18.4] - 2024-02-17
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Revert XML structure change
+- ***(front)*** Prevent vite tsconfig.json warnings
+
 ## [3.18.3] - 2024-02-17
 
 ### 🐛 Bug Fixes
