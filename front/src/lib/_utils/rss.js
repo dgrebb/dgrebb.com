@@ -33,7 +33,7 @@ export const xml = (posts) => `<?xml version="1.0" encoding="UTF-8"?>
         imageAlt =
           post?.attributes?.hero?.data?.attributes.alternativeText || false;
 
-      return `<item>
+      return `<entry>
           <title>${post.attributes.title.replaceAll('&', '&amp;')}</title>
           <link href="${website}${path}/${slug}/"/>
           <id>${website}${path}/${slug}/</id>
@@ -42,17 +42,17 @@ export const xml = (posts) => `<?xml version="1.0" encoding="UTF-8"?>
           ${
             summary &&
             `
-              <description>
+              <content type="html">
                 <![CDATA[
                   <div style="text-align: center;">
                     <img src="${image}" alt="${imageAlt}" style="display: inline-block;" />
                   </div>
                   <p>${summary}</p>
                 ]]>
-              </description>`
+              </content>`
           }
           ${thumbnail && `<enclosure url="${thumbnail}" type="${imageMIME}" />`}
-        </item>`;
+        </entry>`;
     })
     .join('\n')}
   </channel>
