@@ -8,21 +8,17 @@ on:
 permissions: write-all
 
 jobs:
-  assign-author:
+  assign-and-review:
+    name: Assign and Review
     runs-on: ubuntu-latest
     steps:
       - uses: grebbops/auto-author-assign@2.1.0
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
-
-  review:
-    name: Peer Review
-    runs-on: ubuntu-latest
-    steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: AI Code Reviewer
+      - name: Review
         uses: grebbops/ai-codereviewer@develop
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
