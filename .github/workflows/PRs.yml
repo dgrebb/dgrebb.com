@@ -1,14 +1,26 @@
-name: Assign PR
+name: Assign and Review
+run-name: "🦾 Reviewing ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest {0}', github.ref_name) }}"
 
 on:
-  pull_request_target:
-    types: [opened, reopened]
+  pull_request:
+    types: [opened, reopened, synchronize]
 
-permissions:
-  pull-requests: write
+permissions: write-all
 
 jobs:
-  assign-author:
+  assign-and-review:
+    name: Assign and Review
     runs-on: ubuntu-latest
     steps:
-      - uses: toshimaru/auto-author-assign@v2.0.0
+      - uses: grebbops/auto-author-assign@2.1.0
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Review
+        uses: grebbops/ai-codereviewer@develop
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          exclude: ".github/**/*, **/*.json, **/*.md, _ci/backstop/bd/**/*"

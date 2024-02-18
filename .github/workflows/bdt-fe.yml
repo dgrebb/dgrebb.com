@@ -3,6 +3,7 @@ run-name: "🚜 ${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Build, Depl
 
 on:
   workflow_dispatch:
+
   pull_request:
     paths:
       - "front/**"
@@ -103,7 +104,7 @@ jobs:
     needs: [backstop, lighthouse, pagespeed]
     runs-on: ubuntu-latest
     environment:
-      name: ${{ inputs.env }}
+      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
       url: "https://${{ vars.WWW_DOMAIN }}"
     steps:
       - name: generate
