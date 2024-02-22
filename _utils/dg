@@ -75,23 +75,23 @@ while test "$1" != --; do
         break
         ;;
     tv | test-visual | backstop)
-        /bin/bash $DGPATH/_scripts/visual-regression.sh test $2
+        /bin/bash $DGPATH/_scripts/backstop.sh test $2
         break
         ;;
     tvt | test-visual-skip-build | backstop-test)
-        /bin/bash $DGPATH/_scripts/visual-regression.sh test-now $2
+        /bin/bash $DGPATH/_scripts/backstop.sh test-now $2
         break
         ;;
     tvr | test-visual-remote-service | backstop-remote)
-        /bin/bash $DGPATH/_scripts/visual-regression.sh remote $2
+        /bin/bash $DGPATH/_scripts/backstop.sh remote $2
         break
         ;;
     tvref | test-visual-ref | backstop-reference)
-        /bin/bash $DGPATH/_scripts/visual-regression.sh ref $2
+        /bin/bash $DGPATH/_scripts/backstop.sh ref $2
         break
         ;;
     tva | test-visual-approve | backstop-approve)
-        /bin/bash $DGPATH/_scripts/visual-regression.sh approve $2
+        /bin/bash $DGPATH/_scripts/backstop.sh approve $2
         break
         ;;
     sp | spelling | cspell)
