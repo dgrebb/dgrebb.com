@@ -24,7 +24,7 @@
   <header class="article__header" slot="header">
     <p class="collection__title">Experience</p>
     <h1 class="article__title">
-      {name}
+      <span>{name}</span>
     </h1>
 
     {#if highlightedSkills.length}
