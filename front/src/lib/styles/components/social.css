@@ -21,7 +21,7 @@
       opacity: 0.3;
       transition:
         color var(--transition-duration),
-        opacity 200ms;
+        opacity var(--transition-duration-fast);
       transition-timing-function: var(--transition-timing-function);
       padding: 0.25rem;
       height: 100%;
@@ -29,7 +29,7 @@
       &:focus {
         opacity: 1;
         transition:
-          color 200ms,
+          color var(--transition-duration-fast),
           opacity var(--transition-duration);
         transition-timing-function: var(--transition-timing-function);
         color: var(--highlight-clr);

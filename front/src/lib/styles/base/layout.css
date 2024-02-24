@@ -106,7 +106,7 @@ body.ready .header.scroll-transition {
 
   a {
     display: inline-block;
-    transition-duration: var(--transition-duration-md);
+    transition-duration: var(--transition-duration-slow);
     transition-property: border color;
     border-bottom-width: thin;
     border-bottom-style: solid;
@@ -119,8 +119,8 @@ body.ready .header.scroll-transition {
   p {
     transform-style: preserve-3d;
     opacity: 0.3;
-    transition-delay: 1s;
-    transition-duration: 2s;
+    transition-delay: var(--transition-duration-slower);
+    transition-duration: var(--transition-duration-slowest);
     transition-property: opacity, filter;
     transition-timing-function: var(--transition-timing-function);
     padding-bottom: 0.25rem;
