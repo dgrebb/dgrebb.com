@@ -30,7 +30,7 @@
 .nav-home {
   vertical-align: bottom;
   transition: unset;
-  transition-duration: var(--transition-duration-md);
+  transition-duration: var(--transition-duration-slow);
   transition-property: font-size, color;
   transition-timing-function: var(--transition-timing-function);
   will-change: color;
