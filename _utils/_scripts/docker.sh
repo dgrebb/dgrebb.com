@@ -28,7 +28,7 @@ else
         rb | rebuild)
             cd $DGPATH/../_docker
             printDgMsg "Rebuilding ${2}..."
-            docker-compose -f _docker-compose.yml build --no-cache
+            docker-compose --verbose -f _docker-compose.yml build --no-cache --progress=plain
             break 2
             ;;
         r | run)
