@@ -18,9 +18,9 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Review
-        uses: grebbops/ai-codereviewer@develop
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          exclude: ".github/**/*, **/*.json, **/*.md, _ci/backstop/bd/**/*"
+      # - name: Review
+      #   uses: grebbops/ai-codereviewer@develop
+      #   with:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      #     exclude: ".github/**/*, **/*.json, **/*.md, _ci/backstop/bd/**/*"
