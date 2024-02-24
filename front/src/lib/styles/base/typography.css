@@ -135,8 +135,8 @@
       position: absolute;
       opacity: 0;
       transition:
-        opacity var(--transition-duration-md) ease-in-out,
-        color var(--transition-duration-md);
+        opacity var(--transition-duration-slow) ease-in-out,
+        color var(--transition-duration-slow);
       box-sizing: content-box;
       inset: 0 0 auto auto;
       border: none;

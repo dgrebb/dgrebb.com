@@ -1,4 +1,24 @@
+:root {
+  --transition-duration-fastest: 100ms;
+  --transition-duration-faster: 150ms;
+  --transition-duration-fast: 215ms;
+  --transition-duration: 333ms;
+  --transition-duration-slow: 500ms;
+  --transition-duration-slower: 1s;
+  --transition-duration-slowest: 2s;
+  --transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
 @media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-duration: 0.001s !important;
+    --transition-duration-fastest: 0.001s !important;
+    --transition-duration-faster: 0.001s !important;
+    --transition-duration-fast: 0.001s !important;
+    --transition-duration-slow: 0.001s !important;
+    --transition-duration-slower: 0.001s !important;
+    --transition-duration-slowest: 0.001s !important;
+  }
   *,
   ::before,
   ::after,

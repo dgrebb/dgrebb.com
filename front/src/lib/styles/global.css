@@ -10,7 +10,7 @@
 :root {
   --white: 223, 224, 224;
   --black: 19, 19, 20;
-  transition-duration: var(--transition-duration-md);
+  transition-duration: var(--transition-duration-slow);
   transition-property: background;
   transition-timing-function: var(--transition-timing-function);
   background: var(--bg-lightsource);
@@ -30,7 +30,7 @@ html {
   display: block;
   position: relative;
   transition: background-color;
-  transition-duration: var(--transition-duration-md);
+  transition-duration: var(--transition-duration-slow);
   background-color: var(--bg-clr);
   min-height: 100%;
   overflow: clip;
