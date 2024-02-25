@@ -22,9 +22,10 @@
 
 <Article>
   <header class="article__header" slot="header">
-    <p class="collection__title">Experience</p>
+    <p class="collection__title">Professional Experience</p>
     <h1 class="article__title">
-      <span>{name}</span>
+      <span class="article__title__text">{name}</span>
+      <span class="article__title__placeholder visually-hidden">{name}</span>
     </h1>
 
     {#if highlightedSkills.length}
@@ -35,11 +36,14 @@
   <Aside slot="aside">
     {#if orgs?.length}
       <h2>Organizations</h2>
-      <p>
+      <ul>
         {#each orgs as { attributes: { name, slug } }, key}
-          <a href="{orgPath}/{slug}">{name}{key === orgs.length ? ',' : ''}</a>
+          <li>
+            <a href="{orgPath}/{slug}">{name}{key === orgs.length ? ',' : ''}</a
+            >
+          </li>
         {/each}
-      </p>
+      </ul>
     {/if}
     <h2>Title</h2>
     <p>{title}</p>

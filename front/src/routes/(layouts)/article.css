@@ -1,24 +1,14 @@
 .article {
+  --title-offset: 2.77rem;
   position: relative;
+  padding: 1rem 2.33rem 0;
+  min-width: 100%;
+  overflow: none;
   &__header {
     position: relative;
     margin-bottom: 3rem;
+    width: 100%;
     text-align: center;
-    h1 {
-      position: relative;
-      padding-top: 4rem;
-      span {
-        position: absolute;
-        top: 4rem;
-        right: 0;
-        left: 0;
-        transition-duration: var(--transition-duration);
-        transition-property: font-size, inset;
-        transition-timing-function: var(--transition-timing-function);
-        width: 100%;
-        text-align: center;
-      }
-    }
     .collection__title {
       position: absolute;
       transition-duration: var(--transition-duration);
@@ -34,10 +24,10 @@
           .skill-graph:focus-visible,
           .skill-graph:focus
         ) {
-        & h1 span {
+        & .article__title__text {
+          transform: scale(0.5)
+            translateY(calc((100% + var(--title-offset)) * -1));
           transition-duration: var(--transition-duration-faster);
-          inset: 0;
-          font-size: 1.5rem;
         }
         & .collection__title {
           opacity: 0;
@@ -46,6 +36,27 @@
     }
   }
   &__title {
-    padding: 0.25rem 0 2rem 0;
+    padding-top: var(--title-offset);
+    /* position: relative; */
+    .meat & {
+      display: flex;
+      justify-content: center;
+      margin-top: 0;
+      font-size: 2.5rem;
+    }
+    span {
+      display: block;
+      max-width: 480px;
+      line-height: 1;
+    }
+    &__text {
+      position: absolute;
+      transition-duration: var(--transition-duration);
+      transition-property: transform, top;
+      transition-timing-function: var(--transition-timing-function);
+    }
+  }
+  &__body {
+    min-width: 75%;
   }
 }
