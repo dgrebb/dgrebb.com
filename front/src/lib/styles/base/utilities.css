@@ -1,6 +1,9 @@
 .hidden {
   display: none;
 }
+.visually-hidden {
+  visibility: hidden;
+}
 
 .sr-only {
   position: absolute;
