@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.18.6] - 2024-02-27
+
+### ♻️  Refactor
+
+- ***(front)*** Refactor transition variables and overrides (#1025)
+
+### 🪮  Styling
+
+- ***(front)*** Refactor skillbreakdown and article title animation (#1025)
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(back)*** Update to strapi@4.20.2 (#1249)
+- ***(backstop)*** Bump backstop for puppeteer and playwright updates
+- ***(backstop)*** Rename backstop script
+- ***(ci)*** Override ip@<2.0.1
+- ***(ci)*** Clean up after 3.18.5
+- ***(front)*** Upgrade to marked@12.0.0 and bump FE deps
+- ***(utils)*** Use verbose docker build when rebuilding cacheless
+
 ## [3.18.5] - 2024-02-17
 
 ### 🐛 Bug Fixes
