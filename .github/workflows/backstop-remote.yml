@@ -35,16 +35,11 @@ jobs:
             .github
             _ci
 
-      # - name: 🛢 Install Dependencies
-      #   uses: ./.github/actions/install-cache-deps
-      #   with:
-      #     WORKSPACE_ROOT: _ci/backstop
-      #     BROWSER_BINARIES: true
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
+      - name: 🛢 Install Dependencies
+        uses: ./.github/actions/install-cache-deps
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          WORKSPACE_ROOT: _ci/backstop
+          BROWSER_BINARIES: true
 
       - uses: dgrebb/ngrok-ssh@main
         with:
