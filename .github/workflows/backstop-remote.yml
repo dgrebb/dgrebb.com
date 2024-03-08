@@ -35,6 +35,12 @@ jobs:
             .github
             _ci
 
+      - name: 🛢 Install Dependencies
+        uses: ./.github/actions/install-cache-deps
+        with:
+          WORKSPACE_ROOT: _ci/backstop
+          BROWSER_BINARIES: true
+
       - uses: dgrebb/ngrok-ssh@main
         with:
           NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
