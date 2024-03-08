@@ -67,12 +67,12 @@ runs:
     - shell: bash
       if: ${{ inputs.BROWSER_BINARIES && steps.playwright-cache.outputs.cache-hit != 'true' }}
       working-directory: ${{ inputs.WORKSPACE_ROOT }}
-      run: npx playwright install --with-deps
+      run: pnpx playwright install --with-deps
 
     - shell: bash
       if: ${{ inputs.BROWSER_BINARIES && steps.playwright-cache.outputs.cache-hit != 'true' }}
       working-directory: ${{ inputs.WORKSPACE_ROOT }}
-      run: npx playwright install-deps
+      run: pnpx playwright install-deps
 
     - name: ↧ Install Remaining Dependencies
       shell: bash
