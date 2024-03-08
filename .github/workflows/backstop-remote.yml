@@ -35,11 +35,11 @@ jobs:
             .github
             _ci
 
-      - name: 🛢 Install Dependencies
-        uses: ./.github/actions/install-cache-deps
-        with:
-          WORKSPACE_ROOT: _ci/backstop
-          BROWSER_BINARIES: true
+      # - name: 🛢 Install Dependencies
+      #   uses: ./.github/actions/install-cache-deps
+      #   with:
+      #     WORKSPACE_ROOT: _ci/backstop
+      #     BROWSER_BINARIES: true
 
       - uses: dgrebb/ngrok-ssh@main
         with:
@@ -47,5 +47,6 @@ jobs:
           NGROK_CONFIG_FILE: ".github/.config/.ngrok.yml"
       - run: |
           cd _ci/backstop
-          pnpx playwright install
-          ENV=$DEPLOY_ENV pnpm test.gh
+          ENV=$DEPLOY_ENV pnpm remote.gh
+
+      # pnpx playwright install
