@@ -45,4 +45,7 @@ jobs:
         with:
           NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
           NGROK_CONFIG_FILE: ".github/.config/.ngrok.yml"
-      - run: cd _ci/backstop && ENV=$DEPLOY_ENV pnpm test.gh
+      - run: |
+          cd _ci/backstop
+          pnpx playwright install
+          ENV=$DEPLOY_ENV pnpm test.gh
