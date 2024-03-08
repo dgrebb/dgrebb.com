@@ -32,11 +32,11 @@ jobs:
           token: ${{ github.token }}
           fetch-depth: 1
           sparse-checkout: |
-            .github/actions
+            .github
             _ci
 
-      - uses: tmshkr/ngrok-ssh@latest
+      - uses: dgrebb/ngrok-ssh#main
         with:
           NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
-          NGROK_CONFIG_FILE: "ngrok.yml"
+          NGROK_CONFIG_FILE: ".github/.config/.ngrok.yml"
       - run: cd _ci/backstop && ENV=$DEPLOY_ENV pnpm test.gh
