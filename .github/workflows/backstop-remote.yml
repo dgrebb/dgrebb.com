@@ -52,6 +52,5 @@ jobs:
           NGROK_CONFIG_FILE: ".github/.config/.ngrok.yml"
       - run: |
           cd _ci/backstop
+          npx playwright install
           ENV=$DEPLOY_ENV npm run remote.gh
-
-      # pnpx playwright install
