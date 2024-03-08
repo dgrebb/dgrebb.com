@@ -41,12 +41,17 @@ jobs:
       #     WORKSPACE_ROOT: _ci/backstop
       #     BROWSER_BINARIES: true
 
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
       - uses: dgrebb/ngrok-ssh@main
         with:
           NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
           NGROK_CONFIG_FILE: ".github/.config/.ngrok.yml"
       - run: |
           cd _ci/backstop
-          ENV=$DEPLOY_ENV pnpm remote.gh
+          ENV=$DEPLOY_ENV npm run remote.gh
 
       # pnpx playwright install
