@@ -48,4 +48,4 @@ jobs:
       - run: |
           cd _ci/backstop
           npx playwright install
-          ENV=$DEPLOY_ENV npm run remote.gh
+          ENV=$DEPLOY_ENV sudo npm run remote.gh

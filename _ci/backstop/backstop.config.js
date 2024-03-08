@@ -29,7 +29,7 @@ let captureLimit = 15;
 let compareLimit = 100;
 
 if (process.env.ENVIRONMENT.includes('gh-')) {
-  captureLimit = 6;
+  captureLimit = 10;
   compareLimit = 50;
 }
 
