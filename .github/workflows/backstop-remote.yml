@@ -35,7 +35,7 @@ jobs:
             .github
             _ci
 
-      - uses: dgrebb/ngrok-ssh#main
+      - uses: dgrebb/ngrok-ssh@main
         with:
           NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
           NGROK_CONFIG_FILE: ".github/.config/.ngrok.yml"
