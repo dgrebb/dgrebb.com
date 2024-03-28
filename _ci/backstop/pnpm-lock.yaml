@@ -8,9 +8,6 @@ overrides:
   proxy-agent@<6.4.0: ^6.4.0
 
 dependencies:
-  '@playwright/test':
-    specifier: ^1.41.2
-    version: 1.41.2
   backstopjs:
     specifier: github:dgrebb/dg-backstop#1.0.1
     version: github.com/dgrebb/dg-backstop/bb533a4fb820e3035e964e3d0204ff066778d0ef
@@ -89,14 +86,6 @@ packages:
     dependencies:
       '@opencensus/core': 0.0.8
       uuid: 3.4.0
-    dev: false
-
-  /@playwright/test@1.41.2:
-    resolution: {integrity: sha512-qQB9h7KbibJzrDpkXkYvsmiDJK14FULCCZgEcoe2AvFAS64oCirWTwzTlAYEbKaRxWs5TFesE1Na6izMv3HfGg==}
-    engines: {node: '>=16'}
-    hasBin: true
-    dependencies:
-      playwright: 1.41.2
     dev: false
 
   /@pm2/agent@2.0.3:
