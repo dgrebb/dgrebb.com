@@ -43,7 +43,10 @@
   },
   "pnpm": {
     "overrides": {
-      "vite@<5.0.12": ">=5.0.12"
+      "vite@<5.0.12": ">=5.0.12",
+      "webpack-dev-middleware@<6.1.2": ">=6.1.2",
+      "follow-redirects@<1.15.6": ">=1.15.6",
+      "sanitize-html@<2.12.1": ">=2.12.1"
     }
   }
 }
