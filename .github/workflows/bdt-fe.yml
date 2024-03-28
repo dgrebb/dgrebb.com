@@ -1,17 +1,65 @@
-name: 🚜 Build, Deploy, and Test
-run-name: "🚜 ${{ github.ref_name == 'main' && 'PRD' || 'STG' }} - Build, Deploy, and Test - ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest {0}', github.ref_name) }}"
+name: 🚀 Build & Deploy
+run-name: "🚀 ${{ inputs.env == 'prd' && 'PRD' || 'STG' }} - Build & Deploy - ${{ github.event_name == 'pull_request' && format('PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('latest {0}', github.ref_name) }}"
 
 on:
   workflow_dispatch:
-
-  pull_request:
-    paths:
-      - "front/**"
-    branches: [main, develop]
-  push:
-    paths:
-      - "front/**"
-    branches: [develop]
+  workflow_call:
+    inputs:
+      env:
+        description: "Target deployment environment."
+        type: string
+        required: true
+    secrets:
+      AWS_S3_BUCKET:
+        required: true
+      AWS_ACCESS_KEY_ID:
+        required: true
+      AWS_SECRET_ACCESS_KEY:
+        required: true
+      AWS_REGION:
+        required: true
+      PUBLIC_API_URL:
+        required: true
+      PUBLIC_API_PATH_NAVIGATION:
+        required: true
+      PUBLIC_API_PATH_HOME:
+        required: true
+      PUBLIC_API_PATH_FOOTER:
+        required: true
+      PUBLIC_API_PATH_PRIVACY:
+        required: true
+      PUBLIC_API_PATH_POSTS_PAGE:
+        required: true
+      PUBLIC_API_PATH_POSTS:
+        required: true
+      PUBLIC_POSTS_PREVIEW_PARAMS:
+        required: true
+      PUBLIC_API_PATH_POST:
+        required: true
+      PUBLIC_POST_PARAMS:
+        required: true
+      PUBLIC_API_PATH_CATEGORY:
+        required: true
+      PUBLIC_CATEGORY_PAGE_PARAMS:
+        required: true
+      PUBLIC_API_PATH_CV_PAGE:
+        required: true
+      PUBLIC_API_LANDING_PAGE_PARTIAL:
+        required: true
+      PUBLIC_API_CV_COLLECTION_PARAMS:
+        required: true
+      PUBLIC_API_CV_PATH_LANDING_POSITION_LISTING:
+        required: true
+      PUBLIC_API_CV_PATH_LANDING_EXPERIENCE_LISTING:
+        required: true
+      API_KEY:
+        required: true
+      PUBLIC_ENV:
+        required: true
+      DISTRIBUTION:
+        required: true
+      GH_WORKFLOW_TOKEN:
+        required: true
 
 permissions:
   checks: write
@@ -20,102 +68,119 @@ permissions:
 
 env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+  NODE_VERSION: 20
 
 jobs:
-  lint:
-    name: 💨
-    uses: ./.github/workflows/lint.yml
-    with:
-      env: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
-
   build_deploy:
-    name: 🚀
-    needs: lint
-    uses: ./.github/workflows/bd-fe.yml
-    with:
-      env: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
-    secrets:
-      AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_REGION: ${{ secrets.AWS_REGION }}
-      PUBLIC_API_URL: ${{ secrets.PUBLIC_API_URL }}
-      PUBLIC_API_PATH_NAVIGATION: ${{ secrets.PUBLIC_API_PATH_NAVIGATION }}
-      PUBLIC_API_PATH_HOME: ${{ secrets.PUBLIC_API_PATH_HOME }}
-      PUBLIC_API_PATH_FOOTER: ${{ secrets.PUBLIC_API_PATH_FOOTER }}
-      PUBLIC_API_PATH_PRIVACY: ${{ secrets.PUBLIC_API_PATH_PRIVACY }}
-      PUBLIC_API_PATH_POSTS_PAGE: ${{ secrets.PUBLIC_API_PATH_POSTS_PAGE }}
-      PUBLIC_API_PATH_POSTS: ${{ secrets.PUBLIC_API_PATH_POSTS }}
-      PUBLIC_POSTS_PREVIEW_PARAMS: ${{ secrets.PUBLIC_POSTS_PREVIEW_PARAMS }}
-      PUBLIC_API_PATH_POST: ${{ secrets.PUBLIC_API_PATH_POST }}
-      PUBLIC_POST_PARAMS: ${{ secrets.PUBLIC_POST_PARAMS }}
-      PUBLIC_API_PATH_CATEGORY: ${{ secrets.PUBLIC_API_PATH_CATEGORY }}
-      PUBLIC_CATEGORY_PAGE_PARAMS: ${{ secrets.PUBLIC_CATEGORY_PAGE_PARAMS }}
-      PUBLIC_API_PATH_CV_PAGE: ${{ secrets.PUBLIC_API_PATH_CV_PAGE }}
-      PUBLIC_API_LANDING_PAGE_PARTIAL: ${{ secrets.PUBLIC_API_LANDING_PAGE_PARTIAL }}
-      PUBLIC_API_CV_COLLECTION_PARAMS: ${{ secrets.PUBLIC_API_CV_COLLECTION_PARAMS }}
-      PUBLIC_API_CV_PATH_LANDING_POSITION_LISTING: ${{ secrets.PUBLIC_API_CV_PATH_LANDING_POSITION_LISTING }}
-      PUBLIC_API_CV_PATH_LANDING_EXPERIENCE_LISTING: ${{ secrets.PUBLIC_API_CV_PATH_LANDING_EXPERIENCE_LISTING }}
-      API_KEY: ${{ secrets.API_KEY }}
-      PUBLIC_ENV: ${{ secrets.PUBLIC_ENV }}
-      DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
-      GH_WORKFLOW_TOKEN: ${{ secrets.GH_WORKFLOW_TOKEN }}
-
-  backstop:
-    name: 👀
-    needs: build_deploy
-    uses: ./.github/workflows/test-backstop.yml
-    with:
-      env: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
-    secrets:
-      GH_WORKFLOW_TOKEN: ${{ secrets.GH_WORKFLOW_TOKEN }}
-      AWS_S3_BUCKET_REPORTS: ${{ secrets.AWS_S3_BUCKET_REPORTS }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_REGION: ${{ secrets.AWS_REGION }}
-      REPORTS_DISTRIBUTION: ${{ secrets.REPORTS_DISTRIBUTION }}
-
-  lighthouse:
-    name: 🕯️
-    needs: build_deploy
-    uses: ./.github/workflows/test-lighthouse.yml
-    with:
-      env: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
-    secrets:
-      AWS_S3_BUCKET_REPORTS: ${{ secrets.AWS_S3_BUCKET_REPORTS }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_REGION: ${{ secrets.AWS_REGION }}
-      REPORTS_DISTRIBUTION: ${{ secrets.REPORTS_DISTRIBUTION }}
-      GH_WORKFLOW_TOKEN: ${{ secrets.GH_WORKFLOW_TOKEN }}
-
-  pagespeed:
-    name: 📈
-    needs: build_deploy
-    uses: ./.github/workflows/test-psi.yml
-    with:
-      env: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
-    secrets:
-      PSI_APIKEY: ${{ secrets.PSI_APIKEY }}
-      GH_WORKFLOW_TOKEN: ${{ secrets.GH_WORKFLOW_TOKEN }}
-
-  summarize:
-    name: ✍ Workflow
-    needs: [backstop, lighthouse, pagespeed]
+    name: ${{ inputs.env == 'prd' && 'PRD' || 'STG' }} Deployment
     runs-on: ubuntu-latest
     environment:
-      name: ${{ github.ref_name == 'main' && 'prd' || 'stg' }}
+      name: ${{ inputs.env }}
       url: "https://${{ vars.WWW_DOMAIN }}"
+    concurrency:
+      group: ${{ inputs.env == 'prd' && 'production-build' || 'staging-build'}}
+      cancel-in-progress: true
+
+    env:
+      DEPLOY_ENV: "${{ vars.ENV_NAME }}"
+
     steps:
-      - name: generate
+      - name: 𐂷 Checkout
+        uses: actions/checkout@v4
+        with:
+          repository: dgrebb/dgrebb.com
+          ref: ${{ github.ref }}
+          token: ${{ github.token }}
+          fetch-depth: 1
+          sparse-checkout: |
+            .github/actions
+            front
+
+      - name: 🛢 Install Dependencies
+        uses: ./.github/actions/install-cache-deps
+        with:
+          WORKSPACE_ROOT: front
+
+      - name: 🤿 Set Vars
+        id: vars
+        env:
+          name: "${{ env.BRANCH_NAME }}"
+          RELEASE_SUFFIX: ${{ contains(github.ref, 'main') && '' || contains(github.ref, 'release') && '-RC' || '-alpha.' }}
         run: |
-          echo '# Summary' >> $GITHUB_STEP_SUMMARY
-          echo '## Run Initiator'
-          echo '- Actor: ${{ github.actor }}' >> $GITHUB_STEP_SUMMARY 
-          echo '- Event: ${{ github.event_name }}' >> $GITHUB_STEP_SUMMARY
-          echo '## Run Details' >> $GITHUB_STEP_SUMMARY
-          echo '- Branch: [${{ env.BRANCH_NAME }}](https://github.com/dgrebb/dgrebb.com/tree/${{ env.BRANCH_NAME }})' >> $GITHUB_STEP_SUMMARY
-          if [ "${{ github.event_name }}" = "pull_request" ]; then 
-            echo '- Pull Request: [#${{ github.event.number }}](https://github.com/dgrebb/dgrebb.com/pull/${{ github.event.number }}) ${{ github.event.pull_request.title }}' >> $GITHUB_STEP_SUMMARY
-            echo '- ${{ github.event.pull_request.changed_files }} Files Changed: [ ${{ github.event.pull_request.commits }} Commits](https://github.com/dgrebb/dgrebb.com/pull/${{ github.event.number }}/commits) | [Diff](https://github.com/dgrebb/dgrebb.com/pull/${{ github.event.number }}/files)' >> $GITHUB_STEP_SUMMARY
+          if [ ${{ inputs.env }} == 'prd' ]; then
+            echo "RELEASE_NAME=front@$(cat front/package.json | jq -r '.version')${RELEASE_SUFFIX}" >> $GITHUB_ENV
+          else
+            echo "RELEASE_NAME=front@$(cat front/package.json | jq -r '.version')${RELEASE_SUFFIX}${name/\//-}" >> $GITHUB_ENV
           fi
+          echo "DIST=$(date +%y%m%d-%H%M%S)" >> $GITHUB_ENV
+
+      - name: 📐 Set Environment
+        env:
+          name: "${{ env.BRANCH_NAME }}"
+        run: |
+          touch front/.env
+          echo ORIGIN='${{ vars.WWW_DOMAIN }}' >> front/.env
+          echo API_URL='${{ secrets.PUBLIC_API_URL }}' >> front/.env
+          echo API_PATH_NAVIGATION='${{ secrets.PUBLIC_API_PATH_NAVIGATION }}' >> front/.env
+          echo API_PATH_HOME='${{ secrets.PUBLIC_API_PATH_HOME }}' >> front/.env
+          echo API_PATH_FOOTER='${{ secrets.PUBLIC_API_PATH_FOOTER }}' >> front/.env
+          echo API_PATH_PRIVACY='${{ secrets.PUBLIC_API_PATH_PRIVACY }}' >> front/.env
+          echo API_PATH_POSTS_PAGE='${{ secrets.PUBLIC_API_PATH_POSTS_PAGE }}' >> front/.env
+          echo API_PATH_POSTS='${{ secrets.PUBLIC_API_PATH_POSTS }}' >> front/.env
+          echo POSTS_PREVIEW_PARAMS='${{ secrets.PUBLIC_POSTS_PREVIEW_PARAMS }}' >> front/.env
+          echo API_PATH_POST='${{ secrets.PUBLIC_API_PATH_POST }}' >> front/.env
+          echo POST_PARAMS='${{ secrets.PUBLIC_POST_PARAMS }}' >> front/.env
+          echo API_PATH_CATEGORY='${{ secrets.PUBLIC_API_PATH_CATEGORY }}' >> front/.env
+          echo CATEGORY_PAGE_PARAMS='${{ secrets.PUBLIC_CATEGORY_PAGE_PARAMS }}' >> front/.env
+          echo API_PATH_CV_PAGE='${{ secrets.PUBLIC_API_PATH_CV_PAGE }}' >> front/.env
+          echo API_CV_PATH_LANDING_POSITION_LISTING='${{ secrets.PUBLIC_API_CV_PATH_LANDING_POSITION_LISTING }}' >> front/.env
+          echo API_CV_PATH_LANDING_EXPERIENCE_LISTING='${{ secrets.PUBLIC_API_CV_PATH_LANDING_EXPERIENCE_LISTING }}' >> front/.env
+          echo API_LANDING_PAGE_PARTIAL='${{ secrets.PUBLIC_API_LANDING_PAGE_PARTIAL }}' >> front/.env
+          echo API_CV_COLLECTION_PARAMS='${{ secrets.PUBLIC_API_CV_COLLECTION_PARAMS }}' >> front/.env
+          echo PUBLIC_API_PATH_POSITIONS='${{ secrets.PUBLIC_API_PATH_POSITIONS }}' >> front/.env
+          echo API_KEY=${{ secrets.API_KEY }} >> front/.env
+          echo RELEASE="${RELEASE_NAME}" >> front/.env
+          echo PUBLIC_ENV=${{ secrets.PUBLIC_ENV }} >> front/.env
+          cat front/.env
+
+      - name: ↻ Build
+        run: |
+          cd front
+          if [ ${{ inputs.env }} == 'prd' ]; then
+            e=p
+          else
+            e=s
+          fi
+            pnpm run build.${e}
+
+      - name: 🤖 Robots
+        if: ${{ inputs.env == 'prd' }}
+        run: |
+          robots=front/build/robots.txt
+          sed -i 's/^Disallow\: \/$/Allow\: \//' front/build/robots.txt
+          echo "" >>$robots
+          echo "" >>$robots
+          echo "User-agent: Googlebot" >>$robots
+          echo "Allow: /s/" >>$robots
+          echo "" >>$robots
+          echo "Sitemap: https://www.dgrebb.com/sitemap.xml" >>$robots
+
+      - name: ↕ Sync S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete --cache-control max-age=8380800,public
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          SOURCE_DIR: "front/build"
+
+      - name: ∅ Invalidate CloudFront
+        uses: chetan/invalidate-cloudfront-action@v2
+        env:
+          DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
+          PATHS: "/*"
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
