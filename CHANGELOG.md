@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.18.7] - 2024-03-29
+
+### 🐛 Bug Fixes
+
+- ***(ci)*** Add playwright to dependencies and get version from namespace
+
+### ♻️  Refactor
+
+- ***(ci)*** Use pnpx to install playwright
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(back)*** Address CVEs
+- ***(back)*** Upgrade to strapi@4.21.1
+- ***(back)*** Upgrade to strapi@4.20.5
+
 ## [3.18.6] - 2024-02-27
 
 ### ♻️  Refactor
