@@ -71,7 +71,7 @@ jobs:
       - name: 👀 Testing Bitmaps
         id: backstop
         continue-on-error: true
-        run: cd _ci/backstop && ENV=$DEPLOY_ENV pnpm test.gh
+        run: cd _ci/backstop && pnpm exec playwright install && ENV=$DEPLOY_ENV pnpm test.gh
 
       - name: Summarize Failures
         if: steps.backstop.outcome != 'success'
