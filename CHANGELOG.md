@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.18.8] - 2024-04-08
+
+### 🐛 Bug Fixes
+
+- ***(back)*** Override vite @5.1.7 to address CVE-2024-31207
+- ***(backstop)*** Add playwright itself as a depndency
+- ***(backstop)*** Update caching action to use quoted property for `jq` version query
+- ***(front)*** Adjust local staging test config
+
+### ♻️  Refactor
+
+- ***(github)*** Force install playwright until caching issues are resolved #1264
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(back)*** Upgrade to strapi@4.22.1
+
 ## [3.18.7] - 2024-03-29
 
 ### 🐛 Bug Fixes
