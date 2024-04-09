@@ -54,7 +54,11 @@
   {#if title !== null || showCopyButton === true}
     <header>
       {#if title !== null}
-        <span class="title full" class:copy={showCopyButton === true}>
+        <span
+          class="title full"
+          class:copy={showCopyButton === true}
+          title={title ? title : false}
+        >
           {#if title}{title}{/if}
         </span>
       {/if}
