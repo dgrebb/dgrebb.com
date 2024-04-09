@@ -12,7 +12,7 @@
     "lint": "prettier --check . && eslint .",
     "dev.l": "vite --config vite.local.config.js dev",
     "dev.s": "vite --config vite.local.config.js dev",
-    "dev.p": "vite --config vite.config.js dev",
+    "dev.p": "vite --config vite.local.config.js dev",
     "dev": "vite --config vite.config.js dev",
     "build.l": "WARN_ONLY=true vite --config vite.local.config.js build",
     "build.s": "svelte-kit sync && vite --config vite.config.js build",
