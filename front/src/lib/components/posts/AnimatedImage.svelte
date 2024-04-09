@@ -73,6 +73,8 @@
         </div>
       </details>
     </div>
-    <figcaption>{@html figcaption}</figcaption>
+    {#if figcaption}
+      <figcaption>{@html figcaption}</figcaption>
+    {/if}
   </figure>
 </div>
