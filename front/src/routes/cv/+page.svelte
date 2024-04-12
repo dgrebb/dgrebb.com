@@ -9,8 +9,6 @@
 
   const { pathname, generalContent, page, experiences, pageMeta } = data;
   const { title, intro } = page;
-  // TODO: remove this rule transgressor
-  /* eslint-disable no-unused-vars */
 </script>
 
 <PageTransition transitionKey={pathname}>
