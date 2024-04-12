@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = (_config, { strapi }) => {
-  const redirects = ["/", "/index.html", "/admin/"].map((path) => ({
+  const redirects = ["/", "/index.html", "/admin", "/admin/"].map((path) => ({
     method: "GET",
     path,
     handler: (ctx) => ctx.redirect("/admin/plugins/dashboard"),

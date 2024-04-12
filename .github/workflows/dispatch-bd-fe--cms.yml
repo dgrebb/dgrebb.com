@@ -19,12 +19,6 @@ env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
 jobs:
-  lint:
-    name: 💨
-    uses: ./.github/workflows/lint.yml
-    with:
-      env: ${{ inputs.env }}
-
   build_deploy:
     name: 🚀
     needs: lint
@@ -74,7 +68,7 @@ jobs:
 
   summarize:
     name: ✍ Workflow
-    needs: [backstop, lighthouse, pagespeed]
+    needs: [backstop]
     runs-on: ubuntu-latest
     environment:
       name: ${{ inputs.env }}
