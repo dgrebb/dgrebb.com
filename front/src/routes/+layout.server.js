@@ -35,7 +35,7 @@ export async function load({ url: { pathname } }) {
     };
   } catch (err) {
     error(500, {
-      message: 'Error fetching data',
+      message: `Error fetching data: ${err}`,
     });
   }
 }

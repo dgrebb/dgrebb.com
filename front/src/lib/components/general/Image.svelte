@@ -30,9 +30,10 @@
       await img.decode();
       loading = false;
       loaded = true;
-    } catch (error) {
+    } catch {
       loading = false;
       failed = true;
+      console.warn('An image was expected here, but could not be found.');
     }
   });
 </script>
