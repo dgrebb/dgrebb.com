@@ -51,11 +51,11 @@ while test "$1" != --; do
         read -p $'\e[33mFlush node_modules and reinstall now?\e[0m: ' -n 1 -r
         if [[ $REPLY =~ ^[Yy]$ ]]; then
             echo # newline
-            rm -rf package-lock.json pnpm-lock.yaml node_modules && pnpm i
+            cdfront && rm -rf package-lock.json pnpm-lock.yaml node_modules && pnpm i
             read -p $'\e[32mStart the dev server?\e[0m: ' -n 1 -r
             echo # newline
             if [[ $REPLY =~ ^[Yy]$ ]]; then
-                pnpm run dev.l
+                dg f d
             else
                 exit 0
             fi
