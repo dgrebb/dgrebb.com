@@ -28,10 +28,12 @@ export async function load() {
 
   ({ seo, bioPicture, headline, image, intro } = home);
 
-  image = { ...bioPicture?.data?.attributes?.formats?.thumbnail } || {
-    url: '/bio.jpg',
-    alternativeText: 'A picture of Dan smiling',
-  };
+  image = bioPicture?.data?.attributes?.formats?.thumbnail
+    ? { ...bioPicture?.data?.attributes?.formats?.thumbnail }
+    : {
+        url: '/bio.jpg',
+        alternativeText: 'A picture of Dan smiling',
+      };
 
   image.height = '120';
   image.width = '120';

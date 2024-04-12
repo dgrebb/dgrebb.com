@@ -24,7 +24,7 @@ export async function load({ route }) {
       console.error({
         route: route.id,
         endpoint: pageEndpoint,
-        error: page.error,
+        error,
       });
       console.warn('Error fetching posts page data.');
     }
@@ -33,7 +33,7 @@ export async function load({ route }) {
       console.error({
         route,
         endpoint: postsEndpoint,
-        error: posts.error,
+        error,
       });
       console.warn('Error fetching posts grid data.');
     }
