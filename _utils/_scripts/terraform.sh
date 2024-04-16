@@ -5,9 +5,9 @@ ENV=$1
 BACKEND_CONFIG=$DGPATH/../_tf/$ENV/backend.hcl
 
 # Set up transient backend config
-echo "state_bucket=$(pass dg/aws/$ENV/state-bucket)" >>$BACKEND_CONFIG
-echo "region=$(pass dg/aws/region)" >>$BACKEND_CONFIG
-echo "key=terraform.tfstate" >>$BACKEND_CONFIG
+echo "bucket=\"$(pass dg/aws/$ENV/state-bucket)\"" >$BACKEND_CONFIG
+echo "region=\"$(pass dg/aws/region)\"" >>$BACKEND_CONFIG
+echo "key=\"terraform.tfstate\"" >>$BACKEND_CONFIG
 
 if [ $# -eq 0 ]; then
     printDgErr "Missing args for Terraform commands!"
