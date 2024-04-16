@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.0.0] - 2024-04-16
+
+### 💡 Features
+
+- ***(front)*** [**breaking**] Upgrade to and refactor frontend for eslint@9.0.0 (#1268)
+
+### 🐛 Bug Fixes
+
+- ***(back)*** Add base /admin path to redirect middleware
+- ***(front)*** Upgrade dependencies and address CVE-2024-31207
+- ***(front)*** Handle empty figcaption for animated images
+
+### 💚 Continuous Integration
+
+- ***(github)*** Set AI PR review workflow to dispatch only
+
+### 🪮  Styling
+
+- ***(front)*** Adjust category tag hover and active states
+- ***(front)*** Add `title` attribute to code view titles
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(back)*** Overrides tar@<6.2.1 in both backend and perf tools
+- ***(terraform)*** Upgrade to terraform 1.8.0 and aws provider 5.45.0
+
 ## [3.18.8] - 2024-04-08
 
 ### 🐛 Bug Fixes
