@@ -43,3 +43,11 @@ resource "aws_s3_object" "notfound_img" {
   etag         = filemd5("${path.module}/files/404.gif")
 }
 
+resource "aws_s3_object" "robots_txt_cdn" {
+  bucket       = var.bucket.id
+  key          = "robots.txt"
+  source       = "${path.module}/../../reports/robots.txt"
+  content_type = "text/plain"
+  etag         = filemd5("${path.module}/../../reports/robots.txt")
+}
+
