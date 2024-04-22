@@ -117,6 +117,14 @@ resource "aws_s3_object" "index_html" {
   etag         = filemd5("${path.module}/index.html")
 }
 
+resource "aws_s3_object" "robots_txt" {
+  bucket       = aws_s3_bucket.reports.id
+  key          = "robots.txt"
+  source       = "${path.module}/robots.txt"
+  content_type = "text/plain"
+  etag         = filemd5("${path.module}/robots.txt")
+}
+
 resource "aws_s3_object" "error_html" {
   bucket       = aws_s3_bucket.reports.id
   key          = "404/index.html"
