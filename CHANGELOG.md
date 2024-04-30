@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.0.1] - 2024-04-30
+
+### 🐛 Bug Fixes
+
+- ***(ci)*** Include robots.txt in TF storage configuration for static/reports subdomains (#1278)
+
+### 📜 Documentation
+
+- ***(project)*** Archive version 3.x.x changelog
+
+### ⚡️ Performance
+
+- ***(front)*** Switch hero to opacity on load
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(back)*** Upgrade to strapi@4.24.0
+- ***(back)*** Upgrade to strapi@4.23.1
+
 ## [4.0.0] - 2024-04-16
 
 ### 💡 Features
