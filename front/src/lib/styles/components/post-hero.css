@@ -3,13 +3,14 @@
   position: relative;
   /* top: -1rem; */
   z-index: 1;
+  will-change: opacity;
   margin-right: 1rem;
   margin-left: 1rem;
   border-radius: 0.75rem;
   background-color: var(--rim-light-bg);
   height: 277px;
   &.hide {
-    height: 0;
+    opacity: 0;
   }
   &::before {
     position: absolute;
