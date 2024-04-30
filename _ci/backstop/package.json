@@ -24,12 +24,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@playwright/test": "1.43.1",
     "backstopjs": "github:dgrebb/dg-backstop#1.0.2",
     "cors": "^2.8.5",
+    "dg-backstopjs": "github:dgrebb/dg-backstop#feat/wait-for-fonts",
     "http-server": "^14.1.1",
     "patch-package": "^8.0.0",
-    "@playwright/test": "1.42.1",
-    "playwright": "^1.42.1",
+    "playwright": "^1.43.1",
     "pm2": "^5.3.1",
     "super-simple-web-server": "github:dgrebb/super-simple-web-server#0.0.2"
   },
