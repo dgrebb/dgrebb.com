@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.1.0] - 2024-05-10
+
+### 💡 Features
+
+- ***(backstop)*** Use document-fonts-loaded branch of backstop and bump … (#1286)
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(back)*** Upgrade to strapi@4.24.2 (#1293)
+- ***(front)*** Update deps and patch @sveltejs/kit@2.5.7
+
 ## [4.0.1] - 2024-04-30
 
 ### 🐛 Bug Fixes
