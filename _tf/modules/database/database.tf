@@ -13,6 +13,7 @@ resource "aws_db_instance" "this" {
   username                  = "strapi"
   password                  = var.db_password
   storage_encrypted         = false
+  ca_cert_identifier        = "rds-ca-rsa2048-g1"
   vpc_security_group_ids    = ["${var.db_sg.id}"]
   db_subnet_group_name      = var.db_subnet_group.id
   skip_final_snapshot       = var.skip_final_snapshot
