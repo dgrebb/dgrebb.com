@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.1.1] - 2024-05-23
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Update FE deps, refresh pnpm cache/lockfile, update patch
+
+### 💚 Continuous Integration
+
+- ***(utils)*** Update bump script to echo new version
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(back)*** Upgrade to strapi@4.24.3
+- ***(backstop)*** Update gh-stg refs
+- ***(ci)*** Update RDS CA (#1297)
+- ***(front)*** Update deps and patch svelte-highlight
+
 ## [4.1.0] - 2024-05-10
 
 ### 💡 Features
