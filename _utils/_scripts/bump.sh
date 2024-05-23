@@ -5,6 +5,7 @@ cd $DGPATH/../
 config="_utils/_cliff/config.toml"
 file="CHANGELOG.md"
 str=$(cz bump --dry-run | awk '/tag to create: /')
+echo $str
 curr=$(cz version -p)
 ver=${str//tag to create: /}
 git cliff -c $config --unreleased --tag $ver --prepend ${file}
