@@ -1,6 +1,6 @@
 {
   "name": "dgrebb.com",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "private": true,
   "scripts": {
     "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --compiler-warnings \"css-unused-selector:ignore\"",
