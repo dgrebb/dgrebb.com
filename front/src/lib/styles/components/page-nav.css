@@ -79,7 +79,7 @@
     opacity: 0.8;
     z-index: 1;
     transition-duration: var(--transition-duration);
-    transition-property: background-color, color;
+    transition-property: box-shadow, background-color, color;
     transition-timing-function: var(--transition-timing-function);
     cursor: pointer;
     box-shadow: var(--shadow-elevation-low);

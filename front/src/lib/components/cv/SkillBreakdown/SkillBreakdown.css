@@ -19,6 +19,9 @@
 .skill-graph {
   display: flex;
   position: relative;
+  transition-duration: var(--transition-duration);
+  transition-property: box-shadow;
+  transition-timing-function: var(--transition-timing-function);
   margin: 1.5rem auto 0 auto;
   box-shadow: var(--shadow-elevation-low);
   border-radius: 0.25rem;
@@ -36,7 +39,7 @@
       animation-delay: var(--transition-duration-slower);
       animation-fill-mode: forwards;
       transition-duration: var(--transition-duration-fast);
-      transition-property: width, transform, z-index;
+      transition-property: box-shadow, width, transform, z-index;
       transition-timing-function: var(--transition-timing-function);
       cursor: pointer;
       padding: 1rem 0;

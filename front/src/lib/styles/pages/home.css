@@ -46,7 +46,7 @@
   z-index: 5;
   filter: var(--headshot-filter);
   transition-duration: var(--transition-duration);
-  transition-property: border-color, opacity, filter;
+  transition-property: border-color, box-shadow, opacity, filter;
   transition-timing-function: var(--transition-timing-function);
   margin-top: 1rem;
   box-shadow: var(--shadow-elevation-low);
