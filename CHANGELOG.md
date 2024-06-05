@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.1.2] - 2024-06-05
+
+### ♻️  Refactor
+
+- ***(front)*** Update background color variables and add transitions where used (#1304)
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(back)*** Upgrade to strapi@4.24.4 (#1303)
+
 ## [4.1.1] - 2024-05-23
 
 ### 🐛 Bug Fixes
