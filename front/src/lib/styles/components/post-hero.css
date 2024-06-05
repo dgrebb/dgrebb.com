@@ -33,7 +33,7 @@
   z-index: 4;
   filter: var(--post-hero-filter);
   transition-duration: 1s;
-  transition-property: opacity, filter;
+  transition-property: box-shadow, opacity, filter;
   transition-timing-function: var(--transform-timing-function);
   box-shadow: var(--shadow-elevation-low);
   border-radius: 0.75rem;

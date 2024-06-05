@@ -169,6 +169,9 @@
 
 .animation-player {
   position: relative;
+  transition-duration: var(--transition-duration);
+  transition-property: box-shadow;
+  transition-timing-function: var(--transition-timing-function);
   box-shadow: var(--shadow-elevation-low);
   max-width: 100%;
 

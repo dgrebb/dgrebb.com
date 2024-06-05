@@ -3,7 +3,7 @@
 
 :root {
   /* https://www.joshwcomeau.com/shadow-palette/ */
-  --shadow-elevation-low: -0.7px 0.9px 1.3px hsl(var(--shadow-color) / 0.34),
+  /* --shadow-elevation-low: -0.7px 0.9px 1.3px hsl(var(--shadow-color) / 0.34),
     -1.2px 1.5px 2.2px -1.2px hsl(var(--shadow-color) / 0.34),
     -2.8px 3.6px 5.1px -2.5px hsl(var(--shadow-color) / 0.34);
   --shadow-elevation-medium: -0.7px 0.9px 1.3px hsl(var(--shadow-color) / 0.36),
@@ -17,7 +17,7 @@
     -20.3px 25.8px 36.9px -1.4px hsl(var(--shadow-color) / 0.34),
     -31.7px 40.3px 57.7px -1.8px hsl(var(--shadow-color) / 0.34),
     -48.3px 61.2px 87.7px -2.1px hsl(var(--shadow-color) / 0.34),
-    -71.1px 90.2px 129.2px -2.5px hsl(var(--shadow-color) / 0.34);
+    -71.1px 90.2px 129.2px -2.5px hsl(var(--shadow-color) / 0.34); */
 
   --clr-neut-50: #f6f6f6;
   --clr-neut-100: #ececec;
@@ -87,6 +87,18 @@
     --headshot-filter: sepia(100%) saturate(70%) brightness(85%)
       hue-rotate(61deg);
     --shadow-color: var(--sunshine-shadow-clr);
+    --shadow-elevation-low: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+      -9px 9px 9px -0.5px rgba(100, 100, 100, 0.04),
+      -18px 18px 18px -1.5px rgba(100, 100, 100, 0.08);
+    --shadow-elevation-medium: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+      -9px 9px 9px -0.5px rgba(100, 100, 100, 0.04),
+      -18px 18px 18px -1.5px rgba(100, 100, 100, 0.08),
+      -37px 37px 37px -3px rgba(155, 155, 155, 0.16);
+    --shadow-elevation-high: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+      -9px 9px 9px -0.5px rgba(100, 100, 100, 0.04),
+      -18px 18px 18px -1.5px rgba(100, 100, 100, 0.08),
+      -37px 37px 37px -3px rgba(155, 155, 155, 0.16),
+      -75px 75px 75px -6px rgba(155, 155, 155, 0.24);
     --tag-clr: var(--sand-a50);
     --tag-border-clr: var(--jasper-a50);
     --posts-item-filter: brightness(100%);
@@ -172,6 +184,18 @@ html.light-theme {
   --mark-bg-clr: var(--green);
   --headshot-filter: sepia(100%) saturate(70%) brightness(85%) hue-rotate(61deg);
   --shadow-color: var(--sunshine-shadow-clr);
+  --shadow-elevation-low: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+    -9px 9px 9px -0.5px rgba(100, 100, 100, 0.04),
+    -18px 18px 18px -1.5px rgba(100, 100, 100, 0.08);
+  --shadow-elevation-medium: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+    -9px 9px 9px -0.5px rgba(100, 100, 100, 0.04),
+    -18px 18px 18px -1.5px rgba(100, 100, 100, 0.08),
+    -37px 37px 37px -3px rgba(155, 155, 155, 0.16);
+  --shadow-elevation-high: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+    -9px 9px 9px -0.5px rgba(100, 100, 100, 0.04),
+    -18px 18px 18px -1.5px rgba(100, 100, 100, 0.08),
+    -37px 37px 37px -3px rgba(155, 155, 155, 0.16),
+    -75px 75px 75px -6px rgba(155, 155, 155, 0.24);
   --tag-clr: var(--sand-a50);
   --tag-border-clr: var(--jasper-a50);
   --posts-item-filter: brightness(100%);
@@ -262,6 +286,18 @@ html.light-theme {
       var(--content-bg-clr) 333px
     );
     --shadow-color: var(--moonshine-shadow-clr);
+    --shadow-elevation-low: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+      -9px 9px 9px -0.5px rgba(0, 0, 0, 0.08),
+      -18px 18px 18px -1.5px rgba(0, 0, 0, 0.16);
+    --shadow-elevation-medium: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+      -9px 9px 9px -0.5px rgba(0, 0, 0, 0.08),
+      -18px 18px 18px -1.5px rgba(0, 0, 0, 0.16),
+      -37px 37px 37px -3px rgba(0, 0, 0, 0.48);
+    --shadow-elevation-high: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+      -9px 9px 9px -0.5px rgba(0, 0, 0, 0.08),
+      -18px 18px 18px -1.5px rgba(0, 0, 0, 0.16),
+      -37px 37px 37px -3px rgba(0, 0, 0, 0.48),
+      -75px 75px 75px -6px rgba(0, 0, 0, 0.72);
     --rim-clr: var(--moonshine);
     --link-clr: var(--fg-clr-oo);
     --link-clr--hover: var(--celestial);
@@ -336,6 +372,18 @@ html.dark-theme {
     var(--content-bg-clr) 333px
   );
   --shadow-color: var(--moonshine-shadow-clr);
+  --shadow-elevation-low: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+    -9px 9px 9px -0.5px rgba(0, 0, 0, 0.04),
+    -18px 18px 18px -1.5px rgba(0, 0, 0, 0.08);
+  --shadow-elevation-medium: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+    -9px 9px 9px -0.5px rgba(0, 0, 0, 0.04),
+    -18px 18px 18px -1.5px rgba(0, 0, 0, 0.08),
+    -37px 37px 37px -3px rgba(0, 0, 0, 0.16);
+  --shadow-elevation-high: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+    -9px 9px 9px -0.5px rgba(0, 0, 0, 0.04),
+    -18px 18px 18px -1.5px rgba(0, 0, 0, 0.08),
+    -37px 37px 37px -3px rgba(0, 0, 0, 0.16),
+    -75px 75px 75px -6px rgba(0, 0, 0, 0.24);
   --primary-clr: var(--celestial);
   --rim-clr: var(--moonshine);
   --link-clr: var(--fg-clr-oo);

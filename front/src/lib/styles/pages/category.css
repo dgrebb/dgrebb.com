@@ -218,6 +218,9 @@
     padding-right: 0;
   }
   .category .category-posts-list .post-item .category-tag a {
+    transition-duration: var(--transition-duration);
+    transition-property: box-shadow;
+    transition-timing-function: var(--transition-timing-function);
     margin-bottom: 0.33rem;
     box-shadow: var(--shadow-elevation-low);
     border: thin solid var(--tag-border-clr);

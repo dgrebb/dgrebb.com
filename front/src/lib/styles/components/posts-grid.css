@@ -15,7 +15,7 @@
   z-index: 1;
   filter: var(--posts-item-filter);
   transition-duration: var(--transition-duration);
-  transition-property: filter;
+  transition-property: box-shadow, filter;
   transition-timing-function: ease-out;
   will-change: opacity;
   cursor: pointer;
