@@ -1,7 +1,7 @@
 {
   "commitizen": {
     "name": "cz_customize",
-    "version": "4.1.1",
+    "version": "4.1.2",
     "gpg_sign": true,
     "use_shortcuts": true,
     "tag_format": "$major.$minor.$patch$prerelease",
