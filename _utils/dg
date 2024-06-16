@@ -66,8 +66,8 @@ while test "$1" != --; do
         open https://github.com/users/dgrebb/projects/12
         break
         ;;
-    a | act)
-        /bin/bash $DGPATH/_scripts/act.sh $2 $3
+    a | aws)
+        /bin/bash $DGPATH/_scripts/aws.sh $2 $3
         break
         ;;
     tp | test-performance)
