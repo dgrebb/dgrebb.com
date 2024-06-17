@@ -20,5 +20,10 @@
     "@html-to/text-cli": "^0.5.4",
     "cspell-cli": "github:streetsidesoftware/cspell-cli",
     "gramma": "^1.6.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "braces@<3.0.3": ">=3.0.3"
+    }
   }
 }
