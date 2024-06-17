@@ -2,16 +2,6 @@
 
 All notable changes to this project will be documented in this file.
 
-## [4.2.0] - 2024-06-17
-
-### 💡 Features
-
-- ***(utils)*** Add ECS start/stop commands to dg (#1292)
-
-### ⚙️  Miscellaneous Tasks
-
-- ***(backstop)*** Update gh-stg refs
-
 ## [4.1.2] - 2024-06-05
 
 ### ♻️  Refactor
