@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.2.0] - 2024-06-18
+
+### 💡 Features
+
+- ***(utils)*** Add ECS start/stop commands to dg (#1292)
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(back)*** Upgrade to strapi@4.25.0
+- ***(backstop)*** Update gh-stg refs
+- ***(ci)*** Force braces>=3.0.3 to address CVE-2024-4068
+- ***(front)*** Bump FE deps
+
 ## [4.1.2] - 2024-06-05
 
 ### ♻️  Refactor
