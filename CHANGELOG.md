@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.2.1] - 2024-07-04
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(back)*** Upgrade to strapi@4.25.2; bump and patch sveltekit (#1318)
+
 ## [4.2.0] - 2024-06-18
 
 ### 💡 Features
