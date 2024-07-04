@@ -43,7 +43,7 @@
     "@iconify-json/typcn": "^1.1.9",
     "@playwright/test": "^1.44.1",
     "@sveltejs/adapter-static": "^3.0.2",
-    "@sveltejs/kit": "^2.5.16",
+    "@sveltejs/kit": "^2.5.18",
     "@sveltejs/vite-plugin-svelte": "^3.1.1",
     "autoprefixer": "^10.4.19",
     "eslint": "^9.5.0",
@@ -83,7 +83,7 @@
   "type": "module",
   "pnpm": {
     "patchedDependencies": {
-      "@sveltejs/kit@2.5.16": "patches/@sveltejs__kit@2.5.16.patch",
+      "@sveltejs/kit@2.5.18": "patches/@sveltejs__kit@2.5.18.patch",
       "svelte-highlight@7.6.1": "patches/svelte-highlight@7.6.1.patch"
     }
   }
