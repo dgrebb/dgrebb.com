@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.2.2] - 2024-08-24
+
+### ⚙️  Miscellaneous Tasks
+
+- ***(backstop)*** Update stg/prd refs
+- ***(front)*** Bump all FE deps and patch latest versions (#1322)
+
 ## [4.2.1] - 2024-07-04
 
 ### ⚙️  Miscellaneous Tasks
