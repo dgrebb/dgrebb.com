@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.2.3] - 2024-08-27
+
+### 🐛 Bug Fixes
+
+- ***(front)*** Reverts install and patch of `svelte-highlight@7.7.0`
+
 ## [4.2.2] - 2024-08-24
 
 ### 💚 Continuous Integration
