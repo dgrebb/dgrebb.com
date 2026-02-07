@@ -14,6 +14,6 @@
     "svelte.svelte-vscode",
     "ardenivanov.svelte-intellisense",
     "chakrounanas.turbo-console-log",
-    "pflannery.vscode-versionlens"
+    "legalfina.npm-version-lens"
   ]
 }
