@@ -77,4 +77,4 @@ runs:
     - name: ↧ Install Remaining Dependencies
       shell: bash
       working-directory: ${{ inputs.WORKSPACE_ROOT }}
-      run: pnpm install
+      run: pnpm install --frozen-lockfile
