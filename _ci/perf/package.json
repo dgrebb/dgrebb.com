@@ -29,10 +29,10 @@
     "npm-check-updates": "^16.14.18"
   },
   "engines": {
-    "node": ">=16.0.0 <=20.x.x",
-    "npm": ">=6.0.0",
-    "pnpm": ">= 8.14.1"
+    "node": ">=22.0.0",
+    "pnpm": ">=11.0.0"
   },
+  "packageManager": "pnpm@11.10.0",
   "pnpm": {
     "overrides": {
       "braces@<3.0.3": ">=3.0.3",

@@ -1,5 +1,5 @@
 # -------- Base -------- #
-FROM node:20-alpine AS base
+FROM node:24-alpine AS base
 # Installing libvips-dev for sharp Compatibility
 RUN apk update && apk add --no-cache build-base \
     gcc autoconf automake zlib-dev libpng-dev \
@@ -23,7 +23,7 @@ ENV NODE_ENV=${NODE_ENV}
 RUN pnpm run build
 
 # -------- Run -------- #
-FROM node:20-alpine
+FROM node:24-alpine
 COPY --from=build /app /app
 WORKDIR /app
 ENV PNPM_HOME="/pnpm"

@@ -1,0 +1,20 @@
+packages:
+  - 'front'
+  - 'back'
+  - '_ci/*'
+
+onlyBuiltDependencies:
+  - '@rollup/rollup-linux-x64-gnu'
+  - '@swc/core'
+  - better-sqlite3
+  - esbuild
+  - sharp
+  - '@img/sharp-linux-x64'
+
+pnpmOverrides:
+  braces@<3.0.3: '>=3.0.3'
+  follow-redirects@<1.15.6: '>=1.15.6'
+  sanitize-html@<2.12.1: '>=2.12.1'
+  tar@<6.2.1: '>=6.2.1'
+  vite@<5.1.7: '>=5.4.0'
+  webpack-dev-middleware@<6.1.2: '>=6.1.2'
