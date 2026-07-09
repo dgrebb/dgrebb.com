@@ -31,6 +31,10 @@ allowBuilds:
   lightningcss-linux-arm64-gnu: true
   lightningcss-darwin-x64: true
   lightningcss-darwin-arm64: true
+  '@strapi/strapi': true
+  core-js: true
+  core-js-pure: true
+  puppeteer: true
 
 overrides:
   braces@<3.0.3: '>=3.0.3'
