@@ -11,10 +11,7 @@
   import { circInOut } from 'svelte/easing';
   import { fly } from 'svelte/transition';
   import { motionless, scrollTop } from '@utils';
-  export let transitionKey;
-  export let classList = false;
-  export let duration = 333;
-  export let delay = 500;
+  let { transitionKey, classList = false, duration = 333, delay = 500, children } = $props();
   let initialHeight;
 
   /**
@@ -110,11 +107,11 @@
 -->
   <div
     class="transition-elastic-fly-container {classList ? classList : ''}"
-    on:outrostart={animateOut}
-    on:introstart={animateIn}
+    onoutrostart={animateOut}
+    onintrostart={animateIn}
     out:motion|global={{ fn: fly, x: -1000, duration, easing: circInOut }}
     in:motion|global={{ fn: fly, x: -1000, duration, delay, easing: circInOut }}
   >
-    <slot />
+    {@render children?.()}
   </div>
 {/key}

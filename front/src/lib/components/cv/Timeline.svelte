@@ -5,7 +5,7 @@
   import Calendar from '@components/icons/Calendar.svelte';
   import '@styles/pages/cv.css';
 
-  export let items;
+  let { items } = $props();
 
   const currentYear = new Date().getFullYear();
 

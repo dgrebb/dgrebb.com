@@ -7,19 +7,16 @@
   import '@styles/pages/cv.css';
   import '@styles/pages/collection.css';
 
-  export let data;
+  let { data } = $props();
 
-  let title, hero, introduction, pageMeta;
-
-  $: ({
-    pathname,
-    collection,
-    pageData: {
-      content: { title, singleItemRoute, hero, introduction },
-    },
-    pageMeta,
-    collectionData,
-  } = data);
+  let pathname = $derived(data.pathname);
+  let collection = $derived(data.collection);
+  let title = $derived(data.pageData?.content?.title);
+  let singleItemRoute = $derived(data.pageData?.content?.singleItemRoute);
+  let hero = $derived(data.pageData?.content?.hero);
+  let introduction = $derived(data.pageData?.content?.introduction);
+  let pageMeta = $derived(data.pageMeta);
+  let collectionData = $derived(data.collectionData);
 </script>
 
 <PageTransition transitionKey={collection}>

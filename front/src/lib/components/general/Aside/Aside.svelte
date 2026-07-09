@@ -1,12 +1,13 @@
 <script>
   import '@styles/components/page-nav.css';
+  let { children } = $props();
 </script>
 
 <aside class="collection__aside page-navigation">
   <!-- TODO: Each artifact type should have a component 
   to match, which is dynamically selected by artifact type  -->
 
-  <slot />
+  {@render children?.()}
 
   <!-- {#if awards}
     <h1>Awards</h1>

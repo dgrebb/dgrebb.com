@@ -1,9 +1,10 @@
 <script>
   import './article.css';
+  let { header, aside, content } = $props();
 </script>
 
 <article class="article">
-  <slot name="header" />
-  <slot name="aside" />
-  <slot name="content" />
+  {@render header?.()}
+  {@render aside?.()}
+  {@render content?.()}
 </article>

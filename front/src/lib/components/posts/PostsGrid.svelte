@@ -2,7 +2,7 @@
   import PostsGridItem from './PostsGridItem.svelte';
 
   import '@styles/components/posts-grid.css';
-  export let gridItems;
+  let { gridItems } = $props();
 </script>
 
 <ul class="posts-grid">

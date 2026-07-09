@@ -4,8 +4,8 @@
   import '@styles/components/posts-grid.css';
 
   const postPath = PATHS.one.post;
-  export let lazyImage, slug, title;
-  let loaded = false;
+  let { lazyImage, slug, title } = $props();
+  let loaded = $state(false);
 
   /**
    * Lifecycle function executed after the component is mounted.

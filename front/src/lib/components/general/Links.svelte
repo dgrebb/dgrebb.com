@@ -47,19 +47,19 @@
   };
 
   /**
-   * @type {Link[]}
+   * @type {{ links: Link[] }}
    */
-  export let links;
+  let { links } = $props();
 
   /**
    * @type {LinkMapItem[]}
    */
-  let linkMap = links.map(({ title, url, icon }) => ({
+  let linkMap = $derived(links.map(({ title, url, icon }) => ({
     title,
     url,
     icon: icons[`Icon${icon}`] || IconLink,
     linkClass: icon?.toLowerCase() || 'default',
-  }));
+  })));
 </script>
 
 <!--

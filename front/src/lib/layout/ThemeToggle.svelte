@@ -69,7 +69,7 @@
    * Flag indicating whether the theme is dark.
    * @type {boolean}
    */
-  $: dark = null;
+  let dark = $state(null);
 
   /**
    * Flag to prevent rapid toggling.
@@ -145,7 +145,7 @@
 <button
   type="button"
   class="theme-toggle"
-  on:click={toggleTheme}
+  onclick={toggleTheme}
   title={`Switch to ${dark ? 'light' : 'dark'} theme`}
 >
   <ThemeToggleIcon />

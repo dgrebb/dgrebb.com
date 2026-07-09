@@ -5,9 +5,7 @@
   import '@styles/components/nav.css';
   import '@styles/components/theme-toggle.css';
 
-  export let route;
-  export let navHeading;
-  export let navItems;
+  let { route, navHeading, navItems } = $props();
 </script>
 
 <!-- svelte-ignore a11y-unknown-role -->

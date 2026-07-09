@@ -14,15 +14,13 @@
   import '@styles/pages/cv.css';
   import '@styles/pages/collection.css';
 
-  export let data;
+  let { data } = $props();
 
-  $: ({
-    pathname,
-    slug,
-    collection,
-    itemData,
-    itemData: { pageMeta },
-  } = data);
+  let pathname = $derived(data.pathname);
+  let slug = $derived(data.slug);
+  let collection = $derived(data.collection);
+  let itemData = $derived(data.itemData);
+  let pageMeta = $derived(data.itemData?.pageMeta);
 
   const components = {
     award: Award,

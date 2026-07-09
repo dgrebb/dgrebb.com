@@ -1,9 +1,10 @@
 <script>
   import { animatedImagePlay } from '@utils/uiHelpers';
   import '@styles/components/animated-image.css';
-  export let animation, width, height, aAlt, still, sAlt, figcaption, slug;
+  
+  let { animation, width, height, aAlt, still, sAlt, figcaption, slug } = $props();
 
-  $: playing = false;
+  let playing = $state(false);
   const altText = aAlt ? aAlt : sAlt || 'No alt text. This should be fixed.';
   function playPauseClickHandler(altText, slug) {
     return playing === true ? false : animatedImagePlay(altText, slug);
@@ -32,8 +33,8 @@
       <details bind:open={playing}>
         <summary
           aria-label="Click to play the animation"
-          on:click={playPauseClickHandler(altText, slug)}
-          on:keydown={playPauseClickHandler(altText, slug)}
+          onclick={() => playPauseClickHandler(altText, slug)}
+          onkeydown={() => playPauseClickHandler(altText, slug)}
           role="switch"
           tabindex="0"
           aria-checked={playing}

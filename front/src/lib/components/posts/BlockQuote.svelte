@@ -1,8 +1,5 @@
 <script>
-  export let text;
-  export let citation = false;
-  export let citationLink = false;
-  export let citationLinkTitle;
+  let { text, citation = false, citationLink = false, citationLinkTitle } = $props();
 </script>
 
 <blockquote>

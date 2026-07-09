@@ -5,7 +5,7 @@
   import PageTransition from '@components/general/PageTransition.svelte';
   import '@styles/pages/cv.css';
 
-  export let data;
+  let { data } = $props();
 
   const { pathname, generalContent, page, experiences, pageMeta } = data;
   const { title, intro } = page;

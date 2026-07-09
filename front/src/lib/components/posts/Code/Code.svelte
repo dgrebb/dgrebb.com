@@ -11,20 +11,23 @@
   import CodeCopy from './CodeCopy.svelte';
   import '@styles/components/Code/Code.css';
 
-  export let pageTitle, slug, syntax, code, showLineNumbers;
+  let {
+    pageTitle,
+    slug,
+    syntax,
+    code,
+    showLineNumbers,
+    highlightedLines = false,
+    key = false,
+    title = null,
+    showCopyButton = false,
+    startingLineNumber = 1
+  } = $props();
 
-  /**
-   * The highlighted lines as a string, which can include single numbers or ranges.
-   * If false, indicates that no lines are highlighted.
-   */
-  export let highlightedLines = false;
-  export let key = false;
-  export let title = null;
-  export let showCopyButton = false;
-  export let startingLineNumber = 1;
-  export let lineNumbers =
-    showLineNumbers === true || highlightedLines.length > 0 || false;
-  let langLower = syntax.toLowerCase();
+  let lineNumbers = $derived(
+    showLineNumbers === true || highlightedLines.length > 0 || false
+  );
+  let langLower = $derived(syntax.toLowerCase());
 
   let which = {
     shell: bash,

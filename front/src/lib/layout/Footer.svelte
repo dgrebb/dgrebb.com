@@ -2,8 +2,8 @@
   import { PATHS } from '$lib/CONSTANTS';
   const { privacy } = PATHS.landing;
   import CreativeCommons from '@components/icons/CreativeCommons.svelte';
-  export let copyleft;
-  export let copyright;
+  
+  let { copyleft, copyright } = $props();
   const year = new Date().getFullYear();
 </script>
 

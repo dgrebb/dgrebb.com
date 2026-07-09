@@ -4,7 +4,7 @@
    * @component
    * @param {Array} footnotes - An array of footnote objects.
    */
-  export let footnotes;
+  let { footnotes } = $props();
 </script>
 
 <h2 class="footnotes-title">Footnotes</h2>

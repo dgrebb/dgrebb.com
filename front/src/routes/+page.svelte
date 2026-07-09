@@ -45,9 +45,9 @@
   import '@styles/pages/home.css';
 
   /**
-   * @type {BioData}
+   * @type {{ data: BioData }}
    */
-  export let data;
+  let { data } = $props();
 
   const {
     headline,

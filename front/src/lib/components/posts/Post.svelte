@@ -27,7 +27,8 @@
    * @property {string} pathname - The current path.
    */
 
-  export let publishedAt,
+  let {
+    publishedAt,
     updatedAt,
     slug,
     title,
@@ -43,7 +44,8 @@
     loaded,
     position,
     heroThumb,
-    heroAlt;
+    heroAlt
+  } = $props();
 
   /**
    * Sets the active link in the page navigation.
@@ -97,8 +99,8 @@
   {#if updatedAt}<meta name="date_modified" content={updatedAt} />{/if}
 </svelte:head>
 
-<Article>
-  <header slot="header">
+{#snippet headerSnippet()}
+  <header>
     {#if heroImage}
       <PostHero
         {heroImage}
@@ -107,7 +109,6 @@
         {position}
         {heroThumb}
         {heroAlt}
-        slot="header"
       />
       {#if (toc && toc.length) || (categories && categories.length) || (related && related.length)}
         <PageNav {toc} {categories} {related} {pathname} mini {setActiveLink} />
@@ -120,13 +121,19 @@
       >
     {/if}
   </header>
-  <aside class="aside" role="navigation" slot="aside">
+{/snippet}
+
+{#snippet asideSnippet()}
+  <aside class="aside" role="navigation">
     {#if (toc && toc.length) || (categories && categories.length) || (related && related.length)}
       <PageNav {toc} {categories} {related} {pathname} {setActiveLink} />
     {/if}
   </aside>
+{/snippet}
+
+{#snippet contentSnippet()}
   <a id="main">Main Content</a>
-  <article class="post-article" slot="content">
+  <article class="post-article">
     {#if summary}
       <div class="summary">
         {@html summary}
@@ -141,22 +148,6 @@
           pageTitle={title}
           {slug}
         />
-        <!-- TODO: Remove these fields and components
-          if not in use by 24.04.01
-        {#if c.__component === 'posts.columns'}
-          {@const cols = c.columns}
-          {@const count = cols.length}
-          <h2>{count}</h2>
-          <section class="text-columns">
-            {#each cols as { heading, text }}
-              <div class="text-column" class:headless={!heading}>
-                {#if heading !== null}<header>{heading}</header>{/if}
-                {@html text}
-              </div>
-            {/each}
-          </section>
-        {/if}
-        -->
       {/each}
     {/if}
     {#if footnotes}
@@ -165,4 +156,6 @@
       </footer>
     {/if}
   </article>
-</Article>
+{/snippet}
+
+<Article header={headerSnippet} aside={asideSnippet} content={contentSnippet} />

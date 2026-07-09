@@ -1,9 +1,9 @@
 <script>
   import { PATHS } from '$lib/CONSTANTS';
   const { skill: skillPath } = PATHS.one;
-  export let content;
+  let { content } = $props();
 
-  let {
+  const {
     name,
     body,
     summary,

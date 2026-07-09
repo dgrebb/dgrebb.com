@@ -10,9 +10,9 @@
     classification: classPath,
     certification: certPath,
   } = PATHS.one;
-  export let content;
+  let { content } = $props();
 
-  let {
+  const {
     name,
     body,
     hero,

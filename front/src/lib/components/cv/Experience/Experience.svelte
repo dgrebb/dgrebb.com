@@ -8,8 +8,8 @@
   const { organizations: orgPath } = PATHS.one;
   let collection = 'experience';
 
-  export let content;
-  let {
+  let { content } = $props();
+  const {
     name,
     title,
     body,
@@ -20,8 +20,8 @@
   } = content.experience;
 </script>
 
-<Article>
-  <header class="article__header" slot="header">
+{#snippet headerSnippet()}
+  <header class="article__header">
     <p class="collection__title">Professional Experience</p>
     <h1 class="article__title">
       <span class="article__title__text">{name}</span>
@@ -32,15 +32,16 @@
       <SkillBreakdown skills={highlightedSkills} />
     {/if}
   </header>
+{/snippet}
 
-  <Aside slot="aside">
+{#snippet asideSnippet()}
+  <Aside>
     {#if orgs?.length}
       <h2>Organizations</h2>
       <ul>
         {#each orgs as { attributes: { name, slug } }, key}
           <li>
-            <a href="{orgPath}/{slug}">{name}{key === orgs.length ? ',' : ''}</a
-            >
+            <a href="{orgPath}/{slug}">{name}{key === orgs.length ? ',' : ''}</a>
           </li>
         {/each}
       </ul>
@@ -64,10 +65,14 @@
       />
     {/if}
   </Aside>
+{/snippet}
 
-  <section class="article__body" slot="content">
+{#snippet contentSnippet()}
+  <section class="article__body">
     {#if body}
       {@html body}
     {/if}
   </section>
-</Article>
+{/snippet}
+
+<Article header={headerSnippet} aside={asideSnippet} content={contentSnippet} />

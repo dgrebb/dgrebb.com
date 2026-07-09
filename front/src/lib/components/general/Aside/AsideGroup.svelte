@@ -1,5 +1,5 @@
 <script>
-  export let collection, title, items, singleton;
+  let { collection, title, items, singleton } = $props();
 </script>
 
 <h2>{title}</h2>

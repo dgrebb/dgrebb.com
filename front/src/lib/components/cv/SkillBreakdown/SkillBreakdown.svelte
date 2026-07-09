@@ -3,7 +3,7 @@
   import SkillIcon from '@components/icons/SkillIcon.svelte';
   import { getHighContrastHexColor, getRGBFromHex } from '@utils';
 
-  export let skills;
+  let { skills } = $props();
 </script>
 
 <figure class="skill-graph">
