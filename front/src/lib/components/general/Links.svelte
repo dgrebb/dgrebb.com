@@ -54,12 +54,14 @@
   /**
    * @type {LinkMapItem[]}
    */
-  let linkMap = $derived(links.map(({ title, url, icon }) => ({
-    title,
-    url,
-    icon: icons[`Icon${icon}`] || IconLink,
-    linkClass: icon?.toLowerCase() || 'default',
-  })));
+  let linkMap = $derived(
+    links.map(({ title, url, icon }) => ({
+      title,
+      url,
+      icon: icons[`Icon${icon}`] || IconLink,
+      linkClass: icon?.toLowerCase() || 'default',
+    }))
+  );
 </script>
 
 <!--

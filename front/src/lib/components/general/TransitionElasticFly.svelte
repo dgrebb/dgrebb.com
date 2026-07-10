@@ -11,7 +11,13 @@
   import { circInOut } from 'svelte/easing';
   import { fly } from 'svelte/transition';
   import { motionless, scrollTop } from '@utils';
-  let { transitionKey, classList = false, duration = 333, delay = 500, children } = $props();
+  let {
+    transitionKey,
+    classList = false,
+    duration = 333,
+    delay = 500,
+    children,
+  } = $props();
   let initialHeight;
 
   /**

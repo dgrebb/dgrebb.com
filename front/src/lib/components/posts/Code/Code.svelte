@@ -21,7 +21,7 @@
     key = false,
     title = null,
     showCopyButton = false,
-    startingLineNumber = 1
+    startingLineNumber = 1,
   } = $props();
 
   let lineNumbers = $derived(

@@ -13,14 +13,16 @@
     canonical = void 0,
     keywords = void 0,
     additionalMetaTags = void 0,
-    additionalLinkTags = void 0
+    additionalLinkTags = void 0,
   } = $props();
 
-  let updatedTitle = $derived(titleTemplate
-    ? title
-      ? titleTemplate.replace(/%s/g, title)
+  let updatedTitle = $derived(
+    titleTemplate
+      ? title
+        ? titleTemplate.replace(/%s/g, title)
+        : title
       : title
-    : title);
+  );
   let robotsParams = '';
   if (additionalRobotsProps) {
     const {

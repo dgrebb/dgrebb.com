@@ -10,7 +10,13 @@
   /**
    * Props for the component.
    */
-  let { transitionKey, duration = 333, delay = 600, classList = false, children } = $props();
+  let {
+    transitionKey,
+    duration = 333,
+    delay = 600,
+    classList = false,
+    children,
+  } = $props();
 
   /**
    * Determines the transition duration based on the `motionless()` function.

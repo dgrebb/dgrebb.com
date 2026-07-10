@@ -17,7 +17,7 @@
     mini = false,
     top = false,
     setActiveLink = null,
-    category = null
+    category = null,
   } = $props();
 
   function activeLink(node) {

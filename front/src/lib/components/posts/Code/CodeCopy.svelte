@@ -1,6 +1,6 @@
 <script>
   import { codeCopyClick } from '@utils/uiHelpers';
-  
+
   let { pageTitle, slug, title, code, key } = $props();
   let copied = $state(false);
   let animations;

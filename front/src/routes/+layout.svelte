@@ -20,8 +20,8 @@
   let isAutomation = $state(false);
   let secondary = $derived(
     route === `${categoryPath}/[category]` ||
-    route === `${postPath}/[slug]` ||
-    route === `${postsPath}`
+      route === `${postPath}/[slug]` ||
+      route === `${postsPath}`
   );
   let post = $derived($page.route.id === `${postPath}/[slug]`);
 

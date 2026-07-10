@@ -1,8 +1,9 @@
 <script>
   import { animatedImagePlay } from '@utils/uiHelpers';
   import '@styles/components/animated-image.css';
-  
-  let { animation, width, height, aAlt, still, sAlt, figcaption, slug } = $props();
+
+  let { animation, width, height, aAlt, still, sAlt, figcaption, slug } =
+    $props();
 
   let playing = $state(false);
   const altText = aAlt ? aAlt : sAlt || 'No alt text. This should be fixed.';

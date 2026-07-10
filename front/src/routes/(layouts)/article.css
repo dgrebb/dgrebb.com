@@ -18,11 +18,11 @@
     }
     @media screen and (min-width: 640px) {
       &:has(
-          .skill-graph:hover,
-          .skill-graph:active,
-          .skill-graph:focus-visible,
-          .skill-graph:focus
-        ) {
+        .skill-graph:hover,
+        .skill-graph:active,
+        .skill-graph:focus-visible,
+        .skill-graph:focus
+      ) {
         & .article__title__text {
           transform: scale(0.5)
             translateY(calc((100% + var(--title-offset)) * -1));

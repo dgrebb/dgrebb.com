@@ -41,7 +41,8 @@
       <ul>
         {#each orgs as { attributes: { name, slug } }, key}
           <li>
-            <a href="{orgPath}/{slug}">{name}{key === orgs.length ? ',' : ''}</a>
+            <a href="{orgPath}/{slug}">{name}{key === orgs.length ? ',' : ''}</a
+            >
           </li>
         {/each}
       </ul>

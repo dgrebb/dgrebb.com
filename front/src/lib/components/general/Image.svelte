@@ -9,7 +9,7 @@
     height,
     classes,
     loadingMethod = 'lazy',
-    ariaHidden = 'false'
+    ariaHidden = 'false',
   } = $props();
 
   let loaded = $state(false);

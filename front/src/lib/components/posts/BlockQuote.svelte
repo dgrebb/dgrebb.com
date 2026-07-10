@@ -1,5 +1,10 @@
 <script>
-  let { text, citation = false, citationLink = false, citationLinkTitle } = $props();
+  let {
+    text,
+    citation = false,
+    citationLink = false,
+    citationLinkTitle,
+  } = $props();
 </script>
 
 <blockquote>

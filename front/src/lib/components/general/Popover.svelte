@@ -5,7 +5,12 @@
   import { focusTrap } from '@utils/actions';
   import { clickOutside } from '@utils/actions';
   import { onDestroy, onMount } from 'svelte';
-  let { show = false, title = false, content = false, ref = $bindable(null) } = $props();
+  let {
+    show = false,
+    title = false,
+    content = false,
+    ref = $bindable(null),
+  } = $props();
 
   let keydownListener;
 

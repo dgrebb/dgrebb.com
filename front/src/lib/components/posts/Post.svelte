@@ -44,7 +44,7 @@
     loaded,
     position,
     heroThumb,
-    heroAlt
+    heroAlt,
   } = $props();
 
   /**

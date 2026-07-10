@@ -1,7 +1,12 @@
 <script>
   import { tocClick } from '@utils/uiHelpers.js';
-  
-  let { toc, pageFenceClickHandler = null, activeLink = null, setActiveLink = null } = $props();
+
+  let {
+    toc,
+    pageFenceClickHandler = null,
+    activeLink = null,
+    setActiveLink = null,
+  } = $props();
 
   const TOCAnchorFocus = (e) => {
     if (e.key === 'Enter' || e.keyCode === 13) {

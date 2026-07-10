@@ -19,9 +19,9 @@
   let slug = $derived(data.post.slug);
   let pageMeta = $derived(data.pageMeta);
   let hero = $derived(post.hero?.data?.attributes || false);
-  let heroThumb = $derived(hero?.formats?.thumbnail?.url
-    ? hero.formats.thumbnail.url
-    : false);
+  let heroThumb = $derived(
+    hero?.formats?.thumbnail?.url ? hero.formats.thumbnail.url : false
+  );
   let heroImage = $derived(hero?.url ? hero.url : false);
   let heroAlt = $derived(hero?.alternativeText ? hero.alternativeText : false);
   let heroMime = $derived(hero?.mime);
