@@ -24,6 +24,10 @@ export default [
     },
     rules: {
       'svelte/no-at-html-tags': 'off',
+      'svelte/no-navigation-without-resolve': 'off',
+      'svelte/require-each-key': 'warn',
+      'svelte/valid-prop-names-in-kit-pages': 'off',
+      'no-useless-assignment': 'warn',
     },
   },
   {

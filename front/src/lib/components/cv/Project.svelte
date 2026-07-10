@@ -77,7 +77,6 @@
         {#each videos as { videoFile, videoCaptions, details: { title, URL, description, credits } }}
           <h4>{title}</h4>
           <div class="video-player">
-            <!-- svelte-ignore a11y-media-has-caption -->
             <video
               crossorigin="anonymous"
               controls
