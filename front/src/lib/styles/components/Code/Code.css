@@ -51,7 +51,7 @@
         &::-webkit-scrollbar-thumb {
           border-radius: 3rem;
           background: var(--fg-clr-oooo);
-          &::hover {
+          &:hover {
             background: var(--fg-clr-oo);
           }
         }
