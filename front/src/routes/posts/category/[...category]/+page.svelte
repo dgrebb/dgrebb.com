@@ -9,17 +9,15 @@
   import '@styles/pages/category.css';
 
   const { post: postPath, category: categoryPath } = PATHS.one;
-  export let data;
+  let { data } = $props();
   const route = $page.route.id;
-  $: ({
-    category,
-    categoryPageContent: { headline },
-    categoriesListContent: categories,
-    individualCategoryContent: { name },
-    posts,
-    pageMeta,
-    pathname,
-  } = data);
+  let category = $derived(data.category);
+  let headline = $derived(data.categoryPageContent.headline);
+  let categories = $derived(data.categoriesListContent);
+  let name = $derived(data.individualCategoryContent.name);
+  let posts = $derived(data.posts);
+  let pageMeta = $derived(data.pageMeta);
+  let pathname = $derived(data.pathname);
 
   const setActiveLink = (e) => {
     const links = e.target.closest('ul').querySelectorAll('a');

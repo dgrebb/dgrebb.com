@@ -549,12 +549,7 @@ input#date-toggle-checkbox {
     &:focus,
     &:focus-visible,
     &:focus-within,
-    &:active,
-    &:before:hover,
-    &:before:focus,
-    &:before:focus-visible,
-    &:before:focus-within,
-    &:before:active {
+    &:active {
       .experience-timeline-date {
         opacity: 0;
         @media screen and (min-width: 640px) {

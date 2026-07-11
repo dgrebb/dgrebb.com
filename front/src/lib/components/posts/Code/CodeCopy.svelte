@@ -1,7 +1,8 @@
 <script>
   import { codeCopyClick } from '@utils/uiHelpers';
-  export let pageTitle, slug, title, code, key;
-  $: copied = false;
+
+  let { pageTitle, slug, title, code, key } = $props();
+  let copied = $state(false);
   let animations;
   let resets;
 
@@ -39,9 +40,9 @@
 <button
   class="code-copy-btn"
   class:copied
-  on:mousedown={handleCopying}
-  on:click={handleCopy}
-  on:keyup={handleCopy}
+  onmousedown={handleCopying}
+  onclick={handleCopy}
+  onkeyup={handleCopy}
   aria-label="Copy this code snippet"
 >
   <svg

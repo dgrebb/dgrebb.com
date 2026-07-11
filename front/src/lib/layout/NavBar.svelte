@@ -1,13 +1,11 @@
 <script>
   import { page } from '$app/stores';
   // import NavToggle from "../components/NavToggle.svelte";
-  export let navItems;
-  $: route = $page?.route?.id;
+  let { navItems } = $props();
+  let route = $derived($page?.route?.id);
 </script>
 
-<!-- svelte-ignore a11y-no-redundant-roles -->
-
-<nav class="nav-bar" aria-label="Site Pages" role="navigation">
+<nav class="nav-bar" aria-label="Site Pages">
   <!-- <NavToggle /> -->
   <ul class="nav-list">
     {#each navItems as { href, title, childRoutes }}

@@ -83,12 +83,12 @@
 
 @supports (initial-letter: 2) {
   .post .summary p:first-of-type::first-letter {
-    font-family: var(--font-lbb);
-    -webkit-initial-letter: 2;
-    initial-letter: 2;
     margin-right: 0.5rem;
     color: var(--highlight-clr);
     font-weight: bold;
+    font-family: var(--font-lbb);
+    -webkit-initial-letter: 2;
+    initial-letter: 2;
   }
 }
 

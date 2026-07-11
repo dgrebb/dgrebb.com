@@ -5,10 +5,12 @@
   import { focusTrap } from '@utils/actions';
   import { clickOutside } from '@utils/actions';
   import { onDestroy, onMount } from 'svelte';
-  export let show = false;
-  export let title = false;
-  export let content = false;
-  export let ref = null;
+  let {
+    show = false,
+    title = false,
+    content = false,
+    ref = $bindable(null),
+  } = $props();
 
   let keydownListener;
 
@@ -52,7 +54,7 @@
   <div
     class="popover_slot"
     use:clickOutside
-    on:click_outside={(e) => hidePopover(e)}
+    onclick_outside={(e) => hidePopover(e)}
   >
     <!-- svelte-ignore a11y-unknown-role -->
     <header class="popover_title" class:titleless={!title} role="header">
@@ -62,7 +64,7 @@
       <button
         type="button"
         class="popover_close"
-        on:click={(e) => hidePopover(e)}
+        onclick={(e) => hidePopover(e)}
       >
         <span class="icon-cross"></span>
         <span class="sr-only">Close</span>

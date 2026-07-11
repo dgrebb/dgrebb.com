@@ -1,5 +1,5 @@
 <script>
-  export let classList = false;
+  let { classList = false } = $props();
 </script>
 
 <svg

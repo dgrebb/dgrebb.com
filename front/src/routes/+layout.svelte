@@ -12,17 +12,18 @@
   import '@styles/global.css';
   import { onMount } from 'svelte';
 
-  export let data;
+  let { data, children } = $props();
   const { navHeading, navItems, copyright, copyleft } = data;
 
-  $: route = $page.route.id;
-  let mounted = false;
-  let isAutomation;
-  $: secondary =
+  let route = $derived($page.route.id);
+  let mounted = $state(false);
+  let isAutomation = $state(false);
+  let secondary = $derived(
     route === `${categoryPath}/[category]` ||
-    route === `${postPath}/[slug]` ||
-    route === `${postsPath}`;
-  $: post = $page.route.id === `${postPath}/[slug]`;
+      route === `${postPath}/[slug]` ||
+      route === `${postsPath}`
+  );
+  let post = $derived($page.route.id === `${postPath}/[slug]`);
 
   const domain =
       {
@@ -50,7 +51,7 @@
   data-sveltekit-noscroll
   role="main"
 >
-  <slot />
+  {@render children?.()}
 </main>
 
 <!-- svelte-ignore a11y-unknown-role -->

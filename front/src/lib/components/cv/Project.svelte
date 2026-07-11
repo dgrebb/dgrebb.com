@@ -4,9 +4,9 @@
   import AsideGroup from '@components/general/Aside/AsideGroup.svelte';
   import '@styles/pages/skills.css';
 
-  export let content;
-  let collection = 'projects';
-  let {
+  let { content } = $props();
+  const collection = 'projects';
+  const {
     name,
     body,
     artifacts,
@@ -17,13 +17,15 @@
   } = content.project;
 </script>
 
-<Article>
-  <header class="article__header" slot="header">
+{#snippet headerSnippet()}
+  <header class="article__header">
     <p class="collection__title">Projects</p>
     <h1>{name}</h1>
   </header>
+{/snippet}
 
-  <Aside slot="aside">
+{#snippet asideSnippet()}
+  <Aside>
     {#if orgs?.length}
       <AsideGroup
         {collection}
@@ -49,8 +51,10 @@
       />
     {/if}
   </Aside>
+{/snippet}
 
-  <section class="project-details" slot="content">
+{#snippet contentSnippet()}
+  <section class="project-details">
     {#if body}
       {@html body}
     {/if}
@@ -73,8 +77,6 @@
         {#each videos as { videoFile, videoCaptions, details: { title, URL, description, credits } }}
           <h4>{title}</h4>
           <div class="video-player">
-            <!-- svelte-ignore a11y-media-has-caption -->
-            <!--TODO: Remove ignore-rule -->
             <video
               crossorigin="anonymous"
               controls
@@ -99,4 +101,6 @@
       {/if}
     {/if}
   </section>
-</Article>
+{/snippet}
+
+<Article header={headerSnippet} aside={asideSnippet} content={contentSnippet} />

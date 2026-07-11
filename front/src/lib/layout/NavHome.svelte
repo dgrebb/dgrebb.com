@@ -1,6 +1,5 @@
 <script>
-  export let route;
-  export let navHeading;
+  let { route, navHeading } = $props();
 </script>
 
 <a class="nav-home" href="/" aria-label="Dan Grebb | Home">

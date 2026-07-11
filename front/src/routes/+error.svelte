@@ -1,8 +1,8 @@
 <script>
   import PageTransition from '@components/general/PageTransition.svelte';
   import '@styles/pages/not-found.css';
-  export let data;
-  $: ({ pathname } = data);
+  let { data } = $props();
+  let pathname = $derived(data.pathname);
 </script>
 
 <svelte:head>

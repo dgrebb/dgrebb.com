@@ -1,5 +1,4 @@
 import { bundleStats } from 'rollup-plugin-bundle-stats';
-import progress from 'vite-plugin-progress';
 import { sveltekit } from '@sveltejs/kit/vite';
 import fs from 'fs';
 import path from 'path';
@@ -56,7 +55,6 @@ export default defineConfig({
       html: true,
     }),
     sveltekit(),
-    progress(),
   ],
   server: {
     proxy: {

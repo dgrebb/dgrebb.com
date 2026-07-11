@@ -4,7 +4,7 @@
   import ScrollTop from '@layout/ScrollTop.svelte';
   import '@styles/pages/privacy.css';
 
-  export let data;
+  let { data } = $props();
   const { title, details, pageMeta, updatedAt, pathname } = data;
   let date = new Date(updatedAt);
   date = date.toDateString();

@@ -2,7 +2,7 @@
   import { navigating } from '$app/stores';
   import { isElementOutsideViewport, motionless, scrollTop } from '@utils';
 
-  export let transitionKey;
+  let { transitionKey, children } = $props();
   let to;
 
   /**
@@ -73,11 +73,11 @@
   <div
     class="transition-container"
     transition:doIt|global
-    on:outrostart={animateOutroStart}
-    on:outroend={animateOutroEnd}
-    on:introstart={animateIntroStart}
-    on:introend={animateIntroEnd}
+    onoutrostart={animateOutroStart}
+    onoutroend={animateOutroEnd}
+    onintrostart={animateIntroStart}
+    onintroend={animateIntroEnd}
   >
-    <slot />
+    {@render children?.()}
   </div>
 {/key}

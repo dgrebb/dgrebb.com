@@ -8,31 +8,31 @@
   import '@styles/pages/post.css';
   import { onMount } from 'svelte';
 
-  export let data;
+  let { data } = $props();
 
-  $: ({
-    pathname,
-    post,
-    toc,
-    summary,
-    content,
-    post: { title, slug },
-    pageMeta,
-  } = data);
-  $: hero = post.hero?.data?.attributes || false;
-  $: heroThumb = hero?.formats?.thumbnail?.url
-    ? hero.formats.thumbnail.url
-    : false;
-  $: heroImage = hero?.url ? hero.url : false;
-  $: heroAlt = hero?.alternativeText ? hero.alternativeText : false;
-  $: heroMime = hero?.mime;
-  $: position = post.position || 'center center';
-  $: ({ publishedAt, updatedAt } = post);
-  $: footnotes = post.footnotes.length ? post.footnotes : false;
-  $: related = post.related?.data || false;
-  $: categories = post.categories?.data || false;
+  let pathname = $derived(data.pathname);
+  let post = $derived(data.post);
+  let toc = $derived(data.toc);
+  let summary = $derived(data.summary);
+  let content = $derived(data.content);
+  let title = $derived(data.post.title);
+  let slug = $derived(data.post.slug);
+  let pageMeta = $derived(data.pageMeta);
+  let hero = $derived(post.hero?.data?.attributes || false);
+  let heroThumb = $derived(
+    hero?.formats?.thumbnail?.url ? hero.formats.thumbnail.url : false
+  );
+  let heroImage = $derived(hero?.url ? hero.url : false);
+  let heroAlt = $derived(hero?.alternativeText ? hero.alternativeText : false);
+  let heroMime = $derived(hero?.mime);
+  let position = $derived(post.position || 'center center');
+  let publishedAt = $derived(post.publishedAt);
+  let updatedAt = $derived(post.updatedAt);
+  let footnotes = $derived(post.footnotes.length ? post.footnotes : false);
+  let related = $derived(post.related?.data || false);
+  let categories = $derived(post.categories?.data || false);
 
-  let loaded = false;
+  let loaded = $state(false);
 
   onMount(() => {
     if (heroImage) {

@@ -8,31 +8,15 @@
   import { motionless } from '@utils';
 
   /**
-   * Key for the transition.
-   * @type {string}
+   * Props for the component.
    */
-  export let transitionKey;
-
-  /**
-   * Duration of the transition.
-   * @type {number}
-   * @default 333
-   */
-  export let duration = 333;
-
-  /**
-   * Delay before the transition starts.
-   * @type {number}
-   * @default 600
-   */
-  export let delay = 600;
-
-  /**
-   * Optional class list for the fade container.
-   * @type {string|false}
-   * @default false
-   */
-  export let classList = false;
+  let {
+    transitionKey,
+    duration = 333,
+    delay = 600,
+    classList = false,
+    children,
+  } = $props();
 
   /**
    * Determines the transition duration based on the `motionless()` function.
@@ -71,9 +55,9 @@
   <div
     class="transition-fade-container {classList ? classList : ''}"
     transition:doIt|global
-    on:outrostart={animateOut}
-    on:introstart={animateIn}
+    onoutrostart={animateOut}
+    onintrostart={animateIn}
   >
-    <slot />
+    {@render children?.()}
   </div>
 {/key}

@@ -1,18 +1,20 @@
 <script>
   import { onMount } from 'svelte';
 
-  export let src;
-  export let alt;
-  export let title;
-  export let width;
-  export let height;
-  export let classes;
-  export let loadingMethod = 'lazy';
-  export let ariaHidden = 'false';
+  let {
+    src,
+    alt,
+    title,
+    width,
+    height,
+    classes,
+    loadingMethod = 'lazy',
+    ariaHidden = 'false',
+  } = $props();
 
-  let loaded = false;
-  let failed = false;
-  let loading = true;
+  let loaded = $state(false);
+  let failed = $state(false);
+  let loading = $state(true);
 
   /**
    * Lifecycle function executed after the component is mounted.

@@ -23,8 +23,8 @@
   import { PUBLIC_ENV as ENV } from '$env/static/public';
   import MetaTags from '@components/general/MetaTags.svelte';
 
-  /** @type {MetaTagsProps} */
-  export let pageMeta;
+  /** @type {{ pageMeta: MetaTagsProps }} */
+  let { pageMeta } = $props();
 
   const {
     metaTitle,

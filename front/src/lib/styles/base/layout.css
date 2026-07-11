@@ -39,8 +39,8 @@ body.ready .header.scroll-transition {
 .category {
   opacity: 0.95;
   transition-duration: var(--transition-duration);
-  transition-property: color, background-color, border-color,
-    text-decoration-color, fill, stroke;
+  transition-property:
+    color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: var(--transition-timing-function);
   width: 100%;
 }

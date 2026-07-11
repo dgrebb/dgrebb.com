@@ -17,32 +17,7 @@
   /**
    * @type {Props}
    */
-  export let heroImage;
-
-  /**
-   * @type {Props}
-   */
-  export let heroMime;
-
-  /**
-   * @type {Props}
-   */
-  export let heroThumb;
-
-  /**
-   * @type {Props}
-   */
-  export let heroAlt;
-
-  /**
-   * @type {Props}
-   */
-  export let loaded;
-
-  /**
-   * @type {Props}
-   */
-  export let position;
+  let { heroImage, heroMime, heroThumb, heroAlt, loaded, position } = $props();
 </script>
 
 <svelte:head>

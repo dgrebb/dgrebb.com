@@ -60,8 +60,8 @@
   backdrop-filter: blur(0.5rem);
   filter: var(--posts-item-link-filter);
   transition-duration: var(--transition-duration);
-  transition-property: background-color, color, text-shadow, border-color,
-    box-shadow;
+  transition-property:
+    background-color, color, text-shadow, border-color, box-shadow;
   transition-timing-function: var(--transition-timing-function);
   will-change: background-color;
   box-sizing: border-box;

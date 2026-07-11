@@ -18,9 +18,9 @@
 </script>
 
 /** * Svelte component that dynamically loads another component on mount. *
-@module DynamicComponent * @param {Function} loader - Asynchronous function that
-loads the component. * @param {Object} $$restProps - Additional props passed to the
-parent component. */
+@module DynamicComponent * @param {Function} loader - Asynchronous function that loads
+the component. * @param {Object} $$restProps - Additional props passed to the parent
+component. */
 
 <svelte:component this={Component} {...$$restProps}>
   <slot />

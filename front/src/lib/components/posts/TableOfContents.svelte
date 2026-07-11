@@ -1,9 +1,12 @@
 <script>
   import { tocClick } from '@utils/uiHelpers.js';
-  export let toc;
-  export let pageFenceClickHandler = null;
-  export let activeLink = null;
-  export let setActiveLink = null;
+
+  let {
+    toc,
+    pageFenceClickHandler = null,
+    activeLink = null,
+    setActiveLink = null,
+  } = $props();
 
   const TOCAnchorFocus = (e) => {
     if (e.key === 'Enter' || e.keyCode === 13) {
@@ -25,7 +28,7 @@
     <li>
       <a
         class="toc-link"
-        on:click={(e) => {
+        onclick={(e) => {
           tocClick(text);
           setActiveLink(e);
           pageFenceClickHandler(e);
@@ -34,7 +37,7 @@
         data-sveltekit-replacestate
         data-sveltekit-noscroll="false"
         use:activeLink
-        on:keydown={(e) => {
+        onkeydown={(e) => {
           TOCAnchorFocus(e);
         }}
       >

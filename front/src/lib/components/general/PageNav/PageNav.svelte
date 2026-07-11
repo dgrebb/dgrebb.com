@@ -9,14 +9,16 @@
   const { post: postPath, category: categoryPath } = PATHS.one;
   const categoriesPath = PATHS.many.categories;
 
-  export let toc = false;
-  export let categories = false;
-  export let related = false;
-  export let pathname = false;
-  export let mini = false;
-  export let top = false;
-  export let setActiveLink = null;
-  export let category = null;
+  let {
+    toc = false,
+    categories = false,
+    related = false,
+    pathname = false,
+    mini = false,
+    top = false,
+    setActiveLink = null,
+    category = null,
+  } = $props();
 
   function activeLink(node) {
     const link = node.attributes.href.value;
@@ -62,7 +64,7 @@
         {#if !toc}
           <li class="page-navigation-category-all">
             <a
-              on:click={(e) => {
+              onclick={(e) => {
                 categoryClick(pathname, 'All Categories');
                 setActiveLink(e);
                 if (mini) pageFenceClickHandler();
@@ -79,7 +81,7 @@
         {#each categories as { attributes: { name, slug } }}
           <li>
             <a
-              on:click={(e) => {
+              onclick={(e) => {
                 categoryClick(pathname, name);
                 setActiveLink(e);
                 if (mini) pageFenceClickHandler();
@@ -101,7 +103,7 @@
         {#each related as { attributes: { title, slug } }}
           <li>
             <a
-              on:click={() => relatedClick(pathname, title)}
+              onclick={() => relatedClick(pathname, title)}
               href="{postPath}/{slug}/"
               class="transition-link">{title}</a
             >
@@ -122,6 +124,6 @@
   <!-- svelte-ignore a11y-no-static-element-interactions -->
   <!-- svelte-ignore a11y-click-events-have-key-events -->
   {#if mini}
-    <div class="page-fence" on:click={pageFenceClickHandler}></div>
+    <div class="page-fence" onclick={pageFenceClickHandler}></div>
   {/if}
 </nav>

@@ -8,35 +8,26 @@
    */
   import { onMount } from 'svelte';
 
+  /** @type {{ name: string, slug: string, classes?: string, iconColor?: string }} */
+  let { name, slug, classes = false, iconColor = false } = $props();
+
   /**
    * Flag indicating whether the icon is successfully loaded.
    * @type {boolean}
    */
-  let loaded = false;
+  let loaded = $state(false);
 
   /**
    * Flag indicating whether loading the icon has failed.
    * @type {boolean}
    */
-  let failed = false;
-
-  /** @type {string} */
-  export let name;
-
-  /** @type {string} */
-  export let slug;
-
-  /** @type {string} */
-  export let classes = false;
-
-  /** @type {string} */
-  export let iconColor = false;
+  let failed = $state(false);
 
   /**
    * URL for the SVG icon based on the provided slug.
    * @type {string}
    */
-  let iconURL = `/v/skills/${slug}.svg#${slug}`;
+  let iconURL = $state(`/v/skills/${slug}.svg#${slug}`);
 
   /**
    * Handles the successful load of the SVG icon.

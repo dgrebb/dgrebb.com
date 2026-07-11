@@ -87,14 +87,17 @@
     --headshot-filter: sepia(100%) saturate(70%) brightness(85%)
       hue-rotate(61deg);
     --shadow-color: var(--sunshine-shadow-clr);
-    --shadow-elevation-low: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+    --shadow-elevation-low:
+      0px 0px 0px 1px rgba(165, 165, 165, 0.04),
       -9px 9px 9px -0.5px rgba(100, 100, 100, 0.04),
       -18px 18px 18px -1.5px rgba(100, 100, 100, 0.08);
-    --shadow-elevation-medium: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+    --shadow-elevation-medium:
+      0px 0px 0px 1px rgba(165, 165, 165, 0.04),
       -9px 9px 9px -0.5px rgba(100, 100, 100, 0.04),
       -18px 18px 18px -1.5px rgba(100, 100, 100, 0.08),
       -37px 37px 37px -3px rgba(155, 155, 155, 0.16);
-    --shadow-elevation-high: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+    --shadow-elevation-high:
+      0px 0px 0px 1px rgba(165, 165, 165, 0.04),
       -9px 9px 9px -0.5px rgba(100, 100, 100, 0.04),
       -18px 18px 18px -1.5px rgba(100, 100, 100, 0.08),
       -37px 37px 37px -3px rgba(155, 155, 155, 0.16),
@@ -111,8 +114,8 @@
       rgba(var(--black), 0.33);
     --blockquotes-clr: var(--fg-clr-oo);
     --post-hero-filter: none;
-    --post-title-text-shadow: 0 0 0 var(--fg-clr),
-      0.019em -0.011em 0 var(--sunshine),
+    --post-title-text-shadow:
+      0 0 0 var(--fg-clr), 0.019em -0.011em 0 var(--sunshine),
       0.015em -0.011em 2px rgba(255, 255, 255, 0.5),
       -1px 1px 2px rgba(0, 0, 0, 0.33);
     --post-blockquote-bg-clr: var(--bg-light-clr);
@@ -184,14 +187,17 @@ html.light-theme {
   --mark-bg-clr: var(--green);
   --headshot-filter: sepia(100%) saturate(70%) brightness(85%) hue-rotate(61deg);
   --shadow-color: var(--sunshine-shadow-clr);
-  --shadow-elevation-low: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+  --shadow-elevation-low:
+    0px 0px 0px 1px rgba(165, 165, 165, 0.04),
     -9px 9px 9px -0.5px rgba(100, 100, 100, 0.04),
     -18px 18px 18px -1.5px rgba(100, 100, 100, 0.08);
-  --shadow-elevation-medium: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+  --shadow-elevation-medium:
+    0px 0px 0px 1px rgba(165, 165, 165, 0.04),
     -9px 9px 9px -0.5px rgba(100, 100, 100, 0.04),
     -18px 18px 18px -1.5px rgba(100, 100, 100, 0.08),
     -37px 37px 37px -3px rgba(155, 155, 155, 0.16);
-  --shadow-elevation-high: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+  --shadow-elevation-high:
+    0px 0px 0px 1px rgba(165, 165, 165, 0.04),
     -9px 9px 9px -0.5px rgba(100, 100, 100, 0.04),
     -18px 18px 18px -1.5px rgba(100, 100, 100, 0.08),
     -37px 37px 37px -3px rgba(155, 155, 155, 0.16),
@@ -208,8 +214,8 @@ html.light-theme {
     rgba(var(--black), 0.33);
   --blockquotes-clr: var(--fg-clr-oo);
   --post-hero-filter: none;
-  --post-title-text-shadow: 0 0 0 var(--fg-clr),
-    0.019em -0.011em 0 var(--sunshine),
+  --post-title-text-shadow:
+    0 0 0 var(--fg-clr), 0.019em -0.011em 0 var(--sunshine),
     0.015em -0.011em 2px rgba(255, 255, 255, 0.5),
     -1px 1px 2px rgba(0, 0, 0, 0.33);
   --post-blockquote-bg-clr: var(--bg-light-clr);
@@ -286,14 +292,17 @@ html.light-theme {
       var(--content-bg-clr) 333px
     );
     --shadow-color: var(--moonshine-shadow-clr);
-    --shadow-elevation-low: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+    --shadow-elevation-low:
+      0px 0px 0px 1px rgba(165, 165, 165, 0.04),
       -9px 9px 9px -0.5px rgba(0, 0, 0, 0.08),
       -18px 18px 18px -1.5px rgba(0, 0, 0, 0.16);
-    --shadow-elevation-medium: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+    --shadow-elevation-medium:
+      0px 0px 0px 1px rgba(165, 165, 165, 0.04),
       -9px 9px 9px -0.5px rgba(0, 0, 0, 0.08),
       -18px 18px 18px -1.5px rgba(0, 0, 0, 0.16),
       -37px 37px 37px -3px rgba(0, 0, 0, 0.48);
-    --shadow-elevation-high: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+    --shadow-elevation-high:
+      0px 0px 0px 1px rgba(165, 165, 165, 0.04),
       -9px 9px 9px -0.5px rgba(0, 0, 0, 0.08),
       -18px 18px 18px -1.5px rgba(0, 0, 0, 0.16),
       -37px 37px 37px -3px rgba(0, 0, 0, 0.48),
@@ -372,14 +381,17 @@ html.dark-theme {
     var(--content-bg-clr) 333px
   );
   --shadow-color: var(--moonshine-shadow-clr);
-  --shadow-elevation-low: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+  --shadow-elevation-low:
+    0px 0px 0px 1px rgba(165, 165, 165, 0.04),
     -9px 9px 9px -0.5px rgba(0, 0, 0, 0.04),
     -18px 18px 18px -1.5px rgba(0, 0, 0, 0.08);
-  --shadow-elevation-medium: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+  --shadow-elevation-medium:
+    0px 0px 0px 1px rgba(165, 165, 165, 0.04),
     -9px 9px 9px -0.5px rgba(0, 0, 0, 0.04),
     -18px 18px 18px -1.5px rgba(0, 0, 0, 0.08),
     -37px 37px 37px -3px rgba(0, 0, 0, 0.16);
-  --shadow-elevation-high: 0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+  --shadow-elevation-high:
+    0px 0px 0px 1px rgba(165, 165, 165, 0.04),
     -9px 9px 9px -0.5px rgba(0, 0, 0, 0.04),
     -18px 18px 18px -1.5px rgba(0, 0, 0, 0.08),
     -37px 37px 37px -3px rgba(0, 0, 0, 0.16),

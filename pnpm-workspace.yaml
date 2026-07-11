@@ -1,0 +1,45 @@
+packages:
+  - 'front'
+  - 'back'
+  - '_ci/*'
+
+# pnpm 11 allowBuilds replaces onlyBuiltDependencies
+# true = allowed to run build scripts, false = denied
+allowBuilds:
+  '@rollup/rollup-linux-x64-gnu': true
+  '@rollup/rollup-linux-arm64-gnu': true
+  '@rollup/rollup-darwin-x64': true
+  '@rollup/rollup-darwin-arm64': true
+  '@swc/core': true
+  '@swc/core-linux-x64-gnu': true
+  '@swc/core-linux-arm64-gnu': true
+  '@swc/core-darwin-x64': true
+  '@swc/core-darwin-arm64': true
+  better-sqlite3: true
+  esbuild: true
+  sharp: true
+  '@img/sharp-linux-x64': true
+  '@img/sharp-linux-arm64': true
+  '@img/sharp-darwin-x64': true
+  '@img/sharp-darwin-arm64': true
+  '@playwright/test': true
+  playwright: true
+  vite: true
+  svelte: true
+  lightningcss: true
+  lightningcss-linux-x64-gnu: true
+  lightningcss-linux-arm64-gnu: true
+  lightningcss-darwin-x64: true
+  lightningcss-darwin-arm64: true
+  '@strapi/strapi': true
+  core-js: true
+  core-js-pure: true
+  puppeteer: true
+
+overrides:
+  braces@<3.0.3: '>=3.0.3'
+  follow-redirects@<1.15.6: '>=1.15.6'
+  sanitize-html@<2.12.1: '>=2.12.1'
+  tar@<6.2.1: '>=6.2.1'
+  vite@<5.1.7: '>=5.4.0'
+  webpack-dev-middleware@<6.1.2: '>=6.1.2'

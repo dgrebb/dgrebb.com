@@ -4,7 +4,7 @@
   import PostsGrid from '@components/posts/PostsGrid.svelte';
   import '@styles/pages/posts.css';
 
-  export let data;
+  let { data } = $props();
   const {
     pathname,
     page: { headline, description },

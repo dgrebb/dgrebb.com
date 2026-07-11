@@ -12,7 +12,7 @@ on:
 
 env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
-  NODE_VERSION: 20
+  NODE_VERSION: 24
 
 jobs:
   lint:

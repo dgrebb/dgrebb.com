@@ -2,8 +2,8 @@
   import { PATHS } from '$lib/CONSTANTS';
   const { experience: exPath, project: projPath } = PATHS.one;
 
-  export let content;
-  let {
+  let { content } = $props();
+  const {
     name,
     body,
     experiences: { data: experiences },

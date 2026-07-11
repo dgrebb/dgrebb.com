@@ -1,23 +1,28 @@
 <script>
-  export let title = '';
-  export let titleTemplate = '';
-  export let robots = 'index,follow';
-  export let additionalRobotsProps = void 0;
-  export let description = void 0;
-  export let mobileAlternate = void 0;
-  export let languageAlternates = void 0;
-  export let twitter = void 0;
-  export let facebook = void 0;
-  export let openGraph = void 0;
-  export let canonical = void 0;
-  export let keywords = void 0;
-  export let additionalMetaTags = void 0;
-  export let additionalLinkTags = void 0;
-  $: updatedTitle = titleTemplate
-    ? title
-      ? titleTemplate.replace(/%s/g, title)
+  let {
+    title = '',
+    titleTemplate = '',
+    robots = 'index,follow',
+    additionalRobotsProps = void 0,
+    description = void 0,
+    mobileAlternate = void 0,
+    languageAlternates = void 0,
+    twitter = void 0,
+    facebook = void 0,
+    openGraph = void 0,
+    canonical = void 0,
+    keywords = void 0,
+    additionalMetaTags = void 0,
+    additionalLinkTags = void 0,
+  } = $props();
+
+  let updatedTitle = $derived(
+    titleTemplate
+      ? title
+        ? titleTemplate.replace(/%s/g, title)
+        : title
       : title
-    : title;
+  );
   let robotsParams = '';
   if (additionalRobotsProps) {
     const {
@@ -40,11 +45,13 @@
       notranslate ? ',notranslate' : ''
     }`;
   }
-  $: if (!robots && additionalRobotsProps) {
-    console.warn(
-      'additionalRobotsProps cannot be used when robots is set to false'
-    );
-  }
+  $effect(() => {
+    if (!robots && additionalRobotsProps) {
+      console.warn(
+        'additionalRobotsProps cannot be used when robots is set to false'
+      );
+    }
+  });
 </script>
 
 <svelte:head>

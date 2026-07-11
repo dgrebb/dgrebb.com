@@ -7,8 +7,8 @@
     skill: skillPath,
   } = PATHS.one;
 
-  export let content;
-  let {
+  let { content } = $props();
+  const {
     name,
     skills: { data: skills },
     organizations: { data: organizations },
